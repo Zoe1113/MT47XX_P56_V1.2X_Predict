@@ -1,0 +1,3126 @@
+00001                       ;--------------------------------------------------------
+00002                       ; File Created by SDCC : open source ANSI-C Compiler modified for HYCON CPU
+00003                       ; Version 4.0.4 #65ee8b859 (MSVC)
+00004                       ;--------------------------------------------------------
+00005                       ; Port for HYCON CPU
+00006                       ;--------------------------------------------------------
+00007                       ;	;CCFROM:"F:\陈宇航\001 程序\000 最新程序20230301(增加839，930，新增高精度判稳≤0.01)\DMT2022050508p"
+00008                       ;;	.file	".\Source\App_LCD.c"
+00009                       	.module App_LCD
+00010                       	;.list	p=HY17P56
+00011                       	;--cdb--T:FApp_LCD$__00000000[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]
+00012                       	;--cdb--T:FApp_LCD$__00000010[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]
+00013                       	;--cdb--T:FApp_LCD$__00000001[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]
+00014                       	;--cdb--T:FApp_LCD$__00000011[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]
+00015                       	;--cdb--T:FApp_LCD$__00000002[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]
+00016                       	;--cdb--T:FApp_LCD$__00000012[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]
+00017                       	;--cdb--T:FApp_LCD$__00000003[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]
+00018                       	;--cdb--T:FApp_LCD$__00000013[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]
+00019                       	;--cdb--T:FApp_LCD$__00000004[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]
+00020                       	;--cdb--T:FApp_LCD$__00000014[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]
+00021                       	;--cdb--T:FApp_LCD$__00000005[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_2S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_1S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB1$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB2$1:U),Z,0,0)]
+00022                       	;--cdb--T:FApp_LCD$__00000015[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$F_Receive_First$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Port_Ble_PowerOn$0$0({1}SB6$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]
+00023                       	;--cdb--T:FApp_LCD$__00000006[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]
+00024                       	;--cdb--T:FApp_LCD$__00000016[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]
+00025                       	;--cdb--T:FApp_LCD$__00000007[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]
+00026                       	;--cdb--T:FApp_LCD$__00000008[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]
+00027                       	;--cdb--T:FApp_LCD$__00000009[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({2}DA1d,SI:U),Z,0,0)]
+00028                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00029                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00030                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00031                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00032                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00033                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00034                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00035                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00036                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00037                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00038                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00039                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00040                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00041                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00042                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00043                       	;--cdb--F:App_LCD:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0,0,0,0
+00044                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00045                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00046                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00047                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00048                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00049                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00050                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00051                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00052                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00053                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00054                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00055                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00056                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00057                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00058                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00059                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00060                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00061                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00062                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00063                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00064                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00065                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00066                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00067                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00068                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00069                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00070                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00071                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00072                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00073                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00074                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00075                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00076                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00077                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00078                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00079                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00080                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00081                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00082                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+00083                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+00084                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+00085                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+00086                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+00087                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+00088                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+00089                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+00090                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+00091                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+00092                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+00093                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+00094                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+00095                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+00096                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00097                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+00098                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+00099                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+00100                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+00101                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00102                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+00103                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+00104                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+00105                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+00106                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+00107                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+00108                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+00109                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+00110                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+00111                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+00112                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+00113                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+00114                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+00115                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+00116                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+00117                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+00118                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+00119                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+00120                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+00121                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+00122                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+00123                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+00124                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+00125                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+00126                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+00127                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+00128                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+00129                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+00130                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+00131                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+00132                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+00133                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+00134                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+00135                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+00136                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+00137                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+00138                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+00139                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+00140                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+00141                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+00142                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+00143                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+00144                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+00145                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+00146                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+00147                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+00148                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+00149                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+00150                       	;--cdb--S:G$DispUnit$0$0({2}DF,SV:S),C,0,0
+00151                       	;--cdb--F:App_LCD:G$DispUnit$0$0({2}DF,SV:S),C,0,0,0,0,0
+00152                       	;--cdb--S:G$DispDelta$0$0({2}DF,SV:S),C,0,0
+00153                       	;--cdb--F:App_LCD:G$DispDelta$0$0({2}DF,SV:S),C,0,0,0,0,0
+00154                       	;--cdb--S:G$DispNum$0$0({2}DF,SV:S),C,0,0
+00155                       	;--cdb--F:App_LCD:G$DispNum$0$0({2}DF,SV:S),C,0,0,0,0,0
+00156                       	;--cdb--S:G$_divuint$0$0({2}DF,SI:U),C,0,0
+00157                       	;--cdb--S:G$_moduint$0$0({2}DF,SI:U),C,0,0
+00158                       	;--cdb--S:G$Disp_BLEFlash$0$0({2}DF,SV:S),C,0,0
+00159                       	;--cdb--F:App_LCD:G$Disp_BLEFlash$0$0({2}DF,SV:S),C,0,0,0,0,0
+00160                       	;--cdb--S:G$Disp_Bat$0$0({2}DF,SV:S),C,0,0
+00161                       	;--cdb--F:App_LCD:G$Disp_Bat$0$0({2}DF,SV:S),C,0,0,0,0,0
+00162                       	;--cdb--S:G$Disp_UnitFlash$0$0({2}DF,SV:S),C,0,0
+00163                       	;--cdb--F:App_LCD:G$Disp_UnitFlash$0$0({2}DF,SV:S),C,0,0,0,0,0
+00164                       	;--cdb--S:G$Disp_DynamicDash$0$0({2}DF,SV:S),C,0,0
+00165                       	;--cdb--F:App_LCD:G$Disp_DynamicDash$0$0({2}DF,SV:S),C,0,0,0,0,0
+00166                       	;--cdb--S:G$Disp_DynamicForecastSymbol$0$0({2}DF,SV:S),C,0,0
+00167                       	;--cdb--F:App_LCD:G$Disp_DynamicForecastSymbol$0$0({2}DF,SV:S),C,0,0,0,0,0
+00168                       	;--cdb--S:G$Disp_BleSymbol$0$0({2}DF,SV:S),C,0,0
+00169                       	;--cdb--F:App_LCD:G$Disp_BleSymbol$0$0({2}DF,SV:S),C,0,0,0,0,0
+00170                       	;--cdb--S:G$UnitExchange_Display$0$0({2}DF,SV:S),C,0,0
+00171                       	;--cdb--F:App_LCD:G$UnitExchange_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00172                       	;--cdb--S:G$Off_Display$0$0({2}DF,SV:S),C,0,0
+00173                       	;--cdb--F:App_LCD:G$Off_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00174                       	;--cdb--S:G$PreCalibration_Display$0$0({2}DF,SV:S),C,0,0
+00175                       	;--cdb--F:App_LCD:G$PreCalibration_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00176                       	;--cdb--S:G$Calibration_Display$0$0({2}DF,SV:S),C,0,0
+00177                       	;--cdb--F:App_LCD:G$Calibration_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00178                       	;--cdb--S:G$CalibrationOK_Display$0$0({2}DF,SV:S),C,0,0
+00179                       	;--cdb--F:App_LCD:G$CalibrationOK_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00180                       	;--cdb--S:G$RecentTemp_Display$0$0({2}DF,SV:S),C,0,0
+00181                       	;--cdb--F:App_LCD:G$RecentTemp_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00182                       	;--cdb--S:G$MemTempNumber_Display$0$0({2}DF,SV:S),C,0,0
+00183                       	;--cdb--F:App_LCD:G$MemTempNumber_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00184                       	;--cdb--S:G$MemTempValue_Display$0$0({2}DF,SV:S),C,0,0
+00185                       	;--cdb--F:App_LCD:G$MemTempValue_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00186                       	;--cdb--S:G$CurrentMode_Display$0$0({2}DF,SV:S),C,0,0
+00187                       	;--cdb--F:App_LCD:G$CurrentMode_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00188                       	;--cdb--S:G$ModeExchange_Display$0$0({2}DF,SV:S),C,0,0
+00189                       	;--cdb--F:App_LCD:G$ModeExchange_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00190                       	;--cdb--S:G$Binding_Display$0$0({2}DF,SV:S),C,0,0
+00191                       	;--cdb--F:App_LCD:G$Binding_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00192                       	;--cdb--S:G$EMC_Update_Temp_Fast$0$0({2}DF,SV:S),C,0,0
+00193                       	;--cdb--F:App_LCD:G$EMC_Update_Temp_Fast$0$0({2}DF,SV:S),C,0,0,0,0,0
+00194                       	;--cdb--S:G$TempDetecting_Display$0$0({2}DF,SV:S),C,0,0
+00195                       	;--cdb--F:App_LCD:G$TempDetecting_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00196                       	;--cdb--S:G$Err_Disp$0$0({2}DF,SV:S),C,0,0
+00197                       	;--cdb--F:App_LCD:G$Err_Disp$0$0({2}DF,SV:S),C,0,0,0,0,0
+00198                       	;--cdb--S:G$MeasedTemp_Disp$0$0({2}DF,SV:S),C,0,0
+00199                       	;--cdb--F:App_LCD:G$MeasedTemp_Disp$0$0({2}DF,SV:S),C,0,0,0,0,0
+00200                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+00201                       	;--cdb--F:App_LCD:G$LCD_Display$0$0({2}DF,SV:S),C,0,0,0,0,0
+00202                       ;--------------------------------------------------------
+00203                       ; overlayable items in internal ram 
+00204                       ;--------------------------------------------------------
+00205                       ;	udata_ovr
+00206                       .area CCODE (code,REL,CON) ; App_LCD-code 
+00207                       .globl _LCD_Display
+00208                       
+00209                       ;--------------------------------------------------------
+00210                       	.FUNC _LCD_Display:0:$C:_Disp_BrownOut:$C:_Disp_All:$C:_UnitExchange_Display:$C:_Disp_Bat\
+00211                       :$C:_Disp_Version:$C:_Disp_BleSymbol:$C:_Disp_Code:$C:_Off_Display:$C:_PreCalibration_Display\
+00212                       :$C:_Calibration_Display:$C:_CalibrationOK_Display:$C:_RecentTemp_Display:$C:_MemTempNumber_Display:$C:_MemTempValue_Display\
+00213                       :$C:_CurrentMode_Display:$C:_ModeExchange_Display:$C:_Binding_Display:$C:_TempDetecting_Display:$C:_Err_Disp\
+00214 0000 --              :$C:_MeasedTemp_Disp:$C:_Disp_Nothing\
+00215                       
+00216                       ;--------------------------------------------------------
+00217                       ;	;.line	1251; ".\Source\App_LCD.c"	if(sTIMx.LCDRefreshFlag)
+00218 0000                  _LCD_Display:	;Function start
+00219 0000 B200             	BTSS	_sTIMx,1
+00220 0001 C200 F000        	JMP	_00538_DS_
+00221                       ;	;.line	1254; ".\Source\App_LCD.c"	sTIMx.LCDRefreshFlag = FALSE;
+00222 0003 8200             	BCF	_sTIMx,1
+00223                       ;	;.line	1255; ".\Source\App_LCD.c"	switch(eDisplay_Interfaces)
+00224 0004 0614             	MVL	0x14
+00225 0005 6A00             	CPSL	_eDisplay_Interfaces,0
+00226 0006 C200 F000        	JMP	_00538_DS_
+00227 0008 0600             	MVL	HIGHD2(_00557_DS_)
+00228 0009 661A             	MVF	_PCLATH,1,0
+00229 000A 6400             	MVF	_eDisplay_Interfaces,0,0
+00230 000B 0400             	ADDL	D2(_00557_DS_)
+00231 000C A82B             	BTSZ	_STATUS,4
+00232 000D 3A1A             	INF	_PCLATH,1,0
+00233 000E 661B             	MVF	_PCLATL,1,0
+00234 000F                  _00557_DS_:
+00235 000F 7800             	RJ	_00538_DS_
+00236 0010 7800             	RJ	_00511_DS_
+00237 0011 7800             	RJ	_00512_DS_
+00238 0012 7800             	RJ	_00515_DS_
+00239 0013 7800             	RJ	_00516_DS_
+00240 0014 7800             	RJ	_00517_DS_
+00241 0015 7800             	RJ	_00518_DS_
+00242 0016 7800             	RJ	_00520_DS_
+00243 0017 7800             	RJ	_00521_DS_
+00244 0018 7800             	RJ	_00522_DS_
+00245 0019 7800             	RJ	_00523_DS_
+00246 001A 7800             	RJ	_00526_DS_
+00247 001B 7800             	RJ	_00527_DS_
+00248 001C 7800             	RJ	_00528_DS_
+00249 001D 7800             	RJ	_00529_DS_
+00250 001E 7800             	RJ	_00530_DS_
+00251 001F 7800             	RJ	_00531_DS_
+00252 0020 7800             	RJ	_00532_DS_
+00253 0021 7800             	RJ	_00533_DS_
+00254 0022 7800             	RJ	_00519_DS_
+00255 0023                  _00511_DS_:
+00256                       ;	;.line	1265; ".\Source\App_LCD.c"	Disp_BrownOut();
+00257 0023 C000 F000        	CALL	_Disp_BrownOut
+00258                       	.CHKPARA _Disp_BrownOut 0
+00259                       ;	;.line	1266; ".\Source\App_LCD.c"	break;
+00260 0025 C200 F000        	JMP	_00538_DS_
+00261 0027                  _00512_DS_:
+00262                       ;	;.line	1271; ".\Source\App_LCD.c"	Disp_All();
+00263 0027 C000 F000        	CALL	_Disp_All
+00264                       	.CHKPARA _Disp_All 0
+00265                       ;	;.line	1273; ".\Source\App_LCD.c"	if(!sBacklight.Backlight2SFlag)
+00266 0029 A000             	BTSZ	_sBacklight,0
+00267 002A C200 F000        	JMP	_00538_DS_
+00268                       ;	;.line	1275; ".\Source\App_LCD.c"	sBacklight.Backlight2SFlag = TRUE;
+00269 002C 9000             	BSF	_sBacklight,0
+00270                       ;	;.line	1277; ".\Source\App_LCD.c"	eBacklight_Status = All_Backlight;
+00271 002D 0601             	MVL	0x01
+00272 002E 6600             	MVF	_eBacklight_Status,1,0
+00273                       ;	;.line	1279; ".\Source\App_LCD.c"	break;
+00274 002F C200 F000        	JMP	_00538_DS_
+00275 0031                  _00515_DS_:
+00276                       ;	;.line	1284; ".\Source\App_LCD.c"	UnitExchange_Display();
+00277 0031 C000 F000        	CALL	_UnitExchange_Display
+00278                       	.CHKPARA _UnitExchange_Display 0
+00279                       ;	;.line	1287; ".\Source\App_LCD.c"	Disp_Bat();
+00280 0033 C000 F000        	CALL	_Disp_Bat
+00281                       	.CHKPARA _Disp_Bat 0
+00282                       ;	;.line	1289; ".\Source\App_LCD.c"	break;
+00283 0035 C200 F000        	JMP	_00538_DS_
+00284 0037                  _00516_DS_:
+00285                       ;	;.line	1294; ".\Source\App_LCD.c"	Disp_Version(Soft_External_Version);
+00286 0037 060B             	MVL	0x0b
+00287 0038 C000 F000        	CALL	_Disp_Version
+00288                       	.CHKPARA _Disp_Version 1
+00289                       ;	;.line	1296; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00290 003A C000 F000        	CALL	_Disp_BleSymbol
+00291                       	.CHKPARA _Disp_BleSymbol 0
+00292                       ;	;.line	1297; ".\Source\App_LCD.c"	break;
+00293 003C C200 F000        	JMP	_00538_DS_
+00294 003E                  _00517_DS_:
+00295                       ;	;.line	1302; ".\Source\App_LCD.c"	Disp_Code(Soft_Code);
+00296 003E 069A             	MVL	0x9a
+00297 003F 6600             	MVF	_Disp_Code_STK00,1,0
+00298 0040 0603             	MVL	0x03
+00299 0041 C000 F000        	CALL	_Disp_Code
+00300                       	.CHKPARA _Disp_Code 2
+00301                       ;	;.line	1304; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00302 0043 C000 F000        	CALL	_Disp_BleSymbol
+00303                       	.CHKPARA _Disp_BleSymbol 0
+00304                       ;	;.line	1305; ".\Source\App_LCD.c"	break;
+00305 0045 C200 F000        	JMP	_00538_DS_
+00306 0047                  _00518_DS_:
+00307                       ;	;.line	1310; ".\Source\App_LCD.c"	Off_Display();
+00308 0047 C000 F000        	CALL	_Off_Display
+00309                       	.CHKPARA _Off_Display 0
+00310                       ;	;.line	1311; ".\Source\App_LCD.c"	break;
+00311 0049 C200 F000        	JMP	_00538_DS_
+00312 004B                  _00519_DS_:
+00313                       ;	;.line	1316; ".\Source\App_LCD.c"	PreCalibration_Display();
+00314 004B C000 F000        	CALL	_PreCalibration_Display
+00315                       	.CHKPARA _PreCalibration_Display 0
+00316                       ;	;.line	1317; ".\Source\App_LCD.c"	break;
+00317 004D C200 F000        	JMP	_00538_DS_
+00318 004F                  _00520_DS_:
+00319                       ;	;.line	1322; ".\Source\App_LCD.c"	Calibration_Display();
+00320 004F C000 F000        	CALL	_Calibration_Display
+00321                       	.CHKPARA _Calibration_Display 0
+00322                       ;	;.line	1323; ".\Source\App_LCD.c"	break;
+00323 0051 C200 F000        	JMP	_00538_DS_
+00324 0053                  _00521_DS_:
+00325                       ;	;.line	1328; ".\Source\App_LCD.c"	CalibrationOK_Display();
+00326 0053 C000 F000        	CALL	_CalibrationOK_Display
+00327                       	.CHKPARA _CalibrationOK_Display 0
+00328                       ;	;.line	1331; ".\Source\App_LCD.c"	Disp_Bat();
+00329 0055 C000 F000        	CALL	_Disp_Bat
+00330                       	.CHKPARA _Disp_Bat 0
+00331                       ;	;.line	1333; ".\Source\App_LCD.c"	break;
+00332 0057 C200 F000        	JMP	_00538_DS_
+00333 0059                  _00522_DS_:
+00334                       ;	;.line	1338; ".\Source\App_LCD.c"	RecentTemp_Display();
+00335 0059 C000 F000        	CALL	_RecentTemp_Display
+00336                       	.CHKPARA _RecentTemp_Display 0
+00337                       ;	;.line	1341; ".\Source\App_LCD.c"	Disp_Bat();
+00338 005B C000 F000        	CALL	_Disp_Bat
+00339                       	.CHKPARA _Disp_Bat 0
+00340                       ;	;.line	1343; ".\Source\App_LCD.c"	break;
+00341 005D C200 F000        	JMP	_00538_DS_
+00342 005F                  _00523_DS_:
+00343                       ;	;.line	1348; ".\Source\App_LCD.c"	MemTempNumber_Display();
+00344 005F C000 F000        	CALL	_MemTempNumber_Display
+00345                       	.CHKPARA _MemTempNumber_Display 0
+00346                       ;	;.line	1350; ".\Source\App_LCD.c"	if(!sBacklight.Backlight2SFlag)
+00347 0061 A000             	BTSZ	_sBacklight,0
+00348 0062 C200 F000        	JMP	_00525_DS_
+00349                       ;	;.line	1353; ".\Source\App_LCD.c"	sBacklight.Backlight2SFlag = TRUE;
+00350 0064 9000             	BSF	_sBacklight,0
+00351                       ;	;.line	1355; ".\Source\App_LCD.c"	eBacklight_Status = MemTemp_Backlight;
+00352 0065 0602             	MVL	0x02
+00353 0066 6600             	MVF	_eBacklight_Status,1,0
+00354 0067                  _00525_DS_:
+00355                       ;	;.line	1359; ".\Source\App_LCD.c"	Disp_Bat();
+00356 0067 C000 F000        	CALL	_Disp_Bat
+00357                       	.CHKPARA _Disp_Bat 0
+00358                       ;	;.line	1361; ".\Source\App_LCD.c"	break;
+00359 0069 C200 F000        	JMP	_00538_DS_
+00360 006B                  _00526_DS_:
+00361                       ;	;.line	1366; ".\Source\App_LCD.c"	MemTempValue_Display();
+00362 006B C000 F000        	CALL	_MemTempValue_Display
+00363                       	.CHKPARA _MemTempValue_Display 0
+00364                       ;	;.line	1369; ".\Source\App_LCD.c"	Disp_Bat();
+00365 006D C000 F000        	CALL	_Disp_Bat
+00366                       	.CHKPARA _Disp_Bat 0
+00367                       ;	;.line	1371; ".\Source\App_LCD.c"	break;
+00368 006F C200 F000        	JMP	_00538_DS_
+00369 0071                  _00527_DS_:
+00370                       ;	;.line	1377; ".\Source\App_LCD.c"	CurrentMode_Display();
+00371 0071 C000 F000        	CALL	_CurrentMode_Display
+00372                       	.CHKPARA _CurrentMode_Display 0
+00373                       ;	;.line	1379; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00374 0073 C000 F000        	CALL	_Disp_BleSymbol
+00375                       	.CHKPARA _Disp_BleSymbol 0
+00376                       ;	;.line	1382; ".\Source\App_LCD.c"	Disp_Bat();
+00377 0075 C000 F000        	CALL	_Disp_Bat
+00378                       	.CHKPARA _Disp_Bat 0
+00379                       ;	;.line	1384; ".\Source\App_LCD.c"	break;
+00380 0077 C200 F000        	JMP	_00538_DS_
+00381 0079                  _00528_DS_:
+00382                       ;	;.line	1389; ".\Source\App_LCD.c"	ModeExchange_Display();
+00383 0079 C000 F000        	CALL	_ModeExchange_Display
+00384                       	.CHKPARA _ModeExchange_Display 0
+00385                       ;	;.line	1391; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00386 007B C000 F000        	CALL	_Disp_BleSymbol
+00387                       	.CHKPARA _Disp_BleSymbol 0
+00388                       ;	;.line	1394; ".\Source\App_LCD.c"	Disp_Bat();
+00389 007D C000 F000        	CALL	_Disp_Bat
+00390                       	.CHKPARA _Disp_Bat 0
+00391                       ;	;.line	1396; ".\Source\App_LCD.c"	break;
+00392 007F C200 F000        	JMP	_00538_DS_
+00393 0081                  _00529_DS_:
+00394                       ;	;.line	1401; ".\Source\App_LCD.c"	Binding_Display();
+00395 0081 C000 F000        	CALL	_Binding_Display
+00396                       	.CHKPARA _Binding_Display 0
+00397                       ;	;.line	1403; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00398 0083 C000 F000        	CALL	_Disp_BleSymbol
+00399                       	.CHKPARA _Disp_BleSymbol 0
+00400                       ;	;.line	1404; ".\Source\App_LCD.c"	break;
+00401 0085 C200 F000        	JMP	_00538_DS_
+00402 0087                  _00530_DS_:
+00403                       ;	;.line	1409; ".\Source\App_LCD.c"	TempDetecting_Display();
+00404 0087 C000 F000        	CALL	_TempDetecting_Display
+00405                       	.CHKPARA _TempDetecting_Display 0
+00406                       ;	;.line	1421; ".\Source\App_LCD.c"	Disp_Bat();
+00407 0089 C000 F000        	CALL	_Disp_Bat
+00408                       	.CHKPARA _Disp_Bat 0
+00409                       ;	;.line	1423; ".\Source\App_LCD.c"	break;
+00410 008B C200 F000        	JMP	_00538_DS_
+00411 008D                  _00531_DS_:
+00412                       ;	;.line	1428; ".\Source\App_LCD.c"	Err_Disp();
+00413 008D C000 F000        	CALL	_Err_Disp
+00414                       	.CHKPARA _Err_Disp 0
+00415                       ;	;.line	1430; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00416 008F C000 F000        	CALL	_Disp_BleSymbol
+00417                       	.CHKPARA _Disp_BleSymbol 0
+00418                       ;	;.line	1433; ".\Source\App_LCD.c"	Disp_Bat();
+00419 0091 C000 F000        	CALL	_Disp_Bat
+00420                       	.CHKPARA _Disp_Bat 0
+00421                       ;	;.line	1435; ".\Source\App_LCD.c"	break;
+00422 0093 C200 F000        	JMP	_00538_DS_
+00423 0095                  _00532_DS_:
+00424                       ;	;.line	1440; ".\Source\App_LCD.c"	MeasedTemp_Disp();
+00425 0095 C000 F000        	CALL	_MeasedTemp_Disp
+00426                       	.CHKPARA _MeasedTemp_Disp 0
+00427                       ;	;.line	1442; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00428 0097 C000 F000        	CALL	_Disp_BleSymbol
+00429                       	.CHKPARA _Disp_BleSymbol 0
+00430                       ;	;.line	1445; ".\Source\App_LCD.c"	Disp_Bat();
+00431 0099 C000 F000        	CALL	_Disp_Bat
+00432                       	.CHKPARA _Disp_Bat 0
+00433                       ;	;.line	1447; ".\Source\App_LCD.c"	break;
+00434 009B C200 F000        	JMP	_00538_DS_
+00435 009D                  _00533_DS_:
+00436                       ;	;.line	1452; ".\Source\App_LCD.c"	Disp_Nothing();
+00437 009D C000 F000        	CALL	_Disp_Nothing
+00438                       	.CHKPARA _Disp_Nothing 0
+00439 009F                  _00538_DS_:
+00440                       ;	;.line	1458; ".\Source\App_LCD.c"	}
+00441 009F 000A             	RET	
+00442                       ; exit point of _LCD_Display
+00443 00A0 --              	.ENDFUNC	_LCD_Display
+00444                       ;--------------------------------------------------------
+00445                       
+00446                       .globl _MeasedTemp_Disp
+00447                       
+00448                       ;--------------------------------------------------------
+00449                       	.FUNC _MeasedTemp_Disp:0:$C:_Centigrade_Convert_Fahrenheit:$C:_Disp_Hi:$C:_DispNum:$C:_DispDelta\
+00450                       :$C:_DispUnit\
+00451 00A0 --              :$L:r0x10D0:$L:r0x10D1
+00452                       ;--------------------------------------------------------
+00453                       ;	;.line	1045; ".\Source\App_LCD.c"	if(sTempCal.Reset_From_CalOK)
+00454 00A0                  _MeasedTemp_Disp:	;Function start
+00455 00A0 BA00             	BTSS	_sTempCal,5
+00456 00A1 C200 F000        	JMP	_00497_DS_
+00457                       ;	;.line	1048; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+00458 00A3 065A             	MVL	0x5a
+00459 00A4 6C00             	CPSE	_eTempUnit,0
+00460 00A5 C200 F000        	JMP	_00481_DS_
+00461                       ;	;.line	1051; ".\Source\App_LCD.c"	if(sTIMx.ForecastJudgeOKTempFlash)
+00462 00A7 BC00             	BTSS	_sTIMx,6
+00463 00A8 C200 F000        	JMP	_00467_DS_
+00464                       ;	;.line	1053; ".\Source\App_LCD.c"	tmp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Calibrated_Forecast_Temp);
+00465 00AA 6400             	MVF	(_sActual_Forecast + 13),0,0
+00466 00AB 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00467 00AC 6400             	MVF	(_sActual_Forecast + 14),0,0
+00468 00AD C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00469                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00470 00AF 6600             	MVF	r0x10D1,1,0
+00471 00B0 6400             	MVF	STK00,0,0
+00472 00B1 6600             	MVF	r0x10D0,1,0
+00473                       ;	;.line	1055; ".\Source\App_LCD.c"	if(tmp > High_Temp_Centigrade)
+00474 00B2 04D9             	ADDL	0xd9
+00475 00B3 06EE             	MVL	0xee
+00476 00B4 1400             	ADDC	r0x10D1,0,0
+00477 00B5 B82B             	BTSS	_STATUS,4
+00478 00B6 C200 F000        	JMP	_00461_DS_
+00479                       ;	;.line	1058; ".\Source\App_LCD.c"	Disp_Hi();
+00480 00B8 C000 F000        	CALL	_Disp_Hi
+00481                       	.CHKPARA _Disp_Hi 0
+00482 00BA C200 F000        	JMP	_00462_DS_
+00483 00BC                  _00461_DS_:
+00484                       ;	;.line	1063; ".\Source\App_LCD.c"	DispNum(tmp);
+00485 00BC 6400             	MVF	r0x10D0,0,0
+00486 00BD 6600             	MVF	_DispNum_STK00,1,0
+00487 00BE 6400             	MVF	r0x10D1,0,0
+00488 00BF C000 F000        	CALL	_DispNum
+00489                       	.CHKPARA _DispNum 2
+00490                       ;	;.line	1065; ".\Source\App_LCD.c"	LCD_Point_En();
+00491 00C1 968A             	BSF	_LCD2,3
+00492 00C2                  _00462_DS_:
+00493                       ;	;.line	1071; ".\Source\App_LCD.c"	DispDelta(tmp);
+00494 00C2 6400             	MVF	r0x10D0,0,0
+00495 00C3 6600             	MVF	_DispDelta_STK00,1,0
+00496 00C4 6400             	MVF	r0x10D1,0,0
+00497 00C5 C000 F000        	CALL	_DispDelta
+00498                       	.CHKPARA _DispDelta 2
+00499 00C7 C200 F000        	JMP	_00482_DS_
+00500 00C9                  _00467_DS_:
+00501                       ;	;.line	1081; ".\Source\App_LCD.c"	tmp = Centigrade_Convert_Fahrenheit(sForecast.EndTemp);
+00502 00C9 6400             	MVF	(_sForecast + 20),0,0
+00503 00CA 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00504 00CB 6400             	MVF	(_sForecast + 21),0,0
+00505 00CC C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00506                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00507 00CE 6600             	MVF	r0x10D1,1,0
+00508 00CF 6400             	MVF	STK00,0,0
+00509 00D0 6600             	MVF	r0x10D0,1,0
+00510                       ;	;.line	1083; ".\Source\App_LCD.c"	if(tmp > High_Temp_Centigrade)
+00511 00D1 04D9             	ADDL	0xd9
+00512 00D2 06EE             	MVL	0xee
+00513 00D3 1400             	ADDC	r0x10D1,0,0
+00514 00D4 B82B             	BTSS	_STATUS,4
+00515 00D5 C200 F000        	JMP	_00464_DS_
+00516                       ;	;.line	1086; ".\Source\App_LCD.c"	Disp_Hi();
+00517 00D7 C000 F000        	CALL	_Disp_Hi
+00518                       	.CHKPARA _Disp_Hi 0
+00519 00D9 C200 F000        	JMP	_00465_DS_
+00520 00DB                  _00464_DS_:
+00521                       ;	;.line	1091; ".\Source\App_LCD.c"	DispNum(tmp);
+00522 00DB 6400             	MVF	r0x10D0,0,0
+00523 00DC 6600             	MVF	_DispNum_STK00,1,0
+00524 00DD 6400             	MVF	r0x10D1,0,0
+00525 00DE C000 F000        	CALL	_DispNum
+00526                       	.CHKPARA _DispNum 2
+00527                       ;	;.line	1093; ".\Source\App_LCD.c"	LCD_Point_En();
+00528 00E0 968A             	BSF	_LCD2,3
+00529 00E1                  _00465_DS_:
+00530                       ;	;.line	1099; ".\Source\App_LCD.c"	DispDelta(tmp);
+00531 00E1 6400             	MVF	r0x10D0,0,0
+00532 00E2 6600             	MVF	_DispDelta_STK00,1,0
+00533 00E3 6400             	MVF	r0x10D1,0,0
+00534 00E4 C000 F000        	CALL	_DispDelta
+00535                       	.CHKPARA _DispDelta 2
+00536 00E6 C200 F000        	JMP	_00482_DS_
+00537 00E8                  _00481_DS_:
+00538                       ;	;.line	1109; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+00539 00E8 06A5             	MVL	0xa5
+00540 00E9 6C00             	CPSE	_eTempUnit,0
+00541 00EA C200 F000        	JMP	_00482_DS_
+00542                       ;	;.line	1112; ".\Source\App_LCD.c"	if(sTIMx.ForecastJudgeOKTempFlash)
+00543 00EC BC00             	BTSS	_sTIMx,6
+00544 00ED C200 F000        	JMP	_00476_DS_
+00545                       ;	;.line	1114; ".\Source\App_LCD.c"	tmp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Calibrated_Forecast_Temp);
+00546 00EF 6400             	MVF	(_sActual_Forecast + 13),0,0
+00547 00F0 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00548 00F1 6400             	MVF	(_sActual_Forecast + 14),0,0
+00549 00F2 C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00550                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00551 00F4 6600             	MVF	r0x10D1,1,0
+00552 00F5 6400             	MVF	STK00,0,0
+00553 00F6 6600             	MVF	r0x10D0,1,0
+00554                       ;	;.line	1116; ".\Source\App_LCD.c"	if(tmp > High_Temp_Fahrenheit)
+00555 00F7 04A3             	ADDL	0xa3
+00556 00F8 06D4             	MVL	0xd4
+00557 00F9 1400             	ADDC	r0x10D1,0,0
+00558 00FA B82B             	BTSS	_STATUS,4
+00559 00FB C200 F000        	JMP	_00470_DS_
+00560                       ;	;.line	1119; ".\Source\App_LCD.c"	Disp_Hi();
+00561 00FD C000 F000        	CALL	_Disp_Hi
+00562                       	.CHKPARA _Disp_Hi 0
+00563 00FF C200 F000        	JMP	_00471_DS_
+00564 0101                  _00470_DS_:
+00565                       ;	;.line	1124; ".\Source\App_LCD.c"	DispNum(tmp);
+00566 0101 6400             	MVF	r0x10D0,0,0
+00567 0102 6600             	MVF	_DispNum_STK00,1,0
+00568 0103 6400             	MVF	r0x10D1,0,0
+00569 0104 C000 F000        	CALL	_DispNum
+00570                       	.CHKPARA _DispNum 2
+00571                       ;	;.line	1126; ".\Source\App_LCD.c"	LCD_Point_En();
+00572 0106 968A             	BSF	_LCD2,3
+00573 0107                  _00471_DS_:
+00574                       ;	;.line	1132; ".\Source\App_LCD.c"	DispDelta(tmp);
+00575 0107 6400             	MVF	r0x10D0,0,0
+00576 0108 6600             	MVF	_DispDelta_STK00,1,0
+00577 0109 6400             	MVF	r0x10D1,0,0
+00578 010A C000 F000        	CALL	_DispDelta
+00579                       	.CHKPARA _DispDelta 2
+00580 010C C200 F000        	JMP	_00482_DS_
+00581 010E                  _00476_DS_:
+00582                       ;	;.line	1142; ".\Source\App_LCD.c"	tmp = Centigrade_Convert_Fahrenheit(sForecast.EndTemp);
+00583 010E 6400             	MVF	(_sForecast + 20),0,0
+00584 010F 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00585 0110 6400             	MVF	(_sForecast + 21),0,0
+00586 0111 C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00587                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00588 0113 6600             	MVF	r0x10D1,1,0
+00589 0114 6400             	MVF	STK00,0,0
+00590 0115 6600             	MVF	r0x10D0,1,0
+00591                       ;	;.line	1144; ".\Source\App_LCD.c"	if(tmp > High_Temp_Fahrenheit)
+00592 0116 04A3             	ADDL	0xa3
+00593 0117 06D4             	MVL	0xd4
+00594 0118 1400             	ADDC	r0x10D1,0,0
+00595 0119 B82B             	BTSS	_STATUS,4
+00596 011A C200 F000        	JMP	_00473_DS_
+00597                       ;	;.line	1147; ".\Source\App_LCD.c"	Disp_Hi();
+00598 011C C000 F000        	CALL	_Disp_Hi
+00599                       	.CHKPARA _Disp_Hi 0
+00600 011E C200 F000        	JMP	_00474_DS_
+00601 0120                  _00473_DS_:
+00602                       ;	;.line	1152; ".\Source\App_LCD.c"	DispNum(tmp);
+00603 0120 6400             	MVF	r0x10D0,0,0
+00604 0121 6600             	MVF	_DispNum_STK00,1,0
+00605 0122 6400             	MVF	r0x10D1,0,0
+00606 0123 C000 F000        	CALL	_DispNum
+00607                       	.CHKPARA _DispNum 2
+00608                       ;	;.line	1154; ".\Source\App_LCD.c"	LCD_Point_En();
+00609 0125 968A             	BSF	_LCD2,3
+00610 0126                  _00474_DS_:
+00611                       ;	;.line	1160; ".\Source\App_LCD.c"	DispDelta(tmp);
+00612 0126 6400             	MVF	r0x10D0,0,0
+00613 0127 6600             	MVF	_DispDelta_STK00,1,0
+00614 0128 6400             	MVF	r0x10D1,0,0
+00615 0129 C000 F000        	CALL	_DispDelta
+00616                       	.CHKPARA _DispDelta 2
+00617 012B                  _00482_DS_:
+00618                       ;	;.line	1170; ".\Source\App_LCD.c"	DispUnit();
+00619 012B C000 F000        	CALL	_DispUnit
+00620                       	.CHKPARA _DispUnit 0
+00621 012D C200 F000        	JMP	_00498_DS_
+00622 012F                  _00497_DS_:
+00623                       ;	;.line	1175; ".\Source\App_LCD.c"	if(!sADC.UnRefreshTemp)
+00624 012F A800             	BTSZ	_sADC,4
+00625 0130 C200 F000        	JMP	_00484_DS_
+00626                       ;	;.line	1178; ".\Source\App_LCD.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.CentigradeTempDisp);
+00627 0132 6400             	MVF	(_sActual_Forecast + 3),0,0
+00628 0133 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00629 0134 6400             	MVF	(_sActual_Forecast + 4),0,0
+00630 0135 C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00631                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00632 0137 D000 F000        	MVFF	STK00,(_sActual_Forecast + 5)
+00633 0139 6600             	MVF	(_sActual_Forecast + 6),1,0
+00634 013A                  _00484_DS_:
+00635                       ;	;.line	1182; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+00636 013A 065A             	MVL	0x5a
+00637 013B 6C00             	CPSE	_eTempUnit,0
+00638 013C C200 F000        	JMP	_00494_DS_
+00639                       ;	;.line	1185; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Centigrade)
+00640 013E 6400             	MVF	(_sActual_Forecast + 5),0,0
+00641 013F 04D9             	ADDL	0xd9
+00642 0140 06EE             	MVL	0xee
+00643 0141 1400             	ADDC	(_sActual_Forecast + 6),0,0
+00644 0142 B82B             	BTSS	_STATUS,4
+00645 0143 C200 F000        	JMP	_00486_DS_
+00646                       ;	;.line	1188; ".\Source\App_LCD.c"	Disp_Hi();
+00647 0145 C000 F000        	CALL	_Disp_Hi
+00648                       	.CHKPARA _Disp_Hi 0
+00649 0147 C200 F000        	JMP	_00495_DS_
+00650 0149                  _00486_DS_:
+00651                       ;	;.line	1193; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+00652 0149 6400             	MVF	(_sActual_Forecast + 5),0,0
+00653 014A 6600             	MVF	_DispNum_STK00,1,0
+00654 014B 6400             	MVF	(_sActual_Forecast + 6),0,0
+00655 014C C000 F000        	CALL	_DispNum
+00656                       	.CHKPARA _DispNum 2
+00657                       ;	;.line	1195; ".\Source\App_LCD.c"	LCD_Point_En();
+00658 014E 968A             	BSF	_LCD2,3
+00659 014F C200 F000        	JMP	_00495_DS_
+00660 0151                  _00494_DS_:
+00661                       ;	;.line	1199; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+00662 0151 06A5             	MVL	0xa5
+00663 0152 6C00             	CPSE	_eTempUnit,0
+00664 0153 C200 F000        	JMP	_00495_DS_
+00665                       ;	;.line	1202; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Fahrenheit)
+00666 0155 6400             	MVF	(_sActual_Forecast + 5),0,0
+00667 0156 04A3             	ADDL	0xa3
+00668 0157 06D4             	MVL	0xd4
+00669 0158 1400             	ADDC	(_sActual_Forecast + 6),0,0
+00670 0159 B82B             	BTSS	_STATUS,4
+00671 015A C200 F000        	JMP	_00489_DS_
+00672                       ;	;.line	1205; ".\Source\App_LCD.c"	Disp_Hi();
+00673 015C C000 F000        	CALL	_Disp_Hi
+00674                       	.CHKPARA _Disp_Hi 0
+00675 015E C200 F000        	JMP	_00495_DS_
+00676 0160                  _00489_DS_:
+00677                       ;	;.line	1210; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+00678 0160 6400             	MVF	(_sActual_Forecast + 5),0,0
+00679 0161 6600             	MVF	_DispNum_STK00,1,0
+00680 0162 6400             	MVF	(_sActual_Forecast + 6),0,0
+00681 0163 C000 F000        	CALL	_DispNum
+00682                       	.CHKPARA _DispNum 2
+00683                       ;	;.line	1212; ".\Source\App_LCD.c"	LCD_Point_En();
+00684 0165 968A             	BSF	_LCD2,3
+00685 0166                  _00495_DS_:
+00686                       ;	;.line	1217; ".\Source\App_LCD.c"	DispUnit();
+00687 0166 C000 F000        	CALL	_DispUnit
+00688                       	.CHKPARA _DispUnit 0
+00689                       ;	;.line	1222; ".\Source\App_LCD.c"	DispDelta(sActual_Forecast.ConvertedTempDisp);
+00690 0168 6400             	MVF	(_sActual_Forecast + 5),0,0
+00691 0169 6600             	MVF	_DispDelta_STK00,1,0
+00692 016A 6400             	MVF	(_sActual_Forecast + 6),0,0
+00693 016B C000 F000        	CALL	_DispDelta
+00694                       	.CHKPARA _DispDelta 2
+00695 016D                  _00498_DS_:
+00696                       ;	;.line	1233; ".\Source\App_LCD.c"	if(sForecast.Update_MaxTemp3Min_Arrived && !sTempCal.Reset_From_CalOK)
+00697 016D A200             	BTSZ	_sForecast,1
+00698 016E AA00             	BTSZ	_sTempCal,5
+00699 016F C200 F000        	JMP	_00502_DS_
+00700                       ;	;.line	1235; ".\Source\App_LCD.c"	LCD_ForecastP1P2_Clr();
+00701 0171 06F9             	MVL	0xf9
+00702 0172 2A8C             	ANDF	_LCD4,1,0
+00703 0173 C200 F000        	JMP	_00505_DS_
+00704 0175                  _00502_DS_:
+00705                       ;	;.line	1237; ".\Source\App_LCD.c"	else if(sForecast.Forecast_Start)
+00706 0175 B000             	BTSS	_sForecast,0
+00707 0176 C200 F000        	JMP	_00505_DS_
+00708                       ;	;.line	1239; ".\Source\App_LCD.c"	LCD_ForecastP1P2_En();
+00709 0178 0606             	MVL	0x06
+00710 0179 2E8C             	IORF	_LCD4,1,0
+00711 017A                  _00505_DS_:
+00712                       ;	;.line	1241; ".\Source\App_LCD.c"	}
+00713 017A 000A             	RET	
+00714                       ; exit point of _MeasedTemp_Disp
+00715 017B --              	.ENDFUNC	_MeasedTemp_Disp
+00716                       ;--------------------------------------------------------
+00717                       
+00718                       .globl _Err_Disp
+00719                       
+00720                       ;--------------------------------------------------------
+00721 017B --              	.FUNC _Err_Disp:0:$C:_Disp_ErrNo:$C:_Disp_Err\
+00722                       
+00723                       ;--------------------------------------------------------
+00724                       ;	;.line	985; ".\Source\App_LCD.c"	if(ERR[Err4])
+00725 017B                  _Err_Disp:	;Function start
+00726 017B 4C00             	RRF	(_ERR + 4),0,0
+00727 017C A02B             	BTSZ	_STATUS,0
+00728 017D C200 F000        	JMP	_00453_DS_
+00729                       ;	;.line	989; ".\Source\App_LCD.c"	Disp_ErrNo(Err4);
+00730 017F 0604             	MVL	0x04
+00731 0180 C000 F000        	CALL	_Disp_ErrNo
+00732                       	.CHKPARA _Disp_ErrNo 1
+00733 0182 C200 F000        	JMP	_00455_DS_
+00734 0184                  _00453_DS_:
+00735                       ;	;.line	991; ".\Source\App_LCD.c"	else if(ERR[Err0])
+00736 0184 4C00             	RRF	(_ERR + 0),0,0
+00737 0185 A02B             	BTSZ	_STATUS,0
+00738 0186 C200 F000        	JMP	_00450_DS_
+00739                       ;	;.line	995; ".\Source\App_LCD.c"	Disp_ErrNo(Err0);
+00740 0188 0600             	MVL	0x00
+00741 0189 C000 F000        	CALL	_Disp_ErrNo
+00742                       	.CHKPARA _Disp_ErrNo 1
+00743 018B C200 F000        	JMP	_00455_DS_
+00744 018D                  _00450_DS_:
+00745                       ;	;.line	997; ".\Source\App_LCD.c"	else if(ERR[Err5])
+00746 018D 4C00             	RRF	(_ERR + 5),0,0
+00747 018E A02B             	BTSZ	_STATUS,0
+00748 018F C200 F000        	JMP	_00447_DS_
+00749                       ;	;.line	1001; ".\Source\App_LCD.c"	Disp_ErrNo(Err5);
+00750 0191 0605             	MVL	0x05
+00751 0192 C000 F000        	CALL	_Disp_ErrNo
+00752                       	.CHKPARA _Disp_ErrNo 1
+00753 0194 C200 F000        	JMP	_00455_DS_
+00754 0196                  _00447_DS_:
+00755                       ;	;.line	1003; ".\Source\App_LCD.c"	else if(ERR[Err1])
+00756 0196 4C00             	RRF	(_ERR + 1),0,0
+00757 0197 A02B             	BTSZ	_STATUS,0
+00758 0198 C200 F000        	JMP	_00444_DS_
+00759                       ;	;.line	1006; ".\Source\App_LCD.c"	Disp_ErrNo(Err1);
+00760 019A 0601             	MVL	0x01
+00761 019B C000 F000        	CALL	_Disp_ErrNo
+00762                       	.CHKPARA _Disp_ErrNo 1
+00763 019D C200 F000        	JMP	_00455_DS_
+00764 019F                  _00444_DS_:
+00765                       ;	;.line	1008; ".\Source\App_LCD.c"	else if(ERR[Err6])
+00766 019F 4C00             	RRF	(_ERR + 6),0,0
+00767 01A0 A02B             	BTSZ	_STATUS,0
+00768 01A1 C200 F000        	JMP	_00441_DS_
+00769                       ;	;.line	1011; ".\Source\App_LCD.c"	Disp_ErrNo(Err6);
+00770 01A3 0606             	MVL	0x06
+00771 01A4 C000 F000        	CALL	_Disp_ErrNo
+00772                       	.CHKPARA _Disp_ErrNo 1
+00773 01A6 C200 F000        	JMP	_00455_DS_
+00774 01A8                  _00441_DS_:
+00775                       ;	;.line	1013; ".\Source\App_LCD.c"	else if(ERR[Err2])
+00776 01A8 4C00             	RRF	(_ERR + 2),0,0
+00777 01A9 A02B             	BTSZ	_STATUS,0
+00778 01AA C200 F000        	JMP	_00438_DS_
+00779                       ;	;.line	1016; ".\Source\App_LCD.c"	Disp_ErrNo(Err2);
+00780 01AC 0602             	MVL	0x02
+00781 01AD C000 F000        	CALL	_Disp_ErrNo
+00782                       	.CHKPARA _Disp_ErrNo 1
+00783 01AF C200 F000        	JMP	_00455_DS_
+00784 01B1                  _00438_DS_:
+00785                       ;	;.line	1018; ".\Source\App_LCD.c"	else if(ERR[Err3])
+00786 01B1 4C00             	RRF	(_ERR + 3),0,0
+00787 01B2 A02B             	BTSZ	_STATUS,0
+00788 01B3 C200 F000        	JMP	_00435_DS_
+00789                       ;	;.line	1021; ".\Source\App_LCD.c"	Disp_ErrNo(Err3);
+00790 01B5 0603             	MVL	0x03
+00791 01B6 C000 F000        	CALL	_Disp_ErrNo
+00792                       	.CHKPARA _Disp_ErrNo 1
+00793 01B8 C200 F000        	JMP	_00455_DS_
+00794 01BA                  _00435_DS_:
+00795                       ;	;.line	1023; ".\Source\App_LCD.c"	else if(ERR[Err])
+00796 01BA 4C00             	RRF	(_ERR + 8),0,0
+00797 01BB A02B             	BTSZ	_STATUS,0
+00798 01BC C200 F000        	JMP	_00432_DS_
+00799                       ;	;.line	1026; ".\Source\App_LCD.c"	Disp_Err();
+00800 01BE C000 F000        	CALL	_Disp_Err
+00801                       	.CHKPARA _Disp_Err 0
+00802 01C0 C200 F000        	JMP	_00455_DS_
+00803 01C2                  _00432_DS_:
+00804                       ;	;.line	1028; ".\Source\App_LCD.c"	else if(ERR[Err7])
+00805 01C2 4C00             	RRF	(_ERR + 7),0,0
+00806 01C3 A02B             	BTSZ	_STATUS,0
+00807 01C4 C200 F000        	JMP	_00455_DS_
+00808                       ;	;.line	1031; ".\Source\App_LCD.c"	Disp_ErrNo(Err7);
+00809 01C6 0607             	MVL	0x07
+00810 01C7 C000 F000        	CALL	_Disp_ErrNo
+00811                       	.CHKPARA _Disp_ErrNo 1
+00812 01C9                  _00455_DS_:
+00813                       ;	;.line	1033; ".\Source\App_LCD.c"	}
+00814 01C9 000A             	RET	
+00815                       ; exit point of _Err_Disp
+00816 01CA --              	.ENDFUNC	_Err_Disp
+00817                       ;--------------------------------------------------------
+00818                       
+00819                       .globl _TempDetecting_Display
+00820                       
+00821                       ;--------------------------------------------------------
+00822                       	.FUNC _TempDetecting_Display:0:$C:_Centigrade_Convert_Fahrenheit:$C:_Disp_Hi:$C:_EMC_Update_Temp_Fast:$C:_Disp_StaticDash\
+00823                       :$C:_DispNum:$C:_Disp_UnitFlash:$C:_Disp_DynamicDash:$C:_Disp_DynamicForecastSymbol:$C:_DispUnit\
+00824 01CA --              :$C:_Disp_BleSymbol\
+00825                       
+00826                       ;--------------------------------------------------------
+00827                       ;	;.line	866; ".\Source\App_LCD.c"	if((eMeasureMode == Bath_Mode) || sActual.Actual_Start)
+00828 01CA                  _TempDetecting_Display:	;Function start
+00829 01CA 6400             	MVF	_eMeasureMode,0,0
+00830 01CB 0303             	XORL	0x03
+00831 01CC A02B             	BTSZ	_STATUS,0
+00832 01CD C200 F000        	JMP	_00382_DS_
+00833 01CF B000             	BTSS	_sActual,0
+00834 01D0 C200 F000        	JMP	_00383_DS_
+00835 01D2                  _00382_DS_:
+00836                       ;	;.line	872; ".\Source\App_LCD.c"	if(!sADC.UnRefreshTemp)
+00837 01D2 A800             	BTSZ	_sADC,4
+00838 01D3 C200 F000        	JMP	_00378_DS_
+00839                       ;	;.line	878; ".\Source\App_LCD.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.CentigradeTempDisp);
+00840 01D5 6400             	MVF	(_sActual_Forecast + 3),0,0
+00841 01D6 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00842 01D7 6400             	MVF	(_sActual_Forecast + 4),0,0
+00843 01D8 C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+00844                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+00845 01DA D000 F000        	MVFF	STK00,(_sActual_Forecast + 5)
+00846 01DC 6600             	MVF	(_sActual_Forecast + 6),1,0
+00847                       ;	;.line	881; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+00848 01DD 065A             	MVL	0x5a
+00849 01DE 6C00             	CPSE	_eTempUnit,0
+00850 01DF C200 F000        	JMP	_00375_DS_
+00851                       ;	;.line	884; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Centigrade)
+00852 01E1 6400             	MVF	(_sActual_Forecast + 5),0,0
+00853 01E2 04D9             	ADDL	0xd9
+00854 01E3 06EE             	MVL	0xee
+00855 01E4 1400             	ADDC	(_sActual_Forecast + 6),0,0
+00856 01E5 B82B             	BTSS	_STATUS,4
+00857 01E6 C200 F000        	JMP	_00364_DS_
+00858                       ;	;.line	887; ".\Source\App_LCD.c"	Disp_Hi();
+00859 01E8 C000 F000        	CALL	_Disp_Hi
+00860                       	.CHKPARA _Disp_Hi 0
+00861                       ;	;.line	889; ".\Source\App_LCD.c"	EMC_Update_Temp_Fast();
+00862 01EA C000 F000        	CALL	_EMC_Update_Temp_Fast
+00863                       	.CHKPARA _EMC_Update_Temp_Fast 0
+00864 01EC C200 F000        	JMP	_00378_DS_
+00865 01EE                  _00364_DS_:
+00866                       ;	;.line	892; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
+00867 01EE 6400             	MVF	(_sActual_Forecast + 5),0,0
+00868 01EF 0480             	ADDL	0x80
+00869 01F0 06F3             	MVL	0xf3
+00870 01F1 1400             	ADDC	(_sActual_Forecast + 6),0,0
+00871 01F2 A82B             	BTSZ	_STATUS,4
+00872 01F3 C200 F000        	JMP	_00361_DS_
+00873                       ;	;.line	902; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+00874 01F5 C000 F000        	CALL	_Disp_StaticDash
+00875                       	.CHKPARA _Disp_StaticDash 0
+00876 01F7 C200 F000        	JMP	_00378_DS_
+00877 01F9                  _00361_DS_:
+00878                       ;	;.line	908; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+00879 01F9 6400             	MVF	(_sActual_Forecast + 5),0,0
+00880 01FA 6600             	MVF	_DispNum_STK00,1,0
+00881 01FB 6400             	MVF	(_sActual_Forecast + 6),0,0
+00882 01FC C000 F000        	CALL	_DispNum
+00883                       	.CHKPARA _DispNum 2
+00884                       ;	;.line	910; ".\Source\App_LCD.c"	LCD_Point_En();
+00885 01FE 968A             	BSF	_LCD2,3
+00886                       ;	;.line	912; ".\Source\App_LCD.c"	EMC_Update_Temp_Fast();
+00887 01FF C000 F000        	CALL	_EMC_Update_Temp_Fast
+00888                       	.CHKPARA _EMC_Update_Temp_Fast 0
+00889 0201 C200 F000        	JMP	_00378_DS_
+00890 0203                  _00375_DS_:
+00891                       ;	;.line	916; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+00892 0203 06A5             	MVL	0xa5
+00893 0204 6C00             	CPSE	_eTempUnit,0
+00894 0205 C200 F000        	JMP	_00378_DS_
+00895                       ;	;.line	919; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Fahrenheit)
+00896 0207 6400             	MVF	(_sActual_Forecast + 5),0,0
+00897 0208 04A3             	ADDL	0xa3
+00898 0209 06D4             	MVL	0xd4
+00899 020A 1400             	ADDC	(_sActual_Forecast + 6),0,0
+00900 020B B82B             	BTSS	_STATUS,4
+00901 020C C200 F000        	JMP	_00370_DS_
+00902                       ;	;.line	922; ".\Source\App_LCD.c"	Disp_Hi();
+00903 020E C000 F000        	CALL	_Disp_Hi
+00904                       	.CHKPARA _Disp_Hi 0
+00905                       ;	;.line	924; ".\Source\App_LCD.c"	EMC_Update_Temp_Fast();
+00906 0210 C000 F000        	CALL	_EMC_Update_Temp_Fast
+00907                       	.CHKPARA _EMC_Update_Temp_Fast 0
+00908 0212 C200 F000        	JMP	_00378_DS_
+00909 0214                  _00370_DS_:
+00910                       ;	;.line	927; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
+00911 0214 0623             	MVL	0x23
+00912 0215 6A00             	CPSL	(_sActual_Forecast + 6),0
+00913 0216 C200 F000        	JMP	_00367_DS_
+00914                       ;	;.line	937; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+00915 0218 C000 F000        	CALL	_Disp_StaticDash
+00916                       	.CHKPARA _Disp_StaticDash 0
+00917 021A C200 F000        	JMP	_00378_DS_
+00918 021C                  _00367_DS_:
+00919                       ;	;.line	943; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+00920 021C 6400             	MVF	(_sActual_Forecast + 5),0,0
+00921 021D 6600             	MVF	_DispNum_STK00,1,0
+00922 021E 6400             	MVF	(_sActual_Forecast + 6),0,0
+00923 021F C000 F000        	CALL	_DispNum
+00924                       	.CHKPARA _DispNum 2
+00925                       ;	;.line	945; ".\Source\App_LCD.c"	LCD_Point_En();
+00926 0221 968A             	BSF	_LCD2,3
+00927                       ;	;.line	947; ".\Source\App_LCD.c"	EMC_Update_Temp_Fast();
+00928 0222 C000 F000        	CALL	_EMC_Update_Temp_Fast
+00929                       	.CHKPARA _EMC_Update_Temp_Fast 0
+00930 0224                  _00378_DS_:
+00931                       ;	;.line	952; ".\Source\App_LCD.c"	Disp_UnitFlash();
+00932 0224 C000 F000        	CALL	_Disp_UnitFlash
+00933                       	.CHKPARA _Disp_UnitFlash 0
+00934                       ;	;.line	954; ".\Source\App_LCD.c"	LCD_ForecastP1P2_Clr();
+00935 0226 06F9             	MVL	0xf9
+00936 0227 2A8C             	ANDF	_LCD4,1,0
+00937 0228 C200 F000        	JMP	_00384_DS_
+00938 022A                  _00383_DS_:
+00939                       ;	;.line	958; ".\Source\App_LCD.c"	if(sForecast.Forecast_Start)
+00940 022A B000             	BTSS	_sForecast,0
+00941 022B C200 F000        	JMP	_00380_DS_
+00942                       ;	;.line	960; ".\Source\App_LCD.c"	Disp_DynamicDash();
+00943 022D C000 F000        	CALL	_Disp_DynamicDash
+00944                       	.CHKPARA _Disp_DynamicDash 0
+00945                       ;	;.line	961; ".\Source\App_LCD.c"	Disp_DynamicForecastSymbol();
+00946 022F C000 F000        	CALL	_Disp_DynamicForecastSymbol
+00947                       	.CHKPARA _Disp_DynamicForecastSymbol 0
+00948 0231 C200 F000        	JMP	_00381_DS_
+00949 0233                  _00380_DS_:
+00950                       ;	;.line	966; ".\Source\App_LCD.c"	Disp_StaticDash();
+00951 0233 C000 F000        	CALL	_Disp_StaticDash
+00952                       	.CHKPARA _Disp_StaticDash 0
+00953                       ;	;.line	968; ".\Source\App_LCD.c"	LCD_ForecastP2_En();
+00954 0235 948C             	BSF	_LCD4,2
+00955 0236                  _00381_DS_:
+00956                       ;	;.line	972; ".\Source\App_LCD.c"	DispUnit();
+00957 0236 C000 F000        	CALL	_DispUnit
+00958                       	.CHKPARA _DispUnit 0
+00959 0238                  _00384_DS_:
+00960                       ;	;.line	975; ".\Source\App_LCD.c"	Disp_BleSymbol();
+00961 0238 C000 F000        	CALL	_Disp_BleSymbol
+00962                       	.CHKPARA _Disp_BleSymbol 0
+00963                       ;	;.line	976; ".\Source\App_LCD.c"	}
+00964 023A 000A             	RET	
+00965                       ; exit point of _TempDetecting_Display
+00966 023B --              	.ENDFUNC	_TempDetecting_Display
+00967                       ;--------------------------------------------------------
+00968                       
+00969                       .globl _EMC_Update_Temp_Fast
+00970                       
+00971                       ;--------------------------------------------------------
+00972 023B --              	.FUNC _EMC_Update_Temp_Fast:0
+00973                       ;--------------------------------------------------------
+00974                       ;	;.line	855; ".\Source\App_LCD.c"	}
+00975 023B                  _EMC_Update_Temp_Fast:	;Function start
+00976 023B 000A             	RET	
+00977                       ; exit point of _EMC_Update_Temp_Fast
+00978 023C --              	.ENDFUNC	_EMC_Update_Temp_Fast
+00979                       ;--------------------------------------------------------
+00980                       
+00981                       .globl _Binding_Display
+00982                       
+00983                       ;--------------------------------------------------------
+00984 023C --              	.FUNC _Binding_Display:0:$C:_Disp_Version:$C:_Disp_Code\
+00985                       
+00986                       ;--------------------------------------------------------
+00987                       ;	;.line	820; ".\Source\App_LCD.c"	if(eVersionCode == VC_DispOn)
+00988 023C                  _Binding_Display:	;Function start
+00989 023C 3400             	DCSZ	_eVersionCode,0,0
+00990 023D C200 F000        	JMP	_00351_DS_
+00991                       ;	;.line	822; ".\Source\App_LCD.c"	if(sTIMx.BindingSymbolFlash)
+00992 023F BE00             	BTSS	_sTIMx,7
+00993 0240 C200 F000        	JMP	_00347_DS_
+00994                       ;	;.line	825; ".\Source\App_LCD.c"	Disp_Version(Soft_External_Version);
+00995 0242 060B             	MVL	0x0b
+00996 0243 C000 F000        	CALL	_Disp_Version
+00997                       	.CHKPARA _Disp_Version 1
+00998 0245 C200 F000        	JMP	_00351_DS_
+00999 0247                  _00347_DS_:
+01000                       ;	;.line	830; ".\Source\App_LCD.c"	Disp_Code(Soft_Code);
+01001 0247 069A             	MVL	0x9a
+01002 0248 6600             	MVF	_Disp_Code_STK00,1,0
+01003 0249 0603             	MVL	0x03
+01004 024A C000 F000        	CALL	_Disp_Code
+01005                       	.CHKPARA _Disp_Code 2
+01006 024C                  _00351_DS_:
+01007                       ;	;.line	833; ".\Source\App_LCD.c"	}
+01008 024C 000A             	RET	
+01009                       ; exit point of _Binding_Display
+01010 024D --              	.ENDFUNC	_Binding_Display
+01011                       ;--------------------------------------------------------
+01012                       
+01013                       .globl _ModeExchange_Display
+01014                       
+01015                       ;--------------------------------------------------------
+01016 024D --              	.FUNC _ModeExchange_Display:0:$C:_CurrentMode_Display:$C:_Disp_Nothing\
+01017                       
+01018                       ;--------------------------------------------------------
+01019                       ;	;.line	800; ".\Source\App_LCD.c"	if(sTIMx.ModeSymbolFlash || sTIMx.EnableModeSymbolFlash)
+01020 024D                  _ModeExchange_Display:	;Function start
+01021 024D A600             	BTSZ	_sTIMx,3
+01022 024E C200 F000        	JMP	_00337_DS_
+01023 0250 B800             	BTSS	_sTIMx,4
+01024 0251 C200 F000        	JMP	_00338_DS_
+01025 0253                  _00337_DS_:
+01026                       ;	;.line	803; ".\Source\App_LCD.c"	CurrentMode_Display();
+01027 0253 C000 F000        	CALL	_CurrentMode_Display
+01028                       	.CHKPARA _CurrentMode_Display 0
+01029 0255 C200 F000        	JMP	_00341_DS_
+01030 0257                  _00338_DS_:
+01031                       ;	;.line	808; ".\Source\App_LCD.c"	Disp_Nothing();
+01032 0257 C000 F000        	CALL	_Disp_Nothing
+01033                       	.CHKPARA _Disp_Nothing 0
+01034 0259                  _00341_DS_:
+01035                       ;	;.line	810; ".\Source\App_LCD.c"	}
+01036 0259 000A             	RET	
+01037                       ; exit point of _ModeExchange_Display
+01038 025A --              	.ENDFUNC	_ModeExchange_Display
+01039                       ;--------------------------------------------------------
+01040                       
+01041                       .globl _CurrentMode_Display
+01042                       
+01043                       ;--------------------------------------------------------
+01044 025A --              	.FUNC _CurrentMode_Display:0:$C:_Disp_Orl:$C:_Disp_Udr:$C:_Disp_Rct:$C:_Disp_Bth\
+01045                       
+01046                       ;--------------------------------------------------------
+01047                       ;	;.line	758; ".\Source\App_LCD.c"	if(eMeasureMode == Oral_Mode)
+01048 025A                  _CurrentMode_Display:	;Function start
+01049 025A 6E00             	TFSZ	_eMeasureMode,0
+01050 025B C200 F000        	JMP	_00330_DS_
+01051                       ;	;.line	761; ".\Source\App_LCD.c"	Disp_Orl();
+01052 025D C000 F000        	CALL	_Disp_Orl
+01053                       	.CHKPARA _Disp_Orl 0
+01054 025F C200 F000        	JMP	_00332_DS_
+01055 0261                  _00330_DS_:
+01056                       ;	;.line	764; ".\Source\App_LCD.c"	else if(eMeasureMode == Underarm_Mode)
+01057 0261 3400             	DCSZ	_eMeasureMode,0,0
+01058 0262 C200 F000        	JMP	_00327_DS_
+01059                       ;	;.line	767; ".\Source\App_LCD.c"	Disp_Udr();
+01060 0264 C000 F000        	CALL	_Disp_Udr
+01061                       	.CHKPARA _Disp_Udr 0
+01062 0266 C200 F000        	JMP	_00332_DS_
+01063 0268                  _00327_DS_:
+01064                       ;	;.line	770; ".\Source\App_LCD.c"	else if(eMeasureMode == Rectal_Mode)
+01065 0268 0602             	MVL	0x02
+01066 0269 6C00             	CPSE	_eMeasureMode,0
+01067 026A C200 F000        	JMP	_00324_DS_
+01068                       ;	;.line	773; ".\Source\App_LCD.c"	Disp_Rct();
+01069 026C C000 F000        	CALL	_Disp_Rct
+01070                       	.CHKPARA _Disp_Rct 0
+01071 026E C200 F000        	JMP	_00332_DS_
+01072 0270                  _00324_DS_:
+01073                       ;	;.line	776; ".\Source\App_LCD.c"	else if(eMeasureMode == Bath_Mode)
+01074 0270 0603             	MVL	0x03
+01075 0271 6C00             	CPSE	_eMeasureMode,0
+01076 0272 C200 F000        	JMP	_00332_DS_
+01077                       ;	;.line	779; ".\Source\App_LCD.c"	Disp_Bth();
+01078 0274 C000 F000        	CALL	_Disp_Bth
+01079                       	.CHKPARA _Disp_Bth 0
+01080 0276                  _00332_DS_:
+01081                       ;	;.line	781; ".\Source\App_LCD.c"	}
+01082 0276 000A             	RET	
+01083                       ; exit point of _CurrentMode_Display
+01084 0277 --              	.ENDFUNC	_CurrentMode_Display
+01085                       ;--------------------------------------------------------
+01086                       
+01087                       .globl _MemTempValue_Display
+01088                       
+01089                       ;--------------------------------------------------------
+01090                       	.FUNC _MemTempValue_Display:0:$C:_Centigrade_Convert_Fahrenheit:$C:_Disp_StaticDash:$C:_Disp_Hi:$C:_DispNum\
+01091 0277 --              :$C:_DispDelta:$C:_DispUnit:$C:_Disp_BleSymbol\
+01092                       
+01093                       ;--------------------------------------------------------
+01094                       ;	;.line	660; ".\Source\App_LCD.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sMemory.MemTempBuf[sMemoryFlag.MemTempDispValue]);
+01095 0277                  _MemTempValue_Display:	;Function start
+01096 0277 6400             	MVF	(_sMemoryFlag + 2),0,0
+01097 0278 0702             	MULL	0x02
+01098 0279 6422             	MVF	_PRODL,0,0
+01099 027A 000C F000        	LDPR	(_sMemory + 3),0
+01100 027C D004 F000        	MVFF	_PLUSW0,STK00
+01101 027E 3829             	INF	_WREG,0,0
+01102 027F D004 F000        	MVFF	_PLUSW0,STK01
+01103 0281 6400             	MVF	STK00,0,0
+01104 0282 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+01105 0283 6400             	MVF	STK01,0,0
+01106 0284 C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+01107                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+01108 0286 D000 F000        	MVFF	STK00,(_sActual_Forecast + 5)
+01109 0288 6600             	MVF	(_sActual_Forecast + 6),1,0
+01110                       ;	;.line	661; ".\Source\App_LCD.c"	if(!sMemory.MemTempSum)
+01111 0289 6E00             	TFSZ	(_sMemory + 2),0
+01112 028A C200 F000        	JMP	_00315_DS_
+01113                       ;	;.line	668; ".\Source\App_LCD.c"	Disp_StaticDash();
+01114 028C C000 F000        	CALL	_Disp_StaticDash
+01115                       	.CHKPARA _Disp_StaticDash 0
+01116 028E C200 F000        	JMP	_00316_DS_
+01117 0290                  _00315_DS_:
+01118                       ;	;.line	674; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01119 0290 065A             	MVL	0x5a
+01120 0291 6C00             	CPSE	_eTempUnit,0
+01121 0292 C200 F000        	JMP	_00312_DS_
+01122                       ;	;.line	676; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Centigrade)
+01123 0294 6400             	MVF	(_sActual_Forecast + 5),0,0
+01124 0295 04D9             	ADDL	0xd9
+01125 0296 06EE             	MVL	0xee
+01126 0297 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01127 0298 B82B             	BTSS	_STATUS,4
+01128 0299 C200 F000        	JMP	_00301_DS_
+01129                       ;	;.line	678; ".\Source\App_LCD.c"	Disp_Hi();
+01130 029B C000 F000        	CALL	_Disp_Hi
+01131                       	.CHKPARA _Disp_Hi 0
+01132 029D C200 F000        	JMP	_00313_DS_
+01133 029F                  _00301_DS_:
+01134                       ;	;.line	680; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
+01135 029F 6400             	MVF	(_sActual_Forecast + 5),0,0
+01136 02A0 0480             	ADDL	0x80
+01137 02A1 06F3             	MVL	0xf3
+01138 02A2 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01139 02A3 A82B             	BTSZ	_STATUS,4
+01140 02A4 C200 F000        	JMP	_00298_DS_
+01141                       ;	;.line	690; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+01142 02A6 C000 F000        	CALL	_Disp_StaticDash
+01143                       	.CHKPARA _Disp_StaticDash 0
+01144 02A8 C200 F000        	JMP	_00313_DS_
+01145 02AA                  _00298_DS_:
+01146                       ;	;.line	696; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+01147 02AA 6400             	MVF	(_sActual_Forecast + 5),0,0
+01148 02AB 6600             	MVF	_DispNum_STK00,1,0
+01149 02AC 6400             	MVF	(_sActual_Forecast + 6),0,0
+01150 02AD C000 F000        	CALL	_DispNum
+01151                       	.CHKPARA _DispNum 2
+01152                       ;	;.line	698; ".\Source\App_LCD.c"	LCD_Point_En();
+01153 02AF 968A             	BSF	_LCD2,3
+01154 02B0 C200 F000        	JMP	_00313_DS_
+01155 02B2                  _00312_DS_:
+01156                       ;	;.line	702; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01157 02B2 06A5             	MVL	0xa5
+01158 02B3 6C00             	CPSE	_eTempUnit,0
+01159 02B4 C200 F000        	JMP	_00313_DS_
+01160                       ;	;.line	704; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp > High_Temp_Fahrenheit)
+01161 02B6 6400             	MVF	(_sActual_Forecast + 5),0,0
+01162 02B7 04A3             	ADDL	0xa3
+01163 02B8 06D4             	MVL	0xd4
+01164 02B9 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01165 02BA B82B             	BTSS	_STATUS,4
+01166 02BB C200 F000        	JMP	_00307_DS_
+01167                       ;	;.line	706; ".\Source\App_LCD.c"	Disp_Hi();
+01168 02BD C000 F000        	CALL	_Disp_Hi
+01169                       	.CHKPARA _Disp_Hi 0
+01170 02BF C200 F000        	JMP	_00313_DS_
+01171 02C1                  _00307_DS_:
+01172                       ;	;.line	708; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
+01173 02C1 0623             	MVL	0x23
+01174 02C2 6A00             	CPSL	(_sActual_Forecast + 6),0
+01175 02C3 C200 F000        	JMP	_00304_DS_
+01176                       ;	;.line	718; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+01177 02C5 C000 F000        	CALL	_Disp_StaticDash
+01178                       	.CHKPARA _Disp_StaticDash 0
+01179 02C7 C200 F000        	JMP	_00313_DS_
+01180 02C9                  _00304_DS_:
+01181                       ;	;.line	724; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+01182 02C9 6400             	MVF	(_sActual_Forecast + 5),0,0
+01183 02CA 6600             	MVF	_DispNum_STK00,1,0
+01184 02CB 6400             	MVF	(_sActual_Forecast + 6),0,0
+01185 02CC C000 F000        	CALL	_DispNum
+01186                       	.CHKPARA _DispNum 2
+01187                       ;	;.line	726; ".\Source\App_LCD.c"	LCD_Point_En();
+01188 02CE 968A             	BSF	_LCD2,3
+01189 02CF                  _00313_DS_:
+01190                       ;	;.line	733; ".\Source\App_LCD.c"	DispDelta(sActual_Forecast.ConvertedTempDisp);
+01191 02CF 6400             	MVF	(_sActual_Forecast + 5),0,0
+01192 02D0 6600             	MVF	_DispDelta_STK00,1,0
+01193 02D1 6400             	MVF	(_sActual_Forecast + 6),0,0
+01194 02D2 C000 F000        	CALL	_DispDelta
+01195                       	.CHKPARA _DispDelta 2
+01196 02D4                  _00316_DS_:
+01197                       ;	;.line	743; ".\Source\App_LCD.c"	DispUnit();
+01198 02D4 C000 F000        	CALL	_DispUnit
+01199                       	.CHKPARA _DispUnit 0
+01200                       ;	;.line	745; ".\Source\App_LCD.c"	LCD_Mem_En();
+01201 02D6 968B             	BSF	_LCD3,3
+01202                       ;	;.line	747; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01203 02D7 C000 F000        	CALL	_Disp_BleSymbol
+01204                       	.CHKPARA _Disp_BleSymbol 0
+01205                       ;	;.line	748; ".\Source\App_LCD.c"	}
+01206 02D9 000A             	RET	
+01207                       ; exit point of _MemTempValue_Display
+01208 02DA --              	.ENDFUNC	_MemTempValue_Display
+01209                       ;--------------------------------------------------------
+01210                       
+01211                       .globl _MemTempNumber_Display
+01212                       
+01213                       ;--------------------------------------------------------
+01214                       	.FUNC _MemTempNumber_Display:0:$C:_DispNum:$C:_Disp_BleSymbol\
+01215 02DA --              :$L:r0x10BD
+01216                       ;--------------------------------------------------------
+01217                       ;	;.line	608; ".\Source\App_LCD.c"	if(sMemoryFlag.Update_MemTempDispNo)
+01218 02DA                  _MemTempNumber_Display:	;Function start
+01219 02DA B800             	BTSS	_sMemoryFlag,4
+01220 02DB C200 F000        	JMP	_00281_DS_
+01221                       ;	;.line	610; ".\Source\App_LCD.c"	sMemoryFlag.Update_MemTempDispNo = FALSE;
+01222 02DD 8800             	BCF	_sMemoryFlag,4
+01223                       ;	;.line	612; ".\Source\App_LCD.c"	if(++sMemoryFlag.MemTempDispNo > sMemory.MemTempSum)
+01224 02DE 3A00             	INF	(_sMemoryFlag + 1),1,0
+01225 02DF 6400             	MVF	(_sMemoryFlag + 1),0,0
+01226 02E0 6A00             	CPSL	(_sMemory + 2),0
+01227 02E1 C200 F000        	JMP	_00281_DS_
+01228                       ;	;.line	614; ".\Source\App_LCD.c"	sMemoryFlag.MemTempDispNo = 1;
+01229 02E3 0601             	MVL	0x01
+01230 02E4 6600             	MVF	(_sMemoryFlag + 1),1,0
+01231 02E5                  _00281_DS_:
+01232                       ;	;.line	618; ".\Source\App_LCD.c"	if(sMemoryFlag.Update_MemTempDispVlaue)
+01233 02E5 BA00             	BTSS	_sMemoryFlag,5
+01234 02E6 C200 F000        	JMP	_00292_DS_
+01235                       ;	;.line	620; ".\Source\App_LCD.c"	sMemoryFlag.Update_MemTempDispVlaue = FALSE;
+01236 02E8 8A00             	BCF	_sMemoryFlag,5
+01237                       ;	;.line	621; ".\Source\App_LCD.c"	if(sMemory.MemTempSum == MemTempNum/*10*/)
+01238 02E9 3400             	DCSZ	(_sMemory + 2),0,0
+01239 02EA C200 F000        	JMP	_00289_DS_
+01240                       ;	;.line	623; ".\Source\App_LCD.c"	if(!sMemoryFlag.MemTempDispValue)
+01241 02EC 6400             	MVF	(_sMemoryFlag + 2),0,0
+01242 02ED 6600             	MVF	r0x10BD,1,0
+01243 02EE 6E29             	TFSZ	_WREG,0
+01244 02EF C200 F000        	JMP	_00283_DS_
+01245                       ;	;.line	625; ".\Source\App_LCD.c"	sMemoryFlag.MemTempDispValue = MemTempNum - 1/*9*/;
+01246 02F1 0C00             	CLRF	(_sMemoryFlag + 2),0
+01247 02F2 C200 F000        	JMP	_00292_DS_
+01248 02F4                  _00283_DS_:
+01249                       ;	;.line	629; ".\Source\App_LCD.c"	--sMemoryFlag.MemTempDispValue;
+01250 02F4 3200             	DCF	r0x10BD,1,0
+01251 02F5 6400             	MVF	r0x10BD,0,0
+01252 02F6 6600             	MVF	(_sMemoryFlag + 2),1,0
+01253 02F7 C200 F000        	JMP	_00292_DS_
+01254 02F9                  _00289_DS_:
+01255                       ;	;.line	634; ".\Source\App_LCD.c"	if(!sMemoryFlag.MemTempDispValue)
+01256 02F9 6400             	MVF	(_sMemoryFlag + 2),0,0
+01257 02FA 6600             	MVF	r0x10BD,1,0
+01258 02FB 6E29             	TFSZ	_WREG,0
+01259 02FC C200 F000        	JMP	_00286_DS_
+01260                       ;	;.line	636; ".\Source\App_LCD.c"	sMemoryFlag.MemTempDispValue = sMemory.pMemTempBuf;
+01261 02FE 6400             	MVF	(_sMemory + 1),0,0
+01262 02FF 6600             	MVF	(_sMemoryFlag + 2),1,0
+01263 0300 C200 F000        	JMP	_00292_DS_
+01264 0302                  _00286_DS_:
+01265                       ;	;.line	640; ".\Source\App_LCD.c"	--sMemoryFlag.MemTempDispValue;
+01266 0302 3200             	DCF	r0x10BD,1,0
+01267 0303 6400             	MVF	r0x10BD,0,0
+01268 0304 6600             	MVF	(_sMemoryFlag + 2),1,0
+01269 0305                  _00292_DS_:
+01270                       ;	;.line	646; ".\Source\App_LCD.c"	DispNum(sMemoryFlag.MemTempDispNo);
+01271 0305 6400             	MVF	(_sMemoryFlag + 1),0,0
+01272 0306 6600             	MVF	_DispNum_STK00,1,0
+01273 0307 0600             	MVL	0x00
+01274 0308 C000 F000        	CALL	_DispNum
+01275                       	.CHKPARA _DispNum 2
+01276                       ;	;.line	648; ".\Source\App_LCD.c"	LCD_Mem_En();
+01277 030A 968B             	BSF	_LCD3,3
+01278                       ;	;.line	650; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01279 030B C000 F000        	CALL	_Disp_BleSymbol
+01280                       	.CHKPARA _Disp_BleSymbol 0
+01281                       ;	;.line	651; ".\Source\App_LCD.c"	}
+01282 030D 000A             	RET	
+01283                       ; exit point of _MemTempNumber_Display
+01284 030E --              	.ENDFUNC	_MemTempNumber_Display
+01285                       ;--------------------------------------------------------
+01286                       
+01287                       .globl _RecentTemp_Display
+01288                       
+01289                       ;--------------------------------------------------------
+01290                       	.FUNC _RecentTemp_Display:0:$C:_Centigrade_Convert_Fahrenheit:$C:_Disp_StaticDash:$C:_Disp_Hi:$C:_DispNum\
+01291 030E --              :$C:_DispDelta:$C:_DispUnit:$C:_Disp_BleSymbol\
+01292                       
+01293                       ;--------------------------------------------------------
+01294                       ;	;.line	518; ".\Source\App_LCD.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sMemory.MemTempBuf[sMemory.pMemTempBuf]);
+01295 030E                  _RecentTemp_Display:	;Function start
+01296 030E 6400             	MVF	(_sMemory + 1),0,0
+01297 030F 0702             	MULL	0x02
+01298 0310 6422             	MVF	_PRODL,0,0
+01299 0311 000C F000        	LDPR	(_sMemory + 3),0
+01300 0313 D004 F000        	MVFF	_PLUSW0,STK00
+01301 0315 3829             	INF	_WREG,0,0
+01302 0316 D004 F000        	MVFF	_PLUSW0,STK01
+01303 0318 6400             	MVF	STK00,0,0
+01304 0319 6600             	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+01305 031A 6400             	MVF	STK01,0,0
+01306 031B C000 F000        	CALL	_Centigrade_Convert_Fahrenheit
+01307                       	.CHKPARA _Centigrade_Convert_Fahrenheit 2
+01308 031D D000 F000        	MVFF	STK00,(_sActual_Forecast + 5)
+01309 031F 6600             	MVF	(_sActual_Forecast + 6),1,0
+01310                       ;	;.line	520; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01311 0320 065A             	MVL	0x5a
+01312 0321 6C00             	CPSE	_eTempUnit,0
+01313 0322 C200 F000        	JMP	_00272_DS_
+01314                       ;	;.line	523; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
+01315 0324 6400             	MVF	(_sActual_Forecast + 5),0,0
+01316 0325 0480             	ADDL	0x80
+01317 0326 06F3             	MVL	0xf3
+01318 0327 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01319 0328 A82B             	BTSZ	_STATUS,4
+01320 0329 C200 F000        	JMP	_00261_DS_
+01321                       ;	;.line	533; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+01322 032B C000 F000        	CALL	_Disp_StaticDash
+01323                       	.CHKPARA _Disp_StaticDash 0
+01324 032D C200 F000        	JMP	_00273_DS_
+01325 032F                  _00261_DS_:
+01326                       ;	;.line	538; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp > High_Temp_Centigrade)
+01327 032F 6400             	MVF	(_sActual_Forecast + 5),0,0
+01328 0330 04D9             	ADDL	0xd9
+01329 0331 06EE             	MVL	0xee
+01330 0332 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01331 0333 B82B             	BTSS	_STATUS,4
+01332 0334 C200 F000        	JMP	_00258_DS_
+01333                       ;	;.line	540; ".\Source\App_LCD.c"	Disp_Hi();
+01334 0336 C000 F000        	CALL	_Disp_Hi
+01335                       	.CHKPARA _Disp_Hi 0
+01336 0338 C200 F000        	JMP	_00273_DS_
+01337 033A                  _00258_DS_:
+01338                       ;	;.line	545; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+01339 033A 6400             	MVF	(_sActual_Forecast + 5),0,0
+01340 033B 6600             	MVF	_DispNum_STK00,1,0
+01341 033C 6400             	MVF	(_sActual_Forecast + 6),0,0
+01342 033D C000 F000        	CALL	_DispNum
+01343                       	.CHKPARA _DispNum 2
+01344                       ;	;.line	547; ".\Source\App_LCD.c"	LCD_Point_En();
+01345 033F 968A             	BSF	_LCD2,3
+01346 0340 C200 F000        	JMP	_00273_DS_
+01347 0342                  _00272_DS_:
+01348                       ;	;.line	551; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01349 0342 06A5             	MVL	0xa5
+01350 0343 6C00             	CPSE	_eTempUnit,0
+01351 0344 C200 F000        	JMP	_00273_DS_
+01352                       ;	;.line	554; ".\Source\App_LCD.c"	if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
+01353 0346 0623             	MVL	0x23
+01354 0347 6A00             	CPSL	(_sActual_Forecast + 6),0
+01355 0348 C200 F000        	JMP	_00267_DS_
+01356                       ;	;.line	564; ".\Source\App_LCD.c"	Disp_StaticDash(); /*20210319改*/
+01357 034A C000 F000        	CALL	_Disp_StaticDash
+01358                       	.CHKPARA _Disp_StaticDash 0
+01359 034C C200 F000        	JMP	_00273_DS_
+01360 034E                  _00267_DS_:
+01361                       ;	;.line	568; ".\Source\App_LCD.c"	else if(sActual_Forecast.ConvertedTempDisp > High_Temp_Fahrenheit)
+01362 034E 6400             	MVF	(_sActual_Forecast + 5),0,0
+01363 034F 04A3             	ADDL	0xa3
+01364 0350 06D4             	MVL	0xd4
+01365 0351 1400             	ADDC	(_sActual_Forecast + 6),0,0
+01366 0352 B82B             	BTSS	_STATUS,4
+01367 0353 C200 F000        	JMP	_00264_DS_
+01368                       ;	;.line	570; ".\Source\App_LCD.c"	Disp_Hi();
+01369 0355 C000 F000        	CALL	_Disp_Hi
+01370                       	.CHKPARA _Disp_Hi 0
+01371 0357 C200 F000        	JMP	_00273_DS_
+01372 0359                  _00264_DS_:
+01373                       ;	;.line	575; ".\Source\App_LCD.c"	DispNum(sActual_Forecast.ConvertedTempDisp);
+01374 0359 6400             	MVF	(_sActual_Forecast + 5),0,0
+01375 035A 6600             	MVF	_DispNum_STK00,1,0
+01376 035B 6400             	MVF	(_sActual_Forecast + 6),0,0
+01377 035C C000 F000        	CALL	_DispNum
+01378                       	.CHKPARA _DispNum 2
+01379                       ;	;.line	577; ".\Source\App_LCD.c"	LCD_Point_En();
+01380 035E 968A             	BSF	_LCD2,3
+01381 035F                  _00273_DS_:
+01382                       ;	;.line	584; ".\Source\App_LCD.c"	DispDelta(sActual_Forecast.ConvertedTempDisp);
+01383 035F 6400             	MVF	(_sActual_Forecast + 5),0,0
+01384 0360 6600             	MVF	_DispDelta_STK00,1,0
+01385 0361 6400             	MVF	(_sActual_Forecast + 6),0,0
+01386 0362 C000 F000        	CALL	_DispDelta
+01387                       	.CHKPARA _DispDelta 2
+01388                       ;	;.line	593; ".\Source\App_LCD.c"	DispUnit();
+01389 0364 C000 F000        	CALL	_DispUnit
+01390                       	.CHKPARA _DispUnit 0
+01391                       ;	;.line	595; ".\Source\App_LCD.c"	LCD_Mem_En();
+01392 0366 968B             	BSF	_LCD3,3
+01393                       ;	;.line	597; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01394 0367 C000 F000        	CALL	_Disp_BleSymbol
+01395                       	.CHKPARA _Disp_BleSymbol 0
+01396                       ;	;.line	598; ".\Source\App_LCD.c"	}
+01397 0369 000A             	RET	
+01398                       ; exit point of _RecentTemp_Display
+01399 036A --              	.ENDFUNC	_RecentTemp_Display
+01400                       ;--------------------------------------------------------
+01401                       
+01402                       .globl _CalibrationOK_Display
+01403                       
+01404                       ;--------------------------------------------------------
+01405 036A --              	.FUNC _CalibrationOK_Display:0:$C:_Disp_End:$C:_Disp_BleSymbol\
+01406                       
+01407                       ;--------------------------------------------------------
+01408                       ;	;.line	506; ".\Source\App_LCD.c"	Disp_End();
+01409 036A                  _CalibrationOK_Display:	;Function start
+01410 036A C000 F000        	CALL	_Disp_End
+01411                       	.CHKPARA _Disp_End 0
+01412                       ;	;.line	508; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01413 036C C000 F000        	CALL	_Disp_BleSymbol
+01414                       	.CHKPARA _Disp_BleSymbol 0
+01415                       ;	;.line	509; ".\Source\App_LCD.c"	}
+01416 036E 000A             	RET	
+01417                       ; exit point of _CalibrationOK_Display
+01418 036F --              	.ENDFUNC	_CalibrationOK_Display
+01419                       ;--------------------------------------------------------
+01420                       
+01421                       .globl _Calibration_Display
+01422                       
+01423                       ;--------------------------------------------------------
+01424                       	.FUNC _Calibration_Display:0:$C:_memchrn:$C:_Disp_CAL:$C:_Disp_Nothing:$C:_Disp_BleSymbol\
+01425 036F --              :$C:_LCD_Clear_Register:$C:_LCD_Configuration\
+01426                       
+01427                       ;--------------------------------------------------------
+01428                       ;	;.line	455; ".\Source\App_LCD.c"	if(!memchrn(ERR,1,sizeof(ERR))  && sTempCal.Cal_60s_Arrived)
+01429 036F                  _Calibration_Display:	;Function start
+01430 036F 0609             	MVL	0x09
+01431 0370 6600             	MVF	_memchrn_STK02,1,0
+01432 0371 0601             	MVL	0x01
+01433 0372 6600             	MVF	_memchrn_STK01,1,0
+01434 0373 0600             	MVL	(_ERR + 0)
+01435 0374 6600             	MVF	_memchrn_STK00,1,0
+01436 0375 0600             	MVL	high (_ERR + 0)
+01437 0376 C000 F000        	CALL	_memchrn
+01438                       	.CHKPARA _memchrn 4
+01439 0378 6E29             	TFSZ	_WREG,0
+01440 0379 C200 F000        	JMP	_00243_DS_
+01441 037B B200             	BTSS	_sTempCal,1
+01442 037C C200 F000        	JMP	_00243_DS_
+01443                       ;	;.line	460; ".\Source\App_LCD.c"	sTempCal.Enable_BIE_Write = TRUE;
+01444 037E 9400             	BSF	_sTempCal,2
+01445 037F C200 F000        	JMP	_00244_DS_
+01446 0381                  _00243_DS_:
+01447                       ;	;.line	462; ".\Source\App_LCD.c"	else if(memchrn(ERR,1,sizeof(ERR))  && sTempCal.Cal_60s_Arrived)
+01448 0381 0609             	MVL	0x09
+01449 0382 6600             	MVF	_memchrn_STK02,1,0
+01450 0383 0601             	MVL	0x01
+01451 0384 6600             	MVF	_memchrn_STK01,1,0
+01452 0385 0600             	MVL	(_ERR + 0)
+01453 0386 6600             	MVF	_memchrn_STK00,1,0
+01454 0387 0600             	MVL	high (_ERR + 0)
+01455 0388 C000 F000        	CALL	_memchrn
+01456                       	.CHKPARA _memchrn 4
+01457 038A 0200             	IORL	0x00
+01458 038B A02B             	BTSZ	_STATUS,0
+01459 038C C200 F000        	JMP	_00239_DS_
+01460 038E B200             	BTSS	_sTempCal,1
+01461 038F C200 F000        	JMP	_00239_DS_
+01462                       ;	;.line	465; ".\Source\App_LCD.c"	sTempCal.BIE_Write_Action = TRUE;
+01463 0391 9600             	BSF	_sTempCal,3
+01464 0392 C200 F000        	JMP	_00244_DS_
+01465 0394                  _00239_DS_:
+01466                       ;	;.line	470; ".\Source\App_LCD.c"	if(sTIMx.CalSymbolFlash)
+01467 0394 BA00             	BTSS	_sTIMx,5
+01468 0395 C200 F000        	JMP	_00236_DS_
+01469                       ;	;.line	473; ".\Source\App_LCD.c"	Disp_CAL();
+01470 0397 C000 F000        	CALL	_Disp_CAL
+01471                       	.CHKPARA _Disp_CAL 0
+01472 0399 C200 F000        	JMP	_00237_DS_
+01473 039B                  _00236_DS_:
+01474                       ;	;.line	478; ".\Source\App_LCD.c"	Disp_Nothing();
+01475 039B C000 F000        	CALL	_Disp_Nothing
+01476                       	.CHKPARA _Disp_Nothing 0
+01477 039D                  _00237_DS_:
+01478                       ;	;.line	481; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01479 039D C000 F000        	CALL	_Disp_BleSymbol
+01480                       	.CHKPARA _Disp_BleSymbol 0
+01481 039F                  _00244_DS_:
+01482                       ;	;.line	485; ".\Source\App_LCD.c"	if(sTempCal.BIE_Write_Action)
+01483 039F B600             	BTSS	_sTempCal,3
+01484 03A0 C200 F000        	JMP	_00248_DS_
+01485                       ;	;.line	490; ".\Source\App_LCD.c"	LCD_Clear_Register();
+01486 03A2 C000 F000        	CALL	_LCD_Clear_Register
+01487                       	.CHKPARA _LCD_Clear_Register 0
+01488                       ;	;.line	492; ".\Source\App_LCD.c"	LCD_Configuration();
+01489 03A4 C000 F000        	CALL	_LCD_Configuration
+01490                       	.CHKPARA _LCD_Configuration 0
+01491                       ;	;.line	494; ".\Source\App_LCD.c"	sTempCal.Reopen_LCD = TRUE;
+01492 03A6 9800             	BSF	_sTempCal,4
+01493 03A7                  _00248_DS_:
+01494                       ;	;.line	496; ".\Source\App_LCD.c"	}
+01495 03A7 000A             	RET	
+01496                       ; exit point of _Calibration_Display
+01497 03A8 --              	.ENDFUNC	_Calibration_Display
+01498                       ;--------------------------------------------------------
+01499                       
+01500                       .globl _PreCalibration_Display
+01501                       
+01502                       ;--------------------------------------------------------
+01503 03A8 --              	.FUNC _PreCalibration_Display:0:$C:_Disp_UnitFlash:$C:_Disp_BleSymbol\
+01504                       
+01505                       ;--------------------------------------------------------
+01506                       ;	;.line	440; ".\Source\App_LCD.c"	Disp_UnitFlash();
+01507 03A8                  _PreCalibration_Display:	;Function start
+01508 03A8 C000 F000        	CALL	_Disp_UnitFlash
+01509                       	.CHKPARA _Disp_UnitFlash 0
+01510                       ;	;.line	442; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01511 03AA C000 F000        	CALL	_Disp_BleSymbol
+01512                       	.CHKPARA _Disp_BleSymbol 0
+01513                       ;	;.line	443; ".\Source\App_LCD.c"	}
+01514 03AC 000A             	RET	
+01515                       ; exit point of _PreCalibration_Display
+01516 03AD --              	.ENDFUNC	_PreCalibration_Display
+01517                       ;--------------------------------------------------------
+01518                       
+01519                       .globl _Off_Display
+01520                       
+01521                       ;--------------------------------------------------------
+01522 03AD --              	.FUNC _Off_Display:0:$C:_Disp_Nothing:$C:_Disp_Off:$C:_Disp_BleSymbol\
+01523                       
+01524                       ;--------------------------------------------------------
+01525                       ;	;.line	420; ".\Source\App_LCD.c"	if(sButton.Flag_Button_Lift_Once)
+01526 03AD                  _Off_Display:	;Function start
+01527 03AD BC00             	BTSS	_sButton,6
+01528 03AE C200 F000        	JMP	_00224_DS_
+01529                       ;	;.line	423; ".\Source\App_LCD.c"	Disp_Nothing();
+01530 03B0 C000 F000        	CALL	_Disp_Nothing
+01531                       	.CHKPARA _Disp_Nothing 0
+01532 03B2 C200 F000        	JMP	_00226_DS_
+01533 03B4                  _00224_DS_:
+01534                       ;	;.line	427; ".\Source\App_LCD.c"	Disp_Off();
+01535 03B4 C000 F000        	CALL	_Disp_Off
+01536                       	.CHKPARA _Disp_Off 0
+01537                       ;	;.line	429; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01538 03B6 C000 F000        	CALL	_Disp_BleSymbol
+01539                       	.CHKPARA _Disp_BleSymbol 0
+01540 03B8                  _00226_DS_:
+01541                       ;	;.line	431; ".\Source\App_LCD.c"	}
+01542 03B8 000A             	RET	
+01543                       ; exit point of _Off_Display
+01544 03B9 --              	.ENDFUNC	_Off_Display
+01545                       ;--------------------------------------------------------
+01546                       
+01547                       .globl _UnitExchange_Display
+01548                       
+01549                       ;--------------------------------------------------------
+01550 03B9 --              	.FUNC _UnitExchange_Display:0:$C:_Disp_Nothing:$C:_Disp_BleSymbol\
+01551                       
+01552                       ;--------------------------------------------------------
+01553                       ;	;.line	365; ".\Source\App_LCD.c"	if(!UnitExchangeCompleted)
+01554 03B9                  _UnitExchange_Display:	;Function start
+01555 03B9 6E00             	TFSZ	_UnitExchangeCompleted,0
+01556 03BA C200 F000        	JMP	_00217_DS_
+01557                       ;	;.line	368; ".\Source\App_LCD.c"	Disp_Nothing();
+01558 03BC C000 F000        	CALL	_Disp_Nothing
+01559                       	.CHKPARA _Disp_Nothing 0
+01560                       ;	;.line	370; ".\Source\App_LCD.c"	UnitExchangeCompleted = TRUE;
+01561 03BE 0601             	MVL	0x01
+01562 03BF 6600             	MVF	_UnitExchangeCompleted,1,0
+01563                       ;	;.line	372; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01564 03C0 065A             	MVL	0x5a
+01565 03C1 6C00             	CPSE	_eTempUnit,0
+01566 03C2 C200 F000        	JMP	_00209_DS_
+01567                       ;	;.line	375; ".\Source\App_LCD.c"	eTempUnit = Fahrenheit;
+01568 03C4 06A5             	MVL	0xa5
+01569 03C5 6600             	MVF	_eTempUnit,1,0
+01570                       ;	;.line	377; ".\Source\App_LCD.c"	LCD_Unit_F_En();
+01571 03C6 0630             	MVL	0x30
+01572 03C7 2E8C             	IORF	_LCD4,1,0
+01573 03C8 C200 F000        	JMP	_00218_DS_
+01574 03CA                  _00209_DS_:
+01575                       ;	;.line	380; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01576 03CA 06A5             	MVL	0xa5
+01577 03CB 6C00             	CPSE	_eTempUnit,0
+01578 03CC C200 F000        	JMP	_00218_DS_
+01579                       ;	;.line	383; ".\Source\App_LCD.c"	eTempUnit = Centigrade;
+01580 03CE 065A             	MVL	0x5a
+01581 03CF 6600             	MVF	_eTempUnit,1,0
+01582                       ;	;.line	385; ".\Source\App_LCD.c"	LCD_Unit_C_En();
+01583 03D0 0650             	MVL	0x50
+01584 03D1 2E8C             	IORF	_LCD4,1,0
+01585 03D2 C200 F000        	JMP	_00218_DS_
+01586 03D4                  _00217_DS_:
+01587                       ;	;.line	391; ".\Source\App_LCD.c"	Disp_Nothing();
+01588 03D4 C000 F000        	CALL	_Disp_Nothing
+01589                       	.CHKPARA _Disp_Nothing 0
+01590                       ;	;.line	394; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01591 03D6 065A             	MVL	0x5a
+01592 03D7 6C00             	CPSE	_eTempUnit,0
+01593 03D8 C200 F000        	JMP	_00214_DS_
+01594                       ;	;.line	397; ".\Source\App_LCD.c"	LCD_Unit_C_En();
+01595 03DA 0650             	MVL	0x50
+01596 03DB 2E8C             	IORF	_LCD4,1,0
+01597 03DC C200 F000        	JMP	_00218_DS_
+01598 03DE                  _00214_DS_:
+01599                       ;	;.line	400; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01600 03DE 06A5             	MVL	0xa5
+01601 03DF 6C00             	CPSE	_eTempUnit,0
+01602 03E0 C200 F000        	JMP	_00218_DS_
+01603                       ;	;.line	403; ".\Source\App_LCD.c"	LCD_Unit_F_En();
+01604 03E2 0630             	MVL	0x30
+01605 03E3 2E8C             	IORF	_LCD4,1,0
+01606 03E4                  _00218_DS_:
+01607                       ;	;.line	410; ".\Source\App_LCD.c"	Disp_BleSymbol();
+01608 03E4 C000 F000        	CALL	_Disp_BleSymbol
+01609                       	.CHKPARA _Disp_BleSymbol 0
+01610                       ;	;.line	411; ".\Source\App_LCD.c"	}
+01611 03E6 000A             	RET	
+01612                       ; exit point of _UnitExchange_Display
+01613 03E7 --              	.ENDFUNC	_UnitExchange_Display
+01614                       ;--------------------------------------------------------
+01615                       
+01616                       .globl _Disp_BleSymbol
+01617                       
+01618                       ;--------------------------------------------------------
+01619 03E7 --              	.FUNC _Disp_BleSymbol:0
+01620                       ;--------------------------------------------------------
+01621                       ;	;.line	355; ".\Source\App_LCD.c"	}
+01622 03E7                  _Disp_BleSymbol:	;Function start
+01623 03E7 000A             	RET	
+01624                       ; exit point of _Disp_BleSymbol
+01625 03E8 --              	.ENDFUNC	_Disp_BleSymbol
+01626                       ;--------------------------------------------------------
+01627                       
+01628                       .globl _Disp_DynamicForecastSymbol
+01629                       
+01630                       ;--------------------------------------------------------
+01631 03E8 --              	.FUNC _Disp_DynamicForecastSymbol:0
+01632                       ;--------------------------------------------------------
+01633                       ;	;.line	319; ".\Source\App_LCD.c"	if(sTIMx.ForecastSymbolFlash)
+01634 03E8                  _Disp_DynamicForecastSymbol:	;Function start
+01635 03E8 B400             	BTSS	(_sTIMx+1),2
+01636 03E9 C200 F000        	JMP	_00196_DS_
+01637                       ;	;.line	322; ".\Source\App_LCD.c"	LCD_ForecastP1_En();
+01638 03EB 928C             	BSF	_LCD4,1
+01639 03EC C200 F000        	JMP	_00197_DS_
+01640 03EE                  _00196_DS_:
+01641                       ;	;.line	327; ".\Source\App_LCD.c"	LCD_ForecastP1_Clr();
+01642 03EE 828C             	BCF	_LCD4,1
+01643 03EF                  _00197_DS_:
+01644                       ;	;.line	330; ".\Source\App_LCD.c"	LCD_ForecastP2_En();
+01645 03EF 948C             	BSF	_LCD4,2
+01646                       ;	;.line	331; ".\Source\App_LCD.c"	}
+01647 03F0 000A             	RET	
+01648                       ; exit point of _Disp_DynamicForecastSymbol
+01649 03F1 --              	.ENDFUNC	_Disp_DynamicForecastSymbol
+01650                       ;--------------------------------------------------------
+01651                       
+01652                       .globl _Disp_DynamicDash
+01653                       
+01654                       ;--------------------------------------------------------
+01655 03F1 --              	.FUNC _Disp_DynamicDash:0:$C:_Disp_Nothing\
+01656                       
+01657                       ;--------------------------------------------------------
+01658                       ;	;.line	291; ".\Source\App_LCD.c"	Disp_Nothing();
+01659 03F1                  _Disp_DynamicDash:	;Function start
+01660 03F1 C000 F000        	CALL	_Disp_Nothing
+01661                       	.CHKPARA _Disp_Nothing 0
+01662                       ;	;.line	293; ".\Source\App_LCD.c"	if(sTIMx.TempDetectingSymFlash1Hz == 0)
+01663 03F3 6E00             	TFSZ	(_sTIMx + 2),0
+01664 03F4 C200 F000        	JMP	_00188_DS_
+01665                       ;	;.line	296; ".\Source\App_LCD.c"	LCD_Dash1_En();
+01666 03F6 9288             	BSF	_LCD0,1
+01667 03F7 C200 F000        	JMP	_00190_DS_
+01668 03F9                  _00188_DS_:
+01669                       ;	;.line	299; ".\Source\App_LCD.c"	else if(sTIMx.TempDetectingSymFlash1Hz == 1)
+01670 03F9 3400             	DCSZ	(_sTIMx + 2),0,0
+01671 03FA C200 F000        	JMP	_00185_DS_
+01672                       ;	;.line	302; ".\Source\App_LCD.c"	LCD_Dash2_En();
+01673 03FC 9289             	BSF	_LCD1,1
+01674 03FD C200 F000        	JMP	_00190_DS_
+01675 03FF                  _00185_DS_:
+01676                       ;	;.line	307; ".\Source\App_LCD.c"	LCD_Dash3_En();
+01677 03FF 928A             	BSF	_LCD2,1
+01678 0400                  _00190_DS_:
+01679                       ;	;.line	309; ".\Source\App_LCD.c"	}
+01680 0400 000A             	RET	
+01681                       ; exit point of _Disp_DynamicDash
+01682 0401 --              	.ENDFUNC	_Disp_DynamicDash
+01683                       ;--------------------------------------------------------
+01684                       
+01685                       .globl _Disp_UnitFlash
+01686                       
+01687                       ;--------------------------------------------------------
+01688 0401 --              	.FUNC _Disp_UnitFlash:0
+01689                       ;--------------------------------------------------------
+01690                       ;	;.line	252; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01691 0401                  _Disp_UnitFlash:	;Function start
+01692 0401 065A             	MVL	0x5a
+01693 0402 6C00             	CPSE	_eTempUnit,0
+01694 0403 C200 F000        	JMP	_00177_DS_
+01695                       ;	;.line	255; ".\Source\App_LCD.c"	if(sTIMx.UnitSymbolFlash)
+01696 0405 B000             	BTSS	(_sTIMx+1),0
+01697 0406 C200 F000        	JMP	_00169_DS_
+01698                       ;	;.line	258; ".\Source\App_LCD.c"	LCD_Unit_C_En();
+01699 0408 0650             	MVL	0x50
+01700 0409 2E8C             	IORF	_LCD4,1,0
+01701 040A C200 F000        	JMP	_00179_DS_
+01702 040C                  _00169_DS_:
+01703                       ;	;.line	263; ".\Source\App_LCD.c"	LCD_Unit_C_Clr();
+01704 040C 06AF             	MVL	0xaf
+01705 040D 2A8C             	ANDF	_LCD4,1,0
+01706 040E C200 F000        	JMP	_00179_DS_
+01707 0410                  _00177_DS_:
+01708                       ;	;.line	267; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01709 0410 06A5             	MVL	0xa5
+01710 0411 6C00             	CPSE	_eTempUnit,0
+01711 0412 C200 F000        	JMP	_00179_DS_
+01712                       ;	;.line	270; ".\Source\App_LCD.c"	if(sTIMx.UnitSymbolFlash)
+01713 0414 B000             	BTSS	(_sTIMx+1),0
+01714 0415 C200 F000        	JMP	_00172_DS_
+01715                       ;	;.line	273; ".\Source\App_LCD.c"	LCD_Unit_F_En();
+01716 0417 0630             	MVL	0x30
+01717 0418 2E8C             	IORF	_LCD4,1,0
+01718 0419 C200 F000        	JMP	_00179_DS_
+01719 041B                  _00172_DS_:
+01720                       ;	;.line	278; ".\Source\App_LCD.c"	LCD_Unit_F_Clr();
+01721 041B 06CF             	MVL	0xcf
+01722 041C 2A8C             	ANDF	_LCD4,1,0
+01723 041D                  _00179_DS_:
+01724                       ;	;.line	281; ".\Source\App_LCD.c"	}
+01725 041D 000A             	RET	
+01726                       ; exit point of _Disp_UnitFlash
+01727 041E --              	.ENDFUNC	_Disp_UnitFlash
+01728                       ;--------------------------------------------------------
+01729                       
+01730                       .globl _Disp_Bat
+01731                       
+01732                       ;--------------------------------------------------------
+01733 041E --              	.FUNC _Disp_Bat:0
+01734                       ;--------------------------------------------------------
+01735                       ;	;.line	238; ".\Source\App_LCD.c"	LCD_BatAll_En();
+01736 041E                  _Disp_Bat:	;Function start
+01737 041E 0688             	MVL	0x88
+01738 041F 2E8C             	IORF	_LCD4,1,0
+01739                       ;	;.line	239; ".\Source\App_LCD.c"	}
+01740 0420 000A             	RET	
+01741                       ; exit point of _Disp_Bat
+01742 0421 --              	.ENDFUNC	_Disp_Bat
+01743                       ;--------------------------------------------------------
+01744                       
+01745                       .globl _Disp_BLEFlash
+01746                       
+01747                       ;--------------------------------------------------------
+01748 0421 --              	.FUNC _Disp_BLEFlash:0
+01749                       ;--------------------------------------------------------
+01750                       ;	;.line	217; ".\Source\App_LCD.c"	if(sTIMx.BLESymbolFlash)
+01751 0421                  _Disp_BLEFlash:	;Function start
+01752 0421 B200             	BTSS	(_sTIMx+1),1
+01753 0422 C200 F000        	JMP	_00157_DS_
+01754                       ;	;.line	220; ".\Source\App_LCD.c"	LCD_BLE_En();
+01755 0424 9689             	BSF	_LCD1,3
+01756 0425 C200 F000        	JMP	_00159_DS_
+01757 0427                  _00157_DS_:
+01758                       ;	;.line	225; ".\Source\App_LCD.c"	LCD_BLE_Clr();
+01759 0427 8689             	BCF	_LCD1,3
+01760 0428                  _00159_DS_:
+01761                       ;	;.line	227; ".\Source\App_LCD.c"	}
+01762 0428 000A             	RET	
+01763                       ; exit point of _Disp_BLEFlash
+01764 0429 --              	.ENDFUNC	_Disp_BLEFlash
+01765                       ;--------------------------------------------------------
+01766                       
+01767                       .globl _DispNum
+01768                       
+01769                       ;--------------------------------------------------------
+01770                       	.FUNC _DispNum:2:$C:__divuint:$C:__moduint:$C:__cptrget1\
+01771 0429 --              :$L:r0x1099:$L:_DispNum_STK00:$L:r0x109B:$L:_DispNum_NumDisp_65536_388
+01772                       ;--------------------------------------------------------
+01773                       ;	;.line	131; ".\Source\App_LCD.c"	void DispNum(uint16 num)
+01774 0429                  _DispNum:	;Function start
+01775 0429 6600             	MVF	r0x1099,1,0
+01776                       ;	;.line	137; ".\Source\App_LCD.c"	NumDisp[4] = num / 10000;
+01777 042A 0610             	MVL	0x10
+01778 042B 6600             	MVF	__divuint_STK02,1,0
+01779 042C 0627             	MVL	0x27
+01780 042D 6600             	MVF	__divuint_STK01,1,0
+01781 042E 6400             	MVF	_DispNum_STK00,0,0
+01782 042F 6600             	MVF	__divuint_STK00,1,0
+01783 0430 6400             	MVF	r0x1099,0,0
+01784 0431 C000 F000        	CALL	__divuint
+01785                       	.CHKPARA __divuint 4
+01786 0433 6400             	MVF	STK00,0,0
+01787 0434 6600             	MVF	(_DispNum_NumDisp_65536_388 + 4),1,0
+01788                       ;	;.line	139; ".\Source\App_LCD.c"	NumDisp[3] = num / 1000 % 10;
+01789 0435 06E8             	MVL	0xe8
+01790 0436 6600             	MVF	__divuint_STK02,1,0
+01791 0437 0603             	MVL	0x03
+01792 0438 6600             	MVF	__divuint_STK01,1,0
+01793 0439 6400             	MVF	_DispNum_STK00,0,0
+01794 043A 6600             	MVF	__divuint_STK00,1,0
+01795 043B 6400             	MVF	r0x1099,0,0
+01796 043C C000 F000        	CALL	__divuint
+01797                       	.CHKPARA __divuint 4
+01798 043E 6600             	MVF	r0x109B,1,0
+01799 043F 060A             	MVL	0x0a
+01800 0440 6600             	MVF	__moduint_STK02,1,0
+01801 0441 0C00             	CLRF	__moduint_STK01,0
+01802 0442 6400             	MVF	STK00,0,0
+01803 0443 6600             	MVF	__moduint_STK00,1,0
+01804 0444 6400             	MVF	r0x109B,0,0
+01805 0445 C000 F000        	CALL	__moduint
+01806                       	.CHKPARA __moduint 4
+01807 0447 6400             	MVF	STK00,0,0
+01808 0448 6600             	MVF	(_DispNum_NumDisp_65536_388 + 3),1,0
+01809                       ;	;.line	141; ".\Source\App_LCD.c"	NumDisp[2] = num / 100 % 10;
+01810 0449 0664             	MVL	0x64
+01811 044A 6600             	MVF	__divuint_STK02,1,0
+01812 044B 0C00             	CLRF	__divuint_STK01,0
+01813 044C 6400             	MVF	_DispNum_STK00,0,0
+01814 044D 6600             	MVF	__divuint_STK00,1,0
+01815 044E 6400             	MVF	r0x1099,0,0
+01816 044F C000 F000        	CALL	__divuint
+01817                       	.CHKPARA __divuint 4
+01818 0451 6600             	MVF	r0x109B,1,0
+01819 0452 060A             	MVL	0x0a
+01820 0453 6600             	MVF	__moduint_STK02,1,0
+01821 0454 0C00             	CLRF	__moduint_STK01,0
+01822 0455 6400             	MVF	STK00,0,0
+01823 0456 6600             	MVF	__moduint_STK00,1,0
+01824 0457 6400             	MVF	r0x109B,0,0
+01825 0458 C000 F000        	CALL	__moduint
+01826                       	.CHKPARA __moduint 4
+01827 045A 6400             	MVF	STK00,0,0
+01828 045B 6600             	MVF	(_DispNum_NumDisp_65536_388 + 2),1,0
+01829                       ;	;.line	143; ".\Source\App_LCD.c"	NumDisp[1] = num / 10 % 10;
+01830 045C 060A             	MVL	0x0a
+01831 045D 6600             	MVF	__divuint_STK02,1,0
+01832 045E 0C00             	CLRF	__divuint_STK01,0
+01833 045F 6400             	MVF	_DispNum_STK00,0,0
+01834 0460 6600             	MVF	__divuint_STK00,1,0
+01835 0461 6400             	MVF	r0x1099,0,0
+01836 0462 C000 F000        	CALL	__divuint
+01837                       	.CHKPARA __divuint 4
+01838 0464 6600             	MVF	r0x109B,1,0
+01839 0465 060A             	MVL	0x0a
+01840 0466 6600             	MVF	__moduint_STK02,1,0
+01841 0467 0C00             	CLRF	__moduint_STK01,0
+01842 0468 6400             	MVF	STK00,0,0
+01843 0469 6600             	MVF	__moduint_STK00,1,0
+01844 046A 6400             	MVF	r0x109B,0,0
+01845 046B C000 F000        	CALL	__moduint
+01846                       	.CHKPARA __moduint 4
+01847 046D 6400             	MVF	STK00,0,0
+01848 046E 6600             	MVF	(_DispNum_NumDisp_65536_388 + 1),1,0
+01849                       ;	;.line	145; ".\Source\App_LCD.c"	NumDisp[0] = num % 10;
+01850 046F 060A             	MVL	0x0a
+01851 0470 6600             	MVF	__moduint_STK02,1,0
+01852 0471 0C00             	CLRF	__moduint_STK01,0
+01853 0472 6400             	MVF	_DispNum_STK00,0,0
+01854 0473 6600             	MVF	__moduint_STK00,1,0
+01855 0474 6400             	MVF	r0x1099,0,0
+01856 0475 C000 F000        	CALL	__moduint
+01857                       	.CHKPARA __moduint 4
+01858 0477 6400             	MVF	STK00,0,0
+01859 0478 6600             	MVF	(_DispNum_NumDisp_65536_388 + 0),1,0
+01860                       ;	;.line	148; ".\Source\App_LCD.c"	if(eDisplay_Interfaces == Display_MemoryTemperatureNumber)
+01861 0479 060A             	MVL	0x0a
+01862 047A 6C00             	CPSE	_eDisplay_Interfaces,0
+01863 047B C200 F000        	JMP	_00149_DS_
+01864                       ;	;.line	150; ".\Source\App_LCD.c"	NumDisp[4]	= 10;
+01865 047D 060A             	MVL	0x0a
+01866 047E 6600             	MVF	(_DispNum_NumDisp_65536_388 + 4),1,0
+01867                       ;	;.line	151; ".\Source\App_LCD.c"	NumDisp[3]	= 10;
+01868 047F 6600             	MVF	(_DispNum_NumDisp_65536_388 + 3),1,0
+01869                       ;	;.line	152; ".\Source\App_LCD.c"	NumDisp[2]	= 10;
+01870 0480 6600             	MVF	(_DispNum_NumDisp_65536_388 + 2),1,0
+01871                       ;	;.line	155; ".\Source\App_LCD.c"	if(NumDisp[1] == 0)
+01872 0481 6E00             	TFSZ	(_DispNum_NumDisp_65536_388 + 1),0
+01873 0482 C200 F000        	JMP	_00142_DS_
+01874                       ;	;.line	157; ".\Source\App_LCD.c"	NumDisp[1] = 10;
+01875 0484 060A             	MVL	0x0a
+01876 0485 6600             	MVF	(_DispNum_NumDisp_65536_388 + 1),1,0
+01877 0486                  _00142_DS_:
+01878                       ;	;.line	160; ".\Source\App_LCD.c"	LCD0_Macro = 0x00;
+01879 0486 0C88             	CLRF	_LCD0,0
+01880                       ;	;.line	162; ".\Source\App_LCD.c"	LCD1_Macro = NUM_CODE[NumDisp[1]];
+01881 0487 0900 F000        	MVLP	(_NUM_CODE + 0)
+01882 0489 6400             	MVF	(_DispNum_NumDisp_65536_388 + 1),0,0
+01883 048A C000 F000        	CALL	__cptrget1
+01884 048C 6689             	MVF	_LCD1,1,0
+01885                       ;	;.line	164; ".\Source\App_LCD.c"	LCD2_Macro = NUM_CODE[NumDisp[0]];
+01886 048D 0900 F000        	MVLP	(_NUM_CODE + 0)
+01887 048F 6400             	MVF	(_DispNum_NumDisp_65536_388 + 0),0,0
+01888 0490 C000 F000        	CALL	__cptrget1
+01889 0492 668A             	MVF	_LCD2,1,0
+01890                       ;	;.line	166; ".\Source\App_LCD.c"	LCD3_Macro = 0x00;
+01891 0493 0C8B             	CLRF	_LCD3,0
+01892                       ;	;.line	168; ".\Source\App_LCD.c"	LCD4_Macro = 0x00;
+01893 0494 0C8C             	CLRF	_LCD4,0
+01894                       ;	;.line	170; ".\Source\App_LCD.c"	LCD5_Macro = 0x00;
+01895 0495 0C8D             	CLRF	_LCD5,0
+01896 0496 C200 F000        	JMP	_00151_DS_
+01897 0498                  _00149_DS_:
+01898                       ;	;.line	175; ".\Source\App_LCD.c"	if(NumDisp[4] == 0)
+01899 0498 6E00             	TFSZ	(_DispNum_NumDisp_65536_388 + 4),0
+01900 0499 C200 F000        	JMP	_00146_DS_
+01901                       ;	;.line	178; ".\Source\App_LCD.c"	if(NumDisp[3] == 0)
+01902 049B 6E00             	TFSZ	(_DispNum_NumDisp_65536_388 + 3),0
+01903 049C C200 F000        	JMP	_00144_DS_
+01904                       ;	;.line	180; ".\Source\App_LCD.c"	NumDisp[3] = 10;
+01905 049E 060A             	MVL	0x0a
+01906 049F 6600             	MVF	(_DispNum_NumDisp_65536_388 + 3),1,0
+01907 04A0                  _00144_DS_:
+01908                       ;	;.line	183; ".\Source\App_LCD.c"	LCD0_Macro = NUM_CODE[NumDisp[3]];
+01909 04A0 0900 F000        	MVLP	(_NUM_CODE + 0)
+01910 04A2 6400             	MVF	(_DispNum_NumDisp_65536_388 + 3),0,0
+01911 04A3 C000 F000        	CALL	__cptrget1
+01912 04A5 6688             	MVF	_LCD0,1,0
+01913                       ;	;.line	185; ".\Source\App_LCD.c"	LCD_Hundred_Clr();
+01914 04A6 8688             	BCF	_LCD0,3
+01915 04A7 C200 F000        	JMP	_00147_DS_
+01916 04A9                  _00146_DS_:
+01917                       ;	;.line	191; ".\Source\App_LCD.c"	LCD0_Macro = NUM_CODE[NumDisp[3]];
+01918 04A9 0900 F000        	MVLP	(_NUM_CODE + 0)
+01919 04AB 6400             	MVF	(_DispNum_NumDisp_65536_388 + 3),0,0
+01920 04AC C000 F000        	CALL	__cptrget1
+01921 04AE 6688             	MVF	_LCD0,1,0
+01922                       ;	;.line	193; ".\Source\App_LCD.c"	LCD_Hundred_En();
+01923 04AF 9688             	BSF	_LCD0,3
+01924 04B0                  _00147_DS_:
+01925                       ;	;.line	196; ".\Source\App_LCD.c"	LCD1_Macro = NUM_CODE[NumDisp[2]];
+01926 04B0 0900 F000        	MVLP	(_NUM_CODE + 0)
+01927 04B2 6400             	MVF	(_DispNum_NumDisp_65536_388 + 2),0,0
+01928 04B3 C000 F000        	CALL	__cptrget1
+01929 04B5 6689             	MVF	_LCD1,1,0
+01930                       ;	;.line	198; ".\Source\App_LCD.c"	LCD2_Macro = NUM_CODE[NumDisp[1]];
+01931 04B6 0900 F000        	MVLP	(_NUM_CODE + 0)
+01932 04B8 6400             	MVF	(_DispNum_NumDisp_65536_388 + 1),0,0
+01933 04B9 C000 F000        	CALL	__cptrget1
+01934 04BB 668A             	MVF	_LCD2,1,0
+01935                       ;	;.line	200; ".\Source\App_LCD.c"	LCD3_Macro = 0x00;
+01936 04BC 0C8B             	CLRF	_LCD3,0
+01937                       ;	;.line	202; ".\Source\App_LCD.c"	LCD4_Macro = 0x00;
+01938 04BD 0C8C             	CLRF	_LCD4,0
+01939                       ;	;.line	204; ".\Source\App_LCD.c"	LCD5_Macro = 0x00;
+01940 04BE 0C8D             	CLRF	_LCD5,0
+01941 04BF                  _00151_DS_:
+01942                       ;	;.line	206; ".\Source\App_LCD.c"	}
+01943 04BF 000A             	RET	
+01944                       ; exit point of _DispNum
+01945 04C0 --              	.ENDFUNC	_DispNum
+01946                       ;--------------------------------------------------------
+01947                       
+01948                       .globl _DispDelta
+01949                       
+01950                       ;--------------------------------------------------------
+01951 04C0 --              	.FUNC _DispDelta:2:$L:r0x1096:$L:_DispDelta_STK00
+01952                       ;--------------------------------------------------------
+01953                       ;	;.line	42; ".\Source\App_LCD.c"	void DispDelta(uint16 temp)
+01954 04C0                  _DispDelta:	;Function start
+01955 04C0 6600             	MVF	r0x1096,1,0
+01956 04C1 065A             	MVL	0x5a
+01957                       ;	;.line	47; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+01958 04C2 6C00             	CPSE	_eTempUnit,0
+01959 04C3 C200 F000        	JMP	_00134_DS_
+01960                       ;	;.line	50; ".\Source\App_LCD.c"	if(temp >= Fever_Temp_Centigrade)
+01961 04C5 6400             	MVF	_DispDelta_STK00,0,0
+01962 04C6 043C             	ADDL	0x3c
+01963 04C7 06F1             	MVL	0xf1
+01964 04C8 1400             	ADDC	r0x1096,0,0
+01965 04C9 B82B             	BTSS	_STATUS,4
+01966 04CA C200 F000        	JMP	_00121_DS_
+01967                       ;	;.line	53; ".\Source\App_LCD.c"	LCD_Delta3_En();
+01968 04CC 948D             	BSF	_LCD5,2
+01969 04CD C200 F000        	JMP	_00136_DS_
+01970 04CF                  _00121_DS_:
+01971                       ;	;.line	56; ".\Source\App_LCD.c"	else if(temp >= Warn_Temp_Centigrade)
+01972 04CF 6400             	MVF	_DispDelta_STK00,0,0
+01973 04D0 046E             	ADDL	0x6e
+01974 04D1 06F1             	MVL	0xf1
+01975 04D2 1400             	ADDC	r0x1096,0,0
+01976 04D3 B82B             	BTSS	_STATUS,4
+01977 04D4 C200 F000        	JMP	_00118_DS_
+01978                       ;	;.line	59; ".\Source\App_LCD.c"	LCD_Delta2_En();
+01979 04D6 928D             	BSF	_LCD5,1
+01980 04D7 C200 F000        	JMP	_00136_DS_
+01981 04D9                  _00118_DS_:
+01982                       ;	;.line	62; ".\Source\App_LCD.c"	else if(temp >= Noamal_Temp_Centigrade)
+01983 04D9 6400             	MVF	_DispDelta_STK00,0,0
+01984 04DA 0404             	ADDL	0x04
+01985 04DB 06F2             	MVL	0xf2
+01986 04DC 1400             	ADDC	r0x1096,0,0
+01987 04DD B82B             	BTSS	_STATUS,4
+01988 04DE C200 F000        	JMP	_00136_DS_
+01989                       ;	;.line	65; ".\Source\App_LCD.c"	LCD_Delta1_En();
+01990 04E0 908D             	BSF	_LCD5,0
+01991 04E1 C200 F000        	JMP	_00136_DS_
+01992 04E3                  _00134_DS_:
+01993                       ;	;.line	69; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+01994 04E3 06A5             	MVL	0xa5
+01995 04E4 6C00             	CPSE	_eTempUnit,0
+01996 04E5 C200 F000        	JMP	_00136_DS_
+01997                       ;	;.line	72; ".\Source\App_LCD.c"	if(temp >= Fever_Temp_Fahrenheit)
+01998 04E7 6400             	MVF	_DispDelta_STK00,0,0
+01999 04E8 04F0             	ADDL	0xf0
+02000 04E9 06D8             	MVL	0xd8
+02001 04EA 1400             	ADDC	r0x1096,0,0
+02002 04EB B82B             	BTSS	_STATUS,4
+02003 04EC C200 F000        	JMP	_00129_DS_
+02004                       ;	;.line	75; ".\Source\App_LCD.c"	LCD_Delta3_En();
+02005 04EE 948D             	BSF	_LCD5,2
+02006 04EF C200 F000        	JMP	_00136_DS_
+02007 04F1                  _00129_DS_:
+02008                       ;	;.line	78; ".\Source\App_LCD.c"	else if(temp >= Warn_Temp_Fahrenheit)
+02009 04F1 6400             	MVF	_DispDelta_STK00,0,0
+02010 04F2 044A             	ADDL	0x4a
+02011 04F3 06D9             	MVL	0xd9
+02012 04F4 1400             	ADDC	r0x1096,0,0
+02013 04F5 B82B             	BTSS	_STATUS,4
+02014 04F6 C200 F000        	JMP	_00126_DS_
+02015                       ;	;.line	81; ".\Source\App_LCD.c"	LCD_Delta2_En();
+02016 04F8 928D             	BSF	_LCD5,1
+02017 04F9 C200 F000        	JMP	_00136_DS_
+02018 04FB                  _00126_DS_:
+02019                       ;	;.line	84; ".\Source\App_LCD.c"	else if(temp >= Noamal_Temp_Fahrenheit)
+02020 04FB 6400             	MVF	_DispDelta_STK00,0,0
+02021 04FC 0458             	ADDL	0x58
+02022 04FD 06DA             	MVL	0xda
+02023 04FE 1400             	ADDC	r0x1096,0,0
+02024 04FF A82B             	BTSZ	_STATUS,4
+02025                       ;	;.line	87; ".\Source\App_LCD.c"	LCD_Delta1_En();
+02026 0500 908D             	BSF	_LCD5,0
+02027 0501                  _00136_DS_:
+02028                       ;	;.line	123; ".\Source\App_LCD.c"	}
+02029 0501 000A             	RET	
+02030                       ; exit point of _DispDelta
+02031 0502 --              	.ENDFUNC	_DispDelta
+02032                       ;--------------------------------------------------------
+02033                       
+02034                       .globl _DispUnit
+02035                       
+02036                       ;--------------------------------------------------------
+02037 0502 --              	.FUNC _DispUnit:0
+02038                       ;--------------------------------------------------------
+02039                       ;	;.line	24; ".\Source\App_LCD.c"	if(eTempUnit == Centigrade)
+02040 0502                  _DispUnit:	;Function start
+02041 0502 065A             	MVL	0x5a
+02042 0503 6C00             	CPSE	_eTempUnit,0
+02043 0504 C200 F000        	JMP	_00108_DS_
+02044                       ;	;.line	27; ".\Source\App_LCD.c"	LCD_Unit_C_En();
+02045 0506 0650             	MVL	0x50
+02046 0507 2E8C             	IORF	_LCD4,1,0
+02047 0508 C200 F000        	JMP	_00110_DS_
+02048 050A                  _00108_DS_:
+02049                       ;	;.line	30; ".\Source\App_LCD.c"	else if(eTempUnit == Fahrenheit)
+02050 050A 06A5             	MVL	0xa5
+02051 050B 6C00             	CPSE	_eTempUnit,0
+02052 050C C200 F000        	JMP	_00110_DS_
+02053                       ;	;.line	33; ".\Source\App_LCD.c"	LCD_Unit_F_En();
+02054 050E 0630             	MVL	0x30
+02055 050F 2E8C             	IORF	_LCD4,1,0
+02056 0510                  _00110_DS_:
+02057                       ;	;.line	35; ".\Source\App_LCD.c"	}
+02058 0510 000A             	RET	
+02059                       ; exit point of _DispUnit
+02060 0511 --              	.ENDFUNC	_DispUnit
+02061                       ;--------------------------------------------------------
+02062                       
+02063                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+02064                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+02065                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+02066                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+02067                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+02068                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+02069                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+02070                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+02071                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+02072                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+02073                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+02074                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+02075                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+02076                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+02077                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+02078                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+02079                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+02080                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+02081                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+02082                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+02083                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+02084                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+02085                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+02086                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+02087                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+02088                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+02089                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+02090                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+02091                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+02092                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+02093                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+02094                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+02095                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+02096                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+02097                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+02098                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+02099                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+02100                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+02101                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+02102                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+02103                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+02104                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+02105                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+02106                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+02107                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+02108                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+02109                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+02110                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+02111                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+02112                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+02113                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+02114                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+02115                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+02116                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+02117                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+02118                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+02119                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+02120                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+02121                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+02122                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+02123                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+02124                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+02125                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+02126                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+02127                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+02128                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+02129                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+02130                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+02131                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+02132                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+02133                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+02134                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+02135                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+02136                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+02137                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+02138                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+02139                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+02140                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+02141                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+02142                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+02143                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+02144                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+02145                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+02146                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+02147                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+02148                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+02149                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+02150                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+02151                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+02152                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+02153                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+02154                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+02155                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+02156                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+02157                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+02158                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+02159                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+02160                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+02161                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+02162                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+02163                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+02164                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+02165                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+02166                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+02167                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+02168                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+02169                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+02170                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+02171                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+02172                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+02173                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+02174                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+02175                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+02176                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+02177                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+02178                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+02179                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+02180                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+02181                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+02182                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+02183                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+02184                       	;--cdb--S:G$DispUnit$0$0({2}DF,SV:S),C,0,0
+02185                       	;--cdb--S:G$DispDelta$0$0({2}DF,SV:S),C,0,0
+02186                       	;--cdb--S:G$DispNum$0$0({2}DF,SV:S),C,0,0
+02187                       	;--cdb--S:G$_divuint$0$0({2}DF,SI:U),C,0,0
+02188                       	;--cdb--S:G$_moduint$0$0({2}DF,SI:U),C,0,0
+02189                       	;--cdb--S:G$Disp_BLEFlash$0$0({2}DF,SV:S),C,0,0
+02190                       	;--cdb--S:G$Disp_Bat$0$0({2}DF,SV:S),C,0,0
+02191                       	;--cdb--S:G$Disp_UnitFlash$0$0({2}DF,SV:S),C,0,0
+02192                       	;--cdb--S:G$Disp_DynamicDash$0$0({2}DF,SV:S),C,0,0
+02193                       	;--cdb--S:G$Disp_DynamicForecastSymbol$0$0({2}DF,SV:S),C,0,0
+02194                       	;--cdb--S:G$Disp_BleSymbol$0$0({2}DF,SV:S),C,0,0
+02195                       	;--cdb--S:G$UnitExchange_Display$0$0({2}DF,SV:S),C,0,0
+02196                       	;--cdb--S:G$Off_Display$0$0({2}DF,SV:S),C,0,0
+02197                       	;--cdb--S:G$PreCalibration_Display$0$0({2}DF,SV:S),C,0,0
+02198                       	;--cdb--S:G$Calibration_Display$0$0({2}DF,SV:S),C,0,0
+02199                       	;--cdb--S:G$CalibrationOK_Display$0$0({2}DF,SV:S),C,0,0
+02200                       	;--cdb--S:G$RecentTemp_Display$0$0({2}DF,SV:S),C,0,0
+02201                       	;--cdb--S:G$MemTempNumber_Display$0$0({2}DF,SV:S),C,0,0
+02202                       	;--cdb--S:G$MemTempValue_Display$0$0({2}DF,SV:S),C,0,0
+02203                       	;--cdb--S:G$CurrentMode_Display$0$0({2}DF,SV:S),C,0,0
+02204                       	;--cdb--S:G$ModeExchange_Display$0$0({2}DF,SV:S),C,0,0
+02205                       	;--cdb--S:G$Binding_Display$0$0({2}DF,SV:S),C,0,0
+02206                       	;--cdb--S:G$EMC_Update_Temp_Fast$0$0({2}DF,SV:S),C,0,0
+02207                       	;--cdb--S:G$TempDetecting_Display$0$0({2}DF,SV:S),C,0,0
+02208                       	;--cdb--S:G$Err_Disp$0$0({2}DF,SV:S),C,0,0
+02209                       	;--cdb--S:G$MeasedTemp_Disp$0$0({2}DF,SV:S),C,0,0
+02210                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+02211                       	;--cdb--S:G$FSR0$0$0({2}DD,SC:U),E,0,0
+02212                       	;--cdb--S:G$FSR1$0$0({2}DD,SC:U),E,0,0
+02213                       	;--cdb--S:G$FSR2$0$0({2}DD,SC:U),E,0,0
+02214                       	;--cdb--S:G$ADCR$0$0({4}SL:SL),E,0,0
+02215                       	;--cdb--S:G$sIIC$0$0({1}ST__00000000:S),E,0,0
+02216                       	;--cdb--S:G$BIE_Available_Addr$0$0({1}SC:U),E,0,0
+02217                       	;--cdb--S:G$sTIMx$0$0({13}ST__00000001:S),E,0,0
+02218                       	;--cdb--S:G$sUARTx$0$0({15}ST__00000002:S),E,0,0
+02219                       	;--cdb--S:G$sAutoBps$0$0({5}ST__00000003:S),E,0,0
+02220                       	;--cdb--S:G$eAutoBps_Status$0$0({1}SC:U),E,0,0
+02221                       	;--cdb--S:G$sTest$0$0({19}ST__00000004:S),E,0,0
+02222                       	;--cdb--S:G$eTempUnit$0$0({1}SC:U),E,0,0
+02223                       	;--cdb--S:G$eBondingTempUnit$0$0({1}SC:U),E,0,0
+02224                       	;--cdb--S:G$eVersionCode$0$0({1}SC:U),E,0,0
+02225                       	;--cdb--S:G$eMeasureMode$0$0({1}SC:U),E,0,0
+02226                       	;--cdb--S:G$eBinding_Status$0$0({1}SC:U),E,0,0
+02227                       	;--cdb--S:G$Enter_PrepareSleep_Flag$0$0({1}SC:U),E,0,0
+02228                       	;--cdb--S:G$sButton$0$0({2}ST__00000005:S),E,0,0
+02229                       	;--cdb--S:G$sTimeStamp$0$0({42}ST__00000006:S),E,0,0
+02230                       	;--cdb--S:G$eButton_Status$0$0({1}SC:U),E,0,0
+02231                       	;--cdb--S:G$sLVD$0$0({5}ST__00000007:S),E,0,0
+02232                       	;--cdb--S:G$eErr$0$0({1}SC:U),E,0,0
+02233                       	;--cdb--S:G$eDisplay_Interfaces$0$0({1}SC:U),E,0,0
+02234                       	;--cdb--S:G$UnitExchangeCompleted$0$0({1}SC:U),E,0,0
+02235                       	;--cdb--S:G$ERR$0$0({9}DA9d,SC:U),E,0,0
+02236                       	;--cdb--S:G$sADC$0$0({45}ST__00000008:S),E,0,0
+02237                       	;--cdb--S:G$eADCChannel$0$0({1}SC:U),E,0,0
+02238                       	;--cdb--S:G$eSystem_Mode$0$0({1}SC:U),E,0,0
+02239                       	;--cdb--S:G$eBuzzer_Status$0$0({1}SC:U),E,0,0
+02240                       	;--cdb--S:G$Flag_No_Buzzer$0$0({1}SC:U),E,0,0
+02241                       	;--cdb--S:G$sMemory$0$0({5}ST__00000009:S),E,0,0
+02242                       	;--cdb--S:G$sMemoryFlag$0$0({3}ST__00000010:S),E,0,0
+02243                       	;--cdb--S:G$sActual$0$0({5}ST__00000012:S),E,0,0
+02244                       	;--cdb--S:G$sForecast$0$0({26}ST__00000013:S),E,0,0
+02245                       	;--cdb--S:G$sTempCal$0$0({14}ST__00000011:S),E,0,0
+02246                       	;--cdb--S:G$eMeas_Status$0$0({1}SC:U),E,0,0
+02247                       	;--cdb--S:G$sActual_Forecast$0$0({15}ST__00000014:S),E,0,0
+02248                       	;--cdb--S:G$eTo_Actual_Ways$0$0({1}SC:U),E,0,0
+02249                       	;--cdb--S:G$eBle_Sta$0$0({1}SC:U),E,0,0
+02250                       	;--cdb--S:G$sBleStatus$0$0({60}ST__00000015:S),E,0,0
+02251                       	;--cdb--S:G$eBacklight_Status$0$0({1}SC:U),E,0,0
+02252                       	;--cdb--S:G$sBacklight$0$0({1}ST__00000016:S),E,0,0
+02253                       	;--cdb--S:G$NUM_CODE$0$0({11}DA11d,SC:U),D,0,0
+02254                       	;--cdb--S:G$R_Table$0$0({2002}DA1001d,SI:U),D,0,0
+02255                       	;--cdb--S:G$CloseTable$0$0({98}DA49d,SI:U),D,0,0
+02256                       	;--cdb--S:G$_SWTGTID$0$0({1}SC:U),I,0,0
+02257                       	;--cdb--S:G$INDF0$0$0({1}SC:U),I,0,0
+02258                       	;--cdb--S:G$POINC0$0$0({1}SC:U),I,0,0
+02259                       	;--cdb--S:G$PODEC0$0$0({1}SC:U),I,0,0
+02260                       	;--cdb--S:G$PRINC0$0$0({1}SC:U),I,0,0
+02261                       	;--cdb--S:G$PLUSW0$0$0({1}SC:U),I,0,0
+02262                       	;--cdb--S:G$INDF1$0$0({1}SC:U),I,0,0
+02263                       	;--cdb--S:G$POINC1$0$0({1}SC:U),I,0,0
+02264                       	;--cdb--S:G$PODEC1$0$0({1}SC:U),I,0,0
+02265                       	;--cdb--S:G$PRINC1$0$0({1}SC:U),I,0,0
+02266                       	;--cdb--S:G$PLUSW1$0$0({1}SC:U),I,0,0
+02267                       	;--cdb--S:G$INDF2$0$0({1}SC:U),I,0,0
+02268                       	;--cdb--S:G$POINC2$0$0({1}SC:U),I,0,0
+02269                       	;--cdb--S:G$PODEC2$0$0({1}SC:U),I,0,0
+02270                       	;--cdb--S:G$PRINC2$0$0({1}SC:U),I,0,0
+02271                       	;--cdb--S:G$PLUSW2$0$0({1}SC:U),I,0,0
+02272                       	;--cdb--S:G$FSR0H$0$0({1}SC:U),I,0,0
+02273                       	;--cdb--S:G$FSR0L$0$0({1}SC:U),I,0,0
+02274                       	;--cdb--S:G$FSR1H$0$0({1}SC:U),I,0,0
+02275                       	;--cdb--S:G$FSR1L$0$0({1}SC:U),I,0,0
+02276                       	;--cdb--S:G$FSR2H$0$0({1}SC:U),I,0,0
+02277                       	;--cdb--S:G$FSR2L$0$0({1}SC:U),I,0,0
+02278                       	;--cdb--S:G$TOSH$0$0({1}SC:U),I,0,0
+02279                       	;--cdb--S:G$TOSL$0$0({1}SC:U),I,0,0
+02280                       	;--cdb--S:G$SKCN$0$0({1}SC:U),I,0,0
+02281                       	;--cdb--S:G$PCLATH$0$0({1}SC:U),I,0,0
+02282                       	;--cdb--S:G$PCLATL$0$0({1}SC:U),I,0,0
+02283                       	;--cdb--S:G$TBLPTRH$0$0({1}SC:U),I,0,0
+02284                       	;--cdb--S:G$TBLPTRL$0$0({1}SC:U),I,0,0
+02285                       	;--cdb--S:G$TBLDH$0$0({1}SC:U),I,0,0
+02286                       	;--cdb--S:G$TBLDL$0$0({1}SC:U),I,0,0
+02287                       	;--cdb--S:G$PRODH$0$0({1}SC:U),I,0,0
+02288                       	;--cdb--S:G$PRODL$0$0({1}SC:U),I,0,0
+02289                       	;--cdb--S:G$INTE0$0$0({1}SC:U),I,0,0
+02290                       	;--cdb--S:G$INTE1$0$0({1}SC:U),I,0,0
+02291                       	;--cdb--S:G$INTE2$0$0({1}SC:U),I,0,0
+02292                       	;--cdb--S:G$INTF0$0$0({1}SC:U),I,0,0
+02293                       	;--cdb--S:G$INTF1$0$0({1}SC:U),I,0,0
+02294                       	;--cdb--S:G$INTF2$0$0({1}SC:U),I,0,0
+02295                       	;--cdb--S:G$WREG$0$0({1}SC:U),I,0,0
+02296                       	;--cdb--S:G$BSRCN$0$0({1}SC:U),I,0,0
+02297                       	;--cdb--S:G$STATUS$0$0({1}SC:U),I,0,0
+02298                       	;--cdb--S:G$MSTAT$0$0({1}SC:U),I,0,0
+02299                       	;--cdb--S:G$PSTAT$0$0({1}SC:U),I,0,0
+02300                       	;--cdb--S:G$BIECN$0$0({1}SC:U),I,0,0
+02301                       	;--cdb--S:G$BIEARH$0$0({1}SC:U),I,0,0
+02302                       	;--cdb--S:G$BIEARL$0$0({1}SC:U),I,0,0
+02303                       	;--cdb--S:G$BIEDRH$0$0({1}SC:U),I,0,0
+02304                       	;--cdb--S:G$BIEDRL$0$0({1}SC:U),I,0,0
+02305                       	;--cdb--S:G$PWRCN$0$0({1}SC:U),I,0,0
+02306                       	;--cdb--S:G$OSCCN0$0$0({1}SC:U),I,0,0
+02307                       	;--cdb--S:G$OSCCN1$0$0({1}SC:U),I,0,0
+02308                       	;--cdb--S:G$OSCCN2$0$0({1}SC:U),I,0,0
+02309                       	;--cdb--S:G$CSFCN0$0$0({1}SC:U),I,0,0
+02310                       	;--cdb--S:G$CSFCN1$0$0({1}SC:U),I,0,0
+02311                       	;--cdb--S:G$WDTCN$0$0({1}SC:U),I,0,0
+02312                       	;--cdb--S:G$AD1H$0$0({1}SC:U),I,0,0
+02313                       	;--cdb--S:G$AD1M$0$0({1}SC:U),I,0,0
+02314                       	;--cdb--S:G$AD1L$0$0({1}SC:U),I,0,0
+02315                       	;--cdb--S:G$AD1CN0$0$0({1}SC:U),I,0,0
+02316                       	;--cdb--S:G$AD1CN1$0$0({1}SC:U),I,0,0
+02317                       	;--cdb--S:G$AD1CN2$0$0({1}SC:U),I,0,0
+02318                       	;--cdb--S:G$AD1CN3$0$0({1}SC:U),I,0,0
+02319                       	;--cdb--S:G$AD1CN4$0$0({1}SC:U),I,0,0
+02320                       	;--cdb--S:G$AD1CN5$0$0({1}SC:U),I,0,0
+02321                       	;--cdb--S:G$LVDCN$0$0({1}SC:U),I,0,0
+02322                       	;--cdb--S:G$TMA1CN$0$0({1}SC:U),I,0,0
+02323                       	;--cdb--S:G$TMA1R$0$0({1}SC:U),I,0,0
+02324                       	;--cdb--S:G$TMA1C$0$0({1}SC:U),I,0,0
+02325                       	;--cdb--S:G$TB1FLAG$0$0({1}SC:U),I,0,0
+02326                       	;--cdb--S:G$TB1CN0$0$0({1}SC:U),I,0,0
+02327                       	;--cdb--S:G$TB1CN1$0$0({1}SC:U),I,0,0
+02328                       	;--cdb--S:G$TB1RH$0$0({1}SC:U),I,0,0
+02329                       	;--cdb--S:G$TB1RL$0$0({1}SC:U),I,0,0
+02330                       	;--cdb--S:G$TB1C0H$0$0({1}SC:U),I,0,0
+02331                       	;--cdb--S:G$TB1C0L$0$0({1}SC:U),I,0,0
+02332                       	;--cdb--S:G$TB1C1H$0$0({1}SC:U),I,0,0
+02333                       	;--cdb--S:G$TB1C1L$0$0({1}SC:U),I,0,0
+02334                       	;--cdb--S:G$TB1C2H$0$0({1}SC:U),I,0,0
+02335                       	;--cdb--S:G$TB1C2L$0$0({1}SC:U),I,0,0
+02336                       	;--cdb--S:G$TC1CN0$0$0({1}SC:U),I,0,0
+02337                       	;--cdb--S:G$PT1$0$0({1}SC:U),I,0,0
+02338                       	;--cdb--S:G$TRISC1$0$0({1}SC:U),I,0,0
+02339                       	;--cdb--S:G$PT1DA$0$0({1}SC:U),I,0,0
+02340                       	;--cdb--S:G$PT1PU$0$0({1}SC:U),I,0,0
+02341                       	;--cdb--S:G$PT1M1$0$0({1}SC:U),I,0,0
+02342                       	;--cdb--S:G$PT1INT$0$0({1}SC:U),I,0,0
+02343                       	;--cdb--S:G$PT1INTE$0$0({1}SC:U),I,0,0
+02344                       	;--cdb--S:G$PT1INTF$0$0({1}SC:U),I,0,0
+02345                       	;--cdb--S:G$PT2$0$0({1}SC:U),I,0,0
+02346                       	;--cdb--S:G$TRISC2$0$0({1}SC:U),I,0,0
+02347                       	;--cdb--S:G$PT2DA$0$0({1}SC:U),I,0,0
+02348                       	;--cdb--S:G$PT2PU$0$0({1}SC:U),I,0,0
+02349                       	;--cdb--S:G$PT2INT$0$0({1}SC:U),I,0,0
+02350                       	;--cdb--S:G$PT2INTE$0$0({1}SC:U),I,0,0
+02351                       	;--cdb--S:G$PT2INTF$0$0({1}SC:U),I,0,0
+02352                       	;--cdb--S:G$PT6$0$0({1}SC:U),I,0,0
+02353                       	;--cdb--S:G$TRISC6$0$0({1}SC:U),I,0,0
+02354                       	;--cdb--S:G$PT6DA$0$0({1}SC:U),I,0,0
+02355                       	;--cdb--S:G$PT6PU$0$0({1}SC:U),I,0,0
+02356                       	;--cdb--S:G$PT7$0$0({1}SC:U),I,0,0
+02357                       	;--cdb--S:G$TRISC7$0$0({1}SC:U),I,0,0
+02358                       	;--cdb--S:G$PT7DA$0$0({1}SC:U),I,0,0
+02359                       	;--cdb--S:G$PT7PU$0$0({1}SC:U),I,0,0
+02360                       	;--cdb--S:G$PT8$0$0({1}SC:U),I,0,0
+02361                       	;--cdb--S:G$TRISC8$0$0({1}SC:U),I,0,0
+02362                       	;--cdb--S:G$PT8DA$0$0({1}SC:U),I,0,0
+02363                       	;--cdb--S:G$PT8PU$0$0({1}SC:U),I,0,0
+02364                       	;--cdb--S:G$SSPCN0$0$0({1}SC:U),I,0,0
+02365                       	;--cdb--S:G$SSPSTA0$0$0({1}SC:U),I,0,0
+02366                       	;--cdb--S:G$SSPBUF0$0$0({1}SC:U),I,0,0
+02367                       	;--cdb--S:G$CFG0$0$0({1}SC:U),I,0,0
+02368                       	;--cdb--S:G$ACT0$0$0({1}SC:U),I,0,0
+02369                       	;--cdb--S:G$STA0$0$0({1}SC:U),I,0,0
+02370                       	;--cdb--S:G$CRG0$0$0({1}SC:U),I,0,0
+02371                       	;--cdb--S:G$TOC0$0$0({1}SC:U),I,0,0
+02372                       	;--cdb--S:G$RDB0$0$0({1}SC:U),I,0,0
+02373                       	;--cdb--S:G$TDB0$0$0({1}SC:U),I,0,0
+02374                       	;--cdb--S:G$SID0$0$0({1}SC:U),I,0,0
+02375                       	;--cdb--S:G$UR0CN$0$0({1}SC:U),I,0,0
+02376                       	;--cdb--S:G$UR0STA$0$0({1}SC:U),I,0,0
+02377                       	;--cdb--S:G$BA0CN$0$0({1}SC:U),I,0,0
+02378                       	;--cdb--S:G$BG0RH$0$0({1}SC:U),I,0,0
+02379                       	;--cdb--S:G$BG0RL$0$0({1}SC:U),I,0,0
+02380                       	;--cdb--S:G$TX0R$0$0({1}SC:U),I,0,0
+02381                       	;--cdb--S:G$RC0REG$0$0({1}SC:U),I,0,0
+02382                       	;--cdb--S:G$LCDCN1$0$0({1}SC:U),I,0,0
+02383                       	;--cdb--S:G$LCDCN2$0$0({1}SC:U),I,0,0
+02384                       	;--cdb--S:G$LCDCN3$0$0({1}SC:U),I,0,0
+02385                       	;--cdb--S:G$LCDCN4$0$0({1}SC:U),I,0,0
+02386                       	;--cdb--S:G$LCDCN5$0$0({1}SC:U),I,0,0
+02387                       	;--cdb--S:G$LCDCN6$0$0({1}SC:U),I,0,0
+02388                       	;--cdb--S:G$LCDCN7$0$0({1}SC:U),I,0,0
+02389                       	;--cdb--S:G$LCDCN8$0$0({1}SC:U),I,0,0
+02390                       	;--cdb--S:G$LCD0$0$0({1}SC:U),I,0,0
+02391                       	;--cdb--S:G$LCD1$0$0({1}SC:U),I,0,0
+02392                       	;--cdb--S:G$LCD2$0$0({1}SC:U),I,0,0
+02393                       	;--cdb--S:G$LCD3$0$0({1}SC:U),I,0,0
+02394                       	;--cdb--S:G$LCD4$0$0({1}SC:U),I,0,0
+02395                       	;--cdb--S:G$LCD5$0$0({1}SC:U),I,0,0
+02396                       	;--cdb--S:G$LCD6$0$0({1}SC:U),I,0,0
+02397                       	;--cdb--S:G$LCD7$0$0({1}SC:U),I,0,0
+02398                       	;--cdb--S:G$LCD8$0$0({1}SC:U),I,0,0
+02399                       	;--cdb--S:G$LCD9$0$0({1}SC:U),I,0,0
+02400                       	;--cdb--S:G$UR2CN$0$0({1}SC:U),I,0,0
+02401                       	;--cdb--S:G$UR2STA$0$0({1}SC:U),I,0,0
+02402                       	;--cdb--S:G$BA2CN$0$0({1}SC:U),I,0,0
+02403                       	;--cdb--S:G$BG2RH$0$0({1}SC:U),I,0,0
+02404                       	;--cdb--S:G$BG2RL$0$0({1}SC:U),I,0,0
+02405                       	;--cdb--S:G$TX2R$0$0({1}SC:U),I,0,0
+02406                       	;--cdb--S:G$RC2REG$0$0({1}SC:U),I,0,0
+02407                       	;--cdb--S:G$TMA2R$0$0({1}SC:U),I,0,0
+02408                       	;--cdb--S:G$TMA2C$0$0({1}SC:U),I,0,0
+02409                       	;--cdb--S:G$LEDCN$0$0({1}SC:U),I,0,0
+02410                       	;--cdb--S:G$IQ0$0$0({1}SC:U),I,0,0
+02411                       	;--cdb--S:G$IQ1$0$0({1}SC:U),I,0,0
+02412                       	;--cdb--S:G$DGCON1$0$0({1}SC:U),I,0,0
+02413                       	;--cdb--S:G$DGCON2$0$0({1}SC:U),I,0,0
+02414                       	;--cdb--S:G$ADCRH$0$0({1}SC:U),I,0,0
+02415                       	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
+02416                       	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
+02417                       	;--cdb--S:LApp_LCD.aligned_alloc._aligned_alloc_size_65536_25$size$10000$25({2}SI:U),E,0,0
+02418                       	;--cdb--S:LApp_LCD.aligned_alloc._aligned_alloc_alignment_65536_25$alignment$10000$25({2}SI:U),E,0,0
+02419                       	;--cdb--S:LApp_LCD.DispDelta._DispDelta_temp_65536_371$temp$10000$371({2}SI:U),R,0,0,[_DispDelta_STK00,r0x1096]
+02420                       	;--cdb--S:LApp_LCD.DispNum._DispNum_num_65536_387$num$10000$387({2}SI:U),R,0,0,[_DispNum_STK00,r0x1099]
+02421                       	;--cdb--S:LApp_LCD.DispNum._DispNum_NumDisp_65536_388$NumDisp$10000$388({5}DA5d,SC:U),E,0,0
+02422                       	;--cdb--S:LApp_LCD.MeasedTemp_Disp._MeasedTemp_Disp_tmp_65536_553$tmp$10000$553({2}SI:U),R,0,0,[r0x10D0,r0x10D1]
+02423                       	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
+02424                       	;--cdb--S:G$_PLUSW0$0$0({0}:U),Z,0,0
+02425                       	;--cdb--S:G$_PRODL$0$0({0}:U),Z,0,0
+02426                       	;--cdb--S:G$_PCLATH$0$0({0}:U),Z,0,0
+02427                       	;--cdb--S:G$_PCLATL$0$0({0}:U),Z,0,0
+02428                       	;--cdb--S:G$_WREG$0$0({0}:U),Z,0,0
+02429                       ;--------------------------------------------------------
+02430                       ; external declarations
+02431                       ;--------------------------------------------------------
+02432                       	.globl	_Disp_Off
+02433                       	.globl	_Disp_Hi
+02434                       	.globl	_Disp_All
+02435                       	.globl	_Disp_Orl
+02436                       	.globl	_Disp_Udr
+02437                       	.globl	_Disp_Rct
+02438                       	.globl	_Disp_Bth
+02439                       	.globl	_Disp_End
+02440                       	.globl	_Disp_CAL
+02441                       	.globl	_Disp_Code
+02442                       	.globl	_Disp_Version
+02443                       	.globl	_Disp_Nothing
+02444                       	.globl	_Disp_BrownOut
+02445                       	.globl	_Disp_Err
+02446                       	.globl	_Disp_ErrNo
+02447                       	.globl	_Disp_StaticDash
+02448                       	.globl	_LCD_Configuration
+02449                       	.globl	_LCD_Clear_Register
+02450                       	.globl	_memchrn
+02451                       	.globl	_Centigrade_Convert_Fahrenheit
+02452                       	.globl	__divuint
+02453                       	.globl	__moduint
+02454                       	.globl	_FSR0
+02455                       	.globl	_FSR1
+02456                       	.globl	_FSR2
+02457                       	.globl	_ADCR
+02458                       	.globl	_sIIC
+02459                       	.globl	_BIE_Available_Addr
+02460                       	.globl	_sTIMx
+02461                       	.globl	_sUARTx
+02462                       	.globl	_sAutoBps
+02463                       	.globl	_eAutoBps_Status
+02464                       	.globl	_sTest
+02465                       	.globl	_eTempUnit
+02466                       	.globl	_eBondingTempUnit
+02467                       	.globl	_eVersionCode
+02468                       	.globl	_eMeasureMode
+02469                       	.globl	_eBinding_Status
+02470                       	.globl	_Enter_PrepareSleep_Flag
+02471                       	.globl	_sButton
+02472                       	.globl	_sTimeStamp
+02473                       	.globl	_eButton_Status
+02474                       	.globl	_sLVD
+02475                       	.globl	_sADC
+02476                       	.globl	_eADCChannel
+02477                       	.globl	_eSystem_Mode
+02478                       	.globl	_eBuzzer_Status
+02479                       	.globl	_Flag_No_Buzzer
+02480                       	.globl	_sMemory
+02481                       	.globl	_sMemoryFlag
+02482                       	.globl	_sActual
+02483                       	.globl	_sForecast
+02484                       	.globl	_sTempCal
+02485                       	.globl	_eMeas_Status
+02486                       	.globl	_sActual_Forecast
+02487                       	.globl	_eTo_Actual_Ways
+02488                       	.globl	_eBle_Sta
+02489                       	.globl	_sBleStatus
+02490                       	.globl	_eBacklight_Status
+02491                       	.globl	_sBacklight
+02492                       	.globl	_R_Table
+02493                       	.globl	_CloseTable
+02494                       	.globl	__cptrget1
+02495                       
+02496                       	.globl STK07
+02497                       	.globl STK07_SAVE
+02498                       	.globl STK06
+02499                       	.globl STK06_SAVE
+02500                       	.globl STK05
+02501                       	.globl STK05_SAVE
+02502                       	.globl STK04
+02503                       	.globl STK04_SAVE
+02504                       	.globl STK03
+02505                       	.globl STK03_SAVE
+02506                       	.globl STK02
+02507                       	.globl STK02_SAVE
+02508                       	.globl STK01
+02509                       	.globl STK01_SAVE
+02510                       	.globl STK00
+02511                       	.globl STK00_SAVE
+02512                       ;--------------------------------------------------------
+02513                       ; global -1 declarations
+02514                       ;--------------------------------------------------------
+02515                       	.globl	_DispUnit
+02516                       	.globl	_DispDelta
+02517                       	.globl	_DispNum
+02518                       	.globl	_Disp_Bat
+02519                       	.globl	_Disp_UnitFlash
+02520                       	.globl	_Disp_DynamicDash
+02521                       	.globl	_Disp_DynamicForecastSymbol
+02522                       	.globl	_Disp_BleSymbol
+02523                       	.globl	_UnitExchange_Display
+02524                       	.globl	_Off_Display
+02525                       	.globl	_PreCalibration_Display
+02526                       	.globl	_Calibration_Display
+02527                       	.globl	_CalibrationOK_Display
+02528                       	.globl	_RecentTemp_Display
+02529                       	.globl	_MemTempNumber_Display
+02530                       	.globl	_MemTempValue_Display
+02531                       	.globl	_CurrentMode_Display
+02532                       	.globl	_ModeExchange_Display
+02533                       	.globl	_Binding_Display
+02534                       	.globl	_EMC_Update_Temp_Fast
+02535                       	.globl	_TempDetecting_Display
+02536                       	.globl	_Err_Disp
+02537                       	.globl	_MeasedTemp_Disp
+02538                       	.globl	_eErr
+02539                       	.globl	_eDisplay_Interfaces
+02540                       	.globl	_UnitExchangeCompleted
+02541                       	.globl	_ERR
+02542                       	.globl	_NUM_CODE
+02543                       
+02544                       	.globl	_memcpy
+02545                       ;--------------------------------------------------------
+02546                       ; global -2 definitions
+02547                       ;--------------------------------------------------------
+02548                       	.area DSEG(DATA)
+02549 0000 --               _eErr:	.ds	1
+02550                       
+02551                       	.area DSEG(DATA)
+02552 0001 --               _eDisplay_Interfaces:	.ds	1
+02553                       
+02554                       	.area DSEG(DATA)
+02555 0002 --               _UnitExchangeCompleted:	.ds	1
+02556                       
+02557                       	.area DSEG(DATA)
+02558 0003 --               _ERR:	.ds	9
+02559                       
+02560                       	.area DSEG(DATA)
+02561                       __SWTGTID	.equ	0xA6A6B2CF
+02562                       
+02563                       	.area DSEG(DATA)
+02564                       _INDF0	.equ	0x0
+02565                       
+02566                       	.area DSEG(DATA)
+02567                       _POINC0	.equ	0x1
+02568                       
+02569                       	.area DSEG(DATA)
+02570                       _PODEC0	.equ	0x2
+02571                       
+02572                       	.area DSEG(DATA)
+02573                       _PRINC0	.equ	0x3
+02574                       
+02575                       	.area DSEG(DATA)
+02576                       _PLUSW0	.equ	0x4
+02577                       
+02578                       	.area DSEG(DATA)
+02579                       _INDF1	.equ	0x5
+02580                       
+02581                       	.area DSEG(DATA)
+02582                       _POINC1	.equ	0x6
+02583                       
+02584                       	.area DSEG(DATA)
+02585                       _PODEC1	.equ	0x7
+02586                       
+02587                       	.area DSEG(DATA)
+02588                       _PRINC1	.equ	0x8
+02589                       
+02590                       	.area DSEG(DATA)
+02591                       _PLUSW1	.equ	0x9
+02592                       
+02593                       	.area DSEG(DATA)
+02594                       _INDF2	.equ	0xA
+02595                       
+02596                       	.area DSEG(DATA)
+02597                       _POINC2	.equ	0xB
+02598                       
+02599                       	.area DSEG(DATA)
+02600                       _PODEC2	.equ	0xC
+02601                       
+02602                       	.area DSEG(DATA)
+02603                       _PRINC2	.equ	0xD
+02604                       
+02605                       	.area DSEG(DATA)
+02606                       _PLUSW2	.equ	0xE
+02607                       
+02608                       	.area DSEG(DATA)
+02609                       _FSR0H	.equ	0xF
+02610                       
+02611                       	.area DSEG(DATA)
+02612                       _FSR0L	.equ	0x10
+02613                       
+02614                       	.area DSEG(DATA)
+02615                       _FSR1H	.equ	0x11
+02616                       
+02617                       	.area DSEG(DATA)
+02618                       _FSR1L	.equ	0x12
+02619                       
+02620                       	.area DSEG(DATA)
+02621                       _FSR2H	.equ	0x13
+02622                       
+02623                       	.area DSEG(DATA)
+02624                       _FSR2L	.equ	0x14
+02625                       
+02626                       	.area DSEG(DATA)
+02627                       _TOSH	.equ	0x16
+02628                       
+02629                       	.area DSEG(DATA)
+02630                       _TOSL	.equ	0x17
+02631                       
+02632                       	.area DSEG(DATA)
+02633                       _SKCN	.equ	0x18
+02634                       
+02635                       	.area DSEG(DATA)
+02636                       _PCLATH	.equ	0x1A
+02637                       
+02638                       	.area DSEG(DATA)
+02639                       _PCLATL	.equ	0x1B
+02640                       
+02641                       	.area DSEG(DATA)
+02642                       _TBLPTRH	.equ	0x1D
+02643                       
+02644                       	.area DSEG(DATA)
+02645                       _TBLPTRL	.equ	0x1E
+02646                       
+02647                       	.area DSEG(DATA)
+02648                       _TBLDH	.equ	0x1F
+02649                       
+02650                       	.area DSEG(DATA)
+02651                       _TBLDL	.equ	0x20
+02652                       
+02653                       	.area DSEG(DATA)
+02654                       _PRODH	.equ	0x21
+02655                       
+02656                       	.area DSEG(DATA)
+02657                       _PRODL	.equ	0x22
+02658                       
+02659                       	.area DSEG(DATA)
+02660                       _INTE0	.equ	0x23
+02661                       
+02662                       	.area DSEG(DATA)
+02663                       _INTE1	.equ	0x24
+02664                       
+02665                       	.area DSEG(DATA)
+02666                       _INTE2	.equ	0x25
+02667                       
+02668                       	.area DSEG(DATA)
+02669                       _INTF0	.equ	0x26
+02670                       
+02671                       	.area DSEG(DATA)
+02672                       _INTF1	.equ	0x27
+02673                       
+02674                       	.area DSEG(DATA)
+02675                       _INTF2	.equ	0x28
+02676                       
+02677                       	.area DSEG(DATA)
+02678                       _WREG	.equ	0x29
+02679                       
+02680                       	.area DSEG(DATA)
+02681                       _BSRCN	.equ	0x2A
+02682                       
+02683                       	.area DSEG(DATA)
+02684                       _STATUS	.equ	0x2B
+02685                       
+02686                       	.area DSEG(DATA)
+02687                       _MSTAT	.equ	0x2B
+02688                       
+02689                       	.area DSEG(DATA)
+02690                       _PSTAT	.equ	0x2C
+02691                       
+02692                       	.area DSEG(DATA)
+02693                       _BIECN	.equ	0x2E
+02694                       
+02695                       	.area DSEG(DATA)
+02696                       _BIEARH	.equ	0x2F
+02697                       
+02698                       	.area DSEG(DATA)
+02699                       _BIEARL	.equ	0x30
+02700                       
+02701                       	.area DSEG(DATA)
+02702                       _BIEDRH	.equ	0x31
+02703                       
+02704                       	.area DSEG(DATA)
+02705                       _BIEDRL	.equ	0x32
+02706                       
+02707                       	.area DSEG(DATA)
+02708                       _PWRCN	.equ	0x33
+02709                       
+02710                       	.area DSEG(DATA)
+02711                       _OSCCN0	.equ	0x34
+02712                       
+02713                       	.area DSEG(DATA)
+02714                       _OSCCN1	.equ	0x35
+02715                       
+02716                       	.area DSEG(DATA)
+02717                       _OSCCN2	.equ	0x36
+02718                       
+02719                       	.area DSEG(DATA)
+02720                       _CSFCN0	.equ	0x37
+02721                       
+02722                       	.area DSEG(DATA)
+02723                       _CSFCN1	.equ	0x38
+02724                       
+02725                       	.area DSEG(DATA)
+02726                       _WDTCN	.equ	0x39
+02727                       
+02728                       	.area DSEG(DATA)
+02729                       _AD1H	.equ	0x3A
+02730                       
+02731                       	.area DSEG(DATA)
+02732                       _AD1M	.equ	0x3B
+02733                       
+02734                       	.area DSEG(DATA)
+02735                       _AD1L	.equ	0x3C
+02736                       
+02737                       	.area DSEG(DATA)
+02738                       _AD1CN0	.equ	0x3D
+02739                       
+02740                       	.area DSEG(DATA)
+02741                       _AD1CN1	.equ	0x3E
+02742                       
+02743                       	.area DSEG(DATA)
+02744                       _AD1CN2	.equ	0x3F
+02745                       
+02746                       	.area DSEG(DATA)
+02747                       _AD1CN3	.equ	0x40
+02748                       
+02749                       	.area DSEG(DATA)
+02750                       _AD1CN4	.equ	0x41
+02751                       
+02752                       	.area DSEG(DATA)
+02753                       _AD1CN5	.equ	0x42
+02754                       
+02755                       	.area DSEG(DATA)
+02756                       _LVDCN	.equ	0x43
+02757                       
+02758                       	.area DSEG(DATA)
+02759                       _TMA1CN	.equ	0x44
+02760                       
+02761                       	.area DSEG(DATA)
+02762                       _TMA1R	.equ	0x45
+02763                       
+02764                       	.area DSEG(DATA)
+02765                       _TMA1C	.equ	0x46
+02766                       
+02767                       	.area DSEG(DATA)
+02768                       _TB1FLAG	.equ	0x47
+02769                       
+02770                       	.area DSEG(DATA)
+02771                       _TB1CN0	.equ	0x48
+02772                       
+02773                       	.area DSEG(DATA)
+02774                       _TB1CN1	.equ	0x49
+02775                       
+02776                       	.area DSEG(DATA)
+02777                       _TB1RH	.equ	0x4A
+02778                       
+02779                       	.area DSEG(DATA)
+02780                       _TB1RL	.equ	0x4B
+02781                       
+02782                       	.area DSEG(DATA)
+02783                       _TB1C0H	.equ	0x4C
+02784                       
+02785                       	.area DSEG(DATA)
+02786                       _TB1C0L	.equ	0x4D
+02787                       
+02788                       	.area DSEG(DATA)
+02789                       _TB1C1H	.equ	0x4E
+02790                       
+02791                       	.area DSEG(DATA)
+02792                       _TB1C1L	.equ	0x4F
+02793                       
+02794                       	.area DSEG(DATA)
+02795                       _TB1C2H	.equ	0x50
+02796                       
+02797                       	.area DSEG(DATA)
+02798                       _TB1C2L	.equ	0x51
+02799                       
+02800                       	.area DSEG(DATA)
+02801                       _TC1CN0	.equ	0x52
+02802                       
+02803                       	.area DSEG(DATA)
+02804                       _PT1	.equ	0x53
+02805                       
+02806                       	.area DSEG(DATA)
+02807                       _TRISC1	.equ	0x54
+02808                       
+02809                       	.area DSEG(DATA)
+02810                       _PT1DA	.equ	0x55
+02811                       
+02812                       	.area DSEG(DATA)
+02813                       _PT1PU	.equ	0x56
+02814                       
+02815                       	.area DSEG(DATA)
+02816                       _PT1M1	.equ	0x57
+02817                       
+02818                       	.area DSEG(DATA)
+02819                       _PT1INT	.equ	0x58
+02820                       
+02821                       	.area DSEG(DATA)
+02822                       _PT1INTE	.equ	0x59
+02823                       
+02824                       	.area DSEG(DATA)
+02825                       _PT1INTF	.equ	0x5A
+02826                       
+02827                       	.area DSEG(DATA)
+02828                       _PT2	.equ	0x5B
+02829                       
+02830                       	.area DSEG(DATA)
+02831                       _TRISC2	.equ	0x5C
+02832                       
+02833                       	.area DSEG(DATA)
+02834                       _PT2DA	.equ	0x5D
+02835                       
+02836                       	.area DSEG(DATA)
+02837                       _PT2PU	.equ	0x5E
+02838                       
+02839                       	.area DSEG(DATA)
+02840                       _PT2INT	.equ	0x5F
+02841                       
+02842                       	.area DSEG(DATA)
+02843                       _PT2INTE	.equ	0x60
+02844                       
+02845                       	.area DSEG(DATA)
+02846                       _PT2INTF	.equ	0x61
+02847                       
+02848                       	.area DSEG(DATA)
+02849                       _PT6	.equ	0x62
+02850                       
+02851                       	.area DSEG(DATA)
+02852                       _TRISC6	.equ	0x63
+02853                       
+02854                       	.area DSEG(DATA)
+02855                       _PT6DA	.equ	0x64
+02856                       
+02857                       	.area DSEG(DATA)
+02858                       _PT6PU	.equ	0x65
+02859                       
+02860                       	.area DSEG(DATA)
+02861                       _PT7	.equ	0x66
+02862                       
+02863                       	.area DSEG(DATA)
+02864                       _TRISC7	.equ	0x67
+02865                       
+02866                       	.area DSEG(DATA)
+02867                       _PT7DA	.equ	0x68
+02868                       
+02869                       	.area DSEG(DATA)
+02870                       _PT7PU	.equ	0x69
+02871                       
+02872                       	.area DSEG(DATA)
+02873                       _PT8	.equ	0x6A
+02874                       
+02875                       	.area DSEG(DATA)
+02876                       _TRISC8	.equ	0x6B
+02877                       
+02878                       	.area DSEG(DATA)
+02879                       _PT8DA	.equ	0x6C
+02880                       
+02881                       	.area DSEG(DATA)
+02882                       _PT8PU	.equ	0x6D
+02883                       
+02884                       	.area DSEG(DATA)
+02885                       _SSPCN0	.equ	0x6E
+02886                       
+02887                       	.area DSEG(DATA)
+02888                       _SSPSTA0	.equ	0x6F
+02889                       
+02890                       	.area DSEG(DATA)
+02891                       _SSPBUF0	.equ	0x70
+02892                       
+02893                       	.area DSEG(DATA)
+02894                       _CFG0	.equ	0x71
+02895                       
+02896                       	.area DSEG(DATA)
+02897                       _ACT0	.equ	0x72
+02898                       
+02899                       	.area DSEG(DATA)
+02900                       _STA0	.equ	0x73
+02901                       
+02902                       	.area DSEG(DATA)
+02903                       _CRG0	.equ	0x74
+02904                       
+02905                       	.area DSEG(DATA)
+02906                       _TOC0	.equ	0x75
+02907                       
+02908                       	.area DSEG(DATA)
+02909                       _RDB0	.equ	0x76
+02910                       
+02911                       	.area DSEG(DATA)
+02912                       _TDB0	.equ	0x77
+02913                       
+02914                       	.area DSEG(DATA)
+02915                       _SID0	.equ	0x78
+02916                       
+02917                       	.area DSEG(DATA)
+02918                       _UR0CN	.equ	0x79
+02919                       
+02920                       	.area DSEG(DATA)
+02921                       _UR0STA	.equ	0x7A
+02922                       
+02923                       	.area DSEG(DATA)
+02924                       _BA0CN	.equ	0x7B
+02925                       
+02926                       	.area DSEG(DATA)
+02927                       _BG0RH	.equ	0x7C
+02928                       
+02929                       	.area DSEG(DATA)
+02930                       _BG0RL	.equ	0x7D
+02931                       
+02932                       	.area DSEG(DATA)
+02933                       _TX0R	.equ	0x7E
+02934                       
+02935                       	.area DSEG(DATA)
+02936                       _RC0REG	.equ	0x7F
+02937                       
+02938                       	.area DSEG(DATA)
+02939                       _LCDCN1	.equ	0x180
+02940                       
+02941                       	.area DSEG(DATA)
+02942                       _LCDCN2	.equ	0x181
+02943                       
+02944                       	.area DSEG(DATA)
+02945                       _LCDCN3	.equ	0x182
+02946                       
+02947                       	.area DSEG(DATA)
+02948                       _LCDCN4	.equ	0x183
+02949                       
+02950                       	.area DSEG(DATA)
+02951                       _LCDCN5	.equ	0x184
+02952                       
+02953                       	.area DSEG(DATA)
+02954                       _LCDCN6	.equ	0x185
+02955                       
+02956                       	.area DSEG(DATA)
+02957                       _LCDCN7	.equ	0x186
+02958                       
+02959                       	.area DSEG(DATA)
+02960                       _LCDCN8	.equ	0x187
+02961                       
+02962                       	.area DSEG(DATA)
+02963                       _LCD0	.equ	0x188
+02964                       
+02965                       	.area DSEG(DATA)
+02966                       _LCD1	.equ	0x189
+02967                       
+02968                       	.area DSEG(DATA)
+02969                       _LCD2	.equ	0x18A
+02970                       
+02971                       	.area DSEG(DATA)
+02972                       _LCD3	.equ	0x18B
+02973                       
+02974                       	.area DSEG(DATA)
+02975                       _LCD4	.equ	0x18C
+02976                       
+02977                       	.area DSEG(DATA)
+02978                       _LCD5	.equ	0x18D
+02979                       
+02980                       	.area DSEG(DATA)
+02981                       _LCD6	.equ	0x18E
+02982                       
+02983                       	.area DSEG(DATA)
+02984                       _LCD7	.equ	0x18F
+02985                       
+02986                       	.area DSEG(DATA)
+02987                       _LCD8	.equ	0x190
+02988                       
+02989                       	.area DSEG(DATA)
+02990                       _LCD9	.equ	0x191
+02991                       
+02992                       	.area DSEG(DATA)
+02993                       _UR2CN	.equ	0x192
+02994                       
+02995                       	.area DSEG(DATA)
+02996                       _UR2STA	.equ	0x193
+02997                       
+02998                       	.area DSEG(DATA)
+02999                       _BA2CN	.equ	0x194
+03000                       
+03001                       	.area DSEG(DATA)
+03002                       _BG2RH	.equ	0x195
+03003                       
+03004                       	.area DSEG(DATA)
+03005                       _BG2RL	.equ	0x196
+03006                       
+03007                       	.area DSEG(DATA)
+03008                       _TX2R	.equ	0x197
+03009                       
+03010                       	.area DSEG(DATA)
+03011                       _RC2REG	.equ	0x198
+03012                       
+03013                       	.area DSEG(DATA)
+03014                       _TMA2R	.equ	0x1E8
+03015                       
+03016                       	.area DSEG(DATA)
+03017                       _TMA2C	.equ	0x1E9
+03018                       
+03019                       	.area DSEG(DATA)
+03020                       _LEDCN	.equ	0x1EA
+03021                       
+03022                       	.area DSEG(DATA)
+03023                       _IQ0	.equ	0x1EB
+03024                       
+03025                       	.area DSEG(DATA)
+03026                       _IQ1	.equ	0x1EC
+03027                       
+03028                       	.area DSEG(DATA)
+03029                       _DGCON1	.equ	0x1ED
+03030                       
+03031                       	.area DSEG(DATA)
+03032                       _DGCON2	.equ	0x1EE
+03033                       
+03034                       	.area DSEG(DATA)
+03035                       _ADCRH	.equ	0x3A
+03036                       
+03037                       	.area DSEG(DATA)
+03038                       _ADCRM	.equ	0x3B
+03039                       
+03040                       	.area DSEG(DATA)
+03041                       _ADCRL	.equ	0x3C
+03042                       
+03043                       ;--------------------------------------------------------
+03044                       ; absolute symbol definitions
+03045                       ;--------------------------------------------------------
+03046                       ;--------------------------------------------------------
+03047                       ; compiler-defined variables
+03048                       ;--------------------------------------------------------
+03049                       	.area IDATA (DATA,REL,CON); pre-def
+03050                       	.area IDATAROM (CODE,REL,CON); pre-def
+03051                       	.area UDATA (DATA,REL,CON); pre-def
+03052                       	.area UDATA (DATA,REL,CON) ;UDL_App_LCD_0	udata
+03053 0000 --               r0x1096:	.ds	1
+03054 0001 --               r0x1099:	.ds	1
+03055 0002 --               r0x109B:	.ds	1
+03056 0003 --               r0x10BD:	.ds	1
+03057 0004 --               r0x10D0:	.ds	1
+03058 0005 --               r0x10D1:	.ds	1
+03059                       	.area LOCALSTK (STK); local stack var
+03060 0000 --               _DispDelta_STK00:	.ds	1
+03061                       	.globl _DispDelta_STK00
+03062 0001 --               _DispNum_STK00:	.ds	1
+03063                       	.globl _DispNum_STK00
+03064                       	.globl __divuint_STK02
+03065                       	.globl __divuint_STK01
+03066                       	.globl __divuint_STK00
+03067 0002 --               _DispNum_NumDisp_65536_388:	.ds	5
+03068                       	.globl __moduint_STK02
+03069                       	.globl __moduint_STK01
+03070                       	.globl __moduint_STK00
+03071                       	.globl _memchrn_STK02
+03072                       	.globl _memchrn_STK01
+03073                       	.globl _memchrn_STK00
+03074                       	.globl _Centigrade_Convert_Fahrenheit_STK00
+03075                       	.globl _Disp_Code_STK00
+03076                       ;--------------------------------------------------------
+03077                       ; initialized data
+03078                       ;--------------------------------------------------------
+03079                       
+03080                       	.area	CONST   (CODE)	 ;App_LCD-0-code, const
+03081                       
+03082 0000                  _NUM_CODE:
+03083 0000 F5              	.db #0xf5	; 245
+03084 0000 60              	.db #0x60	; 96
+03085 0001 B6              	.db #0xb6	; 182
+03086 0001 F2              	.db #0xf2	; 242
+03087 0002 63              	.db #0x63	; 99	'c'
+03088 0002 D3              	.db #0xd3	; 211
+03089 0003 D7              	.db #0xd7	; 215
+03090 0003 70              	.db #0x70	; 112	'p'
+03091 0004 F7              	.db #0xf7	; 247
+03092 0004 F3              	.db #0xf3	; 243
+03093 0005 00              	.db #0x00	; 0
+03094                       
+03095                       ;--------------------------------------------------------
+03096                       ; initialized data - mirror
+03097                       ;--------------------------------------------------------
+03098                       
+03099                       	;Following is optimization info, 
+03100                       	;xxcdbxxW:dst:src+offset:srclit:just-remove
+03101                       	;--cdb--W:r0x10D0:NULL+0:-1:1
+03102                       	;--cdb--W:r0x10D1:NULL+0:-1:1
+03103                       	;--cdb--W:r0x10CF:NULL+0:-1:1
+03104                       	;--cdb--W:r0x10CA:NULL+0:-1:1
+03105                       	;--cdb--W:r0x10CB:NULL+0:-1:1
+03106                       	;--cdb--W:r0x10C1:NULL+0:-1:1
+03107                       	;--cdb--W:r0x10C2:NULL+0:-1:1
+03108                       	;--cdb--W:r0x10C2:STK00+0:-1:0
+03109                       	;--cdb--W:r0x10C4:STK01+0:-1:0
+03110                       	;--cdb--W:r0x10BD:NULL+0:-1:1
+03111                       	;--cdb--W:r0x10BE:NULL+0:-1:1
+03112                       	;--cdb--W:r0x10BF:NULL+0:0:0
+03113                       	;--cdb--W:r0x10BF:NULL+0:-1:1
+03114                       	;--cdb--W:r0x10B6:NULL+0:-1:1
+03115                       	;--cdb--W:r0x10B7:NULL+0:-1:1
+03116                       	;--cdb--W:r0x10B7:STK00+0:-1:0
+03117                       	;--cdb--W:r0x10B9:STK01+0:-1:0
+03118                       	;--cdb--W:r0x10AF:NULL+0:-1:1
+03119                       	;--cdb--W:r0x10B0:NULL+0:-1:1
+03120                       	;--cdb--W:r0x109B:NULL+0:-1:1
+03121                       	;--cdb--W:r0x109A:NULL+0:-1:1
+03122                       	;--cdb--W:r0x109C:NULL+0:-1:1
+03123                       	;--cdb--W:r0x1099:NULL+0:-1:1
+03124                       	;--cdb--W:_DispNum_STK00:NULL+0:-1:1
+03125                       	;--cdb--W:r0x109A:STK00+0:-1:0
+03126                       	end

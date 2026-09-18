@@ -1,0 +1,10 @@
+$MOD:Readme:".\obj\Readme.rel"
+$VER:SDASHYA_201
+$ASFROM:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
+$SRC:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src\obj\Readme.asm"
+$AREA:_CODE:1:0:0:0
+$AREA:CCODE:1:0:0:0
+$AREA:IDATA:2:0:0:0
+$AREA:IDATAROM:1:0:0:0
+$AREA:UDATA:2:0:0:0
+$ENDMOD:Readme:".\obj\Readme.rel"

@@ -1,0 +1,774 @@
+0001                       ;--------------------------------------------------------
+0002                       ; File Created by SDCC : free open source ISO C Compiler
+0003                       ; Version 4.5.2 #bf155f72c (MSVC)
+0004                       ;--------------------------------------------------------
+0005                       ; Port for HYCON CPU
+0006                       ;--------------------------------------------------------
+0007                       ;	;CCFROM:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
+0008                       ;;	.file	"C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"
+0009                       	.module UART_56
+0010                       	;.list	p=HY17P56
+0011                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+0012                       	;--cdb--F:UART_56:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0,0,0,0
+0013                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+0014                       	;--cdb--F:UART_56:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0,0,0,0
+0015                       ;--------------------------------------------------------
+0016                       ; overlayable items in internal ram 
+0017                       ;--------------------------------------------------------
+0018                       ;	udata_ovr
+0019                       .area CCODE (code,REL,CON) ; UART_56-code 
+0020                       .globl _UART2_BGRSet
+0021                       
+0022                       ;--------------------------------------------------------
+0023 0000 --              	.FUNC _UART2_BGRSet:$r:0:2:$L:_UART2_BGRSet_STK00
+0024                       ;--------------------------------------------------------
+0025                       ;	;.line	29; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RH = BGR >> 8;
+0026 0000                  _UART2_BGRSet:	;Function start
+0027 0000 6695             	MVF	_BG2RH,1,0
+0028                       ;	;.line	30; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RL= (0x00FF & BGR);
+0029 0001 6400             	MVF	_UART2_BGRSet_STK00,0,0
+0030 0002 6696             	MVF	_BG2RL,1,0
+0031                       ;	;.line	31; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
+0032 0003 000A             	RET	
+0033                       ; exit point of _UART2_BGRSet
+0034 0004 --              	.ENDFUNC	_UART2_BGRSet
+0035                       ;--------------------------------------------------------
+0036                       
+0037                       .globl _UART0_BGRSet
+0038                       
+0039                       ;--------------------------------------------------------
+0040 0004 --              	.FUNC _UART0_BGRSet:$r:0:2:$L:_UART0_BGRSet_STK00
+0041                       ;--------------------------------------------------------
+0042                       ;	;.line	23; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RH = BGR >> 8;
+0043 0004                  _UART0_BGRSet:	;Function start
+0044 0004 667C             	MVF	_BG0RH,1,0
+0045                       ;	;.line	24; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RL= (0x00FF & BGR);
+0046 0005 6400             	MVF	_UART0_BGRSet_STK00,0,0
+0047 0006 667D             	MVF	_BG0RL,1,0
+0048                       ;	;.line	25; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
+0049 0007 000A             	RET	
+0050                       ; exit point of _UART0_BGRSet
+0051 0008 --              	.ENDFUNC	_UART0_BGRSet
+0052                       ;--------------------------------------------------------
+0053                       
+0054                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+0055                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+0056                       	;--cdb--S:G$FSR0$0$0({2}DD,SC:U),E,0,0
+0057                       	;--cdb--S:G$FSR1$0$0({2}DD,SC:U),E,0,0
+0058                       	;--cdb--S:G$FSR2$0$0({2}DD,SC:U),E,0,0
+0059                       	;--cdb--S:G$ADCR$0$0({4}SL:SL),E,0,0
+0060                       	;--cdb--S:G$_SWTGTID$0$0({1}SC:U),I,0,0
+0061                       	;--cdb--S:G$INDF0$0$0({1}SC:U),I,0,0
+0062                       	;--cdb--S:G$POINC0$0$0({1}SC:U),I,0,0
+0063                       	;--cdb--S:G$PODEC0$0$0({1}SC:U),I,0,0
+0064                       	;--cdb--S:G$PRINC0$0$0({1}SC:U),I,0,0
+0065                       	;--cdb--S:G$PLUSW0$0$0({1}SC:U),I,0,0
+0066                       	;--cdb--S:G$INDF1$0$0({1}SC:U),I,0,0
+0067                       	;--cdb--S:G$POINC1$0$0({1}SC:U),I,0,0
+0068                       	;--cdb--S:G$PODEC1$0$0({1}SC:U),I,0,0
+0069                       	;--cdb--S:G$PRINC1$0$0({1}SC:U),I,0,0
+0070                       	;--cdb--S:G$PLUSW1$0$0({1}SC:U),I,0,0
+0071                       	;--cdb--S:G$INDF2$0$0({1}SC:U),I,0,0
+0072                       	;--cdb--S:G$POINC2$0$0({1}SC:U),I,0,0
+0073                       	;--cdb--S:G$PODEC2$0$0({1}SC:U),I,0,0
+0074                       	;--cdb--S:G$PRINC2$0$0({1}SC:U),I,0,0
+0075                       	;--cdb--S:G$PLUSW2$0$0({1}SC:U),I,0,0
+0076                       	;--cdb--S:G$FSR0H$0$0({1}SC:U),I,0,0
+0077                       	;--cdb--S:G$FSR0L$0$0({1}SC:U),I,0,0
+0078                       	;--cdb--S:G$FSR1H$0$0({1}SC:U),I,0,0
+0079                       	;--cdb--S:G$FSR1L$0$0({1}SC:U),I,0,0
+0080                       	;--cdb--S:G$FSR2H$0$0({1}SC:U),I,0,0
+0081                       	;--cdb--S:G$FSR2L$0$0({1}SC:U),I,0,0
+0082                       	;--cdb--S:G$TOSH$0$0({1}SC:U),I,0,0
+0083                       	;--cdb--S:G$TOSL$0$0({1}SC:U),I,0,0
+0084                       	;--cdb--S:G$SKCN$0$0({1}SC:U),I,0,0
+0085                       	;--cdb--S:G$PCLATH$0$0({1}SC:U),I,0,0
+0086                       	;--cdb--S:G$PCLATL$0$0({1}SC:U),I,0,0
+0087                       	;--cdb--S:G$TBLPTRH$0$0({1}SC:U),I,0,0
+0088                       	;--cdb--S:G$TBLPTRL$0$0({1}SC:U),I,0,0
+0089                       	;--cdb--S:G$TBLDH$0$0({1}SC:U),I,0,0
+0090                       	;--cdb--S:G$TBLDL$0$0({1}SC:U),I,0,0
+0091                       	;--cdb--S:G$PRODH$0$0({1}SC:U),I,0,0
+0092                       	;--cdb--S:G$PRODL$0$0({1}SC:U),I,0,0
+0093                       	;--cdb--S:G$INTE0$0$0({1}SC:U),I,0,0
+0094                       	;--cdb--S:G$INTE1$0$0({1}SC:U),I,0,0
+0095                       	;--cdb--S:G$INTE2$0$0({1}SC:U),I,0,0
+0096                       	;--cdb--S:G$INTF0$0$0({1}SC:U),I,0,0
+0097                       	;--cdb--S:G$INTF1$0$0({1}SC:U),I,0,0
+0098                       	;--cdb--S:G$INTF2$0$0({1}SC:U),I,0,0
+0099                       	;--cdb--S:G$WREG$0$0({1}SC:U),I,0,0
+0100                       	;--cdb--S:G$BSRCN$0$0({1}SC:U),I,0,0
+0101                       	;--cdb--S:G$STATUS$0$0({1}SC:U),I,0,0
+0102                       	;--cdb--S:G$MSTAT$0$0({1}SC:U),I,0,0
+0103                       	;--cdb--S:G$PSTAT$0$0({1}SC:U),I,0,0
+0104                       	;--cdb--S:G$BIECN$0$0({1}SC:U),I,0,0
+0105                       	;--cdb--S:G$BIEARH$0$0({1}SC:U),I,0,0
+0106                       	;--cdb--S:G$BIEARL$0$0({1}SC:U),I,0,0
+0107                       	;--cdb--S:G$BIEDRH$0$0({1}SC:U),I,0,0
+0108                       	;--cdb--S:G$BIEDRL$0$0({1}SC:U),I,0,0
+0109                       	;--cdb--S:G$PWRCN$0$0({1}SC:U),I,0,0
+0110                       	;--cdb--S:G$OSCCN0$0$0({1}SC:U),I,0,0
+0111                       	;--cdb--S:G$OSCCN1$0$0({1}SC:U),I,0,0
+0112                       	;--cdb--S:G$OSCCN2$0$0({1}SC:U),I,0,0
+0113                       	;--cdb--S:G$CSFCN0$0$0({1}SC:U),I,0,0
+0114                       	;--cdb--S:G$CSFCN1$0$0({1}SC:U),I,0,0
+0115                       	;--cdb--S:G$WDTCN$0$0({1}SC:U),I,0,0
+0116                       	;--cdb--S:G$AD1H$0$0({1}SC:U),I,0,0
+0117                       	;--cdb--S:G$AD1M$0$0({1}SC:U),I,0,0
+0118                       	;--cdb--S:G$AD1L$0$0({1}SC:U),I,0,0
+0119                       	;--cdb--S:G$AD1CN0$0$0({1}SC:U),I,0,0
+0120                       	;--cdb--S:G$AD1CN1$0$0({1}SC:U),I,0,0
+0121                       	;--cdb--S:G$AD1CN2$0$0({1}SC:U),I,0,0
+0122                       	;--cdb--S:G$AD1CN3$0$0({1}SC:U),I,0,0
+0123                       	;--cdb--S:G$AD1CN4$0$0({1}SC:U),I,0,0
+0124                       	;--cdb--S:G$AD1CN5$0$0({1}SC:U),I,0,0
+0125                       	;--cdb--S:G$LVDCN$0$0({1}SC:U),I,0,0
+0126                       	;--cdb--S:G$TMA1CN$0$0({1}SC:U),I,0,0
+0127                       	;--cdb--S:G$TMA1R$0$0({1}SC:U),I,0,0
+0128                       	;--cdb--S:G$TMA1C$0$0({1}SC:U),I,0,0
+0129                       	;--cdb--S:G$TB1FLAG$0$0({1}SC:U),I,0,0
+0130                       	;--cdb--S:G$TB1CN0$0$0({1}SC:U),I,0,0
+0131                       	;--cdb--S:G$TB1CN1$0$0({1}SC:U),I,0,0
+0132                       	;--cdb--S:G$TB1RH$0$0({1}SC:U),I,0,0
+0133                       	;--cdb--S:G$TB1RL$0$0({1}SC:U),I,0,0
+0134                       	;--cdb--S:G$TB1C0H$0$0({1}SC:U),I,0,0
+0135                       	;--cdb--S:G$TB1C0L$0$0({1}SC:U),I,0,0
+0136                       	;--cdb--S:G$TB1C1H$0$0({1}SC:U),I,0,0
+0137                       	;--cdb--S:G$TB1C1L$0$0({1}SC:U),I,0,0
+0138                       	;--cdb--S:G$TB1C2H$0$0({1}SC:U),I,0,0
+0139                       	;--cdb--S:G$TB1C2L$0$0({1}SC:U),I,0,0
+0140                       	;--cdb--S:G$TC1CN0$0$0({1}SC:U),I,0,0
+0141                       	;--cdb--S:G$PT1$0$0({1}SC:U),I,0,0
+0142                       	;--cdb--S:G$TRISC1$0$0({1}SC:U),I,0,0
+0143                       	;--cdb--S:G$PT1DA$0$0({1}SC:U),I,0,0
+0144                       	;--cdb--S:G$PT1PU$0$0({1}SC:U),I,0,0
+0145                       	;--cdb--S:G$PT1M1$0$0({1}SC:U),I,0,0
+0146                       	;--cdb--S:G$PT1INT$0$0({1}SC:U),I,0,0
+0147                       	;--cdb--S:G$PT1INTE$0$0({1}SC:U),I,0,0
+0148                       	;--cdb--S:G$PT1INTF$0$0({1}SC:U),I,0,0
+0149                       	;--cdb--S:G$PT2$0$0({1}SC:U),I,0,0
+0150                       	;--cdb--S:G$TRISC2$0$0({1}SC:U),I,0,0
+0151                       	;--cdb--S:G$PT2DA$0$0({1}SC:U),I,0,0
+0152                       	;--cdb--S:G$PT2PU$0$0({1}SC:U),I,0,0
+0153                       	;--cdb--S:G$PT2INT$0$0({1}SC:U),I,0,0
+0154                       	;--cdb--S:G$PT2INTE$0$0({1}SC:U),I,0,0
+0155                       	;--cdb--S:G$PT2INTF$0$0({1}SC:U),I,0,0
+0156                       	;--cdb--S:G$PT6$0$0({1}SC:U),I,0,0
+0157                       	;--cdb--S:G$TRISC6$0$0({1}SC:U),I,0,0
+0158                       	;--cdb--S:G$PT6DA$0$0({1}SC:U),I,0,0
+0159                       	;--cdb--S:G$PT6PU$0$0({1}SC:U),I,0,0
+0160                       	;--cdb--S:G$PT7$0$0({1}SC:U),I,0,0
+0161                       	;--cdb--S:G$TRISC7$0$0({1}SC:U),I,0,0
+0162                       	;--cdb--S:G$PT7DA$0$0({1}SC:U),I,0,0
+0163                       	;--cdb--S:G$PT7PU$0$0({1}SC:U),I,0,0
+0164                       	;--cdb--S:G$PT8$0$0({1}SC:U),I,0,0
+0165                       	;--cdb--S:G$TRISC8$0$0({1}SC:U),I,0,0
+0166                       	;--cdb--S:G$PT8DA$0$0({1}SC:U),I,0,0
+0167                       	;--cdb--S:G$PT8PU$0$0({1}SC:U),I,0,0
+0168                       	;--cdb--S:G$SSPCN0$0$0({1}SC:U),I,0,0
+0169                       	;--cdb--S:G$SSPSTA0$0$0({1}SC:U),I,0,0
+0170                       	;--cdb--S:G$SSPBUF0$0$0({1}SC:U),I,0,0
+0171                       	;--cdb--S:G$CFG0$0$0({1}SC:U),I,0,0
+0172                       	;--cdb--S:G$ACT0$0$0({1}SC:U),I,0,0
+0173                       	;--cdb--S:G$STA0$0$0({1}SC:U),I,0,0
+0174                       	;--cdb--S:G$CRG0$0$0({1}SC:U),I,0,0
+0175                       	;--cdb--S:G$TOC0$0$0({1}SC:U),I,0,0
+0176                       	;--cdb--S:G$RDB0$0$0({1}SC:U),I,0,0
+0177                       	;--cdb--S:G$TDB0$0$0({1}SC:U),I,0,0
+0178                       	;--cdb--S:G$SID0$0$0({1}SC:U),I,0,0
+0179                       	;--cdb--S:G$UR0CN$0$0({1}SC:U),I,0,0
+0180                       	;--cdb--S:G$UR0STA$0$0({1}SC:U),I,0,0
+0181                       	;--cdb--S:G$BA0CN$0$0({1}SC:U),I,0,0
+0182                       	;--cdb--S:G$BG0RH$0$0({1}SC:U),I,0,0
+0183                       	;--cdb--S:G$BG0RL$0$0({1}SC:U),I,0,0
+0184                       	;--cdb--S:G$TX0R$0$0({1}SC:U),I,0,0
+0185                       	;--cdb--S:G$RC0REG$0$0({1}SC:U),I,0,0
+0186                       	;--cdb--S:G$LCDCN1$0$0({1}SC:U),I,0,0
+0187                       	;--cdb--S:G$LCDCN2$0$0({1}SC:U),I,0,0
+0188                       	;--cdb--S:G$LCDCN3$0$0({1}SC:U),I,0,0
+0189                       	;--cdb--S:G$LCDCN4$0$0({1}SC:U),I,0,0
+0190                       	;--cdb--S:G$LCDCN5$0$0({1}SC:U),I,0,0
+0191                       	;--cdb--S:G$LCDCN6$0$0({1}SC:U),I,0,0
+0192                       	;--cdb--S:G$LCDCN7$0$0({1}SC:U),I,0,0
+0193                       	;--cdb--S:G$LCDCN8$0$0({1}SC:U),I,0,0
+0194                       	;--cdb--S:G$LCD0$0$0({1}SC:U),I,0,0
+0195                       	;--cdb--S:G$LCD1$0$0({1}SC:U),I,0,0
+0196                       	;--cdb--S:G$LCD2$0$0({1}SC:U),I,0,0
+0197                       	;--cdb--S:G$LCD3$0$0({1}SC:U),I,0,0
+0198                       	;--cdb--S:G$LCD4$0$0({1}SC:U),I,0,0
+0199                       	;--cdb--S:G$LCD5$0$0({1}SC:U),I,0,0
+0200                       	;--cdb--S:G$LCD6$0$0({1}SC:U),I,0,0
+0201                       	;--cdb--S:G$LCD7$0$0({1}SC:U),I,0,0
+0202                       	;--cdb--S:G$LCD8$0$0({1}SC:U),I,0,0
+0203                       	;--cdb--S:G$LCD9$0$0({1}SC:U),I,0,0
+0204                       	;--cdb--S:G$UR2CN$0$0({1}SC:U),I,0,0
+0205                       	;--cdb--S:G$UR2STA$0$0({1}SC:U),I,0,0
+0206                       	;--cdb--S:G$BA2CN$0$0({1}SC:U),I,0,0
+0207                       	;--cdb--S:G$BG2RH$0$0({1}SC:U),I,0,0
+0208                       	;--cdb--S:G$BG2RL$0$0({1}SC:U),I,0,0
+0209                       	;--cdb--S:G$TX2R$0$0({1}SC:U),I,0,0
+0210                       	;--cdb--S:G$RC2REG$0$0({1}SC:U),I,0,0
+0211                       	;--cdb--S:G$TMA2R$0$0({1}SC:U),I,0,0
+0212                       	;--cdb--S:G$TMA2C$0$0({1}SC:U),I,0,0
+0213                       	;--cdb--S:G$LEDCN$0$0({1}SC:U),I,0,0
+0214                       	;--cdb--S:G$IQ0$0$0({1}SC:U),I,0,0
+0215                       	;--cdb--S:G$IQ1$0$0({1}SC:U),I,0,0
+0216                       	;--cdb--S:G$DGCON1$0$0({1}SC:U),I,0,0
+0217                       	;--cdb--S:G$DGCON2$0$0({1}SC:U),I,0,0
+0218                       	;--cdb--S:G$ADCRH$0$0({1}SC:U),I,0,0
+0219                       	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
+0220                       	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
+0221                       	;--cdb--S:LUART_56.UART0_BGRSet._UART0_BGRSet_BGR_10000_3$BGR$2710$3({2}SI:U),R,0,0,[_UART0_BGRSet_STK00,r0x108D]
+0222                       	;--cdb--S:LUART_56.UART2_BGRSet._UART2_BGRSet_BGR_10000_5$BGR$2710$5({2}SI:U),R,0,0,[_UART2_BGRSet_STK00,r0x1093]
+0223                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+0224                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+0225                       ;--------------------------------------------------------
+0226                       ; external declarations
+0227                       ;--------------------------------------------------------
+0228                       	.globl	_FSR0
+0229                       	.globl	_FSR1
+0230                       	.globl	_FSR2
+0231                       	.globl	_ADCR
+0232                       
+0233                       	.globl STK07
+0234                       	.globl STK07_SAVE
+0235                       	.globl STK06
+0236                       	.globl STK06_SAVE
+0237                       	.globl STK05
+0238                       	.globl STK05_SAVE
+0239                       	.globl STK04
+0240                       	.globl STK04_SAVE
+0241                       	.globl STK03
+0242                       	.globl STK03_SAVE
+0243                       	.globl STK02
+0244                       	.globl STK02_SAVE
+0245                       	.globl STK01
+0246                       	.globl STK01_SAVE
+0247                       	.globl STK00
+0248                       	.globl STK00_SAVE
+0249                       ;--------------------------------------------------------
+0250                       ; global -1 declarations
+0251                       ;--------------------------------------------------------
+0252                       	.globl	_UART2_BGRSet
+0253                       	.globl	_UART0_BGRSet
+0254                       
+0255                       	.globl	_memcpy
+0256                       ;--------------------------------------------------------
+0257                       ; global -2 definitions
+0258                       ;--------------------------------------------------------
+0259                       	.area DSEG(DATA)
+0260                       __SWTGTID	.equ	0xA6A6B2CF
+0261                       
+0262                       	.area DSEG(DATA)
+0263                       _INDF0	.equ	0x0
+0264                       
+0265                       	.area DSEG(DATA)
+0266                       _POINC0	.equ	0x1
+0267                       
+0268                       	.area DSEG(DATA)
+0269                       _PODEC0	.equ	0x2
+0270                       
+0271                       	.area DSEG(DATA)
+0272                       _PRINC0	.equ	0x3
+0273                       
+0274                       	.area DSEG(DATA)
+0275                       _PLUSW0	.equ	0x4
+0276                       
+0277                       	.area DSEG(DATA)
+0278                       _INDF1	.equ	0x5
+0279                       
+0280                       	.area DSEG(DATA)
+0281                       _POINC1	.equ	0x6
+0282                       
+0283                       	.area DSEG(DATA)
+0284                       _PODEC1	.equ	0x7
+0285                       
+0286                       	.area DSEG(DATA)
+0287                       _PRINC1	.equ	0x8
+0288                       
+0289                       	.area DSEG(DATA)
+0290                       _PLUSW1	.equ	0x9
+0291                       
+0292                       	.area DSEG(DATA)
+0293                       _INDF2	.equ	0xA
+0294                       
+0295                       	.area DSEG(DATA)
+0296                       _POINC2	.equ	0xB
+0297                       
+0298                       	.area DSEG(DATA)
+0299                       _PODEC2	.equ	0xC
+0300                       
+0301                       	.area DSEG(DATA)
+0302                       _PRINC2	.equ	0xD
+0303                       
+0304                       	.area DSEG(DATA)
+0305                       _PLUSW2	.equ	0xE
+0306                       
+0307                       	.area DSEG(DATA)
+0308                       _FSR0H	.equ	0xF
+0309                       
+0310                       	.area DSEG(DATA)
+0311                       _FSR0L	.equ	0x10
+0312                       
+0313                       	.area DSEG(DATA)
+0314                       _FSR1H	.equ	0x11
+0315                       
+0316                       	.area DSEG(DATA)
+0317                       _FSR1L	.equ	0x12
+0318                       
+0319                       	.area DSEG(DATA)
+0320                       _FSR2H	.equ	0x13
+0321                       
+0322                       	.area DSEG(DATA)
+0323                       _FSR2L	.equ	0x14
+0324                       
+0325                       	.area DSEG(DATA)
+0326                       _TOSH	.equ	0x16
+0327                       
+0328                       	.area DSEG(DATA)
+0329                       _TOSL	.equ	0x17
+0330                       
+0331                       	.area DSEG(DATA)
+0332                       _SKCN	.equ	0x18
+0333                       
+0334                       	.area DSEG(DATA)
+0335                       _PCLATH	.equ	0x1A
+0336                       
+0337                       	.area DSEG(DATA)
+0338                       _PCLATL	.equ	0x1B
+0339                       
+0340                       	.area DSEG(DATA)
+0341                       _TBLPTRH	.equ	0x1D
+0342                       
+0343                       	.area DSEG(DATA)
+0344                       _TBLPTRL	.equ	0x1E
+0345                       
+0346                       	.area DSEG(DATA)
+0347                       _TBLDH	.equ	0x1F
+0348                       
+0349                       	.area DSEG(DATA)
+0350                       _TBLDL	.equ	0x20
+0351                       
+0352                       	.area DSEG(DATA)
+0353                       _PRODH	.equ	0x21
+0354                       
+0355                       	.area DSEG(DATA)
+0356                       _PRODL	.equ	0x22
+0357                       
+0358                       	.area DSEG(DATA)
+0359                       _INTE0	.equ	0x23
+0360                       
+0361                       	.area DSEG(DATA)
+0362                       _INTE1	.equ	0x24
+0363                       
+0364                       	.area DSEG(DATA)
+0365                       _INTE2	.equ	0x25
+0366                       
+0367                       	.area DSEG(DATA)
+0368                       _INTF0	.equ	0x26
+0369                       
+0370                       	.area DSEG(DATA)
+0371                       _INTF1	.equ	0x27
+0372                       
+0373                       	.area DSEG(DATA)
+0374                       _INTF2	.equ	0x28
+0375                       
+0376                       	.area DSEG(DATA)
+0377                       _WREG	.equ	0x29
+0378                       
+0379                       	.area DSEG(DATA)
+0380                       _BSRCN	.equ	0x2A
+0381                       
+0382                       	.area DSEG(DATA)
+0383                       _STATUS	.equ	0x2B
+0384                       
+0385                       	.area DSEG(DATA)
+0386                       _MSTAT	.equ	0x2B
+0387                       
+0388                       	.area DSEG(DATA)
+0389                       _PSTAT	.equ	0x2C
+0390                       
+0391                       	.area DSEG(DATA)
+0392                       _BIECN	.equ	0x2E
+0393                       
+0394                       	.area DSEG(DATA)
+0395                       _BIEARH	.equ	0x2F
+0396                       
+0397                       	.area DSEG(DATA)
+0398                       _BIEARL	.equ	0x30
+0399                       
+0400                       	.area DSEG(DATA)
+0401                       _BIEDRH	.equ	0x31
+0402                       
+0403                       	.area DSEG(DATA)
+0404                       _BIEDRL	.equ	0x32
+0405                       
+0406                       	.area DSEG(DATA)
+0407                       _PWRCN	.equ	0x33
+0408                       
+0409                       	.area DSEG(DATA)
+0410                       _OSCCN0	.equ	0x34
+0411                       
+0412                       	.area DSEG(DATA)
+0413                       _OSCCN1	.equ	0x35
+0414                       
+0415                       	.area DSEG(DATA)
+0416                       _OSCCN2	.equ	0x36
+0417                       
+0418                       	.area DSEG(DATA)
+0419                       _CSFCN0	.equ	0x37
+0420                       
+0421                       	.area DSEG(DATA)
+0422                       _CSFCN1	.equ	0x38
+0423                       
+0424                       	.area DSEG(DATA)
+0425                       _WDTCN	.equ	0x39
+0426                       
+0427                       	.area DSEG(DATA)
+0428                       _AD1H	.equ	0x3A
+0429                       
+0430                       	.area DSEG(DATA)
+0431                       _AD1M	.equ	0x3B
+0432                       
+0433                       	.area DSEG(DATA)
+0434                       _AD1L	.equ	0x3C
+0435                       
+0436                       	.area DSEG(DATA)
+0437                       _AD1CN0	.equ	0x3D
+0438                       
+0439                       	.area DSEG(DATA)
+0440                       _AD1CN1	.equ	0x3E
+0441                       
+0442                       	.area DSEG(DATA)
+0443                       _AD1CN2	.equ	0x3F
+0444                       
+0445                       	.area DSEG(DATA)
+0446                       _AD1CN3	.equ	0x40
+0447                       
+0448                       	.area DSEG(DATA)
+0449                       _AD1CN4	.equ	0x41
+0450                       
+0451                       	.area DSEG(DATA)
+0452                       _AD1CN5	.equ	0x42
+0453                       
+0454                       	.area DSEG(DATA)
+0455                       _LVDCN	.equ	0x43
+0456                       
+0457                       	.area DSEG(DATA)
+0458                       _TMA1CN	.equ	0x44
+0459                       
+0460                       	.area DSEG(DATA)
+0461                       _TMA1R	.equ	0x45
+0462                       
+0463                       	.area DSEG(DATA)
+0464                       _TMA1C	.equ	0x46
+0465                       
+0466                       	.area DSEG(DATA)
+0467                       _TB1FLAG	.equ	0x47
+0468                       
+0469                       	.area DSEG(DATA)
+0470                       _TB1CN0	.equ	0x48
+0471                       
+0472                       	.area DSEG(DATA)
+0473                       _TB1CN1	.equ	0x49
+0474                       
+0475                       	.area DSEG(DATA)
+0476                       _TB1RH	.equ	0x4A
+0477                       
+0478                       	.area DSEG(DATA)
+0479                       _TB1RL	.equ	0x4B
+0480                       
+0481                       	.area DSEG(DATA)
+0482                       _TB1C0H	.equ	0x4C
+0483                       
+0484                       	.area DSEG(DATA)
+0485                       _TB1C0L	.equ	0x4D
+0486                       
+0487                       	.area DSEG(DATA)
+0488                       _TB1C1H	.equ	0x4E
+0489                       
+0490                       	.area DSEG(DATA)
+0491                       _TB1C1L	.equ	0x4F
+0492                       
+0493                       	.area DSEG(DATA)
+0494                       _TB1C2H	.equ	0x50
+0495                       
+0496                       	.area DSEG(DATA)
+0497                       _TB1C2L	.equ	0x51
+0498                       
+0499                       	.area DSEG(DATA)
+0500                       _TC1CN0	.equ	0x52
+0501                       
+0502                       	.area DSEG(DATA)
+0503                       _PT1	.equ	0x53
+0504                       
+0505                       	.area DSEG(DATA)
+0506                       _TRISC1	.equ	0x54
+0507                       
+0508                       	.area DSEG(DATA)
+0509                       _PT1DA	.equ	0x55
+0510                       
+0511                       	.area DSEG(DATA)
+0512                       _PT1PU	.equ	0x56
+0513                       
+0514                       	.area DSEG(DATA)
+0515                       _PT1M1	.equ	0x57
+0516                       
+0517                       	.area DSEG(DATA)
+0518                       _PT1INT	.equ	0x58
+0519                       
+0520                       	.area DSEG(DATA)
+0521                       _PT1INTE	.equ	0x59
+0522                       
+0523                       	.area DSEG(DATA)
+0524                       _PT1INTF	.equ	0x5A
+0525                       
+0526                       	.area DSEG(DATA)
+0527                       _PT2	.equ	0x5B
+0528                       
+0529                       	.area DSEG(DATA)
+0530                       _TRISC2	.equ	0x5C
+0531                       
+0532                       	.area DSEG(DATA)
+0533                       _PT2DA	.equ	0x5D
+0534                       
+0535                       	.area DSEG(DATA)
+0536                       _PT2PU	.equ	0x5E
+0537                       
+0538                       	.area DSEG(DATA)
+0539                       _PT2INT	.equ	0x5F
+0540                       
+0541                       	.area DSEG(DATA)
+0542                       _PT2INTE	.equ	0x60
+0543                       
+0544                       	.area DSEG(DATA)
+0545                       _PT2INTF	.equ	0x61
+0546                       
+0547                       	.area DSEG(DATA)
+0548                       _PT6	.equ	0x62
+0549                       
+0550                       	.area DSEG(DATA)
+0551                       _TRISC6	.equ	0x63
+0552                       
+0553                       	.area DSEG(DATA)
+0554                       _PT6DA	.equ	0x64
+0555                       
+0556                       	.area DSEG(DATA)
+0557                       _PT6PU	.equ	0x65
+0558                       
+0559                       	.area DSEG(DATA)
+0560                       _PT7	.equ	0x66
+0561                       
+0562                       	.area DSEG(DATA)
+0563                       _TRISC7	.equ	0x67
+0564                       
+0565                       	.area DSEG(DATA)
+0566                       _PT7DA	.equ	0x68
+0567                       
+0568                       	.area DSEG(DATA)
+0569                       _PT7PU	.equ	0x69
+0570                       
+0571                       	.area DSEG(DATA)
+0572                       _PT8	.equ	0x6A
+0573                       
+0574                       	.area DSEG(DATA)
+0575                       _TRISC8	.equ	0x6B
+0576                       
+0577                       	.area DSEG(DATA)
+0578                       _PT8DA	.equ	0x6C
+0579                       
+0580                       	.area DSEG(DATA)
+0581                       _PT8PU	.equ	0x6D
+0582                       
+0583                       	.area DSEG(DATA)
+0584                       _SSPCN0	.equ	0x6E
+0585                       
+0586                       	.area DSEG(DATA)
+0587                       _SSPSTA0	.equ	0x6F
+0588                       
+0589                       	.area DSEG(DATA)
+0590                       _SSPBUF0	.equ	0x70
+0591                       
+0592                       	.area DSEG(DATA)
+0593                       _CFG0	.equ	0x71
+0594                       
+0595                       	.area DSEG(DATA)
+0596                       _ACT0	.equ	0x72
+0597                       
+0598                       	.area DSEG(DATA)
+0599                       _STA0	.equ	0x73
+0600                       
+0601                       	.area DSEG(DATA)
+0602                       _CRG0	.equ	0x74
+0603                       
+0604                       	.area DSEG(DATA)
+0605                       _TOC0	.equ	0x75
+0606                       
+0607                       	.area DSEG(DATA)
+0608                       _RDB0	.equ	0x76
+0609                       
+0610                       	.area DSEG(DATA)
+0611                       _TDB0	.equ	0x77
+0612                       
+0613                       	.area DSEG(DATA)
+0614                       _SID0	.equ	0x78
+0615                       
+0616                       	.area DSEG(DATA)
+0617                       _UR0CN	.equ	0x79
+0618                       
+0619                       	.area DSEG(DATA)
+0620                       _UR0STA	.equ	0x7A
+0621                       
+0622                       	.area DSEG(DATA)
+0623                       _BA0CN	.equ	0x7B
+0624                       
+0625                       	.area DSEG(DATA)
+0626                       _BG0RH	.equ	0x7C
+0627                       
+0628                       	.area DSEG(DATA)
+0629                       _BG0RL	.equ	0x7D
+0630                       
+0631                       	.area DSEG(DATA)
+0632                       _TX0R	.equ	0x7E
+0633                       
+0634                       	.area DSEG(DATA)
+0635                       _RC0REG	.equ	0x7F
+0636                       
+0637                       	.area DSEG(DATA)
+0638                       _LCDCN1	.equ	0x180
+0639                       
+0640                       	.area DSEG(DATA)
+0641                       _LCDCN2	.equ	0x181
+0642                       
+0643                       	.area DSEG(DATA)
+0644                       _LCDCN3	.equ	0x182
+0645                       
+0646                       	.area DSEG(DATA)
+0647                       _LCDCN4	.equ	0x183
+0648                       
+0649                       	.area DSEG(DATA)
+0650                       _LCDCN5	.equ	0x184
+0651                       
+0652                       	.area DSEG(DATA)
+0653                       _LCDCN6	.equ	0x185
+0654                       
+0655                       	.area DSEG(DATA)
+0656                       _LCDCN7	.equ	0x186
+0657                       
+0658                       	.area DSEG(DATA)
+0659                       _LCDCN8	.equ	0x187
+0660                       
+0661                       	.area DSEG(DATA)
+0662                       _LCD0	.equ	0x188
+0663                       
+0664                       	.area DSEG(DATA)
+0665                       _LCD1	.equ	0x189
+0666                       
+0667                       	.area DSEG(DATA)
+0668                       _LCD2	.equ	0x18A
+0669                       
+0670                       	.area DSEG(DATA)
+0671                       _LCD3	.equ	0x18B
+0672                       
+0673                       	.area DSEG(DATA)
+0674                       _LCD4	.equ	0x18C
+0675                       
+0676                       	.area DSEG(DATA)
+0677                       _LCD5	.equ	0x18D
+0678                       
+0679                       	.area DSEG(DATA)
+0680                       _LCD6	.equ	0x18E
+0681                       
+0682                       	.area DSEG(DATA)
+0683                       _LCD7	.equ	0x18F
+0684                       
+0685                       	.area DSEG(DATA)
+0686                       _LCD8	.equ	0x190
+0687                       
+0688                       	.area DSEG(DATA)
+0689                       _LCD9	.equ	0x191
+0690                       
+0691                       	.area DSEG(DATA)
+0692                       _UR2CN	.equ	0x192
+0693                       
+0694                       	.area DSEG(DATA)
+0695                       _UR2STA	.equ	0x193
+0696                       
+0697                       	.area DSEG(DATA)
+0698                       _BA2CN	.equ	0x194
+0699                       
+0700                       	.area DSEG(DATA)
+0701                       _BG2RH	.equ	0x195
+0702                       
+0703                       	.area DSEG(DATA)
+0704                       _BG2RL	.equ	0x196
+0705                       
+0706                       	.area DSEG(DATA)
+0707                       _TX2R	.equ	0x197
+0708                       
+0709                       	.area DSEG(DATA)
+0710                       _RC2REG	.equ	0x198
+0711                       
+0712                       	.area DSEG(DATA)
+0713                       _TMA2R	.equ	0x1E8
+0714                       
+0715                       	.area DSEG(DATA)
+0716                       _TMA2C	.equ	0x1E9
+0717                       
+0718                       	.area DSEG(DATA)
+0719                       _LEDCN	.equ	0x1EA
+0720                       
+0721                       	.area DSEG(DATA)
+0722                       _IQ0	.equ	0x1EB
+0723                       
+0724                       	.area DSEG(DATA)
+0725                       _IQ1	.equ	0x1EC
+0726                       
+0727                       	.area DSEG(DATA)
+0728                       _DGCON1	.equ	0x1ED
+0729                       
+0730                       	.area DSEG(DATA)
+0731                       _DGCON2	.equ	0x1EE
+0732                       
+0733                       	.area DSEG(DATA)
+0734                       _ADCRH	.equ	0x3A
+0735                       
+0736                       	.area DSEG(DATA)
+0737                       _ADCRM	.equ	0x3B
+0738                       
+0739                       	.area DSEG(DATA)
+0740                       _ADCRL	.equ	0x3C
+0741                       
+0742                       ;--------------------------------------------------------
+0743                       ; absolute symbol definitions
+0744                       ;--------------------------------------------------------
+0745                       ;--------------------------------------------------------
+0746                       ; compiler-defined variables
+0747                       ;--------------------------------------------------------
+0748                       	.area IDATA (DATA,REL,CON); pre-def
+0749                       	.area IDATAROM (CODE,REL,CON); pre-def
+0750                       	.area UDATA (DATA,REL,CON); pre-def
+0751                       	.area LOCALSTK (STK); local stack var
+0752 0000 --               _UART0_BGRSet_STK00:	.ds	1
+0753                       	.globl _UART0_BGRSet_STK00
+0754 0001 --               _UART2_BGRSet_STK00:	.ds	1
+0755                       	.globl _UART2_BGRSet_STK00
+0756                       ;--------------------------------------------------------
+0757                       ; initialized data
+0758                       ;--------------------------------------------------------
+0759                       ;--------------------------------------------------------
+0760                       ; initialized data - mirror
+0761                       ;--------------------------------------------------------
+0762                       	;Following is optimization info, 
+0763                       	;xxcdbxxW:dst:src+offset:srclit:just-remove
+0764                       	;--cdb--W:r0x1095:NULL+0:-1:1
+0765                       	;--cdb--W:r0x1094:NULL+0:-1:1
+0766                       	;--cdb--W:r0x1096:NULL+0:-1:1
+0767                       	;--cdb--W:r0x1093:NULL+0:-1:1
+0768                       	;--cdb--W:r0x108F:NULL+0:-1:1
+0769                       	;--cdb--W:r0x108E:NULL+0:-1:1
+0770                       	;--cdb--W:r0x1090:NULL+0:-1:1
+0771                       	;--cdb--W:r0x108D:NULL+0:-1:1
+0772                       	;--c2db--RNG$_UART0_BGRSet_BGR_10000_3$42$47
+0773                       	;--c2db--RNG$_UART2_BGRSet_BGR_10000_5$25$30
+0774                       	END

@@ -1,0 +1,56 @@
+
+D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc -v 
+SDCC : HY08A TD- 4.5.2 #bf155f72c (MSVC) May 19 2025 
+
+D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdld -u -m -i -y -h08d -cm 9 -nx  ".\obj\HY17P56_MT.ihx"  ".\obj\App_ADC.rel" ".\obj\App_Backlight.rel" ".\obj\App_BLEmode.rel" ".\obj\App_Buzzer.rel" ".\obj\App_Init.rel" ".\obj\App_Key.rel" ".\obj\App_LCD_4718.rel" ".\obj\App_LCD_4726.rel" ".\obj\App_LCD_4735.rel" ".\obj\App_LVD.rel" ".\obj\App_Main.rel" ".\obj\APP_Measure.rel" ".\obj\App_Memory.rel" ".\obj\App_Schedule.rel" ".\obj\App_Sleep.rel" ".\obj\App_Str.rel" ".\obj\Drv_ADC.rel" ".\obj\Drv_BLE.rel" ".\obj\Drv_Buzzer.rel" ".\obj\Drv_CLK.rel" ".\obj\Drv_GPIO.rel" ".\obj\Drv_IIC.rel" ".\obj\Drv_LCD_4718.rel" ".\obj\Drv_LCD_4726.rel" ".\obj\Drv_LCD_4735.rel" ".\obj\Drv_LVD.rel" ".\obj\Drv_PWR.rel" ".\obj\Drv_Timer.rel" ".\obj\Drv_UART.rel" ".\obj\Drv_WDT.rel" ".\obj\ADC_56.rel" ".\obj\GPIO.rel" ".\obj\TMR_56.rel" ".\obj\UART_56.rel" ".\obj\Readme.rel"   -l HY17PSDCC.LIB -l lib/HY17P56ADCSetting.lib -l lib/HY17P56WR3_Delay.lib  
+Warning, function _BackLight_QuadrupleDrv not used will be optimized out.
+Warning, function _BackLight_TribleDrv not used will be optimized out.
+Warning, function _BackLight_DoubleDrv not used will be optimized out.
+Warning, function _BackLight_SingleDrv not used will be optimized out.
+Warning, function _Uart_Send_Wakeup not used will be optimized out.
+Warning, function _UART_Send_To_Ble not used will be optimized out.
+Warning, function _App_UploadData not used will be optimized out.
+Warning, function _App_Upload_DeviceInfo not used will be optimized out.
+Warning, function _App_Upload_Temperature not used will be optimized out.
+Warning, function _Uart_Receive_Event not used will be optimized out.
+Warning, function _BleData_Check not used will be optimized out.
+Warning, function _E2_Init not used will be optimized out.
+Warning, function _Disp_BLEFlash not used will be optimized out.
+Warning, function _MemoryTemp_E2Store not used will be optimized out.
+Warning, function _I2C_ReadByte not used will be optimized out.
+Warning, function _I2C_WriteByte not used will be optimized out.
+Warning, function _Read not used will be optimized out.
+Warning, function _Write not used will be optimized out.
+Warning, function _I2C_No_ACK not used will be optimized out.
+Warning, function _I2C_Wait_ACK not used will be optimized out.
+Warning, function _I2C_ACK not used will be optimized out.
+Warning, function _I2C_Stop not used will be optimized out.
+Warning, function _I2C_RespeatStart not used will be optimized out.
+Warning, function _I2C_Start not used will be optimized out.
+Warning, function _IIC_Configuration not used will be optimized out.
+Warning, function _Disp_Low not used will be optimized out.
+Warning, function _UART0_SendASCII not used will be optimized out.
+Warning, function _UART_Tx_String1 not used will be optimized out.
+Warning, function _HexToASCII not used will be optimized out.
+Warning, function _HexToBcd_2Byte not used will be optimized out.
+Warning, function _UART0_SendString not used will be optimized out.
+Warning, function _UART0_SendBuffer not used will be optimized out.
+Warning, function _UART0_SendByte not used will be optimized out.
+Warning, function _ENSDRVDisable not used will be optimized out.
+Warning, function _ENSDRVEnable not used will be optimized out.
+Warning, function _ADC_GetData not used will be optimized out.
+Warning, function _ADC_Open not used will be optimized out.
+Warning, function _TB1C2Set not used will be optimized out.
+Warning, function _TB1C1Set not used will be optimized out.
+Warning, function _TB1C0Set not used will be optimized out.
+Warning, function _PWMOpen not used will be optimized out.
+Warning, function _UART2_BGRSet not used will be optimized out.
+Warning, function _TMR_RS not used will be optimized out.
+Warning, function _TMR_RS_Setting not used will be optimized out.
+Warning, function _PGAandADCAccuracyMode2 not used will be optimized out.
+Warning, function _PGAandADCAccuracyMode not used will be optimized out.
+Warning, function __g2ptrput1 not used will be optimized out.
+ROM max address is 0x3B72 (byte), or size is 7609 (decimal) words. 
+ROM usage is around 92%. 
+Estimated C-STACK/HEAP sizes are  35(0x23)/328(0x148) bytes.
+RAM usage is around 70%.

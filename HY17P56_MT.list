@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><Project>
+<ItemGroup Name="Source Files">
+<File>Source\App_ADC.c</File>
+<File>Source\App_Backlight.c</File>
+<File>Source\App_BLEmode.c</File>
+<File>Source\App_Buzzer.c</File>
+<File>Source\App_Init.c</File>
+<File>Source\App_Key.c</File>
+<File>Source\App_LCD_4718.c</File>
+<File>Source\App_LCD_4726.c</File>
+<File>Source\App_LCD_4735.c</File>
+<File>Source\App_LVD.c</File>
+<File>Source\App_Main.c</File>
+<File>Source\APP_Measure.c</File>
+<File>Source\App_Memory.c</File>
+<File>Source\App_Schedule.c</File>
+<File>Source\App_Sleep.c</File>
+<File>Source\App_Str.c</File>
+<File>Source\Drv_ADC.c</File>
+<File>Source\Drv_BLE.c</File>
+<File>Source\Drv_Buzzer.c</File>
+<File>Source\Drv_CLK.c</File>
+<File>Source\Drv_GPIO.c</File>
+<File>Source\Drv_IIC.c</File>
+<File>Source\Drv_LCD_4718.c</File>
+<File>Source\Drv_LCD_4726.c</File>
+<File>Source\Drv_LCD_4735.c</File>
+<File>Source\Drv_LVD.c</File>
+<File>Source\Drv_PWR.c</File>
+<File>Source\Drv_Timer.c</File>
+<File>Source\Drv_UART.c</File>
+<File>Source\Drv_WDT.c</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\GPIO.c</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c</File>
+</ItemGroup>
+<ItemGroup Name="Header Files">
+<File>Include\App_ADC.h</File>
+<File>Include\App_Backlight.h</File>
+<File>Include\App_BLEmode.h</File>
+<File>Include\App_Buzzer.h</File>
+<File>Include\App_Config.h</File>
+<File>Include\App_Init.h</File>
+<File>Include\App_Key.h</File>
+<File>Include\App_LCD_4718.h</File>
+<File>Include\App_LCD_4726.h</File>
+<File>Include\App_LCD_4735.h</File>
+<File>Include\App_LVD.h</File>
+<File>Include\App_Measure.h</File>
+<File>Include\App_Memory.h</File>
+<File>Include\App_Schedule.h</File>
+<File>Include\App_Sleep.h</File>
+<File>Include\App_Str.h</File>
+<File>Include\Drv_ADC.h</File>
+<File>Include\Drv_BLE.h</File>
+<File>Include\Drv_Buzzer.h</File>
+<File>Include\Drv_CLK.h</File>
+<File>Include\Drv_GPIO.h</File>
+<File>Include\Drv_IIC.h</File>
+<File>Include\Drv_LCD_4718.h</File>
+<File>Include\Drv_LCD_4726.h</File>
+<File>Include\Drv_LCD_4735.h</File>
+<File>Include\Drv_LVD.h</File>
+<File>Include\Drv_PWR.h</File>
+<File>Include\Drv_Timer.h</File>
+<File>Include\Drv_UART.h</File>
+<File>Include\Drv_WDT.h</File>
+<File>Include\Include.h</File>
+<File>Include\Variable.h</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\CLK.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\INT.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\PWR.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\GPIO.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\LCD.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\WDT.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\RST.H</File>
+<File>C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.H</File>
+</ItemGroup>
+<ItemGroup Name="TEXT1">
+<File>DOC\Readme.c</File>
+</ItemGroup>
+</Project>

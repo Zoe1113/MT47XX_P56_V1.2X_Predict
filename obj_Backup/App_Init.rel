@@ -1,0 +1,1168 @@
+$MOD:App_Init:".\obj\App_Init.rel"
+$VER:SDASHYA_201
+$ASFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+$SRC:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\App_Init.asm"
+$EXPORT:_System_Init
+$CDB:"S:G$System_Init$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_E2_Init
+$CDB:"S:G$E2_Init$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_Binding_Init
+$CDB:"S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_BIE_Init
+$CDB:"S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_Param_Init
+$CDB:"S:G$Param_Init$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_sTest
+$CDB:"S:G$sTest$0$0({19}ST__00000007(T:FApp_Init$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]):S),E,0,0"
+$EXPORT:_eTempUnit
+$CDB:"S:G$eTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0"
+$EXPORT:_eBondingTempUnit
+$CDB:"S:G$eBondingTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0"
+$EXPORT:_eVersionCode
+$CDB:"S:G$eVersionCode$0$0({1}SC:S:ENUM_NONAME|VC_DispOn=1|VC_DispOff=0),E,0,0"
+$EXPORT:_eMeasureMode
+$CDB:"S:G$eMeasureMode$0$0({1}SC:U:ENUM_NONAME|Bath_Mode=3|Rectal_Mode=2|Underarm_Mode=1|Oral_Mode=0),E,0,0"
+$EXPORT:_eBinding_Status
+$CDB:"S:G$eBinding_Status$0$0({1}SC:U:ENUM_NONAME|FahrenheitFirst_NonSwitchable=3|FahrenheitFirst_Switchable=2|CentigradeFirst_NonSwitchable=1|CentigradeFirst_Switchable=0),E,0,0"
+$EXPORT:_Enter_PrepareSleep_Flag
+$CDB:"S:G$Enter_PrepareSleep_Flag$0$0({1}SC:U),E,0,0"
+$REF:_memset
+$CDBF:5:"S:G$memset$0$0({2}DF,DD,SV:S),C,0,0"
+$REF:_I2C_ReadByte
+$CDBF:1:"S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0"
+$REF:_BIE_Polling
+$CDBF:0:"S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0"
+$REF:_BIE_Read
+$CDBF:1:"S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0"
+$REF:_LVD_Configuration
+$CDBF:0:"S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_CLK_Configuration
+$CDBF:0:"S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_ADC_Configuration
+$CDBF:0:"S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_WDT_Configuration
+$CDBF:0:"S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_PWR_Configuration
+$CDBF:0:"S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_GPIO_Configuration
+$CDBF:0:"S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_TMA1_Configuration
+$CDBF:0:"S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_BZ_Configuration
+$CDBF:0:"S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0"
+$REF:_BIE_Available_Addr
+$CDB:"S:G$BIE_Available_Addr$0$0({1}SC:U),E,0,0"
+$REF:_sTIMx
+$CDB:"S:G$sTIMx$0$0({13}ST__00000004(T:FApp_Init$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]):S),E,0,0"
+$REF:_sButton
+$CDB:"S:G$sButton$0$0({2}ST__00000008(T:FApp_Init$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0"
+$REF:_sTimeStamp
+$CDB:"S:G$sTimeStamp$0$0({42}ST__00000009(T:FApp_Init$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]):S),E,0,0"
+$REF:_eButton_Status
+$CDB:"S:G$eButton_Status$0$0({1}SC:U:ENUM_NONAME|Button_Lift=2|Button_Press=1|Button_Debouncing=0),E,0,0"
+$REF:_sLVD
+$CDB:"S:G$sLVD$0$0({5}ST__00000010(T:FApp_Init$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]):S),E,0,0"
+$REF:_UnitExchangeCompleted
+$CDB:"S:G$UnitExchangeCompleted$0$0({1}SC:U),E,0,0"
+$REF:_ERR
+$CDB:"S:G$ERR$0$0({9}DA9d,SC:U),E,0,0"
+$REF:_eDisplay_Interfaces
+$CDB:"S:G$eDisplay_Interfaces$0$0({1}SC:U:ENUM_NONAME|Display_PreCalibration=19|Display_SleepMode=18|Display_MeasuredTemperature=17|Display_ERR=16|Display_TemperatureDetecting=15|Display_Binding=14|Display_ModeExchange=13|Display_CurrentMode=12|Display_MemoryTemperatureValue=11|Display_MemoryTemperatureNumber=10|Display_RecentTemperature=9|Display_CalibrationOK=8|Display_Calibration=7|Display_Off=6|Display_Code=5|Display_Version=4|Display_UnitExchange=3|Display_All=2|Display_LowPower=1|Display_PowerOn=0),E,0,0"
+$REF:_sADC
+$CDB:"S:G$sADC$0$0({45}ST__00000011(T:FApp_Init$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0"
+$REF:_eSystem_Mode
+$CDB:"S:G$eSystem_Mode$0$0({1}SC:U:ENUM_NONAME|Normal=3|Prepare_Normal=2|Sleep=1|Prepare_Sleep=0),E,0,0"
+$REF:_Flag_No_Buzzer
+$CDB:"S:G$Flag_No_Buzzer$0$0({1}SC:U),E,0,0"
+$REF:_sMemory
+$CDB:"S:G$sMemory$0$0({23}ST__00000012(T:FApp_Init$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0"
+$REF:_sMemoryFlag
+$CDB:"S:G$sMemoryFlag$0$0({3}ST__00000013(T:FApp_Init$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]):S),E,0,0"
+$REF:_sActual
+$CDB:"S:G$sActual$0$0({5}ST__00000015(T:FApp_Init$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]):S),E,0,0"
+$REF:_sForecast
+$CDB:"S:G$sForecast$0$0({26}ST__00000016(T:FApp_Init$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]):S),E,0,0"
+$REF:_sTempCal
+$CDB:"S:G$sTempCal$0$0({14}ST__00000014(T:FApp_Init$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]):S),E,0,0"
+$REF:_sActual_Forecast
+$CDB:"S:G$sActual_Forecast$0$0({15}ST__00000017(T:FApp_Init$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),E,0,0"
+$REF:_eTo_Actual_Ways
+$CDB:"S:G$eTo_Actual_Ways$0$0({1}SC:U:ENUM_NONAME|To_Actual_3Min=90|To_Actual_Immediately=165),E,0,0"
+$REF:_sBleStatus
+$CDB:"S:G$sBleStatus$0$0({60}ST__00000018(T:FApp_Init$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),E,0,0"
+$REF:_sBacklight
+$CDB:"S:G$sBacklight$0$0({1}ST__00000019(T:FApp_Init$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0"
+$REF:STK00
+$REF:_memset_STK03
+$REF:_memset_STK02
+$REF:_memset_STK01
+$REF:_memset_STK00
+$AREA:_CODE:1:0:0:0
+$AREA:CCODE:1:0:0:0
+$FUNC:$R:0:0:_System_Init:",obj/App_Init.asm:179":$C:_GPIO_Configuration:$C:_CLK_Configuration\
+:$C:_PWR_Configuration:$C:_LVD_Configuration:$C:_TMA1_Configuration:$C:_BZ_Configuration\
+:$C:_ADC_Configuration:$C:_WDT_Configuration:$C:_BIE_Init:$C:_Binding_Init
+$LAB:183:_System_Init:",obj/App_Init.asm:183"
+$WDATAH:184:1:1:0x6:",obj/App_Init.asm:184"
+$WDATA:184:1:1:0x1:",obj/App_Init.asm:184"
+$WDATAH:185:1:1:0x66:",obj/App_Init.asm:185"
+$WDATA:185:1:1:0x33:",obj/App_Init.asm:185"
+$WDATAH:187:1:1:0xC:",obj/App_Init.asm:187"
+$WDATA:187:1:1:0x38:",obj/App_Init.asm:187"
+$WDATAH:189:1:1:(0x66 | { (_Enter_PrepareSleep_Flag >> 0x8) & 0x1 }):",obj/App_Init.asm:189"
+$WDATA:189:1:1:(_Enter_PrepareSleep_Flag & 0xFF):",obj/App_Init.asm:189"
+$WDATAH:191:1:1:(0xC | { (_eSystem_Mode >> 0x8) & 0x1 }):",obj/App_Init.asm:191"
+$WDATA:191:1:1:(_eSystem_Mode & 0xFF):",obj/App_Init.asm:191"
+$WDATAH:193:1:1:0x6:",obj/App_Init.asm:193"
+$WDATA:193:1:1:0x12:",obj/App_Init.asm:193"
+$WDATAH:194:1:1:(0x66 | { (_eDisplay_Interfaces >> 0x8) & 0x1 }):",obj/App_Init.asm:194"
+$WDATA:194:1:1:(_eDisplay_Interfaces & 0xFF):",obj/App_Init.asm:194"
+$WDATAH:196:1:1:0xC0:",obj/App_Init.asm:196"
+$WDATA:196:1:1:{ (_GPIO_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:196"
+$WDATAH:196:1:1:(((_GPIO_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:196"
+$WDATA:196:1:1:((_GPIO_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:196"
+$WDATAH:199:1:1:0xC0:",obj/App_Init.asm:199"
+$WDATA:199:1:1:{ (_CLK_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:199"
+$WDATAH:199:1:1:(((_CLK_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:199"
+$WDATA:199:1:1:((_CLK_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:199"
+$WDATAH:202:1:1:0xC0:",obj/App_Init.asm:202"
+$WDATA:202:1:1:{ (_PWR_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:202"
+$WDATAH:202:1:1:(((_PWR_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:202"
+$WDATA:202:1:1:((_PWR_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:202"
+$WDATAH:205:1:1:0xC0:",obj/App_Init.asm:205"
+$WDATA:205:1:1:{ (_LVD_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:205"
+$WDATAH:205:1:1:(((_LVD_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:205"
+$WDATA:205:1:1:((_LVD_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:205"
+$WDATAH:208:1:1:0xC0:",obj/App_Init.asm:208"
+$WDATA:208:1:1:{ (_TMA1_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:208"
+$WDATAH:208:1:1:(((_TMA1_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:208"
+$WDATA:208:1:1:((_TMA1_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:208"
+$WDATAH:211:1:1:0xC0:",obj/App_Init.asm:211"
+$WDATA:211:1:1:{ (_BZ_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:211"
+$WDATAH:211:1:1:(((_BZ_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:211"
+$WDATA:211:1:1:((_BZ_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:211"
+$WDATAH:214:1:1:0xC0:",obj/App_Init.asm:214"
+$WDATA:214:1:1:{ (_ADC_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:214"
+$WDATAH:214:1:1:(((_ADC_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:214"
+$WDATA:214:1:1:((_ADC_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:214"
+$WDATAH:217:1:1:0xC0:",obj/App_Init.asm:217"
+$WDATA:217:1:1:{ (_WDT_Configuration >> 0xD) & 0xFF }:",obj/App_Init.asm:217"
+$WDATAH:217:1:1:(((_WDT_Configuration >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:217"
+$WDATA:217:1:1:((_WDT_Configuration >> 0x1) & 0xFF):",obj/App_Init.asm:217"
+$WDATAH:220:1:1:0xC0:",obj/App_Init.asm:220"
+$WDATA:220:1:1:{ (_BIE_Init >> 0xD) & 0xFF }:",obj/App_Init.asm:220"
+$WDATAH:220:1:1:(((_BIE_Init >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:220"
+$WDATA:220:1:1:((_BIE_Init >> 0x1) & 0xFF):",obj/App_Init.asm:220"
+$WDATAH:223:1:1:0xC0:",obj/App_Init.asm:223"
+$WDATA:223:1:1:{ (_Binding_Init >> 0xD) & 0xFF }:",obj/App_Init.asm:223"
+$WDATAH:223:1:1:(((_Binding_Init >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:223"
+$WDATA:223:1:1:((_Binding_Init >> 0x1) & 0xFF):",obj/App_Init.asm:223"
+$WDATAH:226:1:1:0x0:",obj/App_Init.asm:226"
+$WDATA:226:1:1:0xA:",obj/App_Init.asm:226"
+$ENDFUNC
+$FUNC:$R:0:0:_E2_Init:",obj/App_Init.asm:235":$C:_I2C_ReadByte:$L:r0x10AE:$L:r0x10AF\
+:$L:r0x10B0:$L:r0x10B1
+$LAB:238:_E2_Init:",obj/App_Init.asm:238"
+$WDATAH:239:1:1:0x6:",obj/App_Init.asm:239"
+$WDATA:239:1:1:0x1:",obj/App_Init.asm:239"
+$WDATAH:240:1:1:0xC0:",obj/App_Init.asm:240"
+$WDATA:240:1:1:{ (_I2C_ReadByte >> 0xD) & 0xFF }:",obj/App_Init.asm:240"
+$WDATAH:240:1:1:(((_I2C_ReadByte >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:240"
+$WDATA:240:1:1:((_I2C_ReadByte >> 0x1) & 0xFF):",obj/App_Init.asm:240"
+$WDATAH:242:1:1:(0x66 | { ((_sMemory + 0x0) >> 0x8) & 0x1 }):",obj/App_Init.asm:242"
+$WDATA:242:1:1:((_sMemory + 0x0) & 0xFF):",obj/App_Init.asm:242"
+$WDATAS:244:1:1:0x3C:",obj/App_Init.asm:244"
+$WDATA:244:1:1:0x29:",obj/App_Init.asm:244"
+$WDATAH:245:1:1:0xC2:",obj/App_Init.asm:245"
+$WDATA:245:1:1:{ (_00153_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:245"
+$WDATAH:245:1:1:(((_00153_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:245"
+$WDATA:245:1:1:((_00153_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:245"
+$WDATAH:247:1:1:0x0:",obj/App_Init.asm:247"
+$WDATA:247:1:1:0xC:",obj/App_Init.asm:247"
+$WDATAH:247:1:1:(0xF0 | { ((_sMemory + 0x0) >> 0x8) & 0xF }):",obj/App_Init.asm:247"
+$WDATA:247:1:1:((_sMemory + 0x0) & 0xFF):",obj/App_Init.asm:247"
+$WDATAH:248:1:1:0xC:",obj/App_Init.asm:248"
+$WDATA:248:1:1:0x0:",obj/App_Init.asm:248"
+$LAB:249:_00153_DS_:",obj/App_Init.asm:249"
+$WDATAH:251:1:1:0x6:",obj/App_Init.asm:251"
+$WDATA:251:1:1:0x2:",obj/App_Init.asm:251"
+$WDATAH:252:1:1:0xC0:",obj/App_Init.asm:252"
+$WDATA:252:1:1:{ (_I2C_ReadByte >> 0xD) & 0xFF }:",obj/App_Init.asm:252"
+$WDATAH:252:1:1:(((_I2C_ReadByte >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:252"
+$WDATA:252:1:1:((_I2C_ReadByte >> 0x1) & 0xFF):",obj/App_Init.asm:252"
+$WDATAH:253:1:1:(0x66 | { ((_sMemory + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:253"
+$WDATA:253:1:1:((_sMemory + 0x1) & 0xFF):",obj/App_Init.asm:253"
+$WDATAS:255:1:1:0x40:",obj/App_Init.asm:255"
+$WDATA:255:1:1:0x29:",obj/App_Init.asm:255"
+$WDATAH:257:1:1:(0xC | { ((_sMemory + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:257"
+$WDATA:257:1:1:((_sMemory + 0x1) & 0xFF):",obj/App_Init.asm:257"
+$WDATAH:259:1:1:0x6:",obj/App_Init.asm:259"
+$WDATA:259:1:1:0x3:",obj/App_Init.asm:259"
+$WDATAH:260:1:1:0xC0:",obj/App_Init.asm:260"
+$WDATA:260:1:1:{ (_I2C_ReadByte >> 0xD) & 0xFF }:",obj/App_Init.asm:260"
+$WDATAH:260:1:1:(((_I2C_ReadByte >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:260"
+$WDATA:260:1:1:((_I2C_ReadByte >> 0x1) & 0xFF):",obj/App_Init.asm:260"
+$WDATAH:261:1:1:(0x66 | { ((_sMemory + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:261"
+$WDATA:261:1:1:((_sMemory + 0x2) & 0xFF):",obj/App_Init.asm:261"
+$WDATAS:263:1:1:0x3C:",obj/App_Init.asm:263"
+$WDATA:263:1:1:0x29:",obj/App_Init.asm:263"
+$WDATAH:264:1:1:0xC2:",obj/App_Init.asm:264"
+$WDATA:264:1:1:{ (_00160_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:264"
+$WDATAH:264:1:1:(((_00160_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:264"
+$WDATA:264:1:1:((_00160_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:264"
+$WDATAH:266:1:1:(0xC | { ((_sMemory + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:266"
+$WDATA:266:1:1:((_sMemory + 0x2) & 0xFF):",obj/App_Init.asm:266"
+$WDATAH:267:1:1:0xC2:",obj/App_Init.asm:267"
+$WDATA:267:1:1:{ (_00165_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:267"
+$WDATAH:267:1:1:(((_00165_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:267"
+$WDATA:267:1:1:((_00165_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:267"
+$LAB:268:_00160_DS_:",obj/App_Init.asm:268"
+$WDATAH:270:1:1:0x6:",obj/App_Init.asm:270"
+$WDATA:270:1:1:0xA:",obj/App_Init.asm:270"
+$WDATAS:271:1:1:(0x68 | { ((_sMemory + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:271"
+$WDATA:271:1:1:((_sMemory + 0x2) & 0xFF):",obj/App_Init.asm:271"
+$WDATAH:272:1:1:0xC2:",obj/App_Init.asm:272"
+$WDATA:272:1:1:{ (_00157_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:272"
+$WDATAH:272:1:1:(((_00157_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:272"
+$WDATA:272:1:1:((_00157_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:272"
+$WDATAH:274:1:1:0x6:",obj/App_Init.asm:274"
+$WDATA:274:1:1:0xA:",obj/App_Init.asm:274"
+$WDATAH:275:1:1:(0x66 | { ((_sMemory + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:275"
+$WDATA:275:1:1:((_sMemory + 0x2) & 0xFF):",obj/App_Init.asm:275"
+$LAB:276:_00157_DS_:",obj/App_Init.asm:276"
+$WDATAH:278:1:1:(0xC | { (r0x10AE >> 0x8) & 0x1 }):",obj/App_Init.asm:278"
+$WDATA:278:1:1:(r0x10AE & 0xFF):",obj/App_Init.asm:278"
+$LAB:279:_00163_DS_:",obj/App_Init.asm:279"
+$WDATAH:280:1:1:(0x64 | { ((_sMemory + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:280"
+$WDATA:280:1:1:((_sMemory + 0x2) & 0xFF):",obj/App_Init.asm:280"
+$WDATAS:281:1:1:(0x6A | { (r0x10AE >> 0x8) & 0x1 }):",obj/App_Init.asm:281"
+$WDATA:281:1:1:(r0x10AE & 0xFF):",obj/App_Init.asm:281"
+$WDATAH:282:1:1:0xC2:",obj/App_Init.asm:282"
+$WDATA:282:1:1:{ (_00165_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:282"
+$WDATAH:282:1:1:(((_00165_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:282"
+$WDATA:282:1:1:((_00165_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:282"
+$WDATAH:284:1:1:(0x64 | { (r0x10AE >> 0x8) & 0x1 }):",obj/App_Init.asm:284"
+$WDATA:284:1:1:(r0x10AE & 0xFF):",obj/App_Init.asm:284"
+$WDATAH:285:1:1:0x7:",obj/App_Init.asm:285"
+$WDATA:285:1:1:0x2:",obj/App_Init.asm:285"
+$WDATAH:286:1:1:0x64:",obj/App_Init.asm:286"
+$WDATA:286:1:1:0x22:",obj/App_Init.asm:286"
+$WDATAH:287:1:1:0x4:",obj/App_Init.asm:287"
+$WDATA:287:1:1:0x4:",obj/App_Init.asm:287"
+$WDATAH:289:1:1:0xC0:",obj/App_Init.asm:289"
+$WDATA:289:1:1:{ (_I2C_ReadByte >> 0xD) & 0xFF }:",obj/App_Init.asm:289"
+$WDATAH:289:1:1:(((_I2C_ReadByte >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:289"
+$WDATA:289:1:1:((_I2C_ReadByte >> 0x1) & 0xFF):",obj/App_Init.asm:289"
+$WDATAH:290:1:1:(0x66 | { (r0x10AF >> 0x8) & 0x1 }):",obj/App_Init.asm:290"
+$WDATA:290:1:1:(r0x10AF & 0xFF):",obj/App_Init.asm:290"
+$WDATAH:292:1:1:0x64:",obj/App_Init.asm:292"
+$WDATA:292:1:1:0x22:",obj/App_Init.asm:292"
+$WDATAH:293:1:1:0x4:",obj/App_Init.asm:293"
+$WDATA:293:1:1:0x5:",obj/App_Init.asm:293"
+$WDATAH:295:1:1:0xC0:",obj/App_Init.asm:295"
+$WDATA:295:1:1:{ (_I2C_ReadByte >> 0xD) & 0xFF }:",obj/App_Init.asm:295"
+$WDATAH:295:1:1:(((_I2C_ReadByte >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:295"
+$WDATA:295:1:1:((_I2C_ReadByte >> 0x1) & 0xFF):",obj/App_Init.asm:295"
+$WDATAH:296:1:1:(0x66 | { (r0x10B0 >> 0x8) & 0x1 }):",obj/App_Init.asm:296"
+$WDATA:296:1:1:(r0x10B0 & 0xFF):",obj/App_Init.asm:296"
+$WDATAH:298:1:1:(0x64 | { (r0x10AE >> 0x8) & 0x1 }):",obj/App_Init.asm:298"
+$WDATA:298:1:1:(r0x10AE & 0xFF):",obj/App_Init.asm:298"
+$WDATAH:299:1:1:0x7:",obj/App_Init.asm:299"
+$WDATA:299:1:1:0x2:",obj/App_Init.asm:299"
+$WDATAH:300:1:1:0x64:",obj/App_Init.asm:300"
+$WDATA:300:1:1:0x22:",obj/App_Init.asm:300"
+$WDATAH:301:1:1:0x4:",obj/App_Init.asm:301"
+$WDATA:301:1:1:((_sMemory + 0x3) & 0xFF):",obj/App_Init.asm:301"
+$WDATAH:302:1:1:(0x66 | { (r0x10B1 >> 0x8) & 0x1 }):",obj/App_Init.asm:302"
+$WDATA:302:1:1:(r0x10B1 & 0xFF):",obj/App_Init.asm:302"
+$WDATAH:303:1:1:0x6:",obj/App_Init.asm:303"
+$WDATA:303:1:1:(((_sMemory + 0x3) >> 0x8) & 0xFF):",obj/App_Init.asm:303"
+$WDATAS:304:1:1:0xA8:",obj/App_Init.asm:304"
+$WDATA:304:1:1:0x2B:",obj/App_Init.asm:304"
+$WDATAH:305:1:1:0x4:",obj/App_Init.asm:305"
+$WDATA:305:1:1:0x1:",obj/App_Init.asm:305"
+$WDATAH:306:1:1:0xC6:",obj/App_Init.asm:306"
+$WDATA:306:1:1:(r0x10B1 & 0x7F):",obj/App_Init.asm:306"
+$WDATAH:306:1:1:0xF0:",obj/App_Init.asm:306"
+$WDATA:306:1:1:0x10:",obj/App_Init.asm:306"
+$WDATAH:307:1:1:0x66:",obj/App_Init.asm:307"
+$WDATA:307:1:1:0xF:",obj/App_Init.asm:307"
+$WDATAH:308:1:1:(0x64 | { (r0x10B0 >> 0x8) & 0x1 }):",obj/App_Init.asm:308"
+$WDATA:308:1:1:(r0x10B0 & 0xFF):",obj/App_Init.asm:308"
+$WDATAH:309:1:1:0x66:",obj/App_Init.asm:309"
+$WDATA:309:1:1:0x1:",obj/App_Init.asm:309"
+$WDATAH:310:1:1:(0x64 | { (r0x10AF >> 0x8) & 0x1 }):",obj/App_Init.asm:310"
+$WDATA:310:1:1:(r0x10AF & 0xFF):",obj/App_Init.asm:310"
+$WDATAH:311:1:1:0x66:",obj/App_Init.asm:311"
+$WDATA:311:1:1:0x0:",obj/App_Init.asm:311"
+$WDATAH:313:1:1:(0x3A | { (r0x10AE >> 0x8) & 0x1 }):",obj/App_Init.asm:313"
+$WDATA:313:1:1:(r0x10AE & 0xFF):",obj/App_Init.asm:313"
+$WDATAH:314:1:1:0xC2:",obj/App_Init.asm:314"
+$WDATA:314:1:1:{ (_00163_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:314"
+$WDATAH:314:1:1:(((_00163_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:314"
+$WDATA:314:1:1:((_00163_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:314"
+$LAB:315:_00165_DS_:",obj/App_Init.asm:315"
+$WDATAH:317:1:1:0x0:",obj/App_Init.asm:317"
+$WDATA:317:1:1:0xA:",obj/App_Init.asm:317"
+$ENDFUNC
+$FUNC:$R:0:0:_Binding_Init:",obj/App_Init.asm:325":$L:r0x10AB
+$LAB:328:_Binding_Init:",obj/App_Init.asm:328"
+$WDATAH:329:1:1:0x64:",obj/App_Init.asm:329"
+$WDATA:329:1:1:0x53:",obj/App_Init.asm:329"
+$WDATAH:330:1:1:0x1:",obj/App_Init.asm:330"
+$WDATA:330:1:1:0x24:",obj/App_Init.asm:330"
+$WDATAH:331:1:1:(0x66 | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:331"
+$WDATA:331:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:331"
+$WDATAH:333:1:1:0x3:",obj/App_Init.asm:333"
+$WDATA:333:1:1:0x24:",obj/App_Init.asm:333"
+$WDATAS:334:1:1:0xB0:",obj/App_Init.asm:334"
+$WDATA:334:1:1:0x2B:",obj/App_Init.asm:334"
+$WDATAH:335:1:1:0xC2:",obj/App_Init.asm:335"
+$WDATA:335:1:1:{ (_00129_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:335"
+$WDATAH:335:1:1:(((_00129_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:335"
+$WDATA:335:1:1:((_00129_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:335"
+$WDATAH:337:1:1:(0xC | { (_eBinding_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:337"
+$WDATA:337:1:1:(_eBinding_Status & 0xFF):",obj/App_Init.asm:337"
+$WDATAH:339:1:1:0x6:",obj/App_Init.asm:339"
+$WDATA:339:1:1:0x5A:",obj/App_Init.asm:339"
+$WDATAH:340:1:1:(0x66 | { (_eTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:340"
+$WDATA:340:1:1:(_eTempUnit & 0xFF):",obj/App_Init.asm:340"
+$WDATAH:342:1:1:(0x66 | { (_eBondingTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:342"
+$WDATA:342:1:1:(_eBondingTempUnit & 0xFF):",obj/App_Init.asm:342"
+$WDATAH:343:1:1:0xC2:",obj/App_Init.asm:343"
+$WDATA:343:1:1:{ (_00130_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:343"
+$WDATAH:343:1:1:(((_00130_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:343"
+$WDATA:343:1:1:((_00130_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:343"
+$LAB:344:_00129_DS_:",obj/App_Init.asm:344"
+$WDATAH:346:1:1:0x6:",obj/App_Init.asm:346"
+$WDATA:346:1:1:0x20:",obj/App_Init.asm:346"
+$WDATAS:347:1:1:(0x6C | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:347"
+$WDATA:347:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:347"
+$WDATAH:348:1:1:0xC2:",obj/App_Init.asm:348"
+$WDATA:348:1:1:{ (_00126_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:348"
+$WDATAH:348:1:1:(((_00126_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:348"
+$WDATA:348:1:1:((_00126_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:348"
+$WDATAH:350:1:1:0x6:",obj/App_Init.asm:350"
+$WDATA:350:1:1:0x1:",obj/App_Init.asm:350"
+$WDATAH:351:1:1:(0x66 | { (_eBinding_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:351"
+$WDATA:351:1:1:(_eBinding_Status & 0xFF):",obj/App_Init.asm:351"
+$WDATAH:353:1:1:0x6:",obj/App_Init.asm:353"
+$WDATA:353:1:1:0x5A:",obj/App_Init.asm:353"
+$WDATAH:354:1:1:(0x66 | { (_eTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:354"
+$WDATA:354:1:1:(_eTempUnit & 0xFF):",obj/App_Init.asm:354"
+$WDATAH:356:1:1:(0x66 | { (_eBondingTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:356"
+$WDATA:356:1:1:(_eBondingTempUnit & 0xFF):",obj/App_Init.asm:356"
+$WDATAH:357:1:1:0xC2:",obj/App_Init.asm:357"
+$WDATA:357:1:1:{ (_00130_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:357"
+$WDATAH:357:1:1:(((_00130_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:357"
+$WDATA:357:1:1:((_00130_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:357"
+$LAB:358:_00126_DS_:",obj/App_Init.asm:358"
+$WDATAH:360:1:1:0x6:",obj/App_Init.asm:360"
+$WDATA:360:1:1:0x4:",obj/App_Init.asm:360"
+$WDATAS:361:1:1:(0x6C | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:361"
+$WDATA:361:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:361"
+$WDATAH:362:1:1:0xC2:",obj/App_Init.asm:362"
+$WDATA:362:1:1:{ (_00123_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:362"
+$WDATAH:362:1:1:(((_00123_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:362"
+$WDATA:362:1:1:((_00123_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:362"
+$WDATAH:364:1:1:0x6:",obj/App_Init.asm:364"
+$WDATA:364:1:1:0x2:",obj/App_Init.asm:364"
+$WDATAH:365:1:1:(0x66 | { (_eBinding_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:365"
+$WDATA:365:1:1:(_eBinding_Status & 0xFF):",obj/App_Init.asm:365"
+$WDATAH:367:1:1:0x6:",obj/App_Init.asm:367"
+$WDATA:367:1:1:0xA5:",obj/App_Init.asm:367"
+$WDATAH:368:1:1:(0x66 | { (_eTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:368"
+$WDATA:368:1:1:(_eTempUnit & 0xFF):",obj/App_Init.asm:368"
+$WDATAH:370:1:1:(0x66 | { (_eBondingTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:370"
+$WDATA:370:1:1:(_eBondingTempUnit & 0xFF):",obj/App_Init.asm:370"
+$WDATAH:371:1:1:0xC2:",obj/App_Init.asm:371"
+$WDATA:371:1:1:{ (_00130_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:371"
+$WDATAH:371:1:1:(((_00130_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:371"
+$WDATA:371:1:1:((_00130_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:371"
+$LAB:372:_00123_DS_:",obj/App_Init.asm:372"
+$WDATAS:374:1:1:(0x6E | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:374"
+$WDATA:374:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:374"
+$WDATAH:375:1:1:0xC2:",obj/App_Init.asm:375"
+$WDATA:375:1:1:{ (_00130_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:375"
+$WDATAH:375:1:1:(((_00130_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:375"
+$WDATA:375:1:1:((_00130_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:375"
+$WDATAH:377:1:1:0x6:",obj/App_Init.asm:377"
+$WDATA:377:1:1:0x3:",obj/App_Init.asm:377"
+$WDATAH:378:1:1:(0x66 | { (_eBinding_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:378"
+$WDATA:378:1:1:(_eBinding_Status & 0xFF):",obj/App_Init.asm:378"
+$WDATAH:380:1:1:0x6:",obj/App_Init.asm:380"
+$WDATA:380:1:1:0xA5:",obj/App_Init.asm:380"
+$WDATAH:381:1:1:(0x66 | { (_eTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:381"
+$WDATA:381:1:1:(_eTempUnit & 0xFF):",obj/App_Init.asm:381"
+$WDATAH:383:1:1:(0x66 | { (_eBondingTempUnit >> 0x8) & 0x1 }):",obj/App_Init.asm:383"
+$WDATA:383:1:1:(_eBondingTempUnit & 0xFF):",obj/App_Init.asm:383"
+$LAB:384:_00130_DS_:",obj/App_Init.asm:384"
+$WDATAH:386:1:1:0x64:",obj/App_Init.asm:386"
+$WDATA:386:1:1:0x6A:",obj/App_Init.asm:386"
+$WDATAH:387:1:1:0x1:",obj/App_Init.asm:387"
+$WDATA:387:1:1:0xC0:",obj/App_Init.asm:387"
+$WDATAH:388:1:1:(0x66 | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:388"
+$WDATA:388:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:388"
+$WDATAH:390:1:1:0x3:",obj/App_Init.asm:390"
+$WDATA:390:1:1:0xC0:",obj/App_Init.asm:390"
+$WDATAS:391:1:1:0xB0:",obj/App_Init.asm:391"
+$WDATA:391:1:1:0x2B:",obj/App_Init.asm:391"
+$WDATAH:392:1:1:0xC2:",obj/App_Init.asm:392"
+$WDATA:392:1:1:{ (_00140_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:392"
+$WDATAH:392:1:1:(((_00140_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:392"
+$WDATA:392:1:1:((_00140_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:392"
+$WDATAH:394:1:1:0x6:",obj/App_Init.asm:394"
+$WDATA:394:1:1:0x4:",obj/App_Init.asm:394"
+$WDATAH:395:1:1:(0x66 | { ((_sActual + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:395"
+$WDATA:395:1:1:((_sActual + 0x1) & 0xFF):",obj/App_Init.asm:395"
+$WDATAH:396:1:1:0xC2:",obj/App_Init.asm:396"
+$WDATA:396:1:1:{ (_00141_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:396"
+$WDATAH:396:1:1:(((_00141_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:396"
+$WDATA:396:1:1:((_00141_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:396"
+$LAB:397:_00140_DS_:",obj/App_Init.asm:397"
+$WDATAH:399:1:1:(0x30 | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:399"
+$WDATA:399:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:399"
+$WDATAS:400:1:1:0xB2:",obj/App_Init.asm:400"
+$WDATA:400:1:1:0x2B:",obj/App_Init.asm:400"
+$WDATAH:401:1:1:0xC2:",obj/App_Init.asm:401"
+$WDATA:401:1:1:{ (_00137_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:401"
+$WDATAH:401:1:1:(((_00137_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:401"
+$WDATA:401:1:1:((_00137_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:401"
+$WDATAH:403:1:1:0x6:",obj/App_Init.asm:403"
+$WDATA:403:1:1:0x8:",obj/App_Init.asm:403"
+$WDATAH:404:1:1:(0x66 | { ((_sActual + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:404"
+$WDATA:404:1:1:((_sActual + 0x1) & 0xFF):",obj/App_Init.asm:404"
+$WDATAH:405:1:1:0xC2:",obj/App_Init.asm:405"
+$WDATA:405:1:1:{ (_00141_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:405"
+$WDATAH:405:1:1:(((_00141_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:405"
+$WDATA:405:1:1:((_00141_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:405"
+$LAB:406:_00137_DS_:",obj/App_Init.asm:406"
+$WDATAH:408:1:1:0x6:",obj/App_Init.asm:408"
+$WDATA:408:1:1:0x40:",obj/App_Init.asm:408"
+$WDATAS:409:1:1:(0x6C | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:409"
+$WDATA:409:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:409"
+$WDATAH:410:1:1:0xC2:",obj/App_Init.asm:410"
+$WDATA:410:1:1:{ (_00134_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:410"
+$WDATAH:410:1:1:(((_00134_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:410"
+$WDATA:410:1:1:((_00134_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:410"
+$WDATAH:412:1:1:0x6:",obj/App_Init.asm:412"
+$WDATA:412:1:1:0x10:",obj/App_Init.asm:412"
+$WDATAH:413:1:1:(0x66 | { ((_sActual + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:413"
+$WDATA:413:1:1:((_sActual + 0x1) & 0xFF):",obj/App_Init.asm:413"
+$WDATAH:414:1:1:0xC2:",obj/App_Init.asm:414"
+$WDATA:414:1:1:{ (_00141_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:414"
+$WDATAH:414:1:1:(((_00141_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:414"
+$WDATA:414:1:1:((_00141_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:414"
+$LAB:415:_00134_DS_:",obj/App_Init.asm:415"
+$WDATAS:417:1:1:(0x6E | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:417"
+$WDATA:417:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:417"
+$WDATAH:418:1:1:0xC2:",obj/App_Init.asm:418"
+$WDATA:418:1:1:{ (_00141_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:418"
+$WDATAH:418:1:1:(((_00141_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:418"
+$WDATA:418:1:1:((_00141_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:418"
+$WDATAH:420:1:1:0x6:",obj/App_Init.asm:420"
+$WDATA:420:1:1:0x10:",obj/App_Init.asm:420"
+$WDATAH:421:1:1:(0x66 | { ((_sActual + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:421"
+$WDATA:421:1:1:((_sActual + 0x1) & 0xFF):",obj/App_Init.asm:421"
+$LAB:422:_00141_DS_:",obj/App_Init.asm:422"
+$WDATAH:424:1:1:0x64:",obj/App_Init.asm:424"
+$WDATA:424:1:1:0x6A:",obj/App_Init.asm:424"
+$WDATAH:425:1:1:0x1:",obj/App_Init.asm:425"
+$WDATA:425:1:1:0x20:",obj/App_Init.asm:425"
+$WDATAH:426:1:1:(0x66 | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:426"
+$WDATA:426:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:426"
+$WDATAH:428:1:1:0x3:",obj/App_Init.asm:428"
+$WDATA:428:1:1:0x20:",obj/App_Init.asm:428"
+$WDATAS:429:1:1:0xB0:",obj/App_Init.asm:429"
+$WDATA:429:1:1:0x2B:",obj/App_Init.asm:429"
+$WDATAH:430:1:1:0xC2:",obj/App_Init.asm:430"
+$WDATA:430:1:1:{ (_00145_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:430"
+$WDATAH:430:1:1:(((_00145_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:430"
+$WDATA:430:1:1:((_00145_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:430"
+$WDATAH:432:1:1:(0xC | { (_eVersionCode >> 0x8) & 0x1 }):",obj/App_Init.asm:432"
+$WDATA:432:1:1:(_eVersionCode & 0xFF):",obj/App_Init.asm:432"
+$WDATAH:433:1:1:0xC2:",obj/App_Init.asm:433"
+$WDATA:433:1:1:{ (_00147_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:433"
+$WDATAH:433:1:1:(((_00147_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:433"
+$WDATA:433:1:1:((_00147_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:433"
+$LAB:434:_00145_DS_:",obj/App_Init.asm:434"
+$WDATAS:436:1:1:(0x6E | { (r0x10AB >> 0x8) & 0x1 }):",obj/App_Init.asm:436"
+$WDATA:436:1:1:(r0x10AB & 0xFF):",obj/App_Init.asm:436"
+$WDATAH:437:1:1:0xC2:",obj/App_Init.asm:437"
+$WDATA:437:1:1:{ (_00147_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:437"
+$WDATAH:437:1:1:(((_00147_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:437"
+$WDATA:437:1:1:((_00147_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:437"
+$WDATAH:439:1:1:0x6:",obj/App_Init.asm:439"
+$WDATA:439:1:1:0x1:",obj/App_Init.asm:439"
+$WDATAH:440:1:1:(0x66 | { (_eVersionCode >> 0x8) & 0x1 }):",obj/App_Init.asm:440"
+$WDATA:440:1:1:(_eVersionCode & 0xFF):",obj/App_Init.asm:440"
+$LAB:441:_00147_DS_:",obj/App_Init.asm:441"
+$WDATAH:443:1:1:0x0:",obj/App_Init.asm:443"
+$WDATA:443:1:1:0xA:",obj/App_Init.asm:443"
+$ENDFUNC
+$FUNC:$R:0:0:_BIE_Init:",obj/App_Init.asm:451":$C:_BIE_Polling:$C:_BIE_Read
+$LAB:455:_BIE_Init:",obj/App_Init.asm:455"
+$WDATAH:456:1:1:0xC0:",obj/App_Init.asm:456"
+$WDATA:456:1:1:{ (_BIE_Polling >> 0xD) & 0xFF }:",obj/App_Init.asm:456"
+$WDATAH:456:1:1:(((_BIE_Polling >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:456"
+$WDATA:456:1:1:((_BIE_Polling >> 0x1) & 0xFF):",obj/App_Init.asm:456"
+$WDATAH:458:1:1:(0x66 | { (_BIE_Available_Addr >> 0x8) & 0x1 }):",obj/App_Init.asm:458"
+$WDATA:458:1:1:(_BIE_Available_Addr & 0xFF):",obj/App_Init.asm:458"
+$WDATAS:460:1:1:0x6E:",obj/App_Init.asm:460"
+$WDATA:460:1:1:0x29:",obj/App_Init.asm:460"
+$WDATAH:461:1:1:0xC2:",obj/App_Init.asm:461"
+$WDATA:461:1:1:{ (_00113_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:461"
+$WDATAH:461:1:1:(((_00113_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:461"
+$WDATA:461:1:1:((_00113_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:461"
+$WDATAH:463:1:1:0x6:",obj/App_Init.asm:463"
+$WDATA:463:1:1:0x10:",obj/App_Init.asm:463"
+$WDATAH:464:1:1:(0x66 | { ((_sTempCal + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:464"
+$WDATA:464:1:1:((_sTempCal + 0x2) & 0xFF):",obj/App_Init.asm:464"
+$WDATAH:465:1:1:0x6:",obj/App_Init.asm:465"
+$WDATA:465:1:1:0x27:",obj/App_Init.asm:465"
+$WDATAH:466:1:1:(0x66 | { ((_sTempCal + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:466"
+$WDATA:466:1:1:((_sTempCal + 0x3) & 0xFF):",obj/App_Init.asm:466"
+$WDATAH:468:1:1:(0x80 | { (_sTempCal >> 0x8) & 0x1 }):",obj/App_Init.asm:468"
+$WDATA:468:1:1:(_sTempCal & 0xFF):",obj/App_Init.asm:468"
+$WDATAH:469:1:1:0xC2:",obj/App_Init.asm:469"
+$WDATA:469:1:1:{ (_00115_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:469"
+$WDATAH:469:1:1:(((_00115_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:469"
+$WDATA:469:1:1:((_00115_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:469"
+$LAB:470:_00113_DS_:",obj/App_Init.asm:470"
+$WDATAS:472:1:1:(0x3C | { (_BIE_Available_Addr >> 0x8) & 0x1 }):",obj/App_Init.asm:472"
+$WDATA:472:1:1:(_BIE_Available_Addr & 0xFF):",obj/App_Init.asm:472"
+$WDATAH:473:1:1:0xC2:",obj/App_Init.asm:473"
+$WDATA:473:1:1:{ (_00110_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:473"
+$WDATAH:473:1:1:(((_00110_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:473"
+$WDATA:473:1:1:((_00110_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:473"
+$WDATAH:475:1:1:0x6:",obj/App_Init.asm:475"
+$WDATA:475:1:1:0x3F:",obj/App_Init.asm:475"
+$WDATAH:476:1:1:0xC0:",obj/App_Init.asm:476"
+$WDATA:476:1:1:{ (_BIE_Read >> 0xD) & 0xFF }:",obj/App_Init.asm:476"
+$WDATAH:476:1:1:(((_BIE_Read >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:476"
+$WDATA:476:1:1:((_BIE_Read >> 0x1) & 0xFF):",obj/App_Init.asm:476"
+$WDATAH:478:1:1:(0x66 | { ((_sTempCal + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:478"
+$WDATA:478:1:1:((_sTempCal + 0x3) & 0xFF):",obj/App_Init.asm:478"
+$WDATAH:479:1:1:(0x64 | { (STK00 >> 0x8) & 0x1 }):",obj/App_Init.asm:479"
+$WDATA:479:1:1:(STK00 & 0xFF):",obj/App_Init.asm:479"
+$WDATAH:480:1:1:(0x66 | { ((_sTempCal + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:480"
+$WDATA:480:1:1:((_sTempCal + 0x2) & 0xFF):",obj/App_Init.asm:480"
+$WDATAH:482:1:1:(0x90 | { (_sTempCal >> 0x8) & 0x1 }):",obj/App_Init.asm:482"
+$WDATA:482:1:1:(_sTempCal & 0xFF):",obj/App_Init.asm:482"
+$WDATAH:483:1:1:0xC2:",obj/App_Init.asm:483"
+$WDATA:483:1:1:{ (_00115_DS_ >> 0xD) & 0xFF }:",obj/App_Init.asm:483"
+$WDATAH:483:1:1:(((_00115_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:483"
+$WDATA:483:1:1:((_00115_DS_ >> 0x1) & 0xFF):",obj/App_Init.asm:483"
+$LAB:484:_00110_DS_:",obj/App_Init.asm:484"
+$WDATAH:486:1:1:(0x30 | { (_BIE_Available_Addr >> 0x8) & 0x1 }):",obj/App_Init.asm:486"
+$WDATA:486:1:1:(_BIE_Available_Addr & 0xFF):",obj/App_Init.asm:486"
+$WDATAH:487:1:1:0xC0:",obj/App_Init.asm:487"
+$WDATA:487:1:1:{ (_BIE_Read >> 0xD) & 0xFF }:",obj/App_Init.asm:487"
+$WDATAH:487:1:1:(((_BIE_Read >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:487"
+$WDATA:487:1:1:((_BIE_Read >> 0x1) & 0xFF):",obj/App_Init.asm:487"
+$WDATAH:488:1:1:(0x66 | { ((_sTempCal + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:488"
+$WDATA:488:1:1:((_sTempCal + 0x3) & 0xFF):",obj/App_Init.asm:488"
+$WDATAH:489:1:1:(0x64 | { (STK00 >> 0x8) & 0x1 }):",obj/App_Init.asm:489"
+$WDATA:489:1:1:(STK00 & 0xFF):",obj/App_Init.asm:489"
+$WDATAH:490:1:1:(0x66 | { ((_sTempCal + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:490"
+$WDATA:490:1:1:((_sTempCal + 0x2) & 0xFF):",obj/App_Init.asm:490"
+$WDATAH:492:1:1:0x0:",obj/App_Init.asm:492"
+$WDATA:492:1:1:0xC:",obj/App_Init.asm:492"
+$WDATAH:492:1:1:(0xF0 | { ((_sTempCal + 0x0) >> 0x8) & 0xF }):",obj/App_Init.asm:492"
+$WDATA:492:1:1:((_sTempCal + 0x0) & 0xFF):",obj/App_Init.asm:492"
+$WDATAH:493:1:1:0x90:",obj/App_Init.asm:493"
+$WDATA:493:1:1:0x0:",obj/App_Init.asm:493"
+$LAB:494:_00115_DS_:",obj/App_Init.asm:494"
+$WDATAH:496:1:1:0x0:",obj/App_Init.asm:496"
+$WDATA:496:1:1:0xA:",obj/App_Init.asm:496"
+$ENDFUNC
+$FUNC:$R:0:0:_Param_Init:",obj/App_Init.asm:504":$C:_memset
+$LAB:508:_Param_Init:",obj/App_Init.asm:508"
+$WDATAH:509:1:1:(0xC | { (_eButton_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:509"
+$WDATA:509:1:1:(_eButton_Status & 0xFF):",obj/App_Init.asm:509"
+$WDATAH:511:1:1:(0xC | { ((_sBleStatus + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:511"
+$WDATA:511:1:1:((_sBleStatus + 0x2) & 0xFF):",obj/App_Init.asm:511"
+$WDATAH:513:1:1:(0xC | { ((_sBleStatus + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:513"
+$WDATA:513:1:1:((_sBleStatus + 0x3) & 0xFF):",obj/App_Init.asm:513"
+$WDATAH:515:1:1:0x6:",obj/App_Init.asm:515"
+$WDATA:515:1:1:0x12:",obj/App_Init.asm:515"
+$WDATAH:516:1:1:(0x66 | { (_memset_STK03 >> 0x8) & 0x1 }):",obj/App_Init.asm:516"
+$WDATA:516:1:1:(_memset_STK03 & 0xFF):",obj/App_Init.asm:516"
+$WDATAH:517:1:1:(0xC | { (_memset_STK02 >> 0x8) & 0x1 }):",obj/App_Init.asm:517"
+$WDATA:517:1:1:(_memset_STK02 & 0xFF):",obj/App_Init.asm:517"
+$WDATAH:518:1:1:(0xC | { (_memset_STK01 >> 0x8) & 0x1 }):",obj/App_Init.asm:518"
+$WDATA:518:1:1:(_memset_STK01 & 0xFF):",obj/App_Init.asm:518"
+$WDATAH:519:1:1:0x6:",obj/App_Init.asm:519"
+$WDATA:519:1:1:((_sBleStatus + 0x4) & 0xFF):",obj/App_Init.asm:519"
+$WDATAH:520:1:1:(0x66 | { (_memset_STK00 >> 0x8) & 0x1 }):",obj/App_Init.asm:520"
+$WDATA:520:1:1:(_memset_STK00 & 0xFF):",obj/App_Init.asm:520"
+$WDATAH:521:1:1:0x6:",obj/App_Init.asm:521"
+$WDATA:521:1:1:(((_sBleStatus + 0x4) >> 0x8) & 0xFF):",obj/App_Init.asm:521"
+$WDATAH:522:1:1:0xC0:",obj/App_Init.asm:522"
+$WDATA:522:1:1:{ (_memset >> 0xD) & 0xFF }:",obj/App_Init.asm:522"
+$WDATAH:522:1:1:(((_memset >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:522"
+$WDATA:522:1:1:((_memset >> 0x1) & 0xFF):",obj/App_Init.asm:522"
+$WDATAH:525:1:1:(0x82 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_Init.asm:525"
+$WDATA:525:1:1:(_sBleStatus & 0xFF):",obj/App_Init.asm:525"
+$WDATAH:527:1:1:(0x86 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_Init.asm:527"
+$WDATA:527:1:1:(_sBleStatus & 0xFF):",obj/App_Init.asm:527"
+$WDATAH:529:1:1:(0x88 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_Init.asm:529"
+$WDATA:529:1:1:(_sBleStatus & 0xFF):",obj/App_Init.asm:529"
+$WDATAH:531:1:1:(0x80 | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:531"
+$WDATA:531:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:531"
+$WDATAH:533:1:1:(0x86 | { (_sTempCal >> 0x8) & 0x1 }):",obj/App_Init.asm:533"
+$WDATA:533:1:1:(_sTempCal & 0xFF):",obj/App_Init.asm:533"
+$WDATAH:535:1:1:(0x80 | { (_sTIMx >> 0x8) & 0x1 }):",obj/App_Init.asm:535"
+$WDATA:535:1:1:(_sTIMx & 0xFF):",obj/App_Init.asm:535"
+$WDATAH:537:1:1:(0xC | { ((_sTIMx + 0x4) >> 0x8) & 0x1 }):",obj/App_Init.asm:537"
+$WDATA:537:1:1:((_sTIMx + 0x4) & 0xFF):",obj/App_Init.asm:537"
+$WDATAH:539:1:1:(0xC | { ((_sLVD + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:539"
+$WDATA:539:1:1:((_sLVD + 0x1) & 0xFF):",obj/App_Init.asm:539"
+$WDATAH:541:1:1:(0x80 | { (_sLVD >> 0x8) & 0x1 }):",obj/App_Init.asm:541"
+$WDATA:541:1:1:(_sLVD & 0xFF):",obj/App_Init.asm:541"
+$WDATAH:543:1:1:(0x82 | { (_sLVD >> 0x8) & 0x1 }):",obj/App_Init.asm:543"
+$WDATA:543:1:1:(_sLVD & 0xFF):",obj/App_Init.asm:543"
+$WDATAH:545:1:1:(0x82 | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:545"
+$WDATA:545:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:545"
+$WDATAH:547:1:1:(0x8A | { (_sButton >> 0x8) & 0x1 }):",obj/App_Init.asm:547"
+$WDATA:547:1:1:(_sButton & 0xFF):",obj/App_Init.asm:547"
+$WDATAH:549:1:1:(0x80 | { (_sButton >> 0x8) & 0x1 }):",obj/App_Init.asm:549"
+$WDATA:549:1:1:(_sButton & 0xFF):",obj/App_Init.asm:549"
+$WDATAH:551:1:1:(0xC | { (_eButton_Status >> 0x8) & 0x1 }):",obj/App_Init.asm:551"
+$WDATA:551:1:1:(_eButton_Status & 0xFF):",obj/App_Init.asm:551"
+$WDATAH:553:1:1:(0x8A | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:553"
+$WDATA:553:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:553"
+$WDATAH:555:1:1:(0x88 | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:555"
+$WDATA:555:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:555"
+$WDATAH:557:1:1:(0x8C | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:557"
+$WDATA:557:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:557"
+$WDATAH:559:1:1:(0x8E | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:559"
+$WDATA:559:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:559"
+$WDATAH:561:1:1:(0x80 | { ((_sTimeStamp + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:561"
+$WDATA:561:1:1:((_sTimeStamp + 0x1) & 0xFF):",obj/App_Init.asm:561"
+$WDATAH:563:1:1:(0x8A | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_Init.asm:563"
+$WDATA:563:1:1:(_sBleStatus & 0xFF):",obj/App_Init.asm:563"
+$WDATAH:565:1:1:(0xC | { ((_sADC + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:565"
+$WDATA:565:1:1:((_sADC + 0x2) & 0xFF):",obj/App_Init.asm:565"
+$WDATAH:567:1:1:(0xC | { ((_sADC + 0xD) >> 0x8) & 0x1 }):",obj/App_Init.asm:567"
+$WDATA:567:1:1:((_sADC + 0xD) & 0xFF):",obj/App_Init.asm:567"
+$WDATAH:568:1:1:(0xC | { ((_sADC + 0xE) >> 0x8) & 0x1 }):",obj/App_Init.asm:568"
+$WDATA:568:1:1:((_sADC + 0xE) & 0xFF):",obj/App_Init.asm:568"
+$WDATAH:570:1:1:(0x82 | { (_sADC >> 0x8) & 0x1 }):",obj/App_Init.asm:570"
+$WDATA:570:1:1:(_sADC & 0xFF):",obj/App_Init.asm:570"
+$WDATAH:572:1:1:(0x80 | { (_sADC >> 0x8) & 0x1 }):",obj/App_Init.asm:572"
+$WDATA:572:1:1:(_sADC & 0xFF):",obj/App_Init.asm:572"
+$WDATAH:574:1:1:(0x96 | { (_sADC >> 0x8) & 0x1 }):",obj/App_Init.asm:574"
+$WDATA:574:1:1:(_sADC & 0xFF):",obj/App_Init.asm:574"
+$WDATAH:576:1:1:(0x88 | { (_sADC >> 0x8) & 0x1 }):",obj/App_Init.asm:576"
+$WDATA:576:1:1:(_sADC & 0xFF):",obj/App_Init.asm:576"
+$WDATAH:578:1:1:(0x9A | { (_sADC >> 0x8) & 0x1 }):",obj/App_Init.asm:578"
+$WDATA:578:1:1:(_sADC & 0xFF):",obj/App_Init.asm:578"
+$WDATAH:580:1:1:(0x86 | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:580"
+$WDATA:580:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:580"
+$WDATAH:582:1:1:(0xC | { ((_sTIMx + 0x4) >> 0x8) & 0x1 }):",obj/App_Init.asm:582"
+$WDATA:582:1:1:((_sTIMx + 0x4) & 0xFF):",obj/App_Init.asm:582"
+$WDATAH:584:1:1:(0xC | { ((_sTIMx + 0x5) >> 0x8) & 0x1 }):",obj/App_Init.asm:584"
+$WDATA:584:1:1:((_sTIMx + 0x5) & 0xFF):",obj/App_Init.asm:584"
+$WDATAH:585:1:1:(0xC | { ((_sTIMx + 0x6) >> 0x8) & 0x1 }):",obj/App_Init.asm:585"
+$WDATA:585:1:1:((_sTIMx + 0x6) & 0xFF):",obj/App_Init.asm:585"
+$WDATAH:587:1:1:(0xC | { ((_sTIMx + 0x7) >> 0x8) & 0x1 }):",obj/App_Init.asm:587"
+$WDATA:587:1:1:((_sTIMx + 0x7) & 0xFF):",obj/App_Init.asm:587"
+$WDATAH:588:1:1:(0xC | { ((_sTIMx + 0x8) >> 0x8) & 0x1 }):",obj/App_Init.asm:588"
+$WDATA:588:1:1:((_sTIMx + 0x8) & 0xFF):",obj/App_Init.asm:588"
+$WDATAH:590:1:1:(0xC | { ((_sTIMx + 0x9) >> 0x8) & 0x1 }):",obj/App_Init.asm:590"
+$WDATA:590:1:1:((_sTIMx + 0x9) & 0xFF):",obj/App_Init.asm:590"
+$WDATAH:591:1:1:(0xC | { ((_sTIMx + 0xA) >> 0x8) & 0x1 }):",obj/App_Init.asm:591"
+$WDATA:591:1:1:((_sTIMx + 0xA) & 0xFF):",obj/App_Init.asm:591"
+$WDATAH:593:1:1:(0xC | { ((_sTimeStamp + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:593"
+$WDATA:593:1:1:((_sTimeStamp + 0x2) & 0xFF):",obj/App_Init.asm:593"
+$WDATAH:594:1:1:(0xC | { ((_sTimeStamp + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:594"
+$WDATA:594:1:1:((_sTimeStamp + 0x3) & 0xFF):",obj/App_Init.asm:594"
+$WDATAH:595:1:1:(0xC | { ((_sTimeStamp + 0x4) >> 0x8) & 0x1 }):",obj/App_Init.asm:595"
+$WDATA:595:1:1:((_sTimeStamp + 0x4) & 0xFF):",obj/App_Init.asm:595"
+$WDATAH:596:1:1:(0xC | { ((_sTimeStamp + 0x5) >> 0x8) & 0x1 }):",obj/App_Init.asm:596"
+$WDATA:596:1:1:((_sTimeStamp + 0x5) & 0xFF):",obj/App_Init.asm:596"
+$WDATAH:598:1:1:(0x8A | { (_sTempCal >> 0x8) & 0x1 }):",obj/App_Init.asm:598"
+$WDATA:598:1:1:(_sTempCal & 0xFF):",obj/App_Init.asm:598"
+$WDATAH:600:1:1:(0xC | { (_UnitExchangeCompleted >> 0x8) & 0x1 }):",obj/App_Init.asm:600"
+$WDATA:600:1:1:(_UnitExchangeCompleted & 0xFF):",obj/App_Init.asm:600"
+$WDATAH:602:1:1:(0x80 | { (_sBacklight >> 0x8) & 0x1 }):",obj/App_Init.asm:602"
+$WDATA:602:1:1:(_sBacklight & 0xFF):",obj/App_Init.asm:602"
+$WDATAH:604:1:1:(0x82 | { (_sBacklight >> 0x8) & 0x1 }):",obj/App_Init.asm:604"
+$WDATA:604:1:1:(_sBacklight & 0xFF):",obj/App_Init.asm:604"
+$WDATAH:606:1:1:0x6:",obj/App_Init.asm:606"
+$WDATA:606:1:1:0x1:",obj/App_Init.asm:606"
+$WDATAH:607:1:1:(0x66 | { ((_sMemoryFlag + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:607"
+$WDATA:607:1:1:((_sMemoryFlag + 0x1) & 0xFF):",obj/App_Init.asm:607"
+$WDATAH:609:1:1:(0x92 | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:609"
+$WDATA:609:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:609"
+$WDATAH:611:1:1:(0x94 | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:611"
+$WDATA:611:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:611"
+$WDATAH:613:1:1:(0x88 | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:613"
+$WDATA:613:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:613"
+$WDATAH:615:1:1:(0x8A | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:615"
+$WDATA:615:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:615"
+$WDATAH:617:1:1:(0x64 | { ((_sMemory + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:617"
+$WDATA:617:1:1:((_sMemory + 0x1) & 0xFF):",obj/App_Init.asm:617"
+$WDATAH:618:1:1:(0x66 | { ((_sMemoryFlag + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:618"
+$WDATA:618:1:1:((_sMemoryFlag + 0x2) & 0xFF):",obj/App_Init.asm:618"
+$WDATAH:620:1:1:(0x86 | { (_sMemoryFlag >> 0x8) & 0x1 }):",obj/App_Init.asm:620"
+$WDATA:620:1:1:(_sMemoryFlag & 0xFF):",obj/App_Init.asm:620"
+$WDATAH:622:1:1:(0x84 | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:622"
+$WDATA:622:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:622"
+$WDATAH:624:1:1:(0xC | { ((_sActual + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:624"
+$WDATA:624:1:1:((_sActual + 0x2) & 0xFF):",obj/App_Init.asm:624"
+$WDATAH:626:1:1:(0x80 | { (_sActual >> 0x8) & 0x1 }):",obj/App_Init.asm:626"
+$WDATA:626:1:1:(_sActual & 0xFF):",obj/App_Init.asm:626"
+$WDATAH:628:1:1:(0x82 | { (_sActual >> 0x8) & 0x1 }):",obj/App_Init.asm:628"
+$WDATA:628:1:1:(_sActual & 0xFF):",obj/App_Init.asm:628"
+$WDATAH:630:1:1:(0x84 | { (_sActual >> 0x8) & 0x1 }):",obj/App_Init.asm:630"
+$WDATA:630:1:1:(_sActual & 0xFF):",obj/App_Init.asm:630"
+$WDATAH:632:1:1:(0x84 | { (_sForecast >> 0x8) & 0x1 }):",obj/App_Init.asm:632"
+$WDATA:632:1:1:(_sForecast & 0xFF):",obj/App_Init.asm:632"
+$WDATAH:634:1:1:0x6:",obj/App_Init.asm:634"
+$WDATA:634:1:1:0x1:",obj/App_Init.asm:634"
+$WDATAH:635:1:1:(0x66 | { ((_sForecast + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:635"
+$WDATA:635:1:1:((_sForecast + 0x2) & 0xFF):",obj/App_Init.asm:635"
+$WDATAH:637:1:1:(0xC | { ((_sForecast + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:637"
+$WDATA:637:1:1:((_sForecast + 0x3) & 0xFF):",obj/App_Init.asm:637"
+$WDATAH:639:1:1:(0xC | { ((_sForecast + 0x16) >> 0x8) & 0x1 }):",obj/App_Init.asm:639"
+$WDATA:639:1:1:((_sForecast + 0x16) & 0xFF):",obj/App_Init.asm:639"
+$WDATAH:640:1:1:(0xC | { ((_sForecast + 0x17) >> 0x8) & 0x1 }):",obj/App_Init.asm:640"
+$WDATA:640:1:1:((_sForecast + 0x17) & 0xFF):",obj/App_Init.asm:640"
+$WDATAH:641:1:1:(0xC | { ((_sForecast + 0x18) >> 0x8) & 0x1 }):",obj/App_Init.asm:641"
+$WDATA:641:1:1:((_sForecast + 0x18) & 0xFF):",obj/App_Init.asm:641"
+$WDATAH:642:1:1:(0xC | { ((_sForecast + 0x19) >> 0x8) & 0x1 }):",obj/App_Init.asm:642"
+$WDATA:642:1:1:((_sForecast + 0x19) & 0xFF):",obj/App_Init.asm:642"
+$WDATAH:644:1:1:(0xC | { ((_sForecast + 0x4) >> 0x8) & 0x1 }):",obj/App_Init.asm:644"
+$WDATA:644:1:1:((_sForecast + 0x4) & 0xFF):",obj/App_Init.asm:644"
+$WDATAH:646:1:1:(0x80 | { (_sForecast >> 0x8) & 0x1 }):",obj/App_Init.asm:646"
+$WDATA:646:1:1:(_sForecast & 0xFF):",obj/App_Init.asm:646"
+$WDATAH:648:1:1:(0x88 | { (_sActual_Forecast >> 0x8) & 0x1 }):",obj/App_Init.asm:648"
+$WDATA:648:1:1:(_sActual_Forecast & 0xFF):",obj/App_Init.asm:648"
+$WDATAH:650:1:1:(0x82 | { (_sForecast >> 0x8) & 0x1 }):",obj/App_Init.asm:650"
+$WDATA:650:1:1:(_sForecast & 0xFF):",obj/App_Init.asm:650"
+$WDATAH:652:1:1:(0x80 | { (_sActual_Forecast >> 0x8) & 0x1 }):",obj/App_Init.asm:652"
+$WDATA:652:1:1:(_sActual_Forecast & 0xFF):",obj/App_Init.asm:652"
+$WDATAH:654:1:1:(0xC | { ((_sActual_Forecast + 0x1) >> 0x8) & 0x1 }):",obj/App_Init.asm:654"
+$WDATA:654:1:1:((_sActual_Forecast + 0x1) & 0xFF):",obj/App_Init.asm:654"
+$WDATAH:656:1:1:(0xC | { ((_sActual_Forecast + 0x2) >> 0x8) & 0x1 }):",obj/App_Init.asm:656"
+$WDATA:656:1:1:((_sActual_Forecast + 0x2) & 0xFF):",obj/App_Init.asm:656"
+$WDATAH:658:1:1:(0xC | { ((_sForecast + 0x5) >> 0x8) & 0x1 }):",obj/App_Init.asm:658"
+$WDATA:658:1:1:((_sForecast + 0x5) & 0xFF):",obj/App_Init.asm:658"
+$WDATAH:660:1:1:(0xC | { ((_sActual_Forecast + 0x7) >> 0x8) & 0x1 }):",obj/App_Init.asm:660"
+$WDATA:660:1:1:((_sActual_Forecast + 0x7) & 0xFF):",obj/App_Init.asm:660"
+$WDATAH:661:1:1:(0xC | { ((_sActual_Forecast + 0x8) >> 0x8) & 0x1 }):",obj/App_Init.asm:661"
+$WDATA:661:1:1:((_sActual_Forecast + 0x8) & 0xFF):",obj/App_Init.asm:661"
+$WDATAH:663:1:1:(0xC | { ((_sActual_Forecast + 0x9) >> 0x8) & 0x1 }):",obj/App_Init.asm:663"
+$WDATA:663:1:1:((_sActual_Forecast + 0x9) & 0xFF):",obj/App_Init.asm:663"
+$WDATAH:664:1:1:(0xC | { ((_sActual_Forecast + 0xA) >> 0x8) & 0x1 }):",obj/App_Init.asm:664"
+$WDATA:664:1:1:((_sActual_Forecast + 0xA) & 0xFF):",obj/App_Init.asm:664"
+$WDATAH:666:1:1:(0xC | { ((_sActual_Forecast + 0xB) >> 0x8) & 0x1 }):",obj/App_Init.asm:666"
+$WDATA:666:1:1:((_sActual_Forecast + 0xB) & 0xFF):",obj/App_Init.asm:666"
+$WDATAH:667:1:1:(0xC | { ((_sActual_Forecast + 0xC) >> 0x8) & 0x1 }):",obj/App_Init.asm:667"
+$WDATA:667:1:1:((_sActual_Forecast + 0xC) & 0xFF):",obj/App_Init.asm:667"
+$WDATAH:669:1:1:(0xC | { ((_sActual_Forecast + 0x3) >> 0x8) & 0x1 }):",obj/App_Init.asm:669"
+$WDATA:669:1:1:((_sActual_Forecast + 0x3) & 0xFF):",obj/App_Init.asm:669"
+$WDATAH:670:1:1:(0xC | { ((_sActual_Forecast + 0x4) >> 0x8) & 0x1 }):",obj/App_Init.asm:670"
+$WDATA:670:1:1:((_sActual_Forecast + 0x4) & 0xFF):",obj/App_Init.asm:670"
+$WDATAH:672:1:1:(0x86 | { (_sActual_Forecast >> 0x8) & 0x1 }):",obj/App_Init.asm:672"
+$WDATA:672:1:1:(_sActual_Forecast & 0xFF):",obj/App_Init.asm:672"
+$WDATAH:674:1:1:(0x82 | { (_sActual_Forecast >> 0x8) & 0x1 }):",obj/App_Init.asm:674"
+$WDATA:674:1:1:(_sActual_Forecast & 0xFF):",obj/App_Init.asm:674"
+$WDATAH:676:1:1:(0x84 | { (_sActual_Forecast >> 0x8) & 0x1 }):",obj/App_Init.asm:676"
+$WDATA:676:1:1:(_sActual_Forecast & 0xFF):",obj/App_Init.asm:676"
+$WDATAH:678:1:1:(0x80 | { (_sTimeStamp >> 0x8) & 0x1 }):",obj/App_Init.asm:678"
+$WDATA:678:1:1:(_sTimeStamp & 0xFF):",obj/App_Init.asm:678"
+$WDATAH:680:1:1:0x6:",obj/App_Init.asm:680"
+$WDATA:680:1:1:0x9:",obj/App_Init.asm:680"
+$WDATAH:681:1:1:(0x66 | { (_memset_STK03 >> 0x8) & 0x1 }):",obj/App_Init.asm:681"
+$WDATA:681:1:1:(_memset_STK03 & 0xFF):",obj/App_Init.asm:681"
+$WDATAH:682:1:1:(0xC | { (_memset_STK02 >> 0x8) & 0x1 }):",obj/App_Init.asm:682"
+$WDATA:682:1:1:(_memset_STK02 & 0xFF):",obj/App_Init.asm:682"
+$WDATAH:683:1:1:(0xC | { (_memset_STK01 >> 0x8) & 0x1 }):",obj/App_Init.asm:683"
+$WDATA:683:1:1:(_memset_STK01 & 0xFF):",obj/App_Init.asm:683"
+$WDATAH:684:1:1:0x6:",obj/App_Init.asm:684"
+$WDATA:684:1:1:((_ERR + 0x0) & 0xFF):",obj/App_Init.asm:684"
+$WDATAH:685:1:1:(0x66 | { (_memset_STK00 >> 0x8) & 0x1 }):",obj/App_Init.asm:685"
+$WDATA:685:1:1:(_memset_STK00 & 0xFF):",obj/App_Init.asm:685"
+$WDATAH:686:1:1:0x6:",obj/App_Init.asm:686"
+$WDATA:686:1:1:(((_ERR + 0x0) >> 0x8) & 0xFF):",obj/App_Init.asm:686"
+$WDATAH:687:1:1:0xC0:",obj/App_Init.asm:687"
+$WDATA:687:1:1:{ (_memset >> 0xD) & 0xFF }:",obj/App_Init.asm:687"
+$WDATAH:687:1:1:(((_memset >> 0x9) & 0xF) | 0xF0):",obj/App_Init.asm:687"
+$WDATA:687:1:1:((_memset >> 0x1) & 0xFF):",obj/App_Init.asm:687"
+$WDATAH:689:1:1:0x6:",obj/App_Init.asm:689"
+$WDATA:689:1:1:0x5A:",obj/App_Init.asm:689"
+$WDATAH:690:1:1:(0x66 | { (_eTo_Actual_Ways >> 0x8) & 0x1 }):",obj/App_Init.asm:690"
+$WDATA:690:1:1:(_eTo_Actual_Ways & 0xFF):",obj/App_Init.asm:690"
+$WDATAH:692:1:1:(0xC | { ((_sADC + 0xF) >> 0x8) & 0x1 }):",obj/App_Init.asm:692"
+$WDATA:692:1:1:((_sADC + 0xF) & 0xFF):",obj/App_Init.asm:692"
+$WDATAH:693:1:1:(0xC | { ((_sADC + 0x10) >> 0x8) & 0x1 }):",obj/App_Init.asm:693"
+$WDATA:693:1:1:((_sADC + 0x10) & 0xFF):",obj/App_Init.asm:693"
+$WDATAH:695:1:1:(0xC | { (_Flag_No_Buzzer >> 0x8) & 0x1 }):",obj/App_Init.asm:695"
+$WDATA:695:1:1:(_Flag_No_Buzzer & 0xFF):",obj/App_Init.asm:695"
+$WDATAH:697:1:1:0x0:",obj/App_Init.asm:697"
+$WDATA:697:1:1:0xA:",obj/App_Init.asm:697"
+$ENDFUNC
+$AREA:DSEG:2:0:0:0
+$LAB:1143:_sTest:",obj/App_Init.asm:1143"
+$BLANK:1143:19:",obj/App_Init.asm:1143"
+$LAB:1146:_eTempUnit:",obj/App_Init.asm:1146"
+$BLANK:1146:1:",obj/App_Init.asm:1146"
+$LAB:1149:_eBondingTempUnit:",obj/App_Init.asm:1149"
+$BLANK:1149:1:",obj/App_Init.asm:1149"
+$LAB:1152:_eVersionCode:",obj/App_Init.asm:1152"
+$BLANK:1152:1:",obj/App_Init.asm:1152"
+$LAB:1155:_eMeasureMode:",obj/App_Init.asm:1155"
+$BLANK:1155:1:",obj/App_Init.asm:1155"
+$LAB:1158:_eBinding_Status:",obj/App_Init.asm:1158"
+$BLANK:1158:1:",obj/App_Init.asm:1158"
+$LAB:1161:_Enter_PrepareSleep_Flag:",obj/App_Init.asm:1161"
+$BLANK:1161:1:",obj/App_Init.asm:1161"
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:IDATA:2:0:0:0
+$AREA:IDATAROM:1:0:0:0
+$AREA:UDATA:2:0:0:0
+$LAB:1659:r0x10AB:",obj/App_Init.asm:1659"
+$BLANK:1659:1:",obj/App_Init.asm:1659"
+$LAB:1660:r0x10AE:",obj/App_Init.asm:1660"
+$BLANK:1660:1:",obj/App_Init.asm:1660"
+$LAB:1661:r0x10AF:",obj/App_Init.asm:1661"
+$BLANK:1661:1:",obj/App_Init.asm:1661"
+$LAB:1662:r0x10B0:",obj/App_Init.asm:1662"
+$BLANK:1662:1:",obj/App_Init.asm:1662"
+$LAB:1663:r0x10B1:",obj/App_Init.asm:1663"
+$BLANK:1663:1:",obj/App_Init.asm:1663"
+$AREA:UDATA:2:0:0:0
+$AREA:LOCALSTK:4:0:0:0
+$EQU:__SWTGTID:1164:0xA6A6B2CF
+$EQU:_INDF0:1167:0x0
+$EQU:_POINC0:1170:0x1
+$EQU:_PODEC0:1173:0x2
+$EQU:_PRINC0:1176:0x3
+$EQU:_PLUSW0:1179:0x4
+$EQU:_INDF1:1182:0x5
+$EQU:_POINC1:1185:0x6
+$EQU:_PODEC1:1188:0x7
+$EQU:_PRINC1:1191:0x8
+$EQU:_PLUSW1:1194:0x9
+$EQU:_INDF2:1197:0xA
+$EQU:_POINC2:1200:0xB
+$EQU:_PODEC2:1203:0xC
+$EQU:_PRINC2:1206:0xD
+$EQU:_PLUSW2:1209:0xE
+$EQU:_FSR0H:1212:0xF
+$EQU:_FSR0L:1215:0x10
+$EQU:_FSR1H:1218:0x11
+$EQU:_FSR1L:1221:0x12
+$EQU:_FSR2H:1224:0x13
+$EQU:_FSR2L:1227:0x14
+$EQU:_TOSH:1230:0x16
+$EQU:_TOSL:1233:0x17
+$EQU:_SKCN:1236:0x18
+$EQU:_PCLATH:1239:0x1A
+$EQU:_PCLATL:1242:0x1B
+$EQU:_TBLPTRH:1245:0x1D
+$EQU:_TBLPTRL:1248:0x1E
+$EQU:_TBLDH:1251:0x1F
+$EQU:_TBLDL:1254:0x20
+$EQU:_PRODH:1257:0x21
+$EQU:_PRODL:1260:0x22
+$EQU:_INTE0:1263:0x23
+$EQU:_INTE1:1266:0x24
+$EQU:_INTE2:1269:0x25
+$EQU:_INTF0:1272:0x26
+$EQU:_INTF1:1275:0x27
+$EQU:_INTF2:1278:0x28
+$EQU:_WREG:1281:0x29
+$EQU:_BSRCN:1284:0x2A
+$EQU:_STATUS:1287:0x2B
+$EQU:_MSTAT:1290:0x2B
+$EQU:_PSTAT:1293:0x2C
+$EQU:_BIECN:1296:0x2E
+$EQU:_BIEARH:1299:0x2F
+$EQU:_BIEARL:1302:0x30
+$EQU:_BIEDRH:1305:0x31
+$EQU:_BIEDRL:1308:0x32
+$EQU:_PWRCN:1311:0x33
+$EQU:_OSCCN0:1314:0x34
+$EQU:_OSCCN1:1317:0x35
+$EQU:_OSCCN2:1320:0x36
+$EQU:_CSFCN0:1323:0x37
+$EQU:_CSFCN1:1326:0x38
+$EQU:_WDTCN:1329:0x39
+$EQU:_AD1H:1332:0x3A
+$EQU:_AD1M:1335:0x3B
+$EQU:_AD1L:1338:0x3C
+$EQU:_AD1CN0:1341:0x3D
+$EQU:_AD1CN1:1344:0x3E
+$EQU:_AD1CN2:1347:0x3F
+$EQU:_AD1CN3:1350:0x40
+$EQU:_AD1CN4:1353:0x41
+$EQU:_AD1CN5:1356:0x42
+$EQU:_LVDCN:1359:0x43
+$EQU:_TMA1CN:1362:0x44
+$EQU:_TMA1R:1365:0x45
+$EQU:_TMA1C:1368:0x46
+$EQU:_TB1FLAG:1371:0x47
+$EQU:_TB1CN0:1374:0x48
+$EQU:_TB1CN1:1377:0x49
+$EQU:_TB1RH:1380:0x4A
+$EQU:_TB1RL:1383:0x4B
+$EQU:_TB1C0H:1386:0x4C
+$EQU:_TB1C0L:1389:0x4D
+$EQU:_TB1C1H:1392:0x4E
+$EQU:_TB1C1L:1395:0x4F
+$EQU:_TB1C2H:1398:0x50
+$EQU:_TB1C2L:1401:0x51
+$EQU:_TC1CN0:1404:0x52
+$EQU:_PT1:1407:0x53
+$EQU:_TRISC1:1410:0x54
+$EQU:_PT1DA:1413:0x55
+$EQU:_PT1PU:1416:0x56
+$EQU:_PT1M1:1419:0x57
+$EQU:_PT1INT:1422:0x58
+$EQU:_PT1INTE:1425:0x59
+$EQU:_PT1INTF:1428:0x5A
+$EQU:_PT2:1431:0x5B
+$EQU:_TRISC2:1434:0x5C
+$EQU:_PT2DA:1437:0x5D
+$EQU:_PT2PU:1440:0x5E
+$EQU:_PT2INT:1443:0x5F
+$EQU:_PT2INTE:1446:0x60
+$EQU:_PT2INTF:1449:0x61
+$EQU:_PT6:1452:0x62
+$EQU:_TRISC6:1455:0x63
+$EQU:_PT6DA:1458:0x64
+$EQU:_PT6PU:1461:0x65
+$EQU:_PT7:1464:0x66
+$EQU:_TRISC7:1467:0x67
+$EQU:_PT7DA:1470:0x68
+$EQU:_PT7PU:1473:0x69
+$EQU:_PT8:1476:0x6A
+$EQU:_TRISC8:1479:0x6B
+$EQU:_PT8DA:1482:0x6C
+$EQU:_PT8PU:1485:0x6D
+$EQU:_SSPCN0:1488:0x6E
+$EQU:_SSPSTA0:1491:0x6F
+$EQU:_SSPBUF0:1494:0x70
+$EQU:_CFG0:1497:0x71
+$EQU:_ACT0:1500:0x72
+$EQU:_STA0:1503:0x73
+$EQU:_CRG0:1506:0x74
+$EQU:_TOC0:1509:0x75
+$EQU:_RDB0:1512:0x76
+$EQU:_TDB0:1515:0x77
+$EQU:_SID0:1518:0x78
+$EQU:_UR0CN:1521:0x79
+$EQU:_UR0STA:1524:0x7A
+$EQU:_BA0CN:1527:0x7B
+$EQU:_BG0RH:1530:0x7C
+$EQU:_BG0RL:1533:0x7D
+$EQU:_TX0R:1536:0x7E
+$EQU:_RC0REG:1539:0x7F
+$EQU:_LCDCN1:1542:0x180
+$EQU:_LCDCN2:1545:0x181
+$EQU:_LCDCN3:1548:0x182
+$EQU:_LCDCN4:1551:0x183
+$EQU:_LCDCN5:1554:0x184
+$EQU:_LCDCN6:1557:0x185
+$EQU:_LCDCN7:1560:0x186
+$EQU:_LCDCN8:1563:0x187
+$EQU:_LCD0:1566:0x188
+$EQU:_LCD1:1569:0x189
+$EQU:_LCD2:1572:0x18A
+$EQU:_LCD3:1575:0x18B
+$EQU:_LCD4:1578:0x18C
+$EQU:_LCD5:1581:0x18D
+$EQU:_LCD6:1584:0x18E
+$EQU:_LCD7:1587:0x18F
+$EQU:_LCD8:1590:0x190
+$EQU:_LCD9:1593:0x191
+$EQU:_UR2CN:1596:0x192
+$EQU:_UR2STA:1599:0x193
+$EQU:_BA2CN:1602:0x194
+$EQU:_BG2RH:1605:0x195
+$EQU:_BG2RL:1608:0x196
+$EQU:_TX2R:1611:0x197
+$EQU:_RC2REG:1614:0x198
+$EQU:_TMA2R:1617:0x1E8
+$EQU:_TMA2C:1620:0x1E9
+$EQU:_LEDCN:1623:0x1EA
+$EQU:_IQ0:1626:0x1EB
+$EQU:_IQ1:1629:0x1EC
+$EQU:_DGCON1:1632:0x1ED
+$EQU:_DGCON2:1635:0x1EE
+$EQU:_ADCRH:1638:0x3A
+$EQU:_ADCRM:1641:0x3B
+$EQU:_ADCRL:1644:0x3C
+$EQU:_TEMDATA:1647:0x2E0
+$ENDMOD:App_Init:".\obj\App_Init.rel"

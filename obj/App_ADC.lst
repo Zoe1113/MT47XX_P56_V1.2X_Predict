@@ -1,0 +1,2948 @@
+00001                       ;--------------------------------------------------------
+00002                       ; File Created by SDCC : free open source ISO C Compiler
+00003                       ; Version 4.5.2 #bf155f72c (MSVC)
+00004                       ;--------------------------------------------------------
+00005                       ; Port for HYCON CPU
+00006                       ;--------------------------------------------------------
+00007                       ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+00008                       ;;	.file	".\Source\App_ADC.c"
+00009                       	.module App_ADC
+00010                       	;.list	p=HY17P56
+00011                       	;--cdb--T:FApp_ADC$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]
+00012                       	;--cdb--T:FApp_ADC$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]
+00013                       	;--cdb--T:FApp_ADC$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]
+00014                       	;--cdb--T:FApp_ADC$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]
+00015                       	;--cdb--T:FApp_ADC$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]
+00016                       	;--cdb--T:FApp_ADC$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]
+00017                       	;--cdb--T:FApp_ADC$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]
+00018                       	;--cdb--T:FApp_ADC$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]
+00019                       	;--cdb--T:FApp_ADC$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]
+00020                       	;--cdb--T:FApp_ADC$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]
+00021                       	;--cdb--T:FApp_ADC$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]
+00022                       	;--cdb--T:FApp_ADC$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]
+00023                       	;--cdb--T:FApp_ADC$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]
+00024                       	;--cdb--T:FApp_ADC$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]
+00025                       	;--cdb--T:FApp_ADC$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]
+00026                       	;--cdb--T:FApp_ADC$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]
+00027                       	;--cdb--T:FApp_ADC$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]
+00028                       	;--cdb--T:FApp_ADC$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]
+00029                       	;--cdb--T:FApp_ADC$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]
+00030                       	;--cdb--T:FApp_ADC$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]
+00031                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00032                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00033                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00034                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00035                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00036                       	;--cdb--S:G$atoll$0$0({2}DF,SI:SE),C,0,0
+00037                       	;--cdb--S:G$strtoll$0$0({2}DF,SI:SE),C,0,0
+00038                       	;--cdb--S:G$strtoull$0$0({2}DF,SI:UE),C,0,0
+00039                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00040                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00041                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00042                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00043                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00044                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00045                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00046                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00047                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00048                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00049                       	;--cdb--F:App_ADC:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0,0,0,0
+00050                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00051                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00052                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00053                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00054                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00055                       	;--cdb--S:G$llabs$0$0({2}DF,SI:SE),C,0,0
+00056                       	;--cdb--S:G$div$0$0({2}DF,ST__00000000(T:FApp_ADC$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),C,0,0
+00057                       	;--cdb--S:G$ldiv$0$0({2}DF,ST__00000001(T:FApp_ADC$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),C,0,0
+00058                       	;--cdb--S:G$lldiv$0$0({2}DF,ST__00000002(T:FApp_ADC$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),C,0,0
+00059                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00060                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00061                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00062                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00063                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00064                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00065                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00066                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00067                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00068                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00069                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00070                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00071                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00072                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00073                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00074                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00075                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00076                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00077                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00078                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00079                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00080                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00081                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00082                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00083                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00084                       	;--cdb--S:G$memset_explicit$0$0({2}DF,DT,SV:S),C,0,0
+00085                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00086                       	;--cdb--S:G$strnlen$0$0({2}DF,SI:U),C,0,0
+00087                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00088                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00089                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00090                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00091                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00092                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00093                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00094                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+00095                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+00096                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+00097                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+00098                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+00099                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+00100                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+00101                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+00102                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+00103                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+00104                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+00105                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+00106                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+00107                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+00108                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00109                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+00110                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+00111                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+00112                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+00113                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+00114                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+00115                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+00116                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+00117                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+00118                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+00119                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+00120                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+00121                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+00122                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+00123                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+00124                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+00125                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+00126                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+00127                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+00128                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+00129                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+00130                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+00131                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+00132                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+00133                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+00134                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+00135                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+00136                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+00137                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+00138                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+00139                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00140                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+00141                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+00142                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+00143                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+00144                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+00145                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+00146                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+00147                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+00148                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+00149                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+00150                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+00151                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+00152                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+00153                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+00154                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+00155                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+00156                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+00157                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+00158                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+00159                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+00160                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+00161                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+00162                       	;--cdb--S:G$ADCGetData$0$0({2}DF,SI:S),C,0,0
+00163                       	;--cdb--F:App_ADC:G$ADCGetData$0$0({2}DF,SI:S),C,0,0,0,0,0
+00164                       	;--cdb--S:G$ADC_Average$0$0({2}DF,SC:U),C,0,0
+00165                       	;--cdb--F:App_ADC:G$ADC_Average$0$0({2}DF,SC:U),C,0,0,0,0,0
+00166                       	;--cdb--S:G$NTC_ADCData$0$0({2}DF,SC:U),C,0,0
+00167                       	;--cdb--F:App_ADC:G$NTC_ADCData$0$0({2}DF,SC:U),C,0,0,0,0,0
+00168                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+00169                       	;--cdb--F:App_ADC:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0,0,0,0
+00170                       	;--cdb--S:G$_mullong$0$0({2}DF,SL:SL),C,0,0
+00171                       	;--cdb--S:G$_divulong$0$0({2}DF,SL:UL),C,0,0
+00172                       	;--cdb--S:G$_mulint$0$0({2}DF,SI:S),C,0,0
+00173                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+00174                       	;--cdb--F:App_ADC:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0,0,0,0
+00175                       ;--------------------------------------------------------
+00176                       ; overlayable items in internal ram 
+00177                       ;--------------------------------------------------------
+00178                       ;	udata_ovr
+00179                       .area CCODE (code,REL,CON) ; App_ADC-code 
+00180                       .globl _Centigrade_Convert_Fahrenheit
+00181                       
+00182                       ;--------------------------------------------------------
+00183                       	.FUNC _Centigrade_Convert_Fahrenheit:$r:2:2:$C:__divulong:$C:__mulint:$C:__mullong\
+00184                       :$L:r0x10D1:$L:_Centigrade_Convert_Fahrenheit_STK00:$L:r0x10D2:$L:r0x10D3:$L:r0x10D4\
+00185 0000 --              :$L:r0x10D5
+00186                       ;--------------------------------------------------------
+00187                       ;	;.line	373; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
+00188 0000                  _Centigrade_Convert_Fahrenheit:	;Function start
+00189 0000 6600             	MVF	r0x10D1,1,0
+00190                       ;	;.line	377; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
+00191 0001 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00192 0002 0480             	ADDL	0x80
+00193 0003 06F3             	MVL	0xf3
+00194 0004 1400             	ADDC	r0x10D1,0,0
+00195 0005 B82B             	BTSS	_STATUS,4
+00196 0006 C200 F000        	JMP	_00252_DS_
+00197 0008 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00198 0009 04D9             	ADDL	0xd9
+00199 000A 06EE             	MVL	0xee
+00200 000B 1400             	ADDC	r0x10D1,0,0
+00201 000C A82B             	BTSZ	_STATUS,4
+00202 000D C200 F000        	JMP	_00252_DS_
+00203                       ;	;.line	380; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+00204 000F 065A             	MVL	0x5a
+00205 0010 6C00             	CPSE	_eTempUnit,0
+00206 0011 C200 F000        	JMP	_00244_DS_
+00207                       ;	;.line	382; ".\Source\App_ADC.c"	tmp = temp;
+00208 0013 0C00             	CLRF	r0x10D4,0
+00209 0014 0C00             	CLRF	r0x10D5,0
+00210                       ;	;.line	383; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+00211 0015 0605             	MVL	0x05
+00212 0016 1200             	ADDF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+00213 0017 0600             	MVL	0x00
+00214 0018 1600             	ADDC	r0x10D1,1,0
+00215 0019 1600             	ADDC	r0x10D4,1,0
+00216 001A 1600             	ADDC	r0x10D5,1,0
+00217 001B 060A             	MVL	0x0a
+00218 001C 6600             	MVF	__divulong_STK06,1,0
+00219 001D 0C00             	CLRF	__divulong_STK05,0
+00220 001E 0C00             	CLRF	__divulong_STK04,0
+00221 001F 0C00             	CLRF	__divulong_STK03,0
+00222 0020 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00223 0021 6600             	MVF	__divulong_STK02,1,0
+00224 0022 6400             	MVF	r0x10D1,0,0
+00225 0023 6600             	MVF	__divulong_STK01,1,0
+00226 0024 6400             	MVF	r0x10D4,0,0
+00227 0025 6600             	MVF	__divulong_STK00,1,0
+00228 0026 6400             	MVF	r0x10D5,0,0
+00229 0027 C000 F000        	CALL	__divulong
+00230 0029 D000 F000        	MVFF	STK02,__mulint_STK02
+00231 002B D000 F000        	MVFF	STK01,__mulint_STK01
+00232 002D 060A             	MVL	0x0a
+00233 002E 6600             	MVF	__mulint_STK00,1,0
+00234 002F 0600             	MVL	0x00
+00235 0030 C000 F000        	CALL	__mulint
+00236 0032 C200 F000        	JMP	_00255_DS_
+00237 0034                  _00244_DS_:
+00238                       ;	;.line	386; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+00239 0034 06A5             	MVL	0xa5
+00240 0035 6C00             	CPSE	_eTempUnit,0
+00241 0036 C200 F000        	JMP	_00255_DS_
+00242                       ;	;.line	388; ".\Source\App_ADC.c"	tmp = temp ;
+00243 0038 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00244                       ;	;.line	390; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+00245 0039 6600             	MVF	__mullong_STK06,1,0
+00246 003A 6400             	MVF	r0x10D1,0,0
+00247 003B 6600             	MVF	__mullong_STK05,1,0
+00248 003C 0C00             	CLRF	__mullong_STK04,0
+00249 003D 0C00             	CLRF	__mullong_STK03,0
+00250 003E 0609             	MVL	0x09
+00251 003F 6600             	MVF	__mullong_STK02,1,0
+00252 0040 0C00             	CLRF	__mullong_STK01,0
+00253 0041 0C00             	CLRF	__mullong_STK00,0
+00254 0042 0600             	MVL	0x00
+00255 0043 C000 F000        	CALL	__mullong
+00256 0045 6600             	MVF	r0x10D5,1,0
+00257 0046 0605             	MVL	0x05
+00258 0047 6600             	MVF	__divulong_STK06,1,0
+00259 0048 0C00             	CLRF	__divulong_STK05,0
+00260 0049 0C00             	CLRF	__divulong_STK04,0
+00261 004A 0C00             	CLRF	__divulong_STK03,0
+00262 004B D000 F000        	MVFF	STK02,__divulong_STK02
+00263 004D D000 F000        	MVFF	STK01,__divulong_STK01
+00264 004F D000 F000        	MVFF	STK00,__divulong_STK00
+00265 0051 6400             	MVF	r0x10D5,0,0
+00266 0052 C000 F000        	CALL	__divulong
+00267 0054 6600             	MVF	r0x10D5,1,0
+00268 0055 6400             	MVF	STK01,0,0
+00269 0056 6600             	MVF	r0x10D3,1,0
+00270 0057 6400             	MVF	STK02,0,0
+00271 0058 0480             	ADDL	0x80
+00272 0059 6600             	MVF	r0x10D2,1,0
+00273 005A 060C             	MVL	0x0c
+00274 005B 1600             	ADDC	r0x10D3,1,0
+00275 005C 0600             	MVL	0x00
+00276 005D 1600             	ADDC	STK00,1,0
+00277 005E 1600             	ADDC	r0x10D5,1,0
+00278                       ;	;.line	392; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+00279 005F 0605             	MVL	0x05
+00280 0060 1200             	ADDF	r0x10D2,1,0
+00281 0061 0600             	MVL	0x00
+00282 0062 1600             	ADDC	r0x10D3,1,0
+00283 0063 1600             	ADDC	STK00,1,0
+00284 0064 1600             	ADDC	r0x10D5,1,0
+00285 0065 060A             	MVL	0x0a
+00286 0066 6600             	MVF	__divulong_STK06,1,0
+00287 0067 0C00             	CLRF	__divulong_STK05,0
+00288 0068 0C00             	CLRF	__divulong_STK04,0
+00289 0069 0C00             	CLRF	__divulong_STK03,0
+00290 006A 6400             	MVF	r0x10D2,0,0
+00291 006B 6600             	MVF	__divulong_STK02,1,0
+00292 006C 6400             	MVF	r0x10D3,0,0
+00293 006D 6600             	MVF	__divulong_STK01,1,0
+00294 006E D000 F000        	MVFF	STK00,__divulong_STK00
+00295 0070 6400             	MVF	r0x10D5,0,0
+00296 0071 C000 F000        	CALL	__divulong
+00297 0073 D000 F000        	MVFF	STK02,__mulint_STK02
+00298 0075 D000 F000        	MVFF	STK01,__mulint_STK01
+00299 0077 060A             	MVL	0x0a
+00300 0078 6600             	MVF	__mulint_STK00,1,0
+00301 0079 0600             	MVL	0x00
+00302 007A C000 F000        	CALL	__mulint
+00303 007C C200 F000        	JMP	_00255_DS_
+00304 007E                  _00252_DS_:
+00305                       ;	;.line	398; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+00306 007E 065A             	MVL	0x5a
+00307 007F 6C00             	CPSE	_eTempUnit,0
+00308 0080 C200 F000        	JMP	_00249_DS_
+00309                       ;	;.line	400; ".\Source\App_ADC.c"	tmp = temp;
+00310 0082 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00311                       ;	;.line	401; ".\Source\App_ADC.c"	return tmp;
+00312 0083 6600             	MVF	STK00,1,0
+00313 0084 6400             	MVF	r0x10D1,0,0
+00314 0085 C200 F000        	JMP	_00255_DS_
+00315 0087                  _00249_DS_:
+00316                       ;	;.line	404; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+00317 0087 06A5             	MVL	0xa5
+00318 0088 6C00             	CPSE	_eTempUnit,0
+00319 0089 C200 F000        	JMP	_00255_DS_
+00320                       ;	;.line	406; ".\Source\App_ADC.c"	tmp = temp ;
+00321 008B 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+00322                       ;	;.line	408; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+00323 008C 6600             	MVF	__mullong_STK06,1,0
+00324 008D 6400             	MVF	r0x10D1,0,0
+00325 008E 6600             	MVF	__mullong_STK05,1,0
+00326 008F 0C00             	CLRF	__mullong_STK04,0
+00327 0090 0C00             	CLRF	__mullong_STK03,0
+00328 0091 0609             	MVL	0x09
+00329 0092 6600             	MVF	__mullong_STK02,1,0
+00330 0093 0C00             	CLRF	__mullong_STK01,0
+00331 0094 0C00             	CLRF	__mullong_STK00,0
+00332 0095 0600             	MVL	0x00
+00333 0096 C000 F000        	CALL	__mullong
+00334 0098 6600             	MVF	r0x10D3,1,0
+00335 0099 0605             	MVL	0x05
+00336 009A 6600             	MVF	__divulong_STK06,1,0
+00337 009B 0C00             	CLRF	__divulong_STK05,0
+00338 009C 0C00             	CLRF	__divulong_STK04,0
+00339 009D 0C00             	CLRF	__divulong_STK03,0
+00340 009E D000 F000        	MVFF	STK02,__divulong_STK02
+00341 00A0 D000 F000        	MVFF	STK01,__divulong_STK01
+00342 00A2 D000 F000        	MVFF	STK00,__divulong_STK00
+00343 00A4 6400             	MVF	r0x10D3,0,0
+00344 00A5 C000 F000        	CALL	__divulong
+00345 00A7 6600             	MVF	r0x10D3,1,0
+00346 00A8 6400             	MVF	STK00,0,0
+00347 00A9 6600             	MVF	r0x10D2,1,0
+00348 00AA 6400             	MVF	STK02,0,0
+00349 00AB 0480             	ADDL	0x80
+00350 00AC 6600             	MVF	STK00,1,0
+00351 00AD 060C             	MVL	0x0c
+00352 00AE 1600             	ADDC	STK01,1,0
+00353 00AF 0600             	MVL	0x00
+00354 00B0 1600             	ADDC	r0x10D2,1,0
+00355 00B1 1600             	ADDC	r0x10D3,1,0
+00356                       ;	;.line	409; ".\Source\App_ADC.c"	return tmp;
+00357 00B2 6400             	MVF	STK01,0,0
+00358 00B3                  _00255_DS_:
+00359                       ;	;.line	412; ".\Source\App_ADC.c"	}
+00360 00B3 000A             	RET	
+00361                       ; exit point of _Centigrade_Convert_Fahrenheit
+00362 00B4 --              	.ENDFUNC	_Centigrade_Convert_Fahrenheit
+00363                       ;--------------------------------------------------------
+00364                       
+00365                       .globl _Get_250msTemp
+00366                       
+00367                       ;--------------------------------------------------------
+00368                       	.FUNC _Get_250msTemp:$r:0:0:$C:_NTC_ADCData:$C:__mullong:$C:__divulong:$C:__g2ptrget2\
+00369                       :$C:__mulint\
+00370                       :$L:r0x10A5:$L:r0x10A6:$L:r0x10A7:$L:r0x10A8:$L:r0x10A9\
+00371                       :$L:r0x10AA:$L:r0x10AD:$L:r0x10AE:$L:r0x10AF:$L:r0x10B0\
+00372                       :$L:r0x10B2:$L:r0x10B1:$L:r0x10B3:$L:r0x10B4:$L:r0x10B5\
+00373 00B4 --              :$L:r0x10B6:$L:r0x10B7:$L:r0x10B8
+00374                       ;--------------------------------------------------------
+00375                       ;	;.line	242; ".\Source\App_ADC.c"	uint16 n = 250,lower = 0,upper = 501,i;
+00376 00B4                  _Get_250msTemp:	;Function start
+00377 00B4 06FA             	MVL	0xfa
+00378 00B5 0C00             	CLRF	r0x10A6,0
+00379 00B6 0C00             	CLRF	r0x10A7,0
+00380 00B7 0C00             	CLRF	r0x10A8,0
+00381 00B8 6600             	MVF	r0x10A5,1,0
+00382 00B9 06F5             	MVL	0xf5
+00383 00BA 6600             	MVF	r0x10A9,1,0
+00384 00BB 0601             	MVL	0x01
+00385 00BC 6600             	MVF	r0x10AA,1,0
+00386                       ;	;.line	248; ".\Source\App_ADC.c"	if((eDisplay_Interfaces == Display_TemperatureDetecting) || (eDisplay_Interfaces == Display_MeasuredTemperature) || (eDisplay_Interfaces == Display_Calibration))
+00387 00BD 6400             	MVF	_eDisplay_Interfaces,0,0
+00388 00BE 04F1             	ADDL	0xF1
+00389 00BF A02B             	BTSZ	_STATUS,0
+00390 00C0 C200 F000        	JMP	_00156_DS_
+00391 00C2 04FE             	ADDL	0xFE
+00392 00C3 A02B             	BTSZ	_STATUS,0
+00393 00C4 C200 F000        	JMP	_00156_DS_
+00394 00C6 0607             	MVL	0x07
+00395 00C7 6C00             	CPSE	_eDisplay_Interfaces,0
+00396 00C8 C200 F000        	JMP	_00163_DS_
+00397 00CA                  _00156_DS_:
+00398                       ;	;.line	250; ".\Source\App_ADC.c"	if(sADC.Get_250msTemp_Flag)
+00399 00CA B000             	BTSS	_sADC,0
+00400 00CB C200 F000        	JMP	_00163_DS_
+00401                       ;	;.line	262; ".\Source\App_ADC.c"	if(NTC_ADCData())
+00402 00CD C000 F000        	CALL	_NTC_ADCData
+00403                       	.CHKPARA _NTC_ADCData 0
+00404 00CF 0200             	IORL	0x00
+00405 00D0 A02B             	BTSZ	_STATUS,0
+00406 00D1 C200 F000        	JMP	_00163_DS_
+00407                       ;	;.line	272; ".\Source\App_ADC.c"	sADC.RawRntc = (uint32)sADC.AI2_AI3_Data * 30000 / (65536 - sADC.AI2_AI3_Data);
+00408 00D3 6400             	MVF	(_sADC + 9),0,0
+00409 00D4 6600             	MVF	r0x10AD,1,0
+00410 00D5 6400             	MVF	(_sADC + 10),0,0
+00411 00D6 6600             	MVF	r0x10AE,1,0
+00412 00D7 0600             	MVL	0x00
+00413 00D8 AE00             	BTSZ	r0x10AE,7
+00414 00D9 06FF             	MVL	0xff
+00415 00DA 6600             	MVF	r0x10B2,1,0
+00416 00DB 6600             	MVF	r0x10B1,1,0
+00417 00DC 6400             	MVF	r0x10AD,0,0
+00418 00DD 6600             	MVF	__mullong_STK06,1,0
+00419 00DE 6400             	MVF	r0x10AE,0,0
+00420 00DF 6600             	MVF	__mullong_STK05,1,0
+00421 00E0 6400             	MVF	r0x10B1,0,0
+00422 00E1 6600             	MVF	__mullong_STK04,1,0
+00423 00E2 6400             	MVF	r0x10B2,0,0
+00424 00E3 6600             	MVF	__mullong_STK03,1,0
+00425 00E4 0630             	MVL	0x30
+00426 00E5 6600             	MVF	__mullong_STK02,1,0
+00427 00E6 0675             	MVL	0x75
+00428 00E7 6600             	MVF	__mullong_STK01,1,0
+00429 00E8 0C00             	CLRF	__mullong_STK00,0
+00430 00E9 0600             	MVL	0x00
+00431 00EA C000 F000        	CALL	__mullong
+00432                       	.CHKPARA __mullong 8
+00433 00EC 0C00             	CLRF	r0x10B5,0
+00434 00ED 6600             	MVF	r0x10B2,1,0
+00435 00EE AE00             	BTSZ	r0x10AE,7
+00436 00EF 0A00             	SETF	r0x10B5,0
+00437 00F0 2400             	COMF	r0x10AD,0,0
+00438 00F1 0401             	ADDL	0x01
+00439 00F2 2600             	COMF	r0x10AE,1,0
+00440 00F3 6600             	MVF	r0x10AD,1,0
+00441 00F4 2400             	COMF	r0x10B5,0,0
+00442 00F5 6600             	MVF	r0x10B6,1,0
+00443 00F6 0600             	MVL	0x00
+00444 00F7 1600             	ADDC	r0x10AE,1,0
+00445 00F8 0601             	MVL	0x01
+00446 00F9 1600             	ADDC	r0x10B6,1,0
+00447 00FA 0C00             	CLRF	r0x10B7,0
+00448 00FB AE00             	BTSZ	r0x10B6,7
+00449 00FC 0A00             	SETF	r0x10B7,0
+00450 00FD 6400             	MVF	r0x10AD,0,0
+00451 00FE 6600             	MVF	__divulong_STK06,1,0
+00452 00FF 6400             	MVF	r0x10AE,0,0
+00453 0100 6600             	MVF	__divulong_STK05,1,0
+00454 0101 6400             	MVF	r0x10B6,0,0
+00455 0102 6600             	MVF	__divulong_STK04,1,0
+00456 0103 6400             	MVF	r0x10B7,0,0
+00457 0104 6600             	MVF	__divulong_STK03,1,0
+00458 0105 D000 F000        	MVFF	STK02,__divulong_STK02
+00459 0107 D000 F000        	MVFF	STK01,__divulong_STK01
+00460 0109 D000 F000        	MVFF	STK00,__divulong_STK00
+00461 010B 6400             	MVF	r0x10B2,0,0
+00462 010C C000 F000        	CALL	__divulong
+00463                       	.CHKPARA __divulong 8
+00464 010E 6400             	MVF	STK02,0,0
+00465 010F 6600             	MVF	(_sADC + 21),1,0
+00466 0110 6400             	MVF	STK01,0,0
+00467 0111 6600             	MVF	(_sADC + 22),1,0
+00468                       ;	;.line	275; ".\Source\App_ADC.c"	sADC.Rntc = (uint32)sADC.RawRntc * sTempCal.Temp_Ratio / 10000;
+00469 0112 6600             	MVF	STK01,1,0
+00470 0113 6400             	MVF	(_sTempCal + 2),0,0
+00471 0114 6600             	MVF	__mullong_STK06,1,0
+00472 0115 6400             	MVF	(_sTempCal + 3),0,0
+00473 0116 6600             	MVF	__mullong_STK05,1,0
+00474 0117 0C00             	CLRF	__mullong_STK04,0
+00475 0118 0C00             	CLRF	__mullong_STK03,0
+00476 0119 D000 F000        	MVFF	STK02,__mullong_STK02
+00477 011B D000 F000        	MVFF	STK01,__mullong_STK01
+00478 011D 0C00             	CLRF	__mullong_STK00,0
+00479 011E 0600             	MVL	0x00
+00480 011F C000 F000        	CALL	__mullong
+00481 0121 6600             	MVF	r0x10B0,1,0
+00482 0122 0610             	MVL	0x10
+00483 0123 6600             	MVF	__divulong_STK06,1,0
+00484 0124 0627             	MVL	0x27
+00485 0125 6600             	MVF	__divulong_STK05,1,0
+00486 0126 0C00             	CLRF	__divulong_STK04,0
+00487 0127 0C00             	CLRF	__divulong_STK03,0
+00488 0128 D000 F000        	MVFF	STK02,__divulong_STK02
+00489 012A D000 F000        	MVFF	STK01,__divulong_STK01
+00490 012C D000 F000        	MVFF	STK00,__divulong_STK00
+00491 012E 6400             	MVF	r0x10B0,0,0
+00492 012F C000 F000        	CALL	__divulong
+00493 0131 6400             	MVF	STK02,0,0
+00494 0132 6600             	MVF	(_sADC + 23),1,0
+00495 0133 6400             	MVF	STK01,0,0
+00496 0134 6600             	MVF	(_sADC + 24),1,0
+00497                       ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
+00498 0135 0C00             	CLRF	r0x10AD,0
+00499 0136 0C00             	CLRF	r0x10AE,0
+00500 0137                  _00161_DS_:
+00501 0137 6400             	MVF	r0x10A9,0,0
+00502 0138 1800             	SUBF	r0x10AD,0,0
+00503 0139 6400             	MVF	r0x10AA,0,0
+00504 013A 1C00             	SUBC	r0x10AE,0,0
+00505 013B A82B             	BTSZ	_STATUS,4
+00506 013C C200 F000        	JMP	_00163_DS_
+00507                       ;	;.line	284; ".\Source\App_ADC.c"	if(sADC.Rntc < R_Table[n])
+00508 013E 6400             	MVF	(_sADC + 23),0,0
+00509 013F 6600             	MVF	r0x10AF,1,0
+00510 0140 6400             	MVF	(_sADC + 24),0,0
+00511 0141 6600             	MVF	r0x10B0,1,0
+00512 0142 882B             	BCF	_STATUS,4
+00513 0143 5400             	RLFC	r0x10A5,0,0
+00514 0144 6600             	MVF	r0x10B1,1,0
+00515 0145 5400             	RLFC	r0x10A6,0,0
+00516 0146 6600             	MVF	r0x10B2,1,0
+00517 0147 6400             	MVF	r0x10B1,0,0
+00518 0148 0400             	ADDL	(_R_Table + 0)
+00519 0149 6600             	MVF	__g2ptrget2_STK00,1,0
+00520 014A 0600             	MVL	high (_R_Table + 0)
+00521 014B 1400             	ADDC	r0x10B2,0,0
+00522 014C 0280             	IORL	0x80
+00523 014D C000 F000        	CALL	__g2ptrget2
+00524 014F 6600             	MVF	r0x10B4,1,0
+00525 0150 6400             	MVF	STK00,0,0
+00526 0151 1800             	SUBF	r0x10AF,0,0
+00527 0152 6400             	MVF	r0x10B4,0,0
+00528 0153 1C00             	SUBC	r0x10B0,0,0
+00529 0154 A82B             	BTSZ	_STATUS,4
+00530 0155 C200 F000        	JMP	_00141_DS_
+00531                       ;	;.line	286; ".\Source\App_ADC.c"	lower = n;
+00532 0157 6400             	MVF	r0x10A5,0,0
+00533 0158 6600             	MVF	r0x10A7,1,0
+00534 0159 6400             	MVF	r0x10A6,0,0
+00535 015A 6600             	MVF	r0x10A8,1,0
+00536                       ;	;.line	287; ".\Source\App_ADC.c"	n = (lower + upper) / 2;
+00537 015B 6400             	MVF	r0x10A9,0,0
+00538 015C 1000             	ADDF	r0x10A5,0,0
+00539 015D 6600             	MVF	r0x10AF,1,0
+00540 015E 6400             	MVF	r0x10A6,0,0
+00541 015F 1400             	ADDC	r0x10AA,0,0
+00542 0160 882B             	BCF	_STATUS,4
+00543 0161 5029             	RRFC	_WREG,0,0
+00544 0162 6600             	MVF	r0x10A6,1,0
+00545 0163 5000             	RRFC	r0x10AF,0,0
+00546 0164 6600             	MVF	r0x10A5,1,0
+00547 0165 C200 F000        	JMP	_00142_DS_
+00548 0167                  _00141_DS_:
+00549                       ;	;.line	291; ".\Source\App_ADC.c"	upper = n;
+00550 0167 6400             	MVF	r0x10A5,0,0
+00551 0168 6600             	MVF	r0x10A9,1,0
+00552 0169 6400             	MVF	r0x10A6,0,0
+00553 016A 6600             	MVF	r0x10AA,1,0
+00554                       ;	;.line	292; ".\Source\App_ADC.c"	n = (lower + upper) / 2;
+00555 016B 6400             	MVF	r0x10A5,0,0
+00556 016C 1000             	ADDF	r0x10A7,0,0
+00557 016D 6600             	MVF	r0x10AF,1,0
+00558 016E 6400             	MVF	r0x10A8,0,0
+00559 016F 1400             	ADDC	r0x10A6,0,0
+00560 0170 882B             	BCF	_STATUS,4
+00561 0171 5029             	RRFC	_WREG,0,0
+00562 0172 6600             	MVF	r0x10A6,1,0
+00563 0173 5000             	RRFC	r0x10AF,0,0
+00564 0174 6600             	MVF	r0x10A5,1,0
+00565 0175                  _00142_DS_:
+00566                       ;	;.line	295; ".\Source\App_ADC.c"	if	(sADC.Rntc < 330)
+00567 0175 6400             	MVF	(_sADC + 23),0,0
+00568 0176 04B6             	ADDL	0xb6
+00569 0177 06FE             	MVL	0xfe
+00570 0178 1400             	ADDC	(_sADC + 24),0,0
+00571 0179 A82B             	BTSZ	_STATUS,4
+00572 017A C200 F000        	JMP	_00149_DS_
+00573                       ;	;.line	298; ".\Source\App_ADC.c"	i = upper;
+00574 017C 6400             	MVF	r0x10A9,0,0
+00575 017D 6600             	MVF	r0x10AD,1,0
+00576 017E 6400             	MVF	r0x10AA,0,0
+00577 017F 6600             	MVF	r0x10AE,1,0
+00578                       ;	;.line	300; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = 10000;
+00579 0180 0610             	MVL	0x10
+00580 0181 6600             	MVF	(_sADC + 13),1,0
+00581 0182 0627             	MVL	0x27
+00582 0183 6600             	MVF	(_sADC + 14),1,0
+00583 0184 C200 F000        	JMP	_00162_DS_
+00584 0186                  _00149_DS_:
+00585                       ;	;.line	303; ".\Source\App_ADC.c"	else if(sADC.Rntc > 16335)
+00586 0186 6400             	MVF	(_sADC + 23),0,0
+00587 0187 0430             	ADDL	0x30
+00588 0188 06C0             	MVL	0xc0
+00589 0189 1400             	ADDC	(_sADC + 24),0,0
+00590 018A B82B             	BTSS	_STATUS,4
+00591 018B C200 F000        	JMP	_00146_DS_
+00592                       ;	;.line	306; ".\Source\App_ADC.c"	i = upper;
+00593 018D 6400             	MVF	r0x10A9,0,0
+00594 018E 6600             	MVF	r0x10AD,1,0
+00595 018F 6400             	MVF	r0x10AA,0,0
+00596 0190 6600             	MVF	r0x10AE,1,0
+00597                       ;	;.line	308; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = 0;
+00598 0191 0C00             	CLRF	(_sADC + 13),0
+00599 0192 0C00             	CLRF	(_sADC + 14),0
+00600 0193 C200 F000        	JMP	_00162_DS_
+00601 0195                  _00146_DS_:
+00602                       ;	;.line	310; ".\Source\App_ADC.c"	else if(upper - lower == 1)
+00603 0195 6400             	MVF	r0x10A7,0,0
+00604 0196 1800             	SUBF	r0x10A9,0,0
+00605 0197 6600             	MVF	r0x10AF,1,0
+00606 0198 6400             	MVF	r0x10A8,0,0
+00607 0199 1C00             	SUBC	r0x10AA,0,0
+00608 019A 6600             	MVF	r0x10B0,1,0
+00609 019B 3000             	DCF	r0x10AF,0,0
+00610 019C 2C00             	IORF	r0x10B0,0,0
+00611 019D B02B             	BTSS	_STATUS,0
+00612 019E C200 F000        	JMP	_00162_DS_
+00613                       ;	;.line	313; ".\Source\App_ADC.c"	i = upper;
+00614 01A0 6400             	MVF	r0x10A9,0,0
+00615 01A1 6600             	MVF	r0x10AD,1,0
+00616 01A2 6400             	MVF	r0x10AA,0,0
+00617 01A3 6600             	MVF	r0x10AE,1,0
+00618                       ;	;.line	317; ".\Source\App_ADC.c"	tmp = (uint32)(R_Table[lower] - sADC.Rntc);
+00619 01A4 882B             	BCF	_STATUS,4
+00620 01A5 5400             	RLFC	r0x10A7,0,0
+00621 01A6 6600             	MVF	r0x10AF,1,0
+00622 01A7 5400             	RLFC	r0x10A8,0,0
+00623 01A8 6600             	MVF	r0x10B0,1,0
+00624 01A9 6400             	MVF	r0x10AF,0,0
+00625 01AA 0400             	ADDL	(_R_Table + 0)
+00626 01AB 6600             	MVF	__g2ptrget2_STK00,1,0
+00627 01AC 0600             	MVL	high (_R_Table + 0)
+00628 01AD 1400             	ADDC	r0x10B0,0,0
+00629 01AE 0280             	IORL	0x80
+00630 01AF C000 F000        	CALL	__g2ptrget2
+00631 01B1 6600             	MVF	r0x10B2,1,0
+00632 01B2 6400             	MVF	STK00,0,0
+00633 01B3 6600             	MVF	r0x10B1,1,0
+00634 01B4 6400             	MVF	(_sADC + 23),0,0
+00635 01B5 1800             	SUBF	r0x10B1,0,0
+00636 01B6 6600             	MVF	__mullong_STK06,1,0
+00637 01B7 6400             	MVF	(_sADC + 24),0,0
+00638 01B8 1C00             	SUBC	r0x10B2,0,0
+00639                       ;	;.line	318; ".\Source\App_ADC.c"	tmp *= 100;
+00640 01B9 6600             	MVF	__mullong_STK05,1,0
+00641 01BA 0C00             	CLRF	__mullong_STK04,0
+00642 01BB 0C00             	CLRF	__mullong_STK03,0
+00643 01BC 0664             	MVL	0x64
+00644 01BD 6600             	MVF	__mullong_STK02,1,0
+00645 01BE 0C00             	CLRF	__mullong_STK01,0
+00646 01BF 0C00             	CLRF	__mullong_STK00,0
+00647 01C0 0600             	MVL	0x00
+00648 01C1 C000 F000        	CALL	__mullong
+00649 01C3 6600             	MVF	r0x10B4,1,0
+00650 01C4 6400             	MVF	STK00,0,0
+00651 01C5 6600             	MVF	r0x10B3,1,0
+00652 01C6 6400             	MVF	STK01,0,0
+00653 01C7 6600             	MVF	r0x10B0,1,0
+00654 01C8 6400             	MVF	STK02,0,0
+00655 01C9 6600             	MVF	r0x10AF,1,0
+00656                       ;	;.line	319; ".\Source\App_ADC.c"	tmp /= (R_Table[lower] - R_Table[upper]);
+00657 01CA 882B             	BCF	_STATUS,4
+00658 01CB 5400             	RLFC	r0x10A9,0,0
+00659 01CC 6600             	MVF	r0x10B5,1,0
+00660 01CD 5400             	RLFC	r0x10AA,0,0
+00661 01CE 6600             	MVF	r0x10B6,1,0
+00662 01CF 6400             	MVF	r0x10B5,0,0
+00663 01D0 0400             	ADDL	(_R_Table + 0)
+00664 01D1 6600             	MVF	__g2ptrget2_STK00,1,0
+00665 01D2 0600             	MVL	high (_R_Table + 0)
+00666 01D3 1400             	ADDC	r0x10B6,0,0
+00667 01D4 0280             	IORL	0x80
+00668 01D5 C000 F000        	CALL	__g2ptrget2
+00669 01D7 6600             	MVF	r0x10B8,1,0
+00670 01D8 6400             	MVF	STK00,0,0
+00671 01D9 1800             	SUBF	r0x10B1,0,0
+00672 01DA 6600             	MVF	__divulong_STK06,1,0
+00673 01DB 6400             	MVF	r0x10B8,0,0
+00674 01DC 1C00             	SUBC	r0x10B2,0,0
+00675 01DD 6600             	MVF	__divulong_STK05,1,0
+00676 01DE 0C00             	CLRF	__divulong_STK04,0
+00677 01DF 0C00             	CLRF	__divulong_STK03,0
+00678 01E0 6400             	MVF	r0x10AF,0,0
+00679 01E1 6600             	MVF	__divulong_STK02,1,0
+00680 01E2 6400             	MVF	r0x10B0,0,0
+00681 01E3 6600             	MVF	__divulong_STK01,1,0
+00682 01E4 6400             	MVF	r0x10B3,0,0
+00683 01E5 6600             	MVF	__divulong_STK00,1,0
+00684 01E6 6400             	MVF	r0x10B4,0,0
+00685 01E7 C000 F000        	CALL	__divulong
+00686 01E9 6600             	MVF	r0x10B2,1,0
+00687                       ;	;.line	320; ".\Source\App_ADC.c"	tmp = tmp / 10;
+00688 01EA 060A             	MVL	0x0a
+00689 01EB 6600             	MVF	__divulong_STK06,1,0
+00690 01EC 0C00             	CLRF	__divulong_STK05,0
+00691 01ED 0C00             	CLRF	__divulong_STK04,0
+00692 01EE 0C00             	CLRF	__divulong_STK03,0
+00693 01EF D000 F000        	MVFF	STK02,__divulong_STK02
+00694 01F1 D000 F000        	MVFF	STK01,__divulong_STK01
+00695 01F3 D000 F000        	MVFF	STK00,__divulong_STK00
+00696 01F5 6400             	MVF	r0x10B2,0,0
+00697 01F6 C000 F000        	CALL	__divulong
+00698 01F8 6400             	MVF	STK01,0,0
+00699 01F9 6600             	MVF	r0x10B0,1,0
+00700 01FA 6400             	MVF	STK02,0,0
+00701 01FB 6600             	MVF	r0x10AF,1,0
+00702                       ;	;.line	322; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = lower * 10 + tmp;
+00703 01FC 6400             	MVF	r0x10A7,0,0
+00704 01FD 6600             	MVF	__mulint_STK02,1,0
+00705 01FE 6400             	MVF	r0x10A8,0,0
+00706 01FF 6600             	MVF	__mulint_STK01,1,0
+00707 0200 060A             	MVL	0x0a
+00708 0201 6600             	MVF	__mulint_STK00,1,0
+00709 0202 0600             	MVL	0x00
+00710 0203 C000 F000        	CALL	__mulint
+00711                       	.CHKPARA __mulint 4
+00712 0205 6600             	MVF	r0x10B4,1,0
+00713 0206 6400             	MVF	r0x10AF,0,0
+00714 0207 1000             	ADDF	STK00,0,0
+00715 0208 6600             	MVF	(_sADC + 13),1,0
+00716 0209 6400             	MVF	r0x10B4,0,0
+00717 020A 1400             	ADDC	r0x10B0,0,0
+00718 020B 6600             	MVF	(_sADC + 14),1,0
+00719                       ;	;.line	324; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
+00720 020C 8000             	BCF	_sADC,0
+00721                       ;	;.line	327; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
+00722 020D 9400             	BSF	_sTIMx,2
+00723 020E                  _00162_DS_:
+00724                       ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
+00725 020E 4200             	INSUZ	r0x10AD,1,0
+00726 020F 3A00             	INF	r0x10AE,1,0
+00727 0210 C200 F000        	JMP	_00161_DS_
+00728 0212                  _00163_DS_:
+00729                       ;	;.line	366; ".\Source\App_ADC.c"	}
+00730 0212 000A             	RET	
+00731                       ; exit point of _Get_250msTemp
+00732 0213 --              	.ENDFUNC	_Get_250msTemp
+00733                       ;--------------------------------------------------------
+00734                       
+00735                       .globl _NTC_ADCData
+00736                       
+00737                       ;--------------------------------------------------------
+00738 0213 --              	.FUNC _NTC_ADCData:$r:1:0:$C:_ADC_Average\
+00739                       
+00740                       ;--------------------------------------------------------
+00741                       ;	;.line	224; ".\Source\App_ADC.c"	if(ADC_Average())
+00742 0213                  _NTC_ADCData:	;Function start
+00743 0213 C000 F000        	CALL	_ADC_Average
+00744                       	.CHKPARA _ADC_Average 0
+00745 0215 0200             	IORL	0x00
+00746 0216 A02B             	BTSZ	_STATUS,0
+00747 0217 C200 F000        	JMP	_00134_DS_
+00748                       ;	;.line	227; ".\Source\App_ADC.c"	sADC.AI2_AI3_Data = sADC.ADCSum;
+00749 0219 6400             	MVF	(_sADC + 17),0,0
+00750 021A 6600             	MVF	(_sADC + 9),1,0
+00751 021B 6400             	MVF	(_sADC + 18),0,0
+00752 021C 6600             	MVF	(_sADC + 10),1,0
+00753                       ;	;.line	228; ".\Source\App_ADC.c"	return TRUE;
+00754 021D 0601             	MVL	0x01
+00755 021E C200 F000        	JMP	_00135_DS_
+00756 0220                  _00134_DS_:
+00757                       ;	;.line	230; ".\Source\App_ADC.c"	return FALSE;
+00758 0220 0600             	MVL	0x00
+00759 0221                  _00135_DS_:
+00760                       ;	;.line	231; ".\Source\App_ADC.c"	}
+00761 0221 000A             	RET	
+00762                       ; exit point of _NTC_ADCData
+00763 0222 --              	.ENDFUNC	_NTC_ADCData
+00764                       ;--------------------------------------------------------
+00765                       
+00766                       .globl _ADC_Average
+00767                       
+00768                       ;--------------------------------------------------------
+00769                       	.FUNC _ADC_Average:$r:1:0:$C:_ADCGetData\
+00770                       :$L:r0x1096:$L:r0x1097:$L:r0x1098:$L:r0x1099:$L:r0x109C\
+00771 0222 --              :$L:r0x109D:$L:r0x109F:$L:r0x109E
+00772                       ;--------------------------------------------------------
+00773                       ;	;.line	61; ".\Source\App_ADC.c"	if(sADC.Flag_ADCDone)
+00774 0222                  _ADC_Average:	;Function start
+00775 0222 B200             	BTSS	_sADC,1
+00776 0223 C200 F000        	JMP	_00121_DS_
+00777                       ;	;.line	63; ".\Source\App_ADC.c"	sADC.Flag_ADCDone = FALSE;
+00778 0225 8200             	BCF	_sADC,1
+00779                       ;	;.line	66; ".\Source\App_ADC.c"	sADC.ADCData = ADCGetData();
+00780 0226 C000 F000        	CALL	_ADCGetData
+00781                       	.CHKPARA _ADCGetData 0
+00782 0228 6600             	MVF	(_sADC + 4),1,0
+00783 0229 6400             	MVF	STK00,0,0
+00784 022A 6600             	MVF	(_sADC + 3),1,0
+00785                       ;	;.line	69; ".\Source\App_ADC.c"	ADC_INT_Enable();
+00786 022B 9A23             	BSF	_INTE0,5
+00787                       ;	;.line	80; ".\Source\App_ADC.c"	if(++sADC.ADCCounts > FilterNum)
+00788 022C 3800             	INF	(_sADC + 2),0,0
+00789 022D 6600             	MVF	r0x1096,1,0
+00790 022E 6600             	MVF	(_sADC + 2),1,0
+00791 022F 0604             	MVL	0x04
+00792 0230 6800             	CPSG	r0x1096,0
+00793 0231 C200 F000        	JMP	_00121_DS_
+00794                       ;	;.line	92; ".\Source\App_ADC.c"	if(sADC.ADCData > 0x6666 || sADC.ADCData < 222)
+00795 0233 6400             	MVF	(_sADC + 3),0,0
+00796 0234 6600             	MVF	r0x1096,1,0
+00797 0235 6400             	MVF	(_sADC + 4),0,0
+00798 0236 6600             	MVF	r0x1097,1,0
+00799 0237 6400             	MVF	r0x1096,0,0
+00800 0238 0499             	ADDL	0x99
+00801 0239 0619             	MVL	0x19
+00802 023A 1400             	ADDC	r0x1097,0,0
+00803 023B A22B             	BTSZ	_STATUS,1
+00804 023C C200 F000        	JMP	_00109_DS_
+00805 023E 6400             	MVF	r0x1096,0,0
+00806 023F 0422             	ADDL	0x22
+00807 0240 067F             	MVL	0x7f
+00808 0241 1400             	ADDC	r0x1097,0,0
+00809 0242 A22B             	BTSZ	_STATUS,1
+00810 0243 C200 F000        	JMP	_00110_DS_
+00811 0245                  _00109_DS_:
+00812                       ;	;.line	95; ".\Source\App_ADC.c"	ERR[Err] = TRUE;
+00813 0245 0601             	MVL	0x01
+00814 0246 6600             	MVF	(_ERR + 8),1,0
+00815 0247                  _00110_DS_:
+00816                       ;	;.line	100; ".\Source\App_ADC.c"	if(sADC.ADCCounts == FilterNum + 1)
+00817 0247 0605             	MVL	0x05
+00818 0248 6C00             	CPSE	(_sADC + 2),0
+00819 0249 C200 F000        	JMP	_00113_DS_
+00820                       ;	;.line	102; ".\Source\App_ADC.c"	sADC.ADCSum = 0;
+00821 024B 0C00             	CLRF	(_sADC + 17),0
+00822 024C 0C00             	CLRF	(_sADC + 18),0
+00823 024D 0C00             	CLRF	(_sADC + 19),0
+00824 024E 0C00             	CLRF	(_sADC + 20),0
+00825                       ;	;.line	103; ".\Source\App_ADC.c"	sADC.MinData = sADC.ADCData;
+00826 024F 6400             	MVF	(_sADC + 3),0,0
+00827 0250 6600             	MVF	(_sADC + 5),1,0
+00828 0251 6400             	MVF	(_sADC + 4),0,0
+00829 0252 6600             	MVF	(_sADC + 6),1,0
+00830                       ;	;.line	104; ".\Source\App_ADC.c"	sADC.MaxData = sADC.ADCData;
+00831 0253 6400             	MVF	(_sADC + 3),0,0
+00832 0254 6600             	MVF	(_sADC + 7),1,0
+00833 0255 6400             	MVF	(_sADC + 4),0,0
+00834 0256 6600             	MVF	(_sADC + 8),1,0
+00835 0257                  _00113_DS_:
+00836                       ;	;.line	112; ".\Source\App_ADC.c"	sADC.ADCSum += sADC.ADCData;
+00837 0257 6400             	MVF	(_sADC + 17),0,0
+00838 0258 6600             	MVF	r0x1096,1,0
+00839 0259 6400             	MVF	(_sADC + 18),0,0
+00840 025A 6600             	MVF	r0x1097,1,0
+00841 025B 6400             	MVF	(_sADC + 19),0,0
+00842 025C 6600             	MVF	r0x1098,1,0
+00843 025D 6400             	MVF	(_sADC + 20),0,0
+00844 025E 6600             	MVF	r0x1099,1,0
+00845 025F 6400             	MVF	(_sADC + 3),0,0
+00846 0260 6600             	MVF	r0x109C,1,0
+00847 0261 6400             	MVF	(_sADC + 4),0,0
+00848 0262 6600             	MVF	r0x109D,1,0
+00849 0263 0600             	MVL	0x00
+00850 0264 AE00             	BTSZ	r0x109D,7
+00851 0265 06FF             	MVL	0xff
+00852 0266 6600             	MVF	r0x109F,1,0
+00853 0267 6600             	MVF	r0x109E,1,0
+00854 0268 6400             	MVF	r0x109C,0,0
+00855 0269 1000             	ADDF	r0x1096,0,0
+00856 026A 6600             	MVF	(_sADC + 17),1,0
+00857 026B 6400             	MVF	r0x1097,0,0
+00858 026C 1400             	ADDC	r0x109D,0,0
+00859 026D 6600             	MVF	(_sADC + 18),1,0
+00860 026E 6400             	MVF	r0x1098,0,0
+00861 026F 1400             	ADDC	r0x109E,0,0
+00862 0270 6600             	MVF	(_sADC + 19),1,0
+00863 0271 6400             	MVF	r0x1099,0,0
+00864 0272 1400             	ADDC	r0x109F,0,0
+00865 0273 6600             	MVF	(_sADC + 20),1,0
+00866                       ;	;.line	115; ".\Source\App_ADC.c"	if(sADC.MaxData < sADC.ADCData)
+00867 0274 6400             	MVF	(_sADC + 7),0,0
+00868 0275 6600             	MVF	r0x1096,1,0
+00869 0276 6400             	MVF	(_sADC + 8),0,0
+00870 0277 6600             	MVF	r0x1097,1,0
+00871 0278 6400             	MVF	(_sADC + 3),0,0
+00872 0279 1800             	SUBF	r0x1096,0,0
+00873 027A 6400             	MVF	r0x1097,0,0
+00874 027B 0380             	XORL	0x80
+00875 027C 6600             	MVF	STK00,1,0
+00876 027D 6400             	MVF	(_sADC + 4),0,0
+00877 027E 0380             	XORL	0x80
+00878 027F 1C00             	SUBC	STK00,0,0
+00879 0280 A82B             	BTSZ	_STATUS,4
+00880 0281 C200 F000        	JMP	_00115_DS_
+00881                       ;	;.line	117; ".\Source\App_ADC.c"	sADC.MaxData = sADC.ADCData;
+00882 0283 6400             	MVF	(_sADC + 3),0,0
+00883 0284 6600             	MVF	(_sADC + 7),1,0
+00884 0285 6400             	MVF	(_sADC + 4),0,0
+00885 0286 6600             	MVF	(_sADC + 8),1,0
+00886 0287                  _00115_DS_:
+00887                       ;	;.line	120; ".\Source\App_ADC.c"	if(sADC.MinData > sADC.ADCData)
+00888 0287 6400             	MVF	(_sADC + 5),0,0
+00889 0288 6600             	MVF	r0x1096,1,0
+00890 0289 6400             	MVF	(_sADC + 6),0,0
+00891 028A 6600             	MVF	r0x1097,1,0
+00892 028B 6400             	MVF	r0x1096,0,0
+00893 028C 1800             	SUBF	(_sADC + 3),0,0
+00894 028D 6400             	MVF	(_sADC + 4),0,0
+00895 028E 0380             	XORL	0x80
+00896 028F 6600             	MVF	STK00,1,0
+00897 0290 6400             	MVF	r0x1097,0,0
+00898 0291 0380             	XORL	0x80
+00899 0292 1C00             	SUBC	STK00,0,0
+00900 0293 A82B             	BTSZ	_STATUS,4
+00901 0294 C200 F000        	JMP	_00121_DS_
+00902                       ;	;.line	122; ".\Source\App_ADC.c"	sADC.MinData = sADC.ADCData;
+00903 0296 6400             	MVF	(_sADC + 3),0,0
+00904 0297 6600             	MVF	(_sADC + 5),1,0
+00905 0298 6400             	MVF	(_sADC + 4),0,0
+00906 0299 6600             	MVF	(_sADC + 6),1,0
+00907 029A                  _00121_DS_:
+00908                       ;	;.line	136; ".\Source\App_ADC.c"	if(sADC.ADCCounts > (FilterNum + 5))
+00909 029A 0609             	MVL	0x09
+00910 029B 6800             	CPSG	(_sADC + 2),0
+00911 029C C200 F000        	JMP	_00126_DS_
+00912                       ;	;.line	144; ".\Source\App_ADC.c"	if(eDisplay_Interfaces == Display_Calibration)
+00913 029E 0607             	MVL	0x07
+00914 029F 6C00             	CPSE	_eDisplay_Interfaces,0
+00915 02A0 C200 F000        	JMP	_00123_DS_
+00916                       ;	;.line	146; ".\Source\App_ADC.c"	sADC.ADCSum = sADC.ADCSum - sADC.MinData - sADC.MaxData;
+00917 02A2 6400             	MVF	(_sADC + 17),0,0
+00918 02A3 6600             	MVF	r0x1096,1,0
+00919 02A4 6400             	MVF	(_sADC + 18),0,0
+00920 02A5 6600             	MVF	r0x1097,1,0
+00921 02A6 6400             	MVF	(_sADC + 19),0,0
+00922 02A7 6600             	MVF	r0x1098,1,0
+00923 02A8 6400             	MVF	(_sADC + 20),0,0
+00924 02A9 6600             	MVF	r0x1099,1,0
+00925 02AA 6400             	MVF	(_sADC + 5),0,0
+00926 02AB 6600             	MVF	r0x109C,1,0
+00927 02AC 6400             	MVF	(_sADC + 6),0,0
+00928 02AD 6600             	MVF	r0x109D,1,0
+00929 02AE 0600             	MVL	0x00
+00930 02AF AE00             	BTSZ	r0x109D,7
+00931 02B0 06FF             	MVL	0xff
+00932 02B1 6600             	MVF	r0x109F,1,0
+00933 02B2 6600             	MVF	r0x109E,1,0
+00934 02B3 6400             	MVF	r0x109C,0,0
+00935 02B4 1A00             	SUBF	r0x1096,1,0
+00936 02B5 6400             	MVF	r0x109D,0,0
+00937 02B6 1E00             	SUBC	r0x1097,1,0
+00938 02B7 6400             	MVF	r0x109E,0,0
+00939 02B8 1E00             	SUBC	r0x1098,1,0
+00940 02B9 6400             	MVF	r0x109F,0,0
+00941 02BA 1E00             	SUBC	r0x1099,1,0
+00942 02BB 6400             	MVF	(_sADC + 7),0,0
+00943 02BC 6600             	MVF	r0x109C,1,0
+00944 02BD 6400             	MVF	(_sADC + 8),0,0
+00945 02BE 6600             	MVF	r0x109D,1,0
+00946 02BF 0600             	MVL	0x00
+00947 02C0 AE00             	BTSZ	r0x109D,7
+00948 02C1 06FF             	MVL	0xff
+00949 02C2 6600             	MVF	r0x109F,1,0
+00950 02C3 6600             	MVF	r0x109E,1,0
+00951 02C4 6400             	MVF	r0x109C,0,0
+00952 02C5 1A00             	SUBF	r0x1096,1,0
+00953 02C6 6400             	MVF	r0x109D,0,0
+00954 02C7 1E00             	SUBC	r0x1097,1,0
+00955 02C8 6400             	MVF	r0x109E,0,0
+00956 02C9 1E00             	SUBC	r0x1098,1,0
+00957 02CA 6400             	MVF	r0x109F,0,0
+00958 02CB 1E00             	SUBC	r0x1099,1,0
+00959 02CC 6400             	MVF	r0x1096,0,0
+00960 02CD 6600             	MVF	(_sADC + 17),1,0
+00961 02CE 6400             	MVF	r0x1097,0,0
+00962 02CF 6600             	MVF	(_sADC + 18),1,0
+00963 02D0 6400             	MVF	r0x1098,0,0
+00964 02D1 6600             	MVF	(_sADC + 19),1,0
+00965 02D2 6400             	MVF	r0x1099,0,0
+00966 02D3 6600             	MVF	(_sADC + 20),1,0
+00967                       ;	;.line	150; ".\Source\App_ADC.c"	sADC.ADCSum >>= 2;
+00968 02D4 5C00             	ARRC	r0x1099,0,0
+00969 02D5 6600             	MVF	(_sADC + 20),1,0
+00970 02D6 5000             	RRFC	r0x1098,0,0
+00971 02D7 6600             	MVF	(_sADC + 19),1,0
+00972 02D8 5000             	RRFC	r0x1097,0,0
+00973 02D9 6600             	MVF	(_sADC + 18),1,0
+00974 02DA 5000             	RRFC	r0x1096,0,0
+00975 02DB 6600             	MVF	(_sADC + 17),1,0
+00976 02DC 5E00             	ARRC	(_sADC + 20),1,0
+00977 02DD 5200             	RRFC	(_sADC + 19),1,0
+00978 02DE 5200             	RRFC	(_sADC + 18),1,0
+00979 02DF 5200             	RRFC	(_sADC + 17),1,0
+00980                       ;	;.line	153; ".\Source\App_ADC.c"	sADC.ADCCounts = 0;
+00981 02E0 0C00             	CLRF	(_sADC + 2),0
+00982 02E1 C200 F000        	JMP	_00124_DS_
+00983 02E3                  _00123_DS_:
+00984                       ;	;.line	200; ".\Source\App_ADC.c"	sADC.ADCSum = sADC.ADCSum - sADC.MinData - sADC.MaxData;
+00985 02E3 6400             	MVF	(_sADC + 17),0,0
+00986 02E4 6600             	MVF	r0x1096,1,0
+00987 02E5 6400             	MVF	(_sADC + 18),0,0
+00988 02E6 6600             	MVF	r0x1097,1,0
+00989 02E7 6400             	MVF	(_sADC + 19),0,0
+00990 02E8 6600             	MVF	r0x1098,1,0
+00991 02E9 6400             	MVF	(_sADC + 20),0,0
+00992 02EA 6600             	MVF	r0x1099,1,0
+00993 02EB 6400             	MVF	(_sADC + 5),0,0
+00994 02EC 6600             	MVF	r0x109C,1,0
+00995 02ED 6400             	MVF	(_sADC + 6),0,0
+00996 02EE 6600             	MVF	r0x109D,1,0
+00997 02EF 0600             	MVL	0x00
+00998 02F0 AE00             	BTSZ	r0x109D,7
+00999 02F1 06FF             	MVL	0xff
+01000 02F2 6600             	MVF	r0x109F,1,0
+01001 02F3 6600             	MVF	r0x109E,1,0
+01002 02F4 6400             	MVF	r0x109C,0,0
+01003 02F5 1A00             	SUBF	r0x1096,1,0
+01004 02F6 6400             	MVF	r0x109D,0,0
+01005 02F7 1E00             	SUBC	r0x1097,1,0
+01006 02F8 6400             	MVF	r0x109E,0,0
+01007 02F9 1E00             	SUBC	r0x1098,1,0
+01008 02FA 6400             	MVF	r0x109F,0,0
+01009 02FB 1E00             	SUBC	r0x1099,1,0
+01010 02FC 6400             	MVF	(_sADC + 7),0,0
+01011 02FD 6600             	MVF	r0x109C,1,0
+01012 02FE 6400             	MVF	(_sADC + 8),0,0
+01013 02FF 6600             	MVF	r0x109D,1,0
+01014 0300 0600             	MVL	0x00
+01015 0301 AE00             	BTSZ	r0x109D,7
+01016 0302 06FF             	MVL	0xff
+01017 0303 6600             	MVF	r0x109F,1,0
+01018 0304 6600             	MVF	r0x109E,1,0
+01019 0305 6400             	MVF	r0x109C,0,0
+01020 0306 1A00             	SUBF	r0x1096,1,0
+01021 0307 6400             	MVF	r0x109D,0,0
+01022 0308 1E00             	SUBC	r0x1097,1,0
+01023 0309 6400             	MVF	r0x109E,0,0
+01024 030A 1E00             	SUBC	r0x1098,1,0
+01025 030B 6400             	MVF	r0x109F,0,0
+01026 030C 1E00             	SUBC	r0x1099,1,0
+01027 030D 6400             	MVF	r0x1096,0,0
+01028 030E 6600             	MVF	(_sADC + 17),1,0
+01029 030F 6400             	MVF	r0x1097,0,0
+01030 0310 6600             	MVF	(_sADC + 18),1,0
+01031 0311 6400             	MVF	r0x1098,0,0
+01032 0312 6600             	MVF	(_sADC + 19),1,0
+01033 0313 6400             	MVF	r0x1099,0,0
+01034 0314 6600             	MVF	(_sADC + 20),1,0
+01035                       ;	;.line	201; ".\Source\App_ADC.c"	sADC.ADCSum >>= 2;
+01036 0315 5C00             	ARRC	r0x1099,0,0
+01037 0316 6600             	MVF	(_sADC + 20),1,0
+01038 0317 5000             	RRFC	r0x1098,0,0
+01039 0318 6600             	MVF	(_sADC + 19),1,0
+01040 0319 5000             	RRFC	r0x1097,0,0
+01041 031A 6600             	MVF	(_sADC + 18),1,0
+01042 031B 5000             	RRFC	r0x1096,0,0
+01043 031C 6600             	MVF	(_sADC + 17),1,0
+01044 031D 5E00             	ARRC	(_sADC + 20),1,0
+01045 031E 5200             	RRFC	(_sADC + 19),1,0
+01046 031F 5200             	RRFC	(_sADC + 18),1,0
+01047 0320 5200             	RRFC	(_sADC + 17),1,0
+01048                       ;	;.line	203; ".\Source\App_ADC.c"	sADC.ADCCounts = 0;
+01049 0321 0C00             	CLRF	(_sADC + 2),0
+01050 0322                  _00124_DS_:
+01051                       ;	;.line	206; ".\Source\App_ADC.c"	return TRUE;
+01052 0322 0601             	MVL	0x01
+01053 0323 C200 F000        	JMP	_00128_DS_
+01054 0325                  _00126_DS_:
+01055                       ;	;.line	210; ".\Source\App_ADC.c"	return FALSE;
+01056 0325 0600             	MVL	0x00
+01057 0326                  _00128_DS_:
+01058                       ;	;.line	212; ".\Source\App_ADC.c"	}
+01059 0326 000A             	RET	
+01060                       ; exit point of _ADC_Average
+01061 0327 --              	.ENDFUNC	_ADC_Average
+01062                       ;--------------------------------------------------------
+01063                       
+01064                       .globl _ADCGetData
+01065                       
+01066                       ;--------------------------------------------------------
+01067 0327 --              	.FUNC _ADCGetData:$r:2:0:$L:_ADCGetData_ADCData1_10000_417
+01068                       ;--------------------------------------------------------
+01069                       ;	;.line	29; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[0] = AD1L;
+01070 0327                  _ADCGetData:	;Function start
+01071 0327 643C             	MVF	_AD1L,0,0
+01072 0328 6600             	MVF	(_ADCGetData_ADCData1_10000_417 + 0),1,0
+01073                       ;	;.line	30; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[1] = AD1M;
+01074 0329 643B             	MVF	_AD1M,0,0
+01075 032A 6600             	MVF	(_ADCGetData_ADCData1_10000_417 + 1),1,0
+01076                       ;	;.line	31; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[2] = AD1H;
+01077 032B 643A             	MVF	_AD1H,0,0
+01078 032C 6600             	MVF	(_ADCGetData_ADCData1_10000_417 + 2),1,0
+01079                       ;	;.line	34; ".\Source\App_ADC.c"	ADCData2  = (int16)(ADCData1 >> 8);
+01080 032D 6400             	MVF	(_ADCGetData_ADCData1_10000_417 + 1),0,0
+01081                       ;	;.line	36; ".\Source\App_ADC.c"	return ADCData2;
+01082 032E 6600             	MVF	STK00,1,0
+01083 032F 6400             	MVF	(_ADCGetData_ADCData1_10000_417 + 2),0,0
+01084                       ;	;.line	37; ".\Source\App_ADC.c"	}
+01085 0330 000A             	RET	
+01086                       ; exit point of _ADCGetData
+01087 0331 --              	.ENDFUNC	_ADCGetData
+01088                       ;--------------------------------------------------------
+01089                       
+01090                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+01091                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+01092                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+01093                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+01094                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+01095                       	;--cdb--S:G$atoll$0$0({2}DF,SI:SE),C,0,0
+01096                       	;--cdb--S:G$strtoll$0$0({2}DF,SI:SE),C,0,0
+01097                       	;--cdb--S:G$strtoull$0$0({2}DF,SI:UE),C,0,0
+01098                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+01099                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+01100                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+01101                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+01102                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+01103                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+01104                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+01105                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+01106                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+01107                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+01108                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+01109                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+01110                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+01111                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+01112                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+01113                       	;--cdb--S:G$llabs$0$0({2}DF,SI:SE),C,0,0
+01114                       	;--cdb--S:G$div$0$0({2}DF,ST__00000000(T:FApp_ADC$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),C,0,0
+01115                       	;--cdb--S:G$ldiv$0$0({2}DF,ST__00000001(T:FApp_ADC$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),C,0,0
+01116                       	;--cdb--S:G$lldiv$0$0({2}DF,ST__00000002(T:FApp_ADC$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),C,0,0
+01117                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+01118                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+01119                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+01120                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+01121                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+01122                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+01123                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+01124                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+01125                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+01126                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+01127                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+01128                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+01129                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+01130                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+01131                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+01132                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+01133                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+01134                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+01135                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+01136                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+01137                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+01138                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+01139                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+01140                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+01141                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+01142                       	;--cdb--S:G$memset_explicit$0$0({2}DF,DT,SV:S),C,0,0
+01143                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+01144                       	;--cdb--S:G$strnlen$0$0({2}DF,SI:U),C,0,0
+01145                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+01146                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+01147                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+01148                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+01149                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+01150                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+01151                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+01152                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+01153                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+01154                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+01155                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+01156                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+01157                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+01158                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+01159                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+01160                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+01161                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+01162                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+01163                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+01164                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+01165                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+01166                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+01167                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+01168                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+01169                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+01170                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+01171                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+01172                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+01173                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+01174                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+01175                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+01176                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+01177                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+01178                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+01179                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+01180                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+01181                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+01182                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+01183                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+01184                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+01185                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+01186                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+01187                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+01188                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+01189                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+01190                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+01191                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+01192                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+01193                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+01194                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+01195                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+01196                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+01197                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+01198                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+01199                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+01200                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+01201                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+01202                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+01203                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+01204                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+01205                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+01206                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+01207                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+01208                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+01209                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+01210                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+01211                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+01212                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+01213                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+01214                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+01215                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+01216                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+01217                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+01218                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+01219                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+01220                       	;--cdb--S:G$ADCGetData$0$0({2}DF,SI:S),C,0,0
+01221                       	;--cdb--S:G$ADC_Average$0$0({2}DF,SC:U),C,0,0
+01222                       	;--cdb--S:G$NTC_ADCData$0$0({2}DF,SC:U),C,0,0
+01223                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+01224                       	;--cdb--S:G$_mullong$0$0({2}DF,SL:SL),C,0,0
+01225                       	;--cdb--S:G$_divulong$0$0({2}DF,SL:UL),C,0,0
+01226                       	;--cdb--S:G$_mulint$0$0({2}DF,SI:S),C,0,0
+01227                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+01228                       	;--cdb--S:G$FSR0$0$0({2}DD,SC:U),E,0,0
+01229                       	;--cdb--S:G$FSR1$0$0({2}DD,SC:U),E,0,0
+01230                       	;--cdb--S:G$FSR2$0$0({2}DD,SC:U),E,0,0
+01231                       	;--cdb--S:G$ADCR$0$0({4}SL:SL),E,0,0
+01232                       	;--cdb--S:LApp_ADC.aligned_alloc._aligned_alloc_size_10000_29$size$2710$29({2}SI:U),E,0,0
+01233                       	;--cdb--S:LApp_ADC.aligned_alloc._aligned_alloc_alignment_10000_29$alignment$2710$29({2}SI:U),E,0,0
+01234                       	;--cdb--S:G$sIIC$0$0({1}ST__00000003(T:FApp_ADC$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]):S),E,0,0
+01235                       	;--cdb--S:G$BIE_Available_Addr$0$0({1}SC:U),E,0,0
+01236                       	;--cdb--S:G$sTIMx$0$0({13}ST__00000004(T:FApp_ADC$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01237                       	;--cdb--S:G$sUARTx$0$0({15}ST__00000005(T:FApp_ADC$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]):S),E,0,0
+01238                       	;--cdb--S:G$sAutoBps$0$0({5}ST__00000006(T:FApp_ADC$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01239                       	;--cdb--S:G$eAutoBps_Status$0$0({1}SC:U:ENUM_NONAME|AutoBps_Searched=2|AutoBps_Searching=1|AutoBps_Init=0),E,0,0
+01240                       	;--cdb--S:G$sTest$0$0({19}ST__00000007(T:FApp_ADC$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01241                       	;--cdb--S:G$eTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0
+01242                       	;--cdb--S:G$eBondingTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0
+01243                       	;--cdb--S:G$eVersionCode$0$0({1}SC:S:ENUM_NONAME|VC_DispOn=1|VC_DispOff=0),E,0,0
+01244                       	;--cdb--S:G$eMeasureMode$0$0({1}SC:U:ENUM_NONAME|Bath_Mode=3|Rectal_Mode=2|Underarm_Mode=1|Oral_Mode=0),E,0,0
+01245                       	;--cdb--S:G$eBinding_Status$0$0({1}SC:U:ENUM_NONAME|FahrenheitFirst_NonSwitchable=3|FahrenheitFirst_Switchable=2|CentigradeFirst_NonSwitchable=1|CentigradeFirst_Switchable=0),E,0,0
+01246                       	;--cdb--S:G$Enter_PrepareSleep_Flag$0$0({1}SC:U),E,0,0
+01247                       	;--cdb--S:G$sButton$0$0({2}ST__00000008(T:FApp_ADC$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0
+01248                       	;--cdb--S:G$sTimeStamp$0$0({42}ST__00000009(T:FApp_ADC$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01249                       	;--cdb--S:G$eButton_Status$0$0({1}SC:U:ENUM_NONAME|Button_Lift=2|Button_Press=1|Button_Debouncing=0),E,0,0
+01250                       	;--cdb--S:G$sLVD$0$0({5}ST__00000010(T:FApp_ADC$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]):S),E,0,0
+01251                       	;--cdb--S:G$UnitExchangeCompleted$0$0({1}SC:U),E,0,0
+01252                       	;--cdb--S:G$ERR$0$0({9}DA9d,SC:U),E,0,0
+01253                       	;--cdb--S:G$eErr$0$0({1}SC:U:ENUM_NONAME|Err_Num=9|Err=8|Err7=7|Err6=6|Err5=5|Err4=4|Err3=3|Err2=2|Err1=1|Err0=0),E,0,0
+01254                       	;--cdb--S:G$eDisplay_Interfaces$0$0({1}SC:U:ENUM_NONAME|Display_PreCalibration=19|Display_SleepMode=18|Display_MeasuredTemperature=17|Display_ERR=16|Display_TemperatureDetecting=15|Display_Binding=14|Display_ModeExchange=13|Display_CurrentMode=12|Display_MemoryTemperatureValue=11|Display_MemoryTemperatureNumber=10|Display_RecentTemperature=9|Display_CalibrationOK=8|Display_Calibration=7|Display_Off=6|Display_Code=5|Display_Version=4|Display_UnitExchange=3|Display_All=2|Display_LowPower=1|Display_PowerOn=0),E,0,0
+01255                       	;--cdb--S:G$sADC$0$0({45}ST__00000011(T:FApp_ADC$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0
+01256                       	;--cdb--S:G$eADCChannel$0$0({1}SC:S:ENUM_NONAME|AI14_AI15=1|AI2_AI3=0),E,0,0
+01257                       	;--cdb--S:G$eSystem_Mode$0$0({1}SC:U:ENUM_NONAME|Normal=3|Prepare_Normal=2|Sleep=1|Prepare_Sleep=0),E,0,0
+01258                       	;--cdb--S:G$eBuzzer_Status$0$0({1}SC:U:ENUM_NONAME|Buzzer_Er1Er2=5|Buzzer_Forecast_To_Actual=4|Buzzer_MeasuredTempActual=3|Buzzer_MeasuredTempForecast=2|Buzzer_PowerOnOff=1|Buzzer_Silent=0),E,0,0
+01259                       	;--cdb--S:G$Flag_No_Buzzer$0$0({1}SC:U),E,0,0
+01260                       	;--cdb--S:G$sMemory$0$0({23}ST__00000012(T:FApp_ADC$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0
+01261                       	;--cdb--S:G$sMemoryFlag$0$0({3}ST__00000013(T:FApp_ADC$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]):S),E,0,0
+01262                       	;--cdb--S:G$sActual$0$0({5}ST__00000015(T:FApp_ADC$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01263                       	;--cdb--S:G$sForecast$0$0({26}ST__00000016(T:FApp_ADC$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01264                       	;--cdb--S:G$sTempCal$0$0({14}ST__00000014(T:FApp_ADC$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]):S),E,0,0
+01265                       	;--cdb--S:G$eMeas_Status$0$0({1}SC:U:ENUM_NONAME|Meas_DataUpdate=4|Meas_ForecastMeasuring=3|Meas_ActualMeasuring=2|Meas_StartConditon=1|Meas_Get_TEMP=0),E,0,0
+01266                       	;--cdb--S:G$sActual_Forecast$0$0({15}ST__00000017(T:FApp_ADC$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01267                       	;--cdb--S:G$eTo_Actual_Ways$0$0({1}SC:U:ENUM_NONAME|To_Actual_3Min=90|To_Actual_Immediately=165),E,0,0
+01268                       	;--cdb--S:G$eBle_Sta$0$0({1}SC:U:ENUM_NONAME|Ble_TimeoutErr=7|Ble_LinkErr=6|Ble_UploadData=5|Ble_Idle=4|Ble_Advertising=3|Ble_Disable=2|Ble_DeviceInfo=1|Ble_Standby=0),E,0,0
+01269                       	;--cdb--S:G$sBleStatus$0$0({60}ST__00000018(T:FApp_ADC$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),E,0,0
+01270                       	;--cdb--S:G$eBacklight_Status$0$0({1}SC:U:ENUM_NONAME|MeasuredTemp_Backlight=4|TempDetecting_Backlight=3|MemTemp_Backlight=2|All_Backlight=1|No_Backlight=0),E,0,0
+01271                       	;--cdb--S:G$sBacklight$0$0({1}ST__00000019(T:FApp_ADC$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0
+01272                       	;--cdb--S:G$NUM_CODE$0$0({22}DA11d,SI:U),D,0,0
+01273                       	;--cdb--S:G$R_Table$0$0({1002}DA501d,SI:U),D,0,0
+01274                       	;--cdb--S:G$CloseTable$0$0({98}DA49d,SI:U),D,0,0
+01275                       	;--cdb--S:G$_SWTGTID$0$0({1}SC:U),I,0,0
+01276                       	;--cdb--S:G$INDF0$0$0({1}SC:U),I,0,0
+01277                       	;--cdb--S:G$POINC0$0$0({1}SC:U),I,0,0
+01278                       	;--cdb--S:G$PODEC0$0$0({1}SC:U),I,0,0
+01279                       	;--cdb--S:G$PRINC0$0$0({1}SC:U),I,0,0
+01280                       	;--cdb--S:G$PLUSW0$0$0({1}SC:U),I,0,0
+01281                       	;--cdb--S:G$INDF1$0$0({1}SC:U),I,0,0
+01282                       	;--cdb--S:G$POINC1$0$0({1}SC:U),I,0,0
+01283                       	;--cdb--S:G$PODEC1$0$0({1}SC:U),I,0,0
+01284                       	;--cdb--S:G$PRINC1$0$0({1}SC:U),I,0,0
+01285                       	;--cdb--S:G$PLUSW1$0$0({1}SC:U),I,0,0
+01286                       	;--cdb--S:G$INDF2$0$0({1}SC:U),I,0,0
+01287                       	;--cdb--S:G$POINC2$0$0({1}SC:U),I,0,0
+01288                       	;--cdb--S:G$PODEC2$0$0({1}SC:U),I,0,0
+01289                       	;--cdb--S:G$PRINC2$0$0({1}SC:U),I,0,0
+01290                       	;--cdb--S:G$PLUSW2$0$0({1}SC:U),I,0,0
+01291                       	;--cdb--S:G$FSR0H$0$0({1}SC:U),I,0,0
+01292                       	;--cdb--S:G$FSR0L$0$0({1}SC:U),I,0,0
+01293                       	;--cdb--S:G$FSR1H$0$0({1}SC:U),I,0,0
+01294                       	;--cdb--S:G$FSR1L$0$0({1}SC:U),I,0,0
+01295                       	;--cdb--S:G$FSR2H$0$0({1}SC:U),I,0,0
+01296                       	;--cdb--S:G$FSR2L$0$0({1}SC:U),I,0,0
+01297                       	;--cdb--S:G$TOSH$0$0({1}SC:U),I,0,0
+01298                       	;--cdb--S:G$TOSL$0$0({1}SC:U),I,0,0
+01299                       	;--cdb--S:G$SKCN$0$0({1}SC:U),I,0,0
+01300                       	;--cdb--S:G$PCLATH$0$0({1}SC:U),I,0,0
+01301                       	;--cdb--S:G$PCLATL$0$0({1}SC:U),I,0,0
+01302                       	;--cdb--S:G$TBLPTRH$0$0({1}SC:U),I,0,0
+01303                       	;--cdb--S:G$TBLPTRL$0$0({1}SC:U),I,0,0
+01304                       	;--cdb--S:G$TBLDH$0$0({1}SC:U),I,0,0
+01305                       	;--cdb--S:G$TBLDL$0$0({1}SC:U),I,0,0
+01306                       	;--cdb--S:G$PRODH$0$0({1}SC:U),I,0,0
+01307                       	;--cdb--S:G$PRODL$0$0({1}SC:U),I,0,0
+01308                       	;--cdb--S:G$INTE0$0$0({1}SC:U),I,0,0
+01309                       	;--cdb--S:G$INTE1$0$0({1}SC:U),I,0,0
+01310                       	;--cdb--S:G$INTE2$0$0({1}SC:U),I,0,0
+01311                       	;--cdb--S:G$INTF0$0$0({1}SC:U),I,0,0
+01312                       	;--cdb--S:G$INTF1$0$0({1}SC:U),I,0,0
+01313                       	;--cdb--S:G$INTF2$0$0({1}SC:U),I,0,0
+01314                       	;--cdb--S:G$WREG$0$0({1}SC:U),I,0,0
+01315                       	;--cdb--S:G$BSRCN$0$0({1}SC:U),I,0,0
+01316                       	;--cdb--S:G$STATUS$0$0({1}SC:U),I,0,0
+01317                       	;--cdb--S:G$MSTAT$0$0({1}SC:U),I,0,0
+01318                       	;--cdb--S:G$PSTAT$0$0({1}SC:U),I,0,0
+01319                       	;--cdb--S:G$BIECN$0$0({1}SC:U),I,0,0
+01320                       	;--cdb--S:G$BIEARH$0$0({1}SC:U),I,0,0
+01321                       	;--cdb--S:G$BIEARL$0$0({1}SC:U),I,0,0
+01322                       	;--cdb--S:G$BIEDRH$0$0({1}SC:U),I,0,0
+01323                       	;--cdb--S:G$BIEDRL$0$0({1}SC:U),I,0,0
+01324                       	;--cdb--S:G$PWRCN$0$0({1}SC:U),I,0,0
+01325                       	;--cdb--S:G$OSCCN0$0$0({1}SC:U),I,0,0
+01326                       	;--cdb--S:G$OSCCN1$0$0({1}SC:U),I,0,0
+01327                       	;--cdb--S:G$OSCCN2$0$0({1}SC:U),I,0,0
+01328                       	;--cdb--S:G$CSFCN0$0$0({1}SC:U),I,0,0
+01329                       	;--cdb--S:G$CSFCN1$0$0({1}SC:U),I,0,0
+01330                       	;--cdb--S:G$WDTCN$0$0({1}SC:U),I,0,0
+01331                       	;--cdb--S:G$AD1H$0$0({1}SC:U),I,0,0
+01332                       	;--cdb--S:G$AD1M$0$0({1}SC:U),I,0,0
+01333                       	;--cdb--S:G$AD1L$0$0({1}SC:U),I,0,0
+01334                       	;--cdb--S:G$AD1CN0$0$0({1}SC:U),I,0,0
+01335                       	;--cdb--S:G$AD1CN1$0$0({1}SC:U),I,0,0
+01336                       	;--cdb--S:G$AD1CN2$0$0({1}SC:U),I,0,0
+01337                       	;--cdb--S:G$AD1CN3$0$0({1}SC:U),I,0,0
+01338                       	;--cdb--S:G$AD1CN4$0$0({1}SC:U),I,0,0
+01339                       	;--cdb--S:G$AD1CN5$0$0({1}SC:U),I,0,0
+01340                       	;--cdb--S:G$LVDCN$0$0({1}SC:U),I,0,0
+01341                       	;--cdb--S:G$TMA1CN$0$0({1}SC:U),I,0,0
+01342                       	;--cdb--S:G$TMA1R$0$0({1}SC:U),I,0,0
+01343                       	;--cdb--S:G$TMA1C$0$0({1}SC:U),I,0,0
+01344                       	;--cdb--S:G$TB1FLAG$0$0({1}SC:U),I,0,0
+01345                       	;--cdb--S:G$TB1CN0$0$0({1}SC:U),I,0,0
+01346                       	;--cdb--S:G$TB1CN1$0$0({1}SC:U),I,0,0
+01347                       	;--cdb--S:G$TB1RH$0$0({1}SC:U),I,0,0
+01348                       	;--cdb--S:G$TB1RL$0$0({1}SC:U),I,0,0
+01349                       	;--cdb--S:G$TB1C0H$0$0({1}SC:U),I,0,0
+01350                       	;--cdb--S:G$TB1C0L$0$0({1}SC:U),I,0,0
+01351                       	;--cdb--S:G$TB1C1H$0$0({1}SC:U),I,0,0
+01352                       	;--cdb--S:G$TB1C1L$0$0({1}SC:U),I,0,0
+01353                       	;--cdb--S:G$TB1C2H$0$0({1}SC:U),I,0,0
+01354                       	;--cdb--S:G$TB1C2L$0$0({1}SC:U),I,0,0
+01355                       	;--cdb--S:G$TC1CN0$0$0({1}SC:U),I,0,0
+01356                       	;--cdb--S:G$PT1$0$0({1}SC:U),I,0,0
+01357                       	;--cdb--S:G$TRISC1$0$0({1}SC:U),I,0,0
+01358                       	;--cdb--S:G$PT1DA$0$0({1}SC:U),I,0,0
+01359                       	;--cdb--S:G$PT1PU$0$0({1}SC:U),I,0,0
+01360                       	;--cdb--S:G$PT1M1$0$0({1}SC:U),I,0,0
+01361                       	;--cdb--S:G$PT1INT$0$0({1}SC:U),I,0,0
+01362                       	;--cdb--S:G$PT1INTE$0$0({1}SC:U),I,0,0
+01363                       	;--cdb--S:G$PT1INTF$0$0({1}SC:U),I,0,0
+01364                       	;--cdb--S:G$PT2$0$0({1}SC:U),I,0,0
+01365                       	;--cdb--S:G$TRISC2$0$0({1}SC:U),I,0,0
+01366                       	;--cdb--S:G$PT2DA$0$0({1}SC:U),I,0,0
+01367                       	;--cdb--S:G$PT2PU$0$0({1}SC:U),I,0,0
+01368                       	;--cdb--S:G$PT2INT$0$0({1}SC:U),I,0,0
+01369                       	;--cdb--S:G$PT2INTE$0$0({1}SC:U),I,0,0
+01370                       	;--cdb--S:G$PT2INTF$0$0({1}SC:U),I,0,0
+01371                       	;--cdb--S:G$PT6$0$0({1}SC:U),I,0,0
+01372                       	;--cdb--S:G$TRISC6$0$0({1}SC:U),I,0,0
+01373                       	;--cdb--S:G$PT6DA$0$0({1}SC:U),I,0,0
+01374                       	;--cdb--S:G$PT6PU$0$0({1}SC:U),I,0,0
+01375                       	;--cdb--S:G$PT7$0$0({1}SC:U),I,0,0
+01376                       	;--cdb--S:G$TRISC7$0$0({1}SC:U),I,0,0
+01377                       	;--cdb--S:G$PT7DA$0$0({1}SC:U),I,0,0
+01378                       	;--cdb--S:G$PT7PU$0$0({1}SC:U),I,0,0
+01379                       	;--cdb--S:G$PT8$0$0({1}SC:U),I,0,0
+01380                       	;--cdb--S:G$TRISC8$0$0({1}SC:U),I,0,0
+01381                       	;--cdb--S:G$PT8DA$0$0({1}SC:U),I,0,0
+01382                       	;--cdb--S:G$PT8PU$0$0({1}SC:U),I,0,0
+01383                       	;--cdb--S:G$SSPCN0$0$0({1}SC:U),I,0,0
+01384                       	;--cdb--S:G$SSPSTA0$0$0({1}SC:U),I,0,0
+01385                       	;--cdb--S:G$SSPBUF0$0$0({1}SC:U),I,0,0
+01386                       	;--cdb--S:G$CFG0$0$0({1}SC:U),I,0,0
+01387                       	;--cdb--S:G$ACT0$0$0({1}SC:U),I,0,0
+01388                       	;--cdb--S:G$STA0$0$0({1}SC:U),I,0,0
+01389                       	;--cdb--S:G$CRG0$0$0({1}SC:U),I,0,0
+01390                       	;--cdb--S:G$TOC0$0$0({1}SC:U),I,0,0
+01391                       	;--cdb--S:G$RDB0$0$0({1}SC:U),I,0,0
+01392                       	;--cdb--S:G$TDB0$0$0({1}SC:U),I,0,0
+01393                       	;--cdb--S:G$SID0$0$0({1}SC:U),I,0,0
+01394                       	;--cdb--S:G$UR0CN$0$0({1}SC:U),I,0,0
+01395                       	;--cdb--S:G$UR0STA$0$0({1}SC:U),I,0,0
+01396                       	;--cdb--S:G$BA0CN$0$0({1}SC:U),I,0,0
+01397                       	;--cdb--S:G$BG0RH$0$0({1}SC:U),I,0,0
+01398                       	;--cdb--S:G$BG0RL$0$0({1}SC:U),I,0,0
+01399                       	;--cdb--S:G$TX0R$0$0({1}SC:U),I,0,0
+01400                       	;--cdb--S:G$RC0REG$0$0({1}SC:U),I,0,0
+01401                       	;--cdb--S:G$LCDCN1$0$0({1}SC:U),I,0,0
+01402                       	;--cdb--S:G$LCDCN2$0$0({1}SC:U),I,0,0
+01403                       	;--cdb--S:G$LCDCN3$0$0({1}SC:U),I,0,0
+01404                       	;--cdb--S:G$LCDCN4$0$0({1}SC:U),I,0,0
+01405                       	;--cdb--S:G$LCDCN5$0$0({1}SC:U),I,0,0
+01406                       	;--cdb--S:G$LCDCN6$0$0({1}SC:U),I,0,0
+01407                       	;--cdb--S:G$LCDCN7$0$0({1}SC:U),I,0,0
+01408                       	;--cdb--S:G$LCDCN8$0$0({1}SC:U),I,0,0
+01409                       	;--cdb--S:G$LCD0$0$0({1}SC:U),I,0,0
+01410                       	;--cdb--S:G$LCD1$0$0({1}SC:U),I,0,0
+01411                       	;--cdb--S:G$LCD2$0$0({1}SC:U),I,0,0
+01412                       	;--cdb--S:G$LCD3$0$0({1}SC:U),I,0,0
+01413                       	;--cdb--S:G$LCD4$0$0({1}SC:U),I,0,0
+01414                       	;--cdb--S:G$LCD5$0$0({1}SC:U),I,0,0
+01415                       	;--cdb--S:G$LCD6$0$0({1}SC:U),I,0,0
+01416                       	;--cdb--S:G$LCD7$0$0({1}SC:U),I,0,0
+01417                       	;--cdb--S:G$LCD8$0$0({1}SC:U),I,0,0
+01418                       	;--cdb--S:G$LCD9$0$0({1}SC:U),I,0,0
+01419                       	;--cdb--S:G$UR2CN$0$0({1}SC:U),I,0,0
+01420                       	;--cdb--S:G$UR2STA$0$0({1}SC:U),I,0,0
+01421                       	;--cdb--S:G$BA2CN$0$0({1}SC:U),I,0,0
+01422                       	;--cdb--S:G$BG2RH$0$0({1}SC:U),I,0,0
+01423                       	;--cdb--S:G$BG2RL$0$0({1}SC:U),I,0,0
+01424                       	;--cdb--S:G$TX2R$0$0({1}SC:U),I,0,0
+01425                       	;--cdb--S:G$RC2REG$0$0({1}SC:U),I,0,0
+01426                       	;--cdb--S:G$TMA2R$0$0({1}SC:U),I,0,0
+01427                       	;--cdb--S:G$TMA2C$0$0({1}SC:U),I,0,0
+01428                       	;--cdb--S:G$LEDCN$0$0({1}SC:U),I,0,0
+01429                       	;--cdb--S:G$IQ0$0$0({1}SC:U),I,0,0
+01430                       	;--cdb--S:G$IQ1$0$0({1}SC:U),I,0,0
+01431                       	;--cdb--S:G$DGCON1$0$0({1}SC:U),I,0,0
+01432                       	;--cdb--S:G$DGCON2$0$0({1}SC:U),I,0,0
+01433                       	;--cdb--S:G$ADCRH$0$0({1}SC:U),I,0,0
+01434                       	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
+01435                       	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
+01436                       	;--cdb--S:G$TEMDATA$0$0({1}SC:U),I,0,0
+01437                       	;--cdb--S:LApp_ADC.ADCGetData._ADCGetData_ADCData1_10000_417$ADCData1$2710$417({4}SL:SL),E,0,0
+01438                       	;--cdb--S:LApp_ADC.ADCGetData._ADCGetData_ADCData2_10000_417$ADCData2$2710$417({2}SI:S),R,0,0,[r0x1090,r0x1091]
+01439                       	;--cdb--S:LApp_ADC.Get_250msTemp._Get_250msTemp_n_10000_443$n$2710$443({2}SI:U),R,0,0,[r0x10A5,r0x10A6]
+01440                       	;--cdb--S:LApp_ADC.Get_250msTemp._Get_250msTemp_lower_10000_443$lower$2710$443({2}SI:U),R,0,0,[r0x10A7,r0x10A8]
+01441                       	;--cdb--S:LApp_ADC.Get_250msTemp._Get_250msTemp_upper_10000_443$upper$2710$443({2}SI:U),R,0,0,[r0x10A9,r0x10AA]
+01442                       	;--cdb--S:LApp_ADC.Get_250msTemp._Get_250msTemp_i_10000_443$i$2710$443({2}SI:U),R,0,0,[r0x10AD,r0x10AE]
+01443                       	;--cdb--S:LApp_ADC.Get_250msTemp._Get_250msTemp_tmp_10000_443$tmp$2710$443({4}SL:UL),R,0,0,[r0x10AF,r0x10B0,r0x10B1,r0x10B2]
+01444                       	;--cdb--S:LApp_ADC.Centigrade_Convert_Fahrenheit._Centigrade_Convert_Fahrenheit_temp_10000_461$temp$2710$461({2}SI:U),R,0,0,[_Centigrade_Convert_Fahrenheit_STK00,r0x10D1]
+01445                       	;--cdb--S:LApp_ADC.Centigrade_Convert_Fahrenheit._Centigrade_Convert_Fahrenheit_tmp_10000_462$tmp$2710$462({4}SL:UL),R,0,0,[r0x10D2,r0x10D3,r0x10D4,r0x10D5]
+01446                       	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
+01447                       	;--cdb--S:G$_WREG$0$0({0}:U),Z,0,0
+01448                       	;--cdb--S:G$_INTE0$0$0({0}:U),Z,0,0
+01449                       ;--------------------------------------------------------
+01450                       ; external declarations
+01451                       ;--------------------------------------------------------
+01452                       	.globl	__mullong
+01453                       	.globl	__divulong
+01454                       	.globl	__mulint
+01455                       	.globl	_FSR0
+01456                       	.globl	_FSR1
+01457                       	.globl	_FSR2
+01458                       	.globl	_ADCR
+01459                       	.globl	_sIIC
+01460                       	.globl	_BIE_Available_Addr
+01461                       	.globl	_sTIMx
+01462                       	.globl	_sUARTx
+01463                       	.globl	_sAutoBps
+01464                       	.globl	_eAutoBps_Status
+01465                       	.globl	_sTest
+01466                       	.globl	_eTempUnit
+01467                       	.globl	_eBondingTempUnit
+01468                       	.globl	_eVersionCode
+01469                       	.globl	_eMeasureMode
+01470                       	.globl	_eBinding_Status
+01471                       	.globl	_Enter_PrepareSleep_Flag
+01472                       	.globl	_sButton
+01473                       	.globl	_sTimeStamp
+01474                       	.globl	_eButton_Status
+01475                       	.globl	_sLVD
+01476                       	.globl	_UnitExchangeCompleted
+01477                       	.globl	_ERR
+01478                       	.globl	_eErr
+01479                       	.globl	_eDisplay_Interfaces
+01480                       	.globl	_eSystem_Mode
+01481                       	.globl	_eBuzzer_Status
+01482                       	.globl	_Flag_No_Buzzer
+01483                       	.globl	_sMemory
+01484                       	.globl	_sMemoryFlag
+01485                       	.globl	_sActual
+01486                       	.globl	_sForecast
+01487                       	.globl	_sTempCal
+01488                       	.globl	_eMeas_Status
+01489                       	.globl	_sActual_Forecast
+01490                       	.globl	_eTo_Actual_Ways
+01491                       	.globl	_eBle_Sta
+01492                       	.globl	_sBleStatus
+01493                       	.globl	_eBacklight_Status
+01494                       	.globl	_sBacklight
+01495                       	.globl	_NUM_CODE
+01496                       	.globl	_CloseTable
+01497                       	.globl	__g2ptrget2
+01498                       
+01499                       	.globl STK07
+01500                       	.globl STK07_SAVE
+01501                       	.globl STK06
+01502                       	.globl STK06_SAVE
+01503                       	.globl STK05
+01504                       	.globl STK05_SAVE
+01505                       	.globl STK04
+01506                       	.globl STK04_SAVE
+01507                       	.globl STK03
+01508                       	.globl STK03_SAVE
+01509                       	.globl STK02
+01510                       	.globl STK02_SAVE
+01511                       	.globl STK01
+01512                       	.globl STK01_SAVE
+01513                       	.globl STK00
+01514                       	.globl STK00_SAVE
+01515                       ;--------------------------------------------------------
+01516                       ; global -1 declarations
+01517                       ;--------------------------------------------------------
+01518                       	.globl	_ADCGetData
+01519                       	.globl	_ADC_Average
+01520                       	.globl	_NTC_ADCData
+01521                       	.globl	_Centigrade_Convert_Fahrenheit
+01522                       	.globl	_sADC
+01523                       	.globl	_eADCChannel
+01524                       	.globl	_R_Table
+01525                       
+01526                       	.globl	_memcpy
+01527                       ;--------------------------------------------------------
+01528                       ; global -2 definitions
+01529                       ;--------------------------------------------------------
+01530                       	.area DSEG(DATA)
+01531 0000 --               _sADC:	.ds	45
+01532                       
+01533                       	.area DSEG(DATA)
+01534 002D --               _eADCChannel:	.ds	1
+01535                       
+01536                       	.area DSEG(DATA)
+01537                       __SWTGTID	.equ	0xA6A6B2CF
+01538                       
+01539                       	.area DSEG(DATA)
+01540                       _INDF0	.equ	0x0
+01541                       
+01542                       	.area DSEG(DATA)
+01543                       _POINC0	.equ	0x1
+01544                       
+01545                       	.area DSEG(DATA)
+01546                       _PODEC0	.equ	0x2
+01547                       
+01548                       	.area DSEG(DATA)
+01549                       _PRINC0	.equ	0x3
+01550                       
+01551                       	.area DSEG(DATA)
+01552                       _PLUSW0	.equ	0x4
+01553                       
+01554                       	.area DSEG(DATA)
+01555                       _INDF1	.equ	0x5
+01556                       
+01557                       	.area DSEG(DATA)
+01558                       _POINC1	.equ	0x6
+01559                       
+01560                       	.area DSEG(DATA)
+01561                       _PODEC1	.equ	0x7
+01562                       
+01563                       	.area DSEG(DATA)
+01564                       _PRINC1	.equ	0x8
+01565                       
+01566                       	.area DSEG(DATA)
+01567                       _PLUSW1	.equ	0x9
+01568                       
+01569                       	.area DSEG(DATA)
+01570                       _INDF2	.equ	0xA
+01571                       
+01572                       	.area DSEG(DATA)
+01573                       _POINC2	.equ	0xB
+01574                       
+01575                       	.area DSEG(DATA)
+01576                       _PODEC2	.equ	0xC
+01577                       
+01578                       	.area DSEG(DATA)
+01579                       _PRINC2	.equ	0xD
+01580                       
+01581                       	.area DSEG(DATA)
+01582                       _PLUSW2	.equ	0xE
+01583                       
+01584                       	.area DSEG(DATA)
+01585                       _FSR0H	.equ	0xF
+01586                       
+01587                       	.area DSEG(DATA)
+01588                       _FSR0L	.equ	0x10
+01589                       
+01590                       	.area DSEG(DATA)
+01591                       _FSR1H	.equ	0x11
+01592                       
+01593                       	.area DSEG(DATA)
+01594                       _FSR1L	.equ	0x12
+01595                       
+01596                       	.area DSEG(DATA)
+01597                       _FSR2H	.equ	0x13
+01598                       
+01599                       	.area DSEG(DATA)
+01600                       _FSR2L	.equ	0x14
+01601                       
+01602                       	.area DSEG(DATA)
+01603                       _TOSH	.equ	0x16
+01604                       
+01605                       	.area DSEG(DATA)
+01606                       _TOSL	.equ	0x17
+01607                       
+01608                       	.area DSEG(DATA)
+01609                       _SKCN	.equ	0x18
+01610                       
+01611                       	.area DSEG(DATA)
+01612                       _PCLATH	.equ	0x1A
+01613                       
+01614                       	.area DSEG(DATA)
+01615                       _PCLATL	.equ	0x1B
+01616                       
+01617                       	.area DSEG(DATA)
+01618                       _TBLPTRH	.equ	0x1D
+01619                       
+01620                       	.area DSEG(DATA)
+01621                       _TBLPTRL	.equ	0x1E
+01622                       
+01623                       	.area DSEG(DATA)
+01624                       _TBLDH	.equ	0x1F
+01625                       
+01626                       	.area DSEG(DATA)
+01627                       _TBLDL	.equ	0x20
+01628                       
+01629                       	.area DSEG(DATA)
+01630                       _PRODH	.equ	0x21
+01631                       
+01632                       	.area DSEG(DATA)
+01633                       _PRODL	.equ	0x22
+01634                       
+01635                       	.area DSEG(DATA)
+01636                       _INTE0	.equ	0x23
+01637                       
+01638                       	.area DSEG(DATA)
+01639                       _INTE1	.equ	0x24
+01640                       
+01641                       	.area DSEG(DATA)
+01642                       _INTE2	.equ	0x25
+01643                       
+01644                       	.area DSEG(DATA)
+01645                       _INTF0	.equ	0x26
+01646                       
+01647                       	.area DSEG(DATA)
+01648                       _INTF1	.equ	0x27
+01649                       
+01650                       	.area DSEG(DATA)
+01651                       _INTF2	.equ	0x28
+01652                       
+01653                       	.area DSEG(DATA)
+01654                       _WREG	.equ	0x29
+01655                       
+01656                       	.area DSEG(DATA)
+01657                       _BSRCN	.equ	0x2A
+01658                       
+01659                       	.area DSEG(DATA)
+01660                       _STATUS	.equ	0x2B
+01661                       
+01662                       	.area DSEG(DATA)
+01663                       _MSTAT	.equ	0x2B
+01664                       
+01665                       	.area DSEG(DATA)
+01666                       _PSTAT	.equ	0x2C
+01667                       
+01668                       	.area DSEG(DATA)
+01669                       _BIECN	.equ	0x2E
+01670                       
+01671                       	.area DSEG(DATA)
+01672                       _BIEARH	.equ	0x2F
+01673                       
+01674                       	.area DSEG(DATA)
+01675                       _BIEARL	.equ	0x30
+01676                       
+01677                       	.area DSEG(DATA)
+01678                       _BIEDRH	.equ	0x31
+01679                       
+01680                       	.area DSEG(DATA)
+01681                       _BIEDRL	.equ	0x32
+01682                       
+01683                       	.area DSEG(DATA)
+01684                       _PWRCN	.equ	0x33
+01685                       
+01686                       	.area DSEG(DATA)
+01687                       _OSCCN0	.equ	0x34
+01688                       
+01689                       	.area DSEG(DATA)
+01690                       _OSCCN1	.equ	0x35
+01691                       
+01692                       	.area DSEG(DATA)
+01693                       _OSCCN2	.equ	0x36
+01694                       
+01695                       	.area DSEG(DATA)
+01696                       _CSFCN0	.equ	0x37
+01697                       
+01698                       	.area DSEG(DATA)
+01699                       _CSFCN1	.equ	0x38
+01700                       
+01701                       	.area DSEG(DATA)
+01702                       _WDTCN	.equ	0x39
+01703                       
+01704                       	.area DSEG(DATA)
+01705                       _AD1H	.equ	0x3A
+01706                       
+01707                       	.area DSEG(DATA)
+01708                       _AD1M	.equ	0x3B
+01709                       
+01710                       	.area DSEG(DATA)
+01711                       _AD1L	.equ	0x3C
+01712                       
+01713                       	.area DSEG(DATA)
+01714                       _AD1CN0	.equ	0x3D
+01715                       
+01716                       	.area DSEG(DATA)
+01717                       _AD1CN1	.equ	0x3E
+01718                       
+01719                       	.area DSEG(DATA)
+01720                       _AD1CN2	.equ	0x3F
+01721                       
+01722                       	.area DSEG(DATA)
+01723                       _AD1CN3	.equ	0x40
+01724                       
+01725                       	.area DSEG(DATA)
+01726                       _AD1CN4	.equ	0x41
+01727                       
+01728                       	.area DSEG(DATA)
+01729                       _AD1CN5	.equ	0x42
+01730                       
+01731                       	.area DSEG(DATA)
+01732                       _LVDCN	.equ	0x43
+01733                       
+01734                       	.area DSEG(DATA)
+01735                       _TMA1CN	.equ	0x44
+01736                       
+01737                       	.area DSEG(DATA)
+01738                       _TMA1R	.equ	0x45
+01739                       
+01740                       	.area DSEG(DATA)
+01741                       _TMA1C	.equ	0x46
+01742                       
+01743                       	.area DSEG(DATA)
+01744                       _TB1FLAG	.equ	0x47
+01745                       
+01746                       	.area DSEG(DATA)
+01747                       _TB1CN0	.equ	0x48
+01748                       
+01749                       	.area DSEG(DATA)
+01750                       _TB1CN1	.equ	0x49
+01751                       
+01752                       	.area DSEG(DATA)
+01753                       _TB1RH	.equ	0x4A
+01754                       
+01755                       	.area DSEG(DATA)
+01756                       _TB1RL	.equ	0x4B
+01757                       
+01758                       	.area DSEG(DATA)
+01759                       _TB1C0H	.equ	0x4C
+01760                       
+01761                       	.area DSEG(DATA)
+01762                       _TB1C0L	.equ	0x4D
+01763                       
+01764                       	.area DSEG(DATA)
+01765                       _TB1C1H	.equ	0x4E
+01766                       
+01767                       	.area DSEG(DATA)
+01768                       _TB1C1L	.equ	0x4F
+01769                       
+01770                       	.area DSEG(DATA)
+01771                       _TB1C2H	.equ	0x50
+01772                       
+01773                       	.area DSEG(DATA)
+01774                       _TB1C2L	.equ	0x51
+01775                       
+01776                       	.area DSEG(DATA)
+01777                       _TC1CN0	.equ	0x52
+01778                       
+01779                       	.area DSEG(DATA)
+01780                       _PT1	.equ	0x53
+01781                       
+01782                       	.area DSEG(DATA)
+01783                       _TRISC1	.equ	0x54
+01784                       
+01785                       	.area DSEG(DATA)
+01786                       _PT1DA	.equ	0x55
+01787                       
+01788                       	.area DSEG(DATA)
+01789                       _PT1PU	.equ	0x56
+01790                       
+01791                       	.area DSEG(DATA)
+01792                       _PT1M1	.equ	0x57
+01793                       
+01794                       	.area DSEG(DATA)
+01795                       _PT1INT	.equ	0x58
+01796                       
+01797                       	.area DSEG(DATA)
+01798                       _PT1INTE	.equ	0x59
+01799                       
+01800                       	.area DSEG(DATA)
+01801                       _PT1INTF	.equ	0x5A
+01802                       
+01803                       	.area DSEG(DATA)
+01804                       _PT2	.equ	0x5B
+01805                       
+01806                       	.area DSEG(DATA)
+01807                       _TRISC2	.equ	0x5C
+01808                       
+01809                       	.area DSEG(DATA)
+01810                       _PT2DA	.equ	0x5D
+01811                       
+01812                       	.area DSEG(DATA)
+01813                       _PT2PU	.equ	0x5E
+01814                       
+01815                       	.area DSEG(DATA)
+01816                       _PT2INT	.equ	0x5F
+01817                       
+01818                       	.area DSEG(DATA)
+01819                       _PT2INTE	.equ	0x60
+01820                       
+01821                       	.area DSEG(DATA)
+01822                       _PT2INTF	.equ	0x61
+01823                       
+01824                       	.area DSEG(DATA)
+01825                       _PT6	.equ	0x62
+01826                       
+01827                       	.area DSEG(DATA)
+01828                       _TRISC6	.equ	0x63
+01829                       
+01830                       	.area DSEG(DATA)
+01831                       _PT6DA	.equ	0x64
+01832                       
+01833                       	.area DSEG(DATA)
+01834                       _PT6PU	.equ	0x65
+01835                       
+01836                       	.area DSEG(DATA)
+01837                       _PT7	.equ	0x66
+01838                       
+01839                       	.area DSEG(DATA)
+01840                       _TRISC7	.equ	0x67
+01841                       
+01842                       	.area DSEG(DATA)
+01843                       _PT7DA	.equ	0x68
+01844                       
+01845                       	.area DSEG(DATA)
+01846                       _PT7PU	.equ	0x69
+01847                       
+01848                       	.area DSEG(DATA)
+01849                       _PT8	.equ	0x6A
+01850                       
+01851                       	.area DSEG(DATA)
+01852                       _TRISC8	.equ	0x6B
+01853                       
+01854                       	.area DSEG(DATA)
+01855                       _PT8DA	.equ	0x6C
+01856                       
+01857                       	.area DSEG(DATA)
+01858                       _PT8PU	.equ	0x6D
+01859                       
+01860                       	.area DSEG(DATA)
+01861                       _SSPCN0	.equ	0x6E
+01862                       
+01863                       	.area DSEG(DATA)
+01864                       _SSPSTA0	.equ	0x6F
+01865                       
+01866                       	.area DSEG(DATA)
+01867                       _SSPBUF0	.equ	0x70
+01868                       
+01869                       	.area DSEG(DATA)
+01870                       _CFG0	.equ	0x71
+01871                       
+01872                       	.area DSEG(DATA)
+01873                       _ACT0	.equ	0x72
+01874                       
+01875                       	.area DSEG(DATA)
+01876                       _STA0	.equ	0x73
+01877                       
+01878                       	.area DSEG(DATA)
+01879                       _CRG0	.equ	0x74
+01880                       
+01881                       	.area DSEG(DATA)
+01882                       _TOC0	.equ	0x75
+01883                       
+01884                       	.area DSEG(DATA)
+01885                       _RDB0	.equ	0x76
+01886                       
+01887                       	.area DSEG(DATA)
+01888                       _TDB0	.equ	0x77
+01889                       
+01890                       	.area DSEG(DATA)
+01891                       _SID0	.equ	0x78
+01892                       
+01893                       	.area DSEG(DATA)
+01894                       _UR0CN	.equ	0x79
+01895                       
+01896                       	.area DSEG(DATA)
+01897                       _UR0STA	.equ	0x7A
+01898                       
+01899                       	.area DSEG(DATA)
+01900                       _BA0CN	.equ	0x7B
+01901                       
+01902                       	.area DSEG(DATA)
+01903                       _BG0RH	.equ	0x7C
+01904                       
+01905                       	.area DSEG(DATA)
+01906                       _BG0RL	.equ	0x7D
+01907                       
+01908                       	.area DSEG(DATA)
+01909                       _TX0R	.equ	0x7E
+01910                       
+01911                       	.area DSEG(DATA)
+01912                       _RC0REG	.equ	0x7F
+01913                       
+01914                       	.area DSEG(DATA)
+01915                       _LCDCN1	.equ	0x180
+01916                       
+01917                       	.area DSEG(DATA)
+01918                       _LCDCN2	.equ	0x181
+01919                       
+01920                       	.area DSEG(DATA)
+01921                       _LCDCN3	.equ	0x182
+01922                       
+01923                       	.area DSEG(DATA)
+01924                       _LCDCN4	.equ	0x183
+01925                       
+01926                       	.area DSEG(DATA)
+01927                       _LCDCN5	.equ	0x184
+01928                       
+01929                       	.area DSEG(DATA)
+01930                       _LCDCN6	.equ	0x185
+01931                       
+01932                       	.area DSEG(DATA)
+01933                       _LCDCN7	.equ	0x186
+01934                       
+01935                       	.area DSEG(DATA)
+01936                       _LCDCN8	.equ	0x187
+01937                       
+01938                       	.area DSEG(DATA)
+01939                       _LCD0	.equ	0x188
+01940                       
+01941                       	.area DSEG(DATA)
+01942                       _LCD1	.equ	0x189
+01943                       
+01944                       	.area DSEG(DATA)
+01945                       _LCD2	.equ	0x18A
+01946                       
+01947                       	.area DSEG(DATA)
+01948                       _LCD3	.equ	0x18B
+01949                       
+01950                       	.area DSEG(DATA)
+01951                       _LCD4	.equ	0x18C
+01952                       
+01953                       	.area DSEG(DATA)
+01954                       _LCD5	.equ	0x18D
+01955                       
+01956                       	.area DSEG(DATA)
+01957                       _LCD6	.equ	0x18E
+01958                       
+01959                       	.area DSEG(DATA)
+01960                       _LCD7	.equ	0x18F
+01961                       
+01962                       	.area DSEG(DATA)
+01963                       _LCD8	.equ	0x190
+01964                       
+01965                       	.area DSEG(DATA)
+01966                       _LCD9	.equ	0x191
+01967                       
+01968                       	.area DSEG(DATA)
+01969                       _UR2CN	.equ	0x192
+01970                       
+01971                       	.area DSEG(DATA)
+01972                       _UR2STA	.equ	0x193
+01973                       
+01974                       	.area DSEG(DATA)
+01975                       _BA2CN	.equ	0x194
+01976                       
+01977                       	.area DSEG(DATA)
+01978                       _BG2RH	.equ	0x195
+01979                       
+01980                       	.area DSEG(DATA)
+01981                       _BG2RL	.equ	0x196
+01982                       
+01983                       	.area DSEG(DATA)
+01984                       _TX2R	.equ	0x197
+01985                       
+01986                       	.area DSEG(DATA)
+01987                       _RC2REG	.equ	0x198
+01988                       
+01989                       	.area DSEG(DATA)
+01990                       _TMA2R	.equ	0x1E8
+01991                       
+01992                       	.area DSEG(DATA)
+01993                       _TMA2C	.equ	0x1E9
+01994                       
+01995                       	.area DSEG(DATA)
+01996                       _LEDCN	.equ	0x1EA
+01997                       
+01998                       	.area DSEG(DATA)
+01999                       _IQ0	.equ	0x1EB
+02000                       
+02001                       	.area DSEG(DATA)
+02002                       _IQ1	.equ	0x1EC
+02003                       
+02004                       	.area DSEG(DATA)
+02005                       _DGCON1	.equ	0x1ED
+02006                       
+02007                       	.area DSEG(DATA)
+02008                       _DGCON2	.equ	0x1EE
+02009                       
+02010                       	.area DSEG(DATA)
+02011                       _ADCRH	.equ	0x3A
+02012                       
+02013                       	.area DSEG(DATA)
+02014                       _ADCRM	.equ	0x3B
+02015                       
+02016                       	.area DSEG(DATA)
+02017                       _ADCRL	.equ	0x3C
+02018                       
+02019                       	.area DSEG(DATA)
+02020                       _TEMDATA	.equ	0x2E0
+02021                       
+02022                       ;--------------------------------------------------------
+02023                       ; absolute symbol definitions
+02024                       ;--------------------------------------------------------
+02025                       ;--------------------------------------------------------
+02026                       ; compiler-defined variables
+02027                       ;--------------------------------------------------------
+02028                       	.area IDATA (DATA,REL,CON); pre-def
+02029                       	.area IDATAROM (CODE,REL,CON); pre-def
+02030                       	.area UDATA (DATA,REL,CON); pre-def
+02031                       	.area UDATA (DATA,REL,CON) ;UDL_App_ADC_0	udata
+02032 0000 --               r0x1096:	.ds	1
+02033 0001 --               r0x1097:	.ds	1
+02034 0002 --               r0x1098:	.ds	1
+02035 0003 --               r0x1099:	.ds	1
+02036 0004 --               r0x109C:	.ds	1
+02037 0005 --               r0x109D:	.ds	1
+02038 0006 --               r0x109E:	.ds	1
+02039 0007 --               r0x109F:	.ds	1
+02040 0008 --               r0x10A5:	.ds	1
+02041 0009 --               r0x10A6:	.ds	1
+02042 000A --               r0x10A7:	.ds	1
+02043 000B --               r0x10A8:	.ds	1
+02044 000C --               r0x10A9:	.ds	1
+02045 000D --               r0x10AA:	.ds	1
+02046 000E --               r0x10AD:	.ds	1
+02047 000F --               r0x10AE:	.ds	1
+02048 0010 --               r0x10AF:	.ds	1
+02049 0011 --               r0x10B0:	.ds	1
+02050 0012 --               r0x10B1:	.ds	1
+02051 0013 --               r0x10B2:	.ds	1
+02052 0014 --               r0x10B3:	.ds	1
+02053 0015 --               r0x10B4:	.ds	1
+02054 0016 --               r0x10B5:	.ds	1
+02055 0017 --               r0x10B6:	.ds	1
+02056 0018 --               r0x10B7:	.ds	1
+02057 0019 --               r0x10B8:	.ds	1
+02058 001A --               r0x10D1:	.ds	1
+02059 001B --               r0x10D2:	.ds	1
+02060 001C --               r0x10D3:	.ds	1
+02061 001D --               r0x10D4:	.ds	1
+02062 001E --               r0x10D5:	.ds	1
+02063                       	.area LOCALSTK (STK); local stack var
+02064 0000 --               _ADCGetData_ADCData1_10000_417:	.ds	4
+02065                       	.globl __mullong_STK06
+02066                       	.globl __mullong_STK05
+02067                       	.globl __mullong_STK04
+02068                       	.globl __mullong_STK03
+02069                       	.globl __mullong_STK02
+02070                       	.globl __mullong_STK01
+02071                       	.globl __mullong_STK00
+02072                       	.globl __divulong_STK06
+02073                       	.globl __divulong_STK05
+02074                       	.globl __divulong_STK04
+02075                       	.globl __divulong_STK03
+02076                       	.globl __divulong_STK02
+02077                       	.globl __divulong_STK01
+02078                       	.globl __divulong_STK00
+02079                       	.globl __g2ptrget2_STK00
+02080                       	.globl __mulint_STK02
+02081                       	.globl __mulint_STK01
+02082                       	.globl __mulint_STK00
+02083 0004 --               _Centigrade_Convert_Fahrenheit_STK00:	.ds	1
+02084                       	.globl _Centigrade_Convert_Fahrenheit_STK00
+02085                       ;--------------------------------------------------------
+02086                       ; initialized data
+02087                       ;--------------------------------------------------------
+02088                       
+02089                       	.area	CONST   (CODE)	 ;App_ADC-0-code, const
+02090                       
+02091 0000                  _R_Table:
+02092 0000 CF3F             	.byte #0xcf, #0x3f	; 16335
+02093 0001 7B3F             	.byte #0x7b, #0x3f	; 16251
+02094 0002 283F             	.byte #0x28, #0x3f	; 16168
+02095 0003 D63E             	.byte #0xd6, #0x3e	; 16086
+02096 0004 843E             	.byte #0x84, #0x3e	; 16004
+02097 0005 333E             	.byte #0x33, #0x3e	; 15923
+02098 0006 E23D             	.byte #0xe2, #0x3d	; 15842
+02099 0007 913D             	.byte #0x91, #0x3d	; 15761
+02100 0008 413D             	.byte #0x41, #0x3d	; 15681
+02101 0009 F23C             	.byte #0xf2, #0x3c	; 15602
+02102 000A A33C             	.byte #0xa3, #0x3c	; 15523
+02103 000B 543C             	.byte #0x54, #0x3c	; 15444
+02104 000C 063C             	.byte #0x06, #0x3c	; 15366
+02105 000D B83B             	.byte #0xb8, #0x3b	; 15288
+02106 000E 6B3B             	.byte #0x6b, #0x3b	; 15211
+02107 000F 1E3B             	.byte #0x1e, #0x3b	; 15134
+02108 0010 D13A             	.byte #0xd1, #0x3a	; 15057
+02109 0011 853A             	.byte #0x85, #0x3a	; 14981
+02110 0012 3A3A             	.byte #0x3a, #0x3a	; 14906
+02111 0013 EF39             	.byte #0xef, #0x39	; 14831
+02112 0014 A439             	.byte #0xa4, #0x39	; 14756
+02113 0015 5A39             	.byte #0x5a, #0x39	; 14682
+02114 0016 1039             	.byte #0x10, #0x39	; 14608
+02115 0017 C638             	.byte #0xc6, #0x38	; 14534
+02116 0018 7D38             	.byte #0x7d, #0x38	; 14461
+02117 0019 3438             	.byte #0x34, #0x38	; 14388
+02118 001A EC37             	.byte #0xec, #0x37	; 14316
+02119 001B A437             	.byte #0xa4, #0x37	; 14244
+02120 001C 5D37             	.byte #0x5d, #0x37	; 14173
+02121 001D 1637             	.byte #0x16, #0x37	; 14102
+02122 001E CF36             	.byte #0xcf, #0x36	; 14031
+02123 001F 8936             	.byte #0x89, #0x36	; 13961
+02124 0020 4336             	.byte #0x43, #0x36	; 13891
+02125 0021 FE35             	.byte #0xfe, #0x35	; 13822
+02126 0022 B935             	.byte #0xb9, #0x35	; 13753
+02127 0023 7435             	.byte #0x74, #0x35	; 13684
+02128 0024 3035             	.byte #0x30, #0x35	; 13616
+02129 0025 EC34             	.byte #0xec, #0x34	; 13548
+02130 0026 A934             	.byte #0xa9, #0x34	; 13481
+02131 0027 6534             	.byte #0x65, #0x34	; 13413
+02132 0028 2334             	.byte #0x23, #0x34	; 13347
+02133 0029 E033             	.byte #0xe0, #0x33	; 13280
+02134 002A 9E33             	.byte #0x9e, #0x33	; 13214
+02135 002B 5D33             	.byte #0x5d, #0x33	; 13149
+02136 002C 1B33             	.byte #0x1b, #0x33	; 13083
+02137 002D DB32             	.byte #0xdb, #0x32	; 13019
+02138 002E 9A32             	.byte #0x9a, #0x32	; 12954
+02139 002F 5A32             	.byte #0x5a, #0x32	; 12890
+02140 0030 1A32             	.byte #0x1a, #0x32	; 12826
+02141 0031 DB31             	.byte #0xdb, #0x31	; 12763
+02142 0032 9B31             	.byte #0x9b, #0x31	; 12699
+02143 0033 5D31             	.byte #0x5d, #0x31	; 12637
+02144 0034 1E31             	.byte #0x1e, #0x31	; 12574
+02145 0035 E030             	.byte #0xe0, #0x30	; 12512
+02146 0036 A230             	.byte #0xa2, #0x30	; 12450
+02147 0037 6530             	.byte #0x65, #0x30	; 12389
+02148 0038 2830             	.byte #0x28, #0x30	; 12328
+02149 0039 EB2F             	.byte #0xeb, #0x2f	; 12267
+02150 003A AF2F             	.byte #0xaf, #0x2f	; 12207
+02151 003B 732F             	.byte #0x73, #0x2f	; 12147
+02152 003C 372F             	.byte #0x37, #0x2f	; 12087
+02153 003D FC2E             	.byte #0xfc, #0x2e	; 12028
+02154 003E C12E             	.byte #0xc1, #0x2e	; 11969
+02155 003F 862E             	.byte #0x86, #0x2e	; 11910
+02156 0040 4C2E             	.byte #0x4c, #0x2e	; 11852
+02157 0041 122E             	.byte #0x12, #0x2e	; 11794
+02158 0042 D82D             	.byte #0xd8, #0x2d	; 11736
+02159 0043 9F2D             	.byte #0x9f, #0x2d	; 11679
+02160 0044 652D             	.byte #0x65, #0x2d	; 11621
+02161 0045 2D2D             	.byte #0x2d, #0x2d	; 11565
+02162 0046 F42C             	.byte #0xf4, #0x2c	; 11508
+02163 0047 BC2C             	.byte #0xbc, #0x2c	; 11452
+02164 0048 842C             	.byte #0x84, #0x2c	; 11396
+02165 0049 4D2C             	.byte #0x4d, #0x2c	; 11341
+02166 004A 152C             	.byte #0x15, #0x2c	; 11285
+02167 004B DE2B             	.byte #0xde, #0x2b	; 11230
+02168 004C A82B             	.byte #0xa8, #0x2b	; 11176
+02169 004D 712B             	.byte #0x71, #0x2b	; 11121
+02170 004E 3B2B             	.byte #0x3b, #0x2b	; 11067
+02171 004F 062B             	.byte #0x06, #0x2b	; 11014
+02172 0050 D02A             	.byte #0xd0, #0x2a	; 10960
+02173 0051 9B2A             	.byte #0x9b, #0x2a	; 10907
+02174 0052 662A             	.byte #0x66, #0x2a	; 10854
+02175 0053 322A             	.byte #0x32, #0x2a	; 10802
+02176 0054 FD29             	.byte #0xfd, #0x29	; 10749
+02177 0055 C929             	.byte #0xc9, #0x29	; 10697
+02178 0056 9529             	.byte #0x95, #0x29	; 10645
+02179 0057 6229             	.byte #0x62, #0x29	; 10594
+02180 0058 2F29             	.byte #0x2f, #0x29	; 10543
+02181 0059 FC28             	.byte #0xfc, #0x28	; 10492
+02182 005A C928             	.byte #0xc9, #0x28	; 10441
+02183 005B 9728             	.byte #0x97, #0x28	; 10391
+02184 005C 6528             	.byte #0x65, #0x28	; 10341
+02185 005D 3328             	.byte #0x33, #0x28	; 10291
+02186 005E 0228             	.byte #0x02, #0x28	; 10242
+02187 005F D027             	.byte #0xd0, #0x27	; 10192
+02188 0060 9F27             	.byte #0x9f, #0x27	; 10143
+02189 0061 6F27             	.byte #0x6f, #0x27	; 10095
+02190 0062 3E27             	.byte #0x3e, #0x27	; 10046
+02191 0063 0E27             	.byte #0x0e, #0x27	; 9998
+02192 0064 DE26             	.byte #0xde, #0x26	; 9950
+02193 0065 AE26             	.byte #0xae, #0x26	; 9902
+02194 0066 7F26             	.byte #0x7f, #0x26	; 9855
+02195 0067 5026             	.byte #0x50, #0x26	; 9808
+02196 0068 2126             	.byte #0x21, #0x26	; 9761
+02197 0069 F225             	.byte #0xf2, #0x25	; 9714
+02198 006A C425             	.byte #0xc4, #0x25	; 9668
+02199 006B 9625             	.byte #0x96, #0x25	; 9622
+02200 006C 6825             	.byte #0x68, #0x25	; 9576
+02201 006D 3A25             	.byte #0x3a, #0x25	; 9530
+02202 006E 0D25             	.byte #0x0d, #0x25	; 9485
+02203 006F E024             	.byte #0xe0, #0x24	; 9440
+02204 0070 B324             	.byte #0xb3, #0x24	; 9395
+02205 0071 8624             	.byte #0x86, #0x24	; 9350
+02206 0072 5924             	.byte #0x59, #0x24	; 9305
+02207 0073 2D24             	.byte #0x2d, #0x24	; 9261
+02208 0074 0124             	.byte #0x01, #0x24	; 9217
+02209 0075 D623             	.byte #0xd6, #0x23	; 9174
+02210 0076 AA23             	.byte #0xaa, #0x23	; 9130
+02211 0077 7F23             	.byte #0x7f, #0x23	; 9087
+02212 0078 5423             	.byte #0x54, #0x23	; 9044
+02213 0079 2923             	.byte #0x29, #0x23	; 9001
+02214 007A FE22             	.byte #0xfe, #0x22	; 8958
+02215 007B D422             	.byte #0xd4, #0x22	; 8916
+02216 007C AA22             	.byte #0xaa, #0x22	; 8874
+02217 007D 8022             	.byte #0x80, #0x22	; 8832
+02218 007E 5622             	.byte #0x56, #0x22	; 8790
+02219 007F 2D22             	.byte #0x2d, #0x22	; 8749
+02220 0080 0422             	.byte #0x04, #0x22	; 8708
+02221 0081 DB21             	.byte #0xdb, #0x21	; 8667
+02222 0082 B221             	.byte #0xb2, #0x21	; 8626
+02223 0083 8921             	.byte #0x89, #0x21	; 8585
+02224 0084 6121             	.byte #0x61, #0x21	; 8545
+02225 0085 3921             	.byte #0x39, #0x21	; 8505
+02226 0086 1121             	.byte #0x11, #0x21	; 8465
+02227 0087 E920             	.byte #0xe9, #0x20	; 8425
+02228 0088 C120             	.byte #0xc1, #0x20	; 8385
+02229 0089 9A20             	.byte #0x9a, #0x20	; 8346
+02230 008A 7320             	.byte #0x73, #0x20	; 8307
+02231 008B 4C20             	.byte #0x4c, #0x20	; 8268
+02232 008C 2520             	.byte #0x25, #0x20	; 8229
+02233 008D FF1F             	.byte #0xff, #0x1f	; 8191
+02234 008E D91F             	.byte #0xd9, #0x1f	; 8153
+02235 008F B31F             	.byte #0xb3, #0x1f	; 8115
+02236 0090 8D1F             	.byte #0x8d, #0x1f	; 8077
+02237 0091 671F             	.byte #0x67, #0x1f	; 8039
+02238 0092 421F             	.byte #0x42, #0x1f	; 8002
+02239 0093 1C1F             	.byte #0x1c, #0x1f	; 7964
+02240 0094 F71E             	.byte #0xf7, #0x1e	; 7927
+02241 0095 D21E             	.byte #0xd2, #0x1e	; 7890
+02242 0096 AE1E             	.byte #0xae, #0x1e	; 7854
+02243 0097 891E             	.byte #0x89, #0x1e	; 7817
+02244 0098 651E             	.byte #0x65, #0x1e	; 7781
+02245 0099 411E             	.byte #0x41, #0x1e	; 7745
+02246 009A 1D1E             	.byte #0x1d, #0x1e	; 7709
+02247 009B F91D             	.byte #0xf9, #0x1d	; 7673
+02248 009C D51D             	.byte #0xd5, #0x1d	; 7637
+02249 009D B21D             	.byte #0xb2, #0x1d	; 7602
+02250 009E 8F1D             	.byte #0x8f, #0x1d	; 7567
+02251 009F 6C1D             	.byte #0x6c, #0x1d	; 7532
+02252 00A0 491D             	.byte #0x49, #0x1d	; 7497
+02253 00A1 261D             	.byte #0x26, #0x1d	; 7462
+02254 00A2 041D             	.byte #0x04, #0x1d	; 7428
+02255 00A3 E21C             	.byte #0xe2, #0x1c	; 7394
+02256 00A4 BF1C             	.byte #0xbf, #0x1c	; 7359
+02257 00A5 9E1C             	.byte #0x9e, #0x1c	; 7326
+02258 00A6 7C1C             	.byte #0x7c, #0x1c	; 7292
+02259 00A7 5A1C             	.byte #0x5a, #0x1c	; 7258
+02260 00A8 391C             	.byte #0x39, #0x1c	; 7225
+02261 00A9 181C             	.byte #0x18, #0x1c	; 7192
+02262 00AA F71B             	.byte #0xf7, #0x1b	; 7159
+02263 00AB D61B             	.byte #0xd6, #0x1b	; 7126
+02264 00AC B51B             	.byte #0xb5, #0x1b	; 7093
+02265 00AD 941B             	.byte #0x94, #0x1b	; 7060
+02266 00AE 741B             	.byte #0x74, #0x1b	; 7028
+02267 00AF 541B             	.byte #0x54, #0x1b	; 6996
+02268 00B0 341B             	.byte #0x34, #0x1b	; 6964
+02269 00B1 141B             	.byte #0x14, #0x1b	; 6932
+02270 00B2 F41A             	.byte #0xf4, #0x1a	; 6900
+02271 00B3 D51A             	.byte #0xd5, #0x1a	; 6869
+02272 00B4 B51A             	.byte #0xb5, #0x1a	; 6837
+02273 00B5 961A             	.byte #0x96, #0x1a	; 6806
+02274 00B6 771A             	.byte #0x77, #0x1a	; 6775
+02275 00B7 581A             	.byte #0x58, #0x1a	; 6744
+02276 00B8 391A             	.byte #0x39, #0x1a	; 6713
+02277 00B9 1B1A             	.byte #0x1b, #0x1a	; 6683
+02278 00BA FC19             	.byte #0xfc, #0x19	; 6652
+02279 00BB DE19             	.byte #0xde, #0x19	; 6622
+02280 00BC C019             	.byte #0xc0, #0x19	; 6592
+02281 00BD A219             	.byte #0xa2, #0x19	; 6562
+02282 00BE 8419             	.byte #0x84, #0x19	; 6532
+02283 00BF 6719             	.byte #0x67, #0x19	; 6503
+02284 00C0 4919             	.byte #0x49, #0x19	; 6473
+02285 00C1 2C19             	.byte #0x2c, #0x19	; 6444
+02286 00C2 0E19             	.byte #0x0e, #0x19	; 6414
+02287 00C3 F118             	.byte #0xf1, #0x18	; 6385
+02288 00C4 D518             	.byte #0xd5, #0x18	; 6357
+02289 00C5 B818             	.byte #0xb8, #0x18	; 6328
+02290 00C6 9B18             	.byte #0x9b, #0x18	; 6299
+02291 00C7 7F18             	.byte #0x7f, #0x18	; 6271
+02292 00C8 6218             	.byte #0x62, #0x18	; 6242
+02293 00C9 4618             	.byte #0x46, #0x18	; 6214
+02294 00CA 2A18             	.byte #0x2a, #0x18	; 6186
+02295 00CB 0E18             	.byte #0x0e, #0x18	; 6158
+02296 00CC F317             	.byte #0xf3, #0x17	; 6131
+02297 00CD D717             	.byte #0xd7, #0x17	; 6103
+02298 00CE BC17             	.byte #0xbc, #0x17	; 6076
+02299 00CF A017             	.byte #0xa0, #0x17	; 6048
+02300 00D0 8517             	.byte #0x85, #0x17	; 6021
+02301 00D1 6A17             	.byte #0x6a, #0x17	; 5994
+02302 00D2 4F17             	.byte #0x4f, #0x17	; 5967
+02303 00D3 3417             	.byte #0x34, #0x17	; 5940
+02304 00D4 1A17             	.byte #0x1a, #0x17	; 5914
+02305 00D5 FF16             	.byte #0xff, #0x16	; 5887
+02306 00D6 E516             	.byte #0xe5, #0x16	; 5861
+02307 00D7 CB16             	.byte #0xcb, #0x16	; 5835
+02308 00D8 B016             	.byte #0xb0, #0x16	; 5808
+02309 00D9 9716             	.byte #0x97, #0x16	; 5783
+02310 00DA 7D16             	.byte #0x7d, #0x16	; 5757
+02311 00DB 6316             	.byte #0x63, #0x16	; 5731
+02312 00DC 4916             	.byte #0x49, #0x16	; 5705
+02313 00DD 3016             	.byte #0x30, #0x16	; 5680
+02314 00DE 1716             	.byte #0x17, #0x16	; 5655
+02315 00DF FD15             	.byte #0xfd, #0x15	; 5629
+02316 00E0 E415             	.byte #0xe4, #0x15	; 5604
+02317 00E1 CB15             	.byte #0xcb, #0x15	; 5579
+02318 00E2 B315             	.byte #0xb3, #0x15	; 5555
+02319 00E3 9A15             	.byte #0x9a, #0x15	; 5530
+02320 00E4 8115             	.byte #0x81, #0x15	; 5505
+02321 00E5 6915             	.byte #0x69, #0x15	; 5481
+02322 00E6 5115             	.byte #0x51, #0x15	; 5457
+02323 00E7 3815             	.byte #0x38, #0x15	; 5432
+02324 00E8 2015             	.byte #0x20, #0x15	; 5408
+02325 00E9 0815             	.byte #0x08, #0x15	; 5384
+02326 00EA F114             	.byte #0xf1, #0x14	; 5361
+02327 00EB D914             	.byte #0xd9, #0x14	; 5337
+02328 00EC C114             	.byte #0xc1, #0x14	; 5313
+02329 00ED AA14             	.byte #0xaa, #0x14	; 5290
+02330 00EE 9214             	.byte #0x92, #0x14	; 5266
+02331 00EF 7B14             	.byte #0x7b, #0x14	; 5243
+02332 00F0 6414             	.byte #0x64, #0x14	; 5220
+02333 00F1 4D14             	.byte #0x4d, #0x14	; 5197
+02334 00F2 3614             	.byte #0x36, #0x14	; 5174
+02335 00F3 1F14             	.byte #0x1f, #0x14	; 5151
+02336 00F4 0914             	.byte #0x09, #0x14	; 5129
+02337 00F5 F213             	.byte #0xf2, #0x13	; 5106
+02338 00F6 DC13             	.byte #0xdc, #0x13	; 5084
+02339 00F7 C513             	.byte #0xc5, #0x13	; 5061
+02340 00F8 AF13             	.byte #0xaf, #0x13	; 5039
+02341 00F9 9913             	.byte #0x99, #0x13	; 5017
+02342 00FA 8313             	.byte #0x83, #0x13	; 4995
+02343 00FB 6D13             	.byte #0x6d, #0x13	; 4973
+02344 00FC 5713             	.byte #0x57, #0x13	; 4951
+02345 00FD 4213             	.byte #0x42, #0x13	; 4930
+02346 00FE 2C13             	.byte #0x2c, #0x13	; 4908
+02347 00FF 1713             	.byte #0x17, #0x13	; 4887
+02348 0100 0113             	.byte #0x01, #0x13	; 4865
+02349 0101 EC12             	.byte #0xec, #0x12	; 4844
+02350 0102 D712             	.byte #0xd7, #0x12	; 4823
+02351 0103 C212             	.byte #0xc2, #0x12	; 4802
+02352 0104 AD12             	.byte #0xad, #0x12	; 4781
+02353 0105 9812             	.byte #0x98, #0x12	; 4760
+02354 0106 8312             	.byte #0x83, #0x12	; 4739
+02355 0107 6F12             	.byte #0x6f, #0x12	; 4719
+02356 0108 5A12             	.byte #0x5a, #0x12	; 4698
+02357 0109 4612             	.byte #0x46, #0x12	; 4678
+02358 010A 3112             	.byte #0x31, #0x12	; 4657
+02359 010B 1D12             	.byte #0x1d, #0x12	; 4637
+02360 010C 0912             	.byte #0x09, #0x12	; 4617
+02361 010D F511             	.byte #0xf5, #0x11	; 4597
+02362 010E E111             	.byte #0xe1, #0x11	; 4577
+02363 010F CD11             	.byte #0xcd, #0x11	; 4557
+02364 0110 BA11             	.byte #0xba, #0x11	; 4538
+02365 0111 A611             	.byte #0xa6, #0x11	; 4518
+02366 0112 9211             	.byte #0x92, #0x11	; 4498
+02367 0113 7F11             	.byte #0x7f, #0x11	; 4479
+02368 0114 6C11             	.byte #0x6c, #0x11	; 4460
+02369 0115 5811             	.byte #0x58, #0x11	; 4440
+02370 0116 4511             	.byte #0x45, #0x11	; 4421
+02371 0117 3211             	.byte #0x32, #0x11	; 4402
+02372 0118 1F11             	.byte #0x1f, #0x11	; 4383
+02373 0119 0C11             	.byte #0x0c, #0x11	; 4364
+02374 011A F910             	.byte #0xf9, #0x10	; 4345
+02375 011B E710             	.byte #0xe7, #0x10	; 4327
+02376 011C D410             	.byte #0xd4, #0x10	; 4308
+02377 011D C210             	.byte #0xc2, #0x10	; 4290
+02378 011E AF10             	.byte #0xaf, #0x10	; 4271
+02379 011F 9D10             	.byte #0x9d, #0x10	; 4253
+02380 0120 8B10             	.byte #0x8b, #0x10	; 4235
+02381 0121 7810             	.byte #0x78, #0x10	; 4216
+02382 0122 6610             	.byte #0x66, #0x10	; 4198
+02383 0123 5410             	.byte #0x54, #0x10	; 4180
+02384 0124 4210             	.byte #0x42, #0x10	; 4162
+02385 0125 3110             	.byte #0x31, #0x10	; 4145
+02386 0126 1F10             	.byte #0x1f, #0x10	; 4127
+02387 0127 0D10             	.byte #0x0d, #0x10	; 4109
+02388 0128 FC0F             	.byte #0xfc, #0x0f	; 4092
+02389 0129 EA0F             	.byte #0xea, #0x0f	; 4074
+02390 012A D90F             	.byte #0xd9, #0x0f	; 4057
+02391 012B C80F             	.byte #0xc8, #0x0f	; 4040
+02392 012C B60F             	.byte #0xb6, #0x0f	; 4022
+02393 012D A50F             	.byte #0xa5, #0x0f	; 4005
+02394 012E 940F             	.byte #0x94, #0x0f	; 3988
+02395 012F 830F             	.byte #0x83, #0x0f	; 3971
+02396 0130 720F             	.byte #0x72, #0x0f	; 3954
+02397 0131 610F             	.byte #0x61, #0x0f	; 3937
+02398 0132 510F             	.byte #0x51, #0x0f	; 3921
+02399 0133 400F             	.byte #0x40, #0x0f	; 3904
+02400 0134 300F             	.byte #0x30, #0x0f	; 3888
+02401 0135 1F0F             	.byte #0x1f, #0x0f	; 3871
+02402 0136 0D0F             	.byte #0x0d, #0x0f	; 3853
+02403 0137 FE0E             	.byte #0xfe, #0x0e	; 3838
+02404 0138 EE0E             	.byte #0xee, #0x0e	; 3822
+02405 0139 DE0E             	.byte #0xde, #0x0e	; 3806
+02406 013A CE0E             	.byte #0xce, #0x0e	; 3790
+02407 013B BE0E             	.byte #0xbe, #0x0e	; 3774
+02408 013C AE0E             	.byte #0xae, #0x0e	; 3758
+02409 013D 9E0E             	.byte #0x9e, #0x0e	; 3742
+02410 013E 8E0E             	.byte #0x8e, #0x0e	; 3726
+02411 013F 7F0E             	.byte #0x7f, #0x0e	; 3711
+02412 0140 6F0E             	.byte #0x6f, #0x0e	; 3695
+02413 0141 5F0E             	.byte #0x5f, #0x0e	; 3679
+02414 0142 500E             	.byte #0x50, #0x0e	; 3664
+02415 0143 400E             	.byte #0x40, #0x0e	; 3648
+02416 0144 310E             	.byte #0x31, #0x0e	; 3633
+02417 0145 220E             	.byte #0x22, #0x0e	; 3618
+02418 0146 130E             	.byte #0x13, #0x0e	; 3603
+02419 0147 030E             	.byte #0x03, #0x0e	; 3587
+02420 0148 F40D             	.byte #0xf4, #0x0d	; 3572
+02421 0149 E50D             	.byte #0xe5, #0x0d	; 3557
+02422 014A D70D             	.byte #0xd7, #0x0d	; 3543
+02423 014B C80D             	.byte #0xc8, #0x0d	; 3528
+02424 014C B90D             	.byte #0xb9, #0x0d	; 3513
+02425 014D AA0D             	.byte #0xaa, #0x0d	; 3498
+02426 014E 9C0D             	.byte #0x9c, #0x0d	; 3484
+02427 014F 8D0D             	.byte #0x8d, #0x0d	; 3469
+02428 0150 7F0D             	.byte #0x7f, #0x0d	; 3455
+02429 0151 700D             	.byte #0x70, #0x0d	; 3440
+02430 0152 620D             	.byte #0x62, #0x0d	; 3426
+02431 0153 540D             	.byte #0x54, #0x0d	; 3412
+02432 0154 450D             	.byte #0x45, #0x0d	; 3397
+02433 0155 370D             	.byte #0x37, #0x0d	; 3383
+02434 0156 290D             	.byte #0x29, #0x0d	; 3369
+02435 0157 1B0D             	.byte #0x1b, #0x0d	; 3355
+02436 0158 0D0D             	.byte #0x0d, #0x0d	; 3341
+02437 0159 FF0C             	.byte #0xff, #0x0c	; 3327
+02438 015A F10C             	.byte #0xf1, #0x0c	; 3313
+02439 015B E40C             	.byte #0xe4, #0x0c	; 3300
+02440 015C D60C             	.byte #0xd6, #0x0c	; 3286
+02441 015D C80C             	.byte #0xc8, #0x0c	; 3272
+02442 015E BA0C             	.byte #0xba, #0x0c	; 3258
+02443 015F AD0C             	.byte #0xad, #0x0c	; 3245
+02444 0160 A00C             	.byte #0xa0, #0x0c	; 3232
+02445 0161 920C             	.byte #0x92, #0x0c	; 3218
+02446 0162 850C             	.byte #0x85, #0x0c	; 3205
+02447 0163 780C             	.byte #0x78, #0x0c	; 3192
+02448 0164 6B0C             	.byte #0x6b, #0x0c	; 3179
+02449 0165 5E0C             	.byte #0x5e, #0x0c	; 3166
+02450 0166 510C             	.byte #0x51, #0x0c	; 3153
+02451 0167 440C             	.byte #0x44, #0x0c	; 3140
+02452 0168 370C             	.byte #0x37, #0x0c	; 3127
+02453 0169 2A0C             	.byte #0x2a, #0x0c	; 3114
+02454 016A 1D0C             	.byte #0x1d, #0x0c	; 3101
+02455 016B 100C             	.byte #0x10, #0x0c	; 3088
+02456 016C 030C             	.byte #0x03, #0x0c	; 3075
+02457 016D F70B             	.byte #0xf7, #0x0b	; 3063
+02458 016E EA0B             	.byte #0xea, #0x0b	; 3050
+02459 016F DE0B             	.byte #0xde, #0x0b	; 3038
+02460 0170 D10B             	.byte #0xd1, #0x0b	; 3025
+02461 0171 C50B             	.byte #0xc5, #0x0b	; 3013
+02462 0172 B90B             	.byte #0xb9, #0x0b	; 3001
+02463 0173 AC0B             	.byte #0xac, #0x0b	; 2988
+02464 0174 A00B             	.byte #0xa0, #0x0b	; 2976
+02465 0175 940B             	.byte #0x94, #0x0b	; 2964
+02466 0176 880B             	.byte #0x88, #0x0b	; 2952
+02467 0177 7C0B             	.byte #0x7c, #0x0b	; 2940
+02468 0178 700B             	.byte #0x70, #0x0b	; 2928
+02469 0179 640B             	.byte #0x64, #0x0b	; 2916
+02470 017A 580B             	.byte #0x58, #0x0b	; 2904
+02471 017B 4C0B             	.byte #0x4c, #0x0b	; 2892
+02472 017C 400B             	.byte #0x40, #0x0b	; 2880
+02473 017D 340B             	.byte #0x34, #0x0b	; 2868
+02474 017E 290B             	.byte #0x29, #0x0b	; 2857
+02475 017F 1D0B             	.byte #0x1d, #0x0b	; 2845
+02476 0180 120B             	.byte #0x12, #0x0b	; 2834
+02477 0181 060B             	.byte #0x06, #0x0b	; 2822
+02478 0182 FB0A             	.byte #0xfb, #0x0a	; 2811
+02479 0183 EF0A             	.byte #0xef, #0x0a	; 2799
+02480 0184 E40A             	.byte #0xe4, #0x0a	; 2788
+02481 0185 D90A             	.byte #0xd9, #0x0a	; 2777
+02482 0186 CD0A             	.byte #0xcd, #0x0a	; 2765
+02483 0187 C20A             	.byte #0xc2, #0x0a	; 2754
+02484 0188 B70A             	.byte #0xb7, #0x0a	; 2743
+02485 0189 AC0A             	.byte #0xac, #0x0a	; 2732
+02486 018A A10A             	.byte #0xa1, #0x0a	; 2721
+02487 018B 960A             	.byte #0x96, #0x0a	; 2710
+02488 018C 8B0A             	.byte #0x8b, #0x0a	; 2699
+02489 018D 800A             	.byte #0x80, #0x0a	; 2688
+02490 018E 750A             	.byte #0x75, #0x0a	; 2677
+02491 018F 6A0A             	.byte #0x6a, #0x0a	; 2666
+02492 0190 600A             	.byte #0x60, #0x0a	; 2656
+02493 0191 550A             	.byte #0x55, #0x0a	; 2645
+02494 0192 4A0A             	.byte #0x4a, #0x0a	; 2634
+02495 0193 400A             	.byte #0x40, #0x0a	; 2624
+02496 0194 350A             	.byte #0x35, #0x0a	; 2613
+02497 0195 2B0A             	.byte #0x2b, #0x0a	; 2603
+02498 0196 200A             	.byte #0x20, #0x0a	; 2592
+02499 0197 160A             	.byte #0x16, #0x0a	; 2582
+02500 0198 0B0A             	.byte #0x0b, #0x0a	; 2571
+02501 0199 010A             	.byte #0x01, #0x0a	; 2561
+02502 019A F809             	.byte #0xf8, #0x09	; 2552
+02503 019B EC09             	.byte #0xec, #0x09	; 2540
+02504 019C E209             	.byte #0xe2, #0x09	; 2530
+02505 019D D809             	.byte #0xd8, #0x09	; 2520
+02506 019E CE09             	.byte #0xce, #0x09	; 2510
+02507 019F C409             	.byte #0xc4, #0x09	; 2500
+02508 01A0 BA09             	.byte #0xba, #0x09	; 2490
+02509 01A1 B009             	.byte #0xb0, #0x09	; 2480
+02510 01A2 A609             	.byte #0xa6, #0x09	; 2470
+02511 01A3 9C09             	.byte #0x9c, #0x09	; 2460
+02512 01A4 9309             	.byte #0x93, #0x09	; 2451
+02513 01A5 8909             	.byte #0x89, #0x09	; 2441
+02514 01A6 7F09             	.byte #0x7f, #0x09	; 2431
+02515 01A7 7509             	.byte #0x75, #0x09	; 2421
+02516 01A8 6C09             	.byte #0x6c, #0x09	; 2412
+02517 01A9 6209             	.byte #0x62, #0x09	; 2402
+02518 01AA 5909             	.byte #0x59, #0x09	; 2393
+02519 01AB 4F09             	.byte #0x4f, #0x09	; 2383
+02520 01AC 4609             	.byte #0x46, #0x09	; 2374
+02521 01AD 3C09             	.byte #0x3c, #0x09	; 2364
+02522 01AE 3309             	.byte #0x33, #0x09	; 2355
+02523 01AF 2A09             	.byte #0x2a, #0x09	; 2346
+02524 01B0 2009             	.byte #0x20, #0x09	; 2336
+02525 01B1 1709             	.byte #0x17, #0x09	; 2327
+02526 01B2 0E09             	.byte #0x0e, #0x09	; 2318
+02527 01B3 0509             	.byte #0x05, #0x09	; 2309
+02528 01B4 FB08             	.byte #0xfb, #0x08	; 2299
+02529 01B5 F208             	.byte #0xf2, #0x08	; 2290
+02530 01B6 E908             	.byte #0xe9, #0x08	; 2281
+02531 01B7 E008             	.byte #0xe0, #0x08	; 2272
+02532 01B8 D708             	.byte #0xd7, #0x08	; 2263
+02533 01B9 CE08             	.byte #0xce, #0x08	; 2254
+02534 01BA C608             	.byte #0xc6, #0x08	; 2246
+02535 01BB BD08             	.byte #0xbd, #0x08	; 2237
+02536 01BC B408             	.byte #0xb4, #0x08	; 2228
+02537 01BD AB08             	.byte #0xab, #0x08	; 2219
+02538 01BE A208             	.byte #0xa2, #0x08	; 2210
+02539 01BF 9A08             	.byte #0x9a, #0x08	; 2202
+02540 01C0 9108             	.byte #0x91, #0x08	; 2193
+02541 01C1 8908             	.byte #0x89, #0x08	; 2185
+02542 01C2 8008             	.byte #0x80, #0x08	; 2176
+02543 01C3 7708             	.byte #0x77, #0x08	; 2167
+02544 01C4 6F08             	.byte #0x6f, #0x08	; 2159
+02545 01C5 6608             	.byte #0x66, #0x08	; 2150
+02546 01C6 5E08             	.byte #0x5e, #0x08	; 2142
+02547 01C7 5608             	.byte #0x56, #0x08	; 2134
+02548 01C8 4D08             	.byte #0x4d, #0x08	; 2125
+02549 01C9 4508             	.byte #0x45, #0x08	; 2117
+02550 01CA 3D08             	.byte #0x3d, #0x08	; 2109
+02551 01CB 3508             	.byte #0x35, #0x08	; 2101
+02552 01CC 2C08             	.byte #0x2c, #0x08	; 2092
+02553 01CD 2408             	.byte #0x24, #0x08	; 2084
+02554 01CE 1C08             	.byte #0x1c, #0x08	; 2076
+02555 01CF 1408             	.byte #0x14, #0x08	; 2068
+02556 01D0 0C08             	.byte #0x0c, #0x08	; 2060
+02557 01D1 0408             	.byte #0x04, #0x08	; 2052
+02558 01D2 FC07             	.byte #0xfc, #0x07	; 2044
+02559 01D3 F407             	.byte #0xf4, #0x07	; 2036
+02560 01D4 EC07             	.byte #0xec, #0x07	; 2028
+02561 01D5 E407             	.byte #0xe4, #0x07	; 2020
+02562 01D6 DC07             	.byte #0xdc, #0x07	; 2012
+02563 01D7 D507             	.byte #0xd5, #0x07	; 2005
+02564 01D8 CD07             	.byte #0xcd, #0x07	; 1997
+02565 01D9 C507             	.byte #0xc5, #0x07	; 1989
+02566 01DA BD07             	.byte #0xbd, #0x07	; 1981
+02567 01DB B607             	.byte #0xb6, #0x07	; 1974
+02568 01DC AE07             	.byte #0xae, #0x07	; 1966
+02569 01DD A607             	.byte #0xa6, #0x07	; 1958
+02570 01DE 9F07             	.byte #0x9f, #0x07	; 1951
+02571 01DF 9707             	.byte #0x97, #0x07	; 1943
+02572 01E0 9007             	.byte #0x90, #0x07	; 1936
+02573 01E1 8807             	.byte #0x88, #0x07	; 1928
+02574 01E2 8107             	.byte #0x81, #0x07	; 1921
+02575 01E3 7907             	.byte #0x79, #0x07	; 1913
+02576 01E4 7207             	.byte #0x72, #0x07	; 1906
+02577 01E5 6B07             	.byte #0x6b, #0x07	; 1899
+02578 01E6 6307             	.byte #0x63, #0x07	; 1891
+02579 01E7 5C07             	.byte #0x5c, #0x07	; 1884
+02580 01E8 5507             	.byte #0x55, #0x07	; 1877
+02581 01E9 4E07             	.byte #0x4e, #0x07	; 1870
+02582 01EA 4707             	.byte #0x47, #0x07	; 1863
+02583 01EB 3F07             	.byte #0x3f, #0x07	; 1855
+02584 01EC 3807             	.byte #0x38, #0x07	; 1848
+02585 01ED 3107             	.byte #0x31, #0x07	; 1841
+02586 01EE 2A07             	.byte #0x2a, #0x07	; 1834
+02587 01EF 2307             	.byte #0x23, #0x07	; 1827
+02588 01F0 1C07             	.byte #0x1c, #0x07	; 1820
+02589 01F1 1507             	.byte #0x15, #0x07	; 1813
+02590 01F2 0E07             	.byte #0x0e, #0x07	; 1806
+02591 01F3 0707             	.byte #0x07, #0x07	; 1799
+02592 01F4 0007             	.byte #0x00, #0x07	; 1792
+02593                       
+02594                       ;--------------------------------------------------------
+02595                       ; initialized data - mirror
+02596                       ;--------------------------------------------------------
+02597                       
+02598                       	;--cdb--D:S:G$s_Forecast$0$0({26}ST__00000016(T:FApp_ADC$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+02599                       	;--cdb--D:S:G$div_t$0$0({4}ST__00000000(T:FApp_ADC$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),Z,0,0
+02600                       	;--cdb--D:S:G$e_MeasureMode$0$0({1}SC:U:ENUM_NONAME|Bath_Mode=3|Rectal_Mode=2|Underarm_Mode=1|Oral_Mode=0),Z,0,0
+02601                       	;--cdb--D:S:G$e_Button_Status$0$0({1}SC:U:ENUM_NONAME|Button_Lift=2|Button_Press=1|Button_Debouncing=0),Z,0,0
+02602                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02603                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02604                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02605                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02606                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02607                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02608                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02609                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02610                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02611                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02612                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02613                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02614                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02615                       	;--cdb--D:S:G$e_VersionCode$0$0({1}SC:S:ENUM_NONAME|VC_DispOn=1|VC_DispOff=0),Z,0,0
+02616                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02617                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02618                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02619                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02620                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02621                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02622                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02623                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02624                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02625                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02626                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02627                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02628                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02629                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02630                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02631                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+02632                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02633                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02634                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02635                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02636                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02637                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02638                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02639                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02640                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02641                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02642                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02643                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02644                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02645                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02646                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02647                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02648                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02649                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02650                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02651                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02652                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02653                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02654                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02655                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02656                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02657                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02658                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02659                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02660                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+02661                       	;--cdb--D:S:G$e_Buzzer_Status$0$0({1}SC:U:ENUM_NONAME|Buzzer_Er1Er2=5|Buzzer_Forecast_To_Actual=4|Buzzer_MeasuredTempActual=3|Buzzer_MeasuredTempForecast=2|Buzzer_PowerOnOff=1|Buzzer_Silent=0),Z,0,0
+02662                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02663                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02664                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02665                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02666                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02667                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02668                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02669                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02670                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02671                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02672                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02673                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02674                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02675                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02676                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02677                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02678                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02679                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02680                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02681                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02682                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02683                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02684                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02685                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02686                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02687                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02688                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02689                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02690                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+02691                       	;--cdb--D:S:G$s_Actual$0$0({5}ST__00000015(T:FApp_ADC$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02692                       	;--cdb--D:S:G$e_Meas_Status$0$0({1}SC:U:ENUM_NONAME|Meas_DataUpdate=4|Meas_ForecastMeasuring=3|Meas_ActualMeasuring=2|Meas_StartConditon=1|Meas_Get_TEMP=0),Z,0,0
+02693                       	;--cdb--D:S:G$e_System_Mode$0$0({1}SC:U:ENUM_NONAME|Normal=3|Prepare_Normal=2|Sleep=1|Prepare_Sleep=0),Z,0,0
+02694                       	;--cdb--D:S:G$e_Backlight_Status$0$0({1}SC:U:ENUM_NONAME|MeasuredTemp_Backlight=4|TempDetecting_Backlight=3|MemTemp_Backlight=2|All_Backlight=1|No_Backlight=0),Z,0,0
+02695                       	;--cdb--D:S:G$s_TIMx$0$0({13}ST__00000004(T:FApp_ADC$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02696                       	;--cdb--D:S:G$e_To_Actual_Ways$0$0({1}SC:U:ENUM_NONAME|To_Actual_3Min=90|To_Actual_Immediately=165),Z,0,0
+02697                       	;--cdb--D:S:G$e_ADCChannel$0$0({1}SC:S:ENUM_NONAME|AI14_AI15=1|AI2_AI3=0),Z,0,0
+02698                       	;--cdb--D:S:G$s_Memory$0$0({23}ST__00000012(T:FApp_ADC$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]):S),Z,0,0
+02699                       	;--cdb--D:S:G$s_Button$0$0({2}ST__00000008(T:FApp_ADC$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]):S),Z,0,0
+02700                       	;--cdb--D:S:G$s_Backlight$0$0({1}ST__00000019(T:FApp_ADC$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]):S),Z,0,0
+02701                       	;--cdb--D:S:G$e_Binding_Status$0$0({1}SC:U:ENUM_NONAME|FahrenheitFirst_NonSwitchable=3|FahrenheitFirst_Switchable=2|CentigradeFirst_NonSwitchable=1|CentigradeFirst_Switchable=0),Z,0,0
+02702                       	;--cdb--D:S:G$e_AutoBps_Status$0$0({1}SC:U:ENUM_NONAME|AutoBps_Searched=2|AutoBps_Searching=1|AutoBps_Init=0),Z,0,0
+02703                       	;--cdb--D:S:G$s_TimeStamp$0$0({42}ST__00000009(T:FApp_ADC$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+02704                       	;--cdb--D:S:G$s_BleStatus$0$0({60}ST__00000018(T:FApp_ADC$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),Z,0,0
+02705                       	;--cdb--D:S:G$s_Test$0$0({19}ST__00000007(T:FApp_ADC$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+02706                       	;--cdb--D:S:G$s_TempCal$0$0({14}ST__00000014(T:FApp_ADC$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]):S),Z,0,0
+02707                       	;--cdb--D:S:G$ldiv_t$0$0({8}ST__00000001(T:FApp_ADC$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),Z,0,0
+02708                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02709                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02710                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02711                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02712                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02713                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02714                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02715                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02716                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02717                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02718                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02719                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02720                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02721                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02722                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02723                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02724                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02725                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02726                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02727                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02728                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02729                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02730                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02731                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02732                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02733                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02734                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02735                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02736                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02737                       	;--cdb--D:S:G$s_UARTx$0$0({15}ST__00000005(T:FApp_ADC$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]):S),Z,0,0
+02738                       	;--cdb--D:S:G$size_t$0$0({2}SI:U),Z,0,0
+02739                       	;--cdb--D:S:G$eBleModeTask$0$0({1}SC:U:ENUM_NONAME|Ble_TimeoutErr=7|Ble_LinkErr=6|Ble_UploadData=5|Ble_Idle=4|Ble_Advertising=3|Ble_Disable=2|Ble_DeviceInfo=1|Ble_Standby=0),Z,0,0
+02740                       	;--cdb--D:S:G$s_AutoBps$0$0({5}ST__00000006(T:FApp_ADC$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02741                       	;--cdb--D:S:G$s_ADC$0$0({45}ST__00000011(T:FApp_ADC$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]):S),Z,0,0
+02742                       	;--cdb--D:S:G$e_Display$0$0({1}SC:U:ENUM_NONAME|Display_PreCalibration=19|Display_SleepMode=18|Display_MeasuredTemperature=17|Display_ERR=16|Display_TemperatureDetecting=15|Display_Binding=14|Display_ModeExchange=13|Display_CurrentMode=12|Display_MemoryTemperatureValue=11|Display_MemoryTemperatureNumber=10|Display_RecentTemperature=9|Display_CalibrationOK=8|Display_Calibration=7|Display_Off=6|Display_Code=5|Display_Version=4|Display_UnitExchange=3|Display_All=2|Display_LowPower=1|Display_PowerOn=0),Z,0,0
+02743                       	;--cdb--D:S:G$s_IIC$0$0({1}ST__00000003(T:FApp_ADC$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]):S),Z,0,0
+02744                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02745                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02746                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02747                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02748                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02749                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02750                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02751                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02752                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02753                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02754                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02755                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02756                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02757                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02758                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02759                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02760                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02761                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02762                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02763                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02764                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02765                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02766                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02767                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02768                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02769                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02770                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02771                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02772                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02773                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02774                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02775                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02776                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02777                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02778                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02779                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02780                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02781                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02782                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02783                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02784                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02785                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02786                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02787                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02788                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02789                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02790                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02791                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02792                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02793                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02794                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02795                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02796                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02797                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02798                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02799                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02800                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02801                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02802                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02803                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02804                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02805                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02806                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02807                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02808                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02809                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02810                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02811                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02812                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02813                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02814                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02815                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02816                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02817                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02818                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02819                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02820                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02821                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02822                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02823                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02824                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02825                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02826                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02827                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02828                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02829                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02830                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02831                       	;--cdb--D:S:G$s_LVD$0$0({5}ST__00000010(T:FApp_ADC$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]):S),Z,0,0
+02832                       	;--cdb--D:S:G$s_Actual_Forecast$0$0({15}ST__00000017(T:FApp_ADC$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02833                       	;--cdb--D:S:G$s_MemoryFlag$0$0({3}ST__00000013(T:FApp_ADC$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]):S),Z,0,0
+02834                       	;--cdb--D:S:G$wchar_t$0$0({4}SL:UL),Z,0,0
+02835                       	;--cdb--D:S:G$e_Err$0$0({1}SC:U:ENUM_NONAME|Err_Num=9|Err=8|Err7=7|Err6=6|Err5=5|Err4=4|Err3=3|Err2=2|Err1=1|Err0=0),Z,0,0
+02836                       	;--cdb--D:S:G$lldiv_t$0$0({16}ST__00000002(T:FApp_ADC$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),Z,0,0
+02837                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02838                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02839                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02840                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02841                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02842                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02843                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02844                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02845                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02846                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02847                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02848                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02849                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02850                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02851                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02852                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02853                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02854                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02855                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02856                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02857                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02858                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02859                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02860                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02861                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02862                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02863                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02864                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02865                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02866                       	;--cdb--D:S:G$e_TempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),Z,0,0
+02867                       	;Following is optimization info, 
+02868                       	;xxcdbxxW:dst:src+offset:srclit:just-remove
+02869                       	;--cdb--W:r0x10D5:NULL+0:-1:1
+02870                       	;--cdb--W:r0x10D4:NULL+0:-1:1
+02871                       	;--cdb--W:r0x10D2:NULL+0:-1:1
+02872                       	;--cdb--W:r0x10D1:STK01+0:-1:0
+02873                       	;--cdb--W:_Centigrade_Convert_Fahrenheit_STK00:STK02+0:-1:0
+02874                       	;--cdb--W:r0x10D2:_Centigrade_Convert_Fahrenheit_STK00+0:-1:0
+02875                       	;--cdb--W:r0x10D2:STK02+0:-1:0
+02876                       	;--cdb--W:r0x10D2:STK00+0:-1:0
+02877                       	;--cdb--W:r0x10D3:STK01+0:-1:0
+02878                       	;--cdb--W:r0x10D3:r0x10D1+1:-1:0
+02879                       	;--cdb--W:r0x10D4:NULL+0:0:0
+02880                       	;--cdb--W:r0x10D4:STK00+0:-1:0
+02881                       	;--cdb--W:r0x10D4:_Centigrade_Convert_Fahrenheit_STK00+0:-1:0
+02882                       	;--cdb--W:r0x10D5:NULL+0:0:0
+02883                       	;--cdb--W:r0x10D5:STK01+0:-1:0
+02884                       	;--cdb--W:r0x10D6:STK02+0:-1:0
+02885                       	;--cdb--W:r0x10D6:_Centigrade_Convert_Fahrenheit_STK00+0:-1:0
+02886                       	;--cdb--W:r0x10D7:STK01+0:-1:0
+02887                       	;--cdb--W:r0x10D7:r0x10D1+1:-1:0
+02888                       	;--cdb--W:r0x10D3:NULL+0:-1:1
+02889                       	;--cdb--W:r0x10AD:NULL+0:-1:1
+02890                       	;--cdb--W:r0x10B0:NULL+0:-1:1
+02891                       	;--cdb--W:r0x10AF:NULL+0:-1:1
+02892                       	;--cdb--W:r0x10B3:NULL+0:-1:1
+02893                       	;--cdb--W:r0x10B7:NULL+0:-1:1
+02894                       	;--cdb--W:r0x10B2:NULL+0:-1:1
+02895                       	;--cdb--W:r0x10B1:NULL+0:-1:1
+02896                       	;--cdb--W:r0x10AB:NULL+0:-1:0
+02897                       	;--cdb--W:r0x10AC:NULL+0:-1:0
+02898                       	;--cdb--W:r0x10AD:r0x10B1+0:-1:0
+02899                       	;--cdb--W:r0x10AD:STK02+0:-1:0
+02900                       	;--cdb--W:r0x10AE:STK01+0:-1:0
+02901                       	;--cdb--W:r0x10AF:r0x10AD+0:-1:0
+02902                       	;--cdb--W:r0x10AF:STK02+0:-1:0
+02903                       	;--cdb--W:r0x10AF:NULL+0:0:0
+02904                       	;--cdb--W:r0x10AF:STK00+0:-1:0
+02905                       	;--cdb--W:r0x10AF:NULL+0:-1:0
+02906                       	;--cdb--W:r0x10B0:r0x10AE+1:-1:0
+02907                       	;--cdb--W:r0x10B0:STK01+0:-1:0
+02908                       	;--cdb--W:r0x10B0:NULL+0:0:0
+02909                       	;--cdb--W:r0x10B0:NULL+0:-1:0
+02910                       	;--cdb--W:r0x10B2:STK01+0:-1:0
+02911                       	;--cdb--W:r0x10B1:STK00+0:-1:0
+02912                       	;--cdb--W:r0x10B1:STK02+0:-1:0
+02913                       	;--cdb--W:r0x10B3:r0x10AD+0:-1:0
+02914                       	;--cdb--W:r0x10B3:NULL+0:-1:0
+02915                       	;--cdb--W:r0x10B3:NULL+0:0:0
+02916                       	;--cdb--W:r0x10B3:STK00+0:-1:0
+02917                       	;--cdb--W:r0x10B4:r0x10AE+1:-1:0
+02918                       	;--cdb--W:r0x10B4:NULL+0:0:0
+02919                       	;--cdb--W:r0x10B5:NULL+0:0:0
+02920                       	;--cdb--W:r0x10B5:r0x10AF+0:-1:0
+02921                       	;--cdb--W:r0x10B6:NULL+0:0:0
+02922                       	;--cdb--W:r0x10B6:r0x10B0+1:-1:0
+02923                       	;--cdb--W:r0x10B9:NULL+0:0:0
+02924                       	;--cdb--W:r0x10BA:NULL+0:0:0
+02925                       	;--cdb--W:r0x10AB:NULL+0:-1:1
+02926                       	;--cdb--W:r0x10AC:NULL+0:-1:1
+02927                       	;--cdb--W:r0x10B5:NULL+0:-1:1
+02928                       	;--cdb--W:r0x10B6:NULL+0:-1:1
+02929                       	;--cdb--W:r0x10B4:NULL+0:-1:1
+02930                       	;--cdb--W:r0x10B9:NULL+0:-1:1
+02931                       	;--cdb--W:r0x10BA:NULL+0:-1:1
+02932                       	;--cdb--W:r0x10B4:NULL+0:-1:0
+02933                       	;--cdb--W:r0x10B5:r0x10B6+2:-1:0
+02934                       	;--cdb--W:r0x10A3:NULL+0:-1:1
+02935                       	;--cdb--W:r0x1096:NULL+0:-1:0
+02936                       	;--cdb--W:r0x1097:NULL+0:-1:0
+02937                       	;--cdb--W:r0x1096:NULL+0:-1:1
+02938                       	;--cdb--W:r0x1097:NULL+0:-1:1
+02939                       	;--cdb--W:r0x108F:NULL+0:-1:1
+02940                       	;--c2db--RNG$_ADCGetData_ADCData2_10000_417$1081$1083
+02941                       	;--c2db--RNG$_Get_250msTemp_n_10000_443$375$728
+02942                       	;--c2db--RNG$_Get_250msTemp_lower_10000_443$386$728
+02943                       	;--c2db--RNG$_Get_250msTemp_upper_10000_443$386$728
+02944                       	;--c2db--RNG$_Get_250msTemp_i_10000_443$497$728
+02945                       	;--c2db--RNG$_Get_250msTemp_tmp_10000_443$687$701
+02946                       	;--c2db--RNG$_Centigrade_Convert_Fahrenheit_temp_10000_461$190$321
+02947                       	;--c2db--RNG$_Centigrade_Convert_Fahrenheit_tmp_10000_462$309$315
+02948                       	END

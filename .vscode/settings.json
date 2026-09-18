@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "APP_ADC.H": "cpp",
+        "APP_INIT.C": "cpp",
+        "APP_ADC.C": "cpp",
+        "APP_BACKLIGHT.C": "cpp",
+        "APP_LCD.C": "cpp",
+        "APP_SCHEDULE.C": "cpp",
+        "APP_LCD.H": "cpp",
+        "APP_MEASURE.C": "cpp",
+        "DRV_UART.H": "cpp",
+        "APP_INIT.H": "cpp",
+        "APP_BUZZER.H": "cpp",
+        "DRV_LCD.H": "cpp",
+        "APP_BLEMODE.C": "cpp",
+        "APP_SLEEP.C": "cpp",
+        "include.h": "c"
+    },
+    "C_Cpp.dimInactiveRegions": false
+}

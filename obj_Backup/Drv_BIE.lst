@@ -1,0 +1,1250 @@
+00001                       ;--------------------------------------------------------
+00002                       ; File Created by SDCC : open source ANSI-C Compiler modified for HYCON CPU
+00003                       ; Version 4.0.2 #65b408c47 (MSVC)
+00004                       ;--------------------------------------------------------
+00005                       ; Port for HYCON CPU
+00006                       ;--------------------------------------------------------
+00007                       ;	;CCFROM:"C:\Users\Administrator\Desktop\MT_Forecast"
+00008                       ;;	.file	".\scr\Drv_BIE.c"
+00009                       	.module Drv_BIE
+00010                       	;.list	p=HY17P56
+00011                       	;--cdb--T:FDrv_BIE$__00000000[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]
+00012                       	;--cdb--T:FDrv_BIE$__00000010[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]
+00013                       	;--cdb--T:FDrv_BIE$__00000001[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]
+00014                       	;--cdb--T:FDrv_BIE$__00000011[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]
+00015                       	;--cdb--T:FDrv_BIE$__00000002[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]
+00016                       	;--cdb--T:FDrv_BIE$__00000012[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]
+00017                       	;--cdb--T:FDrv_BIE$__00000003[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({2}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]
+00018                       	;--cdb--T:FDrv_BIE$__00000013[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]
+00019                       	;--cdb--T:FDrv_BIE$__00000004[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]
+00020                       	;--cdb--T:FDrv_BIE$__00000014[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]
+00021                       	;--cdb--T:FDrv_BIE$__00000005[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_2S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_1S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB1$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB2$1:U),Z,0,0)]
+00022                       	;--cdb--T:FDrv_BIE$__00000015[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$F_Receive_First$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Port_Ble_PowerOn$0$0({1}SB6$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]
+00023                       	;--cdb--T:FDrv_BIE$__00000006[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]
+00024                       	;--cdb--T:FDrv_BIE$__00000016[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]
+00025                       	;--cdb--T:FDrv_BIE$__00000007[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]
+00026                       	;--cdb--T:FDrv_BIE$__00000008[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]
+00027                       	;--cdb--T:FDrv_BIE$__00000009[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]
+00028                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00029                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00030                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00031                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00032                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00033                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00034                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00035                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00036                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00037                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00038                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00039                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00040                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00041                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00042                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00043                       	;--cdb--F:Drv_BIE:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0,0,0,0
+00044                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00045                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00046                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00047                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00048                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00049                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00050                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00051                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00052                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00053                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00054                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00055                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00056                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00057                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00058                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00059                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00060                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00061                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00062                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00063                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00064                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00065                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00066                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00067                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00068                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00069                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00070                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00071                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00072                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00073                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00074                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00075                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00076                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00077                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00078                       	;--cdb--S:G$HY17P56WR3$0$0({2}DF,SC:U),C,0,0
+00079                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00080                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+00081                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+00082                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+00083                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+00084                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+00085                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+00086                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+00087                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+00088                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+00089                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+00090                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+00091                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+00092                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+00093                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+00094                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00095                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+00096                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+00097                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+00098                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+00099                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+00100                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+00101                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+00102                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+00103                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+00104                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+00105                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+00106                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+00107                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+00108                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+00109                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+00110                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+00111                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+00112                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+00113                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+00114                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+00115                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+00116                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+00117                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+00118                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+00119                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+00120                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+00121                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+00122                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+00123                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+00124                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+00125                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00126                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+00127                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+00128                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+00129                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+00130                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+00131                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+00132                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+00133                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+00134                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+00135                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+00136                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+00137                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+00138                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+00139                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+00140                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+00141                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+00142                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+00143                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+00144                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+00145                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+00146                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+00147                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+00148                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+00149                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00150                       	;--cdb--F:Drv_BIE:G$BIE_Read$0$0({2}DF,SI:U),C,0,0,0,0,0
+00151                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00152                       	;--cdb--F:Drv_BIE:G$BIE_Write$0$0({2}DF,SC:U),C,0,0,0,0,0
+00153                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00154                       	;--cdb--F:Drv_BIE:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0,0,0,0
+00155                       ;--------------------------------------------------------
+00156                       ; overlayable items in internal ram 
+00157                       ;--------------------------------------------------------
+00158                       ;	udata_ovr
+00159                       .area CCODE (code,REL,CON) ; Drv_BIE-code 
+00160                       .globl _BIE_Polling
+00161                       
+00162                       ;--------------------------------------------------------
+00163                       	.FUNC _BIE_Polling:0:$C:_BIE_Read\
+00164 0000 --              :$L:r0x10A2:$L:r0x10A3
+00165                       ;--------------------------------------------------------
+00166                       ;	;.line	131; ".\scr\Drv_BIE.c"	for(BIE_Addr = 0;BIE_Addr < 64;BIE_Addr++)
+00167 0000                  _BIE_Polling:	;Function start
+00168 0000 0C00             	CLRF	r0x10A2,0
+00169 0001 0C00             	CLRF	r0x10A3,0
+00170 0002                  _00130_DS_:
+00171                       ;	;.line	133; ".\scr\Drv_BIE.c"	if(BIE_Read(BIE_Addr) == 0xFFFF)
+00172 0002 6400             	MVF	r0x10A3,0,0
+00173 0003 C000 F000        	CALL	_BIE_Read
+00174                       	.CHKPARA _BIE_Read 1
+00175 0005 2800             	ANDF	STK00,0,0
+00176 0006 3C29             	INSZ	_WREG,0,0
+00177 0007 C200 F000        	JMP	_00131_DS_
+00178                       ;	;.line	135; ".\scr\Drv_BIE.c"	return BIE_Addr;
+00179 0009 6400             	MVF	r0x10A2,0,0
+00180 000A C200 F000        	JMP	_00132_DS_
+00181 000C                  _00131_DS_:
+00182                       ;	;.line	131; ".\scr\Drv_BIE.c"	for(BIE_Addr = 0;BIE_Addr < 64;BIE_Addr++)
+00183 000C 3A00             	INF	r0x10A3,1,0
+00184 000D 6400             	MVF	r0x10A3,0,0
+00185 000E 6600             	MVF	r0x10A2,1,0
+00186 000F 063F             	MVL	0x3f
+00187 0010 6800             	CPSG	r0x10A3,0
+00188 0011 C200 F000        	JMP	_00130_DS_
+00189                       ;	;.line	138; ".\scr\Drv_BIE.c"	return 0xFF;
+00190 0013 06FF             	MVL	0xff
+00191 0014                  _00132_DS_:
+00192                       ;	;.line	139; ".\scr\Drv_BIE.c"	}
+00193 0014 000A             	RET	
+00194                       ; exit point of _BIE_Polling
+00195 0015 --              	.ENDFUNC	_BIE_Polling
+00196                       ;--------------------------------------------------------
+00197                       
+00198                       .globl _BIE_Write
+00199                       
+00200                       ;--------------------------------------------------------
+00201                       	.FUNC _BIE_Write:3:$C:_AccuracyModeADCOFF:$C:_HY17P56WR3:$C:_ADCAccuracyMode:$C:_Delay_ms\
+00202 0015 --              :$L:r0x109B:$L:_BIE_Write_STK00:$L:_BIE_Write_STK01
+00203                       ;--------------------------------------------------------
+00204                       ;	;.line	77; ".\scr\Drv_BIE.c"	uint8 BIE_Write(uint8 Addr,uint8 DH,uint8 DL)
+00205 0015                  _BIE_Write:	;Function start
+00206 0015 6600             	MVF	r0x109B,1,0
+00207                       ;	;.line	87; ".\scr\Drv_BIE.c"	AccuracyModeADCOFF();
+00208 0016 C000 F000        	CALL	_AccuracyModeADCOFF
+00209                       	.CHKPARA _AccuracyModeADCOFF 0
+00210                       ;	;.line	90; ".\scr\Drv_BIE.c"	tmp = HY17P56WR3(Addr,DH,DL);
+00211 0018 6400             	MVF	_BIE_Write_STK01,0,0
+00212 0019 6600             	MVF	_HY17P56WR3_STK01,1,0
+00213 001A 6400             	MVF	_BIE_Write_STK00,0,0
+00214 001B 6600             	MVF	_HY17P56WR3_STK00,1,0
+00215 001C 6400             	MVF	r0x109B,0,0
+00216 001D C000 F000        	CALL	_HY17P56WR3
+00217                       	.CHKPARA _HY17P56WR3 3
+00218 001F 6600             	MVF	r0x109B,1,0
+00219                       ;	;.line	93; ".\scr\Drv_BIE.c"	ADCAccuracyMode();
+00220 0020 C000 F000        	CALL	_ADCAccuracyMode
+00221                       	.CHKPARA _ADCAccuracyMode 0
+00222                       ;	;.line	97; ".\scr\Drv_BIE.c"	GIE_Enable();
+00223 0022 9E23             	BSF	_INTE0,7
+00224                       ;	;.line	99; ".\scr\Drv_BIE.c"	ADC_Enable();
+00225 0023 9E3D             	BSF	_AD1CN0,7
+00226                       ;	;.line	101; ".\scr\Drv_BIE.c"	ADC_CMFREnable();
+00227 0024 903D             	BSF	_AD1CN0,0
+00228                       ;	;.line	105; ".\scr\Drv_BIE.c"	ADC_OSRSelect(OSR_2048);
+00229 0025 643D             	MVF	_AD1CN0,0,0
+00230 0026 01E1             	ANDL	0xe1
+00231 0027 0208             	IORL	0x08
+00232 0028 663D             	MVF	_AD1CN0,1,0
+00233                       ;	;.line	114; ".\scr\Drv_BIE.c"	sADC.ADCCounts = 0;
+00234 0029 0C00             	CLRF	(_sADC + 2),0
+00235                       ;	;.line	116; ".\scr\Drv_BIE.c"	Delay_ms(10);
+00236 002A 060A             	MVL	0x0a
+00237 002B C000 F000        	CALL	_Delay_ms
+00238                       	.CHKPARA _Delay_ms 1
+00239                       ;	;.line	118; ".\scr\Drv_BIE.c"	return tmp;
+00240 002D 6400             	MVF	r0x109B,0,0
+00241                       ;	;.line	119; ".\scr\Drv_BIE.c"	}
+00242 002E 000A             	RET	
+00243                       ; exit point of _BIE_Write
+00244 002F --              	.ENDFUNC	_BIE_Write
+00245                       ;--------------------------------------------------------
+00246                       
+00247                       .globl _BIE_Read
+00248                       
+00249                       ;--------------------------------------------------------
+00250                       	.FUNC _BIE_Read:1:$C:_Delay_ms\
+00251 002F --              :$L:r0x1094:$L:r0x1097
+00252                       ;--------------------------------------------------------
+00253                       ;	;.line	24; ".\scr\Drv_BIE.c"	uint16 BIE_Read(uint8 Addr)
+00254 002F                  _BIE_Read:	;Function start
+00255 002F 6600             	MVF	r0x1094,1,0
+00256                       ;	;.line	33; ".\scr\Drv_BIE.c"	GIE_Disable();
+00257 0030 8E23             	BCF	_INTE0,7
+00258                       ;	;.line	35; ".\scr\Drv_BIE.c"	ADC_Disable();
+00259 0031 8E3D             	BCF	_AD1CN0,7
+00260                       ;	;.line	37; ".\scr\Drv_BIE.c"	BIEARL = Addr;
+00261 0032 6400             	MVF	r0x1094,0,0
+00262 0033 6630             	MVF	_BIEARL,1,0
+00263                       ;	;.line	39; ".\scr\Drv_BIE.c"	BIECN=BIECN | 0x01;
+00264 0034 902E             	BSF	_BIECN,0
+00265 0035                  _00105_DS_:
+00266                       ;	;.line	41; ".\scr\Drv_BIE.c"	while((BIECN& 0x01)==1);
+00267 0035 642E             	MVF	_BIECN,0,0
+00268 0036 0101             	ANDL	0x01
+00269 0037 6600             	MVF	r0x1094,1,0
+00270 0038 3000             	DCF	r0x1094,0,0
+00271 0039 A02B             	BTSZ	_STATUS,0
+00272 003A C200 F000        	JMP	_00105_DS_
+00273                       ;	;.line	43; ".\scr\Drv_BIE.c"	BIE_Data = (BIEDRH << 8) | BIEDRL;
+00274 003C 6431             	MVF	_BIEDRH,0,0
+00275 003D 6600             	MVF	r0x1097,1,0
+00276 003E 6432             	MVF	_BIEDRL,0,0
+00277 003F 6600             	MVF	r0x1094,1,0
+00278                       ;	;.line	45; ".\scr\Drv_BIE.c"	GIE_Enable();
+00279 0040 9E23             	BSF	_INTE0,7
+00280                       ;	;.line	47; ".\scr\Drv_BIE.c"	ADC_Enable();
+00281 0041 9E3D             	BSF	_AD1CN0,7
+00282                       ;	;.line	49; ".\scr\Drv_BIE.c"	ADC_CMFREnable();
+00283 0042 903D             	BSF	_AD1CN0,0
+00284                       ;	;.line	53; ".\scr\Drv_BIE.c"	ADC_OSRSelect(OSR_2048);
+00285 0043 643D             	MVF	_AD1CN0,0,0
+00286 0044 01E1             	ANDL	0xe1
+00287 0045 0208             	IORL	0x08
+00288 0046 663D             	MVF	_AD1CN0,1,0
+00289                       ;	;.line	64; ".\scr\Drv_BIE.c"	sADC.ADCCounts = 0;
+00290 0047 0C00             	CLRF	(_sADC + 2),0
+00291                       ;	;.line	66; ".\scr\Drv_BIE.c"	Delay_ms(10);
+00292 0048 060A             	MVL	0x0a
+00293 0049 C000 F000        	CALL	_Delay_ms
+00294                       	.CHKPARA _Delay_ms 1
+00295                       ;	;.line	67; ".\scr\Drv_BIE.c"	return BIE_Data;
+00296 004B 6400             	MVF	r0x1094,0,0
+00297 004C 6600             	MVF	STK00,1,0
+00298 004D 6400             	MVF	r0x1097,0,0
+00299                       ;	;.line	68; ".\scr\Drv_BIE.c"	}
+00300 004E 000A             	RET	
+00301                       ; exit point of _BIE_Read
+00302 004F --              	.ENDFUNC	_BIE_Read
+00303                       ;--------------------------------------------------------
+00304                       
+00305                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00306                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00307                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00308                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00309                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00310                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00311                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00312                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00313                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00314                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00315                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00316                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00317                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00318                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00319                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00320                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00321                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00322                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00323                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00324                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00325                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00326                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00327                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00328                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00329                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00330                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00331                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00332                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00333                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00334                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00335                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00336                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00337                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00338                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00339                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00340                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00341                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00342                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00343                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00344                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00345                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00346                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00347                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00348                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00349                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00350                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00351                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00352                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00353                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00354                       	;--cdb--S:G$HY17P56WR3$0$0({2}DF,SC:U),C,0,0
+00355                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00356                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+00357                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+00358                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+00359                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+00360                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+00361                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+00362                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+00363                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+00364                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+00365                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+00366                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+00367                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+00368                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+00369                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+00370                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00371                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+00372                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+00373                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+00374                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+00375                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+00376                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+00377                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+00378                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+00379                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+00380                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+00381                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+00382                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+00383                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+00384                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+00385                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+00386                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+00387                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+00388                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+00389                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+00390                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+00391                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+00392                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+00393                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+00394                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+00395                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+00396                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+00397                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+00398                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+00399                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+00400                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+00401                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00402                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+00403                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+00404                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+00405                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+00406                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+00407                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+00408                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+00409                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+00410                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+00411                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+00412                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+00413                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+00414                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+00415                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+00416                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+00417                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+00418                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+00419                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+00420                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+00421                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+00422                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+00423                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+00424                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+00425                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00426                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00427                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00428                       	;--cdb--S:G$FSR0$0$0({2}DD,SC:U),E,0,0
+00429                       	;--cdb--S:G$FSR1$0$0({2}DD,SC:U),E,0,0
+00430                       	;--cdb--S:G$FSR2$0$0({2}DD,SC:U),E,0,0
+00431                       	;--cdb--S:G$ADCR$0$0({4}SL:SL),E,0,0
+00432                       	;--cdb--S:G$sIIC$0$0({1}ST__00000000:S),E,0,0
+00433                       	;--cdb--S:G$BIE_Available_Addr$0$0({1}SC:U),E,0,0
+00434                       	;--cdb--S:G$sTIMx$0$0({13}ST__00000001:S),E,0,0
+00435                       	;--cdb--S:G$sUARTx$0$0({15}ST__00000002:S),E,0,0
+00436                       	;--cdb--S:G$sAutoBps$0$0({4}ST__00000003:S),E,0,0
+00437                       	;--cdb--S:G$eAutoBps_Status$0$0({1}SC:U),E,0,0
+00438                       	;--cdb--S:G$sTest$0$0({19}ST__00000004:S),E,0,0
+00439                       	;--cdb--S:G$eTempUnit$0$0({1}SC:U),E,0,0
+00440                       	;--cdb--S:G$eBondingTempUnit$0$0({1}SC:U),E,0,0
+00441                       	;--cdb--S:G$eVersionCode$0$0({1}SC:U),E,0,0
+00442                       	;--cdb--S:G$eMeasureMode$0$0({1}SC:U),E,0,0
+00443                       	;--cdb--S:G$eBinding_Status$0$0({1}SC:U),E,0,0
+00444                       	;--cdb--S:G$Enter_PrepareSleep_Flag$0$0({1}SC:U),E,0,0
+00445                       	;--cdb--S:G$sButton$0$0({2}ST__00000005:S),E,0,0
+00446                       	;--cdb--S:G$sTimeStamp$0$0({42}ST__00000006:S),E,0,0
+00447                       	;--cdb--S:G$eButton_Status$0$0({1}SC:U),E,0,0
+00448                       	;--cdb--S:G$sLVD$0$0({5}ST__00000007:S),E,0,0
+00449                       	;--cdb--S:G$UnitExchangeCompleted$0$0({1}SC:U),E,0,0
+00450                       	;--cdb--S:G$ERR$0$0({8}DA8d,SC:U),E,0,0
+00451                       	;--cdb--S:G$eErr$0$0({1}SC:U),E,0,0
+00452                       	;--cdb--S:G$eDisplay_Interfaces$0$0({1}SC:U),E,0,0
+00453                       	;--cdb--S:G$sADC$0$0({45}ST__00000008:S),E,0,0
+00454                       	;--cdb--S:G$eADCChannel$0$0({1}SC:U),E,0,0
+00455                       	;--cdb--S:G$eSystem_Mode$0$0({1}SC:U),E,0,0
+00456                       	;--cdb--S:G$eBuzzer_Status$0$0({1}SC:U),E,0,0
+00457                       	;--cdb--S:G$Flag_No_Buzzer$0$0({1}SC:U),E,0,0
+00458                       	;--cdb--S:G$sMemory$0$0({23}ST__00000009:S),E,0,0
+00459                       	;--cdb--S:G$sMemoryFlag$0$0({3}ST__00000010:S),E,0,0
+00460                       	;--cdb--S:G$sActual$0$0({5}ST__00000012:S),E,0,0
+00461                       	;--cdb--S:G$sForecast$0$0({26}ST__00000013:S),E,0,0
+00462                       	;--cdb--S:G$sTempCal$0$0({14}ST__00000011:S),E,0,0
+00463                       	;--cdb--S:G$eMeas_Status$0$0({1}SC:U),E,0,0
+00464                       	;--cdb--S:G$sActual_Forecast$0$0({15}ST__00000014:S),E,0,0
+00465                       	;--cdb--S:G$eTo_Actual_Ways$0$0({1}SC:U),E,0,0
+00466                       	;--cdb--S:G$eBle_Sta$0$0({1}SC:U),E,0,0
+00467                       	;--cdb--S:G$sBleStatus$0$0({60}ST__00000015:S),E,0,0
+00468                       	;--cdb--S:G$eBacklight_Status$0$0({1}SC:U),E,0,0
+00469                       	;--cdb--S:G$sBacklight$0$0({1}ST__00000016:S),E,0,0
+00470                       	;--cdb--S:G$NUM_CODE$0$0({11}DA11d,SC:U),D,0,0
+00471                       	;--cdb--S:G$R_Table$0$0({2002}DA1001d,SI:U),D,0,0
+00472                       	;--cdb--S:G$CloseTable$0$0({98}DA49d,SI:U),D,0,0
+00473                       	;--cdb--S:G$_SWTGTID$0$0({1}SC:U),I,0,0
+00474                       	;--cdb--S:G$INDF0$0$0({1}SC:U),I,0,0
+00475                       	;--cdb--S:G$POINC0$0$0({1}SC:U),I,0,0
+00476                       	;--cdb--S:G$PODEC0$0$0({1}SC:U),I,0,0
+00477                       	;--cdb--S:G$PRINC0$0$0({1}SC:U),I,0,0
+00478                       	;--cdb--S:G$PLUSW0$0$0({1}SC:U),I,0,0
+00479                       	;--cdb--S:G$INDF1$0$0({1}SC:U),I,0,0
+00480                       	;--cdb--S:G$POINC1$0$0({1}SC:U),I,0,0
+00481                       	;--cdb--S:G$PODEC1$0$0({1}SC:U),I,0,0
+00482                       	;--cdb--S:G$PRINC1$0$0({1}SC:U),I,0,0
+00483                       	;--cdb--S:G$PLUSW1$0$0({1}SC:U),I,0,0
+00484                       	;--cdb--S:G$INDF2$0$0({1}SC:U),I,0,0
+00485                       	;--cdb--S:G$POINC2$0$0({1}SC:U),I,0,0
+00486                       	;--cdb--S:G$PODEC2$0$0({1}SC:U),I,0,0
+00487                       	;--cdb--S:G$PRINC2$0$0({1}SC:U),I,0,0
+00488                       	;--cdb--S:G$PLUSW2$0$0({1}SC:U),I,0,0
+00489                       	;--cdb--S:G$FSR0H$0$0({1}SC:U),I,0,0
+00490                       	;--cdb--S:G$FSR0L$0$0({1}SC:U),I,0,0
+00491                       	;--cdb--S:G$FSR1H$0$0({1}SC:U),I,0,0
+00492                       	;--cdb--S:G$FSR1L$0$0({1}SC:U),I,0,0
+00493                       	;--cdb--S:G$FSR2H$0$0({1}SC:U),I,0,0
+00494                       	;--cdb--S:G$FSR2L$0$0({1}SC:U),I,0,0
+00495                       	;--cdb--S:G$TOSH$0$0({1}SC:U),I,0,0
+00496                       	;--cdb--S:G$TOSL$0$0({1}SC:U),I,0,0
+00497                       	;--cdb--S:G$SKCN$0$0({1}SC:U),I,0,0
+00498                       	;--cdb--S:G$PCLATH$0$0({1}SC:U),I,0,0
+00499                       	;--cdb--S:G$PCLATL$0$0({1}SC:U),I,0,0
+00500                       	;--cdb--S:G$TBLPTRH$0$0({1}SC:U),I,0,0
+00501                       	;--cdb--S:G$TBLPTRL$0$0({1}SC:U),I,0,0
+00502                       	;--cdb--S:G$TBLDH$0$0({1}SC:U),I,0,0
+00503                       	;--cdb--S:G$TBLDL$0$0({1}SC:U),I,0,0
+00504                       	;--cdb--S:G$PRODH$0$0({1}SC:U),I,0,0
+00505                       	;--cdb--S:G$PRODL$0$0({1}SC:U),I,0,0
+00506                       	;--cdb--S:G$INTE0$0$0({1}SC:U),I,0,0
+00507                       	;--cdb--S:G$INTE1$0$0({1}SC:U),I,0,0
+00508                       	;--cdb--S:G$INTE2$0$0({1}SC:U),I,0,0
+00509                       	;--cdb--S:G$INTF0$0$0({1}SC:U),I,0,0
+00510                       	;--cdb--S:G$INTF1$0$0({1}SC:U),I,0,0
+00511                       	;--cdb--S:G$INTF2$0$0({1}SC:U),I,0,0
+00512                       	;--cdb--S:G$WREG$0$0({1}SC:U),I,0,0
+00513                       	;--cdb--S:G$BSRCN$0$0({1}SC:U),I,0,0
+00514                       	;--cdb--S:G$STATUS$0$0({1}SC:U),I,0,0
+00515                       	;--cdb--S:G$MSTAT$0$0({1}SC:U),I,0,0
+00516                       	;--cdb--S:G$PSTAT$0$0({1}SC:U),I,0,0
+00517                       	;--cdb--S:G$BIECN$0$0({1}SC:U),I,0,0
+00518                       	;--cdb--S:G$BIEARH$0$0({1}SC:U),I,0,0
+00519                       	;--cdb--S:G$BIEARL$0$0({1}SC:U),I,0,0
+00520                       	;--cdb--S:G$BIEDRH$0$0({1}SC:U),I,0,0
+00521                       	;--cdb--S:G$BIEDRL$0$0({1}SC:U),I,0,0
+00522                       	;--cdb--S:G$PWRCN$0$0({1}SC:U),I,0,0
+00523                       	;--cdb--S:G$OSCCN0$0$0({1}SC:U),I,0,0
+00524                       	;--cdb--S:G$OSCCN1$0$0({1}SC:U),I,0,0
+00525                       	;--cdb--S:G$OSCCN2$0$0({1}SC:U),I,0,0
+00526                       	;--cdb--S:G$CSFCN0$0$0({1}SC:U),I,0,0
+00527                       	;--cdb--S:G$CSFCN1$0$0({1}SC:U),I,0,0
+00528                       	;--cdb--S:G$WDTCN$0$0({1}SC:U),I,0,0
+00529                       	;--cdb--S:G$AD1H$0$0({1}SC:U),I,0,0
+00530                       	;--cdb--S:G$AD1M$0$0({1}SC:U),I,0,0
+00531                       	;--cdb--S:G$AD1L$0$0({1}SC:U),I,0,0
+00532                       	;--cdb--S:G$AD1CN0$0$0({1}SC:U),I,0,0
+00533                       	;--cdb--S:G$AD1CN1$0$0({1}SC:U),I,0,0
+00534                       	;--cdb--S:G$AD1CN2$0$0({1}SC:U),I,0,0
+00535                       	;--cdb--S:G$AD1CN3$0$0({1}SC:U),I,0,0
+00536                       	;--cdb--S:G$AD1CN4$0$0({1}SC:U),I,0,0
+00537                       	;--cdb--S:G$AD1CN5$0$0({1}SC:U),I,0,0
+00538                       	;--cdb--S:G$LVDCN$0$0({1}SC:U),I,0,0
+00539                       	;--cdb--S:G$TMA1CN$0$0({1}SC:U),I,0,0
+00540                       	;--cdb--S:G$TMA1R$0$0({1}SC:U),I,0,0
+00541                       	;--cdb--S:G$TMA1C$0$0({1}SC:U),I,0,0
+00542                       	;--cdb--S:G$TB1FLAG$0$0({1}SC:U),I,0,0
+00543                       	;--cdb--S:G$TB1CN0$0$0({1}SC:U),I,0,0
+00544                       	;--cdb--S:G$TB1CN1$0$0({1}SC:U),I,0,0
+00545                       	;--cdb--S:G$TB1RH$0$0({1}SC:U),I,0,0
+00546                       	;--cdb--S:G$TB1RL$0$0({1}SC:U),I,0,0
+00547                       	;--cdb--S:G$TB1C0H$0$0({1}SC:U),I,0,0
+00548                       	;--cdb--S:G$TB1C0L$0$0({1}SC:U),I,0,0
+00549                       	;--cdb--S:G$TB1C1H$0$0({1}SC:U),I,0,0
+00550                       	;--cdb--S:G$TB1C1L$0$0({1}SC:U),I,0,0
+00551                       	;--cdb--S:G$TB1C2H$0$0({1}SC:U),I,0,0
+00552                       	;--cdb--S:G$TB1C2L$0$0({1}SC:U),I,0,0
+00553                       	;--cdb--S:G$TC1CN0$0$0({1}SC:U),I,0,0
+00554                       	;--cdb--S:G$PT1$0$0({1}SC:U),I,0,0
+00555                       	;--cdb--S:G$TRISC1$0$0({1}SC:U),I,0,0
+00556                       	;--cdb--S:G$PT1DA$0$0({1}SC:U),I,0,0
+00557                       	;--cdb--S:G$PT1PU$0$0({1}SC:U),I,0,0
+00558                       	;--cdb--S:G$PT1M1$0$0({1}SC:U),I,0,0
+00559                       	;--cdb--S:G$PT1INT$0$0({1}SC:U),I,0,0
+00560                       	;--cdb--S:G$PT1INTE$0$0({1}SC:U),I,0,0
+00561                       	;--cdb--S:G$PT1INTF$0$0({1}SC:U),I,0,0
+00562                       	;--cdb--S:G$PT2$0$0({1}SC:U),I,0,0
+00563                       	;--cdb--S:G$TRISC2$0$0({1}SC:U),I,0,0
+00564                       	;--cdb--S:G$PT2DA$0$0({1}SC:U),I,0,0
+00565                       	;--cdb--S:G$PT2PU$0$0({1}SC:U),I,0,0
+00566                       	;--cdb--S:G$PT2INT$0$0({1}SC:U),I,0,0
+00567                       	;--cdb--S:G$PT2INTE$0$0({1}SC:U),I,0,0
+00568                       	;--cdb--S:G$PT2INTF$0$0({1}SC:U),I,0,0
+00569                       	;--cdb--S:G$PT6$0$0({1}SC:U),I,0,0
+00570                       	;--cdb--S:G$TRISC6$0$0({1}SC:U),I,0,0
+00571                       	;--cdb--S:G$PT6DA$0$0({1}SC:U),I,0,0
+00572                       	;--cdb--S:G$PT6PU$0$0({1}SC:U),I,0,0
+00573                       	;--cdb--S:G$PT7$0$0({1}SC:U),I,0,0
+00574                       	;--cdb--S:G$TRISC7$0$0({1}SC:U),I,0,0
+00575                       	;--cdb--S:G$PT7DA$0$0({1}SC:U),I,0,0
+00576                       	;--cdb--S:G$PT7PU$0$0({1}SC:U),I,0,0
+00577                       	;--cdb--S:G$PT8$0$0({1}SC:U),I,0,0
+00578                       	;--cdb--S:G$TRISC8$0$0({1}SC:U),I,0,0
+00579                       	;--cdb--S:G$PT8DA$0$0({1}SC:U),I,0,0
+00580                       	;--cdb--S:G$PT8PU$0$0({1}SC:U),I,0,0
+00581                       	;--cdb--S:G$SSPCN0$0$0({1}SC:U),I,0,0
+00582                       	;--cdb--S:G$SSPSTA0$0$0({1}SC:U),I,0,0
+00583                       	;--cdb--S:G$SSPBUF0$0$0({1}SC:U),I,0,0
+00584                       	;--cdb--S:G$CFG0$0$0({1}SC:U),I,0,0
+00585                       	;--cdb--S:G$ACT0$0$0({1}SC:U),I,0,0
+00586                       	;--cdb--S:G$STA0$0$0({1}SC:U),I,0,0
+00587                       	;--cdb--S:G$CRG0$0$0({1}SC:U),I,0,0
+00588                       	;--cdb--S:G$TOC0$0$0({1}SC:U),I,0,0
+00589                       	;--cdb--S:G$RDB0$0$0({1}SC:U),I,0,0
+00590                       	;--cdb--S:G$TDB0$0$0({1}SC:U),I,0,0
+00591                       	;--cdb--S:G$SID0$0$0({1}SC:U),I,0,0
+00592                       	;--cdb--S:G$UR0CN$0$0({1}SC:U),I,0,0
+00593                       	;--cdb--S:G$UR0STA$0$0({1}SC:U),I,0,0
+00594                       	;--cdb--S:G$BA0CN$0$0({1}SC:U),I,0,0
+00595                       	;--cdb--S:G$BG0RH$0$0({1}SC:U),I,0,0
+00596                       	;--cdb--S:G$BG0RL$0$0({1}SC:U),I,0,0
+00597                       	;--cdb--S:G$TX0R$0$0({1}SC:U),I,0,0
+00598                       	;--cdb--S:G$RC0REG$0$0({1}SC:U),I,0,0
+00599                       	;--cdb--S:G$LCDCN1$0$0({1}SC:U),I,0,0
+00600                       	;--cdb--S:G$LCDCN2$0$0({1}SC:U),I,0,0
+00601                       	;--cdb--S:G$LCDCN3$0$0({1}SC:U),I,0,0
+00602                       	;--cdb--S:G$LCDCN4$0$0({1}SC:U),I,0,0
+00603                       	;--cdb--S:G$LCDCN5$0$0({1}SC:U),I,0,0
+00604                       	;--cdb--S:G$LCDCN6$0$0({1}SC:U),I,0,0
+00605                       	;--cdb--S:G$LCDCN7$0$0({1}SC:U),I,0,0
+00606                       	;--cdb--S:G$LCDCN8$0$0({1}SC:U),I,0,0
+00607                       	;--cdb--S:G$LCD0$0$0({1}SC:U),I,0,0
+00608                       	;--cdb--S:G$LCD1$0$0({1}SC:U),I,0,0
+00609                       	;--cdb--S:G$LCD2$0$0({1}SC:U),I,0,0
+00610                       	;--cdb--S:G$LCD3$0$0({1}SC:U),I,0,0
+00611                       	;--cdb--S:G$LCD4$0$0({1}SC:U),I,0,0
+00612                       	;--cdb--S:G$LCD5$0$0({1}SC:U),I,0,0
+00613                       	;--cdb--S:G$LCD6$0$0({1}SC:U),I,0,0
+00614                       	;--cdb--S:G$LCD7$0$0({1}SC:U),I,0,0
+00615                       	;--cdb--S:G$LCD8$0$0({1}SC:U),I,0,0
+00616                       	;--cdb--S:G$LCD9$0$0({1}SC:U),I,0,0
+00617                       	;--cdb--S:G$UR2CN$0$0({1}SC:U),I,0,0
+00618                       	;--cdb--S:G$UR2STA$0$0({1}SC:U),I,0,0
+00619                       	;--cdb--S:G$BA2CN$0$0({1}SC:U),I,0,0
+00620                       	;--cdb--S:G$BG2RH$0$0({1}SC:U),I,0,0
+00621                       	;--cdb--S:G$BG2RL$0$0({1}SC:U),I,0,0
+00622                       	;--cdb--S:G$TX2R$0$0({1}SC:U),I,0,0
+00623                       	;--cdb--S:G$RC2REG$0$0({1}SC:U),I,0,0
+00624                       	;--cdb--S:G$TMA2R$0$0({1}SC:U),I,0,0
+00625                       	;--cdb--S:G$TMA2C$0$0({1}SC:U),I,0,0
+00626                       	;--cdb--S:G$LEDCN$0$0({1}SC:U),I,0,0
+00627                       	;--cdb--S:G$IQ0$0$0({1}SC:U),I,0,0
+00628                       	;--cdb--S:G$IQ1$0$0({1}SC:U),I,0,0
+00629                       	;--cdb--S:G$DGCON1$0$0({1}SC:U),I,0,0
+00630                       	;--cdb--S:G$DGCON2$0$0({1}SC:U),I,0,0
+00631                       	;--cdb--S:G$ADCRH$0$0({1}SC:U),I,0,0
+00632                       	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
+00633                       	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
+00634                       	;--cdb--S:LDrv_BIE.aligned_alloc._aligned_alloc_size_65536_24$size$10000$24({2}SI:U),E,0,0
+00635                       	;--cdb--S:LDrv_BIE.aligned_alloc._aligned_alloc_alignment_65536_24$alignment$10000$24({2}SI:U),E,0,0
+00636                       	;--cdb--S:LDrv_BIE.BIE_Read._BIE_Read_Addr_65536_341$Addr$10000$341({1}SC:U),R,0,0,[r0x1094]
+00637                       	;--cdb--S:LDrv_BIE.BIE_Read._BIE_Read_BIE_Data_65536_342$BIE_Data$10000$342({2}SI:U),R,0,0,[r0x1096,r0x1097]
+00638                       	;--cdb--S:LDrv_BIE.BIE_Write._BIE_Write_DL_65536_343$DL$10000$343({1}SC:U),R,0,0,[_BIE_Write_STK01]
+00639                       	;--cdb--S:LDrv_BIE.BIE_Write._BIE_Write_DH_65536_343$DH$10000$343({1}SC:U),R,0,0,[_BIE_Write_STK00]
+00640                       	;--cdb--S:LDrv_BIE.BIE_Write._BIE_Write_Addr_65536_343$Addr$10000$343({1}SC:U),R,0,0,[r0x109B]
+00641                       	;--cdb--S:LDrv_BIE.BIE_Write._BIE_Write_tmp_65536_344$tmp$10000$344({1}SC:U),R,0,0,[r0x109B]
+00642                       	;--cdb--S:LDrv_BIE.BIE_Polling._BIE_Polling_BIE_Addr_65536_346$BIE_Addr$10000$346({1}SC:U),R,0,0,[r0x10A2]
+00643                       	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
+00644                       	;--cdb--S:G$_WREG$0$0({0}:U),Z,0,0
+00645                       	;--cdb--S:G$_INTE0$0$0({0}:U),Z,0,0
+00646                       ;--------------------------------------------------------
+00647                       ; external declarations
+00648                       ;--------------------------------------------------------
+00649                       	.globl	_HY17P56WR3
+00650                       	.globl	_ADCAccuracyMode
+00651                       	.globl	_AccuracyModeADCOFF
+00652                       	.globl	_Delay_ms
+00653                       	.globl	_FSR0
+00654                       	.globl	_FSR1
+00655                       	.globl	_FSR2
+00656                       	.globl	_ADCR
+00657                       	.globl	_sIIC
+00658                       	.globl	_sTIMx
+00659                       	.globl	_sUARTx
+00660                       	.globl	_sAutoBps
+00661                       	.globl	_eAutoBps_Status
+00662                       	.globl	_sTest
+00663                       	.globl	_eTempUnit
+00664                       	.globl	_eBondingTempUnit
+00665                       	.globl	_eVersionCode
+00666                       	.globl	_eMeasureMode
+00667                       	.globl	_eBinding_Status
+00668                       	.globl	_Enter_PrepareSleep_Flag
+00669                       	.globl	_sButton
+00670                       	.globl	_sTimeStamp
+00671                       	.globl	_eButton_Status
+00672                       	.globl	_sLVD
+00673                       	.globl	_UnitExchangeCompleted
+00674                       	.globl	_ERR
+00675                       	.globl	_eErr
+00676                       	.globl	_eDisplay_Interfaces
+00677                       	.globl	_sADC
+00678                       	.globl	_eADCChannel
+00679                       	.globl	_eSystem_Mode
+00680                       	.globl	_eBuzzer_Status
+00681                       	.globl	_Flag_No_Buzzer
+00682                       	.globl	_sMemory
+00683                       	.globl	_sMemoryFlag
+00684                       	.globl	_sActual
+00685                       	.globl	_sForecast
+00686                       	.globl	_sTempCal
+00687                       	.globl	_eMeas_Status
+00688                       	.globl	_sActual_Forecast
+00689                       	.globl	_eTo_Actual_Ways
+00690                       	.globl	_eBle_Sta
+00691                       	.globl	_sBleStatus
+00692                       	.globl	_eBacklight_Status
+00693                       	.globl	_sBacklight
+00694                       	.globl	_NUM_CODE
+00695                       	.globl	_R_Table
+00696                       	.globl	_CloseTable
+00697                       
+00698                       	.globl WSAVE
+00699                       	.globl STK07
+00700                       	.globl STK07_SAVE
+00701                       	.globl STK06
+00702                       	.globl STK06_SAVE
+00703                       	.globl STK05
+00704                       	.globl STK05_SAVE
+00705                       	.globl STK04
+00706                       	.globl STK04_SAVE
+00707                       	.globl STK03
+00708                       	.globl STK03_SAVE
+00709                       	.globl STK02
+00710                       	.globl STK02_SAVE
+00711                       	.globl STK01
+00712                       	.globl STK01_SAVE
+00713                       	.globl STK00
+00714                       	.globl STK00_SAVE
+00715                       ;--------------------------------------------------------
+00716                       ; global -1 declarations
+00717                       ;--------------------------------------------------------
+00718                       	.globl	_BIE_Read
+00719                       	.globl	_BIE_Write
+00720                       	.globl	_BIE_Available_Addr
+00721                       
+00722                       	.globl	_memcpy
+00723                       ;--------------------------------------------------------
+00724                       ; global -2 definitions
+00725                       ;--------------------------------------------------------
+00726                       	.area DSEG(DATA)
+00727 0000 --               _BIE_Available_Addr:	.ds	1
+00728                       
+00729                       	.area DSEG(DATA)
+00730                       __SWTGTID	.equ	0xA6A6B2CF
+00731                       
+00732                       	.area DSEG(DATA)
+00733                       _INDF0	.equ	0x0
+00734                       
+00735                       	.area DSEG(DATA)
+00736                       _POINC0	.equ	0x1
+00737                       
+00738                       	.area DSEG(DATA)
+00739                       _PODEC0	.equ	0x2
+00740                       
+00741                       	.area DSEG(DATA)
+00742                       _PRINC0	.equ	0x3
+00743                       
+00744                       	.area DSEG(DATA)
+00745                       _PLUSW0	.equ	0x4
+00746                       
+00747                       	.area DSEG(DATA)
+00748                       _INDF1	.equ	0x5
+00749                       
+00750                       	.area DSEG(DATA)
+00751                       _POINC1	.equ	0x6
+00752                       
+00753                       	.area DSEG(DATA)
+00754                       _PODEC1	.equ	0x7
+00755                       
+00756                       	.area DSEG(DATA)
+00757                       _PRINC1	.equ	0x8
+00758                       
+00759                       	.area DSEG(DATA)
+00760                       _PLUSW1	.equ	0x9
+00761                       
+00762                       	.area DSEG(DATA)
+00763                       _INDF2	.equ	0xA
+00764                       
+00765                       	.area DSEG(DATA)
+00766                       _POINC2	.equ	0xB
+00767                       
+00768                       	.area DSEG(DATA)
+00769                       _PODEC2	.equ	0xC
+00770                       
+00771                       	.area DSEG(DATA)
+00772                       _PRINC2	.equ	0xD
+00773                       
+00774                       	.area DSEG(DATA)
+00775                       _PLUSW2	.equ	0xE
+00776                       
+00777                       	.area DSEG(DATA)
+00778                       _FSR0H	.equ	0xF
+00779                       
+00780                       	.area DSEG(DATA)
+00781                       _FSR0L	.equ	0x10
+00782                       
+00783                       	.area DSEG(DATA)
+00784                       _FSR1H	.equ	0x11
+00785                       
+00786                       	.area DSEG(DATA)
+00787                       _FSR1L	.equ	0x12
+00788                       
+00789                       	.area DSEG(DATA)
+00790                       _FSR2H	.equ	0x13
+00791                       
+00792                       	.area DSEG(DATA)
+00793                       _FSR2L	.equ	0x14
+00794                       
+00795                       	.area DSEG(DATA)
+00796                       _TOSH	.equ	0x16
+00797                       
+00798                       	.area DSEG(DATA)
+00799                       _TOSL	.equ	0x17
+00800                       
+00801                       	.area DSEG(DATA)
+00802                       _SKCN	.equ	0x18
+00803                       
+00804                       	.area DSEG(DATA)
+00805                       _PCLATH	.equ	0x1A
+00806                       
+00807                       	.area DSEG(DATA)
+00808                       _PCLATL	.equ	0x1B
+00809                       
+00810                       	.area DSEG(DATA)
+00811                       _TBLPTRH	.equ	0x1D
+00812                       
+00813                       	.area DSEG(DATA)
+00814                       _TBLPTRL	.equ	0x1E
+00815                       
+00816                       	.area DSEG(DATA)
+00817                       _TBLDH	.equ	0x1F
+00818                       
+00819                       	.area DSEG(DATA)
+00820                       _TBLDL	.equ	0x20
+00821                       
+00822                       	.area DSEG(DATA)
+00823                       _PRODH	.equ	0x21
+00824                       
+00825                       	.area DSEG(DATA)
+00826                       _PRODL	.equ	0x22
+00827                       
+00828                       	.area DSEG(DATA)
+00829                       _INTE0	.equ	0x23
+00830                       
+00831                       	.area DSEG(DATA)
+00832                       _INTE1	.equ	0x24
+00833                       
+00834                       	.area DSEG(DATA)
+00835                       _INTE2	.equ	0x25
+00836                       
+00837                       	.area DSEG(DATA)
+00838                       _INTF0	.equ	0x26
+00839                       
+00840                       	.area DSEG(DATA)
+00841                       _INTF1	.equ	0x27
+00842                       
+00843                       	.area DSEG(DATA)
+00844                       _INTF2	.equ	0x28
+00845                       
+00846                       	.area DSEG(DATA)
+00847                       _WREG	.equ	0x29
+00848                       
+00849                       	.area DSEG(DATA)
+00850                       _BSRCN	.equ	0x2A
+00851                       
+00852                       	.area DSEG(DATA)
+00853                       _STATUS	.equ	0x2B
+00854                       
+00855                       	.area DSEG(DATA)
+00856                       _MSTAT	.equ	0x2B
+00857                       
+00858                       	.area DSEG(DATA)
+00859                       _PSTAT	.equ	0x2C
+00860                       
+00861                       	.area DSEG(DATA)
+00862                       _BIECN	.equ	0x2E
+00863                       
+00864                       	.area DSEG(DATA)
+00865                       _BIEARH	.equ	0x2F
+00866                       
+00867                       	.area DSEG(DATA)
+00868                       _BIEARL	.equ	0x30
+00869                       
+00870                       	.area DSEG(DATA)
+00871                       _BIEDRH	.equ	0x31
+00872                       
+00873                       	.area DSEG(DATA)
+00874                       _BIEDRL	.equ	0x32
+00875                       
+00876                       	.area DSEG(DATA)
+00877                       _PWRCN	.equ	0x33
+00878                       
+00879                       	.area DSEG(DATA)
+00880                       _OSCCN0	.equ	0x34
+00881                       
+00882                       	.area DSEG(DATA)
+00883                       _OSCCN1	.equ	0x35
+00884                       
+00885                       	.area DSEG(DATA)
+00886                       _OSCCN2	.equ	0x36
+00887                       
+00888                       	.area DSEG(DATA)
+00889                       _CSFCN0	.equ	0x37
+00890                       
+00891                       	.area DSEG(DATA)
+00892                       _CSFCN1	.equ	0x38
+00893                       
+00894                       	.area DSEG(DATA)
+00895                       _WDTCN	.equ	0x39
+00896                       
+00897                       	.area DSEG(DATA)
+00898                       _AD1H	.equ	0x3A
+00899                       
+00900                       	.area DSEG(DATA)
+00901                       _AD1M	.equ	0x3B
+00902                       
+00903                       	.area DSEG(DATA)
+00904                       _AD1L	.equ	0x3C
+00905                       
+00906                       	.area DSEG(DATA)
+00907                       _AD1CN0	.equ	0x3D
+00908                       
+00909                       	.area DSEG(DATA)
+00910                       _AD1CN1	.equ	0x3E
+00911                       
+00912                       	.area DSEG(DATA)
+00913                       _AD1CN2	.equ	0x3F
+00914                       
+00915                       	.area DSEG(DATA)
+00916                       _AD1CN3	.equ	0x40
+00917                       
+00918                       	.area DSEG(DATA)
+00919                       _AD1CN4	.equ	0x41
+00920                       
+00921                       	.area DSEG(DATA)
+00922                       _AD1CN5	.equ	0x42
+00923                       
+00924                       	.area DSEG(DATA)
+00925                       _LVDCN	.equ	0x43
+00926                       
+00927                       	.area DSEG(DATA)
+00928                       _TMA1CN	.equ	0x44
+00929                       
+00930                       	.area DSEG(DATA)
+00931                       _TMA1R	.equ	0x45
+00932                       
+00933                       	.area DSEG(DATA)
+00934                       _TMA1C	.equ	0x46
+00935                       
+00936                       	.area DSEG(DATA)
+00937                       _TB1FLAG	.equ	0x47
+00938                       
+00939                       	.area DSEG(DATA)
+00940                       _TB1CN0	.equ	0x48
+00941                       
+00942                       	.area DSEG(DATA)
+00943                       _TB1CN1	.equ	0x49
+00944                       
+00945                       	.area DSEG(DATA)
+00946                       _TB1RH	.equ	0x4A
+00947                       
+00948                       	.area DSEG(DATA)
+00949                       _TB1RL	.equ	0x4B
+00950                       
+00951                       	.area DSEG(DATA)
+00952                       _TB1C0H	.equ	0x4C
+00953                       
+00954                       	.area DSEG(DATA)
+00955                       _TB1C0L	.equ	0x4D
+00956                       
+00957                       	.area DSEG(DATA)
+00958                       _TB1C1H	.equ	0x4E
+00959                       
+00960                       	.area DSEG(DATA)
+00961                       _TB1C1L	.equ	0x4F
+00962                       
+00963                       	.area DSEG(DATA)
+00964                       _TB1C2H	.equ	0x50
+00965                       
+00966                       	.area DSEG(DATA)
+00967                       _TB1C2L	.equ	0x51
+00968                       
+00969                       	.area DSEG(DATA)
+00970                       _TC1CN0	.equ	0x52
+00971                       
+00972                       	.area DSEG(DATA)
+00973                       _PT1	.equ	0x53
+00974                       
+00975                       	.area DSEG(DATA)
+00976                       _TRISC1	.equ	0x54
+00977                       
+00978                       	.area DSEG(DATA)
+00979                       _PT1DA	.equ	0x55
+00980                       
+00981                       	.area DSEG(DATA)
+00982                       _PT1PU	.equ	0x56
+00983                       
+00984                       	.area DSEG(DATA)
+00985                       _PT1M1	.equ	0x57
+00986                       
+00987                       	.area DSEG(DATA)
+00988                       _PT1INT	.equ	0x58
+00989                       
+00990                       	.area DSEG(DATA)
+00991                       _PT1INTE	.equ	0x59
+00992                       
+00993                       	.area DSEG(DATA)
+00994                       _PT1INTF	.equ	0x5A
+00995                       
+00996                       	.area DSEG(DATA)
+00997                       _PT2	.equ	0x5B
+00998                       
+00999                       	.area DSEG(DATA)
+01000                       _TRISC2	.equ	0x5C
+01001                       
+01002                       	.area DSEG(DATA)
+01003                       _PT2DA	.equ	0x5D
+01004                       
+01005                       	.area DSEG(DATA)
+01006                       _PT2PU	.equ	0x5E
+01007                       
+01008                       	.area DSEG(DATA)
+01009                       _PT2INT	.equ	0x5F
+01010                       
+01011                       	.area DSEG(DATA)
+01012                       _PT2INTE	.equ	0x60
+01013                       
+01014                       	.area DSEG(DATA)
+01015                       _PT2INTF	.equ	0x61
+01016                       
+01017                       	.area DSEG(DATA)
+01018                       _PT6	.equ	0x62
+01019                       
+01020                       	.area DSEG(DATA)
+01021                       _TRISC6	.equ	0x63
+01022                       
+01023                       	.area DSEG(DATA)
+01024                       _PT6DA	.equ	0x64
+01025                       
+01026                       	.area DSEG(DATA)
+01027                       _PT6PU	.equ	0x65
+01028                       
+01029                       	.area DSEG(DATA)
+01030                       _PT7	.equ	0x66
+01031                       
+01032                       	.area DSEG(DATA)
+01033                       _TRISC7	.equ	0x67
+01034                       
+01035                       	.area DSEG(DATA)
+01036                       _PT7DA	.equ	0x68
+01037                       
+01038                       	.area DSEG(DATA)
+01039                       _PT7PU	.equ	0x69
+01040                       
+01041                       	.area DSEG(DATA)
+01042                       _PT8	.equ	0x6A
+01043                       
+01044                       	.area DSEG(DATA)
+01045                       _TRISC8	.equ	0x6B
+01046                       
+01047                       	.area DSEG(DATA)
+01048                       _PT8DA	.equ	0x6C
+01049                       
+01050                       	.area DSEG(DATA)
+01051                       _PT8PU	.equ	0x6D
+01052                       
+01053                       	.area DSEG(DATA)
+01054                       _SSPCN0	.equ	0x6E
+01055                       
+01056                       	.area DSEG(DATA)
+01057                       _SSPSTA0	.equ	0x6F
+01058                       
+01059                       	.area DSEG(DATA)
+01060                       _SSPBUF0	.equ	0x70
+01061                       
+01062                       	.area DSEG(DATA)
+01063                       _CFG0	.equ	0x71
+01064                       
+01065                       	.area DSEG(DATA)
+01066                       _ACT0	.equ	0x72
+01067                       
+01068                       	.area DSEG(DATA)
+01069                       _STA0	.equ	0x73
+01070                       
+01071                       	.area DSEG(DATA)
+01072                       _CRG0	.equ	0x74
+01073                       
+01074                       	.area DSEG(DATA)
+01075                       _TOC0	.equ	0x75
+01076                       
+01077                       	.area DSEG(DATA)
+01078                       _RDB0	.equ	0x76
+01079                       
+01080                       	.area DSEG(DATA)
+01081                       _TDB0	.equ	0x77
+01082                       
+01083                       	.area DSEG(DATA)
+01084                       _SID0	.equ	0x78
+01085                       
+01086                       	.area DSEG(DATA)
+01087                       _UR0CN	.equ	0x79
+01088                       
+01089                       	.area DSEG(DATA)
+01090                       _UR0STA	.equ	0x7A
+01091                       
+01092                       	.area DSEG(DATA)
+01093                       _BA0CN	.equ	0x7B
+01094                       
+01095                       	.area DSEG(DATA)
+01096                       _BG0RH	.equ	0x7C
+01097                       
+01098                       	.area DSEG(DATA)
+01099                       _BG0RL	.equ	0x7D
+01100                       
+01101                       	.area DSEG(DATA)
+01102                       _TX0R	.equ	0x7E
+01103                       
+01104                       	.area DSEG(DATA)
+01105                       _RC0REG	.equ	0x7F
+01106                       
+01107                       	.area DSEG(DATA)
+01108                       _LCDCN1	.equ	0x180
+01109                       
+01110                       	.area DSEG(DATA)
+01111                       _LCDCN2	.equ	0x181
+01112                       
+01113                       	.area DSEG(DATA)
+01114                       _LCDCN3	.equ	0x182
+01115                       
+01116                       	.area DSEG(DATA)
+01117                       _LCDCN4	.equ	0x183
+01118                       
+01119                       	.area DSEG(DATA)
+01120                       _LCDCN5	.equ	0x184
+01121                       
+01122                       	.area DSEG(DATA)
+01123                       _LCDCN6	.equ	0x185
+01124                       
+01125                       	.area DSEG(DATA)
+01126                       _LCDCN7	.equ	0x186
+01127                       
+01128                       	.area DSEG(DATA)
+01129                       _LCDCN8	.equ	0x187
+01130                       
+01131                       	.area DSEG(DATA)
+01132                       _LCD0	.equ	0x188
+01133                       
+01134                       	.area DSEG(DATA)
+01135                       _LCD1	.equ	0x189
+01136                       
+01137                       	.area DSEG(DATA)
+01138                       _LCD2	.equ	0x18A
+01139                       
+01140                       	.area DSEG(DATA)
+01141                       _LCD3	.equ	0x18B
+01142                       
+01143                       	.area DSEG(DATA)
+01144                       _LCD4	.equ	0x18C
+01145                       
+01146                       	.area DSEG(DATA)
+01147                       _LCD5	.equ	0x18D
+01148                       
+01149                       	.area DSEG(DATA)
+01150                       _LCD6	.equ	0x18E
+01151                       
+01152                       	.area DSEG(DATA)
+01153                       _LCD7	.equ	0x18F
+01154                       
+01155                       	.area DSEG(DATA)
+01156                       _LCD8	.equ	0x190
+01157                       
+01158                       	.area DSEG(DATA)
+01159                       _LCD9	.equ	0x191
+01160                       
+01161                       	.area DSEG(DATA)
+01162                       _UR2CN	.equ	0x192
+01163                       
+01164                       	.area DSEG(DATA)
+01165                       _UR2STA	.equ	0x193
+01166                       
+01167                       	.area DSEG(DATA)
+01168                       _BA2CN	.equ	0x194
+01169                       
+01170                       	.area DSEG(DATA)
+01171                       _BG2RH	.equ	0x195
+01172                       
+01173                       	.area DSEG(DATA)
+01174                       _BG2RL	.equ	0x196
+01175                       
+01176                       	.area DSEG(DATA)
+01177                       _TX2R	.equ	0x197
+01178                       
+01179                       	.area DSEG(DATA)
+01180                       _RC2REG	.equ	0x198
+01181                       
+01182                       	.area DSEG(DATA)
+01183                       _TMA2R	.equ	0x1E8
+01184                       
+01185                       	.area DSEG(DATA)
+01186                       _TMA2C	.equ	0x1E9
+01187                       
+01188                       	.area DSEG(DATA)
+01189                       _LEDCN	.equ	0x1EA
+01190                       
+01191                       	.area DSEG(DATA)
+01192                       _IQ0	.equ	0x1EB
+01193                       
+01194                       	.area DSEG(DATA)
+01195                       _IQ1	.equ	0x1EC
+01196                       
+01197                       	.area DSEG(DATA)
+01198                       _DGCON1	.equ	0x1ED
+01199                       
+01200                       	.area DSEG(DATA)
+01201                       _DGCON2	.equ	0x1EE
+01202                       
+01203                       	.area DSEG(DATA)
+01204                       _ADCRH	.equ	0x3A
+01205                       
+01206                       	.area DSEG(DATA)
+01207                       _ADCRM	.equ	0x3B
+01208                       
+01209                       	.area DSEG(DATA)
+01210                       _ADCRL	.equ	0x3C
+01211                       
+01212                       ;--------------------------------------------------------
+01213                       ; absolute symbol definitions
+01214                       ;--------------------------------------------------------
+01215                       ;--------------------------------------------------------
+01216                       ; compiler-defined variables
+01217                       ;--------------------------------------------------------
+01218                       	.area IDATA (DATA,REL,CON); pre-def
+01219                       	.area IDATAROM (CODE,REL,CON); pre-def
+01220                       	.area UDATA (DATA,REL,CON); pre-def
+01221                       	.area UDATA (DATA,REL,CON) ;UDL_Drv_BIE_0	udata
+01222 0000 --               r0x1094:	.ds	1
+01223 0001 --               r0x1097:	.ds	1
+01224 0002 --               r0x109B:	.ds	1
+01225 0003 --               r0x10A2:	.ds	1
+01226 0004 --               r0x10A3:	.ds	1
+01227                       	.area LOCALSTK (STK); local stack var
+01228 0000 --               _BIE_Write_STK00:	.ds	1
+01229                       	.globl _BIE_Write_STK00
+01230 0001 --               _BIE_Write_STK01:	.ds	1
+01231                       	.globl _BIE_Write_STK01
+01232                       	.globl _HY17P56WR3_STK01
+01233                       	.globl _HY17P56WR3_STK00
+01234                       ;--------------------------------------------------------
+01235                       ; initialized data
+01236                       ;--------------------------------------------------------
+01237                       ;--------------------------------------------------------
+01238                       ; initialized data - mirror
+01239                       ;--------------------------------------------------------
+01240                       	;Following is optimization info, 
+01241                       	;xxcdbxxW:dst:src+offset:srclit:just-remove
+01242                       	;--cdb--W:r0x10A4:STK00+0:-1:0
+01243                       	;--cdb--W:r0x10A5:NULL+0:-1:1
+01244                       	;--cdb--W:_BIE_Write_STK00:NULL+0:-1:1
+01245                       	;--cdb--W:r0x1095:NULL+0:-1:1
+01246                       	;--cdb--W:r0x1096:NULL+0:-1:1
+01247                       	;--cdb--W:r0x1095:NULL+0:0:0
+01248                       	;--cdb--W:r0x1094:NULL+0:-1:1
+01249                       	;--cdb--W:r0x1096:r0x1094+0:-1:0
+01250                       	end

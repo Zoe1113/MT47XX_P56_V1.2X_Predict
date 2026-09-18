@@ -1,0 +1,2199 @@
+00001                       ;--------------------------------------------------------
+00002                       ; File Created by SDCC : free open source ISO C Compiler
+00003                       ; Version 4.5.2 #bf155f72c (MSVC)
+00004                       ;--------------------------------------------------------
+00005                       ; Port for HYCON CPU
+00006                       ;--------------------------------------------------------
+00007                       ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+00008                       ;;	.file	".\Source\Drv_LCD_4718.c"
+00009                       	.module Drv_LCD_4718
+00010                       	;.list	p=HY17P56
+00011                       	;--cdb--T:FDrv_LCD_4718$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]
+00012                       	;--cdb--T:FDrv_LCD_4718$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]
+00013                       	;--cdb--T:FDrv_LCD_4718$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]
+00014                       	;--cdb--T:FDrv_LCD_4718$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]
+00015                       	;--cdb--T:FDrv_LCD_4718$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]
+00016                       	;--cdb--T:FDrv_LCD_4718$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]
+00017                       	;--cdb--T:FDrv_LCD_4718$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]
+00018                       	;--cdb--T:FDrv_LCD_4718$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]
+00019                       	;--cdb--T:FDrv_LCD_4718$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]
+00020                       	;--cdb--T:FDrv_LCD_4718$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]
+00021                       	;--cdb--T:FDrv_LCD_4718$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]
+00022                       	;--cdb--T:FDrv_LCD_4718$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]
+00023                       	;--cdb--T:FDrv_LCD_4718$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]
+00024                       	;--cdb--T:FDrv_LCD_4718$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]
+00025                       	;--cdb--T:FDrv_LCD_4718$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]
+00026                       	;--cdb--T:FDrv_LCD_4718$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]
+00027                       	;--cdb--T:FDrv_LCD_4718$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]
+00028                       	;--cdb--T:FDrv_LCD_4718$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]
+00029                       	;--cdb--T:FDrv_LCD_4718$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]
+00030                       	;--cdb--T:FDrv_LCD_4718$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]
+00031                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00032                       	;--cdb--F:Drv_LCD_4718:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0,0,0,0
+00033                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00034                       	;--cdb--F:Drv_LCD_4718:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0,0,0,0
+00035                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00036                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00037                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00038                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00039                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00040                       	;--cdb--S:G$atoll$0$0({2}DF,SI:SE),C,0,0
+00041                       	;--cdb--S:G$strtoll$0$0({2}DF,SI:SE),C,0,0
+00042                       	;--cdb--S:G$strtoull$0$0({2}DF,SI:UE),C,0,0
+00043                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00044                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00045                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00046                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00047                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00048                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00049                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00050                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00051                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00052                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00053                       	;--cdb--F:Drv_LCD_4718:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0,0,0,0
+00054                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00055                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00056                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00057                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00058                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00059                       	;--cdb--S:G$llabs$0$0({2}DF,SI:SE),C,0,0
+00060                       	;--cdb--S:G$div$0$0({2}DF,ST__00000000(T:FDrv_LCD_4718$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),C,0,0
+00061                       	;--cdb--S:G$ldiv$0$0({2}DF,ST__00000001(T:FDrv_LCD_4718$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),C,0,0
+00062                       	;--cdb--S:G$lldiv$0$0({2}DF,ST__00000002(T:FDrv_LCD_4718$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),C,0,0
+00063                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00064                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00065                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00066                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00067                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00068                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00069                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00070                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00071                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00072                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00073                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00074                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00075                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00076                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00077                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00078                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00079                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00080                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00081                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00082                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00083                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00084                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00085                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00086                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00087                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00088                       	;--cdb--S:G$memset_explicit$0$0({2}DF,DT,SV:S),C,0,0
+00089                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00090                       	;--cdb--S:G$strnlen$0$0({2}DF,SI:U),C,0,0
+00091                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00092                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00093                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00094                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00095                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00096                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00097                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00098                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+00099                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+00100                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+00101                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+00102                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+00103                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+00104                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+00105                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+00106                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+00107                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+00108                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+00109                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+00110                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+00111                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+00112                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+00113                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+00114                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+00115                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+00116                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+00117                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+00118                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+00119                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+00120                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+00121                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+00122                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+00123                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+00124                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+00125                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+00126                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+00127                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+00128                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+00129                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+00130                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+00131                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+00132                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+00133                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+00134                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+00135                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+00136                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+00137                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+00138                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+00139                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+00140                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+00141                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+00142                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+00143                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+00144                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+00145                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+00146                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+00147                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+00148                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+00149                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+00150                       	;--cdb--F:Drv_LCD_4718:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0,0,0,0
+00151                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+00152                       	;--cdb--F:Drv_LCD_4718:G$Disp_Low$0$0({2}DF,SV:S),C,0,0,0,0,0
+00153                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+00154                       	;--cdb--F:Drv_LCD_4718:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0,0,0,0
+00155                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+00156                       	;--cdb--F:Drv_LCD_4718:G$Disp_All$0$0({2}DF,SV:S),C,0,0,0,0,0
+00157                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+00158                       	;--cdb--F:Drv_LCD_4718:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0,0,0,0
+00159                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+00160                       	;--cdb--F:Drv_LCD_4718:G$Disp_Err$0$0({2}DF,SV:S),C,0,0,0,0,0
+00161                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+00162                       	;--cdb--F:Drv_LCD_4718:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0,0,0,0
+00163                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+00164                       	;--cdb--F:Drv_LCD_4718:G$Disp_Version$0$0({2}DF,SV:S),C,0,0,0,0,0
+00165                       	;--cdb--S:G$_divuchar$0$0({2}DF,SC:U),C,0,0
+00166                       	;--cdb--S:G$_moduchar$0$0({2}DF,SC:U),C,0,0
+00167                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+00168                       	;--cdb--F:Drv_LCD_4718:G$Disp_Code$0$0({2}DF,SV:S),C,0,0,0,0,0
+00169                       	;--cdb--S:G$_divuint$0$0({2}DF,SI:U),C,0,0
+00170                       	;--cdb--S:G$_moduint$0$0({2}DF,SI:U),C,0,0
+00171                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+00172                       	;--cdb--F:Drv_LCD_4718:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0,0,0,0
+00173                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+00174                       	;--cdb--F:Drv_LCD_4718:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0,0,0,0
+00175                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+00176                       	;--cdb--F:Drv_LCD_4718:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0,0,0,0
+00177                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+00178                       	;--cdb--F:Drv_LCD_4718:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0,0,0,0
+00179                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+00180                       	;--cdb--F:Drv_LCD_4718:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0,0,0,0
+00181                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+00182                       	;--cdb--F:Drv_LCD_4718:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0,0,0,0
+00183                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+00184                       	;--cdb--F:Drv_LCD_4718:G$Disp_End$0$0({2}DF,SV:S),C,0,0,0,0,0
+00185                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+00186                       	;--cdb--F:Drv_LCD_4718:G$Disp_Off$0$0({2}DF,SV:S),C,0,0,0,0,0
+00187                       ;--------------------------------------------------------
+00188                       ; overlayable items in internal ram 
+00189                       ;--------------------------------------------------------
+00190                       ;	udata_ovr
+00191                       .area CCODE (code,REL,CON) ; Drv_LCD_4718-code 
+00192                       .globl _Disp_Off
+00193                       
+00194                       ;--------------------------------------------------------
+00195 0000 --              	.FUNC _Disp_Off:$r:0:0
+00196                       ;--------------------------------------------------------
+00197                       ;	;.line	521; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x53;
+00198 0000                  _Disp_Off:	;Function start
+00199 0000 0653             	MVL	0x53
+00200 0001 6688             	MVF	_LCD0,1,0
+00201                       ;	;.line	523; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x33;
+00202 0002 0633             	MVL	0x33
+00203 0003 6689             	MVF	_LCD1,1,0
+00204                       ;	;.line	525; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x03;
+00205 0004 0603             	MVL	0x03
+00206 0005 668A             	MVF	_LCD2,1,0
+00207                       ;	;.line	527; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x33;
+00208 0006 0633             	MVL	0x33
+00209 0007 668B             	MVF	_LCD3,1,0
+00210                       ;	;.line	529; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00211 0008 0C8C             	CLRF	_LCD4,0
+00212                       ;	;.line	531; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00213 0009 0C8D             	CLRF	_LCD5,0
+00214                       ;	;.line	533; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00215 000A 0C8E             	CLRF	_LCD6,0
+00216                       ;	;.line	534; ".\Source\Drv_LCD_4718.c"	}
+00217 000B 000A             	RET	
+00218                       ; exit point of _Disp_Off
+00219 000C --              	.ENDFUNC	_Disp_Off
+00220                       ;--------------------------------------------------------
+00221                       
+00222                       .globl _Disp_End
+00223                       
+00224                       ;--------------------------------------------------------
+00225 000C --              	.FUNC _Disp_End:$r:0:0
+00226                       ;--------------------------------------------------------
+00227                       ;	;.line	498; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
+00228 000C                  _Disp_End:	;Function start
+00229 000C 0673             	MVL	0x73
+00230 000D 6688             	MVF	_LCD0,1,0
+00231                       ;	;.line	500; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
+00232 000E 0620             	MVL	0x20
+00233 000F 6689             	MVF	_LCD1,1,0
+00234                       ;	;.line	502; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x22;
+00235 0010 0622             	MVL	0x22
+00236 0011 668A             	MVF	_LCD2,1,0
+00237                       ;	;.line	504; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x62;
+00238 0012 0662             	MVL	0x62
+00239 0013 668B             	MVF	_LCD3,1,0
+00240                       ;	;.line	506; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x03;
+00241 0014 0603             	MVL	0x03
+00242 0015 668C             	MVF	_LCD4,1,0
+00243                       ;	;.line	508; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00244 0016 0C8D             	CLRF	_LCD5,0
+00245                       ;	;.line	510; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00246 0017 0C8E             	CLRF	_LCD6,0
+00247                       ;	;.line	511; ".\Source\Drv_LCD_4718.c"	}
+00248 0018 000A             	RET	
+00249                       ; exit point of _Disp_End
+00250 0019 --              	.ENDFUNC	_Disp_End
+00251                       ;--------------------------------------------------------
+00252                       
+00253                       .globl _Disp_BrownOut
+00254                       
+00255                       ;--------------------------------------------------------
+00256 0019 --              	.FUNC _Disp_BrownOut:$r:0:0
+00257                       ;--------------------------------------------------------
+00258                       ;	;.line	475; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
+00259 0019                  _Disp_BrownOut:	;Function start
+00260 0019 0C88             	CLRF	_LCD0,0
+00261                       ;	;.line	477; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
+00262 001A 0C89             	CLRF	_LCD1,0
+00263                       ;	;.line	479; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x00;
+00264 001B 0C8A             	CLRF	_LCD2,0
+00265                       ;	;.line	481; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x00;
+00266 001C 0C8B             	CLRF	_LCD3,0
+00267                       ;	;.line	483; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x04;
+00268 001D 0604             	MVL	0x04
+00269 001E 668C             	MVF	_LCD4,1,0
+00270                       ;	;.line	485; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00271 001F 0C8D             	CLRF	_LCD5,0
+00272                       ;	;.line	487; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00273 0020 0C8E             	CLRF	_LCD6,0
+00274                       ;	;.line	488; ".\Source\Drv_LCD_4718.c"	}
+00275 0021 000A             	RET	
+00276                       ; exit point of _Disp_BrownOut
+00277 0022 --              	.ENDFUNC	_Disp_BrownOut
+00278                       ;--------------------------------------------------------
+00279                       
+00280                       .globl _Disp_CAL
+00281                       
+00282                       ;--------------------------------------------------------
+00283 0022 --              	.FUNC _Disp_CAL:$r:0:0
+00284                       ;--------------------------------------------------------
+00285                       ;	;.line	452; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x53;
+00286 0022                  _Disp_CAL:	;Function start
+00287 0022 0653             	MVL	0x53
+00288 0023 6688             	MVF	_LCD0,1,0
+00289                       ;	;.line	454; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x30;
+00290 0024 0630             	MVL	0x30
+00291 0025 6689             	MVF	_LCD1,1,0
+00292                       ;	;.line	456; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x33;
+00293 0026 0633             	MVL	0x33
+00294 0027 668A             	MVF	_LCD2,1,0
+00295                       ;	;.line	458; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x43;
+00296 0028 0643             	MVL	0x43
+00297 0029 668B             	MVF	_LCD3,1,0
+00298                       ;	;.line	460; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00299 002A 0C8C             	CLRF	_LCD4,0
+00300                       ;	;.line	462; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00301 002B 0C8D             	CLRF	_LCD5,0
+00302                       ;	;.line	464; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00303 002C 0C8E             	CLRF	_LCD6,0
+00304                       ;	;.line	465; ".\Source\Drv_LCD_4718.c"	}
+00305 002D 000A             	RET	
+00306                       ; exit point of _Disp_CAL
+00307 002E --              	.ENDFUNC	_Disp_CAL
+00308                       ;--------------------------------------------------------
+00309                       
+00310                       .globl _Disp_Bth
+00311                       
+00312                       ;--------------------------------------------------------
+00313 002E --              	.FUNC _Disp_Bth:$r:0:0
+00314                       ;--------------------------------------------------------
+00315                       ;	;.line	429; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x63;
+00316 002E                  _Disp_Bth:	;Function start
+00317 002E 0663             	MVL	0x63
+00318 002F 6688             	MVF	_LCD0,1,0
+00319                       ;	;.line	431; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x32;
+00320 0030 0632             	MVL	0x32
+00321 0031 6689             	MVF	_LCD1,1,0
+00322                       ;	;.line	433; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x06;
+00323 0032 0606             	MVL	0x06
+00324 0033 668A             	MVF	_LCD2,1,0
+00325                       ;	;.line	435; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x23;
+00326 0034 0623             	MVL	0x23
+00327 0035 668B             	MVF	_LCD3,1,0
+00328                       ;	;.line	437; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x02;
+00329 0036 0602             	MVL	0x02
+00330 0037 668C             	MVF	_LCD4,1,0
+00331                       ;	;.line	439; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00332 0038 0C8D             	CLRF	_LCD5,0
+00333                       ;	;.line	441; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00334 0039 0C8E             	CLRF	_LCD6,0
+00335                       ;	;.line	442; ".\Source\Drv_LCD_4718.c"	}
+00336 003A 000A             	RET	
+00337                       ; exit point of _Disp_Bth
+00338 003B --              	.ENDFUNC	_Disp_Bth
+00339                       ;--------------------------------------------------------
+00340                       
+00341                       .globl _Disp_Rct
+00342                       
+00343                       ;--------------------------------------------------------
+00344 003B --              	.FUNC _Disp_Rct:$r:0:0
+00345                       ;--------------------------------------------------------
+00346                       ;	;.line	406; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x22;
+00347 003B                  _Disp_Rct:	;Function start
+00348 003B 0622             	MVL	0x22
+00349 003C 6688             	MVF	_LCD0,1,0
+00350                       ;	;.line	408; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
+00351 003D 0620             	MVL	0x20
+00352 003E 6689             	MVF	_LCD1,1,0
+00353                       ;	;.line	410; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x06;
+00354 003F 0606             	MVL	0x06
+00355 0040 668A             	MVF	_LCD2,1,0
+00356                       ;	;.line	412; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x63;
+00357 0041 0663             	MVL	0x63
+00358 0042 668B             	MVF	_LCD3,1,0
+00359                       ;	;.line	414; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00360 0043 0C8C             	CLRF	_LCD4,0
+00361                       ;	;.line	416; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00362 0044 0C8D             	CLRF	_LCD5,0
+00363                       ;	;.line	418; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00364 0045 0C8E             	CLRF	_LCD6,0
+00365                       ;	;.line	419; ".\Source\Drv_LCD_4718.c"	}
+00366 0046 000A             	RET	
+00367                       ; exit point of _Disp_Rct
+00368 0047 --              	.ENDFUNC	_Disp_Rct
+00369                       ;--------------------------------------------------------
+00370                       
+00371                       .globl _Disp_Udr
+00372                       
+00373                       ;--------------------------------------------------------
+00374 0047 --              	.FUNC _Disp_Udr:$r:0:0
+00375                       ;--------------------------------------------------------
+00376                       ;	;.line	383; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x42;
+00377 0047                  _Disp_Udr:	;Function start
+00378 0047 0642             	MVL	0x42
+00379 0048 6688             	MVF	_LCD0,1,0
+00380                       ;	;.line	385; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x22;
+00381 0049 0622             	MVL	0x22
+00382 004A 6689             	MVF	_LCD1,1,0
+00383                       ;	;.line	387; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x36;
+00384 004B 0636             	MVL	0x36
+00385 004C 668A             	MVF	_LCD2,1,0
+00386                       ;	;.line	389; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x22;
+00387 004D 0622             	MVL	0x22
+00388 004E 668B             	MVF	_LCD3,1,0
+00389                       ;	;.line	391; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00390 004F 0C8C             	CLRF	_LCD4,0
+00391                       ;	;.line	393; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00392 0050 0C8D             	CLRF	_LCD5,0
+00393                       ;	;.line	395; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00394 0051 0C8E             	CLRF	_LCD6,0
+00395                       ;	;.line	396; ".\Source\Drv_LCD_4718.c"	}
+00396 0052 000A             	RET	
+00397                       ; exit point of _Disp_Udr
+00398 0053 --              	.ENDFUNC	_Disp_Udr
+00399                       ;--------------------------------------------------------
+00400                       
+00401                       .globl _Disp_Orl
+00402                       
+00403                       ;--------------------------------------------------------
+00404 0053 --              	.FUNC _Disp_Orl:$r:0:0
+00405                       ;--------------------------------------------------------
+00406                       ;	;.line	360; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x62;
+00407 0053                  _Disp_Orl:	;Function start
+00408 0053 0662             	MVL	0x62
+00409 0054 6688             	MVF	_LCD0,1,0
+00410                       ;	;.line	362; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x22;
+00411 0055 0622             	MVL	0x22
+00412 0056 6689             	MVF	_LCD1,1,0
+00413                       ;	;.line	364; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
+00414 0057 0602             	MVL	0x02
+00415 0058 668A             	MVF	_LCD2,1,0
+00416                       ;	;.line	366; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x43;
+00417 0059 0643             	MVL	0x43
+00418 005A 668B             	MVF	_LCD3,1,0
+00419                       ;	;.line	368; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00420 005B 0C8C             	CLRF	_LCD4,0
+00421                       ;	;.line	370; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00422 005C 0C8D             	CLRF	_LCD5,0
+00423                       ;	;.line	372; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00424 005D 0C8E             	CLRF	_LCD6,0
+00425                       ;	;.line	373; ".\Source\Drv_LCD_4718.c"	}
+00426 005E 000A             	RET	
+00427                       ; exit point of _Disp_Orl
+00428 005F --              	.ENDFUNC	_Disp_Orl
+00429                       ;--------------------------------------------------------
+00430                       
+00431                       .globl _Disp_Code
+00432                       
+00433                       ;--------------------------------------------------------
+00434                       	.FUNC _Disp_Code:$r:0:2:$C:__divuint:$C:__moduint:$C:__divuchar:$C:__g2ptrget1\
+00435                       :$C:__g2ptrget2\
+00436                       :$L:r0x10A1:$L:_Disp_Code_STK00:$L:r0x10A3:$L:r0x10A2:$L:_Disp_Code_NumDisp_10000_421\
+00437 005F --              :$L:r0x10A5:$L:r0x10A6
+00438                       ;--------------------------------------------------------
+00439                       ;	;.line	324; ".\Source\Drv_LCD_4718.c"	void Disp_Code(uint16 num)
+00440 005F                  _Disp_Code:	;Function start
+00441 005F 6600             	MVF	r0x10A1,1,0
+00442                       ;	;.line	330; ".\Source\Drv_LCD_4718.c"	NumDisp[2] = num / 100;
+00443 0060 0664             	MVL	0x64
+00444 0061 6600             	MVF	__divuint_STK02,1,0
+00445 0062 0C00             	CLRF	__divuint_STK01,0
+00446 0063 6400             	MVF	_Disp_Code_STK00,0,0
+00447 0064 6600             	MVF	__divuint_STK00,1,0
+00448 0065 6400             	MVF	r0x10A1,0,0
+00449 0066 C000 F000        	CALL	__divuint
+00450                       	.CHKPARA __divuint 4
+00451 0068 6400             	MVF	STK00,0,0
+00452 0069 6600             	MVF	(_Disp_Code_NumDisp_10000_421 + 2),1,0
+00453                       ;	;.line	332; ".\Source\Drv_LCD_4718.c"	NumDisp[1] = num % 100 / 10;
+00454 006A 0664             	MVL	0x64
+00455 006B 6600             	MVF	__moduint_STK02,1,0
+00456 006C 0C00             	CLRF	__moduint_STK01,0
+00457 006D 6400             	MVF	_Disp_Code_STK00,0,0
+00458 006E 6600             	MVF	__moduint_STK00,1,0
+00459 006F 6400             	MVF	r0x10A1,0,0
+00460 0070 C000 F000        	CALL	__moduint
+00461                       	.CHKPARA __moduint 4
+00462 0072 060A             	MVL	0x0a
+00463 0073 6600             	MVF	__divuchar_STK00,1,0
+00464 0074 6400             	MVF	STK00,0,0
+00465 0075 C000 F000        	CALL	__divuchar
+00466 0077 6600             	MVF	(_Disp_Code_NumDisp_10000_421 + 1),1,0
+00467                       ;	;.line	334; ".\Source\Drv_LCD_4718.c"	NumDisp[0] = num % 10;
+00468 0078 060A             	MVL	0x0a
+00469 0079 6600             	MVF	__moduint_STK02,1,0
+00470 007A 0C00             	CLRF	__moduint_STK01,0
+00471 007B 6400             	MVF	_Disp_Code_STK00,0,0
+00472 007C 6600             	MVF	__moduint_STK00,1,0
+00473 007D 6400             	MVF	r0x10A1,0,0
+00474 007E C000 F000        	CALL	__moduint
+00475 0080 6400             	MVF	STK00,0,0
+00476 0081 6600             	MVF	r0x10A2,1,0
+00477 0082 6600             	MVF	(_Disp_Code_NumDisp_10000_421 + 0),1,0
+00478                       ;	;.line	337; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = NUM_CODE[NumDisp[2]];
+00479 0083 6400             	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
+00480 0084 0702             	MULL	0x02
+00481 0085 6422             	MVF	_PRODL,0,0
+00482 0086 0400             	ADDL	(_NUM_CODE + 0)
+00483 0087 6600             	MVF	__g2ptrget1_STK00,1,0
+00484 0088 0600             	MVL	high (_NUM_CODE + 0)
+00485 0089 1421             	ADDC	_PRODH,0,0
+00486 008A 0280             	IORL	0x80
+00487 008B C000 F000        	CALL	__g2ptrget1
+00488 008D 6688             	MVF	_LCD0,1,0
+00489                       ;	;.line	339; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = (NUM_CODE[NumDisp[2]] >> 8) + (NUM_CODE[NumDisp[1]] << 4);
+00490 008E 6400             	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
+00491 008F 0702             	MULL	0x02
+00492 0090 6422             	MVF	_PRODL,0,0
+00493 0091 0400             	ADDL	(_NUM_CODE + 0)
+00494 0092 6600             	MVF	__g2ptrget2_STK00,1,0
+00495 0093 0600             	MVL	high (_NUM_CODE + 0)
+00496 0094 1421             	ADDC	_PRODH,0,0
+00497 0095 0280             	IORL	0x80
+00498 0096 C000 F000        	CALL	__g2ptrget2
+00499 0098 6600             	MVF	r0x10A3,1,0
+00500 0099 6400             	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
+00501 009A 0702             	MULL	0x02
+00502 009B 6422             	MVF	_PRODL,0,0
+00503 009C 0400             	ADDL	(_NUM_CODE + 0)
+00504 009D 6600             	MVF	__g2ptrget1_STK00,1,0
+00505 009E 0600             	MVL	high (_NUM_CODE + 0)
+00506 009F 1421             	ADDC	_PRODH,0,0
+00507 00A0 0280             	IORL	0x80
+00508 00A1 C000 F000        	CALL	__g2ptrget1
+00509 00A3 6600             	MVF	r0x10A5,1,0
+00510 00A4 6000             	SWPF	r0x10A5,0,0
+00511 00A5 01F0             	ANDL	0xf0
+00512 00A6 1000             	ADDF	r0x10A3,0,0
+00513 00A7 6689             	MVF	_LCD1,1,0
+00514                       ;	;.line	341; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = NUM_CODE[NumDisp[1]] >> 4;
+00515 00A8 6400             	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
+00516 00A9 0702             	MULL	0x02
+00517 00AA 6422             	MVF	_PRODL,0,0
+00518 00AB 0400             	ADDL	(_NUM_CODE + 0)
+00519 00AC 6600             	MVF	__g2ptrget2_STK00,1,0
+00520 00AD 0600             	MVL	high (_NUM_CODE + 0)
+00521 00AE 1421             	ADDC	_PRODH,0,0
+00522 00AF 0280             	IORL	0x80
+00523 00B0 C000 F000        	CALL	__g2ptrget2
+00524 00B2 6600             	MVF	r0x10A5,1,0
+00525 00B3 6000             	SWPF	STK00,0,0
+00526 00B4 010F             	ANDL	0x0f
+00527 00B5 6600             	MVF	_Disp_Code_STK00,1,0
+00528 00B6 6000             	SWPF	r0x10A5,0,0
+00529 00B7 6600             	MVF	r0x10A6,1,0
+00530 00B8 01F0             	ANDL	0xf0
+00531 00B9 2E00             	IORF	_Disp_Code_STK00,1,0
+00532 00BA 2200             	XORF	r0x10A6,1,0
+00533 00BB 6400             	MVF	_Disp_Code_STK00,0,0
+00534 00BC 668A             	MVF	_LCD2,1,0
+00535                       ;	;.line	343; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[NumDisp[0]];
+00536 00BD 6400             	MVF	r0x10A2,0,0
+00537 00BE 0702             	MULL	0x02
+00538 00BF 6422             	MVF	_PRODL,0,0
+00539 00C0 0400             	ADDL	(_NUM_CODE + 0)
+00540 00C1 6600             	MVF	__g2ptrget2_STK00,1,0
+00541 00C2 0600             	MVL	high (_NUM_CODE + 0)
+00542 00C3 1421             	ADDC	_PRODH,0,0
+00543 00C4 0280             	IORL	0x80
+00544 00C5 C000 F000        	CALL	__g2ptrget2
+00545                       ;	;.line	345; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[NumDisp[0]] >> 8;
+00546 00C7 D000 F18B        	MVFF	STK00,_LCD3
+00547 00C9 668C             	MVF	_LCD4,1,0
+00548                       ;	;.line	347; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00549 00CA 0C8D             	CLRF	_LCD5,0
+00550                       ;	;.line	349; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00551 00CB 0C8E             	CLRF	_LCD6,0
+00552                       ;	;.line	350; ".\Source\Drv_LCD_4718.c"	}
+00553 00CC 000A             	RET	
+00554                       ; exit point of _Disp_Code
+00555 00CD --              	.ENDFUNC	_Disp_Code
+00556                       ;--------------------------------------------------------
+00557                       
+00558                       .globl _Disp_Version
+00559                       
+00560                       ;--------------------------------------------------------
+00561                       	.FUNC _Disp_Version:$r:0:1:$C:__divuchar:$C:__moduchar:$C:__g2ptrget1:$C:__g2ptrget2\
+00562                       :$L:r0x1094:$L:r0x1095:$L:_Disp_Version_NumDisp_10000_419:$L:r0x1096:$L:r0x1099\
+00563 00CD --              :$L:r0x1097
+00564                       ;--------------------------------------------------------
+00565                       ;	;.line	299; ".\Source\Drv_LCD_4718.c"	NumDisp[1] = num / 10;
+00566 00CD                  _Disp_Version:	;Function start
+00567 00CD 6600             	MVF	r0x1095,1,0
+00568 00CE 6600             	MVF	r0x1094,1,0
+00569 00CF 060A             	MVL	0x0a
+00570 00D0 6600             	MVF	__divuchar_STK00,1,0
+00571 00D1 6400             	MVF	r0x1094,0,0
+00572 00D2 C000 F000        	CALL	__divuchar
+00573                       	.CHKPARA __divuchar 2
+00574 00D4 6600             	MVF	(_Disp_Version_NumDisp_10000_419 + 1),1,0
+00575                       ;	;.line	301; ".\Source\Drv_LCD_4718.c"	NumDisp[0] = num % 10;
+00576 00D5 060A             	MVL	0x0a
+00577 00D6 6600             	MVF	__moduchar_STK00,1,0
+00578 00D7 6400             	MVF	r0x1095,0,0
+00579 00D8 C000 F000        	CALL	__moduchar
+00580                       	.CHKPARA __moduchar 2
+00581 00DA 6600             	MVF	r0x1095,1,0
+00582 00DB 6600             	MVF	(_Disp_Version_NumDisp_10000_419 + 0),1,0
+00583                       ;	;.line	304; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
+00584 00DC 0C88             	CLRF	_LCD0,0
+00585                       ;	;.line	306; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = NUM_CODE[NumDisp[1]] << 4;
+00586 00DD 6400             	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
+00587 00DE 0702             	MULL	0x02
+00588 00DF 6422             	MVF	_PRODL,0,0
+00589 00E0 0400             	ADDL	(_NUM_CODE + 0)
+00590 00E1 6600             	MVF	__g2ptrget1_STK00,1,0
+00591 00E2 0600             	MVL	high (_NUM_CODE + 0)
+00592 00E3 1421             	ADDC	_PRODH,0,0
+00593 00E4 0280             	IORL	0x80
+00594 00E5 C000 F000        	CALL	__g2ptrget1
+00595 00E7 6600             	MVF	r0x1096,1,0
+00596 00E8 6000             	SWPF	r0x1096,0,0
+00597 00E9 01F0             	ANDL	0xf0
+00598 00EA 6689             	MVF	_LCD1,1,0
+00599                       ;	;.line	308; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = (NUM_CODE[NumDisp[1]] >> 4) + 0x40;
+00600 00EB 6400             	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
+00601 00EC 0702             	MULL	0x02
+00602 00ED 6422             	MVF	_PRODL,0,0
+00603 00EE 0400             	ADDL	(_NUM_CODE + 0)
+00604 00EF 6600             	MVF	__g2ptrget2_STK00,1,0
+00605 00F0 0600             	MVL	high (_NUM_CODE + 0)
+00606 00F1 1421             	ADDC	_PRODH,0,0
+00607 00F2 0280             	IORL	0x80
+00608 00F3 C000 F000        	CALL	__g2ptrget2
+00609 00F5 6600             	MVF	r0x1097,1,0
+00610 00F6 6000             	SWPF	STK00,0,0
+00611 00F7 010F             	ANDL	0x0f
+00612 00F8 6600             	MVF	r0x1094,1,0
+00613 00F9 6000             	SWPF	r0x1097,0,0
+00614 00FA 6600             	MVF	r0x1099,1,0
+00615 00FB 01F0             	ANDL	0xf0
+00616 00FC 2E00             	IORF	r0x1094,1,0
+00617 00FD 2200             	XORF	r0x1099,1,0
+00618 00FE 6400             	MVF	r0x1094,0,0
+00619 00FF 0440             	ADDL	0x40
+00620 0100 668A             	MVF	_LCD2,1,0
+00621                       ;	;.line	310; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[NumDisp[0]];
+00622 0101 6400             	MVF	r0x1095,0,0
+00623 0102 0702             	MULL	0x02
+00624 0103 6422             	MVF	_PRODL,0,0
+00625 0104 0400             	ADDL	(_NUM_CODE + 0)
+00626 0105 6600             	MVF	__g2ptrget2_STK00,1,0
+00627 0106 0600             	MVL	high (_NUM_CODE + 0)
+00628 0107 1421             	ADDC	_PRODH,0,0
+00629 0108 0280             	IORL	0x80
+00630 0109 C000 F000        	CALL	__g2ptrget2
+00631                       ;	;.line	312; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[NumDisp[0]] >> 8;
+00632 010B D000 F18B        	MVFF	STK00,_LCD3
+00633 010D 668C             	MVF	_LCD4,1,0
+00634                       ;	;.line	314; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00635 010E 0C8D             	CLRF	_LCD5,0
+00636                       ;	;.line	316; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00637 010F 0C8E             	CLRF	_LCD6,0
+00638                       ;	;.line	317; ".\Source\Drv_LCD_4718.c"	}
+00639 0110 000A             	RET	
+00640                       ; exit point of _Disp_Version
+00641 0111 --              	.ENDFUNC	_Disp_Version
+00642                       ;--------------------------------------------------------
+00643                       
+00644                       .globl _Disp_StaticDash
+00645                       
+00646                       ;--------------------------------------------------------
+00647 0111 --              	.FUNC _Disp_StaticDash:$r:0:0
+00648                       ;--------------------------------------------------------
+00649                       ;	;.line	273; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x20;
+00650 0111                  _Disp_StaticDash:	;Function start
+00651 0111 0620             	MVL	0x20
+00652 0112 6688             	MVF	_LCD0,1,0
+00653                       ;	;.line	275; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
+00654 0113 0C89             	CLRF	_LCD1,0
+00655                       ;	;.line	277; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
+00656 0114 0602             	MVL	0x02
+00657 0115 668A             	MVF	_LCD2,1,0
+00658                       ;	;.line	279; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x20;
+00659 0116 0620             	MVL	0x20
+00660 0117 668B             	MVF	_LCD3,1,0
+00661                       ;	;.line	281; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00662 0118 0C8C             	CLRF	_LCD4,0
+00663                       ;	;.line	283; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00664 0119 0C8D             	CLRF	_LCD5,0
+00665                       ;	;.line	285; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00666 011A 0C8E             	CLRF	_LCD6,0
+00667                       ;	;.line	286; ".\Source\Drv_LCD_4718.c"	}
+00668 011B 000A             	RET	
+00669                       ; exit point of _Disp_StaticDash
+00670 011C --              	.ENDFUNC	_Disp_StaticDash
+00671                       ;--------------------------------------------------------
+00672                       
+00673                       .globl _Disp_Err
+00674                       
+00675                       ;--------------------------------------------------------
+00676 011C --              	.FUNC _Disp_Err:$r:0:0
+00677                       ;--------------------------------------------------------
+00678                       ;	;.line	250; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
+00679 011C                  _Disp_Err:	;Function start
+00680 011C 0673             	MVL	0x73
+00681 011D 6688             	MVF	_LCD0,1,0
+00682                       ;	;.line	252; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
+00683 011E 0620             	MVL	0x20
+00684 011F 6689             	MVF	_LCD1,1,0
+00685                       ;	;.line	254; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
+00686 0120 0602             	MVL	0x02
+00687 0121 668A             	MVF	_LCD2,1,0
+00688                       ;	;.line	256; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x22;
+00689 0122 0622             	MVL	0x22
+00690 0123 668B             	MVF	_LCD3,1,0
+00691                       ;	;.line	258; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00692 0124 0C8C             	CLRF	_LCD4,0
+00693                       ;	;.line	260; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00694 0125 0C8D             	CLRF	_LCD5,0
+00695                       ;	;.line	262; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00696 0126 0C8E             	CLRF	_LCD6,0
+00697                       ;	;.line	263; ".\Source\Drv_LCD_4718.c"	}
+00698 0127 000A             	RET	
+00699                       ; exit point of _Disp_Err
+00700 0128 --              	.ENDFUNC	_Disp_Err
+00701                       ;--------------------------------------------------------
+00702                       
+00703                       .globl _Disp_ErrNo
+00704                       
+00705                       ;--------------------------------------------------------
+00706                       	.FUNC _Disp_ErrNo:$r:0:1:$C:__g2ptrget2\
+00707 0128 --              :$L:r0x108D
+00708                       ;--------------------------------------------------------
+00709                       ;	;.line	224; ".\Source\Drv_LCD_4718.c"	void Disp_ErrNo(uint8 No)
+00710 0128                  _Disp_ErrNo:	;Function start
+00711 0128 6600             	MVF	r0x108D,1,0
+00712                       ;	;.line	227; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
+00713 0129 0673             	MVL	0x73
+00714 012A 6688             	MVF	_LCD0,1,0
+00715                       ;	;.line	229; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
+00716 012B 0620             	MVL	0x20
+00717 012C 6689             	MVF	_LCD1,1,0
+00718                       ;	;.line	231; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
+00719 012D 0602             	MVL	0x02
+00720 012E 668A             	MVF	_LCD2,1,0
+00721                       ;	;.line	233; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[No];
+00722 012F 6400             	MVF	r0x108D,0,0
+00723 0130 0702             	MULL	0x02
+00724 0131 6422             	MVF	_PRODL,0,0
+00725 0132 0400             	ADDL	(_NUM_CODE + 0)
+00726 0133 6600             	MVF	__g2ptrget2_STK00,1,0
+00727 0134 0600             	MVL	high (_NUM_CODE + 0)
+00728 0135 1421             	ADDC	_PRODH,0,0
+00729 0136 0280             	IORL	0x80
+00730 0137 C000 F000        	CALL	__g2ptrget2
+00731                       ;	;.line	235; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[No] >> 8;
+00732 0139 D000 F18B        	MVFF	STK00,_LCD3
+00733 013B 668C             	MVF	_LCD4,1,0
+00734                       ;	;.line	237; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00735 013C 0C8D             	CLRF	_LCD5,0
+00736                       ;	;.line	239; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00737 013D 0C8E             	CLRF	_LCD6,0
+00738                       ;	;.line	240; ".\Source\Drv_LCD_4718.c"	}
+00739 013E 000A             	RET	
+00740                       ; exit point of _Disp_ErrNo
+00741 013F --              	.ENDFUNC	_Disp_ErrNo
+00742                       ;--------------------------------------------------------
+00743                       
+00744                       .globl _Disp_Nothing
+00745                       
+00746                       ;--------------------------------------------------------
+00747 013F --              	.FUNC _Disp_Nothing:$r:0:0
+00748                       ;--------------------------------------------------------
+00749                       ;	;.line	204; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
+00750 013F                  _Disp_Nothing:	;Function start
+00751 013F 0C88             	CLRF	_LCD0,0
+00752                       ;	;.line	206; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
+00753 0140 0C89             	CLRF	_LCD1,0
+00754                       ;	;.line	208; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x00;
+00755 0141 0C8A             	CLRF	_LCD2,0
+00756                       ;	;.line	210; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x00;
+00757 0142 0C8B             	CLRF	_LCD3,0
+00758                       ;	;.line	212; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00759 0143 0C8C             	CLRF	_LCD4,0
+00760                       ;	;.line	214; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00761 0144 0C8D             	CLRF	_LCD5,0
+00762                       ;	;.line	216; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00763 0145 0C8E             	CLRF	_LCD6,0
+00764                       ;	;.line	217; ".\Source\Drv_LCD_4718.c"	}
+00765 0146 000A             	RET	
+00766                       ; exit point of _Disp_Nothing
+00767 0147 --              	.ENDFUNC	_Disp_Nothing
+00768                       ;--------------------------------------------------------
+00769                       
+00770                       .globl _Disp_All
+00771                       
+00772                       ;--------------------------------------------------------
+00773 0147 --              	.FUNC _Disp_All:$r:0:0
+00774                       ;--------------------------------------------------------
+00775                       ;	;.line	173; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x77;
+00776 0147                  _Disp_All:	;Function start
+00777 0147 0677             	MVL	0x77
+00778 0148 6688             	MVF	_LCD0,1,0
+00779                       ;	;.line	175; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x33;
+00780 0149 0633             	MVL	0x33
+00781 014A 6689             	MVF	_LCD1,1,0
+00782                       ;	;.line	177; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x77;
+00783 014B 0677             	MVL	0x77
+00784 014C 668A             	MVF	_LCD2,1,0
+00785                       ;	;.line	179; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x77;
+00786 014D 668B             	MVF	_LCD3,1,0
+00787                       ;	;.line	184; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x77;
+00788 014E 668C             	MVF	_LCD4,1,0
+00789                       ;	;.line	191; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x07;
+00790 014F 0607             	MVL	0x07
+00791 0150 668D             	MVF	_LCD5,1,0
+00792                       ;	;.line	193; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00793 0151 0C8E             	CLRF	_LCD6,0
+00794                       ;	;.line	194; ".\Source\Drv_LCD_4718.c"	}
+00795 0152 000A             	RET	
+00796                       ; exit point of _Disp_All
+00797 0153 --              	.ENDFUNC	_Disp_All
+00798                       ;--------------------------------------------------------
+00799                       
+00800                       .globl _Disp_Hi
+00801                       
+00802                       ;--------------------------------------------------------
+00803 0153 --              	.FUNC _Disp_Hi:$r:0:0
+00804                       ;--------------------------------------------------------
+00805                       ;	;.line	150; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
+00806 0153                  _Disp_Hi:	;Function start
+00807 0153 0C88             	CLRF	_LCD0,0
+00808                       ;	;.line	152; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x30;
+00809 0154 0630             	MVL	0x30
+00810 0155 6689             	MVF	_LCD1,1,0
+00811                       ;	;.line	154; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x32;
+00812 0156 0632             	MVL	0x32
+00813 0157 668A             	MVF	_LCD2,1,0
+00814                       ;	;.line	156; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x02;
+00815 0158 0602             	MVL	0x02
+00816 0159 668B             	MVF	_LCD3,1,0
+00817                       ;	;.line	158; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
+00818 015A 0C8C             	CLRF	_LCD4,0
+00819                       ;	;.line	160; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00820 015B 0C8D             	CLRF	_LCD5,0
+00821                       ;	;.line	162; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00822 015C 0C8E             	CLRF	_LCD6,0
+00823                       ;	;.line	163; ".\Source\Drv_LCD_4718.c"	}
+00824 015D 000A             	RET	
+00825                       ; exit point of _Disp_Hi
+00826 015E --              	.ENDFUNC	_Disp_Hi
+00827                       ;--------------------------------------------------------
+00828                       
+00829                       .globl _Disp_Low
+00830                       
+00831                       ;--------------------------------------------------------
+00832 015E --              	.FUNC _Disp_Low:$r:0:0
+00833                       ;--------------------------------------------------------
+00834                       ;	;.line	127; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
+00835 015E                  _Disp_Low:	;Function start
+00836 015E 0C88             	CLRF	_LCD0,0
+00837                       ;	;.line	129; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x30;
+00838 015F 0630             	MVL	0x30
+00839 0160 6689             	MVF	_LCD1,1,0
+00840                       ;	;.line	131; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x04;
+00841 0161 0604             	MVL	0x04
+00842 0162 668A             	MVF	_LCD2,1,0
+00843                       ;	;.line	133; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x62;
+00844 0163 0662             	MVL	0x62
+00845 0164 668B             	MVF	_LCD3,1,0
+00846                       ;	;.line	135; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x02;
+00847 0165 0602             	MVL	0x02
+00848 0166 668C             	MVF	_LCD4,1,0
+00849                       ;	;.line	137; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
+00850 0167 0C8D             	CLRF	_LCD5,0
+00851                       ;	;.line	139; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
+00852 0168 0C8E             	CLRF	_LCD6,0
+00853                       ;	;.line	140; ".\Source\Drv_LCD_4718.c"	}
+00854 0169 000A             	RET	
+00855                       ; exit point of _Disp_Low
+00856 016A --              	.ENDFUNC	_Disp_Low
+00857                       ;--------------------------------------------------------
+00858                       
+00859                       .globl _LCD_Clear_Register
+00860                       
+00861                       ;--------------------------------------------------------
+00862 016A --              	.FUNC _LCD_Clear_Register:$r:0:0
+00863                       ;--------------------------------------------------------
+00864                       ;	;.line	92; ".\Source\Drv_LCD_4718.c"	LCDCN1 = 0x00;
+00865 016A                  _LCD_Clear_Register:	;Function start
+00866 016A 0C80             	CLRF	_LCDCN1,0
+00867                       ;	;.line	96; ".\Source\Drv_LCD_4718.c"	LCDCN2 = 0x00;
+00868 016B 0C81             	CLRF	_LCDCN2,0
+00869                       ;	;.line	100; ".\Source\Drv_LCD_4718.c"	LCDCN3 = 0x00;
+00870 016C 0C82             	CLRF	_LCDCN3,0
+00871                       ;	;.line	104; ".\Source\Drv_LCD_4718.c"	LCDCN4 = 0x00;
+00872 016D 0C83             	CLRF	_LCDCN4,0
+00873                       ;	;.line	108; ".\Source\Drv_LCD_4718.c"	LCDCN6 = 0x00;
+00874 016E 0C85             	CLRF	_LCDCN6,0
+00875                       ;	;.line	112; ".\Source\Drv_LCD_4718.c"	LCDCN7 = 0x00;
+00876 016F 0C86             	CLRF	_LCDCN7,0
+00877                       ;	;.line	116; ".\Source\Drv_LCD_4718.c"	LCDCN8 = 0x00;
+00878 0170 0C87             	CLRF	_LCDCN8,0
+00879                       ;	;.line	117; ".\Source\Drv_LCD_4718.c"	}
+00880 0171 000A             	RET	
+00881                       ; exit point of _LCD_Clear_Register
+00882 0172 --              	.ENDFUNC	_LCD_Clear_Register
+00883                       ;--------------------------------------------------------
+00884                       
+00885                       .globl _LCD_Configuration
+00886                       
+00887                       ;--------------------------------------------------------
+00888 0172 --              	.FUNC _LCD_Configuration:$r:0:0:$C:_Disp_Nothing\
+00889                       
+00890                       ;--------------------------------------------------------
+00891                       ;	;.line	27; ".\Source\Drv_LCD_4718.c"	LCD_Enable();
+00892 0172                  _LCD_Configuration:	;Function start
+00893 0172 9E80             	BSF	_LCDCN1,7
+00894                       ;	;.line	29; ".\Source\Drv_LCD_4718.c"	LCD_ChargePumpSelect(LCDV_4V05);
+00895 0173 6480             	MVF	_LCDCN1,0,0
+00896 0174 018F             	ANDL	0x8f
+00897 0175 0220             	IORL	0x20
+00898 0176 6680             	MVF	_LCDCN1,1,0
+00899                       ;	;.line	31; ".\Source\Drv_LCD_4718.c"	LCD_OutBufferEnable();
+00900 0177 9680             	BSF	_LCDCN1,3
+00901                       ;	;.line	33; ".\Source\Drv_LCD_4718.c"	LCD_ChargePumpClk(SELPCLK_7KHZ);
+00902 0178 6480             	MVF	_LCDCN1,0,0
+00903 0179 01FB             	ANDL	0xfb
+00904 017A 0204             	IORL	0x04
+00905 017B 6680             	MVF	_LCDCN1,1,0
+00906                       ;	;.line	37; ".\Source\Drv_LCD_4718.c"	LCD_CLK_ClkSelect(LCDS_LPCCK);
+00907 017C 8035             	BCF	_OSCCN1,0
+00908                       ;	;.line	40; ".\Source\Drv_LCD_4718.c"	LCD_CLK_DivSelect(DLCD_LCDCKDIV2);
+00909 017D 063F             	MVL	0x3f
+00910 017E 2A36             	ANDF	_OSCCN2,1,0
+00911                       ;	;.line	54; ".\Source\Drv_LCD_4718.c"	LCDCN1 |= 0x01;
+00912 017F 9080             	BSF	_LCDCN1,0
+00913                       ;	;.line	58; ".\Source\Drv_LCD_4718.c"	LCD_DisplayOn();
+00914 0180 8281             	BCF	_LCDCN2,1
+00915                       ;	;.line	62; ".\Source\Drv_LCD_4718.c"	LCDCN3 = 0xFF;
+00916 0181 0A82             	SETF	_LCDCN3,0
+00917                       ;	;.line	66; ".\Source\Drv_LCD_4718.c"	LCDCN6 = 0xFF;
+00918 0182 0A85             	SETF	_LCDCN6,0
+00919                       ;	;.line	70; ".\Source\Drv_LCD_4718.c"	LCDCN7 = 0xFF;
+00920 0183 0A86             	SETF	_LCDCN7,0
+00921                       ;	;.line	74; ".\Source\Drv_LCD_4718.c"	LCDCN8 = 0xFF;
+00922 0184 0A87             	SETF	_LCDCN8,0
+00923                       ;	;.line	78; ".\Source\Drv_LCD_4718.c"	LCDCN4 = 0x01;
+00924 0185 0601             	MVL	0x01
+00925 0186 6683             	MVF	_LCDCN4,1,0
+00926                       ;	;.line	80; ".\Source\Drv_LCD_4718.c"	Disp_Nothing();
+00927 0187 C000 F000        	CALL	_Disp_Nothing
+00928                       	.CHKPARA _Disp_Nothing 0
+00929                       ;	;.line	81; ".\Source\Drv_LCD_4718.c"	}
+00930 0189 000A             	RET	
+00931                       ; exit point of _LCD_Configuration
+00932 018A --              	.ENDFUNC	_LCD_Configuration
+00933                       ;--------------------------------------------------------
+00934                       
+00935                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+00936                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+00937                       	;--cdb--S:G$atof$0$0({2}DF,SF:S),C,0,0
+00938                       	;--cdb--S:G$atoi$0$0({2}DF,SI:S),C,0,0
+00939                       	;--cdb--S:G$atol$0$0({2}DF,SL:SL),C,0,0
+00940                       	;--cdb--S:G$strtol$0$0({2}DF,SL:SL),C,0,0
+00941                       	;--cdb--S:G$strtoul$0$0({2}DF,SL:UL),C,0,0
+00942                       	;--cdb--S:G$atoll$0$0({2}DF,SI:SE),C,0,0
+00943                       	;--cdb--S:G$strtoll$0$0({2}DF,SI:SE),C,0,0
+00944                       	;--cdb--S:G$strtoull$0$0({2}DF,SI:UE),C,0,0
+00945                       	;--cdb--S:G$_uitoa$0$0({2}DF,SV:S),C,0,0
+00946                       	;--cdb--S:G$_itoa$0$0({2}DF,SV:S),C,0,0
+00947                       	;--cdb--S:G$_ultoa$0$0({2}DF,SV:S),C,0,0
+00948                       	;--cdb--S:G$_ltoa$0$0({2}DF,SV:S),C,0,0
+00949                       	;--cdb--S:G$rand$0$0({2}DF,SI:S),C,0,0
+00950                       	;--cdb--S:G$srand$0$0({2}DF,SV:S),C,0,0
+00951                       	;--cdb--S:G$calloc$0$0({2}DF,DD,SV:S),C,0,0
+00952                       	;--cdb--S:G$malloc$0$0({2}DF,DD,SV:S),C,0,0
+00953                       	;--cdb--S:G$realloc$0$0({2}DF,DD,SV:S),C,0,0
+00954                       	;--cdb--S:G$aligned_alloc$0$0({2}DF,DT,SV:S),C,0,0
+00955                       	;--cdb--S:G$free$0$0({2}DF,SV:S),C,0,0
+00956                       	;--cdb--S:G$bsearch$0$0({2}DF,DT,SV:S),C,0,0
+00957                       	;--cdb--S:G$qsort$0$0({2}DF,SV:S),C,0,0
+00958                       	;--cdb--S:G$abs$0$0({2}DF,SI:S),C,0,0
+00959                       	;--cdb--S:G$labs$0$0({2}DF,SL:SL),C,0,0
+00960                       	;--cdb--S:G$llabs$0$0({2}DF,SI:SE),C,0,0
+00961                       	;--cdb--S:G$div$0$0({2}DF,ST__00000000(T:FDrv_LCD_4718$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),C,0,0
+00962                       	;--cdb--S:G$ldiv$0$0({2}DF,ST__00000001(T:FDrv_LCD_4718$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),C,0,0
+00963                       	;--cdb--S:G$lldiv$0$0({2}DF,ST__00000002(T:FDrv_LCD_4718$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),C,0,0
+00964                       	;--cdb--S:G$mblen$0$0({2}DF,SI:S),C,0,0
+00965                       	;--cdb--S:G$mbtowc$0$0({2}DF,SI:S),C,0,0
+00966                       	;--cdb--S:G$wctomb$0$0({2}DF,SI:S),C,0,0
+00967                       	;--cdb--S:G$mbstowcs$0$0({2}DF,SI:U),C,0,0
+00968                       	;--cdb--S:G$wcstombs$0$0({2}DF,SI:U),C,0,0
+00969                       	;--cdb--S:G$memccpy$0$0({2}DF,DD,SV:S),C,0,0
+00970                       	;--cdb--S:G$memcpy$0$0({2}DF,DD,SV:S),C,0,0
+00971                       	;--cdb--S:G$memmove$0$0({2}DF,DD,SV:S),C,0,0
+00972                       	;--cdb--S:G$strcpy$0$0({2}DF,DD,SC:U),C,0,0
+00973                       	;--cdb--S:G$strncpy$0$0({2}DF,DD,SC:U),C,0,0
+00974                       	;--cdb--S:G$strcat$0$0({2}DF,DD,SC:U),C,0,0
+00975                       	;--cdb--S:G$strncat$0$0({2}DF,DD,SC:U),C,0,0
+00976                       	;--cdb--S:G$memcmp$0$0({2}DF,SI:S),C,0,0
+00977                       	;--cdb--S:G$strcmp$0$0({2}DF,SI:S),C,0,0
+00978                       	;--cdb--S:G$strncmp$0$0({2}DF,SI:S),C,0,0
+00979                       	;--cdb--S:G$strxfrm$0$0({2}DF,SI:U),C,0,0
+00980                       	;--cdb--S:G$memchr$0$0({2}DF,DT,SV:S),C,0,0
+00981                       	;--cdb--S:G$strchr$0$0({2}DF,DT,SC:U),C,0,0
+00982                       	;--cdb--S:G$strcspn$0$0({2}DF,SI:U),C,0,0
+00983                       	;--cdb--S:G$strpbrk$0$0({2}DF,DT,SC:U),C,0,0
+00984                       	;--cdb--S:G$strrchr$0$0({2}DF,DT,SC:U),C,0,0
+00985                       	;--cdb--S:G$strspn$0$0({2}DF,SI:U),C,0,0
+00986                       	;--cdb--S:G$strstr$0$0({2}DF,DT,SC:U),C,0,0
+00987                       	;--cdb--S:G$strtok$0$0({2}DF,DD,SC:U),C,0,0
+00988                       	;--cdb--S:G$memset$0$0({2}DF,DD,SV:S),C,0,0
+00989                       	;--cdb--S:G$memset_explicit$0$0({2}DF,DT,SV:S),C,0,0
+00990                       	;--cdb--S:G$strlen$0$0({2}DF,SI:U),C,0,0
+00991                       	;--cdb--S:G$strnlen$0$0({2}DF,SI:U),C,0,0
+00992                       	;--cdb--S:G$IIC_Configuration$0$0({2}DF,SV:S),C,0,0
+00993                       	;--cdb--S:G$I2C_ReadByte$0$0({2}DF,SC:U),C,0,0
+00994                       	;--cdb--S:G$I2C_WriteByte$0$0({2}DF,SV:S),C,0,0
+00995                       	;--cdb--S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0
+00996                       	;--cdb--S:G$BIE_Read$0$0({2}DF,SI:U),C,0,0
+00997                       	;--cdb--S:G$BIE_Write$0$0({2}DF,SC:U),C,0,0
+00998                       	;--cdb--S:G$LVD_Off$0$0({2}DF,SV:S),C,0,0
+00999                       	;--cdb--S:G$LVD_Configuration$0$0({2}DF,SV:S),C,0,0
+01000                       	;--cdb--S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0
+01001                       	;--cdb--S:G$ADC_Configuration$0$0({2}DF,SV:S),C,0,0
+01002                       	;--cdb--S:G$ADCAccuracyMode$0$0({2}DF,SV:S),C,0,0
+01003                       	;--cdb--S:G$AccuracyModeADCOFF$0$0({2}DF,SV:S),C,0,0
+01004                       	;--cdb--S:G$WDT_Configuration$0$0({2}DF,SV:S),C,0,0
+01005                       	;--cdb--S:G$PWR_Configuration$0$0({2}DF,SV:S),C,0,0
+01006                       	;--cdb--S:G$GPIO_Configuration$0$0({2}DF,SV:S),C,0,0
+01007                       	;--cdb--S:G$TMA1_Configuration$0$0({2}DF,SV:S),C,0,0
+01008                       	;--cdb--S:G$UART0_Configuration$0$0({2}DF,SV:S),C,0,0
+01009                       	;--cdb--S:G$UART0_SendString$0$0({2}DF,SV:S),C,0,0
+01010                       	;--cdb--S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0
+01011                       	;--cdb--S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0
+01012                       	;--cdb--S:G$UART0_SendASCII$0$0({2}DF,SV:S),C,0,0
+01013                       	;--cdb--S:G$AutoBps_Configuration$0$0({2}DF,SV:S),C,0,0
+01014                       	;--cdb--S:G$BZ_Configuration$0$0({2}DF,SV:S),C,0,0
+01015                       	;--cdb--S:G$Delay_ms$0$0({2}DF,SV:S),C,0,0
+01016                       	;--cdb--S:G$memchrn$0$0({2}DF,SC:U),C,0,0
+01017                       	;--cdb--S:G$Param_Init$0$0({2}DF,SV:S),C,0,0
+01018                       	;--cdb--S:G$System_Init$0$0({2}DF,SV:S),C,0,0
+01019                       	;--cdb--S:G$E2_Init$0$0({2}DF,SV:S),C,0,0
+01020                       	;--cdb--S:G$BIE_Init$0$0({2}DF,SV:S),C,0,0
+01021                       	;--cdb--S:G$Binding_Init$0$0({2}DF,SV:S),C,0,0
+01022                       	;--cdb--S:G$Key_Detect$0$0({2}DF,SV:S),C,0,0
+01023                       	;--cdb--S:G$Timer_Experience$0$0({2}DF,SC:U),C,0,0
+01024                       	;--cdb--S:G$LVD_Detect$0$0({2}DF,SV:S),C,0,0
+01025                       	;--cdb--S:G$LCD_Display$0$0({2}DF,SV:S),C,0,0
+01026                       	;--cdb--S:G$LCD_Disp$0$0({2}DF,SV:S),C,0,0
+01027                       	;--cdb--S:G$Get_250msTemp$0$0({2}DF,SV:S),C,0,0
+01028                       	;--cdb--S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0
+01029                       	;--cdb--S:G$Sleep_Mode$0$0({2}DF,SV:S),C,0,0
+01030                       	;--cdb--S:G$Buzzer_Drive$0$0({2}DF,SV:S),C,0,0
+01031                       	;--cdb--S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0
+01032                       	;--cdb--S:G$MemoryTemp_RAMStore$0$0({2}DF,SV:S),C,0,0
+01033                       	;--cdb--S:G$Temp_Calibration$0$0({2}DF,SV:S),C,0,0
+01034                       	;--cdb--S:G$Actual_Measure$0$0({2}DF,SV:S),C,0,0
+01035                       	;--cdb--S:G$Forecast_Measure$0$0({2}DF,SV:S),C,0,0
+01036                       	;--cdb--S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0
+01037                       	;--cdb--S:G$BleData_Rcv$0$0({2}DF,SV:S),C,0,0
+01038                       	;--cdb--S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0
+01039                       	;--cdb--S:G$ADC_Open$0$0({2}DF,SV:S),C,0,0
+01040                       	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
+01041                       	;--cdb--S:G$ADC_SDRVEnable$0$0({2}DF,SV:S),C,0,0
+01042                       	;--cdb--S:G$ADC_SDRVDisable$0$0({2}DF,SV:S),C,0,0
+01043                       	;--cdb--S:G$PWMOpen$0$0({2}DF,SV:S),C,0,0
+01044                       	;--cdb--S:G$TB1C0Set$0$0({2}DF,SV:S),C,0,0
+01045                       	;--cdb--S:G$TB1C1Set$0$0({2}DF,SV:S),C,0,0
+01046                       	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
+01047                       	;--cdb--S:G$UART0_BGRSet$0$0({2}DF,SV:S),C,0,0
+01048                       	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
+01049                       	;--cdb--S:G$Task_Schedule$0$0({2}DF,SV:S),C,0,0
+01050                       	;--cdb--S:G$LCD_Clear_Register$0$0({2}DF,SV:S),C,0,0
+01051                       	;--cdb--S:G$Disp_Low$0$0({2}DF,SV:S),C,0,0
+01052                       	;--cdb--S:G$Disp_Hi$0$0({2}DF,SV:S),C,0,0
+01053                       	;--cdb--S:G$Disp_All$0$0({2}DF,SV:S),C,0,0
+01054                       	;--cdb--S:G$Disp_ErrNo$0$0({2}DF,SV:S),C,0,0
+01055                       	;--cdb--S:G$Disp_Err$0$0({2}DF,SV:S),C,0,0
+01056                       	;--cdb--S:G$Disp_StaticDash$0$0({2}DF,SV:S),C,0,0
+01057                       	;--cdb--S:G$Disp_Version$0$0({2}DF,SV:S),C,0,0
+01058                       	;--cdb--S:G$_divuchar$0$0({2}DF,SC:U),C,0,0
+01059                       	;--cdb--S:G$_moduchar$0$0({2}DF,SC:U),C,0,0
+01060                       	;--cdb--S:G$Disp_Code$0$0({2}DF,SV:S),C,0,0
+01061                       	;--cdb--S:G$_divuint$0$0({2}DF,SI:U),C,0,0
+01062                       	;--cdb--S:G$_moduint$0$0({2}DF,SI:U),C,0,0
+01063                       	;--cdb--S:G$Disp_Orl$0$0({2}DF,SV:S),C,0,0
+01064                       	;--cdb--S:G$Disp_Udr$0$0({2}DF,SV:S),C,0,0
+01065                       	;--cdb--S:G$Disp_Rct$0$0({2}DF,SV:S),C,0,0
+01066                       	;--cdb--S:G$Disp_Bth$0$0({2}DF,SV:S),C,0,0
+01067                       	;--cdb--S:G$Disp_CAL$0$0({2}DF,SV:S),C,0,0
+01068                       	;--cdb--S:G$Disp_BrownOut$0$0({2}DF,SV:S),C,0,0
+01069                       	;--cdb--S:G$Disp_End$0$0({2}DF,SV:S),C,0,0
+01070                       	;--cdb--S:G$Disp_Off$0$0({2}DF,SV:S),C,0,0
+01071                       	;--cdb--S:G$FSR0$0$0({2}DD,SC:U),E,0,0
+01072                       	;--cdb--S:G$FSR1$0$0({2}DD,SC:U),E,0,0
+01073                       	;--cdb--S:G$FSR2$0$0({2}DD,SC:U),E,0,0
+01074                       	;--cdb--S:G$ADCR$0$0({4}SL:SL),E,0,0
+01075                       	;--cdb--S:LDrv_LCD_4718.aligned_alloc._aligned_alloc_size_10000_29$size$2710$29({2}SI:U),E,0,0
+01076                       	;--cdb--S:LDrv_LCD_4718.aligned_alloc._aligned_alloc_alignment_10000_29$alignment$2710$29({2}SI:U),E,0,0
+01077                       	;--cdb--S:G$sIIC$0$0({1}ST__00000003(T:FDrv_LCD_4718$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]):S),E,0,0
+01078                       	;--cdb--S:G$BIE_Available_Addr$0$0({1}SC:U),E,0,0
+01079                       	;--cdb--S:G$sTIMx$0$0({13}ST__00000004(T:FDrv_LCD_4718$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01080                       	;--cdb--S:G$sUARTx$0$0({15}ST__00000005(T:FDrv_LCD_4718$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]):S),E,0,0
+01081                       	;--cdb--S:G$sAutoBps$0$0({5}ST__00000006(T:FDrv_LCD_4718$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01082                       	;--cdb--S:G$eAutoBps_Status$0$0({1}SC:U:ENUM_NONAME|AutoBps_Searched=2|AutoBps_Searching=1|AutoBps_Init=0),E,0,0
+01083                       	;--cdb--S:G$sTest$0$0({19}ST__00000007(T:FDrv_LCD_4718$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01084                       	;--cdb--S:G$eTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0
+01085                       	;--cdb--S:G$eBondingTempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),E,0,0
+01086                       	;--cdb--S:G$eVersionCode$0$0({1}SC:S:ENUM_NONAME|VC_DispOn=1|VC_DispOff=0),E,0,0
+01087                       	;--cdb--S:G$eMeasureMode$0$0({1}SC:U:ENUM_NONAME|Bath_Mode=3|Rectal_Mode=2|Underarm_Mode=1|Oral_Mode=0),E,0,0
+01088                       	;--cdb--S:G$eBinding_Status$0$0({1}SC:U:ENUM_NONAME|FahrenheitFirst_NonSwitchable=3|FahrenheitFirst_Switchable=2|CentigradeFirst_NonSwitchable=1|CentigradeFirst_Switchable=0),E,0,0
+01089                       	;--cdb--S:G$Enter_PrepareSleep_Flag$0$0({1}SC:U),E,0,0
+01090                       	;--cdb--S:G$sButton$0$0({2}ST__00000008(T:FDrv_LCD_4718$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0
+01091                       	;--cdb--S:G$sTimeStamp$0$0({42}ST__00000009(T:FDrv_LCD_4718$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01092                       	;--cdb--S:G$eButton_Status$0$0({1}SC:U:ENUM_NONAME|Button_Lift=2|Button_Press=1|Button_Debouncing=0),E,0,0
+01093                       	;--cdb--S:G$sLVD$0$0({5}ST__00000010(T:FDrv_LCD_4718$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]):S),E,0,0
+01094                       	;--cdb--S:G$UnitExchangeCompleted$0$0({1}SC:U),E,0,0
+01095                       	;--cdb--S:G$ERR$0$0({9}DA9d,SC:U),E,0,0
+01096                       	;--cdb--S:G$eErr$0$0({1}SC:U:ENUM_NONAME|Err_Num=9|Err=8|Err7=7|Err6=6|Err5=5|Err4=4|Err3=3|Err2=2|Err1=1|Err0=0),E,0,0
+01097                       	;--cdb--S:G$eDisplay_Interfaces$0$0({1}SC:U:ENUM_NONAME|Display_PreCalibration=19|Display_SleepMode=18|Display_MeasuredTemperature=17|Display_ERR=16|Display_TemperatureDetecting=15|Display_Binding=14|Display_ModeExchange=13|Display_CurrentMode=12|Display_MemoryTemperatureValue=11|Display_MemoryTemperatureNumber=10|Display_RecentTemperature=9|Display_CalibrationOK=8|Display_Calibration=7|Display_Off=6|Display_Code=5|Display_Version=4|Display_UnitExchange=3|Display_All=2|Display_LowPower=1|Display_PowerOn=0),E,0,0
+01098                       	;--cdb--S:G$sADC$0$0({45}ST__00000011(T:FDrv_LCD_4718$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0
+01099                       	;--cdb--S:G$eADCChannel$0$0({1}SC:S:ENUM_NONAME|AI14_AI15=1|AI2_AI3=0),E,0,0
+01100                       	;--cdb--S:G$eSystem_Mode$0$0({1}SC:U:ENUM_NONAME|Normal=3|Prepare_Normal=2|Sleep=1|Prepare_Sleep=0),E,0,0
+01101                       	;--cdb--S:G$eBuzzer_Status$0$0({1}SC:U:ENUM_NONAME|Buzzer_Er1Er2=5|Buzzer_Forecast_To_Actual=4|Buzzer_MeasuredTempActual=3|Buzzer_MeasuredTempForecast=2|Buzzer_PowerOnOff=1|Buzzer_Silent=0),E,0,0
+01102                       	;--cdb--S:G$Flag_No_Buzzer$0$0({1}SC:U),E,0,0
+01103                       	;--cdb--S:G$sMemory$0$0({23}ST__00000012(T:FDrv_LCD_4718$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]):S),E,0,0
+01104                       	;--cdb--S:G$sMemoryFlag$0$0({3}ST__00000013(T:FDrv_LCD_4718$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]):S),E,0,0
+01105                       	;--cdb--S:G$sActual$0$0({5}ST__00000015(T:FDrv_LCD_4718$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01106                       	;--cdb--S:G$sForecast$0$0({26}ST__00000016(T:FDrv_LCD_4718$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]):S),E,0,0
+01107                       	;--cdb--S:G$sTempCal$0$0({14}ST__00000014(T:FDrv_LCD_4718$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]):S),E,0,0
+01108                       	;--cdb--S:G$eMeas_Status$0$0({1}SC:U:ENUM_NONAME|Meas_DataUpdate=4|Meas_ForecastMeasuring=3|Meas_ActualMeasuring=2|Meas_StartConditon=1|Meas_Get_TEMP=0),E,0,0
+01109                       	;--cdb--S:G$sActual_Forecast$0$0({15}ST__00000017(T:FDrv_LCD_4718$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),E,0,0
+01110                       	;--cdb--S:G$eTo_Actual_Ways$0$0({1}SC:U:ENUM_NONAME|To_Actual_3Min=90|To_Actual_Immediately=165),E,0,0
+01111                       	;--cdb--S:G$eBle_Sta$0$0({1}SC:U:ENUM_NONAME|Ble_TimeoutErr=7|Ble_LinkErr=6|Ble_UploadData=5|Ble_Idle=4|Ble_Advertising=3|Ble_Disable=2|Ble_DeviceInfo=1|Ble_Standby=0),E,0,0
+01112                       	;--cdb--S:G$sBleStatus$0$0({60}ST__00000018(T:FDrv_LCD_4718$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),E,0,0
+01113                       	;--cdb--S:G$eBacklight_Status$0$0({1}SC:U:ENUM_NONAME|MeasuredTemp_Backlight=4|TempDetecting_Backlight=3|MemTemp_Backlight=2|All_Backlight=1|No_Backlight=0),E,0,0
+01114                       	;--cdb--S:G$sBacklight$0$0({1}ST__00000019(T:FDrv_LCD_4718$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]):S),E,0,0
+01115                       	;--cdb--S:G$NUM_CODE$0$0({22}DA11d,SI:U),D,0,0
+01116                       	;--cdb--S:G$R_Table$0$0({2002}DA1001d,SI:U),D,0,0
+01117                       	;--cdb--S:G$CloseTable$0$0({98}DA49d,SI:U),D,0,0
+01118                       	;--cdb--S:G$_SWTGTID$0$0({1}SC:U),I,0,0
+01119                       	;--cdb--S:G$INDF0$0$0({1}SC:U),I,0,0
+01120                       	;--cdb--S:G$POINC0$0$0({1}SC:U),I,0,0
+01121                       	;--cdb--S:G$PODEC0$0$0({1}SC:U),I,0,0
+01122                       	;--cdb--S:G$PRINC0$0$0({1}SC:U),I,0,0
+01123                       	;--cdb--S:G$PLUSW0$0$0({1}SC:U),I,0,0
+01124                       	;--cdb--S:G$INDF1$0$0({1}SC:U),I,0,0
+01125                       	;--cdb--S:G$POINC1$0$0({1}SC:U),I,0,0
+01126                       	;--cdb--S:G$PODEC1$0$0({1}SC:U),I,0,0
+01127                       	;--cdb--S:G$PRINC1$0$0({1}SC:U),I,0,0
+01128                       	;--cdb--S:G$PLUSW1$0$0({1}SC:U),I,0,0
+01129                       	;--cdb--S:G$INDF2$0$0({1}SC:U),I,0,0
+01130                       	;--cdb--S:G$POINC2$0$0({1}SC:U),I,0,0
+01131                       	;--cdb--S:G$PODEC2$0$0({1}SC:U),I,0,0
+01132                       	;--cdb--S:G$PRINC2$0$0({1}SC:U),I,0,0
+01133                       	;--cdb--S:G$PLUSW2$0$0({1}SC:U),I,0,0
+01134                       	;--cdb--S:G$FSR0H$0$0({1}SC:U),I,0,0
+01135                       	;--cdb--S:G$FSR0L$0$0({1}SC:U),I,0,0
+01136                       	;--cdb--S:G$FSR1H$0$0({1}SC:U),I,0,0
+01137                       	;--cdb--S:G$FSR1L$0$0({1}SC:U),I,0,0
+01138                       	;--cdb--S:G$FSR2H$0$0({1}SC:U),I,0,0
+01139                       	;--cdb--S:G$FSR2L$0$0({1}SC:U),I,0,0
+01140                       	;--cdb--S:G$TOSH$0$0({1}SC:U),I,0,0
+01141                       	;--cdb--S:G$TOSL$0$0({1}SC:U),I,0,0
+01142                       	;--cdb--S:G$SKCN$0$0({1}SC:U),I,0,0
+01143                       	;--cdb--S:G$PCLATH$0$0({1}SC:U),I,0,0
+01144                       	;--cdb--S:G$PCLATL$0$0({1}SC:U),I,0,0
+01145                       	;--cdb--S:G$TBLPTRH$0$0({1}SC:U),I,0,0
+01146                       	;--cdb--S:G$TBLPTRL$0$0({1}SC:U),I,0,0
+01147                       	;--cdb--S:G$TBLDH$0$0({1}SC:U),I,0,0
+01148                       	;--cdb--S:G$TBLDL$0$0({1}SC:U),I,0,0
+01149                       	;--cdb--S:G$PRODH$0$0({1}SC:U),I,0,0
+01150                       	;--cdb--S:G$PRODL$0$0({1}SC:U),I,0,0
+01151                       	;--cdb--S:G$INTE0$0$0({1}SC:U),I,0,0
+01152                       	;--cdb--S:G$INTE1$0$0({1}SC:U),I,0,0
+01153                       	;--cdb--S:G$INTE2$0$0({1}SC:U),I,0,0
+01154                       	;--cdb--S:G$INTF0$0$0({1}SC:U),I,0,0
+01155                       	;--cdb--S:G$INTF1$0$0({1}SC:U),I,0,0
+01156                       	;--cdb--S:G$INTF2$0$0({1}SC:U),I,0,0
+01157                       	;--cdb--S:G$WREG$0$0({1}SC:U),I,0,0
+01158                       	;--cdb--S:G$BSRCN$0$0({1}SC:U),I,0,0
+01159                       	;--cdb--S:G$STATUS$0$0({1}SC:U),I,0,0
+01160                       	;--cdb--S:G$MSTAT$0$0({1}SC:U),I,0,0
+01161                       	;--cdb--S:G$PSTAT$0$0({1}SC:U),I,0,0
+01162                       	;--cdb--S:G$BIECN$0$0({1}SC:U),I,0,0
+01163                       	;--cdb--S:G$BIEARH$0$0({1}SC:U),I,0,0
+01164                       	;--cdb--S:G$BIEARL$0$0({1}SC:U),I,0,0
+01165                       	;--cdb--S:G$BIEDRH$0$0({1}SC:U),I,0,0
+01166                       	;--cdb--S:G$BIEDRL$0$0({1}SC:U),I,0,0
+01167                       	;--cdb--S:G$PWRCN$0$0({1}SC:U),I,0,0
+01168                       	;--cdb--S:G$OSCCN0$0$0({1}SC:U),I,0,0
+01169                       	;--cdb--S:G$OSCCN1$0$0({1}SC:U),I,0,0
+01170                       	;--cdb--S:G$OSCCN2$0$0({1}SC:U),I,0,0
+01171                       	;--cdb--S:G$CSFCN0$0$0({1}SC:U),I,0,0
+01172                       	;--cdb--S:G$CSFCN1$0$0({1}SC:U),I,0,0
+01173                       	;--cdb--S:G$WDTCN$0$0({1}SC:U),I,0,0
+01174                       	;--cdb--S:G$AD1H$0$0({1}SC:U),I,0,0
+01175                       	;--cdb--S:G$AD1M$0$0({1}SC:U),I,0,0
+01176                       	;--cdb--S:G$AD1L$0$0({1}SC:U),I,0,0
+01177                       	;--cdb--S:G$AD1CN0$0$0({1}SC:U),I,0,0
+01178                       	;--cdb--S:G$AD1CN1$0$0({1}SC:U),I,0,0
+01179                       	;--cdb--S:G$AD1CN2$0$0({1}SC:U),I,0,0
+01180                       	;--cdb--S:G$AD1CN3$0$0({1}SC:U),I,0,0
+01181                       	;--cdb--S:G$AD1CN4$0$0({1}SC:U),I,0,0
+01182                       	;--cdb--S:G$AD1CN5$0$0({1}SC:U),I,0,0
+01183                       	;--cdb--S:G$LVDCN$0$0({1}SC:U),I,0,0
+01184                       	;--cdb--S:G$TMA1CN$0$0({1}SC:U),I,0,0
+01185                       	;--cdb--S:G$TMA1R$0$0({1}SC:U),I,0,0
+01186                       	;--cdb--S:G$TMA1C$0$0({1}SC:U),I,0,0
+01187                       	;--cdb--S:G$TB1FLAG$0$0({1}SC:U),I,0,0
+01188                       	;--cdb--S:G$TB1CN0$0$0({1}SC:U),I,0,0
+01189                       	;--cdb--S:G$TB1CN1$0$0({1}SC:U),I,0,0
+01190                       	;--cdb--S:G$TB1RH$0$0({1}SC:U),I,0,0
+01191                       	;--cdb--S:G$TB1RL$0$0({1}SC:U),I,0,0
+01192                       	;--cdb--S:G$TB1C0H$0$0({1}SC:U),I,0,0
+01193                       	;--cdb--S:G$TB1C0L$0$0({1}SC:U),I,0,0
+01194                       	;--cdb--S:G$TB1C1H$0$0({1}SC:U),I,0,0
+01195                       	;--cdb--S:G$TB1C1L$0$0({1}SC:U),I,0,0
+01196                       	;--cdb--S:G$TB1C2H$0$0({1}SC:U),I,0,0
+01197                       	;--cdb--S:G$TB1C2L$0$0({1}SC:U),I,0,0
+01198                       	;--cdb--S:G$TC1CN0$0$0({1}SC:U),I,0,0
+01199                       	;--cdb--S:G$PT1$0$0({1}SC:U),I,0,0
+01200                       	;--cdb--S:G$TRISC1$0$0({1}SC:U),I,0,0
+01201                       	;--cdb--S:G$PT1DA$0$0({1}SC:U),I,0,0
+01202                       	;--cdb--S:G$PT1PU$0$0({1}SC:U),I,0,0
+01203                       	;--cdb--S:G$PT1M1$0$0({1}SC:U),I,0,0
+01204                       	;--cdb--S:G$PT1INT$0$0({1}SC:U),I,0,0
+01205                       	;--cdb--S:G$PT1INTE$0$0({1}SC:U),I,0,0
+01206                       	;--cdb--S:G$PT1INTF$0$0({1}SC:U),I,0,0
+01207                       	;--cdb--S:G$PT2$0$0({1}SC:U),I,0,0
+01208                       	;--cdb--S:G$TRISC2$0$0({1}SC:U),I,0,0
+01209                       	;--cdb--S:G$PT2DA$0$0({1}SC:U),I,0,0
+01210                       	;--cdb--S:G$PT2PU$0$0({1}SC:U),I,0,0
+01211                       	;--cdb--S:G$PT2INT$0$0({1}SC:U),I,0,0
+01212                       	;--cdb--S:G$PT2INTE$0$0({1}SC:U),I,0,0
+01213                       	;--cdb--S:G$PT2INTF$0$0({1}SC:U),I,0,0
+01214                       	;--cdb--S:G$PT6$0$0({1}SC:U),I,0,0
+01215                       	;--cdb--S:G$TRISC6$0$0({1}SC:U),I,0,0
+01216                       	;--cdb--S:G$PT6DA$0$0({1}SC:U),I,0,0
+01217                       	;--cdb--S:G$PT6PU$0$0({1}SC:U),I,0,0
+01218                       	;--cdb--S:G$PT7$0$0({1}SC:U),I,0,0
+01219                       	;--cdb--S:G$TRISC7$0$0({1}SC:U),I,0,0
+01220                       	;--cdb--S:G$PT7DA$0$0({1}SC:U),I,0,0
+01221                       	;--cdb--S:G$PT7PU$0$0({1}SC:U),I,0,0
+01222                       	;--cdb--S:G$PT8$0$0({1}SC:U),I,0,0
+01223                       	;--cdb--S:G$TRISC8$0$0({1}SC:U),I,0,0
+01224                       	;--cdb--S:G$PT8DA$0$0({1}SC:U),I,0,0
+01225                       	;--cdb--S:G$PT8PU$0$0({1}SC:U),I,0,0
+01226                       	;--cdb--S:G$SSPCN0$0$0({1}SC:U),I,0,0
+01227                       	;--cdb--S:G$SSPSTA0$0$0({1}SC:U),I,0,0
+01228                       	;--cdb--S:G$SSPBUF0$0$0({1}SC:U),I,0,0
+01229                       	;--cdb--S:G$CFG0$0$0({1}SC:U),I,0,0
+01230                       	;--cdb--S:G$ACT0$0$0({1}SC:U),I,0,0
+01231                       	;--cdb--S:G$STA0$0$0({1}SC:U),I,0,0
+01232                       	;--cdb--S:G$CRG0$0$0({1}SC:U),I,0,0
+01233                       	;--cdb--S:G$TOC0$0$0({1}SC:U),I,0,0
+01234                       	;--cdb--S:G$RDB0$0$0({1}SC:U),I,0,0
+01235                       	;--cdb--S:G$TDB0$0$0({1}SC:U),I,0,0
+01236                       	;--cdb--S:G$SID0$0$0({1}SC:U),I,0,0
+01237                       	;--cdb--S:G$UR0CN$0$0({1}SC:U),I,0,0
+01238                       	;--cdb--S:G$UR0STA$0$0({1}SC:U),I,0,0
+01239                       	;--cdb--S:G$BA0CN$0$0({1}SC:U),I,0,0
+01240                       	;--cdb--S:G$BG0RH$0$0({1}SC:U),I,0,0
+01241                       	;--cdb--S:G$BG0RL$0$0({1}SC:U),I,0,0
+01242                       	;--cdb--S:G$TX0R$0$0({1}SC:U),I,0,0
+01243                       	;--cdb--S:G$RC0REG$0$0({1}SC:U),I,0,0
+01244                       	;--cdb--S:G$LCDCN1$0$0({1}SC:U),I,0,0
+01245                       	;--cdb--S:G$LCDCN2$0$0({1}SC:U),I,0,0
+01246                       	;--cdb--S:G$LCDCN3$0$0({1}SC:U),I,0,0
+01247                       	;--cdb--S:G$LCDCN4$0$0({1}SC:U),I,0,0
+01248                       	;--cdb--S:G$LCDCN5$0$0({1}SC:U),I,0,0
+01249                       	;--cdb--S:G$LCDCN6$0$0({1}SC:U),I,0,0
+01250                       	;--cdb--S:G$LCDCN7$0$0({1}SC:U),I,0,0
+01251                       	;--cdb--S:G$LCDCN8$0$0({1}SC:U),I,0,0
+01252                       	;--cdb--S:G$LCD0$0$0({1}SC:U),I,0,0
+01253                       	;--cdb--S:G$LCD1$0$0({1}SC:U),I,0,0
+01254                       	;--cdb--S:G$LCD2$0$0({1}SC:U),I,0,0
+01255                       	;--cdb--S:G$LCD3$0$0({1}SC:U),I,0,0
+01256                       	;--cdb--S:G$LCD4$0$0({1}SC:U),I,0,0
+01257                       	;--cdb--S:G$LCD5$0$0({1}SC:U),I,0,0
+01258                       	;--cdb--S:G$LCD6$0$0({1}SC:U),I,0,0
+01259                       	;--cdb--S:G$LCD7$0$0({1}SC:U),I,0,0
+01260                       	;--cdb--S:G$LCD8$0$0({1}SC:U),I,0,0
+01261                       	;--cdb--S:G$LCD9$0$0({1}SC:U),I,0,0
+01262                       	;--cdb--S:G$UR2CN$0$0({1}SC:U),I,0,0
+01263                       	;--cdb--S:G$UR2STA$0$0({1}SC:U),I,0,0
+01264                       	;--cdb--S:G$BA2CN$0$0({1}SC:U),I,0,0
+01265                       	;--cdb--S:G$BG2RH$0$0({1}SC:U),I,0,0
+01266                       	;--cdb--S:G$BG2RL$0$0({1}SC:U),I,0,0
+01267                       	;--cdb--S:G$TX2R$0$0({1}SC:U),I,0,0
+01268                       	;--cdb--S:G$RC2REG$0$0({1}SC:U),I,0,0
+01269                       	;--cdb--S:G$TMA2R$0$0({1}SC:U),I,0,0
+01270                       	;--cdb--S:G$TMA2C$0$0({1}SC:U),I,0,0
+01271                       	;--cdb--S:G$LEDCN$0$0({1}SC:U),I,0,0
+01272                       	;--cdb--S:G$IQ0$0$0({1}SC:U),I,0,0
+01273                       	;--cdb--S:G$IQ1$0$0({1}SC:U),I,0,0
+01274                       	;--cdb--S:G$DGCON1$0$0({1}SC:U),I,0,0
+01275                       	;--cdb--S:G$DGCON2$0$0({1}SC:U),I,0,0
+01276                       	;--cdb--S:G$ADCRH$0$0({1}SC:U),I,0,0
+01277                       	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
+01278                       	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
+01279                       	;--cdb--S:G$TEMDATA$0$0({1}SC:U),I,0,0
+01280                       	;--cdb--S:LDrv_LCD_4718.Disp_ErrNo._Disp_ErrNo_No_10000_412$No$2710$412({1}SC:U),R,0,0,[r0x108D]
+01281                       	;--cdb--S:LDrv_LCD_4718.Disp_Version._Disp_Version_num_10000_418$num$2710$418({1}SC:U),R,0,0,[r0x1094]
+01282                       	;--cdb--S:LDrv_LCD_4718.Disp_Version._Disp_Version_NumDisp_10000_419$NumDisp$2710$419({2}DA2d,SC:U),E,0,0
+01283                       	;--cdb--S:LDrv_LCD_4718.Disp_Code._Disp_Code_num_10000_420$num$2710$420({2}SI:U),R,0,0,[_Disp_Code_STK00,r0x10A1]
+01284                       	;--cdb--S:LDrv_LCD_4718.Disp_Code._Disp_Code_NumDisp_10000_421$NumDisp$2710$421({3}DA3d,SC:U),E,0,0
+01285                       	;--cdb--S:G$LCD_Configuration$0$0({2}DF,SV:S),C,0,0
+01286                       	;--cdb--S:G$Disp_Nothing$0$0({2}DF,SV:S),C,0,0
+01287                       	;--cdb--S:G$_PRODL$0$0({0}:U),Z,0,0
+01288                       	;--cdb--S:G$_PRODH$0$0({0}:U),Z,0,0
+01289                       ;--------------------------------------------------------
+01290                       ; external declarations
+01291                       ;--------------------------------------------------------
+01292                       	.globl	__divuchar
+01293                       	.globl	__moduchar
+01294                       	.globl	__divuint
+01295                       	.globl	__moduint
+01296                       	.globl	_FSR0
+01297                       	.globl	_FSR1
+01298                       	.globl	_FSR2
+01299                       	.globl	_ADCR
+01300                       	.globl	_sIIC
+01301                       	.globl	_BIE_Available_Addr
+01302                       	.globl	_sTIMx
+01303                       	.globl	_sUARTx
+01304                       	.globl	_sAutoBps
+01305                       	.globl	_eAutoBps_Status
+01306                       	.globl	_sTest
+01307                       	.globl	_eTempUnit
+01308                       	.globl	_eBondingTempUnit
+01309                       	.globl	_eVersionCode
+01310                       	.globl	_eMeasureMode
+01311                       	.globl	_eBinding_Status
+01312                       	.globl	_Enter_PrepareSleep_Flag
+01313                       	.globl	_sButton
+01314                       	.globl	_sTimeStamp
+01315                       	.globl	_eButton_Status
+01316                       	.globl	_sLVD
+01317                       	.globl	_UnitExchangeCompleted
+01318                       	.globl	_ERR
+01319                       	.globl	_eErr
+01320                       	.globl	_eDisplay_Interfaces
+01321                       	.globl	_sADC
+01322                       	.globl	_eADCChannel
+01323                       	.globl	_eSystem_Mode
+01324                       	.globl	_eBuzzer_Status
+01325                       	.globl	_Flag_No_Buzzer
+01326                       	.globl	_sMemory
+01327                       	.globl	_sMemoryFlag
+01328                       	.globl	_sActual
+01329                       	.globl	_sForecast
+01330                       	.globl	_sTempCal
+01331                       	.globl	_eMeas_Status
+01332                       	.globl	_sActual_Forecast
+01333                       	.globl	_eTo_Actual_Ways
+01334                       	.globl	_eBle_Sta
+01335                       	.globl	_sBleStatus
+01336                       	.globl	_eBacklight_Status
+01337                       	.globl	_sBacklight
+01338                       	.globl	_NUM_CODE
+01339                       	.globl	_R_Table
+01340                       	.globl	_CloseTable
+01341                       	.globl	__g2ptrget2
+01342                       	.globl	__g2ptrget1
+01343                       
+01344                       	.globl STK07
+01345                       	.globl STK07_SAVE
+01346                       	.globl STK06
+01347                       	.globl STK06_SAVE
+01348                       	.globl STK05
+01349                       	.globl STK05_SAVE
+01350                       	.globl STK04
+01351                       	.globl STK04_SAVE
+01352                       	.globl STK03
+01353                       	.globl STK03_SAVE
+01354                       	.globl STK02
+01355                       	.globl STK02_SAVE
+01356                       	.globl STK01
+01357                       	.globl STK01_SAVE
+01358                       	.globl STK00
+01359                       	.globl STK00_SAVE
+01360                       ;--------------------------------------------------------
+01361                       ; global -1 declarations
+01362                       ;--------------------------------------------------------
+01363                       	.globl	_Disp_ErrNo
+01364                       	.globl	_Disp_Version
+01365                       	.globl	_Disp_Code
+01366                       
+01367                       	.globl	_memcpy
+01368                       ;--------------------------------------------------------
+01369                       ; global -2 definitions
+01370                       ;--------------------------------------------------------
+01371                       	.area DSEG(DATA)
+01372                       __SWTGTID	.equ	0xA6A6B2CF
+01373                       
+01374                       	.area DSEG(DATA)
+01375                       _INDF0	.equ	0x0
+01376                       
+01377                       	.area DSEG(DATA)
+01378                       _POINC0	.equ	0x1
+01379                       
+01380                       	.area DSEG(DATA)
+01381                       _PODEC0	.equ	0x2
+01382                       
+01383                       	.area DSEG(DATA)
+01384                       _PRINC0	.equ	0x3
+01385                       
+01386                       	.area DSEG(DATA)
+01387                       _PLUSW0	.equ	0x4
+01388                       
+01389                       	.area DSEG(DATA)
+01390                       _INDF1	.equ	0x5
+01391                       
+01392                       	.area DSEG(DATA)
+01393                       _POINC1	.equ	0x6
+01394                       
+01395                       	.area DSEG(DATA)
+01396                       _PODEC1	.equ	0x7
+01397                       
+01398                       	.area DSEG(DATA)
+01399                       _PRINC1	.equ	0x8
+01400                       
+01401                       	.area DSEG(DATA)
+01402                       _PLUSW1	.equ	0x9
+01403                       
+01404                       	.area DSEG(DATA)
+01405                       _INDF2	.equ	0xA
+01406                       
+01407                       	.area DSEG(DATA)
+01408                       _POINC2	.equ	0xB
+01409                       
+01410                       	.area DSEG(DATA)
+01411                       _PODEC2	.equ	0xC
+01412                       
+01413                       	.area DSEG(DATA)
+01414                       _PRINC2	.equ	0xD
+01415                       
+01416                       	.area DSEG(DATA)
+01417                       _PLUSW2	.equ	0xE
+01418                       
+01419                       	.area DSEG(DATA)
+01420                       _FSR0H	.equ	0xF
+01421                       
+01422                       	.area DSEG(DATA)
+01423                       _FSR0L	.equ	0x10
+01424                       
+01425                       	.area DSEG(DATA)
+01426                       _FSR1H	.equ	0x11
+01427                       
+01428                       	.area DSEG(DATA)
+01429                       _FSR1L	.equ	0x12
+01430                       
+01431                       	.area DSEG(DATA)
+01432                       _FSR2H	.equ	0x13
+01433                       
+01434                       	.area DSEG(DATA)
+01435                       _FSR2L	.equ	0x14
+01436                       
+01437                       	.area DSEG(DATA)
+01438                       _TOSH	.equ	0x16
+01439                       
+01440                       	.area DSEG(DATA)
+01441                       _TOSL	.equ	0x17
+01442                       
+01443                       	.area DSEG(DATA)
+01444                       _SKCN	.equ	0x18
+01445                       
+01446                       	.area DSEG(DATA)
+01447                       _PCLATH	.equ	0x1A
+01448                       
+01449                       	.area DSEG(DATA)
+01450                       _PCLATL	.equ	0x1B
+01451                       
+01452                       	.area DSEG(DATA)
+01453                       _TBLPTRH	.equ	0x1D
+01454                       
+01455                       	.area DSEG(DATA)
+01456                       _TBLPTRL	.equ	0x1E
+01457                       
+01458                       	.area DSEG(DATA)
+01459                       _TBLDH	.equ	0x1F
+01460                       
+01461                       	.area DSEG(DATA)
+01462                       _TBLDL	.equ	0x20
+01463                       
+01464                       	.area DSEG(DATA)
+01465                       _PRODH	.equ	0x21
+01466                       
+01467                       	.area DSEG(DATA)
+01468                       _PRODL	.equ	0x22
+01469                       
+01470                       	.area DSEG(DATA)
+01471                       _INTE0	.equ	0x23
+01472                       
+01473                       	.area DSEG(DATA)
+01474                       _INTE1	.equ	0x24
+01475                       
+01476                       	.area DSEG(DATA)
+01477                       _INTE2	.equ	0x25
+01478                       
+01479                       	.area DSEG(DATA)
+01480                       _INTF0	.equ	0x26
+01481                       
+01482                       	.area DSEG(DATA)
+01483                       _INTF1	.equ	0x27
+01484                       
+01485                       	.area DSEG(DATA)
+01486                       _INTF2	.equ	0x28
+01487                       
+01488                       	.area DSEG(DATA)
+01489                       _WREG	.equ	0x29
+01490                       
+01491                       	.area DSEG(DATA)
+01492                       _BSRCN	.equ	0x2A
+01493                       
+01494                       	.area DSEG(DATA)
+01495                       _STATUS	.equ	0x2B
+01496                       
+01497                       	.area DSEG(DATA)
+01498                       _MSTAT	.equ	0x2B
+01499                       
+01500                       	.area DSEG(DATA)
+01501                       _PSTAT	.equ	0x2C
+01502                       
+01503                       	.area DSEG(DATA)
+01504                       _BIECN	.equ	0x2E
+01505                       
+01506                       	.area DSEG(DATA)
+01507                       _BIEARH	.equ	0x2F
+01508                       
+01509                       	.area DSEG(DATA)
+01510                       _BIEARL	.equ	0x30
+01511                       
+01512                       	.area DSEG(DATA)
+01513                       _BIEDRH	.equ	0x31
+01514                       
+01515                       	.area DSEG(DATA)
+01516                       _BIEDRL	.equ	0x32
+01517                       
+01518                       	.area DSEG(DATA)
+01519                       _PWRCN	.equ	0x33
+01520                       
+01521                       	.area DSEG(DATA)
+01522                       _OSCCN0	.equ	0x34
+01523                       
+01524                       	.area DSEG(DATA)
+01525                       _OSCCN1	.equ	0x35
+01526                       
+01527                       	.area DSEG(DATA)
+01528                       _OSCCN2	.equ	0x36
+01529                       
+01530                       	.area DSEG(DATA)
+01531                       _CSFCN0	.equ	0x37
+01532                       
+01533                       	.area DSEG(DATA)
+01534                       _CSFCN1	.equ	0x38
+01535                       
+01536                       	.area DSEG(DATA)
+01537                       _WDTCN	.equ	0x39
+01538                       
+01539                       	.area DSEG(DATA)
+01540                       _AD1H	.equ	0x3A
+01541                       
+01542                       	.area DSEG(DATA)
+01543                       _AD1M	.equ	0x3B
+01544                       
+01545                       	.area DSEG(DATA)
+01546                       _AD1L	.equ	0x3C
+01547                       
+01548                       	.area DSEG(DATA)
+01549                       _AD1CN0	.equ	0x3D
+01550                       
+01551                       	.area DSEG(DATA)
+01552                       _AD1CN1	.equ	0x3E
+01553                       
+01554                       	.area DSEG(DATA)
+01555                       _AD1CN2	.equ	0x3F
+01556                       
+01557                       	.area DSEG(DATA)
+01558                       _AD1CN3	.equ	0x40
+01559                       
+01560                       	.area DSEG(DATA)
+01561                       _AD1CN4	.equ	0x41
+01562                       
+01563                       	.area DSEG(DATA)
+01564                       _AD1CN5	.equ	0x42
+01565                       
+01566                       	.area DSEG(DATA)
+01567                       _LVDCN	.equ	0x43
+01568                       
+01569                       	.area DSEG(DATA)
+01570                       _TMA1CN	.equ	0x44
+01571                       
+01572                       	.area DSEG(DATA)
+01573                       _TMA1R	.equ	0x45
+01574                       
+01575                       	.area DSEG(DATA)
+01576                       _TMA1C	.equ	0x46
+01577                       
+01578                       	.area DSEG(DATA)
+01579                       _TB1FLAG	.equ	0x47
+01580                       
+01581                       	.area DSEG(DATA)
+01582                       _TB1CN0	.equ	0x48
+01583                       
+01584                       	.area DSEG(DATA)
+01585                       _TB1CN1	.equ	0x49
+01586                       
+01587                       	.area DSEG(DATA)
+01588                       _TB1RH	.equ	0x4A
+01589                       
+01590                       	.area DSEG(DATA)
+01591                       _TB1RL	.equ	0x4B
+01592                       
+01593                       	.area DSEG(DATA)
+01594                       _TB1C0H	.equ	0x4C
+01595                       
+01596                       	.area DSEG(DATA)
+01597                       _TB1C0L	.equ	0x4D
+01598                       
+01599                       	.area DSEG(DATA)
+01600                       _TB1C1H	.equ	0x4E
+01601                       
+01602                       	.area DSEG(DATA)
+01603                       _TB1C1L	.equ	0x4F
+01604                       
+01605                       	.area DSEG(DATA)
+01606                       _TB1C2H	.equ	0x50
+01607                       
+01608                       	.area DSEG(DATA)
+01609                       _TB1C2L	.equ	0x51
+01610                       
+01611                       	.area DSEG(DATA)
+01612                       _TC1CN0	.equ	0x52
+01613                       
+01614                       	.area DSEG(DATA)
+01615                       _PT1	.equ	0x53
+01616                       
+01617                       	.area DSEG(DATA)
+01618                       _TRISC1	.equ	0x54
+01619                       
+01620                       	.area DSEG(DATA)
+01621                       _PT1DA	.equ	0x55
+01622                       
+01623                       	.area DSEG(DATA)
+01624                       _PT1PU	.equ	0x56
+01625                       
+01626                       	.area DSEG(DATA)
+01627                       _PT1M1	.equ	0x57
+01628                       
+01629                       	.area DSEG(DATA)
+01630                       _PT1INT	.equ	0x58
+01631                       
+01632                       	.area DSEG(DATA)
+01633                       _PT1INTE	.equ	0x59
+01634                       
+01635                       	.area DSEG(DATA)
+01636                       _PT1INTF	.equ	0x5A
+01637                       
+01638                       	.area DSEG(DATA)
+01639                       _PT2	.equ	0x5B
+01640                       
+01641                       	.area DSEG(DATA)
+01642                       _TRISC2	.equ	0x5C
+01643                       
+01644                       	.area DSEG(DATA)
+01645                       _PT2DA	.equ	0x5D
+01646                       
+01647                       	.area DSEG(DATA)
+01648                       _PT2PU	.equ	0x5E
+01649                       
+01650                       	.area DSEG(DATA)
+01651                       _PT2INT	.equ	0x5F
+01652                       
+01653                       	.area DSEG(DATA)
+01654                       _PT2INTE	.equ	0x60
+01655                       
+01656                       	.area DSEG(DATA)
+01657                       _PT2INTF	.equ	0x61
+01658                       
+01659                       	.area DSEG(DATA)
+01660                       _PT6	.equ	0x62
+01661                       
+01662                       	.area DSEG(DATA)
+01663                       _TRISC6	.equ	0x63
+01664                       
+01665                       	.area DSEG(DATA)
+01666                       _PT6DA	.equ	0x64
+01667                       
+01668                       	.area DSEG(DATA)
+01669                       _PT6PU	.equ	0x65
+01670                       
+01671                       	.area DSEG(DATA)
+01672                       _PT7	.equ	0x66
+01673                       
+01674                       	.area DSEG(DATA)
+01675                       _TRISC7	.equ	0x67
+01676                       
+01677                       	.area DSEG(DATA)
+01678                       _PT7DA	.equ	0x68
+01679                       
+01680                       	.area DSEG(DATA)
+01681                       _PT7PU	.equ	0x69
+01682                       
+01683                       	.area DSEG(DATA)
+01684                       _PT8	.equ	0x6A
+01685                       
+01686                       	.area DSEG(DATA)
+01687                       _TRISC8	.equ	0x6B
+01688                       
+01689                       	.area DSEG(DATA)
+01690                       _PT8DA	.equ	0x6C
+01691                       
+01692                       	.area DSEG(DATA)
+01693                       _PT8PU	.equ	0x6D
+01694                       
+01695                       	.area DSEG(DATA)
+01696                       _SSPCN0	.equ	0x6E
+01697                       
+01698                       	.area DSEG(DATA)
+01699                       _SSPSTA0	.equ	0x6F
+01700                       
+01701                       	.area DSEG(DATA)
+01702                       _SSPBUF0	.equ	0x70
+01703                       
+01704                       	.area DSEG(DATA)
+01705                       _CFG0	.equ	0x71
+01706                       
+01707                       	.area DSEG(DATA)
+01708                       _ACT0	.equ	0x72
+01709                       
+01710                       	.area DSEG(DATA)
+01711                       _STA0	.equ	0x73
+01712                       
+01713                       	.area DSEG(DATA)
+01714                       _CRG0	.equ	0x74
+01715                       
+01716                       	.area DSEG(DATA)
+01717                       _TOC0	.equ	0x75
+01718                       
+01719                       	.area DSEG(DATA)
+01720                       _RDB0	.equ	0x76
+01721                       
+01722                       	.area DSEG(DATA)
+01723                       _TDB0	.equ	0x77
+01724                       
+01725                       	.area DSEG(DATA)
+01726                       _SID0	.equ	0x78
+01727                       
+01728                       	.area DSEG(DATA)
+01729                       _UR0CN	.equ	0x79
+01730                       
+01731                       	.area DSEG(DATA)
+01732                       _UR0STA	.equ	0x7A
+01733                       
+01734                       	.area DSEG(DATA)
+01735                       _BA0CN	.equ	0x7B
+01736                       
+01737                       	.area DSEG(DATA)
+01738                       _BG0RH	.equ	0x7C
+01739                       
+01740                       	.area DSEG(DATA)
+01741                       _BG0RL	.equ	0x7D
+01742                       
+01743                       	.area DSEG(DATA)
+01744                       _TX0R	.equ	0x7E
+01745                       
+01746                       	.area DSEG(DATA)
+01747                       _RC0REG	.equ	0x7F
+01748                       
+01749                       	.area DSEG(DATA)
+01750                       _LCDCN1	.equ	0x180
+01751                       
+01752                       	.area DSEG(DATA)
+01753                       _LCDCN2	.equ	0x181
+01754                       
+01755                       	.area DSEG(DATA)
+01756                       _LCDCN3	.equ	0x182
+01757                       
+01758                       	.area DSEG(DATA)
+01759                       _LCDCN4	.equ	0x183
+01760                       
+01761                       	.area DSEG(DATA)
+01762                       _LCDCN5	.equ	0x184
+01763                       
+01764                       	.area DSEG(DATA)
+01765                       _LCDCN6	.equ	0x185
+01766                       
+01767                       	.area DSEG(DATA)
+01768                       _LCDCN7	.equ	0x186
+01769                       
+01770                       	.area DSEG(DATA)
+01771                       _LCDCN8	.equ	0x187
+01772                       
+01773                       	.area DSEG(DATA)
+01774                       _LCD0	.equ	0x188
+01775                       
+01776                       	.area DSEG(DATA)
+01777                       _LCD1	.equ	0x189
+01778                       
+01779                       	.area DSEG(DATA)
+01780                       _LCD2	.equ	0x18A
+01781                       
+01782                       	.area DSEG(DATA)
+01783                       _LCD3	.equ	0x18B
+01784                       
+01785                       	.area DSEG(DATA)
+01786                       _LCD4	.equ	0x18C
+01787                       
+01788                       	.area DSEG(DATA)
+01789                       _LCD5	.equ	0x18D
+01790                       
+01791                       	.area DSEG(DATA)
+01792                       _LCD6	.equ	0x18E
+01793                       
+01794                       	.area DSEG(DATA)
+01795                       _LCD7	.equ	0x18F
+01796                       
+01797                       	.area DSEG(DATA)
+01798                       _LCD8	.equ	0x190
+01799                       
+01800                       	.area DSEG(DATA)
+01801                       _LCD9	.equ	0x191
+01802                       
+01803                       	.area DSEG(DATA)
+01804                       _UR2CN	.equ	0x192
+01805                       
+01806                       	.area DSEG(DATA)
+01807                       _UR2STA	.equ	0x193
+01808                       
+01809                       	.area DSEG(DATA)
+01810                       _BA2CN	.equ	0x194
+01811                       
+01812                       	.area DSEG(DATA)
+01813                       _BG2RH	.equ	0x195
+01814                       
+01815                       	.area DSEG(DATA)
+01816                       _BG2RL	.equ	0x196
+01817                       
+01818                       	.area DSEG(DATA)
+01819                       _TX2R	.equ	0x197
+01820                       
+01821                       	.area DSEG(DATA)
+01822                       _RC2REG	.equ	0x198
+01823                       
+01824                       	.area DSEG(DATA)
+01825                       _TMA2R	.equ	0x1E8
+01826                       
+01827                       	.area DSEG(DATA)
+01828                       _TMA2C	.equ	0x1E9
+01829                       
+01830                       	.area DSEG(DATA)
+01831                       _LEDCN	.equ	0x1EA
+01832                       
+01833                       	.area DSEG(DATA)
+01834                       _IQ0	.equ	0x1EB
+01835                       
+01836                       	.area DSEG(DATA)
+01837                       _IQ1	.equ	0x1EC
+01838                       
+01839                       	.area DSEG(DATA)
+01840                       _DGCON1	.equ	0x1ED
+01841                       
+01842                       	.area DSEG(DATA)
+01843                       _DGCON2	.equ	0x1EE
+01844                       
+01845                       	.area DSEG(DATA)
+01846                       _ADCRH	.equ	0x3A
+01847                       
+01848                       	.area DSEG(DATA)
+01849                       _ADCRM	.equ	0x3B
+01850                       
+01851                       	.area DSEG(DATA)
+01852                       _ADCRL	.equ	0x3C
+01853                       
+01854                       	.area DSEG(DATA)
+01855                       _TEMDATA	.equ	0x2E0
+01856                       
+01857                       ;--------------------------------------------------------
+01858                       ; absolute symbol definitions
+01859                       ;--------------------------------------------------------
+01860                       ;--------------------------------------------------------
+01861                       ; compiler-defined variables
+01862                       ;--------------------------------------------------------
+01863                       	.area IDATA (DATA,REL,CON); pre-def
+01864                       	.area IDATAROM (CODE,REL,CON); pre-def
+01865                       	.area UDATA (DATA,REL,CON); pre-def
+01866                       	.area UDATA (DATA,REL,CON) ;UDL_Drv_LCD_4718_0	udata
+01867 0000 --               r0x108D:	.ds	1
+01868 0001 --               r0x1094:	.ds	1
+01869 0002 --               r0x1095:	.ds	1
+01870 0003 --               r0x1096:	.ds	1
+01871 0004 --               r0x1097:	.ds	1
+01872 0005 --               r0x1099:	.ds	1
+01873 0006 --               r0x10A1:	.ds	1
+01874 0007 --               r0x10A2:	.ds	1
+01875 0008 --               r0x10A3:	.ds	1
+01876 0009 --               r0x10A5:	.ds	1
+01877 000A --               r0x10A6:	.ds	1
+01878                       	.area LOCALSTK (STK); local stack var
+01879                       	.globl __g2ptrget2_STK00
+01880                       	.globl __divuchar_STK00
+01881 0000 --               _Disp_Version_NumDisp_10000_419:	.ds	2
+01882                       	.globl __moduchar_STK00
+01883                       	.globl __g2ptrget1_STK00
+01884 0002 --               _Disp_Code_STK00:	.ds	1
+01885                       	.globl _Disp_Code_STK00
+01886                       	.globl __divuint_STK02
+01887                       	.globl __divuint_STK01
+01888                       	.globl __divuint_STK00
+01889 0003 --               _Disp_Code_NumDisp_10000_421:	.ds	3
+01890                       	.globl __moduint_STK02
+01891                       	.globl __moduint_STK01
+01892                       	.globl __moduint_STK00
+01893                       ;--------------------------------------------------------
+01894                       ; initialized data
+01895                       ;--------------------------------------------------------
+01896                       ;--------------------------------------------------------
+01897                       ; initialized data - mirror
+01898                       ;--------------------------------------------------------
+01899                       	;--cdb--D:S:G$s_Forecast$0$0({26}ST__00000016(T:FDrv_LCD_4718$__00000016[({0}S:S$Forecast_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Update_MaxTemp3Min_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$FlagStartAlgorithmCounts$0$0({1}SB2$1:U),Z,0,0)({1}S:S$Forecast_Timer$0$0({1}SC:U),Z,0,0)({2}S:S$Start_Counts$0$0({1}SC:U),Z,0,0)({3}S:S$Drop_Counts$0$0({1}SC:U),Z,0,0)({4}S:S$PreBath_Counts$0$0({1}SC:U),Z,0,0)({5}S:S$Forecast_Counts$0$0({1}SC:U),Z,0,0)({6}S:S$Prior250msForecastTemp$0$0({2}SI:U),Z,0,0)({8}S:S$Prior1sForecastTemp$0$0({2}SI:U),Z,0,0)({10}S:S$StartTemp$0$0({2}SI:U),Z,0,0)({12}S:S$StartAlgorithmTemp$0$0({8}DA4d,SI:U),Z,0,0)({20}S:S$EndTemp$0$0({2}SI:U),Z,0,0)({22}S:S$ForecastTemp$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+01900                       	;--cdb--D:S:G$div_t$0$0({4}ST__00000000(T:FDrv_LCD_4718$__00000000[({0}S:S$quot$0$0({2}SI:S),Z,0,0)({2}S:S$rem$0$0({2}SI:S),Z,0,0)]):S),Z,0,0
+01901                       	;--cdb--D:S:G$e_MeasureMode$0$0({1}SC:U:ENUM_NONAME|Bath_Mode=3|Rectal_Mode=2|Underarm_Mode=1|Oral_Mode=0),Z,0,0
+01902                       	;--cdb--D:S:G$e_Button_Status$0$0({1}SC:U:ENUM_NONAME|Button_Lift=2|Button_Press=1|Button_Debouncing=0),Z,0,0
+01903                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01904                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01905                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01906                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01907                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01908                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01909                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01910                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01911                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01912                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01913                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01914                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01915                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01916                       	;--cdb--D:S:G$e_VersionCode$0$0({1}SC:S:ENUM_NONAME|VC_DispOn=1|VC_DispOff=0),Z,0,0
+01917                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01918                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01919                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01920                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01921                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01922                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01923                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01924                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01925                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01926                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01927                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01928                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01929                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01930                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01931                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01932                       	;--cdb--D:S:G$uint32$0$0({4}SL:UL),Z,0,0
+01933                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01934                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01935                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01936                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01937                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01938                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01939                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01940                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01941                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01942                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01943                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01944                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01945                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01946                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01947                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01948                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01949                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01950                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01951                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01952                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01953                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01954                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01955                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01956                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01957                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01958                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01959                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01960                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01961                       	;--cdb--D:S:G$uint16$0$0({2}SI:U),Z,0,0
+01962                       	;--cdb--D:S:G$e_Buzzer_Status$0$0({1}SC:U:ENUM_NONAME|Buzzer_Er1Er2=5|Buzzer_Forecast_To_Actual=4|Buzzer_MeasuredTempActual=3|Buzzer_MeasuredTempForecast=2|Buzzer_PowerOnOff=1|Buzzer_Silent=0),Z,0,0
+01963                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01964                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01965                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01966                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01967                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01968                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01969                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01970                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01971                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01972                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01973                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01974                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01975                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01976                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01977                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01978                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01979                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01980                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01981                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01982                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01983                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01984                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01985                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01986                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01987                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01988                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01989                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01990                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01991                       	;--cdb--D:S:G$uint64$0$0({8}SI:UE),Z,0,0
+01992                       	;--cdb--D:S:G$s_Actual$0$0({5}ST__00000015(T:FDrv_LCD_4718$__00000015[({0}S:S$Actual_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$TempFastFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$PresetMeasTimeCompletedFlag$0$0({1}SB2$1:U),Z,0,0)({1}S:S$StableTime$0$0({1}SC:U),Z,0,0)({2}S:S$ActualTime$0$0({1}SC:U),Z,0,0)({3}S:S$Prior1sActualTemp$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+01993                       	;--cdb--D:S:G$e_Meas_Status$0$0({1}SC:U:ENUM_NONAME|Meas_DataUpdate=4|Meas_ForecastMeasuring=3|Meas_ActualMeasuring=2|Meas_StartConditon=1|Meas_Get_TEMP=0),Z,0,0
+01994                       	;--cdb--D:S:G$e_System_Mode$0$0({1}SC:U:ENUM_NONAME|Normal=3|Prepare_Normal=2|Sleep=1|Prepare_Sleep=0),Z,0,0
+01995                       	;--cdb--D:S:G$e_Backlight_Status$0$0({1}SC:U:ENUM_NONAME|MeasuredTemp_Backlight=4|TempDetecting_Backlight=3|MemTemp_Backlight=2|All_Backlight=1|No_Backlight=0),Z,0,0
+01996                       	;--cdb--D:S:G$s_TIMx$0$0({13}ST__00000004(T:FDrv_LCD_4718$__00000004[({0}S:S$LVDSampleFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LCDRefreshFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$TempSampleFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$ModeSymbolFlash$0$0({1}SB3$1:U),Z,0,0)({0}S:S$EnableModeSymbolFlash$0$0({1}SB4$1:U),Z,0,0)({0}S:S$CalSymbolFlash$0$0({1}SB5$1:U),Z,0,0)({0}S:S$ForecastJudgeOKTempFlash$0$0({1}SB6$1:U),Z,0,0)({0}S:S$BindingSymbolFlash$0$0({1}SB7$1:U),Z,0,0)({1}S:S$UnitSymbolFlash$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BLESymbolFlash$0$0({1}SB1$1:U),Z,0,0)({1}S:S$ForecastSymbolFlash$0$0({1}SB2$1:U),Z,0,0)({1}S:S$BuzzerFlash1Hz$0$0({1}SB3$1:U),Z,0,0)({1}S:S$BuzzerFlash4Hz$0$0({1}SB4$1:U),Z,0,0)({2}S:S$TempDetectingSymFlash1Hz$0$0({1}SC:U),Z,0,0)({3}S:S$BuzzerIntervalCnt$0$0({1}SC:U),Z,0,0)({4}S:S$Cnt50ms$0$0({1}SC:U),Z,0,0)({5}S:S$Cnt125ms$0$0({2}SI:U),Z,0,0)({7}S:S$Cnt250ms$0$0({2}SI:U),Z,0,0)({9}S:S$Cnt500ms$0$0({2}SI:U),Z,0,0)({11}S:S$Cnt1s$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+01997                       	;--cdb--D:S:G$e_To_Actual_Ways$0$0({1}SC:U:ENUM_NONAME|To_Actual_3Min=90|To_Actual_Immediately=165),Z,0,0
+01998                       	;--cdb--D:S:G$e_ADCChannel$0$0({1}SC:S:ENUM_NONAME|AI14_AI15=1|AI2_AI3=0),Z,0,0
+01999                       	;--cdb--D:S:G$s_Memory$0$0({23}ST__00000012(T:FDrv_LCD_4718$__00000012[({0}S:S$HeadNo$0$0({1}SC:U),Z,0,0)({1}S:S$pMemTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempSum$0$0({1}SC:U),Z,0,0)({3}S:S$MemTempBuf$0$0({20}DA10d,SI:U),Z,0,0)]):S),Z,0,0
+02000                       	;--cdb--D:S:G$s_Button$0$0({2}ST__00000008(T:FDrv_LCD_4718$__00000008[({0}S:S$Flag_Button_Press_Once$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_Button_Press_Transient$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Flag_Button_Press_3S$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_Button_Press_6S$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Flag_Button_Press_9S$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Once$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_Transient$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Flag_Button_Lift_1S$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_2S$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Flag_Button_Lift_60S$0$0({1}SB1$1:U),Z,0,0)]):S),Z,0,0
+02001                       	;--cdb--D:S:G$s_Backlight$0$0({1}ST__00000019(T:FDrv_LCD_4718$__00000019[({0}S:S$Backlight2SFlag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$MeasuredTempLighting$0$0({1}SB1$1:U),Z,0,0)]):S),Z,0,0
+02002                       	;--cdb--D:S:G$e_Binding_Status$0$0({1}SC:U:ENUM_NONAME|FahrenheitFirst_NonSwitchable=3|FahrenheitFirst_Switchable=2|CentigradeFirst_NonSwitchable=1|CentigradeFirst_Switchable=0),Z,0,0
+02003                       	;--cdb--D:S:G$e_AutoBps_Status$0$0({1}SC:U:ENUM_NONAME|AutoBps_Searched=2|AutoBps_Searching=1|AutoBps_Init=0),Z,0,0
+02004                       	;--cdb--D:S:G$s_TimeStamp$0$0({42}ST__00000009(T:FDrv_LCD_4718$__00000009[({0}S:S$Get_ForecastMeas_Start_Timer_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Get_DispCOM_Start_Time_Flag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Get_Backlight_Start_Time_Flag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_Buzzer_Start_Timer_Flag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Get_ButtonPress_Flag$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Get_ButtonLift_Flag$0$0({1}SB5$1:U),Z,0,0)({0}S:S$Get_BleMode_Flag$0$0({1}SB6$1:U),Z,0,0)({0}S:S$Get_Ble_Connect_Max_Time_Flag$0$0({1}SB7$1:U),Z,0,0)({1}S:S$Get_EMC_Temp_Update_Time_Flag$0$0({1}SB0$1:U),Z,0,0)({2}S:S$Timer_Journey$0$0({4}SL:UL),Z,0,0)({6}S:S$Buzzing_Timer$0$0({4}SL:UL),Z,0,0)({10}S:S$DispCOM_Timer$0$0({4}SL:UL),Z,0,0)({14}S:S$Backlight_Timer$0$0({4}SL:UL),Z,0,0)({18}S:S$ForecastMeas_Timer$0$0({4}SL:UL),Z,0,0)({22}S:S$ButtonLift_Timer$0$0({4}SL:UL),Z,0,0)({26}S:S$ButtonPress_Timer$0$0({4}SL:UL),Z,0,0)({30}S:S$BleMode_Timer$0$0({4}SL:UL),Z,0,0)({34}S:S$BleMode_Connect_Max_Timer$0$0({4}SL:UL),Z,0,0)({38}S:S$EMC_Temp_Update_Timer$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+02005                       	;--cdb--D:S:G$s_BleStatus$0$0({60}ST__00000018(T:FDrv_LCD_4718$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),Z,0,0
+02006                       	;--cdb--D:S:G$s_Test$0$0({19}ST__00000007(T:FDrv_LCD_4718$__00000007[({0}S:S$Test_Get_Total_Journey_Start_Flag$0$0({1}SB0$1:U),Z,0,0)({1}S:S$Test_Total_Journey_Start_Timer$0$0({4}SL:UL),Z,0,0)({5}S:S$Test_Total_Journey_Timer$0$0({2}SI:U),Z,0,0)({7}S:S$ISR_AD_Counts$0$0({4}SL:UL),Z,0,0)({11}S:S$MainCycle_Counts$0$0({4}SL:UL),Z,0,0)({15}S:S$MainForecast_Counts$0$0({4}SL:UL),Z,0,0)]):S),Z,0,0
+02007                       	;--cdb--D:S:G$s_TempCal$0$0({14}ST__00000014(T:FDrv_LCD_4718$__00000014[({0}S:S$BIE_Writed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Cal_60s_Arrived$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Enable_BIE_Write$0$0({1}SB2$1:U),Z,0,0)({0}S:S$BIE_Write_Action$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Reopen_LCD$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Reset_From_CalOK$0$0({1}SB5$1:U),Z,0,0)({1}S:S$pTempBuf$0$0({1}SC:U),Z,0,0)({2}S:S$Temp_Ratio$0$0({2}SI:U),Z,0,0)({4}S:S$TempBuf$0$0({10}DA5d,SI:U),Z,0,0)]):S),Z,0,0
+02008                       	;--cdb--D:S:G$ldiv_t$0$0({8}ST__00000001(T:FDrv_LCD_4718$__00000001[({0}S:S$quot$0$0({4}SL:SL),Z,0,0)({4}S:S$rem$0$0({4}SL:SL),Z,0,0)]):S),Z,0,0
+02009                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02010                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02011                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02012                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02013                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02014                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02015                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02016                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02017                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02018                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02019                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02020                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02021                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02022                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02023                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02024                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02025                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02026                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02027                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02028                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02029                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02030                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02031                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02032                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02033                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02034                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02035                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02036                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02037                       	;--cdb--D:S:G$int8$0$0({1}SC:S),Z,0,0
+02038                       	;--cdb--D:S:G$s_UARTx$0$0({15}ST__00000005(T:FDrv_LCD_4718$__00000005[({0}S:S$Num$0$0({5}DA5d,SC:U),Z,0,0)({5}S:S$StringArray$0$0({10}DA10d,SC:U),Z,0,0)]):S),Z,0,0
+02039                       	;--cdb--D:S:G$size_t$0$0({2}SI:U),Z,0,0
+02040                       	;--cdb--D:S:G$eBleModeTask$0$0({1}SC:U:ENUM_NONAME|Ble_TimeoutErr=7|Ble_LinkErr=6|Ble_UploadData=5|Ble_Idle=4|Ble_Advertising=3|Ble_Disable=2|Ble_DeviceInfo=1|Ble_Standby=0),Z,0,0
+02041                       	;--cdb--D:S:G$s_AutoBps$0$0({5}ST__00000006(T:FDrv_LCD_4718$__00000006[({0}S:S$Flag_AutoBps_Completed$0$0({1}SB0$1:U),Z,0,0)({1}S:S$BSP_Number$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_DeviceInfoSend$0$0({1}SC:U),Z,0,0)({3}S:S$AutoBpsValue$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02042                       	;--cdb--D:S:G$s_ADC$0$0({45}ST__00000011(T:FDrv_LCD_4718$__00000011[({0}S:S$Get_250msTemp_Flag$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Flag_ADCDone$0$0({1}SB1$1:U),Z,0,0)({0}S:S$NTCChannel$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Flag_DefaultNTCChl_AI12_AI13$0$0({1}SB3$1:U),Z,0,0)({0}S:S$UnRefreshTemp$0$0({1}SB4$1:U),Z,0,0)({0}S:S$RefreshTempFast$0$0({1}SB5$1:U),Z,0,0)({1}S:S$EMCADCDataCnt$0$0({1}SC:U),Z,0,0)({2}S:S$ADCCounts$0$0({1}SC:U),Z,0,0)({3}S:S$ADCData$0$0({2}SI:S),Z,0,0)({5}S:S$MinData$0$0({2}SI:S),Z,0,0)({7}S:S$MaxData$0$0({2}SI:S),Z,0,0)({9}S:S$AI2_AI3_Data$0$0({2}SI:S),Z,0,0)({11}S:S$AI14_AI15_Data$0$0({2}SI:S),Z,0,0)({13}S:S$Centigrade250msTemp$0$0({2}SI:U),Z,0,0)({15}S:S$PreviousCentigrade250msTemp$0$0({2}SI:U),Z,0,0)({17}S:S$ADCSum$0$0({4}SL:SL),Z,0,0)({21}S:S$RawRntc$0$0({2}SI:U),Z,0,0)({23}S:S$Rntc$0$0({2}SI:U),Z,0,0)({25}S:S$EMCADCData$0$0({20}DA10d,SI:U),Z,0,0)]):S),Z,0,0
+02043                       	;--cdb--D:S:G$e_Display$0$0({1}SC:U:ENUM_NONAME|Display_PreCalibration=19|Display_SleepMode=18|Display_MeasuredTemperature=17|Display_ERR=16|Display_TemperatureDetecting=15|Display_Binding=14|Display_ModeExchange=13|Display_CurrentMode=12|Display_MemoryTemperatureValue=11|Display_MemoryTemperatureNumber=10|Display_RecentTemperature=9|Display_CalibrationOK=8|Display_Calibration=7|Display_Off=6|Display_Code=5|Display_Version=4|Display_UnitExchange=3|Display_All=2|Display_LowPower=1|Display_PowerOn=0),Z,0,0
+02044                       	;--cdb--D:S:G$s_IIC$0$0({1}ST__00000003(T:FDrv_LCD_4718$__00000003[({0}S:S$IICErr$0$0({1}SB0$1:U),Z,0,0)]):S),Z,0,0
+02045                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02046                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02047                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02048                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02049                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02050                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02051                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02052                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02053                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02054                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02055                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02056                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02057                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02058                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02059                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02060                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02061                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02062                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02063                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02064                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02065                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02066                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02067                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02068                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02069                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02070                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02071                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02072                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02073                       	;--cdb--D:S:G$int32$0$0({4}SL:SL),Z,0,0
+02074                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02075                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02076                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02077                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02078                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02079                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02080                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02081                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02082                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02083                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02084                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02085                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02086                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02087                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02088                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02089                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02090                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02091                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02092                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02093                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02094                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02095                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02096                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02097                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02098                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02099                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02100                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02101                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02102                       	;--cdb--D:S:G$int16$0$0({2}SI:S),Z,0,0
+02103                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02104                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02105                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02106                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02107                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02108                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02109                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02110                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02111                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02112                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02113                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02114                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02115                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02116                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02117                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02118                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02119                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02120                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02121                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02122                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02123                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02124                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02125                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02126                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02127                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02128                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02129                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02130                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02131                       	;--cdb--D:S:G$int64$0$0({8}SI:SE),Z,0,0
+02132                       	;--cdb--D:S:G$s_LVD$0$0({5}ST__00000010(T:FDrv_LCD_4718$__00000010[({0}S:S$LVD_Test_Completed$0$0({1}SB0$1:U),Z,0,0)({0}S:S$LVD_Low$0$0({1}SB1$1:U),Z,0,0)({1}S:S$pLVDBuf$0$0({1}SC:U),Z,0,0)({2}S:S$LVDBuf$0$0({3}DA3d,SC:U),Z,0,0)]):S),Z,0,0
+02133                       	;--cdb--D:S:G$s_Actual_Forecast$0$0({15}ST__00000017(T:FDrv_LCD_4718$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),Z,0,0
+02134                       	;--cdb--D:S:G$s_MemoryFlag$0$0({3}ST__00000013(T:FDrv_LCD_4718$__00000013[({0}S:S$MemTemp_Updated$0$0({1}SB0$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_EN$0$0({1}SB1$1:U),Z,0,0)({0}S:S$Write_MemTemp_E2_EN$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Write_MemTemp_RAM_Only$0$0({1}SB3$1:U),Z,0,0)({0}S:S$Update_MemTempDispNo$0$0({1}SB4$1:U),Z,0,0)({0}S:S$Update_MemTempDispVlaue$0$0({1}SB5$1:U),Z,0,0)({1}S:S$MemTempDispNo$0$0({1}SC:U),Z,0,0)({2}S:S$MemTempDispValue$0$0({1}SC:U),Z,0,0)]):S),Z,0,0
+02135                       	;--cdb--D:S:G$wchar_t$0$0({4}SL:UL),Z,0,0
+02136                       	;--cdb--D:S:G$e_Err$0$0({1}SC:U:ENUM_NONAME|Err_Num=9|Err=8|Err7=7|Err6=6|Err5=5|Err4=4|Err3=3|Err2=2|Err1=1|Err0=0),Z,0,0
+02137                       	;--cdb--D:S:G$lldiv_t$0$0({16}ST__00000002(T:FDrv_LCD_4718$__00000002[({0}S:S$quot$0$0({8}SI:SE),Z,0,0)({8}S:S$rem$0$0({8}SI:SE),Z,0,0)]):S),Z,0,0
+02138                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02139                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02140                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02141                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02142                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02143                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02144                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02145                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02146                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02147                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02148                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02149                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02150                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02151                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02152                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02153                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02154                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02155                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02156                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02157                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02158                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02159                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02160                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02161                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02162                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02163                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02164                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02165                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02166                       	;--cdb--D:S:G$uint8$0$0({1}SC:U),Z,0,0
+02167                       	;--cdb--D:S:G$e_TempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),Z,0,0
+02168                       	;Following is optimization info, 
+02169                       	;xxcdbxxW:dst:src+offset:srclit:just-remove
+02170                       	;--cdb--W:r0x10A3:NULL+0:-1:1
+02171                       	;--cdb--W:r0x10A2:NULL+0:-1:1
+02172                       	;--cdb--W:r0x10A1:NULL+0:-1:1
+02173                       	;--cdb--W:_Disp_Code_STK00:NULL+0:-1:1
+02174                       	;--cdb--W:r0x10A4:NULL+0:-1:1
+02175                       	;--cdb--W:r0x10A8:NULL+0:-1:1
+02176                       	;--cdb--W:r0x10A1:r0x10A3+1:-1:0
+02177                       	;--cdb--W:r0x10A1:STK00+0:-1:0
+02178                       	;--cdb--W:r0x10A4:STK00+0:-1:0
+02179                       	;--cdb--W:r0x10A7:NULL+0:-1:1
+02180                       	;--cdb--W:r0x10A6:NULL+0:-1:1
+02181                       	;--cdb--W:r0x1094:NULL+0:-1:1
+02182                       	;--cdb--W:r0x1096:NULL+0:-1:1
+02183                       	;--cdb--W:r0x1095:NULL+0:-1:1
+02184                       	;--cdb--W:r0x109B:NULL+0:-1:1
+02185                       	;--cdb--W:r0x1094:r0x1095+0:-1:0
+02186                       	;--cdb--W:r0x1096:STK00+0:-1:0
+02187                       	;--cdb--W:r0x1098:NULL+0:-1:1
+02188                       	;--cdb--W:r0x1099:NULL+0:-1:1
+02189                       	;--cdb--W:r0x109A:NULL+0:-1:1
+02190                       	;--cdb--W:r0x108E:NULL+0:-1:1
+02191                       	;--cdb--W:r0x108D:NULL+0:-1:1
+02192                       	;--cdb--W:r0x1091:NULL+0:-1:1
+02193                       	;--cdb--W:r0x1090:NULL+0:-1:1
+02194                       	;--cdb--W:r0x108F:NULL+0:-1:1
+02195                       	;--cdb--W:r0x108C:NULL+0:-1:1
+02196                       	;--c2db--RNG$_Disp_ErrNo_No_10000_412$712$730
+02197                       	;--c2db--RNG$_Disp_Version_num_10000_418$565$574
+02198                       	;--c2db--RNG$_Disp_Code_num_10000_420$442$477
+02199                       	END

@@ -1,0 +1,885 @@
+$MOD:App_BLEmode:".\obj\App_BLEmode.rel"
+$VER:SDASHYA_201
+$ASFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+$SRC:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\App_BLEmode.asm"
+$EXPORT:_App_BleMode
+$CDB:"S:G$App_BleMode$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_Uart_Send_Wakeup
+$CDB:"S:G$Uart_Send_Wakeup$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_UART_Send_To_Ble
+$CDB:"S:G$UART_Send_To_Ble$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_App_UploadData
+$CDB:"S:G$App_UploadData$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_App_Upload_DeviceInfo
+$CDB:"S:G$App_Upload_DeviceInfo$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_App_Upload_Temperature
+$CDB:"S:G$App_Upload_Temperature$0$0({2}DF,SV:S),C,0,0"
+$EXPORT:_Uart_Receive_Event
+$CDB:"S:G$Uart_Receive_Event$0$0({2}DF,SC:U),C,0,0"
+$EXPORT:_BleData_Check
+$CDB:"S:G$BleData_Check$0$0({2}DF,SC:U),C,0,0"
+$EXPORT:_eBle_Sta
+$CDB:"S:G$eBle_Sta$0$0({1}SC:U:ENUM_NONAME|Ble_TimeoutErr=7|Ble_LinkErr=6|Ble_UploadData=5|Ble_Idle=4|Ble_Advertising=3|Ble_Disable=2|Ble_DeviceInfo=1|Ble_Standby=0),E,0,0"
+$EXPORT:_sBleStatus
+$CDB:"S:G$sBleStatus$0$0({60}ST__00000018(T:FApp_BLEmode$__00000018[({0}S:S$F_Ble_En$0$0({1}SB0$1:U),Z,0,0)({0}S:S$F_Uart_Receive$0$0({1}SB1$1:U),Z,0,0)({0}S:S$F_Ble_Blink$0$0({1}SB2$1:U),Z,0,0)({0}S:S$F_Temp_Upload$0$0({1}SB3$1:U),Z,0,0)({0}S:S$F_Temp_Updated$0$0({1}SB4$1:U),Z,0,0)({0}S:S$AutoBps_OnOff$0$0({1}SB5$1:U),Z,0,0)({1}S:S$F_Previous_Ble_Busy$0$0({1}SC:U),Z,0,0)({2}S:S$TempUploadTimes_Cnt$0$0({1}SC:U),Z,0,0)({3}S:S$pBleRxBuf$0$0({1}SC:U),Z,0,0)({4}S:S$g_Ble_RxData$0$0({18}DA18d,SC:U),Z,0,0)({22}S:S$g_Ble_RxData_Buf$0$0({18}DA18d,SC:U),Z,0,0)({40}S:S$g_Ble_TxData$0$0({20}DA20d,SC:U),Z,0,0)]):S),E,0,0"
+$REF:_UART0_SendByte
+$CDBF:1:"S:G$UART0_SendByte$0$0({2}DF,SV:S),C,0,0"
+$REF:_UART0_SendBuffer
+$CDBF:3:"S:G$UART0_SendBuffer$0$0({2}DF,SV:S),C,0,0"
+$REF:_sActual_Forecast
+$CDB:"S:G$sActual_Forecast$0$0({15}ST__00000017(T:FApp_BLEmode$__00000017[({0}S:S$AF_Start$0$0({1}SB0$1:U),Z,0,0)({0}S:S$StableBuzzerFlag$0$0({1}SB1$1:U),Z,0,0)({0}S:S$ActualForecast_SelectFlag$0$0({1}SB2$1:U),Z,0,0)({0}S:S$Get_1sTempFlag$0$0({1}SB3$1:U),Z,0,0)({0}S:S$ResetTimeFlag$0$0({1}SB4$1:U),Z,0,0)({1}S:S$Cnt_1S$0$0({1}SC:U),Z,0,0)({2}S:S$Cnt_Test_1S$0$0({1}SC:U),Z,0,0)({3}S:S$CentigradeTempDisp$0$0({2}SI:U),Z,0,0)({5}S:S$ConvertedTempDisp$0$0({2}SI:U),Z,0,0)({7}S:S$Temp_T1$0$0({2}SI:U),Z,0,0)({9}S:S$Temp_T2$0$0({2}SI:U),Z,0,0)({11}S:S$Temp_T3$0$0({2}SI:U),Z,0,0)({13}S:S$Calibrated_Forecast_Temp$0$0({2}SI:U),Z,0,0)]):S),E,0,0"
+$REF:_UART0_SendBuffer_STK01
+$REF:_UART0_SendBuffer_STK00
+$AREA:_CODE:1:0:0:0
+$AREA:CCODE:1:0:0:0
+$FUNC:$R:0:0:_App_BleMode:",obj/App_BLEmode.asm:186"
+$LAB:189:_App_BleMode:",obj/App_BLEmode.asm:189"
+$WDATAH:190:1:1:0x0:",obj/App_BLEmode.asm:190"
+$WDATA:190:1:1:0xA:",obj/App_BLEmode.asm:190"
+$ENDFUNC
+$FUNC:$R:0:0:_Uart_Send_Wakeup:",obj/App_BLEmode.asm:199":$C:_UART0_SendByte\
+:$L:r0x10A7
+$LAB:202:_Uart_Send_Wakeup:",obj/App_BLEmode.asm:202"
+$WDATAH:203:1:1:(0xC | { (r0x10A7 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:203"
+$WDATA:203:1:1:(r0x10A7 & 0xFF):",obj/App_BLEmode.asm:203"
+$LAB:204:_00228_DS_:",obj/App_BLEmode.asm:204"
+$WDATAH:206:1:1:0x6:",obj/App_BLEmode.asm:206"
+$WDATA:206:1:1:0xFF:",obj/App_BLEmode.asm:206"
+$WDATAH:207:1:1:0xC0:",obj/App_BLEmode.asm:207"
+$WDATA:207:1:1:{ (_UART0_SendByte >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:207"
+$WDATAH:207:1:1:(((_UART0_SendByte >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:207"
+$WDATA:207:1:1:((_UART0_SendByte >> 0x1) & 0xFF):",obj/App_BLEmode.asm:207"
+$WDATAH:210:1:1:(0x3A | { (r0x10A7 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:210"
+$WDATA:210:1:1:(r0x10A7 & 0xFF):",obj/App_BLEmode.asm:210"
+$WDATAH:211:1:1:0x6:",obj/App_BLEmode.asm:211"
+$WDATA:211:1:1:0x13:",obj/App_BLEmode.asm:211"
+$WDATAS:212:1:1:(0x68 | { (r0x10A7 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:212"
+$WDATA:212:1:1:(r0x10A7 & 0xFF):",obj/App_BLEmode.asm:212"
+$WDATAH:213:1:1:0xC2:",obj/App_BLEmode.asm:213"
+$WDATA:213:1:1:{ (_00228_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:213"
+$WDATAH:213:1:1:(((_00228_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:213"
+$WDATA:213:1:1:((_00228_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:213"
+$WDATAH:215:1:1:0x0:",obj/App_BLEmode.asm:215"
+$WDATA:215:1:1:0xA:",obj/App_BLEmode.asm:215"
+$ENDFUNC
+$FUNC:$R:0:0:_UART_Send_To_Ble:",obj/App_BLEmode.asm:223":$C:_UART0_SendBuffer
+$LAB:227:_UART_Send_To_Ble:",obj/App_BLEmode.asm:227"
+$WDATAH:228:1:1:(0x64 | { ((_sBleStatus + 0x2D) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:228"
+$WDATA:228:1:1:((_sBleStatus + 0x2D) & 0xFF):",obj/App_BLEmode.asm:228"
+$WDATAH:230:1:1:(0x66 | { (_UART0_SendBuffer_STK01 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:230"
+$WDATA:230:1:1:(_UART0_SendBuffer_STK01 & 0xFF):",obj/App_BLEmode.asm:230"
+$WDATAH:231:1:1:0x6:",obj/App_BLEmode.asm:231"
+$WDATA:231:1:1:((_sBleStatus + 0x28) & 0xFF):",obj/App_BLEmode.asm:231"
+$WDATAH:232:1:1:(0x66 | { (_UART0_SendBuffer_STK00 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:232"
+$WDATA:232:1:1:(_UART0_SendBuffer_STK00 & 0xFF):",obj/App_BLEmode.asm:232"
+$WDATAH:233:1:1:0x6:",obj/App_BLEmode.asm:233"
+$WDATA:233:1:1:(((_sBleStatus + 0x28) >> 0x8) & 0xFF):",obj/App_BLEmode.asm:233"
+$WDATAH:234:1:1:0xC0:",obj/App_BLEmode.asm:234"
+$WDATA:234:1:1:{ (_UART0_SendBuffer >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:234"
+$WDATAH:234:1:1:(((_UART0_SendBuffer >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:234"
+$WDATA:234:1:1:((_UART0_SendBuffer >> 0x1) & 0xFF):",obj/App_BLEmode.asm:234"
+$WDATAH:237:1:1:0x0:",obj/App_BLEmode.asm:237"
+$WDATA:237:1:1:0xA:",obj/App_BLEmode.asm:237"
+$ENDFUNC
+$FUNC:$R:0:1:_App_UploadData:",obj/App_BLEmode.asm:246":$C:_App_Upload_Temperature\
+:$C:_App_Upload_DeviceInfo:$L:r0x10A1
+$LAB:249:_App_UploadData:",obj/App_BLEmode.asm:249"
+$WDATAH:250:1:1:(0x66 | { (r0x10A1 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:250"
+$WDATA:250:1:1:(r0x10A1 & 0xFF):",obj/App_BLEmode.asm:250"
+$WDATAH:252:1:1:0x4C:",obj/App_BLEmode.asm:252"
+$WDATA:252:1:1:0x29:",obj/App_BLEmode.asm:252"
+$WDATAS:253:1:1:0xA0:",obj/App_BLEmode.asm:253"
+$WDATA:253:1:1:0x2B:",obj/App_BLEmode.asm:253"
+$WDATAH:254:1:1:0xC2:",obj/App_BLEmode.asm:254"
+$WDATA:254:1:1:{ (_00197_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:254"
+$WDATAH:254:1:1:(((_00197_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:254"
+$WDATA:254:1:1:((_00197_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:254"
+$WDATAH:255:1:1:(0x64 | { (r0x10A1 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:255"
+$WDATA:255:1:1:(r0x10A1 & 0xFF):",obj/App_BLEmode.asm:255"
+$WDATAH:256:1:1:0x4:",obj/App_BLEmode.asm:256"
+$WDATA:256:1:1:0xFC:",obj/App_BLEmode.asm:256"
+$WDATAS:257:1:1:0xA0:",obj/App_BLEmode.asm:257"
+$WDATA:257:1:1:0x2B:",obj/App_BLEmode.asm:257"
+$WDATAH:258:1:1:0xC2:",obj/App_BLEmode.asm:258"
+$WDATA:258:1:1:{ (_00192_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:258"
+$WDATAH:258:1:1:(((_00192_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:258"
+$WDATA:258:1:1:((_00192_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:258"
+$WDATAH:259:1:1:0x4:",obj/App_BLEmode.asm:259"
+$WDATA:259:1:1:0xFB:",obj/App_BLEmode.asm:259"
+$WDATAS:260:1:1:0xA0:",obj/App_BLEmode.asm:260"
+$WDATA:260:1:1:0x2B:",obj/App_BLEmode.asm:260"
+$WDATAH:261:1:1:0xC2:",obj/App_BLEmode.asm:261"
+$WDATA:261:1:1:{ (_00193_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:261"
+$WDATAH:261:1:1:(((_00193_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:261"
+$WDATA:261:1:1:((_00193_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:261"
+$WDATAH:262:1:1:0xC2:",obj/App_BLEmode.asm:262"
+$WDATA:262:1:1:{ (_00197_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:262"
+$WDATAH:262:1:1:(((_00197_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:262"
+$WDATA:262:1:1:((_00197_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:262"
+$LAB:263:_00192_DS_:",obj/App_BLEmode.asm:263"
+$WDATAH:265:1:1:0xC0:",obj/App_BLEmode.asm:265"
+$WDATA:265:1:1:{ (_App_Upload_Temperature >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:265"
+$WDATAH:265:1:1:(((_App_Upload_Temperature >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:265"
+$WDATA:265:1:1:((_App_Upload_Temperature >> 0x1) & 0xFF):",obj/App_BLEmode.asm:265"
+$WDATAH:268:1:1:0xC2:",obj/App_BLEmode.asm:268"
+$WDATA:268:1:1:{ (_00197_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:268"
+$WDATAH:268:1:1:(((_00197_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:268"
+$WDATA:268:1:1:((_00197_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:268"
+$LAB:269:_00193_DS_:",obj/App_BLEmode.asm:269"
+$WDATAH:271:1:1:0xC0:",obj/App_BLEmode.asm:271"
+$WDATA:271:1:1:{ (_App_Upload_DeviceInfo >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:271"
+$WDATAH:271:1:1:(((_App_Upload_DeviceInfo >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:271"
+$WDATA:271:1:1:((_App_Upload_DeviceInfo >> 0x1) & 0xFF):",obj/App_BLEmode.asm:271"
+$LAB:273:_00197_DS_:",obj/App_BLEmode.asm:273"
+$WDATAH:275:1:1:0x0:",obj/App_BLEmode.asm:275"
+$WDATA:275:1:1:0xA:",obj/App_BLEmode.asm:275"
+$ENDFUNC
+$FUNC:$R:0:0:_App_Upload_DeviceInfo:",obj/App_BLEmode.asm:283"
+$LAB:286:_App_Upload_DeviceInfo:",obj/App_BLEmode.asm:286"
+$WDATAH:287:1:1:0x6:",obj/App_BLEmode.asm:287"
+$WDATA:287:1:1:0x55:",obj/App_BLEmode.asm:287"
+$WDATAH:288:1:1:(0x66 | { ((_sBleStatus + 0x28) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:288"
+$WDATA:288:1:1:((_sBleStatus + 0x28) & 0xFF):",obj/App_BLEmode.asm:288"
+$WDATAH:290:1:1:0x6:",obj/App_BLEmode.asm:290"
+$WDATA:290:1:1:0xAA:",obj/App_BLEmode.asm:290"
+$WDATAH:291:1:1:(0x66 | { ((_sBleStatus + 0x29) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:291"
+$WDATA:291:1:1:((_sBleStatus + 0x29) & 0xFF):",obj/App_BLEmode.asm:291"
+$WDATAH:293:1:1:(0x66 | { ((_sBleStatus + 0x2A) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:293"
+$WDATA:293:1:1:((_sBleStatus + 0x2A) & 0xFF):",obj/App_BLEmode.asm:293"
+$WDATAH:295:1:1:0x6:",obj/App_BLEmode.asm:295"
+$WDATA:295:1:1:0x55:",obj/App_BLEmode.asm:295"
+$WDATAH:296:1:1:(0x66 | { ((_sBleStatus + 0x2B) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:296"
+$WDATA:296:1:1:((_sBleStatus + 0x2B) & 0xFF):",obj/App_BLEmode.asm:296"
+$WDATAH:298:1:1:0x6:",obj/App_BLEmode.asm:298"
+$WDATA:298:1:1:0x9:",obj/App_BLEmode.asm:298"
+$WDATAH:299:1:1:(0x66 | { ((_sBleStatus + 0x2E) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:299"
+$WDATA:299:1:1:((_sBleStatus + 0x2E) & 0xFF):",obj/App_BLEmode.asm:299"
+$WDATAH:301:1:1:0x6:",obj/App_BLEmode.asm:301"
+$WDATA:301:1:1:0x44:",obj/App_BLEmode.asm:301"
+$WDATAH:302:1:1:(0x66 | { ((_sBleStatus + 0x2F) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:302"
+$WDATA:302:1:1:((_sBleStatus + 0x2F) & 0xFF):",obj/App_BLEmode.asm:302"
+$WDATAH:304:1:1:0x6:",obj/App_BLEmode.asm:304"
+$WDATA:304:1:1:0x4D:",obj/App_BLEmode.asm:304"
+$WDATAH:305:1:1:(0x66 | { ((_sBleStatus + 0x30) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:305"
+$WDATA:305:1:1:((_sBleStatus + 0x30) & 0xFF):",obj/App_BLEmode.asm:305"
+$WDATAH:307:1:1:0x6:",obj/App_BLEmode.asm:307"
+$WDATA:307:1:1:0x54:",obj/App_BLEmode.asm:307"
+$WDATAH:308:1:1:(0x66 | { ((_sBleStatus + 0x31) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:308"
+$WDATA:308:1:1:((_sBleStatus + 0x31) & 0xFF):",obj/App_BLEmode.asm:308"
+$WDATAH:310:1:1:0x6:",obj/App_BLEmode.asm:310"
+$WDATA:310:1:1:0x12:",obj/App_BLEmode.asm:310"
+$WDATAH:311:1:1:(0x66 | { ((_sBleStatus + 0x32) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:311"
+$WDATA:311:1:1:((_sBleStatus + 0x32) & 0xFF):",obj/App_BLEmode.asm:311"
+$WDATAH:313:1:1:0x6:",obj/App_BLEmode.asm:313"
+$WDATA:313:1:1:0x98:",obj/App_BLEmode.asm:313"
+$WDATAH:314:1:1:(0x66 | { ((_sBleStatus + 0x33) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:314"
+$WDATA:314:1:1:((_sBleStatus + 0x33) & 0xFF):",obj/App_BLEmode.asm:314"
+$WDATAH:316:1:1:0x6:",obj/App_BLEmode.asm:316"
+$WDATA:316:1:1:0x62:",obj/App_BLEmode.asm:316"
+$WDATAH:317:1:1:(0x66 | { ((_sBleStatus + 0x34) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:317"
+$WDATA:317:1:1:((_sBleStatus + 0x34) & 0xFF):",obj/App_BLEmode.asm:317"
+$WDATAH:319:1:1:0x6:",obj/App_BLEmode.asm:319"
+$WDATA:319:1:1:0x1:",obj/App_BLEmode.asm:319"
+$WDATAH:320:1:1:(0x66 | { ((_sBleStatus + 0x35) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:320"
+$WDATA:320:1:1:((_sBleStatus + 0x35) & 0xFF):",obj/App_BLEmode.asm:320"
+$WDATAH:322:1:1:0x6:",obj/App_BLEmode.asm:322"
+$WDATA:322:1:1:0xAA:",obj/App_BLEmode.asm:322"
+$WDATAH:323:1:1:(0x66 | { ((_sBleStatus + 0x36) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:323"
+$WDATA:323:1:1:((_sBleStatus + 0x36) & 0xFF):",obj/App_BLEmode.asm:323"
+$WDATAH:325:1:1:0x6:",obj/App_BLEmode.asm:325"
+$WDATA:325:1:1:0xB:",obj/App_BLEmode.asm:325"
+$WDATAH:326:1:1:(0x66 | { ((_sBleStatus + 0x37) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:326"
+$WDATA:326:1:1:((_sBleStatus + 0x37) & 0xFF):",obj/App_BLEmode.asm:326"
+$WDATAH:328:1:1:(0xC | { ((_sBleStatus + 0x38) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:328"
+$WDATA:328:1:1:((_sBleStatus + 0x38) & 0xFF):",obj/App_BLEmode.asm:328"
+$WDATAH:330:1:1:(0xC | { ((_sBleStatus + 0x2C) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:330"
+$WDATA:330:1:1:((_sBleStatus + 0x2C) & 0xFF):",obj/App_BLEmode.asm:330"
+$WDATAH:332:1:1:0x6:",obj/App_BLEmode.asm:332"
+$WDATA:332:1:1:0x14:",obj/App_BLEmode.asm:332"
+$WDATAH:333:1:1:(0x66 | { ((_sBleStatus + 0x2D) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:333"
+$WDATA:333:1:1:((_sBleStatus + 0x2D) & 0xFF):",obj/App_BLEmode.asm:333"
+$WDATAH:335:1:1:0x6:",obj/App_BLEmode.asm:335"
+$WDATA:335:1:1:0xC4:",obj/App_BLEmode.asm:335"
+$WDATAH:336:1:1:(0x66 | { ((_sBleStatus + 0x39) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:336"
+$WDATA:336:1:1:((_sBleStatus + 0x39) & 0xFF):",obj/App_BLEmode.asm:336"
+$WDATAH:338:1:1:0x6:",obj/App_BLEmode.asm:338"
+$WDATA:338:1:1:0x5A:",obj/App_BLEmode.asm:338"
+$WDATAH:339:1:1:(0x66 | { ((_sBleStatus + 0x3A) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:339"
+$WDATA:339:1:1:((_sBleStatus + 0x3A) & 0xFF):",obj/App_BLEmode.asm:339"
+$WDATAH:341:1:1:0x6:",obj/App_BLEmode.asm:341"
+$WDATA:341:1:1:0xA5:",obj/App_BLEmode.asm:341"
+$WDATAH:342:1:1:(0x66 | { ((_sBleStatus + 0x3B) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:342"
+$WDATA:342:1:1:((_sBleStatus + 0x3B) & 0xFF):",obj/App_BLEmode.asm:342"
+$WDATAH:344:1:1:0x0:",obj/App_BLEmode.asm:344"
+$WDATA:344:1:1:0xA:",obj/App_BLEmode.asm:344"
+$ENDFUNC
+$FUNC:$R:0:0:_App_Upload_Temperature:",obj/App_BLEmode.asm:352":$L:r0x109D:$L:r0x109E
+$LAB:355:_App_Upload_Temperature:",obj/App_BLEmode.asm:355"
+$WDATAH:356:1:1:0x6:",obj/App_BLEmode.asm:356"
+$WDATA:356:1:1:0xFA:",obj/App_BLEmode.asm:356"
+$WDATAH:357:1:1:(0x66 | { ((_sBleStatus + 0x28) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:357"
+$WDATA:357:1:1:((_sBleStatus + 0x28) & 0xFF):",obj/App_BLEmode.asm:357"
+$WDATAH:359:1:1:0x6:",obj/App_BLEmode.asm:359"
+$WDATA:359:1:1:0xAA:",obj/App_BLEmode.asm:359"
+$WDATAH:360:1:1:(0x66 | { ((_sBleStatus + 0x29) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:360"
+$WDATA:360:1:1:((_sBleStatus + 0x29) & 0xFF):",obj/App_BLEmode.asm:360"
+$WDATAH:362:1:1:(0x66 | { ((_sBleStatus + 0x2A) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:362"
+$WDATA:362:1:1:((_sBleStatus + 0x2A) & 0xFF):",obj/App_BLEmode.asm:362"
+$WDATAH:364:1:1:0x6:",obj/App_BLEmode.asm:364"
+$WDATA:364:1:1:0xAF:",obj/App_BLEmode.asm:364"
+$WDATAH:365:1:1:(0x66 | { ((_sBleStatus + 0x2B) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:365"
+$WDATA:365:1:1:((_sBleStatus + 0x2B) & 0xFF):",obj/App_BLEmode.asm:365"
+$WDATAH:367:1:1:0x6:",obj/App_BLEmode.asm:367"
+$WDATA:367:1:1:0x4:",obj/App_BLEmode.asm:367"
+$WDATAH:368:1:1:(0x66 | { ((_sBleStatus + 0x2E) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:368"
+$WDATA:368:1:1:((_sBleStatus + 0x2E) & 0xFF):",obj/App_BLEmode.asm:368"
+$WDATAH:370:1:1:(0x64 | { ((_sActual_Forecast + 0x3) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:370"
+$WDATA:370:1:1:((_sActual_Forecast + 0x3) & 0xFF):",obj/App_BLEmode.asm:370"
+$WDATAH:371:1:1:0x4:",obj/App_BLEmode.asm:371"
+$WDATA:371:1:1:0x80:",obj/App_BLEmode.asm:371"
+$WDATAH:372:1:1:0x6:",obj/App_BLEmode.asm:372"
+$WDATA:372:1:1:0xF3:",obj/App_BLEmode.asm:372"
+$WDATAH:373:1:1:(0x14 | { ((_sActual_Forecast + 0x4) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:373"
+$WDATA:373:1:1:((_sActual_Forecast + 0x4) & 0xFF):",obj/App_BLEmode.asm:373"
+$WDATAS:374:1:1:0xA8:",obj/App_BLEmode.asm:374"
+$WDATA:374:1:1:0x2B:",obj/App_BLEmode.asm:374"
+$WDATAH:375:1:1:0xC2:",obj/App_BLEmode.asm:375"
+$WDATA:375:1:1:{ (_00182_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:375"
+$WDATAH:375:1:1:(((_00182_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:375"
+$WDATA:375:1:1:((_00182_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:375"
+$WDATAH:377:1:1:(0xC | { (r0x109D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:377"
+$WDATA:377:1:1:(r0x109D & 0xFF):",obj/App_BLEmode.asm:377"
+$WDATAH:378:1:1:(0xC | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:378"
+$WDATA:378:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:378"
+$WDATAH:379:1:1:0xC2:",obj/App_BLEmode.asm:379"
+$WDATA:379:1:1:{ (_00183_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:379"
+$WDATAH:379:1:1:(((_00183_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:379"
+$WDATA:379:1:1:((_00183_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:379"
+$LAB:380:_00182_DS_:",obj/App_BLEmode.asm:380"
+$WDATAH:382:1:1:(0x64 | { ((_sActual_Forecast + 0x3) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:382"
+$WDATA:382:1:1:((_sActual_Forecast + 0x3) & 0xFF):",obj/App_BLEmode.asm:382"
+$WDATAH:383:1:1:0x4:",obj/App_BLEmode.asm:383"
+$WDATA:383:1:1:0xD9:",obj/App_BLEmode.asm:383"
+$WDATAH:384:1:1:0x6:",obj/App_BLEmode.asm:384"
+$WDATA:384:1:1:0xEE:",obj/App_BLEmode.asm:384"
+$WDATAH:385:1:1:(0x14 | { ((_sActual_Forecast + 0x4) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:385"
+$WDATA:385:1:1:((_sActual_Forecast + 0x4) & 0xFF):",obj/App_BLEmode.asm:385"
+$WDATAS:386:1:1:0xB8:",obj/App_BLEmode.asm:386"
+$WDATA:386:1:1:0x2B:",obj/App_BLEmode.asm:386"
+$WDATAH:387:1:1:0xC2:",obj/App_BLEmode.asm:387"
+$WDATA:387:1:1:{ (_00179_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:387"
+$WDATAH:387:1:1:(((_00179_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:387"
+$WDATA:387:1:1:((_00179_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:387"
+$WDATAH:389:1:1:0x6:",obj/App_BLEmode.asm:389"
+$WDATA:389:1:1:0x88:",obj/App_BLEmode.asm:389"
+$WDATAH:390:1:1:(0x66 | { (r0x109D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:390"
+$WDATA:390:1:1:(r0x109D & 0xFF):",obj/App_BLEmode.asm:390"
+$WDATAH:391:1:1:0x6:",obj/App_BLEmode.asm:391"
+$WDATA:391:1:1:0x13:",obj/App_BLEmode.asm:391"
+$WDATAH:392:1:1:(0x66 | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:392"
+$WDATA:392:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:392"
+$WDATAH:393:1:1:0xC2:",obj/App_BLEmode.asm:393"
+$WDATA:393:1:1:{ (_00183_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:393"
+$WDATAH:393:1:1:(((_00183_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:393"
+$WDATA:393:1:1:((_00183_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:393"
+$LAB:394:_00179_DS_:",obj/App_BLEmode.asm:394"
+$WDATAH:396:1:1:(0x64 | { ((_sActual_Forecast + 0x3) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:396"
+$WDATA:396:1:1:((_sActual_Forecast + 0x3) & 0xFF):",obj/App_BLEmode.asm:396"
+$WDATAH:397:1:1:(0x66 | { (r0x109D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:397"
+$WDATA:397:1:1:(r0x109D & 0xFF):",obj/App_BLEmode.asm:397"
+$WDATAH:398:1:1:(0x64 | { ((_sActual_Forecast + 0x4) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:398"
+$WDATA:398:1:1:((_sActual_Forecast + 0x4) & 0xFF):",obj/App_BLEmode.asm:398"
+$WDATAH:399:1:1:(0x66 | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:399"
+$WDATA:399:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:399"
+$LAB:400:_00183_DS_:",obj/App_BLEmode.asm:400"
+$WDATAH:402:1:1:(0x9E | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:402"
+$WDATA:402:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:402"
+$WDATAH:404:1:1:(0x9C | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:404"
+$WDATA:404:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:404"
+$WDATAH:406:1:1:(0x64 | { (r0x109E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:406"
+$WDATA:406:1:1:(r0x109E & 0xFF):",obj/App_BLEmode.asm:406"
+$WDATAH:407:1:1:(0x66 | { ((_sBleStatus + 0x2F) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:407"
+$WDATA:407:1:1:((_sBleStatus + 0x2F) & 0xFF):",obj/App_BLEmode.asm:407"
+$WDATAH:409:1:1:0x4:",obj/App_BLEmode.asm:409"
+$WDATA:409:1:1:0x4:",obj/App_BLEmode.asm:409"
+$WDATAH:411:1:1:0xC6:",obj/App_BLEmode.asm:411"
+$WDATA:411:1:1:(r0x109D & 0x7F):",obj/App_BLEmode.asm:411"
+$WDATAH:411:1:1:(0xF0 | (((_sBleStatus + 0x30) >> 0x8) & 0xF)):",obj/App_BLEmode.asm:411"
+$WDATA:411:1:1:((_sBleStatus + 0x30) & 0xFF):",obj/App_BLEmode.asm:411"
+$WDATAH:412:1:1:(0x12 | { (r0x109D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:412"
+$WDATA:412:1:1:(r0x109D & 0xFF):",obj/App_BLEmode.asm:412"
+$WDATAH:414:1:1:(0xC | { ((_sBleStatus + 0x2C) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:414"
+$WDATA:414:1:1:((_sBleStatus + 0x2C) & 0xFF):",obj/App_BLEmode.asm:414"
+$WDATAH:416:1:1:0x6:",obj/App_BLEmode.asm:416"
+$WDATA:416:1:1:0xC:",obj/App_BLEmode.asm:416"
+$WDATAH:417:1:1:(0x66 | { ((_sBleStatus + 0x2D) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:417"
+$WDATA:417:1:1:((_sBleStatus + 0x2D) & 0xFF):",obj/App_BLEmode.asm:417"
+$WDATAH:419:1:1:(0x10 | { (r0x109D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:419"
+$WDATA:419:1:1:(r0x109D & 0xFF):",obj/App_BLEmode.asm:419"
+$WDATAH:421:1:1:(0x66 | { ((_sBleStatus + 0x31) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:421"
+$WDATA:421:1:1:((_sBleStatus + 0x31) & 0xFF):",obj/App_BLEmode.asm:421"
+$WDATAH:423:1:1:0x6:",obj/App_BLEmode.asm:423"
+$WDATA:423:1:1:0xF5:",obj/App_BLEmode.asm:423"
+$WDATAH:424:1:1:(0x66 | { ((_sBleStatus + 0x32) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:424"
+$WDATA:424:1:1:((_sBleStatus + 0x32) & 0xFF):",obj/App_BLEmode.asm:424"
+$WDATAH:426:1:1:0x6:",obj/App_BLEmode.asm:426"
+$WDATA:426:1:1:0x5F:",obj/App_BLEmode.asm:426"
+$WDATAH:427:1:1:(0x66 | { ((_sBleStatus + 0x33) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:427"
+$WDATA:427:1:1:((_sBleStatus + 0x33) & 0xFF):",obj/App_BLEmode.asm:427"
+$WDATAH:429:1:1:0x0:",obj/App_BLEmode.asm:429"
+$WDATA:429:1:1:0xA:",obj/App_BLEmode.asm:429"
+$ENDFUNC
+$FUNC:$R:1:0:_Uart_Receive_Event:",obj/App_BLEmode.asm:438":$C:_BleData_Check\
+:$L:r0x1095:$L:r0x1096:$L:r0x1097:$L:r0x109A
+$LAB:441:_Uart_Receive_Event:",obj/App_BLEmode.asm:441"
+$WDATAS:442:1:1:(0xA2 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:442"
+$WDATA:442:1:1:(_sBleStatus & 0xFF):",obj/App_BLEmode.asm:442"
+$WDATAS:443:1:1:(0xB0 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:443"
+$WDATA:443:1:1:(_sBleStatus & 0xFF):",obj/App_BLEmode.asm:443"
+$WDATAH:444:1:1:0xC2:",obj/App_BLEmode.asm:444"
+$WDATA:444:1:1:{ (_00125_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:444"
+$WDATAH:444:1:1:(((_00125_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:444"
+$WDATA:444:1:1:((_00125_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:444"
+$WDATAH:446:1:1:(0x82 | { (_sBleStatus >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:446"
+$WDATA:446:1:1:(_sBleStatus & 0xFF):",obj/App_BLEmode.asm:446"
+$WDATAH:448:1:1:(0xC | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:448"
+$WDATA:448:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:448"
+$LAB:449:_00127_DS_:",obj/App_BLEmode.asm:449"
+$WDATAH:451:1:1:(0x64 | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:451"
+$WDATA:451:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:451"
+$WDATAH:452:1:1:0x4:",obj/App_BLEmode.asm:452"
+$WDATA:452:1:1:((_sBleStatus + 0x16) & 0xFF):",obj/App_BLEmode.asm:452"
+$WDATAH:453:1:1:(0x66 | { (r0x1096 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:453"
+$WDATA:453:1:1:(r0x1096 & 0xFF):",obj/App_BLEmode.asm:453"
+$WDATAH:454:1:1:0x6:",obj/App_BLEmode.asm:454"
+$WDATA:454:1:1:(((_sBleStatus + 0x16) >> 0x8) & 0xFF):",obj/App_BLEmode.asm:454"
+$WDATAS:455:1:1:0xA8:",obj/App_BLEmode.asm:455"
+$WDATA:455:1:1:0x2B:",obj/App_BLEmode.asm:455"
+$WDATAH:456:1:1:0x4:",obj/App_BLEmode.asm:456"
+$WDATA:456:1:1:0x1:",obj/App_BLEmode.asm:456"
+$WDATAH:457:1:1:(0x66 | { (r0x1097 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:457"
+$WDATA:457:1:1:(r0x1097 & 0xFF):",obj/App_BLEmode.asm:457"
+$WDATAH:458:1:1:0x0:",obj/App_BLEmode.asm:458"
+$WDATA:458:1:1:0xC:",obj/App_BLEmode.asm:458"
+$WDATAH:458:1:1:(0xF0 | { ((_sBleStatus + 0x4) >> 0x8) & 0xF }):",obj/App_BLEmode.asm:458"
+$WDATA:458:1:1:((_sBleStatus + 0x4) & 0xFF):",obj/App_BLEmode.asm:458"
+$WDATAH:459:1:1:(0x64 | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:459"
+$WDATA:459:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:459"
+$WDATAH:460:1:1:0x64:",obj/App_BLEmode.asm:460"
+$WDATA:460:1:1:0x4:",obj/App_BLEmode.asm:460"
+$WDATAH:461:1:1:(0x66 | { (r0x109A >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:461"
+$WDATA:461:1:1:(r0x109A & 0xFF):",obj/App_BLEmode.asm:461"
+$WDATAH:462:1:1:(0x64 | { (r0x1096 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:462"
+$WDATA:462:1:1:(r0x1096 & 0xFF):",obj/App_BLEmode.asm:462"
+$WDATAH:463:1:1:0x66:",obj/App_BLEmode.asm:463"
+$WDATA:463:1:1:0x10:",obj/App_BLEmode.asm:463"
+$WDATAH:464:1:1:(0x64 | { (r0x1097 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:464"
+$WDATA:464:1:1:(r0x1097 & 0xFF):",obj/App_BLEmode.asm:464"
+$WDATAH:465:1:1:0x66:",obj/App_BLEmode.asm:465"
+$WDATA:465:1:1:0xF:",obj/App_BLEmode.asm:465"
+$WDATAH:466:1:1:(0x64 | { (r0x109A >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:466"
+$WDATA:466:1:1:(r0x109A & 0xFF):",obj/App_BLEmode.asm:466"
+$WDATAH:467:1:1:0x66:",obj/App_BLEmode.asm:467"
+$WDATA:467:1:1:0x0:",obj/App_BLEmode.asm:467"
+$WDATAH:469:1:1:(0x3A | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:469"
+$WDATA:469:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:469"
+$WDATAH:470:1:1:0x6:",obj/App_BLEmode.asm:470"
+$WDATA:470:1:1:0x11:",obj/App_BLEmode.asm:470"
+$WDATAS:471:1:1:(0x68 | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:471"
+$WDATA:471:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:471"
+$WDATAH:472:1:1:0xC2:",obj/App_BLEmode.asm:472"
+$WDATA:472:1:1:{ (_00127_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:472"
+$WDATAH:472:1:1:(((_00127_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:472"
+$WDATA:472:1:1:((_00127_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:472"
+$WDATAH:474:1:1:0xC0:",obj/App_BLEmode.asm:474"
+$WDATA:474:1:1:{ (_BleData_Check >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:474"
+$WDATAH:474:1:1:(((_BleData_Check >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:474"
+$WDATA:474:1:1:((_BleData_Check >> 0x1) & 0xFF):",obj/App_BLEmode.asm:474"
+$WDATAH:476:1:1:(0x66 | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:476"
+$WDATA:476:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:476"
+$WDATAH:478:1:1:0x2:",obj/App_BLEmode.asm:478"
+$WDATA:478:1:1:0x0:",obj/App_BLEmode.asm:478"
+$WDATAS:479:1:1:0xA0:",obj/App_BLEmode.asm:479"
+$WDATA:479:1:1:0x2B:",obj/App_BLEmode.asm:479"
+$WDATAH:480:1:1:0xC2:",obj/App_BLEmode.asm:480"
+$WDATA:480:1:1:{ (_00125_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:480"
+$WDATAH:480:1:1:(((_00125_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:480"
+$WDATA:480:1:1:((_00125_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:480"
+$WDATAH:481:1:1:(0x64 | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:481"
+$WDATA:481:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:481"
+$WDATAH:482:1:1:0x3:",obj/App_BLEmode.asm:482"
+$WDATA:482:1:1:0x83:",obj/App_BLEmode.asm:482"
+$WDATAS:483:1:1:0xA0:",obj/App_BLEmode.asm:483"
+$WDATA:483:1:1:0x2B:",obj/App_BLEmode.asm:483"
+$WDATAH:484:1:1:0xC2:",obj/App_BLEmode.asm:484"
+$WDATA:484:1:1:{ (_00120_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:484"
+$WDATAH:484:1:1:(((_00120_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:484"
+$WDATA:484:1:1:((_00120_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:484"
+$WDATAH:485:1:1:0x6:",obj/App_BLEmode.asm:485"
+$WDATA:485:1:1:0x89:",obj/App_BLEmode.asm:485"
+$WDATAS:486:1:1:(0x6C | { (r0x1095 >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:486"
+$WDATA:486:1:1:(r0x1095 & 0xFF):",obj/App_BLEmode.asm:486"
+$WDATAH:487:1:1:0xC2:",obj/App_BLEmode.asm:487"
+$WDATA:487:1:1:{ (_00125_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:487"
+$WDATAH:487:1:1:(((_00125_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:487"
+$WDATA:487:1:1:((_00125_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:487"
+$WDATAH:489:1:1:0x6:",obj/App_BLEmode.asm:489"
+$WDATA:489:1:1:0x3:",obj/App_BLEmode.asm:489"
+$WDATAH:490:1:1:(0x66 | { (_eBle_Sta >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:490"
+$WDATA:490:1:1:(_eBle_Sta & 0xFF):",obj/App_BLEmode.asm:490"
+$WDATAH:492:1:1:0xC2:",obj/App_BLEmode.asm:492"
+$WDATA:492:1:1:{ (_00125_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:492"
+$WDATAH:492:1:1:(((_00125_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:492"
+$WDATA:492:1:1:((_00125_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:492"
+$LAB:493:_00120_DS_:",obj/App_BLEmode.asm:493"
+$WDATAH:495:1:1:0x6:",obj/App_BLEmode.asm:495"
+$WDATA:495:1:1:0x4:",obj/App_BLEmode.asm:495"
+$WDATAH:496:1:1:(0x66 | { (_eBle_Sta >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:496"
+$WDATA:496:1:1:(_eBle_Sta & 0xFF):",obj/App_BLEmode.asm:496"
+$LAB:497:_00125_DS_:",obj/App_BLEmode.asm:497"
+$WDATAH:499:1:1:0x5:",obj/App_BLEmode.asm:499"
+$WDATA:499:1:1:0x0:",obj/App_BLEmode.asm:499"
+$ENDFUNC
+$FUNC:$R:1:0:_BleData_Check:",obj/App_BLEmode.asm:507":$L:r0x108C:$L:r0x108D\
+:$L:r0x108F:$L:r0x108E
+$LAB:510:_BleData_Check:",obj/App_BLEmode.asm:510"
+$WDATAH:511:1:1:(0xC | { (r0x108C >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:511"
+$WDATA:511:1:1:(r0x108C & 0xFF):",obj/App_BLEmode.asm:511"
+$WDATAH:513:1:1:(0xC | { (r0x108D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:513"
+$WDATA:513:1:1:(r0x108D & 0xFF):",obj/App_BLEmode.asm:513"
+$WDATAH:515:1:1:(0x64 | { ((_sBleStatus + 0x1B) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:515"
+$WDATA:515:1:1:((_sBleStatus + 0x1B) & 0xFF):",obj/App_BLEmode.asm:515"
+$WDATAH:516:1:1:0x4:",obj/App_BLEmode.asm:516"
+$WDATA:516:1:1:0xFD:",obj/App_BLEmode.asm:516"
+$WDATAH:517:1:1:(0x66 | { (r0x108E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:517"
+$WDATA:517:1:1:(r0x108E & 0xFF):",obj/App_BLEmode.asm:517"
+$WDATAH:519:1:1:0x4:",obj/App_BLEmode.asm:519"
+$WDATA:519:1:1:0xED:",obj/App_BLEmode.asm:519"
+$WDATAS:520:1:1:0xB8:",obj/App_BLEmode.asm:520"
+$WDATA:520:1:1:0x2B:",obj/App_BLEmode.asm:520"
+$WDATAH:521:1:1:0xC2:",obj/App_BLEmode.asm:521"
+$WDATA:521:1:1:{ (_00106_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:521"
+$WDATAH:521:1:1:(((_00106_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:521"
+$WDATA:521:1:1:((_00106_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:521"
+$WDATAH:523:1:1:0x6:",obj/App_BLEmode.asm:523"
+$WDATA:523:1:1:0x0:",obj/App_BLEmode.asm:523"
+$WDATAH:524:1:1:0xC2:",obj/App_BLEmode.asm:524"
+$WDATA:524:1:1:{ (_00113_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:524"
+$WDATAH:524:1:1:(((_00113_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:524"
+$WDATA:524:1:1:((_00113_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:524"
+$LAB:525:_00106_DS_:",obj/App_BLEmode.asm:525"
+$WDATAH:527:1:1:0x6:",obj/App_BLEmode.asm:527"
+$WDATA:527:1:1:0x4:",obj/App_BLEmode.asm:527"
+$WDATAH:528:1:1:(0x66 | { (r0x108F >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:528"
+$WDATA:528:1:1:(r0x108F & 0xFF):",obj/App_BLEmode.asm:528"
+$LAB:529:_00111_DS_:",obj/App_BLEmode.asm:529"
+$WDATAH:530:1:1:(0x64 | { (r0x108E >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:530"
+$WDATA:530:1:1:(r0x108E & 0xFF):",obj/App_BLEmode.asm:530"
+$WDATAS:531:1:1:(0x6A | { (r0x108F >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:531"
+$WDATA:531:1:1:(r0x108F & 0xFF):",obj/App_BLEmode.asm:531"
+$WDATAH:532:1:1:0xC2:",obj/App_BLEmode.asm:532"
+$WDATA:532:1:1:{ (_00107_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:532"
+$WDATAH:532:1:1:(((_00107_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:532"
+$WDATA:532:1:1:((_00107_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:532"
+$WDATAH:534:1:1:0x0:",obj/App_BLEmode.asm:534"
+$WDATA:534:1:1:0xC:",obj/App_BLEmode.asm:534"
+$WDATAH:534:1:1:(0xF0 | { ((_sBleStatus + 0x16) >> 0x8) & 0xF }):",obj/App_BLEmode.asm:534"
+$WDATA:534:1:1:((_sBleStatus + 0x16) & 0xFF):",obj/App_BLEmode.asm:534"
+$WDATAH:535:1:1:(0x64 | { (r0x108F >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:535"
+$WDATA:535:1:1:(r0x108F & 0xFF):",obj/App_BLEmode.asm:535"
+$WDATAH:536:1:1:0x64:",obj/App_BLEmode.asm:536"
+$WDATA:536:1:1:0x4:",obj/App_BLEmode.asm:536"
+$WDATAH:537:1:1:(0x12 | { (r0x108C >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:537"
+$WDATA:537:1:1:(r0x108C & 0xFF):",obj/App_BLEmode.asm:537"
+$WDATAH:539:1:1:(0x3A | { (r0x108F >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:539"
+$WDATA:539:1:1:(r0x108F & 0xFF):",obj/App_BLEmode.asm:539"
+$WDATAH:540:1:1:0xC2:",obj/App_BLEmode.asm:540"
+$WDATA:540:1:1:{ (_00111_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:540"
+$WDATAH:540:1:1:(((_00111_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:540"
+$WDATA:540:1:1:((_00111_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:540"
+$LAB:541:_00107_DS_:",obj/App_BLEmode.asm:541"
+$WDATAH:543:1:1:0x0:",obj/App_BLEmode.asm:543"
+$WDATA:543:1:1:0xC:",obj/App_BLEmode.asm:543"
+$WDATAH:543:1:1:(0xF0 | { ((_sBleStatus + 0x16) >> 0x8) & 0xF }):",obj/App_BLEmode.asm:543"
+$WDATA:543:1:1:((_sBleStatus + 0x16) & 0xFF):",obj/App_BLEmode.asm:543"
+$WDATAH:544:1:1:(0x64 | { (r0x108F >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:544"
+$WDATA:544:1:1:(r0x108F & 0xFF):",obj/App_BLEmode.asm:544"
+$WDATAH:545:1:1:0x64:",obj/App_BLEmode.asm:545"
+$WDATA:545:1:1:0x4:",obj/App_BLEmode.asm:545"
+$WDATAS:546:1:1:(0x6C | { (r0x108C >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:546"
+$WDATA:546:1:1:(r0x108C & 0xFF):",obj/App_BLEmode.asm:546"
+$WDATAH:547:1:1:0xC2:",obj/App_BLEmode.asm:547"
+$WDATA:547:1:1:{ (_00109_DS_ >> 0xD) & 0xFF }:",obj/App_BLEmode.asm:547"
+$WDATAH:547:1:1:(((_00109_DS_ >> 0x9) & 0xF) | 0xF0):",obj/App_BLEmode.asm:547"
+$WDATA:547:1:1:((_00109_DS_ >> 0x1) & 0xFF):",obj/App_BLEmode.asm:547"
+$WDATAH:549:1:1:(0x64 | { ((_sBleStatus + 0x1C) >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:549"
+$WDATA:549:1:1:((_sBleStatus + 0x1C) & 0xFF):",obj/App_BLEmode.asm:549"
+$WDATAH:550:1:1:(0x66 | { (r0x108D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:550"
+$WDATA:550:1:1:(r0x108D & 0xFF):",obj/App_BLEmode.asm:550"
+$LAB:551:_00109_DS_:",obj/App_BLEmode.asm:551"
+$WDATAH:553:1:1:(0x64 | { (r0x108D >> 0x8) & 0x1 }):",obj/App_BLEmode.asm:553"
+$WDATA:553:1:1:(r0x108D & 0xFF):",obj/App_BLEmode.asm:553"
+$LAB:554:_00113_DS_:",obj/App_BLEmode.asm:554"
+$WDATAH:556:1:1:0x0:",obj/App_BLEmode.asm:556"
+$WDATA:556:1:1:0xA:",obj/App_BLEmode.asm:556"
+$ENDFUNC
+$AREA:DSEG:2:0:0:0
+$LAB:1014:_eBle_Sta:",obj/App_BLEmode.asm:1014"
+$BLANK:1014:1:",obj/App_BLEmode.asm:1014"
+$LAB:1017:_sBleStatus:",obj/App_BLEmode.asm:1017"
+$BLANK:1017:60:",obj/App_BLEmode.asm:1017"
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:DSEG:2:0:0:0
+$AREA:IDATA:2:0:0:0
+$AREA:IDATAROM:1:0:0:0
+$AREA:UDATA:2:0:0:0
+$LAB:1515:r0x108C:",obj/App_BLEmode.asm:1515"
+$BLANK:1515:1:",obj/App_BLEmode.asm:1515"
+$LAB:1516:r0x108D:",obj/App_BLEmode.asm:1516"
+$BLANK:1516:1:",obj/App_BLEmode.asm:1516"
+$LAB:1517:r0x108E:",obj/App_BLEmode.asm:1517"
+$BLANK:1517:1:",obj/App_BLEmode.asm:1517"
+$LAB:1518:r0x108F:",obj/App_BLEmode.asm:1518"
+$BLANK:1518:1:",obj/App_BLEmode.asm:1518"
+$LAB:1519:r0x1095:",obj/App_BLEmode.asm:1519"
+$BLANK:1519:1:",obj/App_BLEmode.asm:1519"
+$LAB:1520:r0x1096:",obj/App_BLEmode.asm:1520"
+$BLANK:1520:1:",obj/App_BLEmode.asm:1520"
+$LAB:1521:r0x1097:",obj/App_BLEmode.asm:1521"
+$BLANK:1521:1:",obj/App_BLEmode.asm:1521"
+$LAB:1522:r0x109A:",obj/App_BLEmode.asm:1522"
+$BLANK:1522:1:",obj/App_BLEmode.asm:1522"
+$LAB:1523:r0x109D:",obj/App_BLEmode.asm:1523"
+$BLANK:1523:1:",obj/App_BLEmode.asm:1523"
+$LAB:1524:r0x109E:",obj/App_BLEmode.asm:1524"
+$BLANK:1524:1:",obj/App_BLEmode.asm:1524"
+$LAB:1525:r0x10A1:",obj/App_BLEmode.asm:1525"
+$BLANK:1525:1:",obj/App_BLEmode.asm:1525"
+$LAB:1526:r0x10A7:",obj/App_BLEmode.asm:1526"
+$BLANK:1526:1:",obj/App_BLEmode.asm:1526"
+$AREA:UDATA:2:0:0:0
+$AREA:LOCALSTK:4:0:0:0
+$EQU:__SWTGTID:1020:0xA6A6B2CF
+$EQU:_INDF0:1023:0x0
+$EQU:_POINC0:1026:0x1
+$EQU:_PODEC0:1029:0x2
+$EQU:_PRINC0:1032:0x3
+$EQU:_PLUSW0:1035:0x4
+$EQU:_INDF1:1038:0x5
+$EQU:_POINC1:1041:0x6
+$EQU:_PODEC1:1044:0x7
+$EQU:_PRINC1:1047:0x8
+$EQU:_PLUSW1:1050:0x9
+$EQU:_INDF2:1053:0xA
+$EQU:_POINC2:1056:0xB
+$EQU:_PODEC2:1059:0xC
+$EQU:_PRINC2:1062:0xD
+$EQU:_PLUSW2:1065:0xE
+$EQU:_FSR0H:1068:0xF
+$EQU:_FSR0L:1071:0x10
+$EQU:_FSR1H:1074:0x11
+$EQU:_FSR1L:1077:0x12
+$EQU:_FSR2H:1080:0x13
+$EQU:_FSR2L:1083:0x14
+$EQU:_TOSH:1086:0x16
+$EQU:_TOSL:1089:0x17
+$EQU:_SKCN:1092:0x18
+$EQU:_PCLATH:1095:0x1A
+$EQU:_PCLATL:1098:0x1B
+$EQU:_TBLPTRH:1101:0x1D
+$EQU:_TBLPTRL:1104:0x1E
+$EQU:_TBLDH:1107:0x1F
+$EQU:_TBLDL:1110:0x20
+$EQU:_PRODH:1113:0x21
+$EQU:_PRODL:1116:0x22
+$EQU:_INTE0:1119:0x23
+$EQU:_INTE1:1122:0x24
+$EQU:_INTE2:1125:0x25
+$EQU:_INTF0:1128:0x26
+$EQU:_INTF1:1131:0x27
+$EQU:_INTF2:1134:0x28
+$EQU:_WREG:1137:0x29
+$EQU:_BSRCN:1140:0x2A
+$EQU:_STATUS:1143:0x2B
+$EQU:_MSTAT:1146:0x2B
+$EQU:_PSTAT:1149:0x2C
+$EQU:_BIECN:1152:0x2E
+$EQU:_BIEARH:1155:0x2F
+$EQU:_BIEARL:1158:0x30
+$EQU:_BIEDRH:1161:0x31
+$EQU:_BIEDRL:1164:0x32
+$EQU:_PWRCN:1167:0x33
+$EQU:_OSCCN0:1170:0x34
+$EQU:_OSCCN1:1173:0x35
+$EQU:_OSCCN2:1176:0x36
+$EQU:_CSFCN0:1179:0x37
+$EQU:_CSFCN1:1182:0x38
+$EQU:_WDTCN:1185:0x39
+$EQU:_AD1H:1188:0x3A
+$EQU:_AD1M:1191:0x3B
+$EQU:_AD1L:1194:0x3C
+$EQU:_AD1CN0:1197:0x3D
+$EQU:_AD1CN1:1200:0x3E
+$EQU:_AD1CN2:1203:0x3F
+$EQU:_AD1CN3:1206:0x40
+$EQU:_AD1CN4:1209:0x41
+$EQU:_AD1CN5:1212:0x42
+$EQU:_LVDCN:1215:0x43
+$EQU:_TMA1CN:1218:0x44
+$EQU:_TMA1R:1221:0x45
+$EQU:_TMA1C:1224:0x46
+$EQU:_TB1FLAG:1227:0x47
+$EQU:_TB1CN0:1230:0x48
+$EQU:_TB1CN1:1233:0x49
+$EQU:_TB1RH:1236:0x4A
+$EQU:_TB1RL:1239:0x4B
+$EQU:_TB1C0H:1242:0x4C
+$EQU:_TB1C0L:1245:0x4D
+$EQU:_TB1C1H:1248:0x4E
+$EQU:_TB1C1L:1251:0x4F
+$EQU:_TB1C2H:1254:0x50
+$EQU:_TB1C2L:1257:0x51
+$EQU:_TC1CN0:1260:0x52
+$EQU:_PT1:1263:0x53
+$EQU:_TRISC1:1266:0x54
+$EQU:_PT1DA:1269:0x55
+$EQU:_PT1PU:1272:0x56
+$EQU:_PT1M1:1275:0x57
+$EQU:_PT1INT:1278:0x58
+$EQU:_PT1INTE:1281:0x59
+$EQU:_PT1INTF:1284:0x5A
+$EQU:_PT2:1287:0x5B
+$EQU:_TRISC2:1290:0x5C
+$EQU:_PT2DA:1293:0x5D
+$EQU:_PT2PU:1296:0x5E
+$EQU:_PT2INT:1299:0x5F
+$EQU:_PT2INTE:1302:0x60
+$EQU:_PT2INTF:1305:0x61
+$EQU:_PT6:1308:0x62
+$EQU:_TRISC6:1311:0x63
+$EQU:_PT6DA:1314:0x64
+$EQU:_PT6PU:1317:0x65
+$EQU:_PT7:1320:0x66
+$EQU:_TRISC7:1323:0x67
+$EQU:_PT7DA:1326:0x68
+$EQU:_PT7PU:1329:0x69
+$EQU:_PT8:1332:0x6A
+$EQU:_TRISC8:1335:0x6B
+$EQU:_PT8DA:1338:0x6C
+$EQU:_PT8PU:1341:0x6D
+$EQU:_SSPCN0:1344:0x6E
+$EQU:_SSPSTA0:1347:0x6F
+$EQU:_SSPBUF0:1350:0x70
+$EQU:_CFG0:1353:0x71
+$EQU:_ACT0:1356:0x72
+$EQU:_STA0:1359:0x73
+$EQU:_CRG0:1362:0x74
+$EQU:_TOC0:1365:0x75
+$EQU:_RDB0:1368:0x76
+$EQU:_TDB0:1371:0x77
+$EQU:_SID0:1374:0x78
+$EQU:_UR0CN:1377:0x79
+$EQU:_UR0STA:1380:0x7A
+$EQU:_BA0CN:1383:0x7B
+$EQU:_BG0RH:1386:0x7C
+$EQU:_BG0RL:1389:0x7D
+$EQU:_TX0R:1392:0x7E
+$EQU:_RC0REG:1395:0x7F
+$EQU:_LCDCN1:1398:0x180
+$EQU:_LCDCN2:1401:0x181
+$EQU:_LCDCN3:1404:0x182
+$EQU:_LCDCN4:1407:0x183
+$EQU:_LCDCN5:1410:0x184
+$EQU:_LCDCN6:1413:0x185
+$EQU:_LCDCN7:1416:0x186
+$EQU:_LCDCN8:1419:0x187
+$EQU:_LCD0:1422:0x188
+$EQU:_LCD1:1425:0x189
+$EQU:_LCD2:1428:0x18A
+$EQU:_LCD3:1431:0x18B
+$EQU:_LCD4:1434:0x18C
+$EQU:_LCD5:1437:0x18D
+$EQU:_LCD6:1440:0x18E
+$EQU:_LCD7:1443:0x18F
+$EQU:_LCD8:1446:0x190
+$EQU:_LCD9:1449:0x191
+$EQU:_UR2CN:1452:0x192
+$EQU:_UR2STA:1455:0x193
+$EQU:_BA2CN:1458:0x194
+$EQU:_BG2RH:1461:0x195
+$EQU:_BG2RL:1464:0x196
+$EQU:_TX2R:1467:0x197
+$EQU:_RC2REG:1470:0x198
+$EQU:_TMA2R:1473:0x1E8
+$EQU:_TMA2C:1476:0x1E9
+$EQU:_LEDCN:1479:0x1EA
+$EQU:_IQ0:1482:0x1EB
+$EQU:_IQ1:1485:0x1EC
+$EQU:_DGCON1:1488:0x1ED
+$EQU:_DGCON2:1491:0x1EE
+$EQU:_ADCRH:1494:0x3A
+$EQU:_ADCRM:1497:0x3B
+$EQU:_ADCRL:1500:0x3C
+$EQU:_TEMDATA:1503:0x2E0
+$ENDMOD:App_BLEmode:".\obj\App_BLEmode.rel"

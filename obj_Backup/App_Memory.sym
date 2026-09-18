@@ -1,0 +1,199 @@
+Symbol:__SWTGTID       , LOCAL,  EQU, line 967, 0xA6A6B2CF
+Symbol:_INDF0          , LOCAL,  EQU, line 970, 0x0
+Symbol:_POINC0         , LOCAL,  EQU, line 973, 0x1
+Symbol:_PODEC0         , LOCAL,  EQU, line 976, 0x2
+Symbol:_PRINC0         , LOCAL,  EQU, line 979, 0x3
+Symbol:_PLUSW0         , LOCAL,  EQU, line 982, 0x4
+Symbol:_INDF1          , LOCAL,  EQU, line 985, 0x5
+Symbol:_POINC1         , LOCAL,  EQU, line 988, 0x6
+Symbol:_PODEC1         , LOCAL,  EQU, line 991, 0x7
+Symbol:_PRINC1         , LOCAL,  EQU, line 994, 0x8
+Symbol:_PLUSW1         , LOCAL,  EQU, line 997, 0x9
+Symbol:_INDF2          , LOCAL,  EQU, line 1000, 0xA
+Symbol:_POINC2         , LOCAL,  EQU, line 1003, 0xB
+Symbol:_PODEC2         , LOCAL,  EQU, line 1006, 0xC
+Symbol:_PRINC2         , LOCAL,  EQU, line 1009, 0xD
+Symbol:_PLUSW2         , LOCAL,  EQU, line 1012, 0xE
+Symbol:_FSR0H          , LOCAL,  EQU, line 1015, 0xF
+Symbol:_FSR0L          , LOCAL,  EQU, line 1018, 0x10
+Symbol:_FSR1H          , LOCAL,  EQU, line 1021, 0x11
+Symbol:_FSR1L          , LOCAL,  EQU, line 1024, 0x12
+Symbol:_FSR2H          , LOCAL,  EQU, line 1027, 0x13
+Symbol:_FSR2L          , LOCAL,  EQU, line 1030, 0x14
+Symbol:_TOSH           , LOCAL,  EQU, line 1033, 0x16
+Symbol:_TOSL           , LOCAL,  EQU, line 1036, 0x17
+Symbol:_SKCN           , LOCAL,  EQU, line 1039, 0x18
+Symbol:_PCLATH         , LOCAL,  EQU, line 1042, 0x1A
+Symbol:_PCLATL         , LOCAL,  EQU, line 1045, 0x1B
+Symbol:_TBLPTRH        , LOCAL,  EQU, line 1048, 0x1D
+Symbol:_TBLPTRL        , LOCAL,  EQU, line 1051, 0x1E
+Symbol:_TBLDH          , LOCAL,  EQU, line 1054, 0x1F
+Symbol:_TBLDL          , LOCAL,  EQU, line 1057, 0x20
+Symbol:_PRODH          , LOCAL,  EQU, line 1060, 0x21
+Symbol:_PRODL          , LOCAL,  EQU, line 1063, 0x22
+Symbol:_INTE0          , LOCAL,  EQU, line 1066, 0x23
+Symbol:_INTE1          , LOCAL,  EQU, line 1069, 0x24
+Symbol:_INTE2          , LOCAL,  EQU, line 1072, 0x25
+Symbol:_INTF0          , LOCAL,  EQU, line 1075, 0x26
+Symbol:_INTF1          , LOCAL,  EQU, line 1078, 0x27
+Symbol:_INTF2          , LOCAL,  EQU, line 1081, 0x28
+Symbol:_WREG           , LOCAL,  EQU, line 1084, 0x29
+Symbol:_BSRCN          , LOCAL,  EQU, line 1087, 0x2A
+Symbol:_STATUS         , LOCAL,  EQU, line 1090, 0x2B
+Symbol:_MSTAT          , LOCAL,  EQU, line 1093, 0x2B
+Symbol:_PSTAT          , LOCAL,  EQU, line 1096, 0x2C
+Symbol:_BIECN          , LOCAL,  EQU, line 1099, 0x2E
+Symbol:_BIEARH         , LOCAL,  EQU, line 1102, 0x2F
+Symbol:_BIEARL         , LOCAL,  EQU, line 1105, 0x30
+Symbol:_BIEDRH         , LOCAL,  EQU, line 1108, 0x31
+Symbol:_BIEDRL         , LOCAL,  EQU, line 1111, 0x32
+Symbol:_PWRCN          , LOCAL,  EQU, line 1114, 0x33
+Symbol:_OSCCN0         , LOCAL,  EQU, line 1117, 0x34
+Symbol:_OSCCN1         , LOCAL,  EQU, line 1120, 0x35
+Symbol:_OSCCN2         , LOCAL,  EQU, line 1123, 0x36
+Symbol:_CSFCN0         , LOCAL,  EQU, line 1126, 0x37
+Symbol:_CSFCN1         , LOCAL,  EQU, line 1129, 0x38
+Symbol:_WDTCN          , LOCAL,  EQU, line 1132, 0x39
+Symbol:_AD1H           , LOCAL,  EQU, line 1135, 0x3A
+Symbol:_AD1M           , LOCAL,  EQU, line 1138, 0x3B
+Symbol:_AD1L           , LOCAL,  EQU, line 1141, 0x3C
+Symbol:_AD1CN0         , LOCAL,  EQU, line 1144, 0x3D
+Symbol:_AD1CN1         , LOCAL,  EQU, line 1147, 0x3E
+Symbol:_AD1CN2         , LOCAL,  EQU, line 1150, 0x3F
+Symbol:_AD1CN3         , LOCAL,  EQU, line 1153, 0x40
+Symbol:_AD1CN4         , LOCAL,  EQU, line 1156, 0x41
+Symbol:_AD1CN5         , LOCAL,  EQU, line 1159, 0x42
+Symbol:_LVDCN          , LOCAL,  EQU, line 1162, 0x43
+Symbol:_TMA1CN         , LOCAL,  EQU, line 1165, 0x44
+Symbol:_TMA1R          , LOCAL,  EQU, line 1168, 0x45
+Symbol:_TMA1C          , LOCAL,  EQU, line 1171, 0x46
+Symbol:_TB1FLAG        , LOCAL,  EQU, line 1174, 0x47
+Symbol:_TB1CN0         , LOCAL,  EQU, line 1177, 0x48
+Symbol:_TB1CN1         , LOCAL,  EQU, line 1180, 0x49
+Symbol:_TB1RH          , LOCAL,  EQU, line 1183, 0x4A
+Symbol:_TB1RL          , LOCAL,  EQU, line 1186, 0x4B
+Symbol:_TB1C0H         , LOCAL,  EQU, line 1189, 0x4C
+Symbol:_TB1C0L         , LOCAL,  EQU, line 1192, 0x4D
+Symbol:_TB1C1H         , LOCAL,  EQU, line 1195, 0x4E
+Symbol:_TB1C1L         , LOCAL,  EQU, line 1198, 0x4F
+Symbol:_TB1C2H         , LOCAL,  EQU, line 1201, 0x50
+Symbol:_TB1C2L         , LOCAL,  EQU, line 1204, 0x51
+Symbol:_TC1CN0         , LOCAL,  EQU, line 1207, 0x52
+Symbol:_PT1            , LOCAL,  EQU, line 1210, 0x53
+Symbol:_TRISC1         , LOCAL,  EQU, line 1213, 0x54
+Symbol:_PT1DA          , LOCAL,  EQU, line 1216, 0x55
+Symbol:_PT1PU          , LOCAL,  EQU, line 1219, 0x56
+Symbol:_PT1M1          , LOCAL,  EQU, line 1222, 0x57
+Symbol:_PT1INT         , LOCAL,  EQU, line 1225, 0x58
+Symbol:_PT1INTE        , LOCAL,  EQU, line 1228, 0x59
+Symbol:_PT1INTF        , LOCAL,  EQU, line 1231, 0x5A
+Symbol:_PT2            , LOCAL,  EQU, line 1234, 0x5B
+Symbol:_TRISC2         , LOCAL,  EQU, line 1237, 0x5C
+Symbol:_PT2DA          , LOCAL,  EQU, line 1240, 0x5D
+Symbol:_PT2PU          , LOCAL,  EQU, line 1243, 0x5E
+Symbol:_PT2INT         , LOCAL,  EQU, line 1246, 0x5F
+Symbol:_PT2INTE        , LOCAL,  EQU, line 1249, 0x60
+Symbol:_PT2INTF        , LOCAL,  EQU, line 1252, 0x61
+Symbol:_PT6            , LOCAL,  EQU, line 1255, 0x62
+Symbol:_TRISC6         , LOCAL,  EQU, line 1258, 0x63
+Symbol:_PT6DA          , LOCAL,  EQU, line 1261, 0x64
+Symbol:_PT6PU          , LOCAL,  EQU, line 1264, 0x65
+Symbol:_PT7            , LOCAL,  EQU, line 1267, 0x66
+Symbol:_TRISC7         , LOCAL,  EQU, line 1270, 0x67
+Symbol:_PT7DA          , LOCAL,  EQU, line 1273, 0x68
+Symbol:_PT7PU          , LOCAL,  EQU, line 1276, 0x69
+Symbol:_PT8            , LOCAL,  EQU, line 1279, 0x6A
+Symbol:_TRISC8         , LOCAL,  EQU, line 1282, 0x6B
+Symbol:_PT8DA          , LOCAL,  EQU, line 1285, 0x6C
+Symbol:_PT8PU          , LOCAL,  EQU, line 1288, 0x6D
+Symbol:_SSPCN0         , LOCAL,  EQU, line 1291, 0x6E
+Symbol:_SSPSTA0        , LOCAL,  EQU, line 1294, 0x6F
+Symbol:_SSPBUF0        , LOCAL,  EQU, line 1297, 0x70
+Symbol:_CFG0           , LOCAL,  EQU, line 1300, 0x71
+Symbol:_ACT0           , LOCAL,  EQU, line 1303, 0x72
+Symbol:_STA0           , LOCAL,  EQU, line 1306, 0x73
+Symbol:_CRG0           , LOCAL,  EQU, line 1309, 0x74
+Symbol:_TOC0           , LOCAL,  EQU, line 1312, 0x75
+Symbol:_RDB0           , LOCAL,  EQU, line 1315, 0x76
+Symbol:_TDB0           , LOCAL,  EQU, line 1318, 0x77
+Symbol:_SID0           , LOCAL,  EQU, line 1321, 0x78
+Symbol:_UR0CN          , LOCAL,  EQU, line 1324, 0x79
+Symbol:_UR0STA         , LOCAL,  EQU, line 1327, 0x7A
+Symbol:_BA0CN          , LOCAL,  EQU, line 1330, 0x7B
+Symbol:_BG0RH          , LOCAL,  EQU, line 1333, 0x7C
+Symbol:_BG0RL          , LOCAL,  EQU, line 1336, 0x7D
+Symbol:_TX0R           , LOCAL,  EQU, line 1339, 0x7E
+Symbol:_RC0REG         , LOCAL,  EQU, line 1342, 0x7F
+Symbol:_LCDCN1         , LOCAL,  EQU, line 1345, 0x180
+Symbol:_LCDCN2         , LOCAL,  EQU, line 1348, 0x181
+Symbol:_LCDCN3         , LOCAL,  EQU, line 1351, 0x182
+Symbol:_LCDCN4         , LOCAL,  EQU, line 1354, 0x183
+Symbol:_LCDCN5         , LOCAL,  EQU, line 1357, 0x184
+Symbol:_LCDCN6         , LOCAL,  EQU, line 1360, 0x185
+Symbol:_LCDCN7         , LOCAL,  EQU, line 1363, 0x186
+Symbol:_LCDCN8         , LOCAL,  EQU, line 1366, 0x187
+Symbol:_LCD0           , LOCAL,  EQU, line 1369, 0x188
+Symbol:_LCD1           , LOCAL,  EQU, line 1372, 0x189
+Symbol:_LCD2           , LOCAL,  EQU, line 1375, 0x18A
+Symbol:_LCD3           , LOCAL,  EQU, line 1378, 0x18B
+Symbol:_LCD4           , LOCAL,  EQU, line 1381, 0x18C
+Symbol:_LCD5           , LOCAL,  EQU, line 1384, 0x18D
+Symbol:_LCD6           , LOCAL,  EQU, line 1387, 0x18E
+Symbol:_LCD7           , LOCAL,  EQU, line 1390, 0x18F
+Symbol:_LCD8           , LOCAL,  EQU, line 1393, 0x190
+Symbol:_LCD9           , LOCAL,  EQU, line 1396, 0x191
+Symbol:_UR2CN          , LOCAL,  EQU, line 1399, 0x192
+Symbol:_UR2STA         , LOCAL,  EQU, line 1402, 0x193
+Symbol:_BA2CN          , LOCAL,  EQU, line 1405, 0x194
+Symbol:_BG2RH          , LOCAL,  EQU, line 1408, 0x195
+Symbol:_BG2RL          , LOCAL,  EQU, line 1411, 0x196
+Symbol:_TX2R           , LOCAL,  EQU, line 1414, 0x197
+Symbol:_RC2REG         , LOCAL,  EQU, line 1417, 0x198
+Symbol:_TMA2R          , LOCAL,  EQU, line 1420, 0x1E8
+Symbol:_TMA2C          , LOCAL,  EQU, line 1423, 0x1E9
+Symbol:_LEDCN          , LOCAL,  EQU, line 1426, 0x1EA
+Symbol:_IQ0            , LOCAL,  EQU, line 1429, 0x1EB
+Symbol:_IQ1            , LOCAL,  EQU, line 1432, 0x1EC
+Symbol:_DGCON1         , LOCAL,  EQU, line 1435, 0x1ED
+Symbol:_DGCON2         , LOCAL,  EQU, line 1438, 0x1EE
+Symbol:_ADCRH          , LOCAL,  EQU, line 1441, 0x3A
+Symbol:_ADCRM          , LOCAL,  EQU, line 1444, 0x3B
+Symbol:_ADCRL          , LOCAL,  EQU, line 1447, 0x3C
+Symbol:_TEMDATA        , LOCAL,  EQU, line 1450, 0x2E0
+Symbol:_MemoryTemp_E2Store, GLOBL,  LABEL, area CCODE, offset ~0
+Symbol:_00133_DS_      , LOCAL,  LABEL, area CCODE, offset ~16
+Symbol:_00135_DS_      , LOCAL,  LABEL, area CCODE, offset ~56
+Symbol:_00137_DS_      , LOCAL,  LABEL, area CCODE, offset ~68
+Symbol:_00139_DS_      , LOCAL,  LABEL, area CCODE, offset ~70
+Symbol:_00141_DS_      , LOCAL,  LABEL, area CCODE, offset ~110
+Symbol:_00143_DS_      , LOCAL,  LABEL, area CCODE, offset ~122
+Symbol:_00145_DS_      , LOCAL,  LABEL, area CCODE, offset ~124
+Symbol:_00147_DS_      , LOCAL,  LABEL, area CCODE, offset ~164
+Symbol:_00149_DS_      , LOCAL,  LABEL, area CCODE, offset ~176
+Symbol:_00151_DS_      , LOCAL,  LABEL, area CCODE, offset ~218
+Symbol:_00153_DS_      , LOCAL,  LABEL, area CCODE, offset ~258
+Symbol:_00155_DS_      , LOCAL,  LABEL, area CCODE, offset ~270
+Symbol:_00157_DS_      , LOCAL,  LABEL, area CCODE, offset ~274
+Symbol:_00159_DS_      , LOCAL,  LABEL, area CCODE, offset ~314
+Symbol:_00161_DS_      , LOCAL,  LABEL, area CCODE, offset ~326
+Symbol:_00164_DS_      , LOCAL,  LABEL, area CCODE, offset ~336
+Symbol:_MemoryTemp_RAMStore, GLOBL,  LABEL, area CCODE, offset ~338
+Symbol:_00108_DS_      , LOCAL,  LABEL, area CCODE, offset ~372
+Symbol:_00109_DS_      , LOCAL,  LABEL, area CCODE, offset ~388
+Symbol:_00112_DS_      , LOCAL,  LABEL, area CCODE, offset ~428
+Symbol:_00113_DS_      , LOCAL,  LABEL, area CCODE, offset ~458
+Symbol:_00115_DS_      , LOCAL,  LABEL, area CCODE, offset ~492
+Symbol:_00117_DS_      , LOCAL,  LABEL, area CCODE, offset ~500
+Symbol:_00118_DS_      , LOCAL,  LABEL, area CCODE, offset ~502
+Symbol:_00123_DS_      , LOCAL,  LABEL, area CCODE, offset ~510
+Symbol:_00120_DS_      , LOCAL,  LABEL, area CCODE, offset ~550
+Symbol:_00127_DS_      , LOCAL,  LABEL, area CCODE, offset ~580
+Symbol:_sMemory        , GLOBL,  LABEL, area DSEG, offset ~0
+Symbol:_sMemoryFlag    , GLOBL,  LABEL, area DSEG, offset ~23
+Symbol:r0x108C         , LOCAL,  LABEL, area UDATA, offset ~0
+Symbol:r0x108E         , LOCAL,  LABEL, area UDATA, offset ~1
+Symbol:r0x1094         , LOCAL,  LABEL, area UDATA, offset ~2
+Symbol:r0x1095         , LOCAL,  LABEL, area UDATA, offset ~3
+Symbol:r0x1096         , LOCAL,  LABEL, area UDATA, offset ~4
+Symbol:r0x1097         , LOCAL,  LABEL, area UDATA, offset ~5
+Symbol:r0x109A         , LOCAL,  LABEL, area UDATA, offset ~6
