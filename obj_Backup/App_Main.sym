@@ -204,4 +204,4 @@ Symbol:STK03           , GLOBL,  LABEL, area UDATA, offset ~22
 Symbol:r0x108D         , LOCAL,  LABEL, area UDATA, offset ~23
 Symbol:r0x108E         , LOCAL,  LABEL, area UDATA, offset ~24
 Symbol:r0x1090         , LOCAL,  LABEL, area UDATA, offset ~25
-Symbol:r0x1094         , LOCAL,  LABEL, area UDATA, offset ~26
+Symbol:r0x1093         , LOCAL,  LABEL, area UDATA, offset ~26

@@ -184,142 +184,142 @@
 184                     :$L:r0x10D1:$L:_Centigrade_Convert_Fahrenheit_STK00:$L:r0x10D2:$L:r0x10D3:$L:r0x10D4\
 185                     :$L:r0x10D5
 186                     ;--------------------------------------------------------
-187                     ;	;.line	373; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
-188 0628 [00] [2] C485      _Centigrade_Convert_Fahrenheit:	;Function start
-189 0629 [05] [2] 6684      	MVF	r0x10D1,1,0
-190                     ;	;.line	377; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
-191 062A [05] [2] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-192 062B [05] [2] 0480      	ADDL	0x80
-193 062C [05] [2] 06F3      	MVL	0xf3
-194 062D [05] [2] 1484      	ADDC	r0x10D1,0,0
-195 062E [05] [2] B82B      	BTSS	_STATUS,4
-196 062F [05] [2] 7868      	JMP	_00252_DS_
-197 0630 [05] [2] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-198 0631 [05] [2] 04D9      	ADDL	0xd9
-199 0632 [05] [2] 06EE      	MVL	0xee
-200 0633 [05] [2] 1484      	ADDC	r0x10D1,0,0
-201 0634 [05] [2] A82B      	BTSZ	_STATUS,4
-202 0635 [05] [2] 7862      	JMP	_00252_DS_
-203                     ;	;.line	380; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
-204 0636 [05] [2] 065A      	MVL	0x5a
-205 0637 [00] [1] 0011 6D7F 	CPSE	_eTempUnit,0
-206 0639 [05] [1] 7820      	JMP	_00244_DS_
-207                     ;	;.line	382; ".\Source\App_ADC.c"	tmp = temp;
-208 063A [05] [1] 0C81      	CLRF	r0x10D4,0
-209 063B [05] [1] 0C80      	CLRF	r0x10D5,0
-210                     ;	;.line	383; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
-211 063C [05] [1] 0605      	MVL	0x05
-212 063D [05] [1] 1285      	ADDF	_Centigrade_Convert_Fahrenheit_STK00,1,0
-213 063E [05] [1] 0600      	MVL	0x00
-214 063F [05] [1] 1684      	ADDC	r0x10D1,1,0
-215 0640 [05] [1] 1681      	ADDC	r0x10D4,1,0
-216 0641 [05] [1] 1680      	ADDC	r0x10D5,1,0
-217 0642 [05] [1] 060A      	MVL	0x0a
-218 0643 [05] [1] 660D      	MVF	__divulong_STK06,1,0
-219 0644 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
-220 0645 [07] [1] 0C0D      	CLRF	__divulong_STK04,0
-221 0646 [08] [1] 0C0D      	CLRF	__divulong_STK03,0
-222 0647 [09] [1] 6489      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-223 0648 [09] [1] 660D      	MVF	__divulong_STK02,1,0
-224 0649 [10] [1] 6489      	MVF	r0x10D1,0,0
-225 064A [10] [1] 660D      	MVF	__divulong_STK01,1,0
-226 064B [11] [1] 6487      	MVF	r0x10D4,0,0
-227 064C [11] [1] 660D      	MVF	__divulong_STK00,1,0
-228 064D [12] [1] 6487      	MVF	r0x10D5,0,0
-229 064E [12] [1] C001 F9DA 	CALL	__divulong
-230 0650 [05] [1] D01E F00D 	MVFF	STK02,__mulint_STK02
-231 0652 [06] [1] D01F F00D 	MVFF	STK01,__mulint_STK01
-232 0654 [07] [1] 060A      	MVL	0x0a
-233 0655 [07] [1] 660D      	MVF	__mulint_STK00,1,0
-234 0656 [08] [1] 0600      	MVL	0x00
-235 0657 [08] [1] C001 F9C7 	CALL	__mulint
-236 0659 [05] [1] 7867      	JMP	_00255_DS_
+187                     ;	;.line	381; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
+188 05FF [00] [2] C485      _Centigrade_Convert_Fahrenheit:	;Function start
+189 0600 [05] [2] 6684      	MVF	r0x10D1,1,0
+190                     ;	;.line	385; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
+191 0601 [05] [2] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+192 0602 [05] [2] 04D8      	ADDL	0xd8
+193 0603 [05] [2] 06F5      	MVL	0xf5
+194 0604 [05] [2] 1484      	ADDC	r0x10D1,0,0
+195 0605 [05] [2] 74        	BTSS	_STATUS,4
+196 0605 [05] 67        	JMP	_00252_DS_
+197 0606 [05] [2] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+198 0607 [05] [2] 04D9      	ADDL	0xd9
+199 0608 [05] [2] 06EE      	MVL	0xee
+200 0609 [05] [2] 1484      	ADDC	r0x10D1,0,0
+201 060A [05] [2] 70        	BTSZ	_STATUS,4
+202 060A [05] 62        	JMP	_00252_DS_
+203                     ;	;.line	388; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+204 060B [05] [2] 065A      	MVL	0x5a
+205 060C [00] [1] 0011 6D7F 	CPSE	_eTempUnit,0
+206 060E [05] [1] 7820      	JMP	_00244_DS_
+207                     ;	;.line	390; ".\Source\App_ADC.c"	tmp = temp;
+208 060F [05] [1] 0C81      	CLRF	r0x10D4,0
+209 0610 [05] [1] 0C80      	CLRF	r0x10D5,0
+210                     ;	;.line	391; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+211 0611 [05] [1] 0605      	MVL	0x05
+212 0612 [05] [1] 1285      	ADDF	_Centigrade_Convert_Fahrenheit_STK00,1,0
+213 0613 [05] [1] 0600      	MVL	0x00
+214 0614 [05] [1] 1684      	ADDC	r0x10D1,1,0
+215 0615 [05] [1] 1681      	ADDC	r0x10D4,1,0
+216 0616 [05] [1] 1680      	ADDC	r0x10D5,1,0
+217 0617 [05] [1] 060A      	MVL	0x0a
+218 0618 [05] [1] 660D      	MVF	__divulong_STK06,1,0
+219 0619 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
+220 061A [07] [1] 0C0D      	CLRF	__divulong_STK04,0
+221 061B [08] [1] 0C0D      	CLRF	__divulong_STK03,0
+222 061C [09] [1] 6489      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+223 061D [09] [1] 660D      	MVF	__divulong_STK02,1,0
+224 061E [10] [1] 6489      	MVF	r0x10D1,0,0
+225 061F [10] [1] 660D      	MVF	__divulong_STK01,1,0
+226 0620 [11] [1] 6487      	MVF	r0x10D4,0,0
+227 0621 [11] [1] 660D      	MVF	__divulong_STK00,1,0
+228 0622 [12] [1] 6487      	MVF	r0x10D5,0,0
+229 0623 [12] [1] C001 F93D 	CALL	__divulong
+230 0625 [05] [1] D01E F00D 	MVFF	STK02,__mulint_STK02
+231 0627 [06] [1] D01F F00D 	MVFF	STK01,__mulint_STK01
+232 0629 [07] [1] 060A      	MVL	0x0a
+233 062A [07] [1] 660D      	MVF	__mulint_STK00,1,0
+234 062B [08] [1] 0600      	MVL	0x00
+235 062C [08] [1] C001 F92A 	CALL	__mulint
+236 062E [05] [1] 7867      	JMP	_00255_DS_
 237                     _00244_DS_:
-238                     ;	;.line	386; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
-239 065A [05] [1] 06A5      	MVL	0xa5
-240 065B [05] [1] 6D7F      	CPSE	_eTempUnit,0
-241 065C [05] [1] 7864 C865 	JMP	_00255_DS_
-242                     ;	;.line	388; ".\Source\App_ADC.c"	tmp = temp ;
-243 06C3 [05] [1] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-244                     ;	;.line	390; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
-245 06C4 [05] [1] 660D      	MVF	__mullong_STK06,1,0
-246 06C5 [06] [1] 6485      	MVF	r0x10D1,0,0
-247 06C6 [06] [1] 660D      	MVF	__mullong_STK05,1,0
-248 06C7 [07] [1] 0C0D      	CLRF	__mullong_STK04,0
-249 06C8 [08] [1] 0C0D      	CLRF	__mullong_STK03,0
-250 06C9 [09] [1] 0609      	MVL	0x09
-251 06CA [09] [1] 660D      	MVF	__mullong_STK02,1,0
-252 06CB [10] [1] 0C0D      	CLRF	__mullong_STK01,0
-253 06CC [11] [1] 0C0D      	CLRF	__mullong_STK00,0
-254 06CD [12] [1] 0500      	MVL	0x00
-255 065E [12] [1] C001 F988 	CALL	__mullong
-256 0660 [05] [1] 6680      	MVF	r0x10D5,1,0
-257 0661 [05] [1] 0605      	MVL	0x05
-258 0662 [05] [1] 660D      	MVF	__divulong_STK06,1,0
-259 0663 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
-260 0664 [07] [1] 0C0D      	CLRF	__divulong_STK04,0
-261 0665 [08] [1] 0C0D      	CLRF	__divulong_STK03,0
-262 0666 [09] [1] D01E F00D 	MVFF	STK02,__divulong_STK02
-263 0668 [10] [1] D01F F00D 	MVFF	STK01,__divulong_STK01
-264 066A [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
-265 066C [12] [1] 6487      	MVF	r0x10D5,0,0
-266 066D [12] [1] C001 F9DA 	CALL	__divulong
-267 066F [05] [1] 6680      	MVF	r0x10D5,1,0
-268 0670 [05] [1] 641F      	MVF	STK01,0,0
-269 0671 [05] [1] 6682      	MVF	r0x10D3,1,0
-270 0672 [05] [1] 641E      	MVF	STK02,0,0
-271 0673 [05] [1] 0480      	ADDL	0x80
-272 0674 [05] [1] 6683      	MVF	r0x10D2,1,0
-273 0675 [05] [1] 060C      	MVL	0x0c
-274 0676 [05] [1] 1682      	ADDC	r0x10D3,1,0
-275 0677 [05] [1] 0600      	MVL	0x00
-276 0678 [05] [1] 1620      	ADDC	STK00,1,0
-277 0679 [05] [1] 1680      	ADDC	r0x10D5,1,0
-278                     ;	;.line	392; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
-279 067A [05] [1] 0605      	MVL	0x05
-280 067B [05] [1] 1283      	ADDF	r0x10D2,1,0
-281 067C [05] [1] 0600      	MVL	0x00
-282 067D [05] [1] 1682      	ADDC	r0x10D3,1,0
-283 067E [05] [1] 1620      	ADDC	STK00,1,0
-284 067F [05] [1] 1680      	ADDC	r0x10D5,1,0
-285 0680 [05] [1] 060A      	MVL	0x0a
-286 0681 [05] [1] 660D      	MVF	__divulong_STK06,1,0
-287 0682 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
-288 0683 [07] [1] 0C0D      	CLRF	__divulong_STK04,0
-289 0684 [08] [1] 0C0D      	CLRF	__divulong_STK03,0
-290 0685 [09] [1] 6487      	MVF	r0x10D2,0,0
-291 0686 [09] [1] 660D      	MVF	__divulong_STK02,1,0
-292 0687 [10] [1] 6487      	MVF	r0x10D3,0,0
-293 0688 [10] [1] 660D      	MVF	__divulong_STK01,1,0
-294 0689 [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
-295 068B [12] [1] 6487      	MVF	r0x10D5,0,0
-296 068C [12] [1] C001 F9DA 	CALL	__divulong
-297 068E [05] [1] D01E F00D 	MVFF	STK02,__mulint_STK02
-298 0690 [06] [1] D01F F00D 	MVFF	STK01,__mulint_STK01
-299 0692 [07] [1] 060A      	MVL	0x0a
-300 0693 [07] [1] 660D      	MVF	__mulint_STK00,1,0
-301 0694 [08] [1] 0600      	MVL	0x00
-302 0695 [08] [1] C001 F9C7 	CALL	__mulint
-303 0697 [05] [1] 7829      	JMP	_00255_DS_
+238                     ;	;.line	394; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+239 062F [05] [1] 06A5      	MVL	0xa5
+240 0630 [05] [1] 6D7F      	CPSE	_eTempUnit,0
+241 0631 [05] [1] 7864 C865 	JMP	_00255_DS_
+242                     ;	;.line	396; ".\Source\App_ADC.c"	tmp = temp ;
+243 0698 [05] [1] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+244                     ;	;.line	398; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+245 0699 [05] [1] 660D      	MVF	__mullong_STK06,1,0
+246 069A [06] [1] 6485      	MVF	r0x10D1,0,0
+247 069B [06] [1] 660D      	MVF	__mullong_STK05,1,0
+248 069C [07] [1] 0C0D      	CLRF	__mullong_STK04,0
+249 069D [08] [1] 0C0D      	CLRF	__mullong_STK03,0
+250 069E [09] [1] 0609      	MVL	0x09
+251 069F [09] [1] 660D      	MVF	__mullong_STK02,1,0
+252 06A0 [10] [1] 0C0D      	CLRF	__mullong_STK01,0
+253 06A1 [11] [1] 0C0D      	CLRF	__mullong_STK00,0
+254 06A2 [12] [1] 0500      	MVL	0x00
+255 0633 [12] [1] C001 F8EB 	CALL	__mullong
+256 0635 [05] [1] 6680      	MVF	r0x10D5,1,0
+257 0636 [05] [1] 0605      	MVL	0x05
+258 0637 [05] [1] 660D      	MVF	__divulong_STK06,1,0
+259 0638 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
+260 0639 [07] [1] 0C0D      	CLRF	__divulong_STK04,0
+261 063A [08] [1] 0C0D      	CLRF	__divulong_STK03,0
+262 063B [09] [1] D01E F00D 	MVFF	STK02,__divulong_STK02
+263 063D [10] [1] D01F F00D 	MVFF	STK01,__divulong_STK01
+264 063F [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
+265 0641 [12] [1] 6487      	MVF	r0x10D5,0,0
+266 0642 [12] [1] C001 F93D 	CALL	__divulong
+267 0644 [05] [1] 6680      	MVF	r0x10D5,1,0
+268 0645 [05] [1] 641F      	MVF	STK01,0,0
+269 0646 [05] [1] 6682      	MVF	r0x10D3,1,0
+270 0647 [05] [1] 641E      	MVF	STK02,0,0
+271 0648 [05] [1] 0480      	ADDL	0x80
+272 0649 [05] [1] 6683      	MVF	r0x10D2,1,0
+273 064A [05] [1] 060C      	MVL	0x0c
+274 064B [05] [1] 1682      	ADDC	r0x10D3,1,0
+275 064C [05] [1] 0600      	MVL	0x00
+276 064D [05] [1] 1620      	ADDC	STK00,1,0
+277 064E [05] [1] 1680      	ADDC	r0x10D5,1,0
+278                     ;	;.line	400; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+279 064F [05] [1] 0605      	MVL	0x05
+280 0650 [05] [1] 1283      	ADDF	r0x10D2,1,0
+281 0651 [05] [1] 0600      	MVL	0x00
+282 0652 [05] [1] 1682      	ADDC	r0x10D3,1,0
+283 0653 [05] [1] 1620      	ADDC	STK00,1,0
+284 0654 [05] [1] 1680      	ADDC	r0x10D5,1,0
+285 0655 [05] [1] 060A      	MVL	0x0a
+286 0656 [05] [1] 660D      	MVF	__divulong_STK06,1,0
+287 0657 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
+288 0658 [07] [1] 0C0D      	CLRF	__divulong_STK04,0
+289 0659 [08] [1] 0C0D      	CLRF	__divulong_STK03,0
+290 065A [09] [1] 6487      	MVF	r0x10D2,0,0
+291 065B [09] [1] 660D      	MVF	__divulong_STK02,1,0
+292 065C [10] [1] 6487      	MVF	r0x10D3,0,0
+293 065D [10] [1] 660D      	MVF	__divulong_STK01,1,0
+294 065E [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
+295 0660 [12] [1] 6487      	MVF	r0x10D5,0,0
+296 0661 [12] [1] C001 F93D 	CALL	__divulong
+297 0663 [05] [1] D01E F00D 	MVFF	STK02,__mulint_STK02
+298 0665 [06] [1] D01F F00D 	MVFF	STK01,__mulint_STK01
+299 0667 [07] [1] 060A      	MVL	0x0a
+300 0668 [07] [1] 660D      	MVF	__mulint_STK00,1,0
+301 0669 [08] [1] 0600      	MVL	0x00
+302 066A [08] [1] C001 F92A 	CALL	__mulint
+303 066C [05] [1] 7829      	JMP	_00255_DS_
 304                     _00252_DS_:
-305                     ;	;.line	398; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
-306 0698 [05] [2] 065A      	MVL	0x5a
-307 0699 [00] [1] 0011 6D7F 	CPSE	_eTempUnit,0
-308 069B [05] [1] 7804      	JMP	_00249_DS_
-309                     ;	;.line	400; ".\Source\App_ADC.c"	tmp = temp;
-310 069C [05] [1] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-311                     ;	;.line	401; ".\Source\App_ADC.c"	return tmp;
-312 069D [05] [1] 6620      	MVF	STK00,1,0
-313 069E [05] [1] 6484      	MVF	r0x10D1,0,0
-314 069F [05] [1] 7821      	JMP	_00255_DS_
+305                     ;	;.line	406; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+306 066D [05] [2] 065A      	MVL	0x5a
+307 066E [00] [1] 0011 6D7F 	CPSE	_eTempUnit,0
+308 0670 [05] [1] 7804      	JMP	_00249_DS_
+309                     ;	;.line	408; ".\Source\App_ADC.c"	tmp = temp;
+310 0671 [05] [1] 6485      	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
+311                     ;	;.line	409; ".\Source\App_ADC.c"	return tmp;
+312 0672 [05] [1] 6620      	MVF	STK00,1,0
+313 0673 [05] [1] 6484      	MVF	r0x10D1,0,0
+314 0674 [05] [1] 7821      	JMP	_00255_DS_
 315                     _00249_DS_:
-316                     ;	;.line	404; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
-317 06A0 [05] [1] 06A5      	MVL	0xa5
-318 06A1 [05] [1] 6D7F      	CPSE	_eTempUnit,0
-319 06A2 [05] [1] 781E C81F 	JMP	_00255_DS_
-320                     ;	;.line	406; ".\Source\App_ADC.c"	tmp = temp ;
+316                     ;	;.line	412; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+317 0675 [05] [1] 06A5      	MVL	0xa5
+318 0676 [05] [1] 6D7F      	CPSE	_eTempUnit,0
+319 0677 [05] [1] 781E C81F 	JMP	_00255_DS_
+320                     ;	;.line	414; ".\Source\App_ADC.c"	tmp = temp ;
 321                     	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-322                     ;	;.line	408; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+322                     ;	;.line	416; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
 323                     	MVF	__mullong_STK06,1,0
 324                     	MVF	r0x10D1,0,0
 325                     	MVF	__mullong_STK05,1,0
@@ -330,34 +330,34 @@
 330                     	CLRF	__mullong_STK01,0
 331                     	CLRF	__mullong_STK00,0
 332                     	MVL	0x00
-333 06A4 [12] [1] C001 F988 	CALL	__mullong
-334 06A6 [05] [1] 6682      	MVF	r0x10D3,1,0
-335 06A7 [05] [1] 0605      	MVL	0x05
-336 06A8 [05] [1] 660D      	MVF	__divulong_STK06,1,0
-337 06A9 [06] [1] 0C0D      	CLRF	__divulong_STK05,0
-338 06AA [07] [1] 0C0D      	CLRF	__divulong_STK04,0
-339 06AB [08] [1] 0C0D      	CLRF	__divulong_STK03,0
-340 06AC [09] [1] D01E F00D 	MVFF	STK02,__divulong_STK02
-341 06AE [10] [1] D01F F00D 	MVFF	STK01,__divulong_STK01
-342 06B0 [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
-343 06B2 [12] [1] 6489      	MVF	r0x10D3,0,0
-344 06B3 [12] [1] C001 F9DA 	CALL	__divulong
-345 06B5 [05] [1] 6682      	MVF	r0x10D3,1,0
-346 06B6 [05] [1] 6420      	MVF	STK00,0,0
-347 06B7 [05] [1] 6683      	MVF	r0x10D2,1,0
-348 06B8 [05] [1] 641E      	MVF	STK02,0,0
-349 06B9 [05] [1] 0480      	ADDL	0x80
-350 06BA [05] [1] 6620      	MVF	STK00,1,0
-351 06BB [05] [1] 060C      	MVL	0x0c
-352 06BC [05] [1] 161F      	ADDC	STK01,1,0
-353 06BD [05] [1] 0600      	MVL	0x00
-354 06BE [05] [1] 1683      	ADDC	r0x10D2,1,0
-355 06BF [05] [1] 1682      	ADDC	r0x10D3,1,0
-356                     ;	;.line	409; ".\Source\App_ADC.c"	return tmp;
-357 06C0 [05] [1] 641F      	MVF	STK01,0,0
-358 06C1 [05] [1] C4BA      _00255_DS_:
-359                     ;	;.line	412; ".\Source\App_ADC.c"	}
-360 06C2 [00] [1] 000A      	RET	
+333 0679 [12] [1] C001 F8EB 	CALL	__mullong
+334 067B [05] [1] 6682      	MVF	r0x10D3,1,0
+335 067C [05] [1] 0605      	MVL	0x05
+336 067D [05] [1] 660D      	MVF	__divulong_STK06,1,0
+337 067E [06] [1] 0C0D      	CLRF	__divulong_STK05,0
+338 067F [07] [1] 0C0D      	CLRF	__divulong_STK04,0
+339 0680 [08] [1] 0C0D      	CLRF	__divulong_STK03,0
+340 0681 [09] [1] D01E F00D 	MVFF	STK02,__divulong_STK02
+341 0683 [10] [1] D01F F00D 	MVFF	STK01,__divulong_STK01
+342 0685 [11] [1] D020 F00D 	MVFF	STK00,__divulong_STK00
+343 0687 [12] [1] 6489      	MVF	r0x10D3,0,0
+344 0688 [12] [1] C001 F93D 	CALL	__divulong
+345 068A [05] [1] 6682      	MVF	r0x10D3,1,0
+346 068B [05] [1] 6420      	MVF	STK00,0,0
+347 068C [05] [1] 6683      	MVF	r0x10D2,1,0
+348 068D [05] [1] 641E      	MVF	STK02,0,0
+349 068E [05] [1] 0480      	ADDL	0x80
+350 068F [05] [1] 6620      	MVF	STK00,1,0
+351 0690 [05] [1] 060C      	MVL	0x0c
+352 0691 [05] [1] 161F      	ADDC	STK01,1,0
+353 0692 [05] [1] 0600      	MVL	0x00
+354 0693 [05] [1] 1683      	ADDC	r0x10D2,1,0
+355 0694 [05] [1] 1682      	ADDC	r0x10D3,1,0
+356                     ;	;.line	417; ".\Source\App_ADC.c"	return tmp;
+357 0695 [05] [1] 641F      	MVF	STK01,0,0
+358 0696 [05] [1] C4BA      _00255_DS_:
+359                     ;	;.line	420; ".\Source\App_ADC.c"	}
+360 0697 [00] [1] 000A      	RET	
 361                     ; exit point of _Centigrade_Convert_Fahrenheit
 362                     	.ENDFUNC	_Centigrade_Convert_Fahrenheit
 363                     ;--------------------------------------------------------
@@ -373,361 +373,361 @@
 373                     :$L:r0x10B6:$L:r0x10B7:$L:r0x10B8
 374                     ;--------------------------------------------------------
 375                     ;	;.line	242; ".\Source\App_ADC.c"	uint16 n = 250,lower = 0,upper = 501,i;
-376 1834 [00] [2] C492      _Get_250msTemp:	;Function start
-377 1835 [18] [2] 06FA      	MVL	0xfa
-378 1836 [18] [2] 0C90      	CLRF	r0x10A6,0
-379 1837 [18] [2] 0C8F      	CLRF	r0x10A7,0
-380 1838 [18] [2] 0C8E      	CLRF	r0x10A8,0
-381 1839 [18] [2] 6691      	MVF	r0x10A5,1,0
-382 183A [18] [2] 06F5      	MVL	0xf5
-383 183B [18] [2] 668D      	MVF	r0x10A9,1,0
-384 183C [18] [2] 0601      	MVL	0x01
-385 183D [18] [2] 668C      	MVF	r0x10AA,1,0
+376 179E [00] [2] C492      _Get_250msTemp:	;Function start
+377 179F [18] [2] 06FA      	MVL	0xfa
+378 17A0 [18] [2] 0C90      	CLRF	r0x10A6,0
+379 17A1 [18] [2] 0C8F      	CLRF	r0x10A7,0
+380 17A2 [18] [2] 0C8E      	CLRF	r0x10A8,0
+381 17A3 [18] [2] 6691      	MVF	r0x10A5,1,0
+382 17A4 [18] [2] 06F5      	MVL	0xf5
+383 17A5 [18] [2] 668D      	MVF	r0x10A9,1,0
+384 17A6 [18] [2] 0601      	MVL	0x01
+385 17A7 [18] [2] 668C      	MVF	r0x10AA,1,0
 386                     ;	;.line	248; ".\Source\App_ADC.c"	if((eDisplay_Interfaces == Display_TemperatureDetecting) || (eDisplay_Interfaces == Display_MeasuredTemperature) || (eDisplay_Interfaces == Display_Calibration))
-387 183E [18] [2] 6533      	MVF	_eDisplay_Interfaces,0,0
-388 183F [18] [2] 04F1      	ADDL	0xF1
-389 1840 [18] [2] A02B      	BTSZ	_STATUS,0
-390 1841 [18] [2] 7806      	JMP	_00156_DS_
-391 1842 [18] [2] 04FE      	ADDL	0xFE
-392 1843 [18] [2] A02B      	BTSZ	_STATUS,0
-393 1844 [18] [2] 7803      	JMP	_00156_DS_
-394 1845 [18] [2] 0607      	MVL	0x07
-395 1846 [18] [2] 6D33      	CPSE	_eDisplay_Interfaces,0
-396 1847 [18] [2] 7931      	JMP	_00163_DS_
+387 17A8 [18] [2] 6533      	MVF	_eDisplay_Interfaces,0,0
+388 17A9 [18] [2] 04F1      	ADDL	0xF1
+389 17AA [18] [2] 71        	BTSZ	_STATUS,0
+390 17AA [18] 05        	JMP	_00156_DS_
+391 17AB [18] [2] 04FE      	ADDL	0xFE
+392 17AC [18] [2] 71        	BTSZ	_STATUS,0
+393 17AC [18] 03        	JMP	_00156_DS_
+394 17AD [18] [2] 0607      	MVL	0x07
+395 17AE [18] [2] 6D33      	CPSE	_eDisplay_Interfaces,0
+396 17AF [18] [2] 792D      	JMP	_00163_DS_
 397                     _00156_DS_:
 398                     ;	;.line	250; ".\Source\App_ADC.c"	if(sADC.Get_250msTemp_Flag)
-399 1848 [18] [2] B143      	BTSS	_sADC,0
-400 1849 [18] [2] 792F      	JMP	_00163_DS_
+399 17B0 [18] [2] B143      	BTSS	_sADC,0
+400 17B1 [18] [2] 792B      	JMP	_00163_DS_
 401                     ;	;.line	262; ".\Source\App_ADC.c"	if(NTC_ADCData())
-402 184A [18] [2] C930      	CALL	_NTC_ADCData
+402 17B2 [18] [2] C92C      	CALL	_NTC_ADCData
 403                     	.CHKPARA _NTC_ADCData 0
-404 184B [18] [2] 0200      	IORL	0x00
-405 184C [18] [2] A02B      	BTSZ	_STATUS,0
-406 184D [18] [2] 792B      	JMP	_00163_DS_
+404 17B3 [18] [2] 0200      	IORL	0x00
+405 17B4 [18] [2] A02B      	BTSZ	_STATUS,0
+406 17B5 [18] [2] 7927      	JMP	_00163_DS_
 407                     ;	;.line	272; ".\Source\App_ADC.c"	sADC.RawRntc = (uint32)sADC.AI2_AI3_Data * 30000 / (65536 - sADC.AI2_AI3_Data);
-408 184E [18] [2] 654C      	MVF	(_sADC + 9),0,0
-409 184F [18] [2] 668B      	MVF	r0x10AD,1,0
-410 1850 [18] [2] 654D      	MVF	(_sADC + 10),0,0
-411 1851 [18] [2] 668A      	MVF	r0x10AE,1,0
-412 1852 [18] [2] 0600      	MVL	0x00
-413 1853 [18] [2] AE8A      	BTSZ	r0x10AE,7
-414 1854 [18] [2] 06FF      	MVL	0xff
-415 1855 [18] [2] 6687      	MVF	r0x10B2,1,0
-416 1856 [18] [2] 6686      	MVF	r0x10B1,1,0
-417 1857 [18] [2] 648B      	MVF	r0x10AD,0,0
-418 1858 [18] [2] 660D      	MVF	__mullong_STK06,1,0
-419 1859 [19] [2] 648B      	MVF	r0x10AE,0,0
-420 185A [19] [2] 660D      	MVF	__mullong_STK05,1,0
-421 185B [20] [2] 6488      	MVF	r0x10B1,0,0
-422 185C [20] [2] 660D      	MVF	__mullong_STK04,1,0
-423 185D [21] [2] 648A      	MVF	r0x10B2,0,0
-424 185E [21] [2] 660D      	MVF	__mullong_STK03,1,0
-425 185F [22] [2] 0630      	MVL	0x30
-426 1860 [22] [2] 660D      	MVF	__mullong_STK02,1,0
-427 1861 [23] [2] 0675      	MVL	0x75
-428 1862 [23] [2] 660D      	MVF	__mullong_STK01,1,0
-429 1863 [24] [2] 0C0D      	CLRF	__mullong_STK00,0
-430 1864 [25] [2] 0600      	MVL	0x00
-431 1865 [25] [2] C922      	CALL	__mullong
+408 17B6 [18] [2] 654C      	MVF	(_sADC + 9),0,0
+409 17B7 [18] [2] 668B      	MVF	r0x10AD,1,0
+410 17B8 [18] [2] 654D      	MVF	(_sADC + 10),0,0
+411 17B9 [18] [2] 668A      	MVF	r0x10AE,1,0
+412 17BA [18] [2] 0600      	MVL	0x00
+413 17BB [18] [2] AE8A      	BTSZ	r0x10AE,7
+414 17BC [18] [2] 06FF      	MVL	0xff
+415 17BD [18] [2] 6687      	MVF	r0x10B2,1,0
+416 17BE [18] [2] 6686      	MVF	r0x10B1,1,0
+417 17BF [18] [2] 648B      	MVF	r0x10AD,0,0
+418 17C0 [18] [2] 660D      	MVF	__mullong_STK06,1,0
+419 17C1 [19] [2] 648B      	MVF	r0x10AE,0,0
+420 17C2 [19] [2] 660D      	MVF	__mullong_STK05,1,0
+421 17C3 [20] [2] 6488      	MVF	r0x10B1,0,0
+422 17C4 [20] [2] 660D      	MVF	__mullong_STK04,1,0
+423 17C5 [21] [2] 648A      	MVF	r0x10B2,0,0
+424 17C6 [21] [2] 660D      	MVF	__mullong_STK03,1,0
+425 17C7 [22] [2] 0630      	MVL	0x30
+426 17C8 [22] [2] 660D      	MVF	__mullong_STK02,1,0
+427 17C9 [23] [2] 0675      	MVL	0x75
+428 17CA [23] [2] 660D      	MVF	__mullong_STK01,1,0
+429 17CB [24] [2] 0C0D      	CLRF	__mullong_STK00,0
+430 17CC [25] [2] 0600      	MVL	0x00
+431 17CD [25] [2] C91D      	CALL	__mullong
 432                     	.CHKPARA __mullong 8
-433 1866 [18] [2] 0C83      	CLRF	r0x10B5,0
-434 1867 [18] [2] 6687      	MVF	r0x10B2,1,0
-435 1868 [18] [2] AE8A      	BTSZ	r0x10AE,7
-436 1869 [18] [2] 0A83      	SETF	r0x10B5,0
-437 186A [18] [2] 248B      	COMF	r0x10AD,0,0
-438 186B [18] [2] 0401      	ADDL	0x01
-439 186C [18] [2] 268A      	COMF	r0x10AE,1,0
-440 186D [18] [2] 668B      	MVF	r0x10AD,1,0
-441 186E [18] [2] 2483      	COMF	r0x10B5,0,0
-442 186F [18] [2] 6682      	MVF	r0x10B6,1,0
-443 1870 [18] [2] 0600      	MVL	0x00
-444 1871 [18] [2] 168A      	ADDC	r0x10AE,1,0
-445 1872 [18] [2] 0601      	MVL	0x01
-446 1873 [18] [2] 1682      	ADDC	r0x10B6,1,0
-447 1874 [18] [2] 0C81      	CLRF	r0x10B7,0
-448 1875 [18] [2] AE82      	BTSZ	r0x10B6,7
-449 1876 [18] [2] 0A81      	SETF	r0x10B7,0
-450 1877 [18] [2] 648B      	MVF	r0x10AD,0,0
-451 1878 [18] [2] 660D      	MVF	__divulong_STK06,1,0
-452 1879 [19] [2] 648B      	MVF	r0x10AE,0,0
-453 187A [19] [2] 660D      	MVF	__divulong_STK05,1,0
-454 187B [20] [2] 6484      	MVF	r0x10B6,0,0
-455 187C [20] [2] 660D      	MVF	__divulong_STK04,1,0
-456 187D [21] [2] 6484      	MVF	r0x10B7,0,0
-457 187E [21] [2] 660D      	MVF	__divulong_STK03,1,0
-458 187F [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
-459 1881 [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
-460 1883 [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
-461 1885 [25] [2] 648E      	MVF	r0x10B2,0,0
-462 1886 [25] [2] C953      	CALL	__divulong
+433 17CE [18] [2] 0C83      	CLRF	r0x10B5,0
+434 17CF [18] [2] 6687      	MVF	r0x10B2,1,0
+435 17D0 [18] [2] AE8A      	BTSZ	r0x10AE,7
+436 17D1 [18] [2] 0A83      	SETF	r0x10B5,0
+437 17D2 [18] [2] 248B      	COMF	r0x10AD,0,0
+438 17D3 [18] [2] 0401      	ADDL	0x01
+439 17D4 [18] [2] 268A      	COMF	r0x10AE,1,0
+440 17D5 [18] [2] 668B      	MVF	r0x10AD,1,0
+441 17D6 [18] [2] 2483      	COMF	r0x10B5,0,0
+442 17D7 [18] [2] 6682      	MVF	r0x10B6,1,0
+443 17D8 [18] [2] 0600      	MVL	0x00
+444 17D9 [18] [2] 168A      	ADDC	r0x10AE,1,0
+445 17DA [18] [2] 0601      	MVL	0x01
+446 17DB [18] [2] 1682      	ADDC	r0x10B6,1,0
+447 17DC [18] [2] 0C81      	CLRF	r0x10B7,0
+448 17DD [18] [2] AE82      	BTSZ	r0x10B6,7
+449 17DE [18] [2] 0A81      	SETF	r0x10B7,0
+450 17DF [18] [2] 648B      	MVF	r0x10AD,0,0
+451 17E0 [18] [2] 660D      	MVF	__divulong_STK06,1,0
+452 17E1 [19] [2] 648B      	MVF	r0x10AE,0,0
+453 17E2 [19] [2] 660D      	MVF	__divulong_STK05,1,0
+454 17E3 [20] [2] 6484      	MVF	r0x10B6,0,0
+455 17E4 [20] [2] 660D      	MVF	__divulong_STK04,1,0
+456 17E5 [21] [2] 6484      	MVF	r0x10B7,0,0
+457 17E6 [21] [2] 660D      	MVF	__divulong_STK03,1,0
+458 17E7 [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
+459 17E9 [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
+460 17EB [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
+461 17ED [25] [2] 648E      	MVF	r0x10B2,0,0
+462 17EE [25] [2] C94E      	CALL	__divulong
 463                     	.CHKPARA __divulong 8
-464 1887 [18] [2] 641E      	MVF	STK02,0,0
-465 1888 [18] [2] 6758      	MVF	(_sADC + 21),1,0
-466 1889 [18] [2] 641F      	MVF	STK01,0,0
-467 188A [18] [2] 6759      	MVF	(_sADC + 22),1,0
+464 17EF [18] [2] 641E      	MVF	STK02,0,0
+465 17F0 [18] [2] 6758      	MVF	(_sADC + 21),1,0
+466 17F1 [18] [2] 641F      	MVF	STK01,0,0
+467 17F2 [18] [2] 6759      	MVF	(_sADC + 22),1,0
 468                     ;	;.line	275; ".\Source\App_ADC.c"	sADC.Rntc = (uint32)sADC.RawRntc * sTempCal.Temp_Ratio / 10000;
-469 188B [18] [2] 661F      	MVF	STK01,1,0
-470 188C [18] [2] 6592      	MVF	(_sTempCal + 2),0,0
-471 188D [18] [2] 660D      	MVF	__mullong_STK06,1,0
-472 188E [19] [2] 6593      	MVF	(_sTempCal + 3),0,0
-473 188F [19] [2] 660D      	MVF	__mullong_STK05,1,0
-474 1890 [20] [2] 0C0D      	CLRF	__mullong_STK04,0
-475 1891 [21] [2] 0C0D      	CLRF	__mullong_STK03,0
-476 1892 [22] [2] D01E F00D 	MVFF	STK02,__mullong_STK02
-477 1894 [23] [2] D01F F00D 	MVFF	STK01,__mullong_STK01
-478 1896 [24] [2] 0C0D      	CLRF	__mullong_STK00,0
-479 1897 [25] [2] 0600      	MVL	0x00
-480 1898 [25] [2] C8EF      	CALL	__mullong
-481 1899 [18] [2] 6688      	MVF	r0x10B0,1,0
-482 189A [18] [2] 0610      	MVL	0x10
-483 189B [18] [2] 660D      	MVF	__divulong_STK06,1,0
-484 189C [19] [2] 0627      	MVL	0x27
-485 189D [19] [2] 660D      	MVF	__divulong_STK05,1,0
-486 189E [20] [2] 0C0D      	CLRF	__divulong_STK04,0
-487 189F [21] [2] 0C0D      	CLRF	__divulong_STK03,0
-488 18A0 [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
-489 18A2 [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
-490 18A4 [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
-491 18A6 [25] [2] 648F      	MVF	r0x10B0,0,0
-492 18A7 [25] [2] C932      	CALL	__divulong
-493 18A8 [18] [2] 641E      	MVF	STK02,0,0
-494 18A9 [18] [2] 675A      	MVF	(_sADC + 23),1,0
-495 18AA [18] [2] 641F      	MVF	STK01,0,0
-496 18AB [18] [2] 675B      	MVF	(_sADC + 24),1,0
+469 17F3 [18] [2] 661F      	MVF	STK01,1,0
+470 17F4 [18] [2] 6592      	MVF	(_sTempCal + 2),0,0
+471 17F5 [18] [2] 660D      	MVF	__mullong_STK06,1,0
+472 17F6 [19] [2] 6593      	MVF	(_sTempCal + 3),0,0
+473 17F7 [19] [2] 660D      	MVF	__mullong_STK05,1,0
+474 17F8 [20] [2] 0C0D      	CLRF	__mullong_STK04,0
+475 17F9 [21] [2] 0C0D      	CLRF	__mullong_STK03,0
+476 17FA [22] [2] D01E F00D 	MVFF	STK02,__mullong_STK02
+477 17FC [23] [2] D01F F00D 	MVFF	STK01,__mullong_STK01
+478 17FE [24] [2] 0C0D      	CLRF	__mullong_STK00,0
+479 17FF [25] [2] 0600      	MVL	0x00
+480 1800 [25] [2] C8EA      	CALL	__mullong
+481 1801 [18] [2] 6688      	MVF	r0x10B0,1,0
+482 1802 [18] [2] 0610      	MVL	0x10
+483 1803 [18] [2] 660D      	MVF	__divulong_STK06,1,0
+484 1804 [19] [2] 0627      	MVL	0x27
+485 1805 [19] [2] 660D      	MVF	__divulong_STK05,1,0
+486 1806 [20] [2] 0C0D      	CLRF	__divulong_STK04,0
+487 1807 [21] [2] 0C0D      	CLRF	__divulong_STK03,0
+488 1808 [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
+489 180A [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
+490 180C [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
+491 180E [25] [2] 648F      	MVF	r0x10B0,0,0
+492 180F [25] [2] C92D      	CALL	__divulong
+493 1810 [18] [2] 641E      	MVF	STK02,0,0
+494 1811 [18] [2] 675A      	MVF	(_sADC + 23),1,0
+495 1812 [18] [2] 641F      	MVF	STK01,0,0
+496 1813 [18] [2] 675B      	MVF	(_sADC + 24),1,0
 497                     ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
-498 18AC [18] [2] 0C8B      	CLRF	r0x10AD,0
-499 18AD [18] [2] 0C8A      	CLRF	r0x10AE,0
+498 1814 [18] [2] 0C8B      	CLRF	r0x10AD,0
+499 1815 [18] [2] 0C8A      	CLRF	r0x10AE,0
 500                     _00161_DS_:
-501 18AE [18] [2] 648D      	MVF	r0x10A9,0,0
-502 18AF [18] [2] 188B      	SUBF	r0x10AD,0,0
-503 18B0 [18] [2] 648C      	MVF	r0x10AA,0,0
-504 18B1 [18] [2] 1C8A      	SUBC	r0x10AE,0,0
-505 18B2 [18] [2] A82B      	BTSZ	_STATUS,4
-506 18B3 [18] [2] 78C5      	JMP	_00163_DS_
+501 1816 [18] [2] 648D      	MVF	r0x10A9,0,0
+502 1817 [18] [2] 188B      	SUBF	r0x10AD,0,0
+503 1818 [18] [2] 648C      	MVF	r0x10AA,0,0
+504 1819 [18] [2] 1C8A      	SUBC	r0x10AE,0,0
+505 181A [18] [2] A82B      	BTSZ	_STATUS,4
+506 181B [18] [2] 78C1      	JMP	_00163_DS_
 507                     ;	;.line	284; ".\Source\App_ADC.c"	if(sADC.Rntc < R_Table[n])
-508 18B4 [18] [2] 655A      	MVF	(_sADC + 23),0,0
-509 18B5 [18] [2] 6689      	MVF	r0x10AF,1,0
-510 18B6 [18] [2] 655B      	MVF	(_sADC + 24),0,0
-511 18B7 [18] [2] 6688      	MVF	r0x10B0,1,0
-512 18B8 [18] [2] 882B      	BCF	_STATUS,4
-513 18B9 [18] [2] 5491      	RLFC	r0x10A5,0,0
-514 18BA [18] [2] 6686      	MVF	r0x10B1,1,0
-515 18BB [18] [2] 5490      	RLFC	r0x10A6,0,0
-516 18BC [18] [2] 6687      	MVF	r0x10B2,1,0
-517 18BD [18] [2] 6486      	MVF	r0x10B1,0,0
-518 18BE [18] [2] 04E4      	ADDL	(_R_Table + 0)
-519 18BF [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
-520 18C0 [19] [2] 0636      	MVL	high (_R_Table + 0)
-521 18C1 [19] [2] 1488      	ADDC	r0x10B2,0,0
-522 18C2 [19] [2] 0280      	IORL	0x80
-523 18C3 [19] [2] CDD3      	CALL	__g2ptrget2
-524 18C4 [18] [2] 6684      	MVF	r0x10B4,1,0
-525 18C5 [18] [2] 6420      	MVF	STK00,0,0
-526 18C6 [18] [2] 1889      	SUBF	r0x10AF,0,0
-527 18C7 [18] [2] 6484      	MVF	r0x10B4,0,0
-528 18C8 [18] [2] 1C88      	SUBC	r0x10B0,0,0
-529 18C9 [18] [2] A82B      	BTSZ	_STATUS,4
-530 18CA [18] [2] 780F      	JMP	_00141_DS_
+508 181C [18] [2] 655A      	MVF	(_sADC + 23),0,0
+509 181D [18] [2] 6689      	MVF	r0x10AF,1,0
+510 181E [18] [2] 655B      	MVF	(_sADC + 24),0,0
+511 181F [18] [2] 6688      	MVF	r0x10B0,1,0
+512 1820 [18] [2] 882B      	BCF	_STATUS,4
+513 1821 [18] [2] 5491      	RLFC	r0x10A5,0,0
+514 1822 [18] [2] 6686      	MVF	r0x10B1,1,0
+515 1823 [18] [2] 5490      	RLFC	r0x10A6,0,0
+516 1824 [18] [2] 6687      	MVF	r0x10B2,1,0
+517 1825 [18] [2] 6486      	MVF	r0x10B1,0,0
+518 1826 [18] [2] 049A      	ADDL	(_R_Table + 0)
+519 1827 [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
+520 1828 [19] [2] 0635      	MVL	high (_R_Table + 0)
+521 1829 [19] [2] 1488      	ADDC	r0x10B2,0,0
+522 182A [19] [2] 0280      	IORL	0x80
+523 182B [19] [2] CDDC      	CALL	__g2ptrget2
+524 182C [18] [2] 6684      	MVF	r0x10B4,1,0
+525 182D [18] [2] 6420      	MVF	STK00,0,0
+526 182E [18] [2] 1889      	SUBF	r0x10AF,0,0
+527 182F [18] [2] 6484      	MVF	r0x10B4,0,0
+528 1830 [18] [2] 1C88      	SUBC	r0x10B0,0,0
+529 1831 [18] [2] 70        	BTSZ	_STATUS,4
+530 1831 [18] 0F        	JMP	_00141_DS_
 531                     ;	;.line	286; ".\Source\App_ADC.c"	lower = n;
-532 18CB [18] [2] 6491      	MVF	r0x10A5,0,0
-533 18CC [18] [2] 668F      	MVF	r0x10A7,1,0
-534 18CD [18] [2] 6490      	MVF	r0x10A6,0,0
-535 18CE [18] [2] 668E      	MVF	r0x10A8,1,0
+532 1832 [18] [2] 6491      	MVF	r0x10A5,0,0
+533 1833 [18] [2] 668F      	MVF	r0x10A7,1,0
+534 1834 [18] [2] 6490      	MVF	r0x10A6,0,0
+535 1835 [18] [2] 668E      	MVF	r0x10A8,1,0
 536                     ;	;.line	287; ".\Source\App_ADC.c"	n = (lower + upper) / 2;
-537 18CF [18] [2] 648D      	MVF	r0x10A9,0,0
-538 18D0 [18] [2] 1091      	ADDF	r0x10A5,0,0
-539 18D1 [18] [2] 6689      	MVF	r0x10AF,1,0
-540 18D2 [18] [2] 6490      	MVF	r0x10A6,0,0
-541 18D3 [18] [2] 148C      	ADDC	r0x10AA,0,0
-542 18D4 [18] [2] 882B      	BCF	_STATUS,4
-543 18D5 [18] [2] 5029      	RRFC	_WREG,0,0
-544 18D6 [18] [2] 6690      	MVF	r0x10A6,1,0
-545 18D7 [18] [2] 5089      	RRFC	r0x10AF,0,0
-546 18D8 [18] [2] 6691      	MVF	r0x10A5,1,0
-547 18D9 [18] [2] 780E      	JMP	_00142_DS_
+537 1836 [18] [2] 648D      	MVF	r0x10A9,0,0
+538 1837 [18] [2] 1091      	ADDF	r0x10A5,0,0
+539 1838 [18] [2] 6689      	MVF	r0x10AF,1,0
+540 1839 [18] [2] 6490      	MVF	r0x10A6,0,0
+541 183A [18] [2] 148C      	ADDC	r0x10AA,0,0
+542 183B [18] [2] 882B      	BCF	_STATUS,4
+543 183C [18] [2] 5029      	RRFC	_WREG,0,0
+544 183D [18] [2] 6690      	MVF	r0x10A6,1,0
+545 183E [18] [2] 5089      	RRFC	r0x10AF,0,0
+546 183F [18] [2] 6691      	MVF	r0x10A5,1,0
+547 1840 [18] [2] 780E      	JMP	_00142_DS_
 548                     _00141_DS_:
 549                     ;	;.line	291; ".\Source\App_ADC.c"	upper = n;
-550 18DA [18] [2] 6491      	MVF	r0x10A5,0,0
-551 18DB [18] [2] 668D      	MVF	r0x10A9,1,0
-552 18DC [18] [2] 6490      	MVF	r0x10A6,0,0
-553 18DD [18] [2] 668C      	MVF	r0x10AA,1,0
+550 1841 [18] [2] 6491      	MVF	r0x10A5,0,0
+551 1842 [18] [2] 668D      	MVF	r0x10A9,1,0
+552 1843 [18] [2] 6490      	MVF	r0x10A6,0,0
+553 1844 [18] [2] 668C      	MVF	r0x10AA,1,0
 554                     ;	;.line	292; ".\Source\App_ADC.c"	n = (lower + upper) / 2;
-555 18DE [18] [2] 6491      	MVF	r0x10A5,0,0
-556 18DF [18] [2] 108F      	ADDF	r0x10A7,0,0
-557 18E0 [18] [2] 6689      	MVF	r0x10AF,1,0
-558 18E1 [18] [2] 648E      	MVF	r0x10A8,0,0
-559 18E2 [18] [2] 1490      	ADDC	r0x10A6,0,0
-560 18E3 [18] [2] 882B      	BCF	_STATUS,4
-561 18E4 [18] [2] 5029      	RRFC	_WREG,0,0
-562 18E5 [18] [2] 6690      	MVF	r0x10A6,1,0
-563 18E6 [18] [2] 5089      	RRFC	r0x10AF,0,0
-564 18E7 [18] [2] 6691      	MVF	r0x10A5,1,0
+555 1845 [18] [2] 6491      	MVF	r0x10A5,0,0
+556 1846 [18] [2] 108F      	ADDF	r0x10A7,0,0
+557 1847 [18] [2] 6689      	MVF	r0x10AF,1,0
+558 1848 [18] [2] 648E      	MVF	r0x10A8,0,0
+559 1849 [18] [2] 1490      	ADDC	r0x10A6,0,0
+560 184A [18] [2] 882B      	BCF	_STATUS,4
+561 184B [18] [2] 5029      	RRFC	_WREG,0,0
+562 184C [18] [2] 6690      	MVF	r0x10A6,1,0
+563 184D [18] [2] 5089      	RRFC	r0x10AF,0,0
+564 184E [18] [2] 6691      	MVF	r0x10A5,1,0
 565                     _00142_DS_:
 566                     ;	;.line	295; ".\Source\App_ADC.c"	if	(sADC.Rntc < 330)
-567 18E8 [18] [2] 655A      	MVF	(_sADC + 23),0,0
-568 18E9 [18] [2] 04B6      	ADDL	0xb6
-569 18EA [18] [2] 06FE      	MVL	0xfe
-570 18EB [18] [2] 155B      	ADDC	(_sADC + 24),0,0
-571 18EC [18] [2] A82B      	BTSZ	_STATUS,4
-572 18ED [18] [2] 7809      	JMP	_00149_DS_
+567 184F [18] [2] 655A      	MVF	(_sADC + 23),0,0
+568 1850 [18] [2] 04B6      	ADDL	0xb6
+569 1851 [18] [2] 06FE      	MVL	0xfe
+570 1852 [18] [2] 155B      	ADDC	(_sADC + 24),0,0
+571 1853 [18] [2] 70        	BTSZ	_STATUS,4
+572 1853 [18] 09        	JMP	_00149_DS_
 573                     ;	;.line	298; ".\Source\App_ADC.c"	i = upper;
-574 18EE [18] [2] 648D      	MVF	r0x10A9,0,0
-575 18EF [18] [2] 668B      	MVF	r0x10AD,1,0
-576 18F0 [18] [2] 648C      	MVF	r0x10AA,0,0
-577 18F1 [18] [2] 668A      	MVF	r0x10AE,1,0
+574 1854 [18] [2] 648D      	MVF	r0x10A9,0,0
+575 1855 [18] [2] 668B      	MVF	r0x10AD,1,0
+576 1856 [18] [2] 648C      	MVF	r0x10AA,0,0
+577 1857 [18] [2] 668A      	MVF	r0x10AE,1,0
 578                     ;	;.line	300; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = 10000;
-579 18F2 [18] [2] 0610      	MVL	0x10
-580 18F3 [18] [2] 6750      	MVF	(_sADC + 13),1,0
-581 18F4 [18] [2] 0627      	MVL	0x27
-582 18F5 [18] [2] 6751      	MVF	(_sADC + 14),1,0
-583 18F6 [18] [2] 787F      	JMP	_00162_DS_
+579 1858 [18] [2] 0610      	MVL	0x10
+580 1859 [18] [2] 6750      	MVF	(_sADC + 13),1,0
+581 185A [18] [2] 0627      	MVL	0x27
+582 185B [18] [2] 6751      	MVF	(_sADC + 14),1,0
+583 185C [18] [2] 787D      	JMP	_00162_DS_
 584                     _00149_DS_:
 585                     ;	;.line	303; ".\Source\App_ADC.c"	else if(sADC.Rntc > 16335)
-586 18F7 [18] [2] 655A      	MVF	(_sADC + 23),0,0
-587 18F8 [18] [2] 0430      	ADDL	0x30
-588 18F9 [18] [2] 06C0      	MVL	0xc0
-589 18FA [18] [2] 155B      	ADDC	(_sADC + 24),0,0
-590 18FB [18] [2] B82B      	BTSS	_STATUS,4
-591 18FC [18] [2] 7807      	JMP	_00146_DS_
+586 185D [18] [2] 655A      	MVF	(_sADC + 23),0,0
+587 185E [18] [2] 0430      	ADDL	0x30
+588 185F [18] [2] 06C0      	MVL	0xc0
+589 1860 [18] [2] 155B      	ADDC	(_sADC + 24),0,0
+590 1861 [18] [2] 74        	BTSS	_STATUS,4
+591 1861 [18] 07        	JMP	_00146_DS_
 592                     ;	;.line	306; ".\Source\App_ADC.c"	i = upper;
-593 18FD [18] [2] 648D      	MVF	r0x10A9,0,0
-594 18FE [18] [2] 668B      	MVF	r0x10AD,1,0
-595 18FF [18] [2] 648C      	MVF	r0x10AA,0,0
-596 1900 [18] [2] 668A      	MVF	r0x10AE,1,0
+593 1862 [18] [2] 648D      	MVF	r0x10A9,0,0
+594 1863 [18] [2] 668B      	MVF	r0x10AD,1,0
+595 1864 [18] [2] 648C      	MVF	r0x10AA,0,0
+596 1865 [18] [2] 668A      	MVF	r0x10AE,1,0
 597                     ;	;.line	308; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = 0;
-598 1901 [18] [2] 0D50      	CLRF	(_sADC + 13),0
-599 1902 [18] [2] 0D51      	CLRF	(_sADC + 14),0
-600 1903 [18] [2] 7872      	JMP	_00162_DS_
+598 1866 [18] [2] 0D50      	CLRF	(_sADC + 13),0
+599 1867 [18] [2] 0D51      	CLRF	(_sADC + 14),0
+600 1868 [18] [2] 7871      	JMP	_00162_DS_
 601                     _00146_DS_:
 602                     ;	;.line	310; ".\Source\App_ADC.c"	else if(upper - lower == 1)
-603 1904 [18] [2] 648F      	MVF	r0x10A7,0,0
-604 1905 [18] [2] 188D      	SUBF	r0x10A9,0,0
-605 1906 [18] [2] 6689      	MVF	r0x10AF,1,0
-606 1907 [18] [2] 648E      	MVF	r0x10A8,0,0
-607 1908 [18] [2] 1C8C      	SUBC	r0x10AA,0,0
-608 1909 [18] [2] 6688      	MVF	r0x10B0,1,0
-609 190A [18] [2] 3089      	DCF	r0x10AF,0,0
-610 190B [18] [2] 2C88      	IORF	r0x10B0,0,0
-611 190C [18] [2] B02B      	BTSS	_STATUS,0
-612 190D [18] [2] 7868      	JMP	_00162_DS_
+603 1869 [18] [2] 648F      	MVF	r0x10A7,0,0
+604 186A [18] [2] 188D      	SUBF	r0x10A9,0,0
+605 186B [18] [2] 6689      	MVF	r0x10AF,1,0
+606 186C [18] [2] 648E      	MVF	r0x10A8,0,0
+607 186D [18] [2] 1C8C      	SUBC	r0x10AA,0,0
+608 186E [18] [2] 6688      	MVF	r0x10B0,1,0
+609 186F [18] [2] 3089      	DCF	r0x10AF,0,0
+610 1870 [18] [2] 2C88      	IORF	r0x10B0,0,0
+611 1871 [18] [2] 75        	BTSS	_STATUS,0
+612 1871 [18] 68        	JMP	_00162_DS_
 613                     ;	;.line	313; ".\Source\App_ADC.c"	i = upper;
-614 190E [18] [2] 648D      	MVF	r0x10A9,0,0
-615 190F [18] [2] 668B      	MVF	r0x10AD,1,0
-616 1910 [18] [2] 648C      	MVF	r0x10AA,0,0
-617 1911 [18] [2] 668A      	MVF	r0x10AE,1,0
+614 1872 [18] [2] 648D      	MVF	r0x10A9,0,0
+615 1873 [18] [2] 668B      	MVF	r0x10AD,1,0
+616 1874 [18] [2] 648C      	MVF	r0x10AA,0,0
+617 1875 [18] [2] 668A      	MVF	r0x10AE,1,0
 618                     ;	;.line	317; ".\Source\App_ADC.c"	tmp = (uint32)(R_Table[lower] - sADC.Rntc);
-619 1912 [18] [2] 882B      	BCF	_STATUS,4
-620 1913 [18] [2] 548F      	RLFC	r0x10A7,0,0
-621 1914 [18] [2] 6689      	MVF	r0x10AF,1,0
-622 1915 [18] [2] 548E      	RLFC	r0x10A8,0,0
-623 1916 [18] [2] 6688      	MVF	r0x10B0,1,0
-624 1917 [18] [2] 6489      	MVF	r0x10AF,0,0
-625 1918 [18] [2] 04E4      	ADDL	(_R_Table + 0)
-626 1919 [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
-627 191A [19] [2] 0636      	MVL	high (_R_Table + 0)
-628 191B [19] [2] 1489      	ADDC	r0x10B0,0,0
-629 191C [19] [2] 0280      	IORL	0x80
-630 191D [19] [2] CD79      	CALL	__g2ptrget2
-631 191E [18] [2] 6687      	MVF	r0x10B2,1,0
-632 191F [18] [2] 6420      	MVF	STK00,0,0
-633 1920 [18] [2] 6686      	MVF	r0x10B1,1,0
-634 1921 [18] [2] 655A      	MVF	(_sADC + 23),0,0
-635 1922 [18] [2] 1886      	SUBF	r0x10B1,0,0
-636 1923 [18] [2] 660D      	MVF	__mullong_STK06,1,0
-637 1924 [19] [2] 655B      	MVF	(_sADC + 24),0,0
-638 1925 [19] [2] 1C88      	SUBC	r0x10B2,0,0
+619 1876 [18] [2] 882B      	BCF	_STATUS,4
+620 1877 [18] [2] 548F      	RLFC	r0x10A7,0,0
+621 1878 [18] [2] 6689      	MVF	r0x10AF,1,0
+622 1879 [18] [2] 548E      	RLFC	r0x10A8,0,0
+623 187A [18] [2] 6688      	MVF	r0x10B0,1,0
+624 187B [18] [2] 6489      	MVF	r0x10AF,0,0
+625 187C [18] [2] 049A      	ADDL	(_R_Table + 0)
+626 187D [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
+627 187E [19] [2] 0635      	MVL	high (_R_Table + 0)
+628 187F [19] [2] 1489      	ADDC	r0x10B0,0,0
+629 1880 [19] [2] 0280      	IORL	0x80
+630 1881 [19] [2] CD86      	CALL	__g2ptrget2
+631 1882 [18] [2] 6687      	MVF	r0x10B2,1,0
+632 1883 [18] [2] 6420      	MVF	STK00,0,0
+633 1884 [18] [2] 6686      	MVF	r0x10B1,1,0
+634 1885 [18] [2] 655A      	MVF	(_sADC + 23),0,0
+635 1886 [18] [2] 1886      	SUBF	r0x10B1,0,0
+636 1887 [18] [2] 660D      	MVF	__mullong_STK06,1,0
+637 1888 [19] [2] 655B      	MVF	(_sADC + 24),0,0
+638 1889 [19] [2] 1C88      	SUBC	r0x10B2,0,0
 639                     ;	;.line	318; ".\Source\App_ADC.c"	tmp *= 100;
-640 1926 [19] [2] 660D      	MVF	__mullong_STK05,1,0
-641 1927 [20] [2] 0C0D      	CLRF	__mullong_STK04,0
-642 1928 [21] [2] 0C0D      	CLRF	__mullong_STK03,0
-643 1929 [22] [2] 0664      	MVL	0x64
-644 192A [22] [2] 660D      	MVF	__mullong_STK02,1,0
-645 192B [23] [2] 0C0D      	CLRF	__mullong_STK01,0
-646 192C [24] [2] 0C0D      	CLRF	__mullong_STK00,0
-647 192D [25] [2] 0600      	MVL	0x00
-648 192E [25] [2] C859      	CALL	__mullong
-649 192F [18] [2] 6684      	MVF	r0x10B4,1,0
-650 1930 [18] [2] 6420      	MVF	STK00,0,0
-651 1931 [18] [2] 6685      	MVF	r0x10B3,1,0
-652 1932 [18] [2] 641F      	MVF	STK01,0,0
-653 1933 [18] [2] 6688      	MVF	r0x10B0,1,0
-654 1934 [18] [2] 641E      	MVF	STK02,0,0
-655 1935 [18] [2] 6689      	MVF	r0x10AF,1,0
+640 188A [19] [2] 660D      	MVF	__mullong_STK05,1,0
+641 188B [20] [2] 0C0D      	CLRF	__mullong_STK04,0
+642 188C [21] [2] 0C0D      	CLRF	__mullong_STK03,0
+643 188D [22] [2] 0664      	MVL	0x64
+644 188E [22] [2] 660D      	MVF	__mullong_STK02,1,0
+645 188F [23] [2] 0C0D      	CLRF	__mullong_STK01,0
+646 1890 [24] [2] 0C0D      	CLRF	__mullong_STK00,0
+647 1891 [25] [2] 0600      	MVL	0x00
+648 1892 [25] [2] C858      	CALL	__mullong
+649 1893 [18] [2] 6684      	MVF	r0x10B4,1,0
+650 1894 [18] [2] 6420      	MVF	STK00,0,0
+651 1895 [18] [2] 6685      	MVF	r0x10B3,1,0
+652 1896 [18] [2] 641F      	MVF	STK01,0,0
+653 1897 [18] [2] 6688      	MVF	r0x10B0,1,0
+654 1898 [18] [2] 641E      	MVF	STK02,0,0
+655 1899 [18] [2] 6689      	MVF	r0x10AF,1,0
 656                     ;	;.line	319; ".\Source\App_ADC.c"	tmp /= (R_Table[lower] - R_Table[upper]);
-657 1936 [18] [2] 882B      	BCF	_STATUS,4
-658 1937 [18] [2] 548D      	RLFC	r0x10A9,0,0
-659 1938 [18] [2] 6683      	MVF	r0x10B5,1,0
-660 1939 [18] [2] 548C      	RLFC	r0x10AA,0,0
-661 193A [18] [2] 6682      	MVF	r0x10B6,1,0
-662 193B [18] [2] 6483      	MVF	r0x10B5,0,0
-663 193C [18] [2] 04E4      	ADDL	(_R_Table + 0)
-664 193D [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
-665 193E [19] [2] 0636      	MVL	high (_R_Table + 0)
-666 193F [19] [2] 1483      	ADDC	r0x10B6,0,0
-667 1940 [19] [2] 0280      	IORL	0x80
-668 1941 [19] [2] CD55      	CALL	__g2ptrget2
-669 1942 [18] [2] 6680      	MVF	r0x10B8,1,0
-670 1943 [18] [2] 6420      	MVF	STK00,0,0
-671 1944 [18] [2] 1886      	SUBF	r0x10B1,0,0
-672 1945 [18] [2] 660D      	MVF	__divulong_STK06,1,0
-673 1946 [19] [2] 6481      	MVF	r0x10B8,0,0
-674 1947 [19] [2] 1C88      	SUBC	r0x10B2,0,0
-675 1948 [19] [2] 660D      	MVF	__divulong_STK05,1,0
-676 1949 [20] [2] 0C0D      	CLRF	__divulong_STK04,0
-677 194A [21] [2] 0C0D      	CLRF	__divulong_STK03,0
-678 194B [22] [2] 648D      	MVF	r0x10AF,0,0
-679 194C [22] [2] 660D      	MVF	__divulong_STK02,1,0
-680 194D [23] [2] 648D      	MVF	r0x10B0,0,0
-681 194E [23] [2] 660D      	MVF	__divulong_STK01,1,0
-682 194F [24] [2] 648B      	MVF	r0x10B3,0,0
-683 1950 [24] [2] 660D      	MVF	__divulong_STK00,1,0
-684 1951 [25] [2] 648B      	MVF	r0x10B4,0,0
-685 1952 [25] [2] C887      	CALL	__divulong
-686 1953 [18] [2] 6687      	MVF	r0x10B2,1,0
+657 189A [18] [2] 882B      	BCF	_STATUS,4
+658 189B [18] [2] 548D      	RLFC	r0x10A9,0,0
+659 189C [18] [2] 6683      	MVF	r0x10B5,1,0
+660 189D [18] [2] 548C      	RLFC	r0x10AA,0,0
+661 189E [18] [2] 6682      	MVF	r0x10B6,1,0
+662 189F [18] [2] 6483      	MVF	r0x10B5,0,0
+663 18A0 [18] [2] 049A      	ADDL	(_R_Table + 0)
+664 18A1 [18] [2] 660D      	MVF	__g2ptrget2_STK00,1,0
+665 18A2 [19] [2] 0635      	MVL	high (_R_Table + 0)
+666 18A3 [19] [2] 1483      	ADDC	r0x10B6,0,0
+667 18A4 [19] [2] 0280      	IORL	0x80
+668 18A5 [19] [2] CD62      	CALL	__g2ptrget2
+669 18A6 [18] [2] 6680      	MVF	r0x10B8,1,0
+670 18A7 [18] [2] 6420      	MVF	STK00,0,0
+671 18A8 [18] [2] 1886      	SUBF	r0x10B1,0,0
+672 18A9 [18] [2] 660D      	MVF	__divulong_STK06,1,0
+673 18AA [19] [2] 6481      	MVF	r0x10B8,0,0
+674 18AB [19] [2] 1C88      	SUBC	r0x10B2,0,0
+675 18AC [19] [2] 660D      	MVF	__divulong_STK05,1,0
+676 18AD [20] [2] 0C0D      	CLRF	__divulong_STK04,0
+677 18AE [21] [2] 0C0D      	CLRF	__divulong_STK03,0
+678 18AF [22] [2] 648D      	MVF	r0x10AF,0,0
+679 18B0 [22] [2] 660D      	MVF	__divulong_STK02,1,0
+680 18B1 [23] [2] 648D      	MVF	r0x10B0,0,0
+681 18B2 [23] [2] 660D      	MVF	__divulong_STK01,1,0
+682 18B3 [24] [2] 648B      	MVF	r0x10B3,0,0
+683 18B4 [24] [2] 660D      	MVF	__divulong_STK00,1,0
+684 18B5 [25] [2] 648B      	MVF	r0x10B4,0,0
+685 18B6 [25] [2] C886      	CALL	__divulong
+686 18B7 [18] [2] 6687      	MVF	r0x10B2,1,0
 687                     ;	;.line	320; ".\Source\App_ADC.c"	tmp = tmp / 10;
-688 1954 [18] [2] 060A      	MVL	0x0a
-689 1955 [18] [2] 660D      	MVF	__divulong_STK06,1,0
-690 1956 [19] [2] 0C0D      	CLRF	__divulong_STK05,0
-691 1957 [20] [2] 0C0D      	CLRF	__divulong_STK04,0
-692 1958 [21] [2] 0C0D      	CLRF	__divulong_STK03,0
-693 1959 [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
-694 195B [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
-695 195D [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
-696 195F [25] [2] 648E      	MVF	r0x10B2,0,0
-697 1960 [25] [2] C879      	CALL	__divulong
-698 1961 [18] [2] 641F      	MVF	STK01,0,0
-699 1962 [18] [2] 6688      	MVF	r0x10B0,1,0
-700 1963 [18] [2] 641E      	MVF	STK02,0,0
-701 1964 [18] [2] 6689      	MVF	r0x10AF,1,0
+688 18B8 [18] [2] 060A      	MVL	0x0a
+689 18B9 [18] [2] 660D      	MVF	__divulong_STK06,1,0
+690 18BA [19] [2] 0C0D      	CLRF	__divulong_STK05,0
+691 18BB [20] [2] 0C0D      	CLRF	__divulong_STK04,0
+692 18BC [21] [2] 0C0D      	CLRF	__divulong_STK03,0
+693 18BD [22] [2] D01E F00D 	MVFF	STK02,__divulong_STK02
+694 18BF [23] [2] D01F F00D 	MVFF	STK01,__divulong_STK01
+695 18C1 [24] [2] D020 F00D 	MVFF	STK00,__divulong_STK00
+696 18C3 [25] [2] 648E      	MVF	r0x10B2,0,0
+697 18C4 [25] [2] C878      	CALL	__divulong
+698 18C5 [18] [2] 641F      	MVF	STK01,0,0
+699 18C6 [18] [2] 6688      	MVF	r0x10B0,1,0
+700 18C7 [18] [2] 641E      	MVF	STK02,0,0
+701 18C8 [18] [2] 6689      	MVF	r0x10AF,1,0
 702                     ;	;.line	322; ".\Source\App_ADC.c"	sADC.Centigrade250msTemp = lower * 10 + tmp;
-703 1965 [18] [2] 648F      	MVF	r0x10A7,0,0
-704 1966 [18] [2] 660D      	MVF	__mulint_STK02,1,0
-705 1967 [19] [2] 648F      	MVF	r0x10A8,0,0
-706 1968 [19] [2] 660D      	MVF	__mulint_STK01,1,0
-707 1969 [20] [2] 060A      	MVL	0x0a
-708 196A [20] [2] 660D      	MVF	__mulint_STK00,1,0
-709 196B [21] [2] 0600      	MVL	0x00
-710 196C [21] [2] C85A      	CALL	__mulint
+703 18C9 [18] [2] 648F      	MVF	r0x10A7,0,0
+704 18CA [18] [2] 660D      	MVF	__mulint_STK02,1,0
+705 18CB [19] [2] 648F      	MVF	r0x10A8,0,0
+706 18CC [19] [2] 660D      	MVF	__mulint_STK01,1,0
+707 18CD [20] [2] 060A      	MVL	0x0a
+708 18CE [20] [2] 660D      	MVF	__mulint_STK00,1,0
+709 18CF [21] [2] 0600      	MVL	0x00
+710 18D0 [21] [2] C859      	CALL	__mulint
 711                     	.CHKPARA __mulint 4
-712 196D [18] [2] 6684      	MVF	r0x10B4,1,0
-713 196E [18] [2] 6489      	MVF	r0x10AF,0,0
-714 196F [18] [2] 1020      	ADDF	STK00,0,0
-715 1970 [18] [2] 6750      	MVF	(_sADC + 13),1,0
-716 1971 [18] [2] 6484      	MVF	r0x10B4,0,0
-717 1972 [18] [2] 1488      	ADDC	r0x10B0,0,0
-718 1973 [18] [2] 6751      	MVF	(_sADC + 14),1,0
-719                     ;	;.line	324; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
-720 1974 [18] [2] 8143      	BCF	_sADC,0
-721                     ;	;.line	327; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
-722 1975 [18] [2] 95CC      	BSF	_sTIMx,2
+712 18D1 [18] [2] 6684      	MVF	r0x10B4,1,0
+713 18D2 [18] [2] 6489      	MVF	r0x10AF,0,0
+714 18D3 [18] [2] 1020      	ADDF	STK00,0,0
+715 18D4 [18] [2] 6750      	MVF	(_sADC + 13),1,0
+716 18D5 [18] [2] 6484      	MVF	r0x10B4,0,0
+717 18D6 [18] [2] 1488      	ADDC	r0x10B0,0,0
+718 18D7 [18] [2] 6751      	MVF	(_sADC + 14),1,0
+719                     ;	;.line	332; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
+720 18D8 [18] [2] 8143      	BCF	_sADC,0
+721                     ;	;.line	335; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
+722 18D9 [18] [2] 95CC      	BSF	_sTIMx,2
 723                     _00162_DS_:
 724                     ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
-725 1976 [18] [2] 428B      	INSUZ	r0x10AD,1,0
-726 1977 [18] [2] 3A8A      	INF	r0x10AE,1,0
-727 1978 [18] [2] 7F35      	JMP	_00161_DS_
-728 1979 [18] [2] C4AE      _00163_DS_:
-729                     ;	;.line	366; ".\Source\App_ADC.c"	}
-730 197A [00] [2] 000A      	RET	
+725 18DA [18] [2] 428B      	INSUZ	r0x10AD,1,0
+726 18DB [18] [2] 3A8A      	INF	r0x10AE,1,0
+727 18DC [18] [2] 7F39      	JMP	_00161_DS_
+728 18DD [18] [2] C4AE      _00163_DS_:
+729                     ;	;.line	374; ".\Source\App_ADC.c"	}
+730 18DE [00] [2] 000A      	RET	
 731                     ; exit point of _Get_250msTemp
 732                     	.ENDFUNC	_Get_250msTemp
 733                     ;--------------------------------------------------------
@@ -740,25 +740,25 @@
 740                     ;--------------------------------------------------------
 741                     ;	;.line	224; ".\Source\App_ADC.c"	if(ADC_Average())
 742                     _NTC_ADCData:	;Function start
-743 197B [00] [2] C000 F75D 	CALL	_ADC_Average
+743 18DF [00] [2] C000 F72F 	CALL	_ADC_Average
 744                     	.CHKPARA _ADC_Average 0
-745 197D [00] [2] 0200      	IORL	0x00
-746 197E [00] [2] A02B      	BTSZ	_STATUS,0
-747 197F [00] [2] 7806      	JMP	_00134_DS_
+745 18E1 [00] [2] 0200      	IORL	0x00
+746 18E2 [00] [2] 71        	BTSZ	_STATUS,0
+747 18E2 [00] 06        	JMP	_00134_DS_
 748                     ;	;.line	227; ".\Source\App_ADC.c"	sADC.AI2_AI3_Data = sADC.ADCSum;
-749 1980 [00] [2] 6554      	MVF	(_sADC + 17),0,0
-750 1981 [00] [2] 674C      	MVF	(_sADC + 9),1,0
-751 1982 [00] [2] 6555      	MVF	(_sADC + 18),0,0
-752 1983 [00] [2] 674D      	MVF	(_sADC + 10),1,0
+749 18E3 [00] [2] 6554      	MVF	(_sADC + 17),0,0
+750 18E4 [00] [2] 674C      	MVF	(_sADC + 9),1,0
+751 18E5 [00] [2] 6555      	MVF	(_sADC + 18),0,0
+752 18E6 [00] [2] 674D      	MVF	(_sADC + 10),1,0
 753                     ;	;.line	228; ".\Source\App_ADC.c"	return TRUE;
-754 1984 [00] [2] 0601      	MVL	0x01
-755 1985 [00] [2] 7801      	JMP	_00135_DS_
+754 18E7 [00] [2] 0601      	MVL	0x01
+755 18E8 [00] [2] 7801      	JMP	_00135_DS_
 756                     _00134_DS_:
 757                     ;	;.line	230; ".\Source\App_ADC.c"	return FALSE;
-758 1986 [00] [2] 0600      	MVL	0x00
+758 18E9 [00] [2] 0600      	MVL	0x00
 759                     _00135_DS_:
 760                     ;	;.line	231; ".\Source\App_ADC.c"	}
-761 1987 [00] [2] 000A      	RET	
+761 18EA [00] [2] 000A      	RET	
 762                     ; exit point of _NTC_ADCData
 763                     	.ENDFUNC	_NTC_ADCData
 764                     ;--------------------------------------------------------
@@ -771,216 +771,216 @@
 771                     :$L:r0x109D:$L:r0x109F:$L:r0x109E
 772                     ;--------------------------------------------------------
 773                     ;	;.line	61; ".\Source\App_ADC.c"	if(sADC.Flag_ADCDone)
-774 075D [00] [2] C488      _ADC_Average:	;Function start
-775 075E [08] [2] B343      	BTSS	_sADC,1
-776 075F [08] [2] 786E      	JMP	_00121_DS_
+774 072F [00] [2] C488      _ADC_Average:	;Function start
+775 0730 [08] [2] B343      	BTSS	_sADC,1
+776 0731 [08] [2] 786A      	JMP	_00121_DS_
 777                     ;	;.line	63; ".\Source\App_ADC.c"	sADC.Flag_ADCDone = FALSE;
-778 0760 [08] [2] 8343      	BCF	_sADC,1
+778 0732 [08] [2] 8343      	BCF	_sADC,1
 779                     ;	;.line	66; ".\Source\App_ADC.c"	sADC.ADCData = ADCGetData();
-780 0761 [08] [2] C8CD      	CALL	_ADCGetData
+780 0733 [08] [2] C8C9      	CALL	_ADCGetData
 781                     	.CHKPARA _ADCGetData 0
-782 0762 [08] [2] 6747      	MVF	(_sADC + 4),1,0
-783 0763 [08] [2] 6420      	MVF	STK00,0,0
-784 0764 [08] [2] 6746      	MVF	(_sADC + 3),1,0
+782 0734 [08] [2] 6747      	MVF	(_sADC + 4),1,0
+783 0735 [08] [2] 6420      	MVF	STK00,0,0
+784 0736 [08] [2] 6746      	MVF	(_sADC + 3),1,0
 785                     ;	;.line	69; ".\Source\App_ADC.c"	ADC_INT_Enable();
-786 0765 [08] [2] 9A23      	BSF	_INTE0,5
+786 0737 [08] [2] 9A23      	BSF	_INTE0,5
 787                     ;	;.line	80; ".\Source\App_ADC.c"	if(++sADC.ADCCounts > FilterNum)
-788 0766 [08] [2] 3945      	INF	(_sADC + 2),0,0
-789 0767 [08] [2] 6687      	MVF	r0x1096,1,0
-790 0768 [08] [2] 6745      	MVF	(_sADC + 2),1,0
-791 0769 [08] [2] 0604      	MVL	0x04
-792 076A [08] [2] 6887      	CPSG	r0x1096,0
-793 076B [08] [2] 7862      	JMP	_00121_DS_
+788 0738 [08] [2] 3945      	INF	(_sADC + 2),0,0
+789 0739 [08] [2] 6687      	MVF	r0x1096,1,0
+790 073A [08] [2] 6745      	MVF	(_sADC + 2),1,0
+791 073B [08] [2] 0604      	MVL	0x04
+792 073C [08] [2] 6887      	CPSG	r0x1096,0
+793 073D [08] [2] 785E      	JMP	_00121_DS_
 794                     ;	;.line	92; ".\Source\App_ADC.c"	if(sADC.ADCData > 0x6666 || sADC.ADCData < 222)
-795 076C [08] [2] 6546      	MVF	(_sADC + 3),0,0
-796 076D [08] [2] 6687      	MVF	r0x1096,1,0
-797 076E [08] [2] 6547      	MVF	(_sADC + 4),0,0
-798 076F [08] [2] 6686      	MVF	r0x1097,1,0
-799 0770 [08] [2] 6487      	MVF	r0x1096,0,0
-800 0771 [08] [2] 0499      	ADDL	0x99
-801 0772 [08] [2] 0619      	MVL	0x19
-802 0773 [08] [2] 1486      	ADDC	r0x1097,0,0
-803 0774 [08] [2] A22B      	BTSZ	_STATUS,1
-804 0775 [08] [2] 7806      	JMP	_00109_DS_
-805 0776 [08] [2] 6487      	MVF	r0x1096,0,0
-806 0777 [08] [2] 0422      	ADDL	0x22
-807 0778 [08] [2] 067F      	MVL	0x7f
-808 0779 [08] [2] 1486      	ADDC	r0x1097,0,0
-809 077A [08] [2] A22B      	BTSZ	_STATUS,1
-810 077B [08] [2] 7802      	JMP	_00110_DS_
+795 073E [08] [2] 6546      	MVF	(_sADC + 3),0,0
+796 073F [08] [2] 6687      	MVF	r0x1096,1,0
+797 0740 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+798 0741 [08] [2] 6686      	MVF	r0x1097,1,0
+799 0742 [08] [2] 6487      	MVF	r0x1096,0,0
+800 0743 [08] [2] 0499      	ADDL	0x99
+801 0744 [08] [2] 0619      	MVL	0x19
+802 0745 [08] [2] 1486      	ADDC	r0x1097,0,0
+803 0746 [08] [2] 73        	BTSZ	_STATUS,1
+804 0746 [08] 05        	JMP	_00109_DS_
+805 0747 [08] [2] 6487      	MVF	r0x1096,0,0
+806 0748 [08] [2] 0422      	ADDL	0x22
+807 0749 [08] [2] 067F      	MVL	0x7f
+808 074A [08] [2] 1486      	ADDC	r0x1097,0,0
+809 074B [08] [2] 73        	BTSZ	_STATUS,1
+810 074B [08] 02        	JMP	_00110_DS_
 811                     _00109_DS_:
 812                     ;	;.line	95; ".\Source\App_ADC.c"	ERR[Err] = TRUE;
-813 077C [08] [2] 0601      	MVL	0x01
-814 077D [08] [2] 673D      	MVF	(_ERR + 8),1,0
+813 074C [08] [2] 0601      	MVL	0x01
+814 074D [08] [2] 673D      	MVF	(_ERR + 8),1,0
 815                     _00110_DS_:
 816                     ;	;.line	100; ".\Source\App_ADC.c"	if(sADC.ADCCounts == FilterNum + 1)
-817 077E [08] [2] 0605      	MVL	0x05
-818 077F [08] [2] 6D45      	CPSE	(_sADC + 2),0
-819 0780 [08] [2] 780C      	JMP	_00113_DS_
+817 074E [08] [2] 0605      	MVL	0x05
+818 074F [08] [2] 6D45      	CPSE	(_sADC + 2),0
+819 0750 [08] [2] 780C      	JMP	_00113_DS_
 820                     ;	;.line	102; ".\Source\App_ADC.c"	sADC.ADCSum = 0;
-821 0781 [08] [2] 0D54      	CLRF	(_sADC + 17),0
-822 0782 [08] [2] 0D55      	CLRF	(_sADC + 18),0
-823 0783 [08] [2] 0D56      	CLRF	(_sADC + 19),0
-824 0784 [08] [2] 0D57      	CLRF	(_sADC + 20),0
+821 0751 [08] [2] 0D54      	CLRF	(_sADC + 17),0
+822 0752 [08] [2] 0D55      	CLRF	(_sADC + 18),0
+823 0753 [08] [2] 0D56      	CLRF	(_sADC + 19),0
+824 0754 [08] [2] 0D57      	CLRF	(_sADC + 20),0
 825                     ;	;.line	103; ".\Source\App_ADC.c"	sADC.MinData = sADC.ADCData;
-826 0785 [08] [2] 6546      	MVF	(_sADC + 3),0,0
-827 0786 [08] [2] 6748      	MVF	(_sADC + 5),1,0
-828 0787 [08] [2] 6547      	MVF	(_sADC + 4),0,0
-829 0788 [08] [2] 6749      	MVF	(_sADC + 6),1,0
+826 0755 [08] [2] 6546      	MVF	(_sADC + 3),0,0
+827 0756 [08] [2] 6748      	MVF	(_sADC + 5),1,0
+828 0757 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+829 0758 [08] [2] 6749      	MVF	(_sADC + 6),1,0
 830                     ;	;.line	104; ".\Source\App_ADC.c"	sADC.MaxData = sADC.ADCData;
-831 0789 [08] [2] 6546      	MVF	(_sADC + 3),0,0
-832 078A [08] [2] 674A      	MVF	(_sADC + 7),1,0
-833 078B [08] [2] 6547      	MVF	(_sADC + 4),0,0
-834 078C [08] [2] 674B      	MVF	(_sADC + 8),1,0
+831 0759 [08] [2] 6546      	MVF	(_sADC + 3),0,0
+832 075A [08] [2] 674A      	MVF	(_sADC + 7),1,0
+833 075B [08] [2] 6547      	MVF	(_sADC + 4),0,0
+834 075C [08] [2] 674B      	MVF	(_sADC + 8),1,0
 835                     _00113_DS_:
 836                     ;	;.line	112; ".\Source\App_ADC.c"	sADC.ADCSum += sADC.ADCData;
-837 078D [08] [2] 6554      	MVF	(_sADC + 17),0,0
-838 078E [08] [2] 6687      	MVF	r0x1096,1,0
-839 078F [08] [2] 6555      	MVF	(_sADC + 18),0,0
-840 0790 [08] [2] 6686      	MVF	r0x1097,1,0
-841 0791 [08] [2] 6556      	MVF	(_sADC + 19),0,0
-842 0792 [08] [2] 6685      	MVF	r0x1098,1,0
-843 0793 [08] [2] 6557      	MVF	(_sADC + 20),0,0
-844 0794 [08] [2] 6684      	MVF	r0x1099,1,0
-845 0795 [08] [2] 6546      	MVF	(_sADC + 3),0,0
-846 0796 [08] [2] 6683      	MVF	r0x109C,1,0
-847 0797 [08] [2] 6547      	MVF	(_sADC + 4),0,0
-848 0798 [08] [2] 6682      	MVF	r0x109D,1,0
-849 0799 [08] [2] 0600      	MVL	0x00
-850 079A [08] [2] AE82      	BTSZ	r0x109D,7
-851 079B [08] [2] 06FF      	MVL	0xff
-852 079C [08] [2] 6681      	MVF	r0x109F,1,0
-853 079D [08] [2] 6680      	MVF	r0x109E,1,0
-854 079E [08] [2] 6483      	MVF	r0x109C,0,0
-855 079F [08] [2] 1087      	ADDF	r0x1096,0,0
-856 07A0 [08] [2] 6754      	MVF	(_sADC + 17),1,0
-857 07A1 [08] [2] 6486      	MVF	r0x1097,0,0
-858 07A2 [08] [2] 1482      	ADDC	r0x109D,0,0
-859 07A3 [08] [2] 6755      	MVF	(_sADC + 18),1,0
-860 07A4 [08] [2] 6485      	MVF	r0x1098,0,0
-861 07A5 [08] [2] 1480      	ADDC	r0x109E,0,0
-862 07A6 [08] [2] 6756      	MVF	(_sADC + 19),1,0
-863 07A7 [08] [2] 6484      	MVF	r0x1099,0,0
-864 07A8 [08] [2] 1481      	ADDC	r0x109F,0,0
-865 07A9 [08] [2] 6757      	MVF	(_sADC + 20),1,0
+837 075D [08] [2] 6554      	MVF	(_sADC + 17),0,0
+838 075E [08] [2] 6687      	MVF	r0x1096,1,0
+839 075F [08] [2] 6555      	MVF	(_sADC + 18),0,0
+840 0760 [08] [2] 6686      	MVF	r0x1097,1,0
+841 0761 [08] [2] 6556      	MVF	(_sADC + 19),0,0
+842 0762 [08] [2] 6685      	MVF	r0x1098,1,0
+843 0763 [08] [2] 6557      	MVF	(_sADC + 20),0,0
+844 0764 [08] [2] 6684      	MVF	r0x1099,1,0
+845 0765 [08] [2] 6546      	MVF	(_sADC + 3),0,0
+846 0766 [08] [2] 6683      	MVF	r0x109C,1,0
+847 0767 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+848 0768 [08] [2] 6682      	MVF	r0x109D,1,0
+849 0769 [08] [2] 0600      	MVL	0x00
+850 076A [08] [2] AE82      	BTSZ	r0x109D,7
+851 076B [08] [2] 06FF      	MVL	0xff
+852 076C [08] [2] 6681      	MVF	r0x109F,1,0
+853 076D [08] [2] 6680      	MVF	r0x109E,1,0
+854 076E [08] [2] 6483      	MVF	r0x109C,0,0
+855 076F [08] [2] 1087      	ADDF	r0x1096,0,0
+856 0770 [08] [2] 6754      	MVF	(_sADC + 17),1,0
+857 0771 [08] [2] 6486      	MVF	r0x1097,0,0
+858 0772 [08] [2] 1482      	ADDC	r0x109D,0,0
+859 0773 [08] [2] 6755      	MVF	(_sADC + 18),1,0
+860 0774 [08] [2] 6485      	MVF	r0x1098,0,0
+861 0775 [08] [2] 1480      	ADDC	r0x109E,0,0
+862 0776 [08] [2] 6756      	MVF	(_sADC + 19),1,0
+863 0777 [08] [2] 6484      	MVF	r0x1099,0,0
+864 0778 [08] [2] 1481      	ADDC	r0x109F,0,0
+865 0779 [08] [2] 6757      	MVF	(_sADC + 20),1,0
 866                     ;	;.line	115; ".\Source\App_ADC.c"	if(sADC.MaxData < sADC.ADCData)
-867 07AA [08] [2] 654A      	MVF	(_sADC + 7),0,0
-868 07AB [08] [2] 6687      	MVF	r0x1096,1,0
-869 07AC [08] [2] 654B      	MVF	(_sADC + 8),0,0
-870 07AD [08] [2] 6686      	MVF	r0x1097,1,0
-871 07AE [08] [2] 6546      	MVF	(_sADC + 3),0,0
-872 07AF [08] [2] 1887      	SUBF	r0x1096,0,0
-873 07B0 [08] [2] 6486      	MVF	r0x1097,0,0
-874 07B1 [08] [2] 0380      	XORL	0x80
-875 07B2 [08] [2] 6620      	MVF	STK00,1,0
-876 07B3 [08] [2] 6547      	MVF	(_sADC + 4),0,0
-877 07B4 [08] [2] 0380      	XORL	0x80
-878 07B5 [08] [2] 1C20      	SUBC	STK00,0,0
-879 07B6 [08] [2] A82B      	BTSZ	_STATUS,4
-880 07B7 [08] [2] 7804      	JMP	_00115_DS_
+867 077A [08] [2] 654A      	MVF	(_sADC + 7),0,0
+868 077B [08] [2] 6687      	MVF	r0x1096,1,0
+869 077C [08] [2] 654B      	MVF	(_sADC + 8),0,0
+870 077D [08] [2] 6686      	MVF	r0x1097,1,0
+871 077E [08] [2] 6546      	MVF	(_sADC + 3),0,0
+872 077F [08] [2] 1887      	SUBF	r0x1096,0,0
+873 0780 [08] [2] 6486      	MVF	r0x1097,0,0
+874 0781 [08] [2] 0380      	XORL	0x80
+875 0782 [08] [2] 6620      	MVF	STK00,1,0
+876 0783 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+877 0784 [08] [2] 0380      	XORL	0x80
+878 0785 [08] [2] 1C20      	SUBC	STK00,0,0
+879 0786 [08] [2] 70        	BTSZ	_STATUS,4
+880 0786 [08] 04        	JMP	_00115_DS_
 881                     ;	;.line	117; ".\Source\App_ADC.c"	sADC.MaxData = sADC.ADCData;
-882 07B8 [08] [2] 6546      	MVF	(_sADC + 3),0,0
-883 07B9 [08] [2] 674A      	MVF	(_sADC + 7),1,0
-884 07BA [08] [2] 6547      	MVF	(_sADC + 4),0,0
-885 07BB [08] [2] 674B      	MVF	(_sADC + 8),1,0
+882 0787 [08] [2] 6546      	MVF	(_sADC + 3),0,0
+883 0788 [08] [2] 674A      	MVF	(_sADC + 7),1,0
+884 0789 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+885 078A [08] [2] 674B      	MVF	(_sADC + 8),1,0
 886                     _00115_DS_:
 887                     ;	;.line	120; ".\Source\App_ADC.c"	if(sADC.MinData > sADC.ADCData)
-888 07BC [08] [2] 6548      	MVF	(_sADC + 5),0,0
-889 07BD [08] [2] 6687      	MVF	r0x1096,1,0
-890 07BE [08] [2] 6549      	MVF	(_sADC + 6),0,0
-891 07BF [08] [2] 6686      	MVF	r0x1097,1,0
-892 07C0 [08] [2] 6487      	MVF	r0x1096,0,0
-893 07C1 [08] [2] 1946      	SUBF	(_sADC + 3),0,0
-894 07C2 [08] [2] 6547      	MVF	(_sADC + 4),0,0
-895 07C3 [08] [2] 0380      	XORL	0x80
-896 07C4 [08] [2] 6620      	MVF	STK00,1,0
-897 07C5 [08] [2] 6486      	MVF	r0x1097,0,0
-898 07C6 [08] [2] 0380      	XORL	0x80
-899 07C7 [08] [2] 1C20      	SUBC	STK00,0,0
-900 07C8 [08] [2] A82B      	BTSZ	_STATUS,4
-901 07C9 [08] [2] 7804      	JMP	_00121_DS_
+888 078B [08] [2] 6548      	MVF	(_sADC + 5),0,0
+889 078C [08] [2] 6687      	MVF	r0x1096,1,0
+890 078D [08] [2] 6549      	MVF	(_sADC + 6),0,0
+891 078E [08] [2] 6686      	MVF	r0x1097,1,0
+892 078F [08] [2] 6487      	MVF	r0x1096,0,0
+893 0790 [08] [2] 1946      	SUBF	(_sADC + 3),0,0
+894 0791 [08] [2] 6547      	MVF	(_sADC + 4),0,0
+895 0792 [08] [2] 0380      	XORL	0x80
+896 0793 [08] [2] 6620      	MVF	STK00,1,0
+897 0794 [08] [2] 6486      	MVF	r0x1097,0,0
+898 0795 [08] [2] 0380      	XORL	0x80
+899 0796 [08] [2] 1C20      	SUBC	STK00,0,0
+900 0797 [08] [2] 70        	BTSZ	_STATUS,4
+901 0797 [08] 04        	JMP	_00121_DS_
 902                     ;	;.line	122; ".\Source\App_ADC.c"	sADC.MinData = sADC.ADCData;
-903 07CA [08] [2] 6546      	MVF	(_sADC + 3),0,0
-904 07CB [08] [2] 6748      	MVF	(_sADC + 5),1,0
-905 07CC [08] [2] 6547      	MVF	(_sADC + 4),0,0
-906 07CD [08] [2] 6749      	MVF	(_sADC + 6),1,0
+903 0798 [08] [2] 6546      	MVF	(_sADC + 3),0,0
+904 0799 [08] [2] 6748      	MVF	(_sADC + 5),1,0
+905 079A [08] [2] 6547      	MVF	(_sADC + 4),0,0
+906 079B [08] [2] 6749      	MVF	(_sADC + 6),1,0
 907                     _00121_DS_:
 908                     ;	;.line	136; ".\Source\App_ADC.c"	if(sADC.ADCCounts > (FilterNum + 5))
-909 07CE [08] [2] 0609      	MVL	0x09
-910 07CF [08] [2] 6945      	CPSG	(_sADC + 2),0
-911 07D0 [08] [2] 782A      	JMP	_00126_DS_
+909 079C [08] [2] 0609      	MVL	0x09
+910 079D [08] [2] 6945      	CPSG	(_sADC + 2),0
+911 079E [08] [2] 782A      	JMP	_00126_DS_
 912                     ;	;.line	144; ".\Source\App_ADC.c"	if(eDisplay_Interfaces == Display_Calibration)
-913 07D1 [08] [2] 0607      	MVL	0x07
-914 07D2 [08] [2] 6D33      	CPSE	_eDisplay_Interfaces,0
-915 07D3 [08] [2] 7813 C84D 	JMP	_00123_DS_
+913 079F [08] [2] 0607      	MVL	0x07
+914 07A0 [08] [2] 6D33      	CPSE	_eDisplay_Interfaces,0
+915 07A1 [08] [2] 7813 C84D 	JMP	_00123_DS_
 916                     ;	;.line	146; ".\Source\App_ADC.c"	sADC.ADCSum = sADC.ADCSum - sADC.MinData - sADC.MaxData;
-917 0822 [08] [2] 6554      	MVF	(_sADC + 17),0,0
-918 0823 [08] [2] 6687      	MVF	r0x1096,1,0
-919 0824 [08] [2] 6555      	MVF	(_sADC + 18),0,0
-920 0825 [08] [2] 6686      	MVF	r0x1097,1,0
-921 0826 [08] [2] 6556      	MVF	(_sADC + 19),0,0
-922 0827 [08] [2] 6685      	MVF	r0x1098,1,0
-923 0828 [08] [2] 6557      	MVF	(_sADC + 20),0,0
-924 0829 [08] [2] 6684      	MVF	r0x1099,1,0
-925 082A [08] [2] 6548      	MVF	(_sADC + 5),0,0
-926 082B [08] [2] 6683      	MVF	r0x109C,1,0
-927 082C [08] [2] 6549      	MVF	(_sADC + 6),0,0
-928 082D [08] [2] 6682      	MVF	r0x109D,1,0
-929 082E [08] [2] 0500      	MVL	0x00
-930 07D5 [08] [2] AE82      	BTSZ	r0x109D,7
-931 07D6 [08] [2] 06FF C83B 	MVL	0xff
-932 0813 [08] [2] 6681      	MVF	r0x109F,1,0
-933 0814 [08] [2] 6680      	MVF	r0x109E,1,0
-934 0815 [08] [2] 6483      	MVF	r0x109C,0,0
-935 0816 [08] [2] 1A87      	SUBF	r0x1096,1,0
-936 0817 [08] [2] 6482      	MVF	r0x109D,0,0
-937 0818 [08] [2] 1E86      	SUBC	r0x1097,1,0
-938 0819 [08] [2] 6480      	MVF	r0x109E,0,0
-939 081A [08] [2] 1E85      	SUBC	r0x1098,1,0
-940 081B [08] [2] 6481      	MVF	r0x109F,0,0
-941 081C [08] [2] 1E84      	SUBC	r0x1099,1,0
-942 081D [08] [2] 654A      	MVF	(_sADC + 7),0,0
-943 081E [08] [2] 6683      	MVF	r0x109C,1,0
-944 081F [08] [2] 654B      	MVF	(_sADC + 8),0,0
-945 0820 [08] [2] 6682      	MVF	r0x109D,1,0
-946 0821 [08] [2] 0500      	MVL	0x00
-947 07D8 [08] [2] AE82      	BTSZ	r0x109D,7
-948 07D9 [08] [2] 06FF C823 	MVL	0xff
-949 07FE [08] [2] 6681      	MVF	r0x109F,1,0
-950 07FF [08] [2] 6680      	MVF	r0x109E,1,0
-951 0800 [08] [2] 6483      	MVF	r0x109C,0,0
-952 0801 [08] [2] 1A87      	SUBF	r0x1096,1,0
-953 0802 [08] [2] 6482      	MVF	r0x109D,0,0
-954 0803 [08] [2] 1E86      	SUBC	r0x1097,1,0
-955 0804 [08] [2] 6480      	MVF	r0x109E,0,0
-956 0805 [08] [2] 1E85      	SUBC	r0x1098,1,0
-957 0806 [08] [2] 6481      	MVF	r0x109F,0,0
-958 0807 [08] [2] 1E84      	SUBC	r0x1099,1,0
-959 0808 [08] [2] 6487      	MVF	r0x1096,0,0
-960 0809 [08] [2] 6754      	MVF	(_sADC + 17),1,0
-961 080A [08] [2] 6486      	MVF	r0x1097,0,0
-962 080B [08] [2] 6755      	MVF	(_sADC + 18),1,0
-963 080C [08] [2] 6485      	MVF	r0x1098,0,0
-964 080D [08] [2] 6756      	MVF	(_sADC + 19),1,0
-965 080E [08] [2] 6484      	MVF	r0x1099,0,0
-966 080F [08] [2] 6757      	MVF	(_sADC + 20),1,0
+917 07F0 [08] [2] 6554      	MVF	(_sADC + 17),0,0
+918 07F1 [08] [2] 6687      	MVF	r0x1096,1,0
+919 07F2 [08] [2] 6555      	MVF	(_sADC + 18),0,0
+920 07F3 [08] [2] 6686      	MVF	r0x1097,1,0
+921 07F4 [08] [2] 6556      	MVF	(_sADC + 19),0,0
+922 07F5 [08] [2] 6685      	MVF	r0x1098,1,0
+923 07F6 [08] [2] 6557      	MVF	(_sADC + 20),0,0
+924 07F7 [08] [2] 6684      	MVF	r0x1099,1,0
+925 07F8 [08] [2] 6548      	MVF	(_sADC + 5),0,0
+926 07F9 [08] [2] 6683      	MVF	r0x109C,1,0
+927 07FA [08] [2] 6549      	MVF	(_sADC + 6),0,0
+928 07FB [08] [2] 6682      	MVF	r0x109D,1,0
+929 07FC [08] [2] 0500      	MVL	0x00
+930 07A3 [08] [2] AE82      	BTSZ	r0x109D,7
+931 07A4 [08] [2] 06FF C83B 	MVL	0xff
+932 07E1 [08] [2] 6681      	MVF	r0x109F,1,0
+933 07E2 [08] [2] 6680      	MVF	r0x109E,1,0
+934 07E3 [08] [2] 6483      	MVF	r0x109C,0,0
+935 07E4 [08] [2] 1A87      	SUBF	r0x1096,1,0
+936 07E5 [08] [2] 6482      	MVF	r0x109D,0,0
+937 07E6 [08] [2] 1E86      	SUBC	r0x1097,1,0
+938 07E7 [08] [2] 6480      	MVF	r0x109E,0,0
+939 07E8 [08] [2] 1E85      	SUBC	r0x1098,1,0
+940 07E9 [08] [2] 6481      	MVF	r0x109F,0,0
+941 07EA [08] [2] 1E84      	SUBC	r0x1099,1,0
+942 07EB [08] [2] 654A      	MVF	(_sADC + 7),0,0
+943 07EC [08] [2] 6683      	MVF	r0x109C,1,0
+944 07ED [08] [2] 654B      	MVF	(_sADC + 8),0,0
+945 07EE [08] [2] 6682      	MVF	r0x109D,1,0
+946 07EF [08] [2] 0500      	MVL	0x00
+947 07A6 [08] [2] AE82      	BTSZ	r0x109D,7
+948 07A7 [08] [2] 06FF C823 	MVL	0xff
+949 07CC [08] [2] 6681      	MVF	r0x109F,1,0
+950 07CD [08] [2] 6680      	MVF	r0x109E,1,0
+951 07CE [08] [2] 6483      	MVF	r0x109C,0,0
+952 07CF [08] [2] 1A87      	SUBF	r0x1096,1,0
+953 07D0 [08] [2] 6482      	MVF	r0x109D,0,0
+954 07D1 [08] [2] 1E86      	SUBC	r0x1097,1,0
+955 07D2 [08] [2] 6480      	MVF	r0x109E,0,0
+956 07D3 [08] [2] 1E85      	SUBC	r0x1098,1,0
+957 07D4 [08] [2] 6481      	MVF	r0x109F,0,0
+958 07D5 [08] [2] 1E84      	SUBC	r0x1099,1,0
+959 07D6 [08] [2] 6487      	MVF	r0x1096,0,0
+960 07D7 [08] [2] 6754      	MVF	(_sADC + 17),1,0
+961 07D8 [08] [2] 6486      	MVF	r0x1097,0,0
+962 07D9 [08] [2] 6755      	MVF	(_sADC + 18),1,0
+963 07DA [08] [2] 6485      	MVF	r0x1098,0,0
+964 07DB [08] [2] 6756      	MVF	(_sADC + 19),1,0
+965 07DC [08] [2] 6484      	MVF	r0x1099,0,0
+966 07DD [08] [2] 6757      	MVF	(_sADC + 20),1,0
 967                     ;	;.line	150; ".\Source\App_ADC.c"	sADC.ADCSum >>= 2;
-968 0810 [08] [2] 5C84      	ARRC	r0x1099,0,0
-969 0811 [08] [2] 6757 000A 	MVF	(_sADC + 20),1,0
-970 07DB [08] [2] 5085      	RRFC	r0x1098,0,0
-971 07DC [08] [2] 6756      	MVF	(_sADC + 19),1,0
-972 07DD [08] [2] 5086      	RRFC	r0x1097,0,0
-973 07DE [08] [2] 6755      	MVF	(_sADC + 18),1,0
-974 07DF [08] [2] 5087      	RRFC	r0x1096,0,0
-975 07E0 [08] [2] 6754      	MVF	(_sADC + 17),1,0
-976 07E1 [08] [2] 5F57      	ARRC	(_sADC + 20),1,0
-977 07E2 [08] [2] 5356      	RRFC	(_sADC + 19),1,0
-978 07E3 [08] [2] 5355      	RRFC	(_sADC + 18),1,0
-979 07E4 [08] [2] 5354      	RRFC	(_sADC + 17),1,0
+968 07DE [08] [2] 5C84      	ARRC	r0x1099,0,0
+969 07DF [08] [2] 6757 000A 	MVF	(_sADC + 20),1,0
+970 07A9 [08] [2] 5085      	RRFC	r0x1098,0,0
+971 07AA [08] [2] 6756      	MVF	(_sADC + 19),1,0
+972 07AB [08] [2] 5086      	RRFC	r0x1097,0,0
+973 07AC [08] [2] 6755      	MVF	(_sADC + 18),1,0
+974 07AD [08] [2] 5087      	RRFC	r0x1096,0,0
+975 07AE [08] [2] 6754      	MVF	(_sADC + 17),1,0
+976 07AF [08] [2] 5F57      	ARRC	(_sADC + 20),1,0
+977 07B0 [08] [2] 5356      	RRFC	(_sADC + 19),1,0
+978 07B1 [08] [2] 5355      	RRFC	(_sADC + 18),1,0
+979 07B2 [08] [2] 5354      	RRFC	(_sADC + 17),1,0
 980                     ;	;.line	153; ".\Source\App_ADC.c"	sADC.ADCCounts = 0;
-981 07E5 [08] [2] 0D45      	CLRF	(_sADC + 2),0
-982 07E6 [08] [2] 7812      	JMP	_00124_DS_
-983 07E7 [00] [Z] C83A      _00123_DS_:
+981 07B3 [08] [2] 0D45      	CLRF	(_sADC + 2),0
+982 07B4 [08] [2] 7812      	JMP	_00124_DS_
+983 07B5 [00] [Z] C83A      _00123_DS_:
 984                     ;	;.line	200; ".\Source\App_ADC.c"	sADC.ADCSum = sADC.ADCSum - sADC.MinData - sADC.MaxData;
 985                     	MVF	(_sADC + 17),0,0
 986                     	MVF	r0x1096,1,0
@@ -995,8 +995,8 @@
 995                     	MVF	(_sADC + 6),0,0
 996                     	MVF	r0x109D,1,0
 997                     	MVL	0x00
-998 07E8 [08] [2] AE82      	BTSZ	r0x109D,7
-999 07E9 [08] [2] 06FF C828 	MVL	0xff
+998 07B6 [08] [2] AE82      	BTSZ	r0x109D,7
+999 07B7 [08] [2] 06FF C828 	MVL	0xff
 1000                     	MVF	r0x109F,1,0
 1001                     	MVF	r0x109E,1,0
 1002                     	MVF	r0x109C,0,0
@@ -1012,8 +1012,8 @@
 1012                     	MVF	(_sADC + 8),0,0
 1013                     	MVF	r0x109D,1,0
 1014                     	MVL	0x00
-1015 07EB [08] [2] AE82      	BTSZ	r0x109D,7
-1016 07EC [08] [2] 06FF C810 	MVL	0xff
+1015 07B9 [08] [2] AE82      	BTSZ	r0x109D,7
+1016 07BA [08] [2] 06FF C810 	MVL	0xff
 1017                     	MVF	r0x109F,1,0
 1018                     	MVF	r0x109E,1,0
 1019                     	MVF	r0x109C,0,0
@@ -1035,28 +1035,28 @@
 1035                     ;	;.line	201; ".\Source\App_ADC.c"	sADC.ADCSum >>= 2;
 1036                     	ARRC	r0x1099,0,0
 1037                     	MVF	(_sADC + 20),1,0
-1038 07EE [08] [2] 5085      	RRFC	r0x1098,0,0
-1039 07EF [08] [2] 6756      	MVF	(_sADC + 19),1,0
-1040 07F0 [08] [2] 5086      	RRFC	r0x1097,0,0
-1041 07F1 [08] [2] 6755      	MVF	(_sADC + 18),1,0
-1042 07F2 [08] [2] 5087      	RRFC	r0x1096,0,0
-1043 07F3 [08] [2] 6754      	MVF	(_sADC + 17),1,0
-1044 07F4 [08] [2] 5F57      	ARRC	(_sADC + 20),1,0
-1045 07F5 [08] [2] 5356      	RRFC	(_sADC + 19),1,0
-1046 07F6 [08] [2] 5355      	RRFC	(_sADC + 18),1,0
-1047 07F7 [08] [2] 5354      	RRFC	(_sADC + 17),1,0
+1038 07BC [08] [2] 5085      	RRFC	r0x1098,0,0
+1039 07BD [08] [2] 6756      	MVF	(_sADC + 19),1,0
+1040 07BE [08] [2] 5086      	RRFC	r0x1097,0,0
+1041 07BF [08] [2] 6755      	MVF	(_sADC + 18),1,0
+1042 07C0 [08] [2] 5087      	RRFC	r0x1096,0,0
+1043 07C1 [08] [2] 6754      	MVF	(_sADC + 17),1,0
+1044 07C2 [08] [2] 5F57      	ARRC	(_sADC + 20),1,0
+1045 07C3 [08] [2] 5356      	RRFC	(_sADC + 19),1,0
+1046 07C4 [08] [2] 5355      	RRFC	(_sADC + 18),1,0
+1047 07C5 [08] [2] 5354      	RRFC	(_sADC + 17),1,0
 1048                     ;	;.line	203; ".\Source\App_ADC.c"	sADC.ADCCounts = 0;
-1049 07F8 [08] [2] 0D45      	CLRF	(_sADC + 2),0
+1049 07C6 [08] [2] 0D45      	CLRF	(_sADC + 2),0
 1050                     _00124_DS_:
 1051                     ;	;.line	206; ".\Source\App_ADC.c"	return TRUE;
-1052 07F9 [08] [2] 0601      	MVL	0x01
-1053 07FA [08] [2] 7801      	JMP	_00128_DS_
+1052 07C7 [08] [2] 0601      	MVL	0x01
+1053 07C8 [08] [2] 7801      	JMP	_00128_DS_
 1054                     _00126_DS_:
 1055                     ;	;.line	210; ".\Source\App_ADC.c"	return FALSE;
-1056 07FB [08] [2] 0600      	MVL	0x00
-1057 07FC [08] [2] C4B8      _00128_DS_:
+1056 07C9 [08] [2] 0600      	MVL	0x00
+1057 07CA [08] [2] C4B8      _00128_DS_:
 1058                     ;	;.line	212; ".\Source\App_ADC.c"	}
-1059 07FD [00] [2] 000A      	RET	
+1059 07CB [00] [2] 000A      	RET	
 1060                     ; exit point of _ADC_Average
 1061                     	.ENDFUNC	_ADC_Average
 1062                     ;--------------------------------------------------------
@@ -1067,22 +1067,22 @@
 1067                     	.FUNC _ADCGetData:$r:2:0:$L:_ADCGetData_ADCData1_10000_417
 1068                     ;--------------------------------------------------------
 1069                     ;	;.line	29; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[0] = AD1L;
-1070 082F [00] [Y] C484      _ADCGetData:	;Function start
-1071 0830 [04] [Y] 643C      	MVF	_AD1L,0,0
-1072 0831 [04] [Y] 6683      	MVF	(_ADCGetData_ADCData1_10000_417 + 0),1,0
+1070 07FD [00] [Y] C484      _ADCGetData:	;Function start
+1071 07FE [04] [Y] 643C      	MVF	_AD1L,0,0
+1072 07FF [04] [Y] 6683      	MVF	(_ADCGetData_ADCData1_10000_417 + 0),1,0
 1073                     ;	;.line	30; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[1] = AD1M;
-1074 0832 [04] [Y] 643B      	MVF	_AD1M,0,0
-1075 0833 [04] [Y] 6682      	MVF	(_ADCGetData_ADCData1_10000_417 + 1),1,0
+1074 0800 [04] [Y] 643B      	MVF	_AD1M,0,0
+1075 0801 [04] [Y] 6682      	MVF	(_ADCGetData_ADCData1_10000_417 + 1),1,0
 1076                     ;	;.line	31; ".\Source\App_ADC.c"	((int8 *)(&ADCData1))[2] = AD1H;
-1077 0834 [04] [Y] 643A      	MVF	_AD1H,0,0
-1078 0835 [04] [Y] 6681      	MVF	(_ADCGetData_ADCData1_10000_417 + 2),1,0
+1077 0802 [04] [Y] 643A      	MVF	_AD1H,0,0
+1078 0803 [04] [Y] 6681      	MVF	(_ADCGetData_ADCData1_10000_417 + 2),1,0
 1079                     ;	;.line	34; ".\Source\App_ADC.c"	ADCData2  = (int16)(ADCData1 >> 8);
-1080 0836 [04] [Y] 6482      	MVF	(_ADCGetData_ADCData1_10000_417 + 1),0,0
+1080 0804 [04] [Y] 6482      	MVF	(_ADCGetData_ADCData1_10000_417 + 1),0,0
 1081                     ;	;.line	36; ".\Source\App_ADC.c"	return ADCData2;
-1082 0837 [04] [Y] 6620      	MVF	STK00,1,0
-1083 0838 [04] [Y] 6481      	MVF	(_ADCGetData_ADCData1_10000_417 + 2),0,0
+1082 0805 [04] [Y] 6620      	MVF	STK00,1,0
+1083 0806 [04] [Y] 6481      	MVF	(_ADCGetData_ADCData1_10000_417 + 2),0,0
 1084                     ;	;.line	37; ".\Source\App_ADC.c"	}
-1085 0839 [04] [Y] C4BC 000A 	RET	
+1085 0807 [04] [Y] C4BC 000A 	RET	
 1086                     ; exit point of _ADCGetData
 1087                     	.ENDFUNC	_ADCGetData
 1088                     ;--------------------------------------------------------
@@ -2089,507 +2089,507 @@
 2089                     	.area	CONST   (CODE)	 ;App_ADC-0-code, const
 2090                     
 2091                     _R_Table:
-2092 1B72 CF3F           	.byte #0xcf, #0x3f	; 16335
-2093 1B73 7B3F           	.byte #0x7b, #0x3f	; 16251
-2094 1B74 283F           	.byte #0x28, #0x3f	; 16168
-2095 1B75 D63E           	.byte #0xd6, #0x3e	; 16086
-2096 1B76 843E           	.byte #0x84, #0x3e	; 16004
-2097 1B77 333E           	.byte #0x33, #0x3e	; 15923
-2098 1B78 E23D           	.byte #0xe2, #0x3d	; 15842
-2099 1B79 913D           	.byte #0x91, #0x3d	; 15761
-2100 1B7A 413D           	.byte #0x41, #0x3d	; 15681
-2101 1B7B F23C           	.byte #0xf2, #0x3c	; 15602
-2102 1B7C A33C           	.byte #0xa3, #0x3c	; 15523
-2103 1B7D 543C           	.byte #0x54, #0x3c	; 15444
-2104 1B7E 063C           	.byte #0x06, #0x3c	; 15366
-2105 1B7F B83B           	.byte #0xb8, #0x3b	; 15288
-2106 1B80 6B3B           	.byte #0x6b, #0x3b	; 15211
-2107 1B81 1E3B           	.byte #0x1e, #0x3b	; 15134
-2108 1B82 D13A           	.byte #0xd1, #0x3a	; 15057
-2109 1B83 853A           	.byte #0x85, #0x3a	; 14981
-2110 1B84 3A3A           	.byte #0x3a, #0x3a	; 14906
-2111 1B85 EF39           	.byte #0xef, #0x39	; 14831
-2112 1B86 A439           	.byte #0xa4, #0x39	; 14756
-2113 1B87 5A39           	.byte #0x5a, #0x39	; 14682
-2114 1B88 1039           	.byte #0x10, #0x39	; 14608
-2115 1B89 C638           	.byte #0xc6, #0x38	; 14534
-2116 1B8A 7D38           	.byte #0x7d, #0x38	; 14461
-2117 1B8B 3438           	.byte #0x34, #0x38	; 14388
-2118 1B8C EC37           	.byte #0xec, #0x37	; 14316
-2119 1B8D A437           	.byte #0xa4, #0x37	; 14244
-2120 1B8E 5D37           	.byte #0x5d, #0x37	; 14173
-2121 1B8F 1637           	.byte #0x16, #0x37	; 14102
-2122 1B90 CF36           	.byte #0xcf, #0x36	; 14031
-2123 1B91 8936           	.byte #0x89, #0x36	; 13961
-2124 1B92 4336           	.byte #0x43, #0x36	; 13891
-2125 1B93 FE35           	.byte #0xfe, #0x35	; 13822
-2126 1B94 B935           	.byte #0xb9, #0x35	; 13753
-2127 1B95 7435           	.byte #0x74, #0x35	; 13684
-2128 1B96 3035           	.byte #0x30, #0x35	; 13616
-2129 1B97 EC34           	.byte #0xec, #0x34	; 13548
-2130 1B98 A934           	.byte #0xa9, #0x34	; 13481
-2131 1B99 6534           	.byte #0x65, #0x34	; 13413
-2132 1B9A 2334           	.byte #0x23, #0x34	; 13347
-2133 1B9B E033           	.byte #0xe0, #0x33	; 13280
-2134 1B9C 9E33           	.byte #0x9e, #0x33	; 13214
-2135 1B9D 5D33           	.byte #0x5d, #0x33	; 13149
-2136 1B9E 1B33           	.byte #0x1b, #0x33	; 13083
-2137 1B9F DB32           	.byte #0xdb, #0x32	; 13019
-2138 1BA0 9A32           	.byte #0x9a, #0x32	; 12954
-2139 1BA1 5A32           	.byte #0x5a, #0x32	; 12890
-2140 1BA2 1A32           	.byte #0x1a, #0x32	; 12826
-2141 1BA3 DB31           	.byte #0xdb, #0x31	; 12763
-2142 1BA4 9B31           	.byte #0x9b, #0x31	; 12699
-2143 1BA5 5D31           	.byte #0x5d, #0x31	; 12637
-2144 1BA6 1E31           	.byte #0x1e, #0x31	; 12574
-2145 1BA7 E030           	.byte #0xe0, #0x30	; 12512
-2146 1BA8 A230           	.byte #0xa2, #0x30	; 12450
-2147 1BA9 6530           	.byte #0x65, #0x30	; 12389
-2148 1BAA 2830           	.byte #0x28, #0x30	; 12328
-2149 1BAB EB2F           	.byte #0xeb, #0x2f	; 12267
-2150 1BAC AF2F           	.byte #0xaf, #0x2f	; 12207
-2151 1BAD 732F           	.byte #0x73, #0x2f	; 12147
-2152 1BAE 372F           	.byte #0x37, #0x2f	; 12087
-2153 1BAF FC2E           	.byte #0xfc, #0x2e	; 12028
-2154 1BB0 C12E           	.byte #0xc1, #0x2e	; 11969
-2155 1BB1 862E           	.byte #0x86, #0x2e	; 11910
-2156 1BB2 4C2E           	.byte #0x4c, #0x2e	; 11852
-2157 1BB3 122E           	.byte #0x12, #0x2e	; 11794
-2158 1BB4 D82D           	.byte #0xd8, #0x2d	; 11736
-2159 1BB5 9F2D           	.byte #0x9f, #0x2d	; 11679
-2160 1BB6 652D           	.byte #0x65, #0x2d	; 11621
-2161 1BB7 2D2D           	.byte #0x2d, #0x2d	; 11565
-2162 1BB8 F42C           	.byte #0xf4, #0x2c	; 11508
-2163 1BB9 BC2C           	.byte #0xbc, #0x2c	; 11452
-2164 1BBA 842C           	.byte #0x84, #0x2c	; 11396
-2165 1BBB 4D2C           	.byte #0x4d, #0x2c	; 11341
-2166 1BBC 152C           	.byte #0x15, #0x2c	; 11285
-2167 1BBD DE2B           	.byte #0xde, #0x2b	; 11230
-2168 1BBE A82B           	.byte #0xa8, #0x2b	; 11176
-2169 1BBF 712B           	.byte #0x71, #0x2b	; 11121
-2170 1BC0 3B2B           	.byte #0x3b, #0x2b	; 11067
-2171 1BC1 062B           	.byte #0x06, #0x2b	; 11014
-2172 1BC2 D02A           	.byte #0xd0, #0x2a	; 10960
-2173 1BC3 9B2A           	.byte #0x9b, #0x2a	; 10907
-2174 1BC4 662A           	.byte #0x66, #0x2a	; 10854
-2175 1BC5 322A           	.byte #0x32, #0x2a	; 10802
-2176 1BC6 FD29           	.byte #0xfd, #0x29	; 10749
-2177 1BC7 C929           	.byte #0xc9, #0x29	; 10697
-2178 1BC8 9529           	.byte #0x95, #0x29	; 10645
-2179 1BC9 6229           	.byte #0x62, #0x29	; 10594
-2180 1BCA 2F29           	.byte #0x2f, #0x29	; 10543
-2181 1BCB FC28           	.byte #0xfc, #0x28	; 10492
-2182 1BCC C928           	.byte #0xc9, #0x28	; 10441
-2183 1BCD 9728           	.byte #0x97, #0x28	; 10391
-2184 1BCE 6528           	.byte #0x65, #0x28	; 10341
-2185 1BCF 3328           	.byte #0x33, #0x28	; 10291
-2186 1BD0 0228           	.byte #0x02, #0x28	; 10242
-2187 1BD1 D027           	.byte #0xd0, #0x27	; 10192
-2188 1BD2 9F27           	.byte #0x9f, #0x27	; 10143
-2189 1BD3 6F27           	.byte #0x6f, #0x27	; 10095
-2190 1BD4 3E27           	.byte #0x3e, #0x27	; 10046
-2191 1BD5 0E27           	.byte #0x0e, #0x27	; 9998
-2192 1BD6 DE26           	.byte #0xde, #0x26	; 9950
-2193 1BD7 AE26           	.byte #0xae, #0x26	; 9902
-2194 1BD8 7F26           	.byte #0x7f, #0x26	; 9855
-2195 1BD9 5026           	.byte #0x50, #0x26	; 9808
-2196 1BDA 2126           	.byte #0x21, #0x26	; 9761
-2197 1BDB F225           	.byte #0xf2, #0x25	; 9714
-2198 1BDC C425           	.byte #0xc4, #0x25	; 9668
-2199 1BDD 9625           	.byte #0x96, #0x25	; 9622
-2200 1BDE 6825           	.byte #0x68, #0x25	; 9576
-2201 1BDF 3A25           	.byte #0x3a, #0x25	; 9530
-2202 1BE0 0D25           	.byte #0x0d, #0x25	; 9485
-2203 1BE1 E024           	.byte #0xe0, #0x24	; 9440
-2204 1BE2 B324           	.byte #0xb3, #0x24	; 9395
-2205 1BE3 8624           	.byte #0x86, #0x24	; 9350
-2206 1BE4 5924           	.byte #0x59, #0x24	; 9305
-2207 1BE5 2D24           	.byte #0x2d, #0x24	; 9261
-2208 1BE6 0124           	.byte #0x01, #0x24	; 9217
-2209 1BE7 D623           	.byte #0xd6, #0x23	; 9174
-2210 1BE8 AA23           	.byte #0xaa, #0x23	; 9130
-2211 1BE9 7F23           	.byte #0x7f, #0x23	; 9087
-2212 1BEA 5423           	.byte #0x54, #0x23	; 9044
-2213 1BEB 2923           	.byte #0x29, #0x23	; 9001
-2214 1BEC FE22           	.byte #0xfe, #0x22	; 8958
-2215 1BED D422           	.byte #0xd4, #0x22	; 8916
-2216 1BEE AA22           	.byte #0xaa, #0x22	; 8874
-2217 1BEF 8022           	.byte #0x80, #0x22	; 8832
-2218 1BF0 5622           	.byte #0x56, #0x22	; 8790
-2219 1BF1 2D22           	.byte #0x2d, #0x22	; 8749
-2220 1BF2 0422           	.byte #0x04, #0x22	; 8708
-2221 1BF3 DB21           	.byte #0xdb, #0x21	; 8667
-2222 1BF4 B221           	.byte #0xb2, #0x21	; 8626
-2223 1BF5 8921           	.byte #0x89, #0x21	; 8585
-2224 1BF6 6121           	.byte #0x61, #0x21	; 8545
-2225 1BF7 3921           	.byte #0x39, #0x21	; 8505
-2226 1BF8 1121           	.byte #0x11, #0x21	; 8465
-2227 1BF9 E920           	.byte #0xe9, #0x20	; 8425
-2228 1BFA C120           	.byte #0xc1, #0x20	; 8385
-2229 1BFB 9A20           	.byte #0x9a, #0x20	; 8346
-2230 1BFC 7320           	.byte #0x73, #0x20	; 8307
-2231 1BFD 4C20           	.byte #0x4c, #0x20	; 8268
-2232 1BFE 2520           	.byte #0x25, #0x20	; 8229
-2233 1BFF FF1F           	.byte #0xff, #0x1f	; 8191
-2234 1C00 D91F           	.byte #0xd9, #0x1f	; 8153
-2235 1C01 B31F           	.byte #0xb3, #0x1f	; 8115
-2236 1C02 8D1F           	.byte #0x8d, #0x1f	; 8077
-2237 1C03 671F           	.byte #0x67, #0x1f	; 8039
-2238 1C04 421F           	.byte #0x42, #0x1f	; 8002
-2239 1C05 1C1F           	.byte #0x1c, #0x1f	; 7964
-2240 1C06 F71E           	.byte #0xf7, #0x1e	; 7927
-2241 1C07 D21E           	.byte #0xd2, #0x1e	; 7890
-2242 1C08 AE1E           	.byte #0xae, #0x1e	; 7854
-2243 1C09 891E           	.byte #0x89, #0x1e	; 7817
-2244 1C0A 651E           	.byte #0x65, #0x1e	; 7781
-2245 1C0B 411E           	.byte #0x41, #0x1e	; 7745
-2246 1C0C 1D1E           	.byte #0x1d, #0x1e	; 7709
-2247 1C0D F91D           	.byte #0xf9, #0x1d	; 7673
-2248 1C0E D51D           	.byte #0xd5, #0x1d	; 7637
-2249 1C0F B21D           	.byte #0xb2, #0x1d	; 7602
-2250 1C10 8F1D           	.byte #0x8f, #0x1d	; 7567
-2251 1C11 6C1D           	.byte #0x6c, #0x1d	; 7532
-2252 1C12 491D           	.byte #0x49, #0x1d	; 7497
-2253 1C13 261D           	.byte #0x26, #0x1d	; 7462
-2254 1C14 041D           	.byte #0x04, #0x1d	; 7428
-2255 1C15 E21C           	.byte #0xe2, #0x1c	; 7394
-2256 1C16 BF1C           	.byte #0xbf, #0x1c	; 7359
-2257 1C17 9E1C           	.byte #0x9e, #0x1c	; 7326
-2258 1C18 7C1C           	.byte #0x7c, #0x1c	; 7292
-2259 1C19 5A1C           	.byte #0x5a, #0x1c	; 7258
-2260 1C1A 391C           	.byte #0x39, #0x1c	; 7225
-2261 1C1B 181C           	.byte #0x18, #0x1c	; 7192
-2262 1C1C F71B           	.byte #0xf7, #0x1b	; 7159
-2263 1C1D D61B           	.byte #0xd6, #0x1b	; 7126
-2264 1C1E B51B           	.byte #0xb5, #0x1b	; 7093
-2265 1C1F 941B           	.byte #0x94, #0x1b	; 7060
-2266 1C20 741B           	.byte #0x74, #0x1b	; 7028
-2267 1C21 541B           	.byte #0x54, #0x1b	; 6996
-2268 1C22 341B           	.byte #0x34, #0x1b	; 6964
-2269 1C23 141B           	.byte #0x14, #0x1b	; 6932
-2270 1C24 F41A           	.byte #0xf4, #0x1a	; 6900
-2271 1C25 D51A           	.byte #0xd5, #0x1a	; 6869
-2272 1C26 B51A           	.byte #0xb5, #0x1a	; 6837
-2273 1C27 961A           	.byte #0x96, #0x1a	; 6806
-2274 1C28 771A           	.byte #0x77, #0x1a	; 6775
-2275 1C29 581A           	.byte #0x58, #0x1a	; 6744
-2276 1C2A 391A           	.byte #0x39, #0x1a	; 6713
-2277 1C2B 1B1A           	.byte #0x1b, #0x1a	; 6683
-2278 1C2C FC19           	.byte #0xfc, #0x19	; 6652
-2279 1C2D DE19           	.byte #0xde, #0x19	; 6622
-2280 1C2E C019           	.byte #0xc0, #0x19	; 6592
-2281 1C2F A219           	.byte #0xa2, #0x19	; 6562
-2282 1C30 8419           	.byte #0x84, #0x19	; 6532
-2283 1C31 6719           	.byte #0x67, #0x19	; 6503
-2284 1C32 4919           	.byte #0x49, #0x19	; 6473
-2285 1C33 2C19           	.byte #0x2c, #0x19	; 6444
-2286 1C34 0E19           	.byte #0x0e, #0x19	; 6414
-2287 1C35 F118           	.byte #0xf1, #0x18	; 6385
-2288 1C36 D518           	.byte #0xd5, #0x18	; 6357
-2289 1C37 B818           	.byte #0xb8, #0x18	; 6328
-2290 1C38 9B18           	.byte #0x9b, #0x18	; 6299
-2291 1C39 7F18           	.byte #0x7f, #0x18	; 6271
-2292 1C3A 6218           	.byte #0x62, #0x18	; 6242
-2293 1C3B 4618           	.byte #0x46, #0x18	; 6214
-2294 1C3C 2A18           	.byte #0x2a, #0x18	; 6186
-2295 1C3D 0E18           	.byte #0x0e, #0x18	; 6158
-2296 1C3E F317           	.byte #0xf3, #0x17	; 6131
-2297 1C3F D717           	.byte #0xd7, #0x17	; 6103
-2298 1C40 BC17           	.byte #0xbc, #0x17	; 6076
-2299 1C41 A017           	.byte #0xa0, #0x17	; 6048
-2300 1C42 8517           	.byte #0x85, #0x17	; 6021
-2301 1C43 6A17           	.byte #0x6a, #0x17	; 5994
-2302 1C44 4F17           	.byte #0x4f, #0x17	; 5967
-2303 1C45 3417           	.byte #0x34, #0x17	; 5940
-2304 1C46 1A17           	.byte #0x1a, #0x17	; 5914
-2305 1C47 FF16           	.byte #0xff, #0x16	; 5887
-2306 1C48 E516           	.byte #0xe5, #0x16	; 5861
-2307 1C49 CB16           	.byte #0xcb, #0x16	; 5835
-2308 1C4A B016           	.byte #0xb0, #0x16	; 5808
-2309 1C4B 9716           	.byte #0x97, #0x16	; 5783
-2310 1C4C 7D16           	.byte #0x7d, #0x16	; 5757
-2311 1C4D 6316           	.byte #0x63, #0x16	; 5731
-2312 1C4E 4916           	.byte #0x49, #0x16	; 5705
-2313 1C4F 3016           	.byte #0x30, #0x16	; 5680
-2314 1C50 1716           	.byte #0x17, #0x16	; 5655
-2315 1C51 FD15           	.byte #0xfd, #0x15	; 5629
-2316 1C52 E415           	.byte #0xe4, #0x15	; 5604
-2317 1C53 CB15           	.byte #0xcb, #0x15	; 5579
-2318 1C54 B315           	.byte #0xb3, #0x15	; 5555
-2319 1C55 9A15           	.byte #0x9a, #0x15	; 5530
-2320 1C56 8115           	.byte #0x81, #0x15	; 5505
-2321 1C57 6915           	.byte #0x69, #0x15	; 5481
-2322 1C58 5115           	.byte #0x51, #0x15	; 5457
-2323 1C59 3815           	.byte #0x38, #0x15	; 5432
-2324 1C5A 2015           	.byte #0x20, #0x15	; 5408
-2325 1C5B 0815           	.byte #0x08, #0x15	; 5384
-2326 1C5C F114           	.byte #0xf1, #0x14	; 5361
-2327 1C5D D914           	.byte #0xd9, #0x14	; 5337
-2328 1C5E C114           	.byte #0xc1, #0x14	; 5313
-2329 1C5F AA14           	.byte #0xaa, #0x14	; 5290
-2330 1C60 9214           	.byte #0x92, #0x14	; 5266
-2331 1C61 7B14           	.byte #0x7b, #0x14	; 5243
-2332 1C62 6414           	.byte #0x64, #0x14	; 5220
-2333 1C63 4D14           	.byte #0x4d, #0x14	; 5197
-2334 1C64 3614           	.byte #0x36, #0x14	; 5174
-2335 1C65 1F14           	.byte #0x1f, #0x14	; 5151
-2336 1C66 0914           	.byte #0x09, #0x14	; 5129
-2337 1C67 F213           	.byte #0xf2, #0x13	; 5106
-2338 1C68 DC13           	.byte #0xdc, #0x13	; 5084
-2339 1C69 C513           	.byte #0xc5, #0x13	; 5061
-2340 1C6A AF13           	.byte #0xaf, #0x13	; 5039
-2341 1C6B 9913           	.byte #0x99, #0x13	; 5017
-2342 1C6C 8313           	.byte #0x83, #0x13	; 4995
-2343 1C6D 6D13           	.byte #0x6d, #0x13	; 4973
-2344 1C6E 5713           	.byte #0x57, #0x13	; 4951
-2345 1C6F 4213           	.byte #0x42, #0x13	; 4930
-2346 1C70 2C13           	.byte #0x2c, #0x13	; 4908
-2347 1C71 1713           	.byte #0x17, #0x13	; 4887
-2348 1C72 0113           	.byte #0x01, #0x13	; 4865
-2349 1C73 EC12           	.byte #0xec, #0x12	; 4844
-2350 1C74 D712           	.byte #0xd7, #0x12	; 4823
-2351 1C75 C212           	.byte #0xc2, #0x12	; 4802
-2352 1C76 AD12           	.byte #0xad, #0x12	; 4781
-2353 1C77 9812           	.byte #0x98, #0x12	; 4760
-2354 1C78 8312           	.byte #0x83, #0x12	; 4739
-2355 1C79 6F12           	.byte #0x6f, #0x12	; 4719
-2356 1C7A 5A12           	.byte #0x5a, #0x12	; 4698
-2357 1C7B 4612           	.byte #0x46, #0x12	; 4678
-2358 1C7C 3112           	.byte #0x31, #0x12	; 4657
-2359 1C7D 1D12           	.byte #0x1d, #0x12	; 4637
-2360 1C7E 0912           	.byte #0x09, #0x12	; 4617
-2361 1C7F F511           	.byte #0xf5, #0x11	; 4597
-2362 1C80 E111           	.byte #0xe1, #0x11	; 4577
-2363 1C81 CD11           	.byte #0xcd, #0x11	; 4557
-2364 1C82 BA11           	.byte #0xba, #0x11	; 4538
-2365 1C83 A611           	.byte #0xa6, #0x11	; 4518
-2366 1C84 9211           	.byte #0x92, #0x11	; 4498
-2367 1C85 7F11           	.byte #0x7f, #0x11	; 4479
-2368 1C86 6C11           	.byte #0x6c, #0x11	; 4460
-2369 1C87 5811           	.byte #0x58, #0x11	; 4440
-2370 1C88 4511           	.byte #0x45, #0x11	; 4421
-2371 1C89 3211           	.byte #0x32, #0x11	; 4402
-2372 1C8A 1F11           	.byte #0x1f, #0x11	; 4383
-2373 1C8B 0C11           	.byte #0x0c, #0x11	; 4364
-2374 1C8C F910           	.byte #0xf9, #0x10	; 4345
-2375 1C8D E710           	.byte #0xe7, #0x10	; 4327
-2376 1C8E D410           	.byte #0xd4, #0x10	; 4308
-2377 1C8F C210           	.byte #0xc2, #0x10	; 4290
-2378 1C90 AF10           	.byte #0xaf, #0x10	; 4271
-2379 1C91 9D10           	.byte #0x9d, #0x10	; 4253
-2380 1C92 8B10           	.byte #0x8b, #0x10	; 4235
-2381 1C93 7810           	.byte #0x78, #0x10	; 4216
-2382 1C94 6610           	.byte #0x66, #0x10	; 4198
-2383 1C95 5410           	.byte #0x54, #0x10	; 4180
-2384 1C96 4210           	.byte #0x42, #0x10	; 4162
-2385 1C97 3110           	.byte #0x31, #0x10	; 4145
-2386 1C98 1F10           	.byte #0x1f, #0x10	; 4127
-2387 1C99 0D10           	.byte #0x0d, #0x10	; 4109
-2388 1C9A FC0F           	.byte #0xfc, #0x0f	; 4092
-2389 1C9B EA0F           	.byte #0xea, #0x0f	; 4074
-2390 1C9C D90F           	.byte #0xd9, #0x0f	; 4057
-2391 1C9D C80F           	.byte #0xc8, #0x0f	; 4040
-2392 1C9E B60F           	.byte #0xb6, #0x0f	; 4022
-2393 1C9F A50F           	.byte #0xa5, #0x0f	; 4005
-2394 1CA0 940F           	.byte #0x94, #0x0f	; 3988
-2395 1CA1 830F           	.byte #0x83, #0x0f	; 3971
-2396 1CA2 720F           	.byte #0x72, #0x0f	; 3954
-2397 1CA3 610F           	.byte #0x61, #0x0f	; 3937
-2398 1CA4 510F           	.byte #0x51, #0x0f	; 3921
-2399 1CA5 400F           	.byte #0x40, #0x0f	; 3904
-2400 1CA6 300F           	.byte #0x30, #0x0f	; 3888
-2401 1CA7 1F0F           	.byte #0x1f, #0x0f	; 3871
-2402 1CA8 0D0F           	.byte #0x0d, #0x0f	; 3853
-2403 1CA9 FE0E           	.byte #0xfe, #0x0e	; 3838
-2404 1CAA EE0E           	.byte #0xee, #0x0e	; 3822
-2405 1CAB DE0E           	.byte #0xde, #0x0e	; 3806
-2406 1CAC CE0E           	.byte #0xce, #0x0e	; 3790
-2407 1CAD BE0E           	.byte #0xbe, #0x0e	; 3774
-2408 1CAE AE0E           	.byte #0xae, #0x0e	; 3758
-2409 1CAF 9E0E           	.byte #0x9e, #0x0e	; 3742
-2410 1CB0 8E0E           	.byte #0x8e, #0x0e	; 3726
-2411 1CB1 7F0E           	.byte #0x7f, #0x0e	; 3711
-2412 1CB2 6F0E           	.byte #0x6f, #0x0e	; 3695
-2413 1CB3 5F0E           	.byte #0x5f, #0x0e	; 3679
-2414 1CB4 500E           	.byte #0x50, #0x0e	; 3664
-2415 1CB5 400E           	.byte #0x40, #0x0e	; 3648
-2416 1CB6 310E           	.byte #0x31, #0x0e	; 3633
-2417 1CB7 220E           	.byte #0x22, #0x0e	; 3618
-2418 1CB8 130E           	.byte #0x13, #0x0e	; 3603
-2419 1CB9 030E           	.byte #0x03, #0x0e	; 3587
-2420 1CBA F40D           	.byte #0xf4, #0x0d	; 3572
-2421 1CBB E50D           	.byte #0xe5, #0x0d	; 3557
-2422 1CBC D70D           	.byte #0xd7, #0x0d	; 3543
-2423 1CBD C80D           	.byte #0xc8, #0x0d	; 3528
-2424 1CBE B90D           	.byte #0xb9, #0x0d	; 3513
-2425 1CBF AA0D           	.byte #0xaa, #0x0d	; 3498
-2426 1CC0 9C0D           	.byte #0x9c, #0x0d	; 3484
-2427 1CC1 8D0D           	.byte #0x8d, #0x0d	; 3469
-2428 1CC2 7F0D           	.byte #0x7f, #0x0d	; 3455
-2429 1CC3 700D           	.byte #0x70, #0x0d	; 3440
-2430 1CC4 620D           	.byte #0x62, #0x0d	; 3426
-2431 1CC5 540D           	.byte #0x54, #0x0d	; 3412
-2432 1CC6 450D           	.byte #0x45, #0x0d	; 3397
-2433 1CC7 370D           	.byte #0x37, #0x0d	; 3383
-2434 1CC8 290D           	.byte #0x29, #0x0d	; 3369
-2435 1CC9 1B0D           	.byte #0x1b, #0x0d	; 3355
-2436 1CCA 0D0D           	.byte #0x0d, #0x0d	; 3341
-2437 1CCB FF0C           	.byte #0xff, #0x0c	; 3327
-2438 1CCC F10C           	.byte #0xf1, #0x0c	; 3313
-2439 1CCD E40C           	.byte #0xe4, #0x0c	; 3300
-2440 1CCE D60C           	.byte #0xd6, #0x0c	; 3286
-2441 1CCF C80C           	.byte #0xc8, #0x0c	; 3272
-2442 1CD0 BA0C           	.byte #0xba, #0x0c	; 3258
-2443 1CD1 AD0C           	.byte #0xad, #0x0c	; 3245
-2444 1CD2 A00C           	.byte #0xa0, #0x0c	; 3232
-2445 1CD3 920C           	.byte #0x92, #0x0c	; 3218
-2446 1CD4 850C           	.byte #0x85, #0x0c	; 3205
-2447 1CD5 780C           	.byte #0x78, #0x0c	; 3192
-2448 1CD6 6B0C           	.byte #0x6b, #0x0c	; 3179
-2449 1CD7 5E0C           	.byte #0x5e, #0x0c	; 3166
-2450 1CD8 510C           	.byte #0x51, #0x0c	; 3153
-2451 1CD9 440C           	.byte #0x44, #0x0c	; 3140
-2452 1CDA 370C           	.byte #0x37, #0x0c	; 3127
-2453 1CDB 2A0C           	.byte #0x2a, #0x0c	; 3114
-2454 1CDC 1D0C           	.byte #0x1d, #0x0c	; 3101
-2455 1CDD 100C           	.byte #0x10, #0x0c	; 3088
-2456 1CDE 030C           	.byte #0x03, #0x0c	; 3075
-2457 1CDF F70B           	.byte #0xf7, #0x0b	; 3063
-2458 1CE0 EA0B           	.byte #0xea, #0x0b	; 3050
-2459 1CE1 DE0B           	.byte #0xde, #0x0b	; 3038
-2460 1CE2 D10B           	.byte #0xd1, #0x0b	; 3025
-2461 1CE3 C50B           	.byte #0xc5, #0x0b	; 3013
-2462 1CE4 B90B           	.byte #0xb9, #0x0b	; 3001
-2463 1CE5 AC0B           	.byte #0xac, #0x0b	; 2988
-2464 1CE6 A00B           	.byte #0xa0, #0x0b	; 2976
-2465 1CE7 940B           	.byte #0x94, #0x0b	; 2964
-2466 1CE8 880B           	.byte #0x88, #0x0b	; 2952
-2467 1CE9 7C0B           	.byte #0x7c, #0x0b	; 2940
-2468 1CEA 700B           	.byte #0x70, #0x0b	; 2928
-2469 1CEB 640B           	.byte #0x64, #0x0b	; 2916
-2470 1CEC 580B           	.byte #0x58, #0x0b	; 2904
-2471 1CED 4C0B           	.byte #0x4c, #0x0b	; 2892
-2472 1CEE 400B           	.byte #0x40, #0x0b	; 2880
-2473 1CEF 340B           	.byte #0x34, #0x0b	; 2868
-2474 1CF0 290B           	.byte #0x29, #0x0b	; 2857
-2475 1CF1 1D0B           	.byte #0x1d, #0x0b	; 2845
-2476 1CF2 120B           	.byte #0x12, #0x0b	; 2834
-2477 1CF3 060B           	.byte #0x06, #0x0b	; 2822
-2478 1CF4 FB0A           	.byte #0xfb, #0x0a	; 2811
-2479 1CF5 EF0A           	.byte #0xef, #0x0a	; 2799
-2480 1CF6 E40A           	.byte #0xe4, #0x0a	; 2788
-2481 1CF7 D90A           	.byte #0xd9, #0x0a	; 2777
-2482 1CF8 CD0A           	.byte #0xcd, #0x0a	; 2765
-2483 1CF9 C20A           	.byte #0xc2, #0x0a	; 2754
-2484 1CFA B70A           	.byte #0xb7, #0x0a	; 2743
-2485 1CFB AC0A           	.byte #0xac, #0x0a	; 2732
-2486 1CFC A10A           	.byte #0xa1, #0x0a	; 2721
-2487 1CFD 960A           	.byte #0x96, #0x0a	; 2710
-2488 1CFE 8B0A           	.byte #0x8b, #0x0a	; 2699
-2489 1CFF 800A           	.byte #0x80, #0x0a	; 2688
-2490 1D00 750A           	.byte #0x75, #0x0a	; 2677
-2491 1D01 6A0A           	.byte #0x6a, #0x0a	; 2666
-2492 1D02 600A           	.byte #0x60, #0x0a	; 2656
-2493 1D03 550A           	.byte #0x55, #0x0a	; 2645
-2494 1D04 4A0A           	.byte #0x4a, #0x0a	; 2634
-2495 1D05 400A           	.byte #0x40, #0x0a	; 2624
-2496 1D06 350A           	.byte #0x35, #0x0a	; 2613
-2497 1D07 2B0A           	.byte #0x2b, #0x0a	; 2603
-2498 1D08 200A           	.byte #0x20, #0x0a	; 2592
-2499 1D09 160A           	.byte #0x16, #0x0a	; 2582
-2500 1D0A 0B0A           	.byte #0x0b, #0x0a	; 2571
-2501 1D0B 010A           	.byte #0x01, #0x0a	; 2561
-2502 1D0C F809           	.byte #0xf8, #0x09	; 2552
-2503 1D0D EC09           	.byte #0xec, #0x09	; 2540
-2504 1D0E E209           	.byte #0xe2, #0x09	; 2530
-2505 1D0F D809           	.byte #0xd8, #0x09	; 2520
-2506 1D10 CE09           	.byte #0xce, #0x09	; 2510
-2507 1D11 C409           	.byte #0xc4, #0x09	; 2500
-2508 1D12 BA09           	.byte #0xba, #0x09	; 2490
-2509 1D13 B009           	.byte #0xb0, #0x09	; 2480
-2510 1D14 A609           	.byte #0xa6, #0x09	; 2470
-2511 1D15 9C09           	.byte #0x9c, #0x09	; 2460
-2512 1D16 9309           	.byte #0x93, #0x09	; 2451
-2513 1D17 8909           	.byte #0x89, #0x09	; 2441
-2514 1D18 7F09           	.byte #0x7f, #0x09	; 2431
-2515 1D19 7509           	.byte #0x75, #0x09	; 2421
-2516 1D1A 6C09           	.byte #0x6c, #0x09	; 2412
-2517 1D1B 6209           	.byte #0x62, #0x09	; 2402
-2518 1D1C 5909           	.byte #0x59, #0x09	; 2393
-2519 1D1D 4F09           	.byte #0x4f, #0x09	; 2383
-2520 1D1E 4609           	.byte #0x46, #0x09	; 2374
-2521 1D1F 3C09           	.byte #0x3c, #0x09	; 2364
-2522 1D20 3309           	.byte #0x33, #0x09	; 2355
-2523 1D21 2A09           	.byte #0x2a, #0x09	; 2346
-2524 1D22 2009           	.byte #0x20, #0x09	; 2336
-2525 1D23 1709           	.byte #0x17, #0x09	; 2327
-2526 1D24 0E09           	.byte #0x0e, #0x09	; 2318
-2527 1D25 0509           	.byte #0x05, #0x09	; 2309
-2528 1D26 FB08           	.byte #0xfb, #0x08	; 2299
-2529 1D27 F208           	.byte #0xf2, #0x08	; 2290
-2530 1D28 E908           	.byte #0xe9, #0x08	; 2281
-2531 1D29 E008           	.byte #0xe0, #0x08	; 2272
-2532 1D2A D708           	.byte #0xd7, #0x08	; 2263
-2533 1D2B CE08           	.byte #0xce, #0x08	; 2254
-2534 1D2C C608           	.byte #0xc6, #0x08	; 2246
-2535 1D2D BD08           	.byte #0xbd, #0x08	; 2237
-2536 1D2E B408           	.byte #0xb4, #0x08	; 2228
-2537 1D2F AB08           	.byte #0xab, #0x08	; 2219
-2538 1D30 A208           	.byte #0xa2, #0x08	; 2210
-2539 1D31 9A08           	.byte #0x9a, #0x08	; 2202
-2540 1D32 9108           	.byte #0x91, #0x08	; 2193
-2541 1D33 8908           	.byte #0x89, #0x08	; 2185
-2542 1D34 8008           	.byte #0x80, #0x08	; 2176
-2543 1D35 7708           	.byte #0x77, #0x08	; 2167
-2544 1D36 6F08           	.byte #0x6f, #0x08	; 2159
-2545 1D37 6608           	.byte #0x66, #0x08	; 2150
-2546 1D38 5E08           	.byte #0x5e, #0x08	; 2142
-2547 1D39 5608           	.byte #0x56, #0x08	; 2134
-2548 1D3A 4D08           	.byte #0x4d, #0x08	; 2125
-2549 1D3B 4508           	.byte #0x45, #0x08	; 2117
-2550 1D3C 3D08           	.byte #0x3d, #0x08	; 2109
-2551 1D3D 3508           	.byte #0x35, #0x08	; 2101
-2552 1D3E 2C08           	.byte #0x2c, #0x08	; 2092
-2553 1D3F 2408           	.byte #0x24, #0x08	; 2084
-2554 1D40 1C08           	.byte #0x1c, #0x08	; 2076
-2555 1D41 1408           	.byte #0x14, #0x08	; 2068
-2556 1D42 0C08           	.byte #0x0c, #0x08	; 2060
-2557 1D43 0408           	.byte #0x04, #0x08	; 2052
-2558 1D44 FC07           	.byte #0xfc, #0x07	; 2044
-2559 1D45 F407           	.byte #0xf4, #0x07	; 2036
-2560 1D46 EC07           	.byte #0xec, #0x07	; 2028
-2561 1D47 E407           	.byte #0xe4, #0x07	; 2020
-2562 1D48 DC07           	.byte #0xdc, #0x07	; 2012
-2563 1D49 D507           	.byte #0xd5, #0x07	; 2005
-2564 1D4A CD07           	.byte #0xcd, #0x07	; 1997
-2565 1D4B C507           	.byte #0xc5, #0x07	; 1989
-2566 1D4C BD07           	.byte #0xbd, #0x07	; 1981
-2567 1D4D B607           	.byte #0xb6, #0x07	; 1974
-2568 1D4E AE07           	.byte #0xae, #0x07	; 1966
-2569 1D4F A607           	.byte #0xa6, #0x07	; 1958
-2570 1D50 9F07           	.byte #0x9f, #0x07	; 1951
-2571 1D51 9707           	.byte #0x97, #0x07	; 1943
-2572 1D52 9007           	.byte #0x90, #0x07	; 1936
-2573 1D53 8807           	.byte #0x88, #0x07	; 1928
-2574 1D54 8107           	.byte #0x81, #0x07	; 1921
-2575 1D55 7907           	.byte #0x79, #0x07	; 1913
-2576 1D56 7207           	.byte #0x72, #0x07	; 1906
-2577 1D57 6B07           	.byte #0x6b, #0x07	; 1899
-2578 1D58 6307           	.byte #0x63, #0x07	; 1891
-2579 1D59 5C07           	.byte #0x5c, #0x07	; 1884
-2580 1D5A 5507           	.byte #0x55, #0x07	; 1877
-2581 1D5B 4E07           	.byte #0x4e, #0x07	; 1870
-2582 1D5C 4707           	.byte #0x47, #0x07	; 1863
-2583 1D5D 3F07           	.byte #0x3f, #0x07	; 1855
-2584 1D5E 3807           	.byte #0x38, #0x07	; 1848
-2585 1D5F 3107           	.byte #0x31, #0x07	; 1841
-2586 1D60 2A07           	.byte #0x2a, #0x07	; 1834
-2587 1D61 2307           	.byte #0x23, #0x07	; 1827
-2588 1D62 1C07           	.byte #0x1c, #0x07	; 1820
-2589 1D63 1507           	.byte #0x15, #0x07	; 1813
-2590 1D64 0E07           	.byte #0x0e, #0x07	; 1806
-2591 1D65 0707           	.byte #0x07, #0x07	; 1799
-2592 1D66 0007           	.byte #0x00, #0x07	; 1792
+2092 1ACD CF3F           	.byte #0xcf, #0x3f	; 16335
+2093 1ACE 7B3F           	.byte #0x7b, #0x3f	; 16251
+2094 1ACF 283F           	.byte #0x28, #0x3f	; 16168
+2095 1AD0 D63E           	.byte #0xd6, #0x3e	; 16086
+2096 1AD1 843E           	.byte #0x84, #0x3e	; 16004
+2097 1AD2 333E           	.byte #0x33, #0x3e	; 15923
+2098 1AD3 E23D           	.byte #0xe2, #0x3d	; 15842
+2099 1AD4 913D           	.byte #0x91, #0x3d	; 15761
+2100 1AD5 413D           	.byte #0x41, #0x3d	; 15681
+2101 1AD6 F23C           	.byte #0xf2, #0x3c	; 15602
+2102 1AD7 A33C           	.byte #0xa3, #0x3c	; 15523
+2103 1AD8 543C           	.byte #0x54, #0x3c	; 15444
+2104 1AD9 063C           	.byte #0x06, #0x3c	; 15366
+2105 1ADA B83B           	.byte #0xb8, #0x3b	; 15288
+2106 1ADB 6B3B           	.byte #0x6b, #0x3b	; 15211
+2107 1ADC 1E3B           	.byte #0x1e, #0x3b	; 15134
+2108 1ADD D13A           	.byte #0xd1, #0x3a	; 15057
+2109 1ADE 853A           	.byte #0x85, #0x3a	; 14981
+2110 1ADF 3A3A           	.byte #0x3a, #0x3a	; 14906
+2111 1AE0 EF39           	.byte #0xef, #0x39	; 14831
+2112 1AE1 A439           	.byte #0xa4, #0x39	; 14756
+2113 1AE2 5A39           	.byte #0x5a, #0x39	; 14682
+2114 1AE3 1039           	.byte #0x10, #0x39	; 14608
+2115 1AE4 C638           	.byte #0xc6, #0x38	; 14534
+2116 1AE5 7D38           	.byte #0x7d, #0x38	; 14461
+2117 1AE6 3438           	.byte #0x34, #0x38	; 14388
+2118 1AE7 EC37           	.byte #0xec, #0x37	; 14316
+2119 1AE8 A437           	.byte #0xa4, #0x37	; 14244
+2120 1AE9 5D37           	.byte #0x5d, #0x37	; 14173
+2121 1AEA 1637           	.byte #0x16, #0x37	; 14102
+2122 1AEB CF36           	.byte #0xcf, #0x36	; 14031
+2123 1AEC 8936           	.byte #0x89, #0x36	; 13961
+2124 1AED 4336           	.byte #0x43, #0x36	; 13891
+2125 1AEE FE35           	.byte #0xfe, #0x35	; 13822
+2126 1AEF B935           	.byte #0xb9, #0x35	; 13753
+2127 1AF0 7435           	.byte #0x74, #0x35	; 13684
+2128 1AF1 3035           	.byte #0x30, #0x35	; 13616
+2129 1AF2 EC34           	.byte #0xec, #0x34	; 13548
+2130 1AF3 A934           	.byte #0xa9, #0x34	; 13481
+2131 1AF4 6534           	.byte #0x65, #0x34	; 13413
+2132 1AF5 2334           	.byte #0x23, #0x34	; 13347
+2133 1AF6 E033           	.byte #0xe0, #0x33	; 13280
+2134 1AF7 9E33           	.byte #0x9e, #0x33	; 13214
+2135 1AF8 5D33           	.byte #0x5d, #0x33	; 13149
+2136 1AF9 1B33           	.byte #0x1b, #0x33	; 13083
+2137 1AFA DB32           	.byte #0xdb, #0x32	; 13019
+2138 1AFB 9A32           	.byte #0x9a, #0x32	; 12954
+2139 1AFC 5A32           	.byte #0x5a, #0x32	; 12890
+2140 1AFD 1A32           	.byte #0x1a, #0x32	; 12826
+2141 1AFE DB31           	.byte #0xdb, #0x31	; 12763
+2142 1AFF 9B31           	.byte #0x9b, #0x31	; 12699
+2143 1B00 5D31           	.byte #0x5d, #0x31	; 12637
+2144 1B01 1E31           	.byte #0x1e, #0x31	; 12574
+2145 1B02 E030           	.byte #0xe0, #0x30	; 12512
+2146 1B03 A230           	.byte #0xa2, #0x30	; 12450
+2147 1B04 6530           	.byte #0x65, #0x30	; 12389
+2148 1B05 2830           	.byte #0x28, #0x30	; 12328
+2149 1B06 EB2F           	.byte #0xeb, #0x2f	; 12267
+2150 1B07 AF2F           	.byte #0xaf, #0x2f	; 12207
+2151 1B08 732F           	.byte #0x73, #0x2f	; 12147
+2152 1B09 372F           	.byte #0x37, #0x2f	; 12087
+2153 1B0A FC2E           	.byte #0xfc, #0x2e	; 12028
+2154 1B0B C12E           	.byte #0xc1, #0x2e	; 11969
+2155 1B0C 862E           	.byte #0x86, #0x2e	; 11910
+2156 1B0D 4C2E           	.byte #0x4c, #0x2e	; 11852
+2157 1B0E 122E           	.byte #0x12, #0x2e	; 11794
+2158 1B0F D82D           	.byte #0xd8, #0x2d	; 11736
+2159 1B10 9F2D           	.byte #0x9f, #0x2d	; 11679
+2160 1B11 652D           	.byte #0x65, #0x2d	; 11621
+2161 1B12 2D2D           	.byte #0x2d, #0x2d	; 11565
+2162 1B13 F42C           	.byte #0xf4, #0x2c	; 11508
+2163 1B14 BC2C           	.byte #0xbc, #0x2c	; 11452
+2164 1B15 842C           	.byte #0x84, #0x2c	; 11396
+2165 1B16 4D2C           	.byte #0x4d, #0x2c	; 11341
+2166 1B17 152C           	.byte #0x15, #0x2c	; 11285
+2167 1B18 DE2B           	.byte #0xde, #0x2b	; 11230
+2168 1B19 A82B           	.byte #0xa8, #0x2b	; 11176
+2169 1B1A 712B           	.byte #0x71, #0x2b	; 11121
+2170 1B1B 3B2B           	.byte #0x3b, #0x2b	; 11067
+2171 1B1C 062B           	.byte #0x06, #0x2b	; 11014
+2172 1B1D D02A           	.byte #0xd0, #0x2a	; 10960
+2173 1B1E 9B2A           	.byte #0x9b, #0x2a	; 10907
+2174 1B1F 662A           	.byte #0x66, #0x2a	; 10854
+2175 1B20 322A           	.byte #0x32, #0x2a	; 10802
+2176 1B21 FD29           	.byte #0xfd, #0x29	; 10749
+2177 1B22 C929           	.byte #0xc9, #0x29	; 10697
+2178 1B23 9529           	.byte #0x95, #0x29	; 10645
+2179 1B24 6229           	.byte #0x62, #0x29	; 10594
+2180 1B25 2F29           	.byte #0x2f, #0x29	; 10543
+2181 1B26 FC28           	.byte #0xfc, #0x28	; 10492
+2182 1B27 C928           	.byte #0xc9, #0x28	; 10441
+2183 1B28 9728           	.byte #0x97, #0x28	; 10391
+2184 1B29 6528           	.byte #0x65, #0x28	; 10341
+2185 1B2A 3328           	.byte #0x33, #0x28	; 10291
+2186 1B2B 0228           	.byte #0x02, #0x28	; 10242
+2187 1B2C D027           	.byte #0xd0, #0x27	; 10192
+2188 1B2D 9F27           	.byte #0x9f, #0x27	; 10143
+2189 1B2E 6F27           	.byte #0x6f, #0x27	; 10095
+2190 1B2F 3E27           	.byte #0x3e, #0x27	; 10046
+2191 1B30 0E27           	.byte #0x0e, #0x27	; 9998
+2192 1B31 DE26           	.byte #0xde, #0x26	; 9950
+2193 1B32 AE26           	.byte #0xae, #0x26	; 9902
+2194 1B33 7F26           	.byte #0x7f, #0x26	; 9855
+2195 1B34 5026           	.byte #0x50, #0x26	; 9808
+2196 1B35 2126           	.byte #0x21, #0x26	; 9761
+2197 1B36 F225           	.byte #0xf2, #0x25	; 9714
+2198 1B37 C425           	.byte #0xc4, #0x25	; 9668
+2199 1B38 9625           	.byte #0x96, #0x25	; 9622
+2200 1B39 6825           	.byte #0x68, #0x25	; 9576
+2201 1B3A 3A25           	.byte #0x3a, #0x25	; 9530
+2202 1B3B 0D25           	.byte #0x0d, #0x25	; 9485
+2203 1B3C E024           	.byte #0xe0, #0x24	; 9440
+2204 1B3D B324           	.byte #0xb3, #0x24	; 9395
+2205 1B3E 8624           	.byte #0x86, #0x24	; 9350
+2206 1B3F 5924           	.byte #0x59, #0x24	; 9305
+2207 1B40 2D24           	.byte #0x2d, #0x24	; 9261
+2208 1B41 0124           	.byte #0x01, #0x24	; 9217
+2209 1B42 D623           	.byte #0xd6, #0x23	; 9174
+2210 1B43 AA23           	.byte #0xaa, #0x23	; 9130
+2211 1B44 7F23           	.byte #0x7f, #0x23	; 9087
+2212 1B45 5423           	.byte #0x54, #0x23	; 9044
+2213 1B46 2923           	.byte #0x29, #0x23	; 9001
+2214 1B47 FE22           	.byte #0xfe, #0x22	; 8958
+2215 1B48 D422           	.byte #0xd4, #0x22	; 8916
+2216 1B49 AA22           	.byte #0xaa, #0x22	; 8874
+2217 1B4A 8022           	.byte #0x80, #0x22	; 8832
+2218 1B4B 5622           	.byte #0x56, #0x22	; 8790
+2219 1B4C 2D22           	.byte #0x2d, #0x22	; 8749
+2220 1B4D 0422           	.byte #0x04, #0x22	; 8708
+2221 1B4E DB21           	.byte #0xdb, #0x21	; 8667
+2222 1B4F B221           	.byte #0xb2, #0x21	; 8626
+2223 1B50 8921           	.byte #0x89, #0x21	; 8585
+2224 1B51 6121           	.byte #0x61, #0x21	; 8545
+2225 1B52 3921           	.byte #0x39, #0x21	; 8505
+2226 1B53 1121           	.byte #0x11, #0x21	; 8465
+2227 1B54 E920           	.byte #0xe9, #0x20	; 8425
+2228 1B55 C120           	.byte #0xc1, #0x20	; 8385
+2229 1B56 9A20           	.byte #0x9a, #0x20	; 8346
+2230 1B57 7320           	.byte #0x73, #0x20	; 8307
+2231 1B58 4C20           	.byte #0x4c, #0x20	; 8268
+2232 1B59 2520           	.byte #0x25, #0x20	; 8229
+2233 1B5A FF1F           	.byte #0xff, #0x1f	; 8191
+2234 1B5B D91F           	.byte #0xd9, #0x1f	; 8153
+2235 1B5C B31F           	.byte #0xb3, #0x1f	; 8115
+2236 1B5D 8D1F           	.byte #0x8d, #0x1f	; 8077
+2237 1B5E 671F           	.byte #0x67, #0x1f	; 8039
+2238 1B5F 421F           	.byte #0x42, #0x1f	; 8002
+2239 1B60 1C1F           	.byte #0x1c, #0x1f	; 7964
+2240 1B61 F71E           	.byte #0xf7, #0x1e	; 7927
+2241 1B62 D21E           	.byte #0xd2, #0x1e	; 7890
+2242 1B63 AE1E           	.byte #0xae, #0x1e	; 7854
+2243 1B64 891E           	.byte #0x89, #0x1e	; 7817
+2244 1B65 651E           	.byte #0x65, #0x1e	; 7781
+2245 1B66 411E           	.byte #0x41, #0x1e	; 7745
+2246 1B67 1D1E           	.byte #0x1d, #0x1e	; 7709
+2247 1B68 F91D           	.byte #0xf9, #0x1d	; 7673
+2248 1B69 D51D           	.byte #0xd5, #0x1d	; 7637
+2249 1B6A B21D           	.byte #0xb2, #0x1d	; 7602
+2250 1B6B 8F1D           	.byte #0x8f, #0x1d	; 7567
+2251 1B6C 6C1D           	.byte #0x6c, #0x1d	; 7532
+2252 1B6D 491D           	.byte #0x49, #0x1d	; 7497
+2253 1B6E 261D           	.byte #0x26, #0x1d	; 7462
+2254 1B6F 041D           	.byte #0x04, #0x1d	; 7428
+2255 1B70 E21C           	.byte #0xe2, #0x1c	; 7394
+2256 1B71 BF1C           	.byte #0xbf, #0x1c	; 7359
+2257 1B72 9E1C           	.byte #0x9e, #0x1c	; 7326
+2258 1B73 7C1C           	.byte #0x7c, #0x1c	; 7292
+2259 1B74 5A1C           	.byte #0x5a, #0x1c	; 7258
+2260 1B75 391C           	.byte #0x39, #0x1c	; 7225
+2261 1B76 181C           	.byte #0x18, #0x1c	; 7192
+2262 1B77 F71B           	.byte #0xf7, #0x1b	; 7159
+2263 1B78 D61B           	.byte #0xd6, #0x1b	; 7126
+2264 1B79 B51B           	.byte #0xb5, #0x1b	; 7093
+2265 1B7A 941B           	.byte #0x94, #0x1b	; 7060
+2266 1B7B 741B           	.byte #0x74, #0x1b	; 7028
+2267 1B7C 541B           	.byte #0x54, #0x1b	; 6996
+2268 1B7D 341B           	.byte #0x34, #0x1b	; 6964
+2269 1B7E 141B           	.byte #0x14, #0x1b	; 6932
+2270 1B7F F41A           	.byte #0xf4, #0x1a	; 6900
+2271 1B80 D51A           	.byte #0xd5, #0x1a	; 6869
+2272 1B81 B51A           	.byte #0xb5, #0x1a	; 6837
+2273 1B82 961A           	.byte #0x96, #0x1a	; 6806
+2274 1B83 771A           	.byte #0x77, #0x1a	; 6775
+2275 1B84 581A           	.byte #0x58, #0x1a	; 6744
+2276 1B85 391A           	.byte #0x39, #0x1a	; 6713
+2277 1B86 1B1A           	.byte #0x1b, #0x1a	; 6683
+2278 1B87 FC19           	.byte #0xfc, #0x19	; 6652
+2279 1B88 DE19           	.byte #0xde, #0x19	; 6622
+2280 1B89 C019           	.byte #0xc0, #0x19	; 6592
+2281 1B8A A219           	.byte #0xa2, #0x19	; 6562
+2282 1B8B 8419           	.byte #0x84, #0x19	; 6532
+2283 1B8C 6719           	.byte #0x67, #0x19	; 6503
+2284 1B8D 4919           	.byte #0x49, #0x19	; 6473
+2285 1B8E 2C19           	.byte #0x2c, #0x19	; 6444
+2286 1B8F 0E19           	.byte #0x0e, #0x19	; 6414
+2287 1B90 F118           	.byte #0xf1, #0x18	; 6385
+2288 1B91 D518           	.byte #0xd5, #0x18	; 6357
+2289 1B92 B818           	.byte #0xb8, #0x18	; 6328
+2290 1B93 9B18           	.byte #0x9b, #0x18	; 6299
+2291 1B94 7F18           	.byte #0x7f, #0x18	; 6271
+2292 1B95 6218           	.byte #0x62, #0x18	; 6242
+2293 1B96 4618           	.byte #0x46, #0x18	; 6214
+2294 1B97 2A18           	.byte #0x2a, #0x18	; 6186
+2295 1B98 0E18           	.byte #0x0e, #0x18	; 6158
+2296 1B99 F317           	.byte #0xf3, #0x17	; 6131
+2297 1B9A D717           	.byte #0xd7, #0x17	; 6103
+2298 1B9B BC17           	.byte #0xbc, #0x17	; 6076
+2299 1B9C A017           	.byte #0xa0, #0x17	; 6048
+2300 1B9D 8517           	.byte #0x85, #0x17	; 6021
+2301 1B9E 6A17           	.byte #0x6a, #0x17	; 5994
+2302 1B9F 4F17           	.byte #0x4f, #0x17	; 5967
+2303 1BA0 3417           	.byte #0x34, #0x17	; 5940
+2304 1BA1 1A17           	.byte #0x1a, #0x17	; 5914
+2305 1BA2 FF16           	.byte #0xff, #0x16	; 5887
+2306 1BA3 E516           	.byte #0xe5, #0x16	; 5861
+2307 1BA4 CB16           	.byte #0xcb, #0x16	; 5835
+2308 1BA5 B016           	.byte #0xb0, #0x16	; 5808
+2309 1BA6 9716           	.byte #0x97, #0x16	; 5783
+2310 1BA7 7D16           	.byte #0x7d, #0x16	; 5757
+2311 1BA8 6316           	.byte #0x63, #0x16	; 5731
+2312 1BA9 4916           	.byte #0x49, #0x16	; 5705
+2313 1BAA 3016           	.byte #0x30, #0x16	; 5680
+2314 1BAB 1716           	.byte #0x17, #0x16	; 5655
+2315 1BAC FD15           	.byte #0xfd, #0x15	; 5629
+2316 1BAD E415           	.byte #0xe4, #0x15	; 5604
+2317 1BAE CB15           	.byte #0xcb, #0x15	; 5579
+2318 1BAF B315           	.byte #0xb3, #0x15	; 5555
+2319 1BB0 9A15           	.byte #0x9a, #0x15	; 5530
+2320 1BB1 8115           	.byte #0x81, #0x15	; 5505
+2321 1BB2 6915           	.byte #0x69, #0x15	; 5481
+2322 1BB3 5115           	.byte #0x51, #0x15	; 5457
+2323 1BB4 3815           	.byte #0x38, #0x15	; 5432
+2324 1BB5 2015           	.byte #0x20, #0x15	; 5408
+2325 1BB6 0815           	.byte #0x08, #0x15	; 5384
+2326 1BB7 F114           	.byte #0xf1, #0x14	; 5361
+2327 1BB8 D914           	.byte #0xd9, #0x14	; 5337
+2328 1BB9 C114           	.byte #0xc1, #0x14	; 5313
+2329 1BBA AA14           	.byte #0xaa, #0x14	; 5290
+2330 1BBB 9214           	.byte #0x92, #0x14	; 5266
+2331 1BBC 7B14           	.byte #0x7b, #0x14	; 5243
+2332 1BBD 6414           	.byte #0x64, #0x14	; 5220
+2333 1BBE 4D14           	.byte #0x4d, #0x14	; 5197
+2334 1BBF 3614           	.byte #0x36, #0x14	; 5174
+2335 1BC0 1F14           	.byte #0x1f, #0x14	; 5151
+2336 1BC1 0914           	.byte #0x09, #0x14	; 5129
+2337 1BC2 F213           	.byte #0xf2, #0x13	; 5106
+2338 1BC3 DC13           	.byte #0xdc, #0x13	; 5084
+2339 1BC4 C513           	.byte #0xc5, #0x13	; 5061
+2340 1BC5 AF13           	.byte #0xaf, #0x13	; 5039
+2341 1BC6 9913           	.byte #0x99, #0x13	; 5017
+2342 1BC7 8313           	.byte #0x83, #0x13	; 4995
+2343 1BC8 6D13           	.byte #0x6d, #0x13	; 4973
+2344 1BC9 5713           	.byte #0x57, #0x13	; 4951
+2345 1BCA 4213           	.byte #0x42, #0x13	; 4930
+2346 1BCB 2C13           	.byte #0x2c, #0x13	; 4908
+2347 1BCC 1713           	.byte #0x17, #0x13	; 4887
+2348 1BCD 0113           	.byte #0x01, #0x13	; 4865
+2349 1BCE EC12           	.byte #0xec, #0x12	; 4844
+2350 1BCF D712           	.byte #0xd7, #0x12	; 4823
+2351 1BD0 C212           	.byte #0xc2, #0x12	; 4802
+2352 1BD1 AD12           	.byte #0xad, #0x12	; 4781
+2353 1BD2 9812           	.byte #0x98, #0x12	; 4760
+2354 1BD3 8312           	.byte #0x83, #0x12	; 4739
+2355 1BD4 6F12           	.byte #0x6f, #0x12	; 4719
+2356 1BD5 5A12           	.byte #0x5a, #0x12	; 4698
+2357 1BD6 4612           	.byte #0x46, #0x12	; 4678
+2358 1BD7 3112           	.byte #0x31, #0x12	; 4657
+2359 1BD8 1D12           	.byte #0x1d, #0x12	; 4637
+2360 1BD9 0912           	.byte #0x09, #0x12	; 4617
+2361 1BDA F511           	.byte #0xf5, #0x11	; 4597
+2362 1BDB E111           	.byte #0xe1, #0x11	; 4577
+2363 1BDC CD11           	.byte #0xcd, #0x11	; 4557
+2364 1BDD BA11           	.byte #0xba, #0x11	; 4538
+2365 1BDE A611           	.byte #0xa6, #0x11	; 4518
+2366 1BDF 9211           	.byte #0x92, #0x11	; 4498
+2367 1BE0 7F11           	.byte #0x7f, #0x11	; 4479
+2368 1BE1 6C11           	.byte #0x6c, #0x11	; 4460
+2369 1BE2 5811           	.byte #0x58, #0x11	; 4440
+2370 1BE3 4511           	.byte #0x45, #0x11	; 4421
+2371 1BE4 3211           	.byte #0x32, #0x11	; 4402
+2372 1BE5 1F11           	.byte #0x1f, #0x11	; 4383
+2373 1BE6 0C11           	.byte #0x0c, #0x11	; 4364
+2374 1BE7 F910           	.byte #0xf9, #0x10	; 4345
+2375 1BE8 E710           	.byte #0xe7, #0x10	; 4327
+2376 1BE9 D410           	.byte #0xd4, #0x10	; 4308
+2377 1BEA C210           	.byte #0xc2, #0x10	; 4290
+2378 1BEB AF10           	.byte #0xaf, #0x10	; 4271
+2379 1BEC 9D10           	.byte #0x9d, #0x10	; 4253
+2380 1BED 8B10           	.byte #0x8b, #0x10	; 4235
+2381 1BEE 7810           	.byte #0x78, #0x10	; 4216
+2382 1BEF 6610           	.byte #0x66, #0x10	; 4198
+2383 1BF0 5410           	.byte #0x54, #0x10	; 4180
+2384 1BF1 4210           	.byte #0x42, #0x10	; 4162
+2385 1BF2 3110           	.byte #0x31, #0x10	; 4145
+2386 1BF3 1F10           	.byte #0x1f, #0x10	; 4127
+2387 1BF4 0D10           	.byte #0x0d, #0x10	; 4109
+2388 1BF5 FC0F           	.byte #0xfc, #0x0f	; 4092
+2389 1BF6 EA0F           	.byte #0xea, #0x0f	; 4074
+2390 1BF7 D90F           	.byte #0xd9, #0x0f	; 4057
+2391 1BF8 C80F           	.byte #0xc8, #0x0f	; 4040
+2392 1BF9 B60F           	.byte #0xb6, #0x0f	; 4022
+2393 1BFA A50F           	.byte #0xa5, #0x0f	; 4005
+2394 1BFB 940F           	.byte #0x94, #0x0f	; 3988
+2395 1BFC 830F           	.byte #0x83, #0x0f	; 3971
+2396 1BFD 720F           	.byte #0x72, #0x0f	; 3954
+2397 1BFE 610F           	.byte #0x61, #0x0f	; 3937
+2398 1BFF 510F           	.byte #0x51, #0x0f	; 3921
+2399 1C00 400F           	.byte #0x40, #0x0f	; 3904
+2400 1C01 300F           	.byte #0x30, #0x0f	; 3888
+2401 1C02 1F0F           	.byte #0x1f, #0x0f	; 3871
+2402 1C03 0D0F           	.byte #0x0d, #0x0f	; 3853
+2403 1C04 FE0E           	.byte #0xfe, #0x0e	; 3838
+2404 1C05 EE0E           	.byte #0xee, #0x0e	; 3822
+2405 1C06 DE0E           	.byte #0xde, #0x0e	; 3806
+2406 1C07 CE0E           	.byte #0xce, #0x0e	; 3790
+2407 1C08 BE0E           	.byte #0xbe, #0x0e	; 3774
+2408 1C09 AE0E           	.byte #0xae, #0x0e	; 3758
+2409 1C0A 9E0E           	.byte #0x9e, #0x0e	; 3742
+2410 1C0B 8E0E           	.byte #0x8e, #0x0e	; 3726
+2411 1C0C 7F0E           	.byte #0x7f, #0x0e	; 3711
+2412 1C0D 6F0E           	.byte #0x6f, #0x0e	; 3695
+2413 1C0E 5F0E           	.byte #0x5f, #0x0e	; 3679
+2414 1C0F 500E           	.byte #0x50, #0x0e	; 3664
+2415 1C10 400E           	.byte #0x40, #0x0e	; 3648
+2416 1C11 310E           	.byte #0x31, #0x0e	; 3633
+2417 1C12 220E           	.byte #0x22, #0x0e	; 3618
+2418 1C13 130E           	.byte #0x13, #0x0e	; 3603
+2419 1C14 030E           	.byte #0x03, #0x0e	; 3587
+2420 1C15 F40D           	.byte #0xf4, #0x0d	; 3572
+2421 1C16 E50D           	.byte #0xe5, #0x0d	; 3557
+2422 1C17 D70D           	.byte #0xd7, #0x0d	; 3543
+2423 1C18 C80D           	.byte #0xc8, #0x0d	; 3528
+2424 1C19 B90D           	.byte #0xb9, #0x0d	; 3513
+2425 1C1A AA0D           	.byte #0xaa, #0x0d	; 3498
+2426 1C1B 9C0D           	.byte #0x9c, #0x0d	; 3484
+2427 1C1C 8D0D           	.byte #0x8d, #0x0d	; 3469
+2428 1C1D 7F0D           	.byte #0x7f, #0x0d	; 3455
+2429 1C1E 700D           	.byte #0x70, #0x0d	; 3440
+2430 1C1F 620D           	.byte #0x62, #0x0d	; 3426
+2431 1C20 540D           	.byte #0x54, #0x0d	; 3412
+2432 1C21 450D           	.byte #0x45, #0x0d	; 3397
+2433 1C22 370D           	.byte #0x37, #0x0d	; 3383
+2434 1C23 290D           	.byte #0x29, #0x0d	; 3369
+2435 1C24 1B0D           	.byte #0x1b, #0x0d	; 3355
+2436 1C25 0D0D           	.byte #0x0d, #0x0d	; 3341
+2437 1C26 FF0C           	.byte #0xff, #0x0c	; 3327
+2438 1C27 F10C           	.byte #0xf1, #0x0c	; 3313
+2439 1C28 E40C           	.byte #0xe4, #0x0c	; 3300
+2440 1C29 D60C           	.byte #0xd6, #0x0c	; 3286
+2441 1C2A C80C           	.byte #0xc8, #0x0c	; 3272
+2442 1C2B BA0C           	.byte #0xba, #0x0c	; 3258
+2443 1C2C AD0C           	.byte #0xad, #0x0c	; 3245
+2444 1C2D A00C           	.byte #0xa0, #0x0c	; 3232
+2445 1C2E 920C           	.byte #0x92, #0x0c	; 3218
+2446 1C2F 850C           	.byte #0x85, #0x0c	; 3205
+2447 1C30 780C           	.byte #0x78, #0x0c	; 3192
+2448 1C31 6B0C           	.byte #0x6b, #0x0c	; 3179
+2449 1C32 5E0C           	.byte #0x5e, #0x0c	; 3166
+2450 1C33 510C           	.byte #0x51, #0x0c	; 3153
+2451 1C34 440C           	.byte #0x44, #0x0c	; 3140
+2452 1C35 370C           	.byte #0x37, #0x0c	; 3127
+2453 1C36 2A0C           	.byte #0x2a, #0x0c	; 3114
+2454 1C37 1D0C           	.byte #0x1d, #0x0c	; 3101
+2455 1C38 100C           	.byte #0x10, #0x0c	; 3088
+2456 1C39 030C           	.byte #0x03, #0x0c	; 3075
+2457 1C3A F70B           	.byte #0xf7, #0x0b	; 3063
+2458 1C3B EA0B           	.byte #0xea, #0x0b	; 3050
+2459 1C3C DE0B           	.byte #0xde, #0x0b	; 3038
+2460 1C3D D10B           	.byte #0xd1, #0x0b	; 3025
+2461 1C3E C50B           	.byte #0xc5, #0x0b	; 3013
+2462 1C3F B90B           	.byte #0xb9, #0x0b	; 3001
+2463 1C40 AC0B           	.byte #0xac, #0x0b	; 2988
+2464 1C41 A00B           	.byte #0xa0, #0x0b	; 2976
+2465 1C42 940B           	.byte #0x94, #0x0b	; 2964
+2466 1C43 880B           	.byte #0x88, #0x0b	; 2952
+2467 1C44 7C0B           	.byte #0x7c, #0x0b	; 2940
+2468 1C45 700B           	.byte #0x70, #0x0b	; 2928
+2469 1C46 640B           	.byte #0x64, #0x0b	; 2916
+2470 1C47 580B           	.byte #0x58, #0x0b	; 2904
+2471 1C48 4C0B           	.byte #0x4c, #0x0b	; 2892
+2472 1C49 400B           	.byte #0x40, #0x0b	; 2880
+2473 1C4A 340B           	.byte #0x34, #0x0b	; 2868
+2474 1C4B 290B           	.byte #0x29, #0x0b	; 2857
+2475 1C4C 1D0B           	.byte #0x1d, #0x0b	; 2845
+2476 1C4D 120B           	.byte #0x12, #0x0b	; 2834
+2477 1C4E 060B           	.byte #0x06, #0x0b	; 2822
+2478 1C4F FB0A           	.byte #0xfb, #0x0a	; 2811
+2479 1C50 EF0A           	.byte #0xef, #0x0a	; 2799
+2480 1C51 E40A           	.byte #0xe4, #0x0a	; 2788
+2481 1C52 D90A           	.byte #0xd9, #0x0a	; 2777
+2482 1C53 CD0A           	.byte #0xcd, #0x0a	; 2765
+2483 1C54 C20A           	.byte #0xc2, #0x0a	; 2754
+2484 1C55 B70A           	.byte #0xb7, #0x0a	; 2743
+2485 1C56 AC0A           	.byte #0xac, #0x0a	; 2732
+2486 1C57 A10A           	.byte #0xa1, #0x0a	; 2721
+2487 1C58 960A           	.byte #0x96, #0x0a	; 2710
+2488 1C59 8B0A           	.byte #0x8b, #0x0a	; 2699
+2489 1C5A 800A           	.byte #0x80, #0x0a	; 2688
+2490 1C5B 750A           	.byte #0x75, #0x0a	; 2677
+2491 1C5C 6A0A           	.byte #0x6a, #0x0a	; 2666
+2492 1C5D 600A           	.byte #0x60, #0x0a	; 2656
+2493 1C5E 550A           	.byte #0x55, #0x0a	; 2645
+2494 1C5F 4A0A           	.byte #0x4a, #0x0a	; 2634
+2495 1C60 400A           	.byte #0x40, #0x0a	; 2624
+2496 1C61 350A           	.byte #0x35, #0x0a	; 2613
+2497 1C62 2B0A           	.byte #0x2b, #0x0a	; 2603
+2498 1C63 200A           	.byte #0x20, #0x0a	; 2592
+2499 1C64 160A           	.byte #0x16, #0x0a	; 2582
+2500 1C65 0B0A           	.byte #0x0b, #0x0a	; 2571
+2501 1C66 010A           	.byte #0x01, #0x0a	; 2561
+2502 1C67 F809           	.byte #0xf8, #0x09	; 2552
+2503 1C68 EC09           	.byte #0xec, #0x09	; 2540
+2504 1C69 E209           	.byte #0xe2, #0x09	; 2530
+2505 1C6A D809           	.byte #0xd8, #0x09	; 2520
+2506 1C6B CE09           	.byte #0xce, #0x09	; 2510
+2507 1C6C C409           	.byte #0xc4, #0x09	; 2500
+2508 1C6D BA09           	.byte #0xba, #0x09	; 2490
+2509 1C6E B009           	.byte #0xb0, #0x09	; 2480
+2510 1C6F A609           	.byte #0xa6, #0x09	; 2470
+2511 1C70 9C09           	.byte #0x9c, #0x09	; 2460
+2512 1C71 9309           	.byte #0x93, #0x09	; 2451
+2513 1C72 8909           	.byte #0x89, #0x09	; 2441
+2514 1C73 7F09           	.byte #0x7f, #0x09	; 2431
+2515 1C74 7509           	.byte #0x75, #0x09	; 2421
+2516 1C75 6C09           	.byte #0x6c, #0x09	; 2412
+2517 1C76 6209           	.byte #0x62, #0x09	; 2402
+2518 1C77 5909           	.byte #0x59, #0x09	; 2393
+2519 1C78 4F09           	.byte #0x4f, #0x09	; 2383
+2520 1C79 4609           	.byte #0x46, #0x09	; 2374
+2521 1C7A 3C09           	.byte #0x3c, #0x09	; 2364
+2522 1C7B 3309           	.byte #0x33, #0x09	; 2355
+2523 1C7C 2A09           	.byte #0x2a, #0x09	; 2346
+2524 1C7D 2009           	.byte #0x20, #0x09	; 2336
+2525 1C7E 1709           	.byte #0x17, #0x09	; 2327
+2526 1C7F 0E09           	.byte #0x0e, #0x09	; 2318
+2527 1C80 0509           	.byte #0x05, #0x09	; 2309
+2528 1C81 FB08           	.byte #0xfb, #0x08	; 2299
+2529 1C82 F208           	.byte #0xf2, #0x08	; 2290
+2530 1C83 E908           	.byte #0xe9, #0x08	; 2281
+2531 1C84 E008           	.byte #0xe0, #0x08	; 2272
+2532 1C85 D708           	.byte #0xd7, #0x08	; 2263
+2533 1C86 CE08           	.byte #0xce, #0x08	; 2254
+2534 1C87 C608           	.byte #0xc6, #0x08	; 2246
+2535 1C88 BD08           	.byte #0xbd, #0x08	; 2237
+2536 1C89 B408           	.byte #0xb4, #0x08	; 2228
+2537 1C8A AB08           	.byte #0xab, #0x08	; 2219
+2538 1C8B A208           	.byte #0xa2, #0x08	; 2210
+2539 1C8C 9A08           	.byte #0x9a, #0x08	; 2202
+2540 1C8D 9108           	.byte #0x91, #0x08	; 2193
+2541 1C8E 8908           	.byte #0x89, #0x08	; 2185
+2542 1C8F 8008           	.byte #0x80, #0x08	; 2176
+2543 1C90 7708           	.byte #0x77, #0x08	; 2167
+2544 1C91 6F08           	.byte #0x6f, #0x08	; 2159
+2545 1C92 6608           	.byte #0x66, #0x08	; 2150
+2546 1C93 5E08           	.byte #0x5e, #0x08	; 2142
+2547 1C94 5608           	.byte #0x56, #0x08	; 2134
+2548 1C95 4D08           	.byte #0x4d, #0x08	; 2125
+2549 1C96 4508           	.byte #0x45, #0x08	; 2117
+2550 1C97 3D08           	.byte #0x3d, #0x08	; 2109
+2551 1C98 3508           	.byte #0x35, #0x08	; 2101
+2552 1C99 2C08           	.byte #0x2c, #0x08	; 2092
+2553 1C9A 2408           	.byte #0x24, #0x08	; 2084
+2554 1C9B 1C08           	.byte #0x1c, #0x08	; 2076
+2555 1C9C 1408           	.byte #0x14, #0x08	; 2068
+2556 1C9D 0C08           	.byte #0x0c, #0x08	; 2060
+2557 1C9E 0408           	.byte #0x04, #0x08	; 2052
+2558 1C9F FC07           	.byte #0xfc, #0x07	; 2044
+2559 1CA0 F407           	.byte #0xf4, #0x07	; 2036
+2560 1CA1 EC07           	.byte #0xec, #0x07	; 2028
+2561 1CA2 E407           	.byte #0xe4, #0x07	; 2020
+2562 1CA3 DC07           	.byte #0xdc, #0x07	; 2012
+2563 1CA4 D507           	.byte #0xd5, #0x07	; 2005
+2564 1CA5 CD07           	.byte #0xcd, #0x07	; 1997
+2565 1CA6 C507           	.byte #0xc5, #0x07	; 1989
+2566 1CA7 BD07           	.byte #0xbd, #0x07	; 1981
+2567 1CA8 B607           	.byte #0xb6, #0x07	; 1974
+2568 1CA9 AE07           	.byte #0xae, #0x07	; 1966
+2569 1CAA A607           	.byte #0xa6, #0x07	; 1958
+2570 1CAB 9F07           	.byte #0x9f, #0x07	; 1951
+2571 1CAC 9707           	.byte #0x97, #0x07	; 1943
+2572 1CAD 9007           	.byte #0x90, #0x07	; 1936
+2573 1CAE 8807           	.byte #0x88, #0x07	; 1928
+2574 1CAF 8107           	.byte #0x81, #0x07	; 1921
+2575 1CB0 7907           	.byte #0x79, #0x07	; 1913
+2576 1CB1 7207           	.byte #0x72, #0x07	; 1906
+2577 1CB2 6B07           	.byte #0x6b, #0x07	; 1899
+2578 1CB3 6307           	.byte #0x63, #0x07	; 1891
+2579 1CB4 5C07           	.byte #0x5c, #0x07	; 1884
+2580 1CB5 5507           	.byte #0x55, #0x07	; 1877
+2581 1CB6 4E07           	.byte #0x4e, #0x07	; 1870
+2582 1CB7 4707           	.byte #0x47, #0x07	; 1863
+2583 1CB8 3F07           	.byte #0x3f, #0x07	; 1855
+2584 1CB9 3807           	.byte #0x38, #0x07	; 1848
+2585 1CBA 3107           	.byte #0x31, #0x07	; 1841
+2586 1CBB 2A07           	.byte #0x2a, #0x07	; 1834
+2587 1CBC 2307           	.byte #0x23, #0x07	; 1827
+2588 1CBD 1C07           	.byte #0x1c, #0x07	; 1820
+2589 1CBE 1507           	.byte #0x15, #0x07	; 1813
+2590 1CBF 0E07           	.byte #0x0e, #0x07	; 1806
+2591 1CC0 0707           	.byte #0x07, #0x07	; 1799
+2592 1CC1 0007           	.byte #0x00, #0x07	; 1792
 2593                     
 2594                     ;--------------------------------------------------------
 2595                     ; initialized data - mirror

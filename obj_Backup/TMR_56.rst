@@ -4,8 +4,8 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
-008                     ;;	.file	"C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"
+007                     ;	;CCFROM:"D:\Work\MT\Ñ§Ï°\97 ÏîÄ¿\00 4718_²âÎÂ·¶Î§¹¤³Ì±ä¸ü\´úÂë\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
+008                     ;;	.file	"D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"
 009                     	.module TMR_56
 010                     	;.list	p=HY17P56
 011                     	;--cdb--S:G$TB1C2Set$0$0({2}DF,SV:S),C,0,0
@@ -26,13 +26,13 @@
 026                     ;--------------------------------------------------------
 027                     	.FUNC _TB1C2Set:$r:0:2:$L:_TB1C2Set_STK00
 028                     ;--------------------------------------------------------
-029                     ;	;.line	107; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C2H=(TMB>>8);
+029                     ;	;.line	107; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C2H=(TMB>>8);
 030                     _TB1C2Set:	;Function start
 031                     	MVF	_TB1C2H,1,0
-032                     ;	;.line	108; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C2L= (0x00FF & TMB);
+032                     ;	;.line	108; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C2L= (0x00FF & TMB);
 033                     	MVF	_TB1C2Set_STK00,0,0
 034                     	MVF	_TB1C2L,1,0
-035                     ;	;.line	109; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
+035                     ;	;.line	109; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
 036                     	RET	
 037                     ; exit point of _TB1C2Set
 038                     	.ENDFUNC	_TB1C2Set
@@ -43,13 +43,13 @@
 043                     ;--------------------------------------------------------
 044                     	.FUNC _TB1C1Set:$r:0:2:$L:_TB1C1Set_STK00
 045                     ;--------------------------------------------------------
-046                     ;	;.line	101; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C1H=(TMB>>8);
+046                     ;	;.line	101; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C1H=(TMB>>8);
 047                     _TB1C1Set:	;Function start
 048                     	MVF	_TB1C1H,1,0
-049                     ;	;.line	102; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C1L= (0x00FF & TMB);
+049                     ;	;.line	102; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C1L= (0x00FF & TMB);
 050                     	MVF	_TB1C1Set_STK00,0,0
 051                     	MVF	_TB1C1L,1,0
-052                     ;	;.line	103; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
+052                     ;	;.line	103; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
 053                     	RET	
 054                     ; exit point of _TB1C1Set
 055                     	.ENDFUNC	_TB1C1Set
@@ -60,13 +60,13 @@
 060                     ;--------------------------------------------------------
 061                     	.FUNC _TB1C0Set:$r:0:2:$L:_TB1C0Set_STK00
 062                     ;--------------------------------------------------------
-063                     ;	;.line	95; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C0H=(TMB>>8);
+063                     ;	;.line	95; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C0H=(TMB>>8);
 064                     _TB1C0Set:	;Function start
 065                     	MVF	_TB1C0H,1,0
-066                     ;	;.line	96; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C0L= (0x00FF & TMB);
+066                     ;	;.line	96; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1C0L= (0x00FF & TMB);
 067                     	MVF	_TB1C0Set_STK00,0,0
 068                     	MVF	_TB1C0L,1,0
-069                     ;	;.line	97; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
+069                     ;	;.line	97; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
 070                     	RET	
 071                     ; exit point of _TB1C0Set
 072                     	.ENDFUNC	_TB1C0Set
@@ -77,15 +77,15 @@
 077                     ;--------------------------------------------------------
 078                     	.FUNC _PWMOpen:$r:0:3:$L:r0x108C:$L:_PWMOpen_STK00:$L:_PWMOpen_STK01
 079                     ;--------------------------------------------------------
-080                     ;	;.line	37; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	void PWMOpen(unsigned char mode,  //Select PWM mode
+080                     ;	;.line	37; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	void PWMOpen(unsigned char mode,  //Select PWM mode
 081                     _PWMOpen:	;Function start
 082                     	MVF	r0x108C,1,0
-083                     ;	;.line	42; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_TRIG_MODE(TB1RT_LogicH);
+083                     ;	;.line	42; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_TRIG_MODE(TB1RT_LogicH);
 084                     	MVL	0xe7
 085                     	ANDF	_TB1CN0,1,0
-086                     ;	;.line	43; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ClearTMB1();
+086                     ;	;.line	43; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ClearTMB1();
 087                     	BSF	_TB1CN0,2
-088                     ;	;.line	44; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	switch(mode)
+088                     ;	;.line	44; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	switch(mode)
 089                     	MVL	0x08
 090                     	CPSL	r0x108C,0
 091                     	JMP	_00112_DS_
@@ -106,121 +106,121 @@
 106                     	RJ	_00110_DS_
 107                     	RJ	_00111_DS_
 108                     _00105_DS_:
-109                     ;	;.line	47; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
+109                     ;	;.line	47; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
 110                     	MVL	0x9f
 111                     	ANDF	_TB1CN0,1,0
-112                     ;	;.line	48; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO1);
+112                     ;	;.line	48; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO1);
 113                     	MVL	0x8f
 114                     	ANDF	_TB1CN1,1,0
-115                     ;	;.line	49; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO1);
+115                     ;	;.line	49; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO1);
 116                     	MVL	0xf8
 117                     	ANDF	_TB1CN1,1,0
-118                     ;	;.line	50; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+118                     ;	;.line	50; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 119                     	JMP	_00112_DS_
 120                     _00106_DS_:
-121                     ;	;.line	53; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
+121                     ;	;.line	53; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
 122                     	MVL	0x9f
 123                     	ANDF	_TB1CN0,1,0
-124                     ;	;.line	54; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO2);
+124                     ;	;.line	54; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO2);
 125                     	MVF	_TB1CN1,0,0
 126                     	ANDL	0x8f
 127                     	IORL	0x10
 128                     	MVF	_TB1CN1,1,0
-129                     ;	;.line	55; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO2);
+129                     ;	;.line	55; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO2);
 130                     	ANDL	0xf8
 131                     	IORL	0x01
 132                     	MVF	_TB1CN1,1,0
-133                     ;	;.line	56; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+133                     ;	;.line	56; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 134                     	JMP	_00112_DS_
 135                     _00107_DS_:
-136                     ;	;.line	59; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_2_8bit);
+136                     ;	;.line	59; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_2_8bit);
 137                     	MVF	_TB1CN0,0,0
 138                     	ANDL	0x9f
 139                     	IORL	0x40
 140                     	MVF	_TB1CN0,1,0
-141                     ;	;.line	60; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO3);
+141                     ;	;.line	60; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO3);
 142                     	MVF	_TB1CN1,0,0
 143                     	ANDL	0x8f
 144                     	IORL	0x20
 145                     	MVF	_TB1CN1,1,0
-146                     ;	;.line	61; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO3);
+146                     ;	;.line	61; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO3);
 147                     	ANDL	0xf8
 148                     	IORL	0x02
 149                     	MVF	_TB1CN1,1,0
-150                     ;	;.line	62; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+150                     ;	;.line	62; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 151                     	JMP	_00112_DS_
 152                     _00108_DS_:
-153                     ;	;.line	65; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_2_8bit);
+153                     ;	;.line	65; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_2_8bit);
 154                     	MVF	_TB1CN0,0,0
 155                     	ANDL	0x9f
 156                     	IORL	0x40
 157                     	MVF	_TB1CN0,1,0
-158                     ;	;.line	66; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO4);
+158                     ;	;.line	66; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO4);
 159                     	MVF	_TB1CN1,0,0
 160                     	ANDL	0x8f
 161                     	IORL	0x30
 162                     	MVF	_TB1CN1,1,0
-163                     ;	;.line	67; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO4);
+163                     ;	;.line	67; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO4);
 164                     	ANDL	0xf8
 165                     	IORL	0x03
 166                     	MVF	_TB1CN1,1,0
-167                     ;	;.line	68; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+167                     ;	;.line	68; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 168                     	JMP	_00112_DS_
 169                     _00109_DS_:
-170                     ;	;.line	71; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_8_8bit);
+170                     ;	;.line	71; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_8_8bit);
 171                     	MVF	_TB1CN0,0,0
 172                     	ANDL	0x9f
 173                     	IORL	0x60
 174                     	MVF	_TB1CN0,1,0
-175                     ;	;.line	72; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO5);
+175                     ;	;.line	72; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO5);
 176                     	MVF	_TB1CN1,0,0
 177                     	ANDL	0x8f
 178                     	IORL	0x40
 179                     	MVF	_TB1CN1,1,0
-180                     ;	;.line	73; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO5);
+180                     ;	;.line	73; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO5);
 181                     	ANDL	0xf8
 182                     	IORL	0x04
 183                     	MVF	_TB1CN1,1,0
-184                     ;	;.line	74; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+184                     ;	;.line	74; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 185                     	JMP	_00112_DS_
 186                     _00110_DS_:
-187                     ;	;.line	77; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_17bit);
+187                     ;	;.line	77; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_17bit);
 188                     	MVF	_TB1CN0,0,0
 189                     	ANDL	0x9f
 190                     	IORL	0x20
 191                     	MVF	_TB1CN0,1,0
-192                     ;	;.line	78; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO6);
+192                     ;	;.line	78; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO6);
 193                     	MVF	_TB1CN1,0,0
 194                     	ANDL	0x8f
 195                     	IORL	0x50
 196                     	MVF	_TB1CN1,1,0
-197                     ;	;.line	79; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO6);
+197                     ;	;.line	79; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO6);
 198                     	ANDL	0xf8
 199                     	IORL	0x05
 200                     	MVF	_TB1CN1,1,0
-201                     ;	;.line	80; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
+201                     ;	;.line	80; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	break;
 202                     	JMP	_00112_DS_
 203                     _00111_DS_:
-204                     ;	;.line	83; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
+204                     ;	;.line	83; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_ModeSelect(TB1M_16bit);
 205                     	MVL	0x9f
 206                     	ANDF	_TB1CN0,1,0
-207                     ;	;.line	84; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO7);
+207                     ;	;.line	84; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM1ModeSelect(PWMA1_PWMO7);
 208                     	MVF	_TB1CN1,0,0
 209                     	ANDL	0x8f
 210                     	IORL	0x60
 211                     	MVF	_TB1CN1,1,0
-212                     ;	;.line	85; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO7);
+212                     ;	;.line	85; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1_PWM0ModeSelect(PWMA0_PWMO7);
 213                     	ANDL	0xf8
 214                     	IORL	0x06
 215                     	MVF	_TB1CN1,1,0
 216                     _00112_DS_:
-217                     ;	;.line	88; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1Enable();
+217                     ;	;.line	88; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1Enable();
 218                     	BSF	_TB1CN0,7
-219                     ;	;.line	89; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1CN0 |= (pwm0 | pwm1);  //Note: TB1CN0[1:0] must be the last to configured
+219                     ;	;.line	89; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	TB1CN0 |= (pwm0 | pwm1);  //Note: TB1CN0[1:0] must be the last to configured
 220                     	MVF	_PWMOpen_STK01,0,0
 221                     	IORF	_PWMOpen_STK00,0,0
 222                     	IORF	_TB1CN0,1,0
-223                     ;	;.line	91; "C:\HYCON\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
+223                     ;	;.line	91; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\TMR_56.c"	}
 224                     	RET	
 225                     ; exit point of _PWMOpen
 226                     	.ENDFUNC	_PWMOpen

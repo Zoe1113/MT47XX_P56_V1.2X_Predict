@@ -174,24 +174,24 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	26; ".\Source\Drv_CLK.c"	CLK_HAOEnable();
 176                     _CLK_Configuration:	;Function start
-177 1389 [00] [Y] 9036      	BSF	_OSCCN2,0
+177 1307 [00] [Y] 9036      	BSF	_OSCCN2,0
 178                     ;	;.line	30; ".\Source\Drv_CLK.c"	CLK_OSCSelect(OSCS_HAO);
-179 138A [00] [Y] 063F      	MVL	0x3f
-180 138B [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+179 1308 [00] [Y] 063F      	MVL	0x3f
+180 1309 [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 181                     ;	;.line	34; ".\Source\Drv_CLK.c"	CLK_DHSCKSelect(DHS_HSCKDIV1);
-182 138C [00] [Y] 06CF      	MVL	0xcf
-183 138D [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+182 130A [00] [Y] 06CF      	MVL	0xcf
+183 130B [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 184                     ;	;.line	38; ".\Source\Drv_CLK.c"	CLK_DMSCKSelect(DMS_DHSCKDIV2);
-185 138E [00] [Y] 06F1      	MVL	0xf1
-186 138F [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+185 130C [00] [Y] 06F1      	MVL	0xf1
+186 130D [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 187                     ;	;.line	45; ".\Source\Drv_CLK.c"	CLK_LPCCKSelect(LCPS_LPO);
-188 1390 [00] [Y] 8C35      	BCF	_OSCCN1,6
+188 130E [00] [Y] 8C35      	BCF	_OSCCN1,6
 189                     ;	;.line	48; ".\Source\Drv_CLK.c"	CLK_CPUCKSelect(CPUS_HSCK/*CPUS_DHSCK*/);
-190 1391 [00] [Y] 8034      	BCF	_OSCCN0,0
+190 130F [00] [Y] 8034      	BCF	_OSCCN0,0
 191                     ;	;.line	54; ".\Source\Drv_CLK.c"	PWRCN &= 0xFE;
-192 1392 [00] [Y] 8033      	BCF	_PWRCN,0
+192 1310 [00] [Y] 8033      	BCF	_PWRCN,0
 193                     ;	;.line	55; ".\Source\Drv_CLK.c"	}
-194 1393 [00] [Y] 000A      	RET	
+194 1311 [00] [Y] 000A      	RET	
 195                     ; exit point of _CLK_Configuration
 196                     	.ENDFUNC	_CLK_Configuration
 197                     ;--------------------------------------------------------

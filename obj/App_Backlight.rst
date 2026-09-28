@@ -182,7 +182,7 @@
 182                     ;--------------------------------------------------------
 183                     ;	;.line	1125; ".\Source\App_Backlight.c"	}
 184                     _Backlight_Drive:	;Function start
-185 075C [00] [Y] 000A      	RET	
+185 072E [00] [Y] 000A      	RET	
 186                     ; exit point of _Backlight_Drive
 187                     	.ENDFUNC	_Backlight_Drive
 188                     ;--------------------------------------------------------

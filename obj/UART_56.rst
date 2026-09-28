@@ -4,8 +4,8 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
-008                     ;;	.file	"C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"
+007                     ;	;CCFROM:"D:\Work\MT\Ñ§Ï°\97 ÏîÄ¿\00 4718_²âÎÂ·¶Î§¹¤³Ì±ä¸ü\´úÂë\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
+008                     ;;	.file	"D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"
 009                     	.module UART_56
 010                     	;.list	p=HY17P56
 011                     	;--cdb--S:G$UART2_BGRSet$0$0({2}DF,SV:S),C,0,0
@@ -22,13 +22,13 @@
 022                     ;--------------------------------------------------------
 023                     	.FUNC _UART2_BGRSet:$r:0:2:$L:_UART2_BGRSet_STK00
 024                     ;--------------------------------------------------------
-025                     ;	;.line	29; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RH = BGR >> 8;
+025                     ;	;.line	29; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RH = BGR >> 8;
 026                     _UART2_BGRSet:	;Function start
 027                     	MVF	_BG2RH,1,0
-028                     ;	;.line	30; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RL= (0x00FF & BGR);
+028                     ;	;.line	30; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG2RL= (0x00FF & BGR);
 029                     	MVF	_UART2_BGRSet_STK00,0,0
 030                     	MVF	_BG2RL,1,0
-031                     ;	;.line	31; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
+031                     ;	;.line	31; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
 032                     	RET	
 033                     ; exit point of _UART2_BGRSet
 034                     	.ENDFUNC	_UART2_BGRSet
@@ -39,14 +39,14 @@
 039                     ;--------------------------------------------------------
 040                     	.FUNC _UART0_BGRSet:$r:0:2:$L:_UART0_BGRSet_STK00
 041                     ;--------------------------------------------------------
-042                     ;	;.line	23; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RH = BGR >> 8;
+042                     ;	;.line	23; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RH = BGR >> 8;
 043                     _UART0_BGRSet:	;Function start
-044 1551 [00] [Y] 667C      	MVF	_BG0RH,1,0
-045                     ;	;.line	24; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RL= (0x00FF & BGR);
-046 1552 [00] [Y] 6480      	MVF	_UART0_BGRSet_STK00,0,0
-047 1553 [00] [Y] 667D      	MVF	_BG0RL,1,0
-048                     ;	;.line	25; "C:\HYCON\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
-049 1554 [00] [Y] C4BF 000A 	RET	
+044 13F7 [00] [Y] 667C      	MVF	_BG0RH,1,0
+045                     ;	;.line	24; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RL= (0x00FF & BGR);
+046 13F8 [00] [Y] 6480      	MVF	_UART0_BGRSet_STK00,0,0
+047 13F9 [00] [Y] 667D      	MVF	_BG0RL,1,0
+048                     ;	;.line	25; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
+049 13FA [00] [Y] C4BF 000A 	RET	
 050                     ; exit point of _UART0_BGRSet
 051                     	.ENDFUNC	_UART0_BGRSet
 052                     ;--------------------------------------------------------

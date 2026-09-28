@@ -322,7 +322,7 @@ _App_Upload_DeviceInfo:	;Function start
 	MVL	0xaa
 	MVF	(_sBleStatus + 54),1,0
 ;	;.line	208; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = Soft_External_Version;
-	MVL	0x0b
+	MVL	0x0a
 	MVF	(_sBleStatus + 55),1,0
 ;	;.line	211; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = 00;
 	CLRF	(_sBleStatus + 56),0
@@ -332,7 +332,7 @@ _App_Upload_DeviceInfo:	;Function start
 	MVL	0x14
 	MVF	(_sBleStatus + 45),1,0
 ;	;.line	221; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = L_Checksum;
-	MVL	0xc4
+	MVL	0xc3
 	MVF	(_sBleStatus + 57),1,0
 ;	;.line	222; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = 0x5A;
 	MVL	0x5a
@@ -368,8 +368,8 @@ _App_Upload_Temperature:	;Function start
 	MVF	(_sBleStatus + 46),1,0
 ;	;.line	132; ".\Source\App_BLEmode.c"	if( sActual_Forecast.CentigradeTempDisp < Low_Temp_Centigrade )
 	MVF	(_sActual_Forecast + 3),0,0
-	ADDL	0x80
-	MVL	0xf3
+	ADDL	0xd8
+	MVL	0xf5
 	ADDC	(_sActual_Forecast + 4),0,0
 	BTSZ	_STATUS,4
 	JMP	_00182_DS_

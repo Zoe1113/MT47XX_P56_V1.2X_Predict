@@ -174,9 +174,9 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	25; ".\Source\Drv_Buzzer.c"	WDTCN |= 0x40;
 176                     _BZ_Configuration:	;Function start
-177 1387 [00] [Y] 9C39      	BSF	_WDTCN,6
+177 1305 [00] [Y] 9C39      	BSF	_WDTCN,6
 178                     ;	;.line	26; ".\Source\Drv_Buzzer.c"	}
-179 1388 [00] [Y] 000A      	RET	
+179 1306 [00] [Y] 000A      	RET	
 180                     ; exit point of _BZ_Configuration
 181                     	.ENDFUNC	_BZ_Configuration
 182                     ;--------------------------------------------------------

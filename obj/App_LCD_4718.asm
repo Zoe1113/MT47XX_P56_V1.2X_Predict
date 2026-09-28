@@ -298,7 +298,7 @@ _00540_DS_:
 	JMP	_00563_DS_
 _00541_DS_:
 ;	;.line	1299; ".\Source\App_LCD_4718.c"	Disp_Version(Soft_External_Version);
-	MVL	0x0b
+	MVL	0x0a
 	CALL	_Disp_Version
 ;	;.line	1301; ".\Source\App_LCD_4718.c"	Disp_BleSymbol();
 	CALL	_Disp_BleSymbol
@@ -813,8 +813,8 @@ _00391_DS_:
 _00373_DS_:
 ;	;.line	899; ".\Source\App_LCD_4718.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
 	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0x80
-	MVL	0xf3
+	ADDL	0xd8
+	MVL	0xf5
 	ADDC	(_sActual_Forecast + 6),0,0
 	BTSZ	_STATUS,4
 	JMP	_00370_DS_
@@ -851,8 +851,11 @@ _00384_DS_:
 	JMP	_00387_DS_
 _00379_DS_:
 ;	;.line	934; ".\Source\App_LCD_4718.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
-	MVL	0x23
-	CPSL	(_sActual_Forecast + 6),0
+	MVF	(_sActual_Forecast + 5),0,0
+	ADDL	0x38
+	MVL	0xe1
+	ADDC	(_sActual_Forecast + 6),0,0
+	BTSZ	_STATUS,4
 	JMP	_00376_DS_
 ;	;.line	944; ".\Source\App_LCD_4718.c"	Disp_StaticDash(); /*20210319¸Ä*/
 	CALL	_Disp_StaticDash
@@ -924,7 +927,7 @@ _Binding_Display:	;Function start
 	BTSS	_sTIMx,7
 	JMP	_00356_DS_
 ;	;.line	832; ".\Source\App_LCD_4718.c"	Disp_Version(Soft_External_Version);
-	MVL	0x0b
+	MVL	0x0a
 	CALL	_Disp_Version
 	.CHKPARA _Disp_Version 1
 	JMP	_00360_DS_
@@ -1061,8 +1064,8 @@ _00324_DS_:
 _00310_DS_:
 ;	;.line	687; ".\Source\App_LCD_4718.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
 	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0x80
-	MVL	0xf3
+	ADDL	0xd8
+	MVL	0xf5
 	ADDC	(_sActual_Forecast + 6),0,0
 	BTSZ	_STATUS,4
 	JMP	_00307_DS_
@@ -1095,8 +1098,11 @@ _00321_DS_:
 	JMP	_00322_DS_
 _00316_DS_:
 ;	;.line	715; ".\Source\App_LCD_4718.c"	else if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
-	MVL	0x23
-	CPSL	(_sActual_Forecast + 6),0
+	MVF	(_sActual_Forecast + 5),0,0
+	ADDL	0x38
+	MVL	0xe1
+	ADDC	(_sActual_Forecast + 6),0,0
+	BTSZ	_STATUS,4
 	JMP	_00313_DS_
 ;	;.line	725; ".\Source\App_LCD_4718.c"	Disp_StaticDash(); /*20210319¸Ä*/
 	CALL	_Disp_StaticDash
@@ -1231,8 +1237,8 @@ _RecentTemp_Display:	;Function start
 	JMP	_00281_DS_
 ;	;.line	530; ".\Source\App_LCD_4718.c"	if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Centigrade)
 	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0x80
-	MVL	0xf3
+	ADDL	0xd8
+	MVL	0xf5
 	ADDC	(_sActual_Forecast + 6),0,0
 	BTSZ	_STATUS,4
 	JMP	_00270_DS_
@@ -1268,8 +1274,11 @@ _00281_DS_:
 	CPSE	_eTempUnit,0
 	JMP	_00282_DS_
 ;	;.line	561; ".\Source\App_LCD_4718.c"	if(sActual_Forecast.ConvertedTempDisp < Low_Temp_Fahrenheit)
-	MVL	0x23
-	CPSL	(_sActual_Forecast + 6),0
+	MVF	(_sActual_Forecast + 5),0,0
+	ADDL	0x38
+	MVL	0xe1
+	ADDC	(_sActual_Forecast + 6),0,0
+	BTSZ	_STATUS,4
 	JMP	_00276_DS_
 ;	;.line	571; ".\Source\App_LCD_4718.c"	Disp_StaticDash(); /*20210319¸Ä*/
 	CALL	_Disp_StaticDash
@@ -3485,8 +3494,8 @@ _NUM_CODE:
 	;--cdb--W:r0x109A:NULL+0:-1:1
 	;--cdb--W:r0x109B:NULL+0:-1:1
 	;--cdb--W:r0x109D:NULL+0:-1:1
-	;--c2db--RNG$_DispDelta_temp_10000_423$2000$2067
-	;--c2db--RNG$_DispNum_num_10000_447$1703$1774
-	;--c2db--RNG$_DispNum_tmp_10000_448$1894$1932
+	;--c2db--RNG$_DispDelta_temp_10000_423$2009$2076
+	;--c2db--RNG$_DispNum_num_10000_447$1712$1783
+	;--c2db--RNG$_DispNum_tmp_10000_448$1903$1941
 	;--c2db--RNG$_MeasedTemp_Disp_tmp_10000_682$540$564
 	END

@@ -187,7 +187,7 @@
 187                     ;--------------------------------------------------------
 188                     ;	;.line	535; ".\Source\App_BLEmode.c"	}
 189                     _App_BleMode:	;Function start
-190 075B [00] [Y] 000A      	RET	
+190 072D [00] [Y] 000A      	RET	
 191                     ; exit point of _App_BleMode
 192                     	.ENDFUNC	_App_BleMode
 193                     ;--------------------------------------------------------
@@ -322,7 +322,7 @@
 322                     	MVL	0xaa
 323                     	MVF	(_sBleStatus + 54),1,0
 324                     ;	;.line	208; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = Soft_External_Version;
-325                     	MVL	0x0b
+325                     	MVL	0x0a
 326                     	MVF	(_sBleStatus + 55),1,0
 327                     ;	;.line	211; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = 00;
 328                     	CLRF	(_sBleStatus + 56),0
@@ -332,7 +332,7 @@
 332                     	MVL	0x14
 333                     	MVF	(_sBleStatus + 45),1,0
 334                     ;	;.line	221; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = L_Checksum;
-335                     	MVL	0xc4
+335                     	MVL	0xc3
 336                     	MVF	(_sBleStatus + 57),1,0
 337                     ;	;.line	222; ".\Source\App_BLEmode.c"	sBleStatus.g_Ble_TxData[L_lenth++] = 0x5A;
 338                     	MVL	0x5a
@@ -368,8 +368,8 @@
 368                     	MVF	(_sBleStatus + 46),1,0
 369                     ;	;.line	132; ".\Source\App_BLEmode.c"	if( sActual_Forecast.CentigradeTempDisp < Low_Temp_Centigrade )
 370                     	MVF	(_sActual_Forecast + 3),0,0
-371                     	ADDL	0x80
-372                     	MVL	0xf3
+371                     	ADDL	0xd8
+372                     	MVL	0xf5
 373                     	ADDC	(_sActual_Forecast + 4),0,0
 374                     	BTSZ	_STATUS,4
 375                     	JMP	_00182_DS_

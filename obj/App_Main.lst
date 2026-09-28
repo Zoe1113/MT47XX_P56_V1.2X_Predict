@@ -185,7 +185,7 @@
 00185                       .globl _ISR
 00186                       
 00187                       ;--------------------------------------------------------
-00188 0000 --              	.FUNC _ISR:$r:0:0:$L:r0x108D:$L:r0x1090:$L:r0x108E:$L:r0x1094
+00188 0000 --              	.FUNC _ISR:$r:0:0:$L:r0x108D:$L:r0x1090:$L:r0x108E:$L:r0x1093
 00189                       ;--------------------------------------------------------
 00190                       ;	;.line	74; ".\Source\App_Main.c"	if(ADIF_IsFlag())
 00191 0000                  _ISR:	;Function start
@@ -346,8 +346,8 @@
 00346 0084 E600             	BTGF	(_sTIMx+1),3
 00347                       ;	;.line	169; ".\Source\App_Main.c"	sTIMx.CalSymbolFlash = !sTIMx.CalSymbolFlash;
 00348 0085 EA00             	BTGF	_sTIMx,5
-00349                       ;	;.line	171; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = !sTIMx.BindingSymbolFlash;
-00350 0086 EE00             	BTGF	_sTIMx,7
+00349                       ;	;.line	171; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = 0;
+00350 0086 8E00             	BCF	_sTIMx,7
 00351                       ;	;.line	173; ".\Source\App_Main.c"	sTIMx.UnitSymbolFlash = !sTIMx.UnitSymbolFlash;
 00352 0087 E000             	BTGF	(_sTIMx+1),0
 00353                       ;	;.line	175; ".\Source\App_Main.c"	sTIMx.BLESymbolFlash = !sTIMx.BLESymbolFlash;
@@ -376,10 +376,10 @@
 00376 009B 0601             	MVL	0x01
 00377 009C AC00             	BTSZ	_sTIMx,6
 00378 009D 0600             	MVL	0x00
-00379 009E 6600             	MVF	r0x1094,1,0
+00379 009E 6600             	MVF	r0x1093,1,0
 00380 009F B029             	BTSS	_WREG,0
 00381 00A0 8C00             	BCF	_sTIMx,6
-00382 00A1 A000             	BTSZ	r0x1094,0
+00382 00A1 A000             	BTSZ	r0x1093,0
 00383 00A2 9C00             	BSF	_sTIMx,6
 00384 00A3                  _00137_DS_:
 00385                       ;	;.line	191; ".\Source\App_Main.c"	if(WDTIF_IsFlag())
@@ -1427,7 +1427,7 @@
 01427 0017 --               r0x108D:	.ds	1
 01428 0018 --               r0x108E:	.ds	1
 01429 0019 --               r0x1090:	.ds	1
-01430 001A --               r0x1094:	.ds	1
+01430 001A --               r0x1093:	.ds	1
 01431                       ;--------------------------------------------------------
 01432                       ; initialized data
 01433                       ;--------------------------------------------------------
@@ -1711,12 +1711,10 @@
 01711                       	;--cdb--W:r0x108F:NULL+0:-1:1
 01712                       	;--cdb--W:r0x1092:NULL+0:-1:1
 01713                       	;--cdb--W:r0x1093:NULL+0:-1:1
-01714                       	;--cdb--W:r0x1094:NULL+0:-1:1
-01715                       	;--cdb--W:r0x108D:NULL+0:-1:0
-01716                       	;--cdb--W:r0x1090:r0x108E+1:-1:0
-01717                       	;--cdb--W:r0x108E:NULL+0:-1:0
-01718                       	;--cdb--W:r0x108F:NULL+0:-1:0
-01719                       	;--cdb--W:r0x1091:NULL+0:-1:0
-01720                       	;--cdb--W:r0x1092:NULL+0:-1:0
-01721                       	;--cdb--W:r0x1093:NULL+0:-1:0
-01722                       	END
+01714                       	;--cdb--W:r0x108D:NULL+0:-1:0
+01715                       	;--cdb--W:r0x1090:r0x108E+1:-1:0
+01716                       	;--cdb--W:r0x108E:NULL+0:-1:0
+01717                       	;--cdb--W:r0x108F:NULL+0:-1:0
+01718                       	;--cdb--W:r0x1091:NULL+0:-1:0
+01719                       	;--cdb--W:r0x1092:NULL+0:-1:0
+01720                       	END

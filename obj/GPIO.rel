@@ -1,7 +1,7 @@
 $MOD:GPIO:".\obj\GPIO.rel"
 $VER:SDASHYA_201
-$ASFROM:"F:\陈宇航\00 MT 程序\01 MT47XX_P56_预测\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"F:\陈宇航\00 MT 程序\01 MT47XX_P56_预测\00 MT47XX_P56_V1.2X_预测\Src\obj\GPIO.asm"
+$ASFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+$SRC:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\GPIO.asm"
 $AREA:_CODE:1:0:0:0
 $AREA:CCODE:1:0:0:0
 $AREA:IDATA:2:0:0:0

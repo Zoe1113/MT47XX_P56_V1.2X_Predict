@@ -29,7 +29,7 @@
 <Cm>TRUE</Cm>
 <CmSize>9</CmSize>
 <PeepHoleOff>FALSE</PeepHoleOff>
-<Debug>TRUE</Debug>
+<Debug>FALSE</Debug>
 <Inf2WriteMode>0</Inf2WriteMode>
 <NotUseNX>FALSE</NotUseNX>
 <DependencyLibPathName>lib/HY17P56ADCSetting.lib;lib/HY17P56WR3_Delay.lib</DependencyLibPathName>

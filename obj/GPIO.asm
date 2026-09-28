@@ -4,8 +4,8 @@
 ;--------------------------------------------------------
 ; Port for HYCON CPU
 ;--------------------------------------------------------
-;	;CCFROM:"F:\陈宇航\00 MT 程序\01 MT47XX_P56_预测\00 MT47XX_P56_V1.2X_预测\Src"
-;;	.file	"C:\HYCON\H08 CIDE\DRIVER\HY17P\GPIO.c"
+;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+;;	.file	"D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\GPIO.c"
 	.module GPIO
 	;.list	p=HY17P56
 ;--------------------------------------------------------

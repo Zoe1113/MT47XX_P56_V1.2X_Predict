@@ -167,8 +167,8 @@ void ISR(void) __interrupt
 			sTIMx.BuzzerFlash1Hz = !sTIMx.BuzzerFlash1Hz;
 			/*校准符号闪烁标志位,频率:1Hz*/
 			sTIMx.CalSymbolFlash = !sTIMx.CalSymbolFlash;
-			/*绑定信息闪烁显示标志位,频率:1Hz*/
-			sTIMx.BindingSymbolFlash = !sTIMx.BindingSymbolFlash;
+			/*绑定信息先显示版本号，500ms后显示编码并保持*/
+			sTIMx.BindingSymbolFlash = 0;
 			/*温度单位闪烁标志位,频率:1Hz*/
 			sTIMx.UnitSymbolFlash = !sTIMx.UnitSymbolFlash;
 			/*蓝牙闪烁标志位,频率:1Hz*/

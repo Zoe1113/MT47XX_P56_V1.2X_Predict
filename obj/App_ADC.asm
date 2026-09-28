@@ -184,13 +184,13 @@
 :$L:r0x10D1:$L:_Centigrade_Convert_Fahrenheit_STK00:$L:r0x10D2:$L:r0x10D3:$L:r0x10D4\
 :$L:r0x10D5
 ;--------------------------------------------------------
-;	;.line	373; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
+;	;.line	381; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
 _Centigrade_Convert_Fahrenheit:	;Function start
 	MVF	r0x10D1,1,0
-;	;.line	377; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
+;	;.line	385; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
 	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-	ADDL	0x80
-	MVL	0xf3
+	ADDL	0xd8
+	MVL	0xf5
 	ADDC	r0x10D1,0,0
 	BTSS	_STATUS,4
 	JMP	_00252_DS_
@@ -200,14 +200,14 @@ _Centigrade_Convert_Fahrenheit:	;Function start
 	ADDC	r0x10D1,0,0
 	BTSZ	_STATUS,4
 	JMP	_00252_DS_
-;	;.line	380; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+;	;.line	388; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
 	MVL	0x5a
 	CPSE	_eTempUnit,0
 	JMP	_00244_DS_
-;	;.line	382; ".\Source\App_ADC.c"	tmp = temp;
+;	;.line	390; ".\Source\App_ADC.c"	tmp = temp;
 	CLRF	r0x10D4,0
 	CLRF	r0x10D5,0
-;	;.line	383; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+;	;.line	391; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
 	MVL	0x05
 	ADDF	_Centigrade_Convert_Fahrenheit_STK00,1,0
 	MVL	0x00
@@ -235,13 +235,13 @@ _Centigrade_Convert_Fahrenheit:	;Function start
 	CALL	__mulint
 	JMP	_00255_DS_
 _00244_DS_:
-;	;.line	386; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+;	;.line	394; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
 	MVL	0xa5
 	CPSE	_eTempUnit,0
 	JMP	_00255_DS_
-;	;.line	388; ".\Source\App_ADC.c"	tmp = temp ;
+;	;.line	396; ".\Source\App_ADC.c"	tmp = temp ;
 	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-;	;.line	390; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+;	;.line	398; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
 	MVF	__mullong_STK06,1,0
 	MVF	r0x10D1,0,0
 	MVF	__mullong_STK05,1,0
@@ -275,7 +275,7 @@ _00244_DS_:
 	MVL	0x00
 	ADDC	STK00,1,0
 	ADDC	r0x10D5,1,0
-;	;.line	392; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+;	;.line	400; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
 	MVL	0x05
 	ADDF	r0x10D2,1,0
 	MVL	0x00
@@ -302,24 +302,24 @@ _00244_DS_:
 	CALL	__mulint
 	JMP	_00255_DS_
 _00252_DS_:
-;	;.line	398; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+;	;.line	406; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
 	MVL	0x5a
 	CPSE	_eTempUnit,0
 	JMP	_00249_DS_
-;	;.line	400; ".\Source\App_ADC.c"	tmp = temp;
+;	;.line	408; ".\Source\App_ADC.c"	tmp = temp;
 	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-;	;.line	401; ".\Source\App_ADC.c"	return tmp;
+;	;.line	409; ".\Source\App_ADC.c"	return tmp;
 	MVF	STK00,1,0
 	MVF	r0x10D1,0,0
 	JMP	_00255_DS_
 _00249_DS_:
-;	;.line	404; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+;	;.line	412; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
 	MVL	0xa5
 	CPSE	_eTempUnit,0
 	JMP	_00255_DS_
-;	;.line	406; ".\Source\App_ADC.c"	tmp = temp ;
+;	;.line	414; ".\Source\App_ADC.c"	tmp = temp ;
 	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-;	;.line	408; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+;	;.line	416; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
 	MVF	__mullong_STK06,1,0
 	MVF	r0x10D1,0,0
 	MVF	__mullong_STK05,1,0
@@ -353,10 +353,10 @@ _00249_DS_:
 	MVL	0x00
 	ADDC	r0x10D2,1,0
 	ADDC	r0x10D3,1,0
-;	;.line	409; ".\Source\App_ADC.c"	return tmp;
+;	;.line	417; ".\Source\App_ADC.c"	return tmp;
 	MVF	STK01,0,0
 _00255_DS_:
-;	;.line	412; ".\Source\App_ADC.c"	}
+;	;.line	420; ".\Source\App_ADC.c"	}
 	RET	
 ; exit point of _Centigrade_Convert_Fahrenheit
 	.ENDFUNC	_Centigrade_Convert_Fahrenheit
@@ -716,9 +716,9 @@ _00146_DS_:
 	MVF	r0x10B4,0,0
 	ADDC	r0x10B0,0,0
 	MVF	(_sADC + 14),1,0
-;	;.line	324; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
+;	;.line	332; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
 	BCF	_sADC,0
-;	;.line	327; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
+;	;.line	335; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
 	BSF	_sTIMx,2
 _00162_DS_:
 ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
@@ -726,7 +726,7 @@ _00162_DS_:
 	INF	r0x10AE,1,0
 	JMP	_00161_DS_
 _00163_DS_:
-;	;.line	366; ".\Source\App_ADC.c"	}
+;	;.line	374; ".\Source\App_ADC.c"	}
 	RET	
 ; exit point of _Get_250msTemp
 	.ENDFUNC	_Get_250msTemp

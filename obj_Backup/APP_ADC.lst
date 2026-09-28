@@ -184,13 +184,13 @@
 00184                       :$L:r0x10D1:$L:_Centigrade_Convert_Fahrenheit_STK00:$L:r0x10D2:$L:r0x10D3:$L:r0x10D4\
 00185 0000 --              :$L:r0x10D5
 00186                       ;--------------------------------------------------------
-00187                       ;	;.line	373; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
+00187                       ;	;.line	381; ".\Source\App_ADC.c"	uint16 Centigrade_Convert_Fahrenheit(uint16 temp)
 00188 0000                  _Centigrade_Convert_Fahrenheit:	;Function start
 00189 0000 6600             	MVF	r0x10D1,1,0
-00190                       ;	;.line	377; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
+00190                       ;	;.line	385; ".\Source\App_ADC.c"	if( (temp >= Low_Temp_Centigrade )&&(temp <= High_Temp_Centigrade ) )
 00191 0001 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-00192 0002 0480             	ADDL	0x80
-00193 0003 06F3             	MVL	0xf3
+00192 0002 04D8             	ADDL	0xd8
+00193 0003 06F5             	MVL	0xf5
 00194 0004 1400             	ADDC	r0x10D1,0,0
 00195 0005 B82B             	BTSS	_STATUS,4
 00196 0006 C200 F000        	JMP	_00252_DS_
@@ -200,14 +200,14 @@
 00200 000B 1400             	ADDC	r0x10D1,0,0
 00201 000C A82B             	BTSZ	_STATUS,4
 00202 000D C200 F000        	JMP	_00252_DS_
-00203                       ;	;.line	380; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+00203                       ;	;.line	388; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
 00204 000F 065A             	MVL	0x5a
 00205 0010 6C00             	CPSE	_eTempUnit,0
 00206 0011 C200 F000        	JMP	_00244_DS_
-00207                       ;	;.line	382; ".\Source\App_ADC.c"	tmp = temp;
+00207                       ;	;.line	390; ".\Source\App_ADC.c"	tmp = temp;
 00208 0013 0C00             	CLRF	r0x10D4,0
 00209 0014 0C00             	CLRF	r0x10D5,0
-00210                       ;	;.line	383; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+00210                       ;	;.line	391; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
 00211 0015 0605             	MVL	0x05
 00212 0016 1200             	ADDF	_Centigrade_Convert_Fahrenheit_STK00,1,0
 00213 0017 0600             	MVL	0x00
@@ -235,13 +235,13 @@
 00235 0030 C000 F000        	CALL	__mulint
 00236 0032 C200 F000        	JMP	_00255_DS_
 00237 0034                  _00244_DS_:
-00238                       ;	;.line	386; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+00238                       ;	;.line	394; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
 00239 0034 06A5             	MVL	0xa5
 00240 0035 6C00             	CPSE	_eTempUnit,0
 00241 0036 C200 F000        	JMP	_00255_DS_
-00242                       ;	;.line	388; ".\Source\App_ADC.c"	tmp = temp ;
+00242                       ;	;.line	396; ".\Source\App_ADC.c"	tmp = temp ;
 00243 0038 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-00244                       ;	;.line	390; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+00244                       ;	;.line	398; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
 00245 0039 6600             	MVF	__mullong_STK06,1,0
 00246 003A 6400             	MVF	r0x10D1,0,0
 00247 003B 6600             	MVF	__mullong_STK05,1,0
@@ -275,7 +275,7 @@
 00275 005C 0600             	MVL	0x00
 00276 005D 1600             	ADDC	STK00,1,0
 00277 005E 1600             	ADDC	r0x10D5,1,0
-00278                       ;	;.line	392; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
+00278                       ;	;.line	400; ".\Source\App_ADC.c"	return ((tmp + 5) / 10 * 10);
 00279 005F 0605             	MVL	0x05
 00280 0060 1200             	ADDF	r0x10D2,1,0
 00281 0061 0600             	MVL	0x00
@@ -302,24 +302,24 @@
 00302 007A C000 F000        	CALL	__mulint
 00303 007C C200 F000        	JMP	_00255_DS_
 00304 007E                  _00252_DS_:
-00305                       ;	;.line	398; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
+00305                       ;	;.line	406; ".\Source\App_ADC.c"	if(eTempUnit == Centigrade)
 00306 007E 065A             	MVL	0x5a
 00307 007F 6C00             	CPSE	_eTempUnit,0
 00308 0080 C200 F000        	JMP	_00249_DS_
-00309                       ;	;.line	400; ".\Source\App_ADC.c"	tmp = temp;
+00309                       ;	;.line	408; ".\Source\App_ADC.c"	tmp = temp;
 00310 0082 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-00311                       ;	;.line	401; ".\Source\App_ADC.c"	return tmp;
+00311                       ;	;.line	409; ".\Source\App_ADC.c"	return tmp;
 00312 0083 6600             	MVF	STK00,1,0
 00313 0084 6400             	MVF	r0x10D1,0,0
 00314 0085 C200 F000        	JMP	_00255_DS_
 00315 0087                  _00249_DS_:
-00316                       ;	;.line	404; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
+00316                       ;	;.line	412; ".\Source\App_ADC.c"	else if(eTempUnit == Fahrenheit)
 00317 0087 06A5             	MVL	0xa5
 00318 0088 6C00             	CPSE	_eTempUnit,0
 00319 0089 C200 F000        	JMP	_00255_DS_
-00320                       ;	;.line	406; ".\Source\App_ADC.c"	tmp = temp ;
+00320                       ;	;.line	414; ".\Source\App_ADC.c"	tmp = temp ;
 00321 008B 6400             	MVF	_Centigrade_Convert_Fahrenheit_STK00,0,0
-00322                       ;	;.line	408; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
+00322                       ;	;.line	416; ".\Source\App_ADC.c"	tmp = (uint32)tmp * 9 / 5 + 3200;
 00323 008C 6600             	MVF	__mullong_STK06,1,0
 00324 008D 6400             	MVF	r0x10D1,0,0
 00325 008E 6600             	MVF	__mullong_STK05,1,0
@@ -353,10 +353,10 @@
 00353 00AF 0600             	MVL	0x00
 00354 00B0 1600             	ADDC	r0x10D2,1,0
 00355 00B1 1600             	ADDC	r0x10D3,1,0
-00356                       ;	;.line	409; ".\Source\App_ADC.c"	return tmp;
+00356                       ;	;.line	417; ".\Source\App_ADC.c"	return tmp;
 00357 00B2 6400             	MVF	STK01,0,0
 00358 00B3                  _00255_DS_:
-00359                       ;	;.line	412; ".\Source\App_ADC.c"	}
+00359                       ;	;.line	420; ".\Source\App_ADC.c"	}
 00360 00B3 000A             	RET	
 00361                       ; exit point of _Centigrade_Convert_Fahrenheit
 00362 00B4 --              	.ENDFUNC	_Centigrade_Convert_Fahrenheit
@@ -716,9 +716,9 @@
 00716 0209 6400             	MVF	r0x10B4,0,0
 00717 020A 1400             	ADDC	r0x10B0,0,0
 00718 020B 6600             	MVF	(_sADC + 14),1,0
-00719                       ;	;.line	324; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
+00719                       ;	;.line	332; ".\Source\App_ADC.c"	sADC.Get_250msTemp_Flag = FALSE;
 00720 020C 8000             	BCF	_sADC,0
-00721                       ;	;.line	327; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
+00721                       ;	;.line	335; ".\Source\App_ADC.c"	sTIMx.TempSampleFlag = TRUE;
 00722 020D 9400             	BSF	_sTIMx,2
 00723 020E                  _00162_DS_:
 00724                       ;	;.line	282; ".\Source\App_ADC.c"	for(i = lower;i < upper;i++)
@@ -726,7 +726,7 @@
 00726 020F 3A00             	INF	r0x10AE,1,0
 00727 0210 C200 F000        	JMP	_00161_DS_
 00728 0212                  _00163_DS_:
-00729                       ;	;.line	366; ".\Source\App_ADC.c"	}
+00729                       ;	;.line	374; ".\Source\App_ADC.c"	}
 00730 0212 000A             	RET	
 00731                       ; exit point of _Get_250msTemp
 00732 0213 --              	.ENDFUNC	_Get_250msTemp

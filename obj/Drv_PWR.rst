@@ -174,16 +174,16 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	24; ".\Source\Drv_PWR.c"	PWR_BGREnable();
 176                     _PWR_Configuration:	;Function start
-177 1473 [00] [Y] 9E33      	BSF	_PWRCN,7
+177 13E7 [00] [Y] 9E33      	BSF	_PWRCN,7
 178                     ;	;.line	27; ".\Source\Drv_PWR.c"	PWR_LDOPLEnable();
-179 1474 [00] [Y] 9842      	BSF	_AD1CN5,4
+179 13E8 [00] [Y] 9842      	BSF	_AD1CN5,4
 180                     ;	;.line	30; ".\Source\Drv_PWR.c"	PWR_LDOEnable();
-181 1475 [00] [Y] 9233      	BSF	_PWRCN,1
+181 13E9 [00] [Y] 9233      	BSF	_PWRCN,1
 182                     ;	;.line	33; ".\Source\Drv_PWR.c"	PWR_LDOSel(LDOC_2V4);
-183 1476 [00] [Y] 068F      	MVL	0x8f
-184 1477 [00] [Y] 2A33      	ANDF	_PWRCN,1,0
+183 13EA [00] [Y] 068F      	MVL	0x8f
+184 13EB [00] [Y] 2A33      	ANDF	_PWRCN,1,0
 185                     ;	;.line	34; ".\Source\Drv_PWR.c"	}
-186 1478 [00] [Y] 000A      	RET	
+186 13EC [00] [Y] 000A      	RET	
 187                     ; exit point of _PWR_Configuration
 188                     	.ENDFUNC	_PWR_Configuration
 189                     ;--------------------------------------------------------

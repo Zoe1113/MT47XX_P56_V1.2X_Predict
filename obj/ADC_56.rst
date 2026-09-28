@@ -4,8 +4,8 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"F:\³ÂÓîº½\00 MT ³ÌÐò\01 MT47XX_P56_Ô¤²â\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
-008                     ;;	.file	"C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"
+007                     ;	;CCFROM:"D:\Work\MT\Ñ§Ï°\97 ÏîÄ¿\00 4718_²âÎÂ·¶Î§¹¤³Ì±ä¸ü\´úÂë\00 MT47XX_P56_V1.2X_Ô¤²â\Src"
+008                     ;;	.file	"D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"
 009                     	.module ADC_56
 010                     	;.list	p=HY17P56
 011                     	;--cdb--S:G$ADC_GetData$0$0({2}DF,SL:SL),C,0,0
@@ -28,14 +28,14 @@
 028                     ;--------------------------------------------------------
 029                     	.FUNC _ENSDRVDisable:$r:0:0
 030                     ;--------------------------------------------------------
-031                     ;	;.line	119; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONEnable();
+031                     ;	;.line	119; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONEnable();
 032                     _ENSDRVDisable:	;Function start
 033                     	BSF	_PWRCN,0
-034                     ;	;.line	120; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CSFCN1 &= 0x7F;
+034                     ;	;.line	120; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CSFCN1 &= 0x7F;
 035                     	BCF	_CSFCN1,7
-036                     ;	;.line	121; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONDisable();
+036                     ;	;.line	121; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONDisable();
 037                     	BCF	_PWRCN,0
-038                     ;	;.line	122; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
+038                     ;	;.line	122; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
 039                     	RET	
 040                     ; exit point of _ENSDRVDisable
 041                     	.ENDFUNC	_ENSDRVDisable
@@ -46,14 +46,14 @@
 046                     ;--------------------------------------------------------
 047                     	.FUNC _ENSDRVEnable:$r:0:0
 048                     ;--------------------------------------------------------
-049                     ;	;.line	113; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONEnable();
+049                     ;	;.line	113; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONEnable();
 050                     _ENSDRVEnable:	;Function start
 051                     	BSF	_PWRCN,0
-052                     ;	;.line	114; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CSFCN1 |= 0x80;
+052                     ;	;.line	114; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CSFCN1 |= 0x80;
 053                     	BSF	_CSFCN1,7
-054                     ;	;.line	115; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONDisable();
+054                     ;	;.line	115; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	PWR_CSFONDisable();
 055                     	BCF	_PWRCN,0
-056                     ;	;.line	116; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
+056                     ;	;.line	116; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
 057                     	RET	
 058                     ; exit point of _ENSDRVEnable
 059                     	.ENDFUNC	_ENSDRVEnable
@@ -64,27 +64,27 @@
 064                     ;--------------------------------------------------------
 065                     	.FUNC _ADC_GetData:$r:4:0:$L:_ADC_GetData_ADCData_10000_8
 066                     ;--------------------------------------------------------
-067                     ;	;.line	97; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[0] = AD1L;
+067                     ;	;.line	97; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[0] = AD1L;
 068                     _ADC_GetData:	;Function start
 069                     	MVF	_AD1L,0,0
 070                     	MVF	(_ADC_GetData_ADCData_10000_8 + 0),1,0
-071                     ;	;.line	98; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[1] = AD1M;
+071                     ;	;.line	98; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[1] = AD1M;
 072                     	MVF	_AD1M,0,0
 073                     	MVF	(_ADC_GetData_ADCData_10000_8 + 1),1,0
-074                     ;	;.line	99; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[2] = AD1H;
+074                     ;	;.line	99; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[2] = AD1H;
 075                     	MVF	_AD1H,0,0
 076                     	MVF	(_ADC_GetData_ADCData_10000_8 + 2),1,0
-077                     ;	;.line	101; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	if (ADCData&0x800000L)
+077                     ;	;.line	101; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	if (ADCData&0x800000L)
 078                     	BTSS	(_ADC_GetData_ADCData_10000_8 + 2),7
 079                     	JMP	_00110_DS_
-080                     ;	;.line	102; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[3] = 0xFF;
+080                     ;	;.line	102; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[3] = 0xFF;
 081                     	SETF	(_ADC_GetData_ADCData_10000_8 + 3),0
 082                     	JMP	_00111_DS_
 083                     _00110_DS_:
-084                     ;	;.line	104; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[3] = 0x00;
+084                     ;	;.line	104; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	((char *)(&ADCData))[3] = 0x00;
 085                     	CLRF	(_ADC_GetData_ADCData_10000_8 + 3),0
 086                     _00111_DS_:
-087                     ;	;.line	105; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	return ADCData;
+087                     ;	;.line	105; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	return ADCData;
 088                     	MVF	_ADC_GetData_ADCData_10000_8,0,0
 089                     	MVF	STK02,1,0
 090                     	MVF	(_ADC_GetData_ADCData_10000_8 + 1),0,0
@@ -92,7 +92,7 @@
 092                     	MVF	(_ADC_GetData_ADCData_10000_8 + 2),0,0
 093                     	MVF	STK00,1,0
 094                     	MVF	(_ADC_GetData_ADCData_10000_8 + 3),0,0
-095                     ;	;.line	106; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
+095                     ;	;.line	106; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
 096                     	RET	
 097                     ; exit point of _ADC_GetData
 098                     	.ENDFUNC	_ADC_GetData
@@ -105,59 +105,59 @@
 105                     :$L:_ADC_Open_STK04:$L:_ADC_Open_STK05:$L:_ADC_Open_STK06:$L:_ADC_Open_STK07:$L:_ADC_Open_STK08\
 106                     :$L:_ADC_Open_STK09:$L:_ADC_Open_STK10
 107                     ;--------------------------------------------------------
-108                     ;	;.line	51; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	void ADC_Open(unsigned char ck,    //Selector of SD18 peripheral operating clock source
+108                     ;	;.line	51; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	void ADC_Open(unsigned char ck,    //Selector of SD18 peripheral operating clock source
 109                     _ADC_Open:	;Function start
 110                     	MVF	r0x108C,1,0
 111                     	MVF	_OSCCN1,0,0
-112                     ;	;.line	66; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_CLK_DivSelect(ck);
+112                     ;	;.line	66; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_CLK_DivSelect(ck);
 113                     	ANDL	0xcf
 114                     	IORF	r0x108C,0,0
 115                     	MVF	_OSCCN1,1,0
-116                     ;	;.line	67; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CLK_DHSCKSelect(cks);
+116                     ;	;.line	67; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	CLK_DHSCKSelect(cks);
 117                     	MVF	_OSCCN0,0,0
 118                     	ANDL	0xcf
 119                     	IORF	_ADC_Open_STK00,0,0
 120                     	MVF	_OSCCN0,1,0
-121                     ;	;.line	70; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VINSelect(inh,inl);             // Config ADC Input Channel
+121                     ;	;.line	70; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VINSelect(inh,inl);             // Config ADC Input Channel
 122                     	MVF	_ADC_Open_STK02,0,0
 123                     	IORF	_ADC_Open_STK01,0,0
 124                     	MVF	_AD1CN3,1,0
-125                     ;	;.line	71; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VRINSelect(vrh,vrl);            // Config ADC Ref. Voltage Input Channel
+125                     ;	;.line	71; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VRINSelect(vrh,vrl);            // Config ADC Ref. Voltage Input Channel
 126                     	MVF	_AD1CN4,0,0
 127                     	ANDL	0x0f
 128                     	IORF	_ADC_Open_STK04,0,0
 129                     	IORF	_ADC_Open_STK03,0,0
 130                     	MVF	_AD1CN4,1,0
-131                     ;	;.line	72; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_GainSelect(adgn,pgagn);         // Config PGA Gain and AD Gain
+131                     ;	;.line	72; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_GainSelect(adgn,pgagn);         // Config PGA Gain and AD Gain
 132                     	MVF	_AD1CN1,0,0
 133                     	ANDL	0xe0
 134                     	IORF	_ADC_Open_STK06,0,0
 135                     	IORF	_ADC_Open_STK05,0,0
 136                     	MVF	_AD1CN1,1,0
-137                     ;	;.line	73; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VRXSelect(vrgn);             // Config Ref. Gain and DC offset
+137                     ;	;.line	73; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VRXSelect(vrgn);             // Config Ref. Gain and DC offset
 138                     	ANDL	0xdf
 139                     	IORF	_ADC_Open_STK07,0,0
 140                     	MVF	_AD1CN1,1,0
-141                     ;	;.line	74; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_DCSETSelect(dcset);             // Config Ref. Gain and DC offset
+141                     ;	;.line	74; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_DCSETSelect(dcset);             // Config Ref. Gain and DC offset
 142                     	MVF	_AD1CN2,0,0
 143                     	ANDL	0xf0
 144                     	IORF	_ADC_Open_STK08,0,0
 145                     	MVF	_AD1CN2,1,0
-146                     ;	;.line	75; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_OSRSelect(osr);                 // Config Over sampling ratio
+146                     ;	;.line	75; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_OSRSelect(osr);                 // Config Over sampling ratio
 147                     	MVF	_AD1CN0,0,0
 148                     	ANDL	0xe1
 149                     	IORF	_ADC_Open_STK09,0,0
 150                     	MVF	_AD1CN0,1,0
-151                     ;	;.line	76; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VCMSSelect(vcms); 
+151                     ;	;.line	76; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_VCMSSelect(vcms); 
 152                     	MVF	_AD1CN5,0,0
 153                     	ANDL	0xdf
 154                     	IORF	_ADC_Open_STK10,0,0
 155                     	MVF	_AD1CN5,1,0
-156                     ;	;.line	78; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_ENACMEnable();
+156                     ;	;.line	78; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_ENACMEnable();
 157                     	BSF	_AD1CN5,7
-158                     ;	;.line	79; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_Enable();
+158                     ;	;.line	79; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	ADC_Enable();
 159                     	BSF	_AD1CN0,7
-160                     ;	;.line	80; "C:\HYCON\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
+160                     ;	;.line	80; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\ADC_56.c"	}
 161                     	RET	
 162                     ; exit point of _ADC_Open
 163                     	.ENDFUNC	_ADC_Open

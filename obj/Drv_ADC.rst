@@ -174,48 +174,48 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	25; ".\Source\Drv_ADC.c"	ADC_Disable();
 176                     _ADC_Configuration:	;Function start
-177 1339 [00] [Y] 8E3D      	BCF	_AD1CN0,7
+177 12B7 [00] [Y] 8E3D      	BCF	_AD1CN0,7
 178                     ;	;.line	29; ".\Source\Drv_ADC.c"	CLK_ADCCKDivSelect(DADC_DHSCKDIV8);
-179 133A [00] [Y] 6435      	MVF	_OSCCN1,0,0
-180 133B [00] [Y] 01CF      	ANDL	0xcf
-181 133C [00] [Y] 0210      	IORL	0x10
-182 133D [00] [Y] 6635      	MVF	_OSCCN1,1,0
+179 12B8 [00] [Y] 6435      	MVF	_OSCCN1,0,0
+180 12B9 [00] [Y] 01CF      	ANDL	0xcf
+181 12BA [00] [Y] 0210      	IORL	0x10
+182 12BB [00] [Y] 6635      	MVF	_OSCCN1,1,0
 183                     ;	;.line	41; ".\Source\Drv_ADC.c"	ADC_VINSelect(INP_AI2,INN_AI3);
-184 133E [00] [Y] 0604      	MVL	0x04
-185 133F [00] [Y] 6640      	MVF	_AD1CN3,1,0
+184 12BC [00] [Y] 0604      	MVL	0x04
+185 12BD [00] [Y] 6640      	MVF	_AD1CN3,1,0
 186                     ;	;.line	43; ".\Source\Drv_ADC.c"	ADC_VRINSelect(VRH_VCMS,VRL_VSS);
-187 1340 [00] [Y] 6441      	MVF	_AD1CN4,0,0
-188 1341 [00] [Y] 010F      	ANDL	0x0f
-189 1342 [00] [Y] 0240      	IORL	0x40
-190 1343 [00] [Y] 6641      	MVF	_AD1CN4,1,0
+187 12BE [00] [Y] 6441      	MVF	_AD1CN4,0,0
+188 12BF [00] [Y] 010F      	ANDL	0x0f
+189 12C0 [00] [Y] 0240      	IORL	0x40
+190 12C1 [00] [Y] 6641      	MVF	_AD1CN4,1,0
 191                     ;	;.line	45; ".\Source\Drv_ADC.c"	ADC_GainSelect(ADGN_1,PGAGN_1);
-192 1344 [00] [Y] 643E      	MVF	_AD1CN1,0,0
-193 1345 [00] [Y] 01E0      	ANDL	0xe0
-194 1346 [00] [Y] 0202      	IORL	0x02
-195 1347 [00] [Y] 663E      	MVF	_AD1CN1,1,0
+192 12C2 [00] [Y] 643E      	MVF	_AD1CN1,0,0
+193 12C3 [00] [Y] 01E0      	ANDL	0xe0
+194 12C4 [00] [Y] 0202      	IORL	0x02
+195 12C5 [00] [Y] 663E      	MVF	_AD1CN1,1,0
 196                     ;	;.line	47; ".\Source\Drv_ADC.c"	ADC_VRXSelect(VREGN_DIV1);
-197 1348 [00] [Y] 8A3E      	BCF	_AD1CN1,5
+197 12C6 [00] [Y] 8A3E      	BCF	_AD1CN1,5
 198                     ;	;.line	49; ".\Source\Drv_ADC.c"	ADC_DCSETSelect(DCSET_N0);
-199 1349 [00] [Y] 643F      	MVF	_AD1CN2,0,0
-200 134A [00] [Y] 01F0      	ANDL	0xf0
-201 134B [00] [Y] 0208      	IORL	0x08
-202 134C [00] [Y] 663F      	MVF	_AD1CN2,1,0
+199 12C7 [00] [Y] 643F      	MVF	_AD1CN2,0,0
+200 12C8 [00] [Y] 01F0      	ANDL	0xf0
+201 12C9 [00] [Y] 0208      	IORL	0x08
+202 12CA [00] [Y] 663F      	MVF	_AD1CN2,1,0
 203                     ;	;.line	53; ".\Source\Drv_ADC.c"	ADC_OSRSelect(OSR_2048);
-204 134D [00] [Y] 643D      	MVF	_AD1CN0,0,0
-205 134E [00] [Y] 01E1      	ANDL	0xe1
-206 134F [00] [Y] 0208      	IORL	0x08
-207 1350 [00] [Y] 663D      	MVF	_AD1CN0,1,0
+204 12CB [00] [Y] 643D      	MVF	_AD1CN0,0,0
+205 12CC [00] [Y] 01E1      	ANDL	0xe1
+206 12CD [00] [Y] 0208      	IORL	0x08
+207 12CE [00] [Y] 663D      	MVF	_AD1CN0,1,0
 208                     ;	;.line	55; ".\Source\Drv_ADC.c"	ADC_VCMSSelect(VCMS_V12);
-209 1351 [00] [Y] 6442      	MVF	_AD1CN5,0,0
-210 1352 [00] [Y] 01DF      	ANDL	0xdf
-211 1353 [00] [Y] 0220      	IORL	0x20
-212 1354 [00] [Y] 6642      	MVF	_AD1CN5,1,0
+209 12CF [00] [Y] 6442      	MVF	_AD1CN5,0,0
+210 12D0 [00] [Y] 01DF      	ANDL	0xdf
+211 12D1 [00] [Y] 0220      	IORL	0x20
+212 12D2 [00] [Y] 6642      	MVF	_AD1CN5,1,0
 213                     ;	;.line	60; ".\Source\Drv_ADC.c"	ADC_LDOPLEnable();
-214 1355 [00] [Y] 9842      	BSF	_AD1CN5,4
+214 12D3 [00] [Y] 9842      	BSF	_AD1CN5,4
 215                     ;	;.line	62; ".\Source\Drv_ADC.c"	ADC_ENACMEnable();
-216 1356 [00] [Y] 9E42      	BSF	_AD1CN5,7
+216 12D4 [00] [Y] 9E42      	BSF	_AD1CN5,7
 217                     ;	;.line	63; ".\Source\Drv_ADC.c"	}
-218 1357 [00] [Y] 000A      	RET	
+218 12D5 [00] [Y] 000A      	RET	
 219                     ; exit point of _ADC_Configuration
 220                     	.ENDFUNC	_ADC_Configuration
 221                     ;--------------------------------------------------------

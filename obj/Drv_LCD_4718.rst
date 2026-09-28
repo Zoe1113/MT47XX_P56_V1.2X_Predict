@@ -196,25 +196,25 @@
 196                     ;--------------------------------------------------------
 197                     ;	;.line	521; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x53;
 198                     _Disp_Off:	;Function start
-199 0328 [00] [2] 0653      	MVL	0x53
-200 0329 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+199 030B [00] [2] 0653      	MVL	0x53
+200 030C [00] [1] 0011 6788 	MVF	_LCD0,1,0
 201                     ;	;.line	523; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x33;
-202 032B [00] [1] 0633      	MVL	0x33
-203 032C [00] [1] 6789      	MVF	_LCD1,1,0
+202 030E [00] [1] 0633      	MVL	0x33
+203 030F [00] [1] 6789      	MVF	_LCD1,1,0
 204                     ;	;.line	525; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x03;
-205 032D [00] [1] 0603      	MVL	0x03
-206 032E [00] [1] 678A      	MVF	_LCD2,1,0
+205 0310 [00] [1] 0603      	MVL	0x03
+206 0311 [00] [1] 678A      	MVF	_LCD2,1,0
 207                     ;	;.line	527; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x33;
-208 032F [00] [1] 0633      	MVL	0x33
-209 0330 [00] [1] 678B      	MVF	_LCD3,1,0
+208 0312 [00] [1] 0633      	MVL	0x33
+209 0313 [00] [1] 678B      	MVF	_LCD3,1,0
 210                     ;	;.line	529; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-211 0331 [00] [1] 0D8C      	CLRF	_LCD4,0
+211 0314 [00] [1] 0D8C      	CLRF	_LCD4,0
 212                     ;	;.line	531; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-213 0332 [00] [1] 0D8D      	CLRF	_LCD5,0
+213 0315 [00] [1] 0D8D      	CLRF	_LCD5,0
 214                     ;	;.line	533; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-215 0333 [00] [1] 0D8E      	CLRF	_LCD6,0
+215 0316 [00] [1] 0D8E      	CLRF	_LCD6,0
 216                     ;	;.line	534; ".\Source\Drv_LCD_4718.c"	}
-217 0334 [00] [1] 000A      	RET	
+217 0317 [00] [1] 000A      	RET	
 218                     ; exit point of _Disp_Off
 219                     	.ENDFUNC	_Disp_Off
 220                     ;--------------------------------------------------------
@@ -226,26 +226,26 @@
 226                     ;--------------------------------------------------------
 227                     ;	;.line	498; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
 228                     _Disp_End:	;Function start
-229 04C9 [00] [2] 0673      	MVL	0x73
-230 04CA [00] [1] 0011 6788 	MVF	_LCD0,1,0
+229 04A5 [00] [2] 0673      	MVL	0x73
+230 04A6 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 231                     ;	;.line	500; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
-232 04CC [00] [1] 0620      	MVL	0x20
-233 04CD [00] [1] 6789      	MVF	_LCD1,1,0
+232 04A8 [00] [1] 0620      	MVL	0x20
+233 04A9 [00] [1] 6789      	MVF	_LCD1,1,0
 234                     ;	;.line	502; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x22;
-235 04CE [00] [1] 0622      	MVL	0x22
-236 04CF [00] [1] 678A      	MVF	_LCD2,1,0
+235 04AA [00] [1] 0622      	MVL	0x22
+236 04AB [00] [1] 678A      	MVF	_LCD2,1,0
 237                     ;	;.line	504; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x62;
-238 04D0 [00] [1] 0662      	MVL	0x62
-239 04D1 [00] [1] 678B      	MVF	_LCD3,1,0
+238 04AC [00] [1] 0662      	MVL	0x62
+239 04AD [00] [1] 678B      	MVF	_LCD3,1,0
 240                     ;	;.line	506; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x03;
-241 04D2 [00] [1] 0603      	MVL	0x03
-242 04D3 [00] [1] 678C      	MVF	_LCD4,1,0
+241 04AE [00] [1] 0603      	MVL	0x03
+242 04AF [00] [1] 678C      	MVF	_LCD4,1,0
 243                     ;	;.line	508; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-244 04D4 [00] [1] 0D8D      	CLRF	_LCD5,0
+244 04B0 [00] [1] 0D8D      	CLRF	_LCD5,0
 245                     ;	;.line	510; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-246 04D5 [00] [1] 0D8E      	CLRF	_LCD6,0
+246 04B1 [00] [1] 0D8E      	CLRF	_LCD6,0
 247                     ;	;.line	511; ".\Source\Drv_LCD_4718.c"	}
-248 04D6 [00] [1] 000A      	RET	
+248 04B2 [00] [1] 000A      	RET	
 249                     ; exit point of _Disp_End
 250                     	.ENDFUNC	_Disp_End
 251                     ;--------------------------------------------------------
@@ -257,22 +257,22 @@
 257                     ;--------------------------------------------------------
 258                     ;	;.line	475; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
 259                     _Disp_BrownOut:	;Function start
-260 031E [00] [1] 0011 0D88 	CLRF	_LCD0,0
+260 0301 [00] [1] 0011 0D88 	CLRF	_LCD0,0
 261                     ;	;.line	477; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
-262 0320 [00] [1] 0D89      	CLRF	_LCD1,0
+262 0303 [00] [1] 0D89      	CLRF	_LCD1,0
 263                     ;	;.line	479; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x00;
-264 0321 [00] [1] 0D8A      	CLRF	_LCD2,0
+264 0304 [00] [1] 0D8A      	CLRF	_LCD2,0
 265                     ;	;.line	481; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x00;
-266 0322 [00] [1] 0D8B      	CLRF	_LCD3,0
+266 0305 [00] [1] 0D8B      	CLRF	_LCD3,0
 267                     ;	;.line	483; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x04;
-268 0323 [00] [1] 0604      	MVL	0x04
-269 0324 [00] [1] 678C      	MVF	_LCD4,1,0
+268 0306 [00] [1] 0604      	MVL	0x04
+269 0307 [00] [1] 678C      	MVF	_LCD4,1,0
 270                     ;	;.line	485; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-271 0325 [00] [1] 0D8D      	CLRF	_LCD5,0
+271 0308 [00] [1] 0D8D      	CLRF	_LCD5,0
 272                     ;	;.line	487; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-273 0326 [00] [1] 0D8E      	CLRF	_LCD6,0
+273 0309 [00] [1] 0D8E      	CLRF	_LCD6,0
 274                     ;	;.line	488; ".\Source\Drv_LCD_4718.c"	}
-275 0327 [00] [1] 000A      	RET	
+275 030A [00] [1] 000A      	RET	
 276                     ; exit point of _Disp_BrownOut
 277                     	.ENDFUNC	_Disp_BrownOut
 278                     ;--------------------------------------------------------
@@ -284,25 +284,25 @@
 284                     ;--------------------------------------------------------
 285                     ;	;.line	452; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x53;
 286                     _Disp_CAL:	;Function start
-287 0311 [00] [2] 0653      	MVL	0x53
-288 0312 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+287 02F4 [00] [2] 0653      	MVL	0x53
+288 02F5 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 289                     ;	;.line	454; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x30;
-290 0314 [00] [1] 0630      	MVL	0x30
-291 0315 [00] [1] 6789      	MVF	_LCD1,1,0
+290 02F7 [00] [1] 0630      	MVL	0x30
+291 02F8 [00] [1] 6789      	MVF	_LCD1,1,0
 292                     ;	;.line	456; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x33;
-293 0316 [00] [1] 0633      	MVL	0x33
-294 0317 [00] [1] 678A      	MVF	_LCD2,1,0
+293 02F9 [00] [1] 0633      	MVL	0x33
+294 02FA [00] [1] 678A      	MVF	_LCD2,1,0
 295                     ;	;.line	458; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x43;
-296 0318 [00] [1] 0643      	MVL	0x43
-297 0319 [00] [1] 678B      	MVF	_LCD3,1,0
+296 02FB [00] [1] 0643      	MVL	0x43
+297 02FC [00] [1] 678B      	MVF	_LCD3,1,0
 298                     ;	;.line	460; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-299 031A [00] [1] 0D8C      	CLRF	_LCD4,0
+299 02FD [00] [1] 0D8C      	CLRF	_LCD4,0
 300                     ;	;.line	462; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-301 031B [00] [1] 0D8D      	CLRF	_LCD5,0
+301 02FE [00] [1] 0D8D      	CLRF	_LCD5,0
 302                     ;	;.line	464; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-303 031C [00] [1] 0D8E      	CLRF	_LCD6,0
+303 02FF [00] [1] 0D8E      	CLRF	_LCD6,0
 304                     ;	;.line	465; ".\Source\Drv_LCD_4718.c"	}
-305 031D [00] [1] 000A      	RET	
+305 0300 [00] [1] 000A      	RET	
 306                     ; exit point of _Disp_CAL
 307                     	.ENDFUNC	_Disp_CAL
 308                     ;--------------------------------------------------------
@@ -314,26 +314,26 @@
 314                     ;--------------------------------------------------------
 315                     ;	;.line	429; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x63;
 316                     _Disp_Bth:	;Function start
-317 13DB [00] [2] 0663      	MVL	0x63
-318 13DC [00] [1] 0011 6788 	MVF	_LCD0,1,0
+317 1358 [00] [2] 0663      	MVL	0x63
+318 1359 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 319                     ;	;.line	431; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x32;
-320 13DE [00] [1] 0632      	MVL	0x32
-321 13DF [00] [1] 6789      	MVF	_LCD1,1,0
+320 135B [00] [1] 0632      	MVL	0x32
+321 135C [00] [1] 6789      	MVF	_LCD1,1,0
 322                     ;	;.line	433; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x06;
-323 13E0 [00] [1] 0606      	MVL	0x06
-324 13E1 [00] [1] 678A      	MVF	_LCD2,1,0
+323 135D [00] [1] 0606      	MVL	0x06
+324 135E [00] [1] 678A      	MVF	_LCD2,1,0
 325                     ;	;.line	435; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x23;
-326 13E2 [00] [1] 0623      	MVL	0x23
-327 13E3 [00] [1] 678B      	MVF	_LCD3,1,0
+326 135F [00] [1] 0623      	MVL	0x23
+327 1360 [00] [1] 678B      	MVF	_LCD3,1,0
 328                     ;	;.line	437; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x02;
-329 13E4 [00] [1] 0602      	MVL	0x02
-330 13E5 [00] [1] 678C      	MVF	_LCD4,1,0
+329 1361 [00] [1] 0602      	MVL	0x02
+330 1362 [00] [1] 678C      	MVF	_LCD4,1,0
 331                     ;	;.line	439; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-332 13E6 [00] [1] 0D8D      	CLRF	_LCD5,0
+332 1363 [00] [1] 0D8D      	CLRF	_LCD5,0
 333                     ;	;.line	441; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-334 13E7 [00] [1] 0D8E      	CLRF	_LCD6,0
+334 1364 [00] [1] 0D8E      	CLRF	_LCD6,0
 335                     ;	;.line	442; ".\Source\Drv_LCD_4718.c"	}
-336 13E8 [00] [1] 000A      	RET	
+336 1365 [00] [1] 000A      	RET	
 337                     ; exit point of _Disp_Bth
 338                     	.ENDFUNC	_Disp_Bth
 339                     ;--------------------------------------------------------
@@ -345,25 +345,25 @@
 345                     ;--------------------------------------------------------
 346                     ;	;.line	406; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x22;
 347                     _Disp_Rct:	;Function start
-348 13E9 [00] [2] 0622      	MVL	0x22
-349 13EA [00] [1] 0011 6788 	MVF	_LCD0,1,0
+348 1366 [00] [2] 0622      	MVL	0x22
+349 1367 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 350                     ;	;.line	408; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
-351 13EC [00] [1] 0620      	MVL	0x20
-352 13ED [00] [1] 6789      	MVF	_LCD1,1,0
+351 1369 [00] [1] 0620      	MVL	0x20
+352 136A [00] [1] 6789      	MVF	_LCD1,1,0
 353                     ;	;.line	410; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x06;
-354 13EE [00] [1] 0606      	MVL	0x06
-355 13EF [00] [1] 678A      	MVF	_LCD2,1,0
+354 136B [00] [1] 0606      	MVL	0x06
+355 136C [00] [1] 678A      	MVF	_LCD2,1,0
 356                     ;	;.line	412; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x63;
-357 13F0 [00] [1] 0663      	MVL	0x63
-358 13F1 [00] [1] 678B      	MVF	_LCD3,1,0
+357 136D [00] [1] 0663      	MVL	0x63
+358 136E [00] [1] 678B      	MVF	_LCD3,1,0
 359                     ;	;.line	414; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-360 13F2 [00] [1] 0D8C      	CLRF	_LCD4,0
+360 136F [00] [1] 0D8C      	CLRF	_LCD4,0
 361                     ;	;.line	416; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-362 13F3 [00] [1] 0D8D      	CLRF	_LCD5,0
+362 1370 [00] [1] 0D8D      	CLRF	_LCD5,0
 363                     ;	;.line	418; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-364 13F4 [00] [1] 0D8E      	CLRF	_LCD6,0
+364 1371 [00] [1] 0D8E      	CLRF	_LCD6,0
 365                     ;	;.line	419; ".\Source\Drv_LCD_4718.c"	}
-366 13F5 [00] [1] 000A      	RET	
+366 1372 [00] [1] 000A      	RET	
 367                     ; exit point of _Disp_Rct
 368                     	.ENDFUNC	_Disp_Rct
 369                     ;--------------------------------------------------------
@@ -375,25 +375,25 @@
 375                     ;--------------------------------------------------------
 376                     ;	;.line	383; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x42;
 377                     _Disp_Udr:	;Function start
-378 13F6 [00] [2] 0642      	MVL	0x42
-379 13F7 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+378 1373 [00] [2] 0642      	MVL	0x42
+379 1374 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 380                     ;	;.line	385; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x22;
-381 13F9 [00] [1] 0622      	MVL	0x22
-382 13FA [00] [1] 6789      	MVF	_LCD1,1,0
+381 1376 [00] [1] 0622      	MVL	0x22
+382 1377 [00] [1] 6789      	MVF	_LCD1,1,0
 383                     ;	;.line	387; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x36;
-384 13FB [00] [1] 0636      	MVL	0x36
-385 13FC [00] [1] 678A      	MVF	_LCD2,1,0
+384 1378 [00] [1] 0636      	MVL	0x36
+385 1379 [00] [1] 678A      	MVF	_LCD2,1,0
 386                     ;	;.line	389; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x22;
-387 13FD [00] [1] 0622      	MVL	0x22
-388 13FE [00] [1] 678B      	MVF	_LCD3,1,0
+387 137A [00] [1] 0622      	MVL	0x22
+388 137B [00] [1] 678B      	MVF	_LCD3,1,0
 389                     ;	;.line	391; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-390 13FF [00] [1] 0D8C      	CLRF	_LCD4,0
+390 137C [00] [1] 0D8C      	CLRF	_LCD4,0
 391                     ;	;.line	393; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-392 1400 [00] [1] 0D8D      	CLRF	_LCD5,0
+392 137D [00] [1] 0D8D      	CLRF	_LCD5,0
 393                     ;	;.line	395; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-394 1401 [00] [1] 0D8E      	CLRF	_LCD6,0
+394 137E [00] [1] 0D8E      	CLRF	_LCD6,0
 395                     ;	;.line	396; ".\Source\Drv_LCD_4718.c"	}
-396 1402 [00] [1] 000A      	RET	
+396 137F [00] [1] 000A      	RET	
 397                     ; exit point of _Disp_Udr
 398                     	.ENDFUNC	_Disp_Udr
 399                     ;--------------------------------------------------------
@@ -405,25 +405,25 @@
 405                     ;--------------------------------------------------------
 406                     ;	;.line	360; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x62;
 407                     _Disp_Orl:	;Function start
-408 1403 [00] [2] 0662      	MVL	0x62
-409 1404 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+408 1380 [00] [2] 0662      	MVL	0x62
+409 1381 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 410                     ;	;.line	362; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x22;
-411 1406 [00] [1] 0622      	MVL	0x22
-412 1407 [00] [1] 6789      	MVF	_LCD1,1,0
+411 1383 [00] [1] 0622      	MVL	0x22
+412 1384 [00] [1] 6789      	MVF	_LCD1,1,0
 413                     ;	;.line	364; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
-414 1408 [00] [1] 0602      	MVL	0x02
-415 1409 [00] [1] 678A      	MVF	_LCD2,1,0
+414 1385 [00] [1] 0602      	MVL	0x02
+415 1386 [00] [1] 678A      	MVF	_LCD2,1,0
 416                     ;	;.line	366; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x43;
-417 140A [00] [1] 0643      	MVL	0x43
-418 140B [00] [1] 678B      	MVF	_LCD3,1,0
+417 1387 [00] [1] 0643      	MVL	0x43
+418 1388 [00] [1] 678B      	MVF	_LCD3,1,0
 419                     ;	;.line	368; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-420 140C [00] [1] 0D8C      	CLRF	_LCD4,0
+420 1389 [00] [1] 0D8C      	CLRF	_LCD4,0
 421                     ;	;.line	370; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-422 140D [00] [1] 0D8D      	CLRF	_LCD5,0
+422 138A [00] [1] 0D8D      	CLRF	_LCD5,0
 423                     ;	;.line	372; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-424 140E [00] [1] 0D8E      	CLRF	_LCD6,0
+424 138B [00] [1] 0D8E      	CLRF	_LCD6,0
 425                     ;	;.line	373; ".\Source\Drv_LCD_4718.c"	}
-426 140F [00] [1] 000A      	RET	
+426 138C [00] [1] 000A      	RET	
 427                     ; exit point of _Disp_Orl
 428                     	.ENDFUNC	_Disp_Orl
 429                     ;--------------------------------------------------------
@@ -437,120 +437,120 @@
 437                     :$L:r0x10A5:$L:r0x10A6
 438                     ;--------------------------------------------------------
 439                     ;	;.line	324; ".\Source\Drv_LCD_4718.c"	void Disp_Code(uint16 num)
-440 1564 [00] [2] C488      _Disp_Code:	;Function start
-441 1565 [08] [2] 6687      	MVF	r0x10A1,1,0
+440 1508 [00] [2] C488      _Disp_Code:	;Function start
+441 1509 [08] [2] 6687      	MVF	r0x10A1,1,0
 442                     ;	;.line	330; ".\Source\Drv_LCD_4718.c"	NumDisp[2] = num / 100;
-443 1566 [08] [2] 0664      	MVL	0x64
-444 1567 [08] [2] 660D      	MVF	__divuint_STK02,1,0
-445 1568 [09] [2] 0C0D      	CLRF	__divuint_STK01,0
-446 1569 [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
-447 156A [10] [2] 660D      	MVF	__divuint_STK00,1,0
-448 156B [11] [2] 648A      	MVF	r0x10A1,0,0
-449 156C [11] [2] C875      	CALL	__divuint
+443 150A [08] [2] 0664      	MVL	0x64
+444 150B [08] [2] 660D      	MVF	__divuint_STK02,1,0
+445 150C [09] [2] 0C0D      	CLRF	__divuint_STK01,0
+446 150D [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
+447 150E [10] [2] 660D      	MVF	__divuint_STK00,1,0
+448 150F [11] [2] 648A      	MVF	r0x10A1,0,0
+449 1510 [11] [2] C861      	CALL	__divuint
 450                     	.CHKPARA __divuint 4
-451 156D [08] [2] 6420      	MVF	STK00,0,0
-452 156E [08] [2] 6682      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),1,0
+451 1511 [08] [2] 6420      	MVF	STK00,0,0
+452 1512 [08] [2] 6682      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),1,0
 453                     ;	;.line	332; ".\Source\Drv_LCD_4718.c"	NumDisp[1] = num % 100 / 10;
-454 156F [08] [2] 0664      	MVL	0x64
-455 1570 [08] [2] 660D      	MVF	__moduint_STK02,1,0
-456 1571 [09] [2] 0C0D      	CLRF	__moduint_STK01,0
-457 1572 [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
-458 1573 [10] [2] 660D      	MVF	__moduint_STK00,1,0
-459 1574 [11] [2] 648A      	MVF	r0x10A1,0,0
-460 1575 [11] [2] C8A7      	CALL	__moduint
+454 1513 [08] [2] 0664      	MVL	0x64
+455 1514 [08] [2] 660D      	MVF	__moduint_STK02,1,0
+456 1515 [09] [2] 0C0D      	CLRF	__moduint_STK01,0
+457 1516 [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
+458 1517 [10] [2] 660D      	MVF	__moduint_STK00,1,0
+459 1518 [11] [2] 648A      	MVF	r0x10A1,0,0
+460 1519 [11] [2] C877      	CALL	__moduint
 461                     	.CHKPARA __moduint 4
-462 1576 [08] [2] 060A      	MVL	0x0a
-463 1577 [08] [2] 660D      	MVF	__divuchar_STK00,1,0
-464 1578 [09] [2] 6420      	MVF	STK00,0,0
-465 1579 [09] [2] CE32      	CALL	__divuchar
-466 157A [08] [2] 6683      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),1,0
+462 151A [08] [2] 060A      	MVL	0x0a
+463 151B [08] [2] 660D      	MVF	__divuchar_STK00,1,0
+464 151C [09] [2] 6420      	MVF	STK00,0,0
+465 151D [09] [2] CE0C      	CALL	__divuchar
+466 151E [08] [2] 6683      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),1,0
 467                     ;	;.line	334; ".\Source\Drv_LCD_4718.c"	NumDisp[0] = num % 10;
-468 157B [08] [2] 060A      	MVL	0x0a
-469 157C [08] [2] 660D      	MVF	__moduint_STK02,1,0
-470 157D [09] [2] 0C0D      	CLRF	__moduint_STK01,0
-471 157E [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
-472 157F [10] [2] 660D      	MVF	__moduint_STK00,1,0
-473 1580 [11] [2] 648A      	MVF	r0x10A1,0,0
-474 1581 [11] [2] C89B      	CALL	__moduint
-475 1582 [08] [2] 6420      	MVF	STK00,0,0
-476 1583 [08] [2] 6685      	MVF	r0x10A2,1,0
-477 1584 [08] [2] 6684      	MVF	(_Disp_Code_NumDisp_10000_421 + 0),1,0
+468 151F [08] [2] 060A      	MVL	0x0a
+469 1520 [08] [2] 660D      	MVF	__moduint_STK02,1,0
+470 1521 [09] [2] 0C0D      	CLRF	__moduint_STK01,0
+471 1522 [10] [2] 648A      	MVF	_Disp_Code_STK00,0,0
+472 1523 [10] [2] 660D      	MVF	__moduint_STK00,1,0
+473 1524 [11] [2] 648A      	MVF	r0x10A1,0,0
+474 1525 [11] [2] C86B      	CALL	__moduint
+475 1526 [08] [2] 6420      	MVF	STK00,0,0
+476 1527 [08] [2] 6685      	MVF	r0x10A2,1,0
+477 1528 [08] [2] 6684      	MVF	(_Disp_Code_NumDisp_10000_421 + 0),1,0
 478                     ;	;.line	337; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = NUM_CODE[NumDisp[2]];
-479 1585 [08] [2] 6482      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
-480 1586 [08] [2] 0702      	MULL	0x02
-481 1587 [08] [2] 6422      	MVF	_PRODL,0,0
-482 1588 [08] [2] 04CE      	ADDL	(_NUM_CODE + 0)
-483 1589 [08] [2] 660D      	MVF	__g2ptrget1_STK00,1,0
-484 158A [09] [2] 0636      	MVL	high (_NUM_CODE + 0)
-485 158B [09] [2] 1421      	ADDC	_PRODH,0,0
-486 158C [09] [2] 0280      	IORL	0x80
-487 158D [09] [2] C000 F6CE 	CALL	__g2ptrget1
-488 158F [00] [1] 0011 6788 	MVF	_LCD0,1,0
+479 1529 [08] [2] 6482      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
+480 152A [08] [2] 0702      	MULL	0x02
+481 152B [08] [2] 6422      	MVF	_PRODL,0,0
+482 152C [08] [2] 0484      	ADDL	(_NUM_CODE + 0)
+483 152D [08] [2] 660D      	MVF	__g2ptrget1_STK00,1,0
+484 152E [09] [2] 0635      	MVL	high (_NUM_CODE + 0)
+485 152F [09] [2] 1421      	ADDC	_PRODH,0,0
+486 1530 [09] [2] 0280      	IORL	0x80
+487 1531 [09] [2] C000 F6A3 	CALL	__g2ptrget1
+488 1533 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 489                     ;	;.line	339; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = (NUM_CODE[NumDisp[2]] >> 8) + (NUM_CODE[NumDisp[1]] << 4);
-490 1591 [08] [1] 6482      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
-491 1592 [08] [1] 0702      	MULL	0x02
-492 1593 [08] [1] 6422      	MVF	_PRODL,0,0
-493 1594 [08] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-494 1595 [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-495 1596 [09] [1] 0636      	MVL	high (_NUM_CODE + 0)
-496 1597 [09] [1] 1421      	ADDC	_PRODH,0,0
-497 1598 [09] [1] 0280      	IORL	0x80
-498 1599 [09] [1] C8FD      	CALL	__g2ptrget2
-499 159A [08] [1] 6686      	MVF	r0x10A3,1,0
-500 159B [08] [1] 6483      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
-501 159C [08] [1] 0702      	MULL	0x02
-502 159D [08] [1] 6422      	MVF	_PRODL,0,0
-503 159E [08] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-504 159F [08] [1] 660D      	MVF	__g2ptrget1_STK00,1,0
-505 15A0 [09] [1] 0636      	MVL	high (_NUM_CODE + 0)
-506 15A1 [09] [1] 1421      	ADDC	_PRODH,0,0
-507 15A2 [09] [1] 0280      	IORL	0x80
-508 15A3 [09] [1] C000 F6CE 	CALL	__g2ptrget1
-509 15A5 [08] [1] 6681      	MVF	r0x10A5,1,0
-510 15A6 [08] [1] 6081      	SWPF	r0x10A5,0,0
-511 15A7 [08] [1] 01F0      	ANDL	0xf0
-512 15A8 [08] [1] 1086      	ADDF	r0x10A3,0,0
-513 15A9 [08] [1] 6789      	MVF	_LCD1,1,0
+490 1535 [08] [1] 6482      	MVF	(_Disp_Code_NumDisp_10000_421 + 2),0,0
+491 1536 [08] [1] 0702      	MULL	0x02
+492 1537 [08] [1] 6422      	MVF	_PRODL,0,0
+493 1538 [08] [1] 0484      	ADDL	(_NUM_CODE + 0)
+494 1539 [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+495 153A [09] [1] 0635      	MVL	high (_NUM_CODE + 0)
+496 153B [09] [1] 1421      	ADDC	_PRODH,0,0
+497 153C [09] [1] 0280      	IORL	0x80
+498 153D [09] [1] C8CA      	CALL	__g2ptrget2
+499 153E [08] [1] 6686      	MVF	r0x10A3,1,0
+500 153F [08] [1] 6483      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
+501 1540 [08] [1] 0702      	MULL	0x02
+502 1541 [08] [1] 6422      	MVF	_PRODL,0,0
+503 1542 [08] [1] 0484      	ADDL	(_NUM_CODE + 0)
+504 1543 [08] [1] 660D      	MVF	__g2ptrget1_STK00,1,0
+505 1544 [09] [1] 0635      	MVL	high (_NUM_CODE + 0)
+506 1545 [09] [1] 1421      	ADDC	_PRODH,0,0
+507 1546 [09] [1] 0280      	IORL	0x80
+508 1547 [09] [1] C000 F6A3 	CALL	__g2ptrget1
+509 1549 [08] [1] 6681      	MVF	r0x10A5,1,0
+510 154A [08] [1] 6081      	SWPF	r0x10A5,0,0
+511 154B [08] [1] 01F0      	ANDL	0xf0
+512 154C [08] [1] 1086      	ADDF	r0x10A3,0,0
+513 154D [08] [1] 6789      	MVF	_LCD1,1,0
 514                     ;	;.line	341; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = NUM_CODE[NumDisp[1]] >> 4;
-515 15AA [08] [1] 6483      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
-516 15AB [08] [1] 0702      	MULL	0x02
-517 15AC [08] [1] 6422      	MVF	_PRODL,0,0
-518 15AD [08] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-519 15AE [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-520 15AF [09] [1] 0636      	MVL	high (_NUM_CODE + 0)
-521 15B0 [09] [1] 1421      	ADDC	_PRODH,0,0
-522 15B1 [09] [1] 0280      	IORL	0x80
-523 15B2 [09] [1] C8E4      	CALL	__g2ptrget2
-524 15B3 [08] [1] 6681      	MVF	r0x10A5,1,0
-525 15B4 [08] [1] 6020      	SWPF	STK00,0,0
-526 15B5 [08] [1] 010F      	ANDL	0x0f
-527 15B6 [08] [1] 6688      	MVF	_Disp_Code_STK00,1,0
-528 15B7 [08] [1] 6081      	SWPF	r0x10A5,0,0
-529 15B8 [08] [1] 6680      	MVF	r0x10A6,1,0
-530 15B9 [08] [1] 01F0      	ANDL	0xf0
-531 15BA [08] [1] 2E88      	IORF	_Disp_Code_STK00,1,0
-532 15BB [08] [1] 2280      	XORF	r0x10A6,1,0
-533 15BC [08] [1] 6488      	MVF	_Disp_Code_STK00,0,0
-534 15BD [08] [1] 678A      	MVF	_LCD2,1,0
+515 154E [08] [1] 6483      	MVF	(_Disp_Code_NumDisp_10000_421 + 1),0,0
+516 154F [08] [1] 0702      	MULL	0x02
+517 1550 [08] [1] 6422      	MVF	_PRODL,0,0
+518 1551 [08] [1] 0484      	ADDL	(_NUM_CODE + 0)
+519 1552 [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+520 1553 [09] [1] 0635      	MVL	high (_NUM_CODE + 0)
+521 1554 [09] [1] 1421      	ADDC	_PRODH,0,0
+522 1555 [09] [1] 0280      	IORL	0x80
+523 1556 [09] [1] C8B1      	CALL	__g2ptrget2
+524 1557 [08] [1] 6681      	MVF	r0x10A5,1,0
+525 1558 [08] [1] 6020      	SWPF	STK00,0,0
+526 1559 [08] [1] 010F      	ANDL	0x0f
+527 155A [08] [1] 6688      	MVF	_Disp_Code_STK00,1,0
+528 155B [08] [1] 6081      	SWPF	r0x10A5,0,0
+529 155C [08] [1] 6680      	MVF	r0x10A6,1,0
+530 155D [08] [1] 01F0      	ANDL	0xf0
+531 155E [08] [1] 2E88      	IORF	_Disp_Code_STK00,1,0
+532 155F [08] [1] 2280      	XORF	r0x10A6,1,0
+533 1560 [08] [1] 6488      	MVF	_Disp_Code_STK00,0,0
+534 1561 [08] [1] 678A      	MVF	_LCD2,1,0
 535                     ;	;.line	343; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[NumDisp[0]];
-536 15BE [08] [1] 6485      	MVF	r0x10A2,0,0
-537 15BF [08] [1] 0702      	MULL	0x02
-538 15C0 [08] [1] 6422      	MVF	_PRODL,0,0
-539 15C1 [08] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-540 15C2 [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-541 15C3 [09] [1] 0636      	MVL	high (_NUM_CODE + 0)
-542 15C4 [09] [1] 1421      	ADDC	_PRODH,0,0
-543 15C5 [09] [1] 0280      	IORL	0x80
-544 15C6 [09] [1] C8D0      	CALL	__g2ptrget2
+536 1562 [08] [1] 6485      	MVF	r0x10A2,0,0
+537 1563 [08] [1] 0702      	MULL	0x02
+538 1564 [08] [1] 6422      	MVF	_PRODL,0,0
+539 1565 [08] [1] 0484      	ADDL	(_NUM_CODE + 0)
+540 1566 [08] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+541 1567 [09] [1] 0635      	MVL	high (_NUM_CODE + 0)
+542 1568 [09] [1] 1421      	ADDC	_PRODH,0,0
+543 1569 [09] [1] 0280      	IORL	0x80
+544 156A [09] [1] C89D      	CALL	__g2ptrget2
 545                     ;	;.line	345; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[NumDisp[0]] >> 8;
-546 15C7 [08] [1] D020 F18B 	MVFF	STK00,_LCD3
-547 15C9 [08] [1] 678C      	MVF	_LCD4,1,0
+546 156B [08] [1] D020 F18B 	MVFF	STK00,_LCD3
+547 156D [08] [1] 678C      	MVF	_LCD4,1,0
 548                     ;	;.line	347; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-549 15CA [08] [1] 0D8D      	CLRF	_LCD5,0
+549 156E [08] [1] 0D8D      	CLRF	_LCD5,0
 550                     ;	;.line	349; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-551 15CB [08] [1] 0D8E      	CLRF	_LCD6,0
+551 156F [08] [1] 0D8E      	CLRF	_LCD6,0
 552                     ;	;.line	350; ".\Source\Drv_LCD_4718.c"	}
-553 15CC [08] [1] C4B7 000A 	RET	
+553 1570 [08] [1] C4B7 000A 	RET	
 554                     ; exit point of _Disp_Code
 555                     	.ENDFUNC	_Disp_Code
 556                     ;--------------------------------------------------------
@@ -563,80 +563,80 @@
 563                     :$L:r0x1097
 564                     ;--------------------------------------------------------
 565                     ;	;.line	299; ".\Source\Drv_LCD_4718.c"	NumDisp[1] = num / 10;
-566 02BE [00] [2] C487      _Disp_Version:	;Function start
-567 02BF [07] [2] 6685      	MVF	r0x1095,1,0
-568 02C0 [07] [2] 6686      	MVF	r0x1094,1,0
-569 02C1 [07] [2] 060A      	MVL	0x0a
-570 02C2 [07] [2] 660D      	MVF	__divuchar_STK00,1,0
-571 02C3 [08] [2] 6487      	MVF	r0x1094,0,0
-572 02C4 [08] [2] C001 F3AC 	CALL	__divuchar
+566 02A1 [00] [2] C487      _Disp_Version:	;Function start
+567 02A2 [07] [2] 6685      	MVF	r0x1095,1,0
+568 02A3 [07] [2] 6686      	MVF	r0x1094,1,0
+569 02A4 [07] [2] 060A      	MVL	0x0a
+570 02A5 [07] [2] 660D      	MVF	__divuchar_STK00,1,0
+571 02A6 [08] [2] 6487      	MVF	r0x1094,0,0
+572 02A7 [08] [2] C001 F32A 	CALL	__divuchar
 573                     	.CHKPARA __divuchar 2
-574 02C6 [07] [2] 6683      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),1,0
+574 02A9 [07] [2] 6683      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),1,0
 575                     ;	;.line	301; ".\Source\Drv_LCD_4718.c"	NumDisp[0] = num % 10;
-576 02C7 [07] [2] 060A      	MVL	0x0a
-577 02C8 [07] [2] 660D      	MVF	__moduchar_STK00,1,0
-578 02C9 [08] [2] 6486      	MVF	r0x1095,0,0
-579 02CA [08] [2] C001 F602 	CALL	__moduchar
+576 02AA [07] [2] 060A      	MVL	0x0a
+577 02AB [07] [2] 660D      	MVF	__moduchar_STK00,1,0
+578 02AC [08] [2] 6486      	MVF	r0x1095,0,0
+579 02AD [08] [2] C001 F4EF 	CALL	__moduchar
 580                     	.CHKPARA __moduchar 2
-581 02CC [07] [2] 6685      	MVF	r0x1095,1,0
-582 02CD [07] [2] 6684      	MVF	(_Disp_Version_NumDisp_10000_419 + 0),1,0
+581 02AF [07] [2] 6685      	MVF	r0x1095,1,0
+582 02B0 [07] [2] 6684      	MVF	(_Disp_Version_NumDisp_10000_419 + 0),1,0
 583                     ;	;.line	304; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
-584 02CE [00] [1] 0011 0D88 	CLRF	_LCD0,0
+584 02B1 [00] [1] 0011 0D88 	CLRF	_LCD0,0
 585                     ;	;.line	306; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = NUM_CODE[NumDisp[1]] << 4;
-586 02D0 [07] [1] 6483      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
-587 02D1 [07] [1] 0702      	MULL	0x02
-588 02D2 [07] [1] 6422      	MVF	_PRODL,0,0
-589 02D3 [07] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-590 02D4 [07] [1] 660D      	MVF	__g2ptrget1_STK00,1,0
-591 02D5 [08] [1] 0636      	MVL	high (_NUM_CODE + 0)
-592 02D6 [08] [1] 1421      	ADDC	_PRODH,0,0
-593 02D7 [08] [1] 0280      	IORL	0x80
-594 02D8 [08] [1] CBF5      	CALL	__g2ptrget1
-595 02D9 [07] [1] 6682      	MVF	r0x1096,1,0
-596 02DA [07] [1] 6082      	SWPF	r0x1096,0,0
-597 02DB [07] [1] 01F0      	ANDL	0xf0
-598 02DC [07] [1] 6789      	MVF	_LCD1,1,0
+586 02B3 [07] [1] 6483      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
+587 02B4 [07] [1] 0702      	MULL	0x02
+588 02B5 [07] [1] 6422      	MVF	_PRODL,0,0
+589 02B6 [07] [1] 0484      	ADDL	(_NUM_CODE + 0)
+590 02B7 [07] [1] 660D      	MVF	__g2ptrget1_STK00,1,0
+591 02B8 [08] [1] 0635      	MVL	high (_NUM_CODE + 0)
+592 02B9 [08] [1] 1421      	ADDC	_PRODH,0,0
+593 02BA [08] [1] 0280      	IORL	0x80
+594 02BB [08] [1] CBE7      	CALL	__g2ptrget1
+595 02BC [07] [1] 6682      	MVF	r0x1096,1,0
+596 02BD [07] [1] 6082      	SWPF	r0x1096,0,0
+597 02BE [07] [1] 01F0      	ANDL	0xf0
+598 02BF [07] [1] 6789      	MVF	_LCD1,1,0
 599                     ;	;.line	308; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = (NUM_CODE[NumDisp[1]] >> 4) + 0x40;
-600 02DD [07] [1] 6483      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
-601 02DE [07] [1] 0702      	MULL	0x02
-602 02DF [07] [1] 6422      	MVF	_PRODL,0,0
-603 02E0 [07] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-604 02E1 [07] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-605 02E2 [08] [1] 0636      	MVL	high (_NUM_CODE + 0)
-606 02E3 [08] [1] 1421      	ADDC	_PRODH,0,0
-607 02E4 [08] [1] 0280      	IORL	0x80
-608 02E5 [08] [1] C001 F697 	CALL	__g2ptrget2
-609 02E7 [07] [1] 6680      	MVF	r0x1097,1,0
-610 02E8 [07] [1] 6020      	SWPF	STK00,0,0
-611 02E9 [07] [1] 010F      	ANDL	0x0f
-612 02EA [07] [1] 6686      	MVF	r0x1094,1,0
-613 02EB [07] [1] 6080      	SWPF	r0x1097,0,0
-614 02EC [07] [1] 6681      	MVF	r0x1099,1,0
-615 02ED [07] [1] 01F0      	ANDL	0xf0
-616 02EE [07] [1] 2E86      	IORF	r0x1094,1,0
-617 02EF [07] [1] 2281      	XORF	r0x1099,1,0
-618 02F0 [07] [1] 6486      	MVF	r0x1094,0,0
-619 02F1 [07] [1] 0440      	ADDL	0x40
-620 02F2 [07] [1] 678A      	MVF	_LCD2,1,0
+600 02C0 [07] [1] 6483      	MVF	(_Disp_Version_NumDisp_10000_419 + 1),0,0
+601 02C1 [07] [1] 0702      	MULL	0x02
+602 02C2 [07] [1] 6422      	MVF	_PRODL,0,0
+603 02C3 [07] [1] 0484      	ADDL	(_NUM_CODE + 0)
+604 02C4 [07] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+605 02C5 [08] [1] 0635      	MVL	high (_NUM_CODE + 0)
+606 02C6 [08] [1] 1421      	ADDC	_PRODH,0,0
+607 02C7 [08] [1] 0280      	IORL	0x80
+608 02C8 [08] [1] C001 F608 	CALL	__g2ptrget2
+609 02CA [07] [1] 6680      	MVF	r0x1097,1,0
+610 02CB [07] [1] 6020      	SWPF	STK00,0,0
+611 02CC [07] [1] 010F      	ANDL	0x0f
+612 02CD [07] [1] 6686      	MVF	r0x1094,1,0
+613 02CE [07] [1] 6080      	SWPF	r0x1097,0,0
+614 02CF [07] [1] 6681      	MVF	r0x1099,1,0
+615 02D0 [07] [1] 01F0      	ANDL	0xf0
+616 02D1 [07] [1] 2E86      	IORF	r0x1094,1,0
+617 02D2 [07] [1] 2281      	XORF	r0x1099,1,0
+618 02D3 [07] [1] 6486      	MVF	r0x1094,0,0
+619 02D4 [07] [1] 0440      	ADDL	0x40
+620 02D5 [07] [1] 678A      	MVF	_LCD2,1,0
 621                     ;	;.line	310; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[NumDisp[0]];
-622 02F3 [07] [1] 6485      	MVF	r0x1095,0,0
-623 02F4 [07] [1] 0702      	MULL	0x02
-624 02F5 [07] [1] 6422      	MVF	_PRODL,0,0
-625 02F6 [07] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-626 02F7 [07] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-627 02F8 [08] [1] 0636      	MVL	high (_NUM_CODE + 0)
-628 02F9 [08] [1] 1421      	ADDC	_PRODH,0,0
-629 02FA [08] [1] 0280      	IORL	0x80
-630 02FB [08] [1] C001 F697 	CALL	__g2ptrget2
+622 02D6 [07] [1] 6485      	MVF	r0x1095,0,0
+623 02D7 [07] [1] 0702      	MULL	0x02
+624 02D8 [07] [1] 6422      	MVF	_PRODL,0,0
+625 02D9 [07] [1] 0484      	ADDL	(_NUM_CODE + 0)
+626 02DA [07] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+627 02DB [08] [1] 0635      	MVL	high (_NUM_CODE + 0)
+628 02DC [08] [1] 1421      	ADDC	_PRODH,0,0
+629 02DD [08] [1] 0280      	IORL	0x80
+630 02DE [08] [1] C001 F608 	CALL	__g2ptrget2
 631                     ;	;.line	312; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[NumDisp[0]] >> 8;
-632 02FD [07] [1] D020 F18B 	MVFF	STK00,_LCD3
-633 02FF [07] [1] 678C      	MVF	_LCD4,1,0
+632 02E0 [07] [1] D020 F18B 	MVFF	STK00,_LCD3
+633 02E2 [07] [1] 678C      	MVF	_LCD4,1,0
 634                     ;	;.line	314; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-635 0300 [07] [1] 0D8D      	CLRF	_LCD5,0
+635 02E3 [07] [1] 0D8D      	CLRF	_LCD5,0
 636                     ;	;.line	316; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-637 0301 [07] [1] 0D8E      	CLRF	_LCD6,0
+637 02E4 [07] [1] 0D8E      	CLRF	_LCD6,0
 638                     ;	;.line	317; ".\Source\Drv_LCD_4718.c"	}
-639 0302 [07] [1] C4B9 000A 	RET	
+639 02E5 [07] [1] C4B9 000A 	RET	
 640                     ; exit point of _Disp_Version
 641                     	.ENDFUNC	_Disp_Version
 642                     ;--------------------------------------------------------
@@ -648,24 +648,24 @@
 648                     ;--------------------------------------------------------
 649                     ;	;.line	273; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x20;
 650                     _Disp_StaticDash:	;Function start
-651 04BD [00] [2] 0620      	MVL	0x20
-652 04BE [00] [1] 0011 6788 	MVF	_LCD0,1,0
+651 0499 [00] [2] 0620      	MVL	0x20
+652 049A [00] [1] 0011 6788 	MVF	_LCD0,1,0
 653                     ;	;.line	275; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
-654 04C0 [00] [1] 0D89      	CLRF	_LCD1,0
+654 049C [00] [1] 0D89      	CLRF	_LCD1,0
 655                     ;	;.line	277; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
-656 04C1 [00] [1] 0602      	MVL	0x02
-657 04C2 [00] [1] 678A      	MVF	_LCD2,1,0
+656 049D [00] [1] 0602      	MVL	0x02
+657 049E [00] [1] 678A      	MVF	_LCD2,1,0
 658                     ;	;.line	279; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x20;
-659 04C3 [00] [1] 0620      	MVL	0x20
-660 04C4 [00] [1] 678B      	MVF	_LCD3,1,0
+659 049F [00] [1] 0620      	MVL	0x20
+660 04A0 [00] [1] 678B      	MVF	_LCD3,1,0
 661                     ;	;.line	281; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-662 04C5 [00] [1] 0D8C      	CLRF	_LCD4,0
+662 04A1 [00] [1] 0D8C      	CLRF	_LCD4,0
 663                     ;	;.line	283; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-664 04C6 [00] [1] 0D8D      	CLRF	_LCD5,0
+664 04A2 [00] [1] 0D8D      	CLRF	_LCD5,0
 665                     ;	;.line	285; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-666 04C7 [00] [1] 0D8E      	CLRF	_LCD6,0
+666 04A3 [00] [1] 0D8E      	CLRF	_LCD6,0
 667                     ;	;.line	286; ".\Source\Drv_LCD_4718.c"	}
-668 04C8 [00] [1] 000A      	RET	
+668 04A4 [00] [1] 000A      	RET	
 669                     ; exit point of _Disp_StaticDash
 670                     	.ENDFUNC	_Disp_StaticDash
 671                     ;--------------------------------------------------------
@@ -677,25 +677,25 @@
 677                     ;--------------------------------------------------------
 678                     ;	;.line	250; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
 679                     _Disp_Err:	;Function start
-680 1445 [00] [2] 0673      	MVL	0x73
-681 1446 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+680 13B9 [00] [2] 0673      	MVL	0x73
+681 13BA [00] [1] 0011 6788 	MVF	_LCD0,1,0
 682                     ;	;.line	252; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
-683 1448 [00] [1] 0620      	MVL	0x20
-684 1449 [00] [1] 6789      	MVF	_LCD1,1,0
+683 13BC [00] [1] 0620      	MVL	0x20
+684 13BD [00] [1] 6789      	MVF	_LCD1,1,0
 685                     ;	;.line	254; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
-686 144A [00] [1] 0602      	MVL	0x02
-687 144B [00] [1] 678A      	MVF	_LCD2,1,0
+686 13BE [00] [1] 0602      	MVL	0x02
+687 13BF [00] [1] 678A      	MVF	_LCD2,1,0
 688                     ;	;.line	256; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x22;
-689 144C [00] [1] 0622      	MVL	0x22
-690 144D [00] [1] 678B      	MVF	_LCD3,1,0
+689 13C0 [00] [1] 0622      	MVL	0x22
+690 13C1 [00] [1] 678B      	MVF	_LCD3,1,0
 691                     ;	;.line	258; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-692 144E [00] [1] 0D8C      	CLRF	_LCD4,0
+692 13C2 [00] [1] 0D8C      	CLRF	_LCD4,0
 693                     ;	;.line	260; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-694 144F [00] [1] 0D8D      	CLRF	_LCD5,0
+694 13C3 [00] [1] 0D8D      	CLRF	_LCD5,0
 695                     ;	;.line	262; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-696 1450 [00] [1] 0D8E      	CLRF	_LCD6,0
+696 13C4 [00] [1] 0D8E      	CLRF	_LCD6,0
 697                     ;	;.line	263; ".\Source\Drv_LCD_4718.c"	}
-698 1451 [00] [1] 000A      	RET	
+698 13C5 [00] [1] 000A      	RET	
 699                     ; exit point of _Disp_Err
 700                     	.ENDFUNC	_Disp_Err
 701                     ;--------------------------------------------------------
@@ -707,36 +707,36 @@
 707                     :$L:r0x108D
 708                     ;--------------------------------------------------------
 709                     ;	;.line	224; ".\Source\Drv_LCD_4718.c"	void Disp_ErrNo(uint8 No)
-710 1452 [00] [2] C481      _Disp_ErrNo:	;Function start
-711 1453 [01] [2] 6680      	MVF	r0x108D,1,0
+710 13C6 [00] [2] C481      _Disp_ErrNo:	;Function start
+711 13C7 [01] [2] 6680      	MVF	r0x108D,1,0
 712                     ;	;.line	227; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x73;
-713 1454 [01] [2] 0673      	MVL	0x73
-714 1455 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+713 13C8 [01] [2] 0673      	MVL	0x73
+714 13C9 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 715                     ;	;.line	229; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x20;
-716 1457 [01] [1] 0620      	MVL	0x20
-717 1458 [01] [1] 6789      	MVF	_LCD1,1,0
+716 13CB [01] [1] 0620      	MVL	0x20
+717 13CC [01] [1] 6789      	MVF	_LCD1,1,0
 718                     ;	;.line	231; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x02;
-719 1459 [01] [1] 0602      	MVL	0x02
-720 145A [01] [1] 678A      	MVF	_LCD2,1,0
+719 13CD [01] [1] 0602      	MVL	0x02
+720 13CE [01] [1] 678A      	MVF	_LCD2,1,0
 721                     ;	;.line	233; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = NUM_CODE[No];
-722 145B [01] [1] 6480      	MVF	r0x108D,0,0
-723 145C [01] [1] 0702      	MULL	0x02
-724 145D [01] [1] 6422      	MVF	_PRODL,0,0
-725 145E [01] [1] 04CE      	ADDL	(_NUM_CODE + 0)
-726 145F [01] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
-727 1460 [02] [1] 0636      	MVL	high (_NUM_CODE + 0)
-728 1461 [02] [1] 1421      	ADDC	_PRODH,0,0
-729 1462 [02] [1] 0280      	IORL	0x80
-730 1463 [02] [1] CA33      	CALL	__g2ptrget2
+722 13CF [01] [1] 6480      	MVF	r0x108D,0,0
+723 13D0 [01] [1] 0702      	MULL	0x02
+724 13D1 [01] [1] 6422      	MVF	_PRODL,0,0
+725 13D2 [01] [1] 0484      	ADDL	(_NUM_CODE + 0)
+726 13D3 [01] [1] 660D      	MVF	__g2ptrget2_STK00,1,0
+727 13D4 [02] [1] 0635      	MVL	high (_NUM_CODE + 0)
+728 13D5 [02] [1] 1421      	ADDC	_PRODH,0,0
+729 13D6 [02] [1] 0280      	IORL	0x80
+730 13D7 [02] [1] CA30      	CALL	__g2ptrget2
 731                     ;	;.line	235; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = NUM_CODE[No] >> 8;
-732 1464 [01] [1] D020 F18B 	MVFF	STK00,_LCD3
-733 1466 [01] [1] 678C      	MVF	_LCD4,1,0
+732 13D8 [01] [1] D020 F18B 	MVFF	STK00,_LCD3
+733 13DA [01] [1] 678C      	MVF	_LCD4,1,0
 734                     ;	;.line	237; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-735 1467 [01] [1] 0D8D      	CLRF	_LCD5,0
+735 13DB [01] [1] 0D8D      	CLRF	_LCD5,0
 736                     ;	;.line	239; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-737 1468 [01] [1] 0D8E      	CLRF	_LCD6,0
+737 13DC [01] [1] 0D8E      	CLRF	_LCD6,0
 738                     ;	;.line	240; ".\Source\Drv_LCD_4718.c"	}
-739 1469 [01] [1] C4BF 000A 	RET	
+739 13DD [01] [1] C4BF 000A 	RET	
 740                     ; exit point of _Disp_ErrNo
 741                     	.ENDFUNC	_Disp_ErrNo
 742                     ;--------------------------------------------------------
@@ -748,21 +748,21 @@
 748                     ;--------------------------------------------------------
 749                     ;	;.line	204; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
 750                     _Disp_Nothing:	;Function start
-751 05DA [00] [1] 0011 0D88 	CLRF	_LCD0,0
+751 05B6 [00] [1] 0011 0D88 	CLRF	_LCD0,0
 752                     ;	;.line	206; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x00;
-753 05DC [00] [1] 0D89      	CLRF	_LCD1,0
+753 05B8 [00] [1] 0D89      	CLRF	_LCD1,0
 754                     ;	;.line	208; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x00;
-755 05DD [00] [1] 0D8A      	CLRF	_LCD2,0
+755 05B9 [00] [1] 0D8A      	CLRF	_LCD2,0
 756                     ;	;.line	210; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x00;
-757 05DE [00] [1] 0D8B      	CLRF	_LCD3,0
+757 05BA [00] [1] 0D8B      	CLRF	_LCD3,0
 758                     ;	;.line	212; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-759 05DF [00] [1] 0D8C      	CLRF	_LCD4,0
+759 05BB [00] [1] 0D8C      	CLRF	_LCD4,0
 760                     ;	;.line	214; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-761 05E0 [00] [1] 0D8D      	CLRF	_LCD5,0
+761 05BC [00] [1] 0D8D      	CLRF	_LCD5,0
 762                     ;	;.line	216; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-763 05E1 [00] [1] 0D8E      	CLRF	_LCD6,0
+763 05BD [00] [1] 0D8E      	CLRF	_LCD6,0
 764                     ;	;.line	217; ".\Source\Drv_LCD_4718.c"	}
-765 05E2 [00] [1] 000A      	RET	
+765 05BE [00] [1] 000A      	RET	
 766                     ; exit point of _Disp_Nothing
 767                     	.ENDFUNC	_Disp_Nothing
 768                     ;--------------------------------------------------------
@@ -774,25 +774,25 @@
 774                     ;--------------------------------------------------------
 775                     ;	;.line	173; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x77;
 776                     _Disp_All:	;Function start
-777 0304 [00] [2] 0677      	MVL	0x77
-778 0305 [00] [1] 0011 6788 	MVF	_LCD0,1,0
+777 02E7 [00] [2] 0677      	MVL	0x77
+778 02E8 [00] [1] 0011 6788 	MVF	_LCD0,1,0
 779                     ;	;.line	175; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x33;
-780 0307 [00] [1] 0633      	MVL	0x33
-781 0308 [00] [1] 6789      	MVF	_LCD1,1,0
+780 02EA [00] [1] 0633      	MVL	0x33
+781 02EB [00] [1] 6789      	MVF	_LCD1,1,0
 782                     ;	;.line	177; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x77;
-783 0309 [00] [1] 0677      	MVL	0x77
-784 030A [00] [1] 678A      	MVF	_LCD2,1,0
+783 02EC [00] [1] 0677      	MVL	0x77
+784 02ED [00] [1] 678A      	MVF	_LCD2,1,0
 785                     ;	;.line	179; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x77;
-786 030B [00] [1] 678B      	MVF	_LCD3,1,0
+786 02EE [00] [1] 678B      	MVF	_LCD3,1,0
 787                     ;	;.line	184; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x77;
-788 030C [00] [1] 678C      	MVF	_LCD4,1,0
+788 02EF [00] [1] 678C      	MVF	_LCD4,1,0
 789                     ;	;.line	191; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x07;
-790 030D [00] [1] 0607      	MVL	0x07
-791 030E [00] [1] 678D      	MVF	_LCD5,1,0
+790 02F0 [00] [1] 0607      	MVL	0x07
+791 02F1 [00] [1] 678D      	MVF	_LCD5,1,0
 792                     ;	;.line	193; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-793 030F [00] [1] 0D8E      	CLRF	_LCD6,0
+793 02F2 [00] [1] 0D8E      	CLRF	_LCD6,0
 794                     ;	;.line	194; ".\Source\Drv_LCD_4718.c"	}
-795 0310 [00] [1] 000A      	RET	
+795 02F3 [00] [1] 000A      	RET	
 796                     ; exit point of _Disp_All
 797                     	.ENDFUNC	_Disp_All
 798                     ;--------------------------------------------------------
@@ -804,24 +804,24 @@
 804                     ;--------------------------------------------------------
 805                     ;	;.line	150; ".\Source\Drv_LCD_4718.c"	LCD0_Macro = 0x00;
 806                     _Disp_Hi:	;Function start
-807 04B1 [00] [1] 0011 0D88 	CLRF	_LCD0,0
+807 048D [00] [1] 0011 0D88 	CLRF	_LCD0,0
 808                     ;	;.line	152; ".\Source\Drv_LCD_4718.c"	LCD1_Macro = 0x30;
-809 04B3 [00] [1] 0630      	MVL	0x30
-810 04B4 [00] [1] 6789      	MVF	_LCD1,1,0
+809 048F [00] [1] 0630      	MVL	0x30
+810 0490 [00] [1] 6789      	MVF	_LCD1,1,0
 811                     ;	;.line	154; ".\Source\Drv_LCD_4718.c"	LCD2_Macro = 0x32;
-812 04B5 [00] [1] 0632      	MVL	0x32
-813 04B6 [00] [1] 678A      	MVF	_LCD2,1,0
+812 0491 [00] [1] 0632      	MVL	0x32
+813 0492 [00] [1] 678A      	MVF	_LCD2,1,0
 814                     ;	;.line	156; ".\Source\Drv_LCD_4718.c"	LCD3_Macro = 0x02;
-815 04B7 [00] [1] 0602      	MVL	0x02
-816 04B8 [00] [1] 678B      	MVF	_LCD3,1,0
+815 0493 [00] [1] 0602      	MVL	0x02
+816 0494 [00] [1] 678B      	MVF	_LCD3,1,0
 817                     ;	;.line	158; ".\Source\Drv_LCD_4718.c"	LCD4_Macro = 0x00;
-818 04B9 [00] [1] 0D8C      	CLRF	_LCD4,0
+818 0495 [00] [1] 0D8C      	CLRF	_LCD4,0
 819                     ;	;.line	160; ".\Source\Drv_LCD_4718.c"	LCD5_Macro = 0x00;
-820 04BA [00] [1] 0D8D      	CLRF	_LCD5,0
+820 0496 [00] [1] 0D8D      	CLRF	_LCD5,0
 821                     ;	;.line	162; ".\Source\Drv_LCD_4718.c"	LCD6_Macro = 0x00;
-822 04BB [00] [1] 0D8E      	CLRF	_LCD6,0
+822 0497 [00] [1] 0D8E      	CLRF	_LCD6,0
 823                     ;	;.line	163; ".\Source\Drv_LCD_4718.c"	}
-824 04BC [00] [1] 000A      	RET	
+824 0498 [00] [1] 000A      	RET	
 825                     ; exit point of _Disp_Hi
 826                     	.ENDFUNC	_Disp_Hi
 827                     ;--------------------------------------------------------
@@ -863,21 +863,21 @@
 863                     ;--------------------------------------------------------
 864                     ;	;.line	92; ".\Source\Drv_LCD_4718.c"	LCDCN1 = 0x00;
 865                     _LCD_Clear_Register:	;Function start
-866 02B5 [00] [1] 0011 0D80 	CLRF	_LCDCN1,0
+866 0298 [00] [1] 0011 0D80 	CLRF	_LCDCN1,0
 867                     ;	;.line	96; ".\Source\Drv_LCD_4718.c"	LCDCN2 = 0x00;
-868 02B7 [00] [1] 0D81      	CLRF	_LCDCN2,0
+868 029A [00] [1] 0D81      	CLRF	_LCDCN2,0
 869                     ;	;.line	100; ".\Source\Drv_LCD_4718.c"	LCDCN3 = 0x00;
-870 02B8 [00] [1] 0D82      	CLRF	_LCDCN3,0
+870 029B [00] [1] 0D82      	CLRF	_LCDCN3,0
 871                     ;	;.line	104; ".\Source\Drv_LCD_4718.c"	LCDCN4 = 0x00;
-872 02B9 [00] [1] 0D83      	CLRF	_LCDCN4,0
+872 029C [00] [1] 0D83      	CLRF	_LCDCN4,0
 873                     ;	;.line	108; ".\Source\Drv_LCD_4718.c"	LCDCN6 = 0x00;
-874 02BA [00] [1] 0D85      	CLRF	_LCDCN6,0
+874 029D [00] [1] 0D85      	CLRF	_LCDCN6,0
 875                     ;	;.line	112; ".\Source\Drv_LCD_4718.c"	LCDCN7 = 0x00;
-876 02BB [00] [1] 0D86      	CLRF	_LCDCN7,0
+876 029E [00] [1] 0D86      	CLRF	_LCDCN7,0
 877                     ;	;.line	116; ".\Source\Drv_LCD_4718.c"	LCDCN8 = 0x00;
-878 02BC [00] [1] 0D87      	CLRF	_LCDCN8,0
+878 029F [00] [1] 0D87      	CLRF	_LCDCN8,0
 879                     ;	;.line	117; ".\Source\Drv_LCD_4718.c"	}
-880 02BD [00] [1] 000A      	RET	
+880 02A0 [00] [1] 000A      	RET	
 881                     ; exit point of _LCD_Clear_Register
 882                     	.ENDFUNC	_LCD_Clear_Register
 883                     ;--------------------------------------------------------
@@ -890,41 +890,41 @@
 890                     ;--------------------------------------------------------
 891                     ;	;.line	27; ".\Source\Drv_LCD_4718.c"	LCD_Enable();
 892                     _LCD_Configuration:	;Function start
-893 1B4C [00] [1] 9F80      	BSF	_LCDCN1,7
+893 1AA7 [00] [1] 9F80      	BSF	_LCDCN1,7
 894                     ;	;.line	29; ".\Source\Drv_LCD_4718.c"	LCD_ChargePumpSelect(LCDV_4V05);
-895 1B4D [00] [1] 6580      	MVF	_LCDCN1,0,0
-896 1B4E [00] [1] 018F      	ANDL	0x8f
-897 1B4F [00] [1] 0220      	IORL	0x20
-898 1B50 [00] [1] 6780      	MVF	_LCDCN1,1,0
+895 1AA8 [00] [1] 6580      	MVF	_LCDCN1,0,0
+896 1AA9 [00] [1] 018F      	ANDL	0x8f
+897 1AAA [00] [1] 0220      	IORL	0x20
+898 1AAB [00] [1] 6780      	MVF	_LCDCN1,1,0
 899                     ;	;.line	31; ".\Source\Drv_LCD_4718.c"	LCD_OutBufferEnable();
-900 1B51 [00] [1] 9780      	BSF	_LCDCN1,3
+900 1AAC [00] [1] 9780      	BSF	_LCDCN1,3
 901                     ;	;.line	33; ".\Source\Drv_LCD_4718.c"	LCD_ChargePumpClk(SELPCLK_7KHZ);
-902 1B52 [00] [1] 6580      	MVF	_LCDCN1,0,0
-903 1B53 [00] [1] 01FB      	ANDL	0xfb
-904 1B54 [00] [1] 0204      	IORL	0x04
-905 1B55 [00] [1] 6780      	MVF	_LCDCN1,1,0
+902 1AAD [00] [1] 6580      	MVF	_LCDCN1,0,0
+903 1AAE [00] [1] 01FB      	ANDL	0xfb
+904 1AAF [00] [1] 0204      	IORL	0x04
+905 1AB0 [00] [1] 6780      	MVF	_LCDCN1,1,0
 906                     ;	;.line	37; ".\Source\Drv_LCD_4718.c"	LCD_CLK_ClkSelect(LCDS_LPCCK);
-907 1B56 [00] [1] 8035      	BCF	_OSCCN1,0
+907 1AB1 [00] [1] 8035      	BCF	_OSCCN1,0
 908                     ;	;.line	40; ".\Source\Drv_LCD_4718.c"	LCD_CLK_DivSelect(DLCD_LCDCKDIV2);
-909 1B57 [00] [1] 063F      	MVL	0x3f
-910 1B58 [00] [1] 2A36      	ANDF	_OSCCN2,1,0
+909 1AB2 [00] [1] 063F      	MVL	0x3f
+910 1AB3 [00] [1] 2A36      	ANDF	_OSCCN2,1,0
 911                     ;	;.line	54; ".\Source\Drv_LCD_4718.c"	LCDCN1 |= 0x01;
-912 1B59 [00] [1] 9180      	BSF	_LCDCN1,0
+912 1AB4 [00] [1] 9180      	BSF	_LCDCN1,0
 913                     ;	;.line	58; ".\Source\Drv_LCD_4718.c"	LCD_DisplayOn();
-914 1B5A [00] [1] 8381      	BCF	_LCDCN2,1
+914 1AB5 [00] [1] 8381      	BCF	_LCDCN2,1
 915                     ;	;.line	62; ".\Source\Drv_LCD_4718.c"	LCDCN3 = 0xFF;
-916 1B5B [00] [1] 0B82      	SETF	_LCDCN3,0
+916 1AB6 [00] [1] 0B82      	SETF	_LCDCN3,0
 917                     ;	;.line	66; ".\Source\Drv_LCD_4718.c"	LCDCN6 = 0xFF;
-918 1B5C [00] [1] 0B85      	SETF	_LCDCN6,0
+918 1AB7 [00] [1] 0B85      	SETF	_LCDCN6,0
 919                     ;	;.line	70; ".\Source\Drv_LCD_4718.c"	LCDCN7 = 0xFF;
-920 1B5D [00] [1] 0B86      	SETF	_LCDCN7,0
+920 1AB8 [00] [1] 0B86      	SETF	_LCDCN7,0
 921                     ;	;.line	74; ".\Source\Drv_LCD_4718.c"	LCDCN8 = 0xFF;
-922 1B5E [00] [1] 0B87      	SETF	_LCDCN8,0
+922 1AB9 [00] [1] 0B87      	SETF	_LCDCN8,0
 923                     ;	;.line	78; ".\Source\Drv_LCD_4718.c"	LCDCN4 = 0x01;
-924 1B5F [00] [1] 0601      	MVL	0x01
-925 1B60 [00] [1] 6783      	MVF	_LCDCN4,1,0
+924 1ABA [00] [1] 0601      	MVL	0x01
+925 1ABB [00] [1] 6783      	MVF	_LCDCN4,1,0
 926                     ;	;.line	80; ".\Source\Drv_LCD_4718.c"	Disp_Nothing();
-927 1B61 [00] [1] C200 F5DA 	CALL	_Disp_Nothing
+927 1ABC [00] [1] C200 F5B6 	CALL	_Disp_Nothing
 928                     	.CHKPARA _Disp_Nothing 0
 929                     ;	;.line	81; ".\Source\Drv_LCD_4718.c"	}
 930                     	RET	

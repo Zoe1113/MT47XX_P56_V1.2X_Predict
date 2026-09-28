@@ -185,7 +185,7 @@ __sdcc_interrupt:
 .globl _ISR
 
 ;--------------------------------------------------------
-	.FUNC _ISR:$r:0:0:$L:r0x108D:$L:r0x1090:$L:r0x108E:$L:r0x1094
+	.FUNC _ISR:$r:0:0:$L:r0x108D:$L:r0x1090:$L:r0x108E:$L:r0x1093
 ;--------------------------------------------------------
 ;	;.line	74; ".\Source\App_Main.c"	if(ADIF_IsFlag())
 _ISR:	;Function start
@@ -346,8 +346,8 @@ _00131_DS_:
 	BTGF	(_sTIMx+1),3
 ;	;.line	169; ".\Source\App_Main.c"	sTIMx.CalSymbolFlash = !sTIMx.CalSymbolFlash;
 	BTGF	_sTIMx,5
-;	;.line	171; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = !sTIMx.BindingSymbolFlash;
-	BTGF	_sTIMx,7
+;	;.line	171; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = 0;
+	BCF	_sTIMx,7
 ;	;.line	173; ".\Source\App_Main.c"	sTIMx.UnitSymbolFlash = !sTIMx.UnitSymbolFlash;
 	BTGF	(_sTIMx+1),0
 ;	;.line	175; ".\Source\App_Main.c"	sTIMx.BLESymbolFlash = !sTIMx.BLESymbolFlash;
@@ -376,10 +376,10 @@ _00133_DS_:
 	MVL	0x01
 	BTSZ	_sTIMx,6
 	MVL	0x00
-	MVF	r0x1094,1,0
+	MVF	r0x1093,1,0
 	BTSS	_WREG,0
 	BCF	_sTIMx,6
-	BTSZ	r0x1094,0
+	BTSZ	r0x1093,0
 	BSF	_sTIMx,6
 _00137_DS_:
 ;	;.line	191; ".\Source\App_Main.c"	if(WDTIF_IsFlag())
@@ -1427,7 +1427,7 @@ _TEMDATA	.equ	0x2E0
 r0x108D:	.ds	1
 r0x108E:	.ds	1
 r0x1090:	.ds	1
-r0x1094:	.ds	1
+r0x1093:	.ds	1
 ;--------------------------------------------------------
 ; initialized data
 ;--------------------------------------------------------
@@ -1711,12 +1711,10 @@ r0x1094:	.ds	1
 	;--cdb--W:r0x108F:NULL+0:-1:1
 	;--cdb--W:r0x1092:NULL+0:-1:1
 	;--cdb--W:r0x1093:NULL+0:-1:1
-	;--cdb--W:r0x1094:NULL+0:-1:1
 	;--cdb--W:r0x108D:NULL+0:-1:0
 	;--cdb--W:r0x1090:r0x108E+1:-1:0
 	;--cdb--W:r0x108E:NULL+0:-1:0
 	;--cdb--W:r0x108F:NULL+0:-1:0
 	;--cdb--W:r0x1091:NULL+0:-1:0
 	;--cdb--W:r0x1092:NULL+0:-1:0
-	;--cdb--W:r0x1093:NULL+0:-1:0
 	END

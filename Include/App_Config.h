@@ -10370,7 +10370,7 @@
 #if Soft_Code == 426
 /*******************************程序版本***************************************/
 #define Soft_Internal_Version 		10 	  /*对内程序版本*/
-#define Soft_External_Version 	   11 	/*对外程序版本(不可轻易修改)*/
+#define Soft_External_Version 	   10 	/*对外程序版本(不可轻易修改)*/
 /*******************************程序版本***************************************/
 
 
@@ -10566,7 +10566,7 @@
 	/*4.正常温度/Normal度分割点*/
 	#define Noamal_Temp_Centigrade		 		  3580
 	/*5.低温/Low分割点*/
-	#define Low_Temp_Centigrade						 3200
+	#define Low_Temp_Centigrade						 2600
 	
 	/*温度间隔点,分为三个点:1.高温/High分割点;2.发烧温度/Fever分割点;3.警告温度/Warn分割点;4.正常温/Normal度分割点;5.低温/Low分割点*/
 	/*温度分割点温度可设,修改下方宏即可*/
@@ -10580,7 +10580,7 @@
 	/*4.正常温度/Normal度分割点*/
 	#define Noamal_Temp_Fahrenheit		  		  9640
 	/*5.低温/Low分割点*/
-	#define Low_Temp_Fahrenheit				 		 8960
+	#define Low_Temp_Fahrenheit				 		 7880
 /****************************温度间隔点***************************************/
 #endif
 

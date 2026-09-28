@@ -175,10 +175,10 @@
 175                     ;--------------------------------------------------------
 176                     ;	;.line	39; ".\Source\Drv_LVD.c"	LVD_VolSelect(VLDX_OFF);
 177                     _LVD_Off:	;Function start
-178 0CCC [00] [Y] 06E1      	MVL	0xe1
-179 0CCD [00] [Y] 2A43      	ANDF	_LVDCN,1,0
+178 0C72 [00] [Y] 06E1      	MVL	0xe1
+179 0C73 [00] [Y] 2A43      	ANDF	_LVDCN,1,0
 180                     ;	;.line	40; ".\Source\Drv_LVD.c"	}
-181 0CCE [00] [Y] 000A      	RET	
+181 0C74 [00] [Y] 000A      	RET	
 182                     ; exit point of _LVD_Off
 183                     	.ENDFUNC	_LVD_Off
 184                     ;--------------------------------------------------------
@@ -190,14 +190,14 @@
 190                     ;--------------------------------------------------------
 191                     ;	;.line	24; ".\Source\Drv_LVD.c"	LVD_PWRSelect(PWRS_VDD);
 192                     _LVD_Configuration:	;Function start
-193 146D [00] [Y] 8A43      	BCF	_LVDCN,5
+193 13E1 [00] [Y] 8A43      	BCF	_LVDCN,5
 194                     ;	;.line	27; ".\Source\Drv_LVD.c"	LVD_VolSelect(VLDX_26);
-195 146E [00] [Y] 6443      	MVF	_LVDCN,0,0
-196 146F [00] [Y] 01E1      	ANDL	0xe1
-197 1470 [00] [Y] 020E      	IORL	0x0e
-198 1471 [00] [Y] 6643      	MVF	_LVDCN,1,0
+195 13E2 [00] [Y] 6443      	MVF	_LVDCN,0,0
+196 13E3 [00] [Y] 01E1      	ANDL	0xe1
+197 13E4 [00] [Y] 020E      	IORL	0x0e
+198 13E5 [00] [Y] 6643      	MVF	_LVDCN,1,0
 199                     ;	;.line	28; ".\Source\Drv_LVD.c"	}
-200 1472 [00] [Y] 000A      	RET	
+200 13E6 [00] [Y] 000A      	RET	
 201                     ; exit point of _LVD_Configuration
 202                     	.ENDFUNC	_LVD_Configuration
 203                     ;--------------------------------------------------------
