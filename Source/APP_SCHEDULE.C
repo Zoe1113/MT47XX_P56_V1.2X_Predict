@@ -32,7 +32,6 @@ void PowerOn_Schedule(void)
 				/*检测电压低于2.7V标志位*/
 				sLVD.LVD_Low = TRUE;
 			}
-			//sLVD.LVD_Low = TRUE;
 			/*欠压故障小于3次进入全显界面*/
 			eDisplay_Interfaces = Display_All;
 			/*蓝牙闪烁标志位,频率:1Hz*/

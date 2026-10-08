@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
 008                     ;;	.file	".\Source\App_Str.c"
 009                     	.module App_Str
 010                     	;.list	p=HY17P56
@@ -174,34 +174,34 @@
 174                     	.FUNC _Delay_ms:$r:0:1:$L:r0x1096:$L:r0x1097
 175                     ;--------------------------------------------------------
 176                     ;	;.line	43; ".\Source\App_Str.c"	void Delay_ms(uint8 ms)
-177 128B [00] [Y] C482      _Delay_ms:	;Function start
-178 128C [02] [Y] 6681      	MVF	r0x1096,1,0
+177 1311 [00] [Y] C482      _Delay_ms:	;Function start
+178 1312 [02] [Y] 6681      	MVF	r0x1096,1,0
 179                     ;	;.line	45; ".\Source\App_Str.c"	uint8 c = 44;
-180 128D [02] [Y] 062C      	MVL	0x2c
-181 128E [02] [Y] 6680      	MVF	r0x1097,1,0
+180 1313 [02] [Y] 062C      	MVL	0x2c
+181 1314 [02] [Y] 6680      	MVF	r0x1097,1,0
 182                     _00117_DS_:
 183                     ;	;.line	46; ".\Source\App_Str.c"	while(ms)
-184 128F [02] [Y] 4C81      	RRF	r0x1096,0,0
-185 1290 [02] [Y] 71        	BTSZ	_STATUS,0
-186 1290 [02] 08        	JMP	_00120_DS_
+184 1315 [02] [Y] 4C81      	RRF	r0x1096,0,0
+185 1316 [02] [Y] A02B      	BTSZ	_STATUS,0
+186 1317 [02] [Y] 7809      	JMP	_00120_DS_
 187                     _00114_DS_:
 188                     ;	;.line	48; ".\Source\App_Str.c"	while(c)
-189 1291 [02] [Y] 4C80      	RRF	r0x1097,0,0
-190 1292 [02] [Y] 71        	BTSZ	_STATUS,0
-191 1292 [02] 02        	JMP	_00116_DS_
+189 1318 [02] [Y] 4C80      	RRF	r0x1097,0,0
+190 1319 [02] [Y] A02B      	BTSZ	_STATUS,0
+191 131A [02] [Y] 7802      	JMP	_00116_DS_
 192                     ;	;.line	50; ".\Source\App_Str.c"	c--;
-193 1293 [02] [Y] 3280      	DCF	r0x1097,1,0
-194 1294 [02] [Y] 7FFC      	JMP	_00114_DS_
+193 131B [02] [Y] 3280      	DCF	r0x1097,1,0
+194 131C [02] [Y] 7FFB      	JMP	_00114_DS_
 195                     _00116_DS_:
 196                     ;	;.line	52; ".\Source\App_Str.c"	c = 44;
-197 1295 [02] [Y] 062C      	MVL	0x2c
-198 1296 [02] [Y] 6680      	MVF	r0x1097,1,0
+197 131D [02] [Y] 062C      	MVL	0x2c
+198 131E [02] [Y] 6680      	MVF	r0x1097,1,0
 199                     ;	;.line	53; ".\Source\App_Str.c"	ms--;
-200 1297 [02] [Y] 3281      	DCF	r0x1096,1,0
-201 1298 [02] [Y] 7FF6      	JMP	_00117_DS_
-202 1299 [02] [Y] C4BE      _00120_DS_:
+200 131F [02] [Y] 3281      	DCF	r0x1096,1,0
+201 1320 [02] [Y] 7FF4      	JMP	_00117_DS_
+202 1321 [02] [Y] C4BE      _00120_DS_:
 203                     ;	;.line	55; ".\Source\App_Str.c"	}
-204 129A [00] [Y] 000A      	RET	
+204 1322 [00] [Y] 000A      	RET	
 205                     ; exit point of _Delay_ms
 206                     	.ENDFUNC	_Delay_ms
 207                     ;--------------------------------------------------------
@@ -214,34 +214,34 @@
 214                     :$L:r0x1091
 215                     ;--------------------------------------------------------
 216                     ;	;.line	23; ".\Source\App_Str.c"	uint8 memchrn(uint8* pMem, uint8 chr, uint8 Cnt)
-217 0FAE [00] [Y] C483      _memchrn:	;Function start
-218 0FAF [03] [Y] 6682      	MVF	r0x108D,1,0
+217 1024 [00] [Y] C483      _memchrn:	;Function start
+218 1025 [03] [Y] 6682      	MVF	r0x108D,1,0
 219                     ;	;.line	25; ".\Source\App_Str.c"	uint8 nchr = 0;
-220 0FB0 [03] [Y] 0C81      	CLRF	r0x1090,0
+220 1026 [03] [Y] 0C81      	CLRF	r0x1090,0
 221                     _00107_DS_:
 222                     ;	;.line	27; ".\Source\App_Str.c"	while(Cnt--)
-223 0FB1 [03] [Y] 3285      	DCF	_memchrn_STK02,1,0
-224 0FB2 [03] [Y] 4085      	INSUZ	_memchrn_STK02,0,0
-225 0FB3 [03] [Y] 780D      	JMP	_00109_DS_
+223 1027 [03] [Y] 3285      	DCF	_memchrn_STK02,1,0
+224 1028 [03] [Y] 4085      	INSUZ	_memchrn_STK02,0,0
+225 1029 [03] [Y] 780D      	JMP	_00109_DS_
 226                     ;	;.line	29; ".\Source\App_Str.c"	if(*pMem++ == chr)
-227 0FB4 [03] [Y] 6483      	MVF	_memchrn_STK00,0,0
-228 0FB5 [03] [Y] 660D      	MVF	__g2ptrget1_STK00,1,0
-229 0FB6 [04] [Y] 6483      	MVF	r0x108D,0,0
-230 0FB7 [04] [Y] C000 F6A3 	CALL	__g2ptrget1
-231 0FB9 [03] [Y] 6680      	MVF	r0x1091,1,0
-232 0FBA [03] [Y] 4283      	INSUZ	_memchrn_STK00,1,0
-233 0FBB [03] [Y] 3A82      	INF	r0x108D,1,0
-234 0FBC [03] [Y] 6484      	MVF	_memchrn_STK01,0,0
-235 0FBD [03] [Y] 6C80      	CPSE	r0x1091,0
-236 0FBE [03] [Y] 7FF2      	JMP	_00107_DS_
+227 102A [03] [Y] 6483      	MVF	_memchrn_STK00,0,0
+228 102B [03] [Y] 660D      	MVF	__g2ptrget1_STK00,1,0
+229 102C [04] [Y] 6483      	MVF	r0x108D,0,0
+230 102D [04] [Y] C000 F6CE 	CALL	__g2ptrget1
+231 102F [03] [Y] 6680      	MVF	r0x1091,1,0
+232 1030 [03] [Y] 4283      	INSUZ	_memchrn_STK00,1,0
+233 1031 [03] [Y] 3A82      	INF	r0x108D,1,0
+234 1032 [03] [Y] 6484      	MVF	_memchrn_STK01,0,0
+235 1033 [03] [Y] 6C80      	CPSE	r0x1091,0
+236 1034 [03] [Y] 7FF2      	JMP	_00107_DS_
 237                     ;	;.line	31; ".\Source\App_Str.c"	nchr++;
-238 0FBF [03] [Y] 3A81      	INF	r0x1090,1,0
-239 0FC0 [03] [Y] 7FF0      	JMP	_00107_DS_
+238 1035 [03] [Y] 3A81      	INF	r0x1090,1,0
+239 1036 [03] [Y] 7FF0      	JMP	_00107_DS_
 240                     _00109_DS_:
 241                     ;	;.line	34; ".\Source\App_Str.c"	return nchr;
-242 0FC1 [03] [Y] 6481      	MVF	r0x1090,0,0
+242 1037 [03] [Y] 6481      	MVF	r0x1090,0,0
 243                     ;	;.line	35; ".\Source\App_Str.c"	}
-244 0FC2 [03] [Y] C4BA 000A 	RET	
+244 1038 [03] [Y] C4BA 000A 	RET	
 245                     ; exit point of _memchrn
 246                     	.ENDFUNC	_memchrn
 247                     ;--------------------------------------------------------

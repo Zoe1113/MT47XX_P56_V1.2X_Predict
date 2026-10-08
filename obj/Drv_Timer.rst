@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
 008                     ;;	.file	".\Source\Drv_Timer.c"
 009                     	.module Drv_Timer
 010                     	;.list	p=HY17P56
@@ -174,23 +174,23 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	25; ".\Source\Drv_Timer.c"	TMA1_CLKSelect ( TMAS1_DMSCK );
 176                     _TMA1_Configuration:	;Function start
-177 13ED [00] [Y] 8A44      	BCF	_TMA1CN,5
+177 147F [00] [Y] 8A44      	BCF	_TMA1CN,5
 178                     ;	;.line	30; ".\Source\Drv_Timer.c"	TMA1_CLKDiv (DTMA1_TMA1CKDIV2);
-179 13EE [00] [Y] 06E3      	MVL	0xe3
-180 13EF [00] [Y] 2A44      	ANDF	_TMA1CN,1,0
+179 1480 [00] [Y] 06E3      	MVL	0xe3
+180 1481 [00] [Y] 2A44      	ANDF	_TMA1CN,1,0
 181                     ;	;.line	44; ".\Source\Drv_Timer.c"	TMA1_ClearTMA1();
-182 13F0 [00] [Y] 0C45      	CLRF	_TMA1R,0
+182 1482 [00] [Y] 0C45      	CLRF	_TMA1R,0
 183                     ;	;.line	46; ".\Source\Drv_Timer.c"	TMA1Enable();
-184 13F1 [00] [Y] 9E44      	BSF	_TMA1CN,7
+184 1483 [00] [Y] 9E44      	BSF	_TMA1CN,7
 185                     ;	;.line	49; ".\Source\Drv_Timer.c"	TMA1_CompSet(45);
-186 13F2 [00] [Y] 062D      	MVL	0x2d
-187 13F3 [00] [Y] 6646      	MVF	_TMA1C,1,0
+186 1484 [00] [Y] 062D      	MVL	0x2d
+187 1485 [00] [Y] 6646      	MVF	_TMA1C,1,0
 188                     ;	;.line	51; ".\Source\Drv_Timer.c"	TA1CIF_ClearFlag();
-189 13F4 [00] [Y] 8C26      	BCF	_INTF0,6
+189 1486 [00] [Y] 8C26      	BCF	_INTF0,6
 190                     ;	;.line	53; ".\Source\Drv_Timer.c"	TA1CIE_Enable ();
-191 13F5 [00] [Y] 9C23      	BSF	_INTE0,6
+191 1487 [00] [Y] 9C23      	BSF	_INTE0,6
 192                     ;	;.line	54; ".\Source\Drv_Timer.c"	}
-193 13F6 [00] [Y] 000A      	RET	
+193 1488 [00] [Y] 000A      	RET	
 194                     ; exit point of _TMA1_Configuration
 195                     	.ENDFUNC	_TMA1_Configuration
 196                     ;--------------------------------------------------------

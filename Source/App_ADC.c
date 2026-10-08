@@ -320,14 +320,6 @@ void Get_250msTemp(void)
 						tmp = tmp / 10;
 						/*温度值放大100倍*/
 						sADC.Centigrade250msTemp = lower * 10 + tmp;
-						// {
-						// 	static uint16 SimulatedTemp = 4320;
-						// 	sADC.Centigrade250msTemp = SimulatedTemp;
-						// 	if(SimulatedTemp < 4400)
-						// 	{
-						// 		SimulatedTemp += 20;
-						// 	}
-						// }
 						/*间隔ADC采样,间隔时间:250ms*/
 						sADC.Get_250msTemp_Flag = FALSE;
 

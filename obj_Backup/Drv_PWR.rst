@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
 008                     ;;	.file	".\Source\Drv_PWR.c"
 009                     	.module Drv_PWR
 010                     	;.list	p=HY17P56
@@ -174,16 +174,16 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	24; ".\Source\Drv_PWR.c"	PWR_BGREnable();
 176                     _PWR_Configuration:	;Function start
-177 13E7 [00] [Y] 9E33      	BSF	_PWRCN,7
+177 1479 [00] [Y] 9E33      	BSF	_PWRCN,7
 178                     ;	;.line	27; ".\Source\Drv_PWR.c"	PWR_LDOPLEnable();
-179 13E8 [00] [Y] 9842      	BSF	_AD1CN5,4
+179 147A [00] [Y] 9842      	BSF	_AD1CN5,4
 180                     ;	;.line	30; ".\Source\Drv_PWR.c"	PWR_LDOEnable();
-181 13E9 [00] [Y] 9233      	BSF	_PWRCN,1
+181 147B [00] [Y] 9233      	BSF	_PWRCN,1
 182                     ;	;.line	33; ".\Source\Drv_PWR.c"	PWR_LDOSel(LDOC_2V4);
-183 13EA [00] [Y] 068F      	MVL	0x8f
-184 13EB [00] [Y] 2A33      	ANDF	_PWRCN,1,0
+183 147C [00] [Y] 068F      	MVL	0x8f
+184 147D [00] [Y] 2A33      	ANDF	_PWRCN,1,0
 185                     ;	;.line	34; ".\Source\Drv_PWR.c"	}
-186 13EC [00] [Y] 000A      	RET	
+186 147E [00] [Y] 000A      	RET	
 187                     ; exit point of _PWR_Configuration
 188                     	.ENDFUNC	_PWR_Configuration
 189                     ;--------------------------------------------------------

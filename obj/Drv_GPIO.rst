@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
 008                     ;;	.file	".\Source\Drv_GPIO.c"
 009                     	.module Drv_GPIO
 010                     	;.list	p=HY17P56
@@ -174,46 +174,46 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	27; ".\Source\Drv_GPIO.c"	PT1PU = 0xFF;
 176                     _GPIO_Configuration:	;Function start
-177 1312 [00] [2] 0A56      	SETF	_PT1PU,0
+177 139A [00] [2] 0A56      	SETF	_PT1PU,0
 178                     ;	;.line	33; ".\Source\Drv_GPIO.c"	TRISC1 = 0xD1;
-179 1313 [00] [2] 06D1      	MVL	0xd1
-180 1314 [00] [2] 6654      	MVF	_TRISC1,1,0
+179 139B [00] [2] 06D1      	MVL	0xd1
+180 139C [00] [2] 6654      	MVF	_TRISC1,1,0
 181                     ;	;.line	35; ".\Source\Drv_GPIO.c"	PT1 &= 0x2E;
-182 1315 [00] [2] 062E      	MVL	0x2e
-183 1316 [00] [2] 2A53      	ANDF	_PT1,1,0
+182 139D [00] [2] 062E      	MVL	0x2e
+183 139E [00] [2] 2A53      	ANDF	_PT1,1,0
 184                     ;	;.line	38; ".\Source\Drv_GPIO.c"	PT2PU = 0xFF;
-185 1317 [00] [2] 0A5E      	SETF	_PT2PU,0
+185 139F [00] [2] 0A5E      	SETF	_PT2PU,0
 186                     ;	;.line	45; ".\Source\Drv_GPIO.c"	TRISC2 = 0x00;
-187 1318 [00] [2] 0C5C      	CLRF	_TRISC2,0
+187 13A0 [00] [2] 0C5C      	CLRF	_TRISC2,0
 188                     ;	;.line	49; ".\Source\Drv_GPIO.c"	LCDCN3 = 0x00;
-189 1319 [00] [1] 0011 0D82 	CLRF	_LCDCN3,0
+189 13A1 [00] [1] 0011 0D82 	CLRF	_LCDCN3,0
 190                     ;	;.line	52; ".\Source\Drv_GPIO.c"	LCDCN6 = 0x00;
-191 131B [00] [1] 0D85      	CLRF	_LCDCN6,0
+191 13A3 [00] [1] 0D85      	CLRF	_LCDCN6,0
 192                     ;	;.line	55; ".\Source\Drv_GPIO.c"	PT6PU = 0xFF;
-193 131C [00] [1] 0A65      	SETF	_PT6PU,0
+193 13A4 [00] [1] 0A65      	SETF	_PT6PU,0
 194                     ;	;.line	61; ".\Source\Drv_GPIO.c"	LCDCN7 = 0x00;
-195 131D [00] [1] 0D86      	CLRF	_LCDCN7,0
+195 13A5 [00] [1] 0D86      	CLRF	_LCDCN7,0
 196                     ;	;.line	64; ".\Source\Drv_GPIO.c"	LCDCN8 = 0x00;
-197 131E [00] [1] 0D87      	CLRF	_LCDCN8,0
+197 13A6 [00] [1] 0D87      	CLRF	_LCDCN8,0
 198                     ;	;.line	66; ".\Source\Drv_GPIO.c"	PT7PU = 0xFF;
-199 131F [00] [1] 0A69      	SETF	_PT7PU,0
+199 13A7 [00] [1] 0A69      	SETF	_PT7PU,0
 200                     ;	;.line	72; ".\Source\Drv_GPIO.c"	LCDCN4 = 0x00;
-201 1320 [00] [1] 0D83      	CLRF	_LCDCN4,0
+201 13A8 [00] [1] 0D83      	CLRF	_LCDCN4,0
 202                     ;	;.line	74; ".\Source\Drv_GPIO.c"	PT8DA &= 0x00;
-203 1321 [00] [1] 646C      	MVF	_PT8DA,0,0
-204 1322 [00] [1] 0C6C      	CLRF	_PT8DA,0
+203 13A9 [00] [1] 646C      	MVF	_PT8DA,0,0
+204 13AA [00] [1] 0C6C      	CLRF	_PT8DA,0
 205                     ;	;.line	80; ".\Source\Drv_GPIO.c"	TRISC8 = 0x11;
-206 1323 [00] [1] 0611      	MVL	0x11
-207 1324 [00] [1] 666B      	MVF	_TRISC8,1,0
+206 13AB [00] [1] 0611      	MVL	0x11
+207 13AC [00] [1] 666B      	MVF	_TRISC8,1,0
 208                     ;	;.line	81; ".\Source\Drv_GPIO.c"	PT8PU = 0xFE;
-209 1325 [00] [1] 06FE      	MVL	0xfe
-210 1326 [00] [1] 666D      	MVF	_PT8PU,1,0
+209 13AD [00] [1] 06FE      	MVL	0xfe
+210 13AE [00] [1] 666D      	MVF	_PT8PU,1,0
 211                     ;	;.line	83; ".\Source\Drv_GPIO.c"	PT8 &= 	0xEF;
-212 1327 [00] [1] 886A      	BCF	_PT8,4
+212 13AF [00] [1] 886A      	BCF	_PT8,4
 213                     ;	;.line	85; ".\Source\Drv_GPIO.c"	PT8 |= 	0x01;
-214 1328 [00] [1] 906A      	BSF	_PT8,0
+214 13B0 [00] [1] 906A      	BSF	_PT8,0
 215                     ;	;.line	86; ".\Source\Drv_GPIO.c"	}
-216 1329 [00] [1] 000A      	RET	
+216 13B1 [00] [1] 000A      	RET	
 217                     ; exit point of _GPIO_Configuration
 218                     	.ENDFUNC	_GPIO_Configuration
 219                     ;--------------------------------------------------------

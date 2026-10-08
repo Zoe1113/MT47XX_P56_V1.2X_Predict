@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
 008                     ;;	.file	".\Source\App_LVD.c"
 009                     	.module App_LVD
 010                     	;.list	p=HY17P56
@@ -173,45 +173,45 @@
 173                     	.FUNC _LVD_Detect:$r:0:0:$L:r0x108E:$L:r0x108F:$L:r0x1090
 174                     ;--------------------------------------------------------
 175                     ;	;.line	24; ".\Source\App_LVD.c"	if(!sLVD.LVD_Test_Completed)
-176 0A55 [00] [2] C483      _LVD_Detect:	;Function start
-177 0A56 [03] [2] B13E      	BTSS	_sLVD,0
+176 0AA3 [00] [2] C483      _LVD_Detect:	;Function start
+177 0AA4 [03] [2] B13E      	BTSS	_sLVD,0
 178                     ;	;.line	27; ".\Source\App_LVD.c"	if(sTIMx.LVDSampleFlag)
-179 0A57 [03] [2] B1CC      	BTSS	_sTIMx,0
-180 0A58 [03] [2] 781B      	JMP	_00111_DS_
+179 0AA5 [03] [2] B1CC      	BTSS	_sTIMx,0
+180 0AA6 [03] [2] 781B      	JMP	_00111_DS_
 181                     ;	;.line	30; ".\Source\App_LVD.c"	sTIMx.LVDSampleFlag = 0;
-182 0A59 [03] [2] 81CC      	BCF	_sTIMx,0
+182 0AA7 [03] [2] 81CC      	BCF	_sTIMx,0
 183                     ;	;.line	32; ".\Source\App_LVD.c"	sLVD.LVDBuf[sLVD.pLVDBuf] = LVD_GetLVDO();
-184 0A5A [03] [2] 653F      	MVF	(_sLVD + 1),0,0
-185 0A5B [03] [2] 0440      	ADDL	(_sLVD + 2)
-186 0A5C [03] [2] 6682      	MVF	r0x108E,1,0
-187 0A5D [03] [2] 0602      	MVL	high (_sLVD + 2)
-188 0A5E [03] [2] A82B      	BTSZ	_STATUS,4
-189 0A5F [03] [2] 0401      	ADDL	0x01
-190 0A60 [03] [2] 6681      	MVF	r0x108F,1,0
-191 0A61 [03] [2] 6443      	MVF	_LVDCN,0,0
-192 0A62 [03] [2] 0101      	ANDL	0x01
-193 0A63 [03] [2] 6680      	MVF	r0x1090,1,0
-194 0A64 [03] [2] 6482      	MVF	r0x108E,0,0
-195 0A65 [03] [2] 6610      	MVF	_FSR0L,1,0
-196 0A66 [03] [2] 6481      	MVF	r0x108F,0,0
-197 0A67 [03] [2] 660F      	MVF	_FSR0H,1,0
-198 0A68 [03] [2] 6480      	MVF	r0x1090,0,0
-199 0A69 [03] [2] 6600      	MVF	_INDF0,1,0
+184 0AA8 [03] [2] 653F      	MVF	(_sLVD + 1),0,0
+185 0AA9 [03] [2] 0440      	ADDL	(_sLVD + 2)
+186 0AAA [03] [2] 6682      	MVF	r0x108E,1,0
+187 0AAB [03] [2] 0602      	MVL	high (_sLVD + 2)
+188 0AAC [03] [2] A82B      	BTSZ	_STATUS,4
+189 0AAD [03] [2] 0401      	ADDL	0x01
+190 0AAE [03] [2] 6681      	MVF	r0x108F,1,0
+191 0AAF [03] [2] 6443      	MVF	_LVDCN,0,0
+192 0AB0 [03] [2] 0101      	ANDL	0x01
+193 0AB1 [03] [2] 6680      	MVF	r0x1090,1,0
+194 0AB2 [03] [2] 6482      	MVF	r0x108E,0,0
+195 0AB3 [03] [2] 6610      	MVF	_FSR0L,1,0
+196 0AB4 [03] [2] 6481      	MVF	r0x108F,0,0
+197 0AB5 [03] [2] 660F      	MVF	_FSR0H,1,0
+198 0AB6 [03] [2] 6480      	MVF	r0x1090,0,0
+199 0AB7 [03] [2] 6600      	MVF	_INDF0,1,0
 200                     ;	;.line	34; ".\Source\App_LVD.c"	if(++sLVD.pLVDBuf >= 3)
-201 0A6A [03] [2] 393F      	INF	(_sLVD + 1),0,0
-202 0A6B [03] [2] 6682      	MVF	r0x108E,1,0
-203 0A6C [03] [2] 673F      	MVF	(_sLVD + 1),1,0
-204 0A6D [03] [2] 0602      	MVL	0x02
-205 0A6E [03] [2] 6882      	CPSG	r0x108E,0
-206 0A6F [03] [2] 7804      	JMP	_00111_DS_
+201 0AB8 [03] [2] 393F      	INF	(_sLVD + 1),0,0
+202 0AB9 [03] [2] 6682      	MVF	r0x108E,1,0
+203 0ABA [03] [2] 673F      	MVF	(_sLVD + 1),1,0
+204 0ABB [03] [2] 0602      	MVL	0x02
+205 0ABC [03] [2] 6882      	CPSG	r0x108E,0
+206 0ABD [03] [2] 7804      	JMP	_00111_DS_
 207                     ;	;.line	37; ".\Source\App_LVD.c"	sLVD.pLVDBuf = 0;
-208 0A70 [03] [2] 0D3F      	CLRF	(_sLVD + 1),0
+208 0ABE [03] [2] 0D3F      	CLRF	(_sLVD + 1),0
 209                     ;	;.line	39; ".\Source\App_LVD.c"	sLVD.LVD_Test_Completed = TRUE;
-210 0A71 [03] [2] 000C F23E 	LDPR	(_sLVD + 0),0x00
-211 0A73 [03] [2] 9000      	BSF	_INDF0,0
-212 0A74 [03] [2] C4BD      _00111_DS_:
+210 0ABF [03] [2] 000C F23E 	LDPR	(_sLVD + 0),0x00
+211 0AC1 [03] [2] 9000      	BSF	_INDF0,0
+212 0AC2 [03] [2] C4BD      _00111_DS_:
 213                     ;	;.line	43; ".\Source\App_LVD.c"	}
-214 0A75 [00] [2] 000A      	RET	
+214 0AC3 [00] [2] 000A      	RET	
 215                     ; exit point of _LVD_Detect
 216                     	.ENDFUNC	_LVD_Detect
 217                     ;--------------------------------------------------------

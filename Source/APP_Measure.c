@@ -256,6 +256,7 @@ void Actual_Measure(void)
 		{
 			/*过滤异常温度算法*/
 			Filter_ErrTemp();
+
 			sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Temp_T1);
 
 			if(((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Centigrade) && (eTempUnit == Centigrade))
