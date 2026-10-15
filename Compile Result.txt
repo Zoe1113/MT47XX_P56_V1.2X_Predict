@@ -19,6 +19,171 @@ copy ".\Source\App_ADC.asm" obj
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
 
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Backlight.asm " del ".\obj\App_Backlight.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Backlight.c" 
+.\Source\App_Backlight.c:1117:18: warning: "Func_QuadrupleColor" is not defined, evaluates to 0
+ 1117 |         #if     (Func_QuadrupleColor == Enable)
+      |                  ^~~~~~~~~~~~~~~~~~~
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Backlight.asm" (
+copy "App_Backlight.asm" obj  
+ del "App_Backlight.asm" 							  
+)  else (
+copy ".\Source\App_Backlight.asm" obj   
+ del ".\Source\App_Backlight.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_BLEmode.asm " del ".\obj\App_BLEmode.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_BLEmode.c" 
+.\Source\App_BLEmode.c:160: warning 116: right shifting more than size of object changed to zero
+.\Source\App_BLEmode.c:161: warning 116: right shifting more than size of object changed to zero
+.\Source\App_BLEmode.c:167: warning 85: in function App_Upload_Temperature unreferenced local variable : 'i'
+.\Source\App_BLEmode.c:167: warning 85: in function App_Upload_Temperature unreferenced local variable : 'l_readloop'
+.\Source\App_BLEmode.c:167: warning 85: in function App_Upload_Temperature unreferenced local variable : 'L_MemAdd'
+.\Source\App_BLEmode.c:216: warning 116: right shifting more than size of object changed to zero
+.\Source\App_BLEmode.c:217: warning 116: right shifting more than size of object changed to zero
+.\Source\App_BLEmode.c:197: warning 158: overflow in implicit constant conversion
+.\Source\App_BLEmode.c:205: warning 158: overflow in implicit constant conversion
+.\Source\App_BLEmode.c:263: warning 85: in function UART_Send_To_Ble unreferenced local variable : 'i'
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_BLEmode.asm" (
+copy "App_BLEmode.asm" obj  
+ del "App_BLEmode.asm" 							  
+)  else (
+copy ".\Source\App_BLEmode.asm" obj   
+ del ".\Source\App_BLEmode.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Buzzer.asm " del ".\obj\App_Buzzer.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Buzzer.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Buzzer.asm" (
+copy "App_Buzzer.asm" obj  
+ del "App_Buzzer.asm" 							  
+)  else (
+copy ".\Source\App_Buzzer.asm" obj   
+ del ".\Source\App_Buzzer.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Init.asm " del ".\obj\App_Init.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Init.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Init.asm" (
+copy "App_Init.asm" obj  
+ del "App_Init.asm" 							  
+)  else (
+copy ".\Source\App_Init.asm" obj   
+ del ".\Source\App_Init.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Key.asm " del ".\obj\App_Key.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Key.c" 
+.\Source\App_Key.c:24: warning 59: function 'Timer_Experience' must return value
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Key.asm" (
+copy "App_Key.asm" obj  
+ del "App_Key.asm" 							  
+)  else (
+copy ".\Source\App_Key.asm" obj   
+ del ".\Source\App_Key.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4718.asm " del ".\obj\App_LCD_4718.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_LCD_4718.c" 
+.\Source\App_LCD_4718.c:1236: warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_LCD_4718.asm" (
+copy "App_LCD_4718.asm" obj  
+ del "App_LCD_4718.asm" 							  
+)  else (
+copy ".\Source\App_LCD_4718.asm" obj   
+ del ".\Source\App_LCD_4718.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4726.asm " del ".\obj\App_LCD_4726.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_LCD_4726.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_LCD_4726.asm" (
+copy "App_LCD_4726.asm" obj  
+ del "App_LCD_4726.asm" 							  
+)  else (
+copy ".\Source\App_LCD_4726.asm" obj   
+ del ".\Source\App_LCD_4726.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4735.asm " del ".\obj\App_LCD_4735.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_LCD_4735.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_LCD_4735.asm" (
+copy "App_LCD_4735.asm" obj  
+ del "App_LCD_4735.asm" 							  
+)  else (
+copy ".\Source\App_LCD_4735.asm" obj   
+ del ".\Source\App_LCD_4735.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LVD.asm " del ".\obj\App_LVD.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_LVD.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_LVD.asm" (
+copy "App_LVD.asm" obj  
+ del "App_LVD.asm" 							  
+)  else (
+copy ".\Source\App_LVD.asm" obj   
+ del ".\Source\App_LVD.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Main.asm " del ".\obj\App_Main.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Main.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Main.asm" (
+copy "App_Main.asm" obj  
+ del "App_Main.asm" 							  
+)  else (
+copy ".\Source\App_Main.asm" obj   
+ del ".\Source\App_Main.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\APP_Measure.asm " del ".\obj\APP_Measure.asm"  
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\APP_Measure.c" 
@@ -30,6 +195,21 @@ copy "APP_Measure.asm" obj
 )  else (
 copy ".\Source\APP_Measure.asm" obj   
  del ".\Source\APP_Measure.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Memory.asm " del ".\obj\App_Memory.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Memory.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Memory.asm" (
+copy "App_Memory.asm" obj  
+ del "App_Memory.asm" 							  
+)  else (
+copy ".\Source\App_Memory.asm" obj   
+ del ".\Source\App_Memory.asm"  
 ) 
 已复制         1 个文件。
 
@@ -50,9 +230,310 @@ copy ".\Source\App_Schedule.asm" obj
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
 
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Sleep.asm " del ".\obj\App_Sleep.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Sleep.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Sleep.asm" (
+copy "App_Sleep.asm" obj  
+ del "App_Sleep.asm" 							  
+)  else (
+copy ".\Source\App_Sleep.asm" obj   
+ del ".\Source\App_Sleep.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Str.asm " del ".\obj\App_Str.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\App_Str.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "App_Str.asm" (
+copy "App_Str.asm" obj  
+ del "App_Str.asm" 							  
+)  else (
+copy ".\Source\App_Str.asm" obj   
+ del ".\Source\App_Str.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_ADC.asm " del ".\obj\Drv_ADC.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_ADC.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_ADC.asm" (
+copy "Drv_ADC.asm" obj  
+ del "Drv_ADC.asm" 							  
+)  else (
+copy ".\Source\Drv_ADC.asm" obj   
+ del ".\Source\Drv_ADC.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_BLE.asm " del ".\obj\Drv_BLE.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_BLE.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_BLE.asm" (
+copy "Drv_BLE.asm" obj  
+ del "Drv_BLE.asm" 							  
+)  else (
+copy ".\Source\Drv_BLE.asm" obj   
+ del ".\Source\Drv_BLE.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_Buzzer.asm " del ".\obj\Drv_Buzzer.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_Buzzer.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_Buzzer.asm" (
+copy "Drv_Buzzer.asm" obj  
+ del "Drv_Buzzer.asm" 							  
+)  else (
+copy ".\Source\Drv_Buzzer.asm" obj   
+ del ".\Source\Drv_Buzzer.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_CLK.asm " del ".\obj\Drv_CLK.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_CLK.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_CLK.asm" (
+copy "Drv_CLK.asm" obj  
+ del "Drv_CLK.asm" 							  
+)  else (
+copy ".\Source\Drv_CLK.asm" obj   
+ del ".\Source\Drv_CLK.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_GPIO.asm " del ".\obj\Drv_GPIO.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_GPIO.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_GPIO.asm" (
+copy "Drv_GPIO.asm" obj  
+ del "Drv_GPIO.asm" 							  
+)  else (
+copy ".\Source\Drv_GPIO.asm" obj   
+ del ".\Source\Drv_GPIO.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_IIC.asm " del ".\obj\Drv_IIC.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_IIC.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_IIC.asm" (
+copy "Drv_IIC.asm" obj  
+ del "Drv_IIC.asm" 							  
+)  else (
+copy ".\Source\Drv_IIC.asm" obj   
+ del ".\Source\Drv_IIC.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4718.asm " del ".\obj\Drv_LCD_4718.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_LCD_4718.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_LCD_4718.asm" (
+copy "Drv_LCD_4718.asm" obj  
+ del "Drv_LCD_4718.asm" 							  
+)  else (
+copy ".\Source\Drv_LCD_4718.asm" obj   
+ del ".\Source\Drv_LCD_4718.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4726.asm " del ".\obj\Drv_LCD_4726.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_LCD_4726.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_LCD_4726.asm" (
+copy "Drv_LCD_4726.asm" obj  
+ del "Drv_LCD_4726.asm" 							  
+)  else (
+copy ".\Source\Drv_LCD_4726.asm" obj   
+ del ".\Source\Drv_LCD_4726.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4735.asm " del ".\obj\Drv_LCD_4735.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_LCD_4735.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_LCD_4735.asm" (
+copy "Drv_LCD_4735.asm" obj  
+ del "Drv_LCD_4735.asm" 							  
+)  else (
+copy ".\Source\Drv_LCD_4735.asm" obj   
+ del ".\Source\Drv_LCD_4735.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LVD.asm " del ".\obj\Drv_LVD.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_LVD.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_LVD.asm" (
+copy "Drv_LVD.asm" obj  
+ del "Drv_LVD.asm" 							  
+)  else (
+copy ".\Source\Drv_LVD.asm" obj   
+ del ".\Source\Drv_LVD.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_PWR.asm " del ".\obj\Drv_PWR.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_PWR.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_PWR.asm" (
+copy "Drv_PWR.asm" obj  
+ del "Drv_PWR.asm" 							  
+)  else (
+copy ".\Source\Drv_PWR.asm" obj   
+ del ".\Source\Drv_PWR.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_Timer.asm " del ".\obj\Drv_Timer.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_Timer.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_Timer.asm" (
+copy "Drv_Timer.asm" obj  
+ del "Drv_Timer.asm" 							  
+)  else (
+copy ".\Source\Drv_Timer.asm" obj   
+ del ".\Source\Drv_Timer.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_UART.asm " del ".\obj\Drv_UART.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_UART.c" 
+.\Source\Drv_UART.c:169: warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_UART.asm" (
+copy "Drv_UART.asm" obj  
+ del "Drv_UART.asm" 							  
+)  else (
+copy ".\Source\Drv_UART.asm" obj   
+ del ".\Source\Drv_UART.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_WDT.asm " del ".\obj\Drv_WDT.asm"  
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdcc   -I "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P" -Wp,-Wundef  -S -pHY17P56 ".\Source\Drv_WDT.c" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "Drv_WDT.asm" (
+copy "Drv_WDT.asm" obj  
+ del "Drv_WDT.asm" 							  
+)  else (
+copy ".\Source\Drv_WDT.asm" obj   
+ del ".\Source\Drv_WDT.asm"  
+) 
+已复制         1 个文件。
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_ADC.rel " del ".\obj\App_ADC.rel" 
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_ADC.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Backlight.rel " del ".\obj\App_Backlight.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Backlight.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_BLEmode.rel " del ".\obj\App_BLEmode.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_BLEmode.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Buzzer.rel " del ".\obj\App_Buzzer.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Buzzer.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Init.rel " del ".\obj\App_Init.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Init.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Key.rel " del ".\obj\App_Key.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Key.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4718.rel " del ".\obj\App_LCD_4718.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_LCD_4718.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4726.rel " del ".\obj\App_LCD_4726.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_LCD_4726.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LCD_4735.rel " del ".\obj\App_LCD_4735.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_LCD_4735.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_LVD.rel " del ".\obj\App_LVD.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_LVD.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Main.rel " del ".\obj\App_Main.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Main.asm" 
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
 
@@ -62,9 +543,111 @@ D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
 
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Memory.rel " del ".\obj\App_Memory.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Memory.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Schedule.rel " del ".\obj\App_Schedule.rel" 
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Schedule.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Sleep.rel " del ".\obj\App_Sleep.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Sleep.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\App_Str.rel " del ".\obj\App_Str.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\App_Str.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_ADC.rel " del ".\obj\Drv_ADC.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_ADC.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_BLE.rel " del ".\obj\Drv_BLE.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_BLE.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_Buzzer.rel " del ".\obj\Drv_Buzzer.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_Buzzer.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_CLK.rel " del ".\obj\Drv_CLK.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_CLK.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_GPIO.rel " del ".\obj\Drv_GPIO.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_GPIO.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_IIC.rel " del ".\obj\Drv_IIC.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_IIC.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4718.rel " del ".\obj\Drv_LCD_4718.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_LCD_4718.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4726.rel " del ".\obj\Drv_LCD_4726.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_LCD_4726.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LCD_4735.rel " del ".\obj\Drv_LCD_4735.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_LCD_4735.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_LVD.rel " del ".\obj\Drv_LVD.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_LVD.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_PWR.rel " del ".\obj\Drv_PWR.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_PWR.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_Timer.rel " del ".\obj\Drv_Timer.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_Timer.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_UART.rel " del ".\obj\Drv_UART.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_UART.asm" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist ".\obj\Drv_WDT.rel " del ".\obj\Drv_WDT.rel" 
+
+D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>sdashya -l -s -o -y ".\obj\Drv_WDT.asm" 
 
 D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src>if exist "D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\error.txt" (exit  ) 
 
