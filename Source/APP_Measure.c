@@ -255,22 +255,24 @@ void Actual_Measure(void)
 		if(Get_1sTemp())
 		{
 			/*过滤异常温度算法*/
-			Filter_ErrTemp();
+			// Filter_ErrTemp();
 
-			sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Temp_T1);
+			// sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Temp_T1);
+			sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sADC.Centigrade250msTemp);
 
-			if(((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Centigrade) && (eTempUnit == Centigrade))
-			|| ((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Fahrenheit) && (eTempUnit == Fahrenheit)))
+			// if(((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Centigrade) && (eTempUnit == Centigrade))
+			// || ((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Fahrenheit) && (eTempUnit == Fahrenheit)))
 			{
 				sActual.Actual_Start = TRUE;
 				/*当实测值 大于显示值且当前蜂鸣状态处于非蜂鸣状态才允许更新显示值*/
-				if((sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp) && (eBuzzer_Status == Buzzer_Silent))
-				{
-				    /*更新最大值*/
-				    sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-					sBleStatus.F_Temp_Updated = TRUE;
+				// if((sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp) && (eBuzzer_Status == Buzzer_Silent))
+				// {
+				//     /*更新最大值*/
+				//     sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+					sActual_Forecast.CentigradeTempDisp = sActual_Forecast.ConvertedTempDisp;
+				// 	sBleStatus.F_Temp_Updated = TRUE;
 					sMemoryFlag.MemTemp_Updated = TRUE;
-				}
+				// }
 
 				/*预设测量时间*/
 				/*测量时间 > MeasureTime/标志位*/
@@ -279,31 +281,31 @@ void Actual_Measure(void)
 					/*实测时间*/
 					sActual.ActualTime++;
 					/*温度稳定蜂鸣标志位*/
-					if(!sActual_Forecast.StableBuzzerFlag)
-					{
-						/*当前温度单位为摄氏度大于36℃*/
-					    if(((sActual_Forecast.ConvertedTempDisp >= 3600) && (eTempUnit == Centigrade))
-						|| ((sActual_Forecast.ConvertedTempDisp >= 9680) && (eTempUnit == Fahrenheit)))
-						{
-							/*判稳时间StableTime/s*/
-							if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,sActual.StableTime))
-							{
-								sActual_Forecast.StableBuzzerFlag = TRUE;
-								sBleStatus.F_Temp_Updated = TRUE;
-								sMemoryFlag.MemTemp_Updated = TRUE;
-							}
-						}
-						else
-						{
-							/*16s判稳*/
-							if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,16))
-							{
-								sActual_Forecast.StableBuzzerFlag = TRUE;
-								sBleStatus.F_Temp_Updated = TRUE;
-								sMemoryFlag.MemTemp_Updated = TRUE;
-							}
-						}
-					}
+					// if(!sActual_Forecast.StableBuzzerFlag)
+					// {
+					// 	/*当前温度单位为摄氏度大于36℃*/
+					//     if(((sActual_Forecast.ConvertedTempDisp >= 3600) && (eTempUnit == Centigrade))
+					// 	|| ((sActual_Forecast.ConvertedTempDisp >= 9680) && (eTempUnit == Fahrenheit)))
+					// 	{
+					// 		/*判稳时间StableTime/s*/
+					// 		if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,sActual.StableTime))
+					// 		{
+					// 			sActual_Forecast.StableBuzzerFlag = TRUE;
+					// 			sBleStatus.F_Temp_Updated = TRUE;
+					// 			sMemoryFlag.MemTemp_Updated = TRUE;
+					// 		}
+					// 	}
+					// 	else
+					// 	{
+					// 		/*16s判稳*/
+					// 		if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,16))
+					// 		{
+					// 			sActual_Forecast.StableBuzzerFlag = TRUE;
+					// 			sBleStatus.F_Temp_Updated = TRUE;
+					// 			sMemoryFlag.MemTemp_Updated = TRUE;
+					// 		}
+					// 	}
+					// }
 					/*获取先前1s的温度值*/
 					sActual.Prior1sActualTemp = sActual_Forecast.CentigradeTempDisp;
 				}

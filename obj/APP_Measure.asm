@@ -4,7 +4,7 @@
 ;--------------------------------------------------------
 ; Port for HYCON CPU
 ;--------------------------------------------------------
-;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 ;;	.file	".\Source\APP_Measure.c"
 	.module APP_Measure
 	;.list	p=HY17P56
@@ -205,350 +205,351 @@
 ;--------------------------------------------------------
 	.FUNC _Forecast_Measure:$r:0:0:$C:_ActualForecast_Select:$C:_Filter_ErrTemp:$C:_Judge_Stability:$C:_Temp_Drop\
 :$C:_Forecast_Calculate_Conditions:$C:_Forecast_Calculate:$C:_Temperature_Compensate:$C:_Forecast_To_Actual\
-:$L:r0x111A:$L:r0x111C:$L:r0x111D:$L:r0x111E:$L:r0x111F\
-:$L:r0x1120:$L:r0x1121
+:$L:r0x1115:$L:r0x1117:$L:r0x1118:$L:r0x1119:$L:r0x111A\
+:$L:r0x111B:$L:r0x111C
 ;--------------------------------------------------------
-;	;.line	871; ".\Source\APP_Measure.c"	switch (eMeas_Status)
+;	;.line	873; ".\Source\APP_Measure.c"	switch (eMeas_Status)
 _Forecast_Measure:	;Function start
 	MVL	0x05
 	CPSL	_eMeas_Status,0
-	JMP	_00644_DS_
-	MVL	HIGHD2(_00829_DS_)
+	JMP	_00525_DS_
+	MVL	HIGHD2(_00710_DS_)
 	MVF	_PCLATH,1,0
 	MVF	_eMeas_Status,0,0
-	ADDL	D2(_00829_DS_)
+	ADDL	D2(_00710_DS_)
 	BTSZ	_STATUS,4
 	INF	_PCLATH,1,0
 	MVF	_PCLATL,1,0
-_00829_DS_:
-	RJ	_00582_DS_
-	RJ	_00587_DS_
-	RJ	_00595_DS_
-	RJ	_00607_DS_
-	RJ	_00642_DS_
-_00582_DS_:
-;	;.line	876; ".\Source\APP_Measure.c"	if(!sTIMx.TempSampleFlag || (eMeasureMode == Bath_Mode) || !sActual_Forecast.AF_Start)
+_00710_DS_:
+	RJ	_00463_DS_
+	RJ	_00468_DS_
+	RJ	_00476_DS_
+	RJ	_00488_DS_
+	RJ	_00523_DS_
+_00463_DS_:
+;	;.line	878; ".\Source\APP_Measure.c"	if(!sTIMx.TempSampleFlag || (eMeasureMode == Bath_Mode) || !sActual_Forecast.AF_Start)
 	BTSS	_sTIMx,2
-	JMP	_00644_DS_
+	JMP	_00525_DS_
 	MVF	_eMeasureMode,0,0
 	XORL	0x03
 	BTSZ	_STATUS,0
-	JMP	_00644_DS_
+	JMP	_00525_DS_
 	BTSS	_sActual_Forecast,0
-	JMP	_00644_DS_
-_00587_DS_:
-;	;.line	907; ".\Source\APP_Measure.c"	if(!ActualForecast_Select())
+	JMP	_00525_DS_
+_00468_DS_:
+;	;.line	909; ".\Source\APP_Measure.c"	if(!ActualForecast_Select())
 	CALL	_ActualForecast_Select
 	.CHKPARA _ActualForecast_Select 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00644_DS_
-;	;.line	912; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ResetTimeFlag)
+	JMP	_00525_DS_
+;	;.line	914; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ResetTimeFlag)
 	BTSZ	_sActual_Forecast,4
-	JMP	_00593_DS_
-;	;.line	914; ".\Source\APP_Measure.c"	sActual_Forecast.ResetTimeFlag = TRUE;
+	JMP	_00474_DS_
+;	;.line	916; ".\Source\APP_Measure.c"	sActual_Forecast.ResetTimeFlag = TRUE;
 	BSF	_sActual_Forecast,4
-;	;.line	917; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
+;	;.line	919; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
 	CLRF	(_sActual_Forecast + 1),0
-;	;.line	919; ".\Source\APP_Measure.c"	sForecast.Forecast_Timer = 0;
+;	;.line	921; ".\Source\APP_Measure.c"	sForecast.Forecast_Timer = 0;
 	CLRF	(_sForecast + 1),0
-;	;.line	921; ".\Source\APP_Measure.c"	sActual.ActualTime = 0;
+;	;.line	923; ".\Source\APP_Measure.c"	sActual.ActualTime = 0;
 	CLRF	(_sActual + 2),0
-	JMP	_00595_DS_
-_00593_DS_:
-;	;.line	926; ".\Source\APP_Measure.c"	if(++sActual_Forecast.Cnt_1S >= 4)
+	JMP	_00476_DS_
+_00474_DS_:
+;	;.line	928; ".\Source\APP_Measure.c"	if(++sActual_Forecast.Cnt_1S >= 4)
 	INF	(_sActual_Forecast + 1),0,0
-	MVF	r0x111A,1,0
+	MVF	r0x1115,1,0
 	MVF	(_sActual_Forecast + 1),1,0
 	MVL	0x03
-	CPSG	r0x111A,0
-	JMP	_00595_DS_
-;	;.line	928; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
+	CPSG	r0x1115,0
+	JMP	_00476_DS_
+;	;.line	930; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
 	CLRF	(_sActual_Forecast + 1),0
-;	;.line	930; ".\Source\APP_Measure.c"	sForecast.Forecast_Timer++;
+;	;.line	932; ".\Source\APP_Measure.c"	sForecast.Forecast_Timer++;
 	INF	(_sForecast + 1),1,0
-;	;.line	932; ".\Source\APP_Measure.c"	sActual.ActualTime++;
+;	;.line	934; ".\Source\APP_Measure.c"	sActual.ActualTime++;
 	INF	(_sActual + 2),1,0
-;	;.line	934; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = TRUE;
+;	;.line	936; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = TRUE;
 	LDPR	(_sActual_Forecast + 0),0x00
 	BSF	_INDF0,3
-_00595_DS_:
-;	;.line	950; ".\Source\APP_Measure.c"	if(sActual.Actual_Start && !sActual_Forecast.StableBuzzerFlag)
+_00476_DS_:
+;	;.line	952; ".\Source\APP_Measure.c"	if(sActual.Actual_Start && !sActual_Forecast.StableBuzzerFlag)
 	BTSZ	_sActual,0
 	BTSZ	_sActual_Forecast,1
-	JMP	_00607_DS_
-;	;.line	952; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+	JMP	_00488_DS_
+;	;.line	954; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 	BTSS	_sActual_Forecast,3
-	JMP	_00601_DS_
-;	;.line	955; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00482_DS_
+;	;.line	957; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	958; ".\Source\APP_Measure.c"	Filter_ErrTemp();
+;	;.line	960; ".\Source\APP_Measure.c"	Filter_ErrTemp();
 	CALL	_Filter_ErrTemp
-;	;.line	960; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
+;	;.line	962; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
 	MVF	(_sActual_Forecast + 7),0,0
-	MVF	r0x111C,1,0
+	MVF	r0x1117,1,0
 	MVF	(_sActual_Forecast + 8),0,0
-	MVF	r0x111D,1,0
-	MVF	r0x111C,0,0
+	MVF	r0x1118,1,0
+	MVF	r0x1117,0,0
 	SUBF	(_sActual_Forecast + 3),0,0
-	MVF	r0x111D,0,0
+	MVF	r0x1118,0,0
 	SUBC	(_sActual_Forecast + 4),0,0
 	BTSZ	_STATUS,4
-	JMP	_00597_DS_
-;	;.line	962; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x111C,0,0
+	JMP	_00478_DS_
+;	;.line	964; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+	MVF	r0x1117,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x111D,0,0
+	MVF	r0x1118,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-_00597_DS_:
-;	;.line	966; ".\Source\APP_Measure.c"	if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,sActual.StableTime))
+_00478_DS_:
+;	;.line	968; ".\Source\APP_Measure.c"	if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,sActual.StableTime))
 	MVF	(_sActual + 3),0,0
-	MVF	r0x111C,1,0
+	MVF	r0x1117,1,0
 	MVF	(_sActual + 4),0,0
-	MVF	r0x111D,1,0
+	MVF	r0x1118,1,0
 	MVF	(_sActual_Forecast + 3),0,0
-	MVF	r0x111E,1,0
+	MVF	r0x1119,1,0
 	MVF	(_sActual_Forecast + 4),0,0
-	MVF	r0x111F,1,0
+	MVF	r0x111A,1,0
 	MVF	(_sActual + 1),0,0
 	MVF	_Judge_Stability_STK03,1,0
-	MVF	r0x111E,0,0
+	MVF	r0x1119,0,0
 	MVF	_Judge_Stability_STK02,1,0
-	MVF	r0x111F,0,0
+	MVF	r0x111A,0,0
 	MVF	_Judge_Stability_STK01,1,0
-	MVF	r0x111C,0,0
+	MVF	r0x1117,0,0
 	MVF	_Judge_Stability_STK00,1,0
-	MVF	r0x111D,0,0
+	MVF	r0x1118,0,0
 	CALL	_Judge_Stability
+	.CHKPARA _Judge_Stability 5
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00599_DS_
-;	;.line	968; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
+	JMP	_00480_DS_
+;	;.line	970; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
 	BSF	_sActual_Forecast,1
-;	;.line	969; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
+;	;.line	971; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
 	BSF	_sBleStatus,4
-;	;.line	970; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
+;	;.line	972; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
 	BSF	_sMemoryFlag,0
-_00599_DS_:
-;	;.line	984; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sActual_Forecast.CentigradeTempDisp;
+_00480_DS_:
+;	;.line	986; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sActual_Forecast.CentigradeTempDisp;
 	MVF	(_sActual_Forecast + 3),0,0
 	MVF	(_sActual + 3),1,0
 	MVF	(_sActual_Forecast + 4),0,0
 	MVF	(_sActual + 4),1,0
-_00601_DS_:
-;	;.line	987; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
+_00482_DS_:
+;	;.line	989; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
 	BTSS	_sTempCal,5
-	JMP	_00607_DS_
-;	;.line	991; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
+	JMP	_00488_DS_
+;	;.line	993; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
 	MVL	0x01
 	MVF	(_ERR + 6),1,0
-_00607_DS_:
-;	;.line	997; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Start && !sActual_Forecast.StableBuzzerFlag)
+_00488_DS_:
+;	;.line	999; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Start && !sActual_Forecast.StableBuzzerFlag)
 	BTSZ	_sForecast,0
 	BTSZ	_sActual_Forecast,1
-	JMP	_00642_DS_
-;	;.line	1000; ".\Source\APP_Measure.c"	if(Temp_Drop())
+	JMP	_00523_DS_
+;	;.line	1002; ".\Source\APP_Measure.c"	if(Temp_Drop())
 	CALL	_Temp_Drop
 	.CHKPARA _Temp_Drop 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00609_DS_
-;	;.line	1004; ".\Source\APP_Measure.c"	ERR[Err1] = TRUE;
+	JMP	_00490_DS_
+;	;.line	1006; ".\Source\APP_Measure.c"	ERR[Err1] = TRUE;
 	MVL	0x01
 	MVF	(_ERR + 1),1,0
-;	;.line	1008; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_Er1Er2;
+;	;.line	1010; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_Er1Er2;
 	MVL	0x05
 	MVF	_eBuzzer_Status,1,0
-_00609_DS_:
-;	;.line	1018; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+_00490_DS_:
+;	;.line	1020; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 	BTSS	_sActual_Forecast,3
-	JMP	_00642_DS_
-;	;.line	1021; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00523_DS_
+;	;.line	1023; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	1025; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
+;	;.line	1027; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
 	BTSS	_sTempCal,5
-	JMP	_00613_DS_
-;	;.line	1027; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer > 8)
+	JMP	_00494_DS_
+;	;.line	1029; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer > 8)
 	MVL	0x08
 	CPSG	(_sForecast + 1),0
-	JMP	_00613_DS_
-;	;.line	1031; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
+	JMP	_00494_DS_
+;	;.line	1033; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
 	MVL	0x01
 	MVF	(_ERR + 6),1,0
-_00613_DS_:
-;	;.line	1035; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer > 15)
+_00494_DS_:
+;	;.line	1037; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer > 15)
 	MVF	(_sForecast + 1),0,0
-	MVF	r0x111C,1,0
+	MVF	r0x1117,1,0
 	ADDL	0xf0
 	BTSS	_STATUS,4
-	JMP	_00635_DS_
-;	;.line	1039; ".\Source\APP_Measure.c"	ERR[Err2] = TRUE;
+	JMP	_00516_DS_
+;	;.line	1041; ".\Source\APP_Measure.c"	ERR[Err2] = TRUE;
 	MVL	0x01
 	MVF	(_ERR + 2),1,0
-;	;.line	1042; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_Er1Er2;
+;	;.line	1044; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_Er1Er2;
 	MVL	0x05
 	MVF	_eBuzzer_Status,1,0
-	JMP	_00636_DS_
-_00635_DS_:
-;	;.line	1044; ".\Source\APP_Measure.c"	else if(sForecast.Forecast_Timer >= 2)
+	JMP	_00517_DS_
+_00516_DS_:
+;	;.line	1046; ".\Source\APP_Measure.c"	else if(sForecast.Forecast_Timer >= 2)
 	MVL	0x01
-	CPSG	r0x111C,0
-	JMP	_00636_DS_
-;	;.line	1047; ".\Source\APP_Measure.c"	if(Forecast_Calculate_Conditions())
+	CPSG	r0x1117,0
+	JMP	_00517_DS_
+;	;.line	1049; ".\Source\APP_Measure.c"	if(Forecast_Calculate_Conditions())
 	CALL	_Forecast_Calculate_Conditions
 	.CHKPARA _Forecast_Calculate_Conditions 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00636_DS_
-;	;.line	1050; ".\Source\APP_Measure.c"	Forecast_Calculate();
+	JMP	_00517_DS_
+;	;.line	1052; ".\Source\APP_Measure.c"	Forecast_Calculate();
 	CALL	_Forecast_Calculate
 	.CHKPARA _Forecast_Calculate 0
-;	;.line	1062; ".\Source\APP_Measure.c"	Temp = sForecast.ForecastTemp + sForecast.EndTemp;
+;	;.line	1064; ".\Source\APP_Measure.c"	Temp = sForecast.ForecastTemp + sForecast.EndTemp;
 	MVF	(_sForecast + 22),0,0
-	MVF	r0x111C,1,0
+	MVF	r0x1117,1,0
 	MVF	(_sForecast + 23),0,0
-	MVF	r0x111D,1,0
+	MVF	r0x1118,1,0
 	MVF	(_sForecast + 24),0,0
-	MVF	r0x111E,1,0
+	MVF	r0x1119,1,0
 	MVF	(_sForecast + 25),0,0
-	MVF	r0x111F,1,0
+	MVF	r0x111A,1,0
 	MVF	(_sForecast + 20),0,0
-	MVF	r0x1120,1,0
+	MVF	r0x111B,1,0
 	MVF	(_sForecast + 21),0,0
-	MVF	r0x1121,1,0
-	MVF	r0x111C,0,0
-	ADDF	r0x1120,1,0
-	MVF	r0x111D,0,0
-	ADDC	r0x1121,1,0
-;	;.line	1064; ".\Source\APP_Measure.c"	if((eMeasureMode == Oral_Mode) || (eMeasureMode == Rectal_Mode))
+	MVF	r0x111C,1,0
+	MVF	r0x1117,0,0
+	ADDF	r0x111B,1,0
+	MVF	r0x1118,0,0
+	ADDC	r0x111C,1,0
+;	;.line	1066; ".\Source\APP_Measure.c"	if((eMeasureMode == Oral_Mode) || (eMeasureMode == Rectal_Mode))
 	RRF	_eMeasureMode,0,0
 	BTSZ	_STATUS,0
-	JMP	_00626_DS_
+	JMP	_00507_DS_
 	MVL	0x02
 	CPSE	_eMeasureMode,0
-	JMP	_00627_DS_
-_00626_DS_:
-;	;.line	1066; ".\Source\APP_Measure.c"	if((Temp >= 3700) && (Temp <= 3800))
-	MVF	r0x1120,0,0
+	JMP	_00508_DS_
+_00507_DS_:
+;	;.line	1068; ".\Source\APP_Measure.c"	if((Temp >= 3700) && (Temp <= 3800))
+	MVF	r0x111B,0,0
 	ADDL	0x8c
 	MVL	0xf1
-	ADDC	r0x1121,0,0
+	ADDC	r0x111C,0,0
 	BTSS	_STATUS,4
-	JMP	_00628_DS_
-	MVF	r0x1120,0,0
+	JMP	_00509_DS_
+	MVF	r0x111B,0,0
 	ADDL	0x27
 	MVL	0xf1
-	ADDC	r0x1121,0,0
+	ADDC	r0x111C,0,0
 	BTSZ	_STATUS,4
-	JMP	_00628_DS_
-;	;.line	1068; ".\Source\APP_Measure.c"	if(sForecast.ForecastTemp > 80)
-	MVF	r0x111C,0,0
+	JMP	_00509_DS_
+;	;.line	1070; ".\Source\APP_Measure.c"	if(sForecast.ForecastTemp > 80)
+	MVF	r0x1117,0,0
 	ADDL	0xaf
 	MVL	0xff
-	ADDC	r0x111D,0,0
+	ADDC	r0x1118,0,0
 	MVL	0xff
-	ADDC	r0x111E,0,0
+	ADDC	r0x1119,0,0
 	MVL	0xff
-	ADDC	r0x111F,0,0
+	ADDC	r0x111A,0,0
 	BTSS	_STATUS,4
-	JMP	_00628_DS_
-;	;.line	1070; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 80;
+	JMP	_00509_DS_
+;	;.line	1072; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 80;
 	MVL	0x50
 	MVF	(_sForecast + 22),1,0
 	CLRF	(_sForecast + 23),0
 	CLRF	(_sForecast + 24),0
 	CLRF	(_sForecast + 25),0
-	JMP	_00628_DS_
-_00627_DS_:
-;	;.line	1075; ".\Source\APP_Measure.c"	else if(eMeasureMode == Underarm_Mode)
+	JMP	_00509_DS_
+_00508_DS_:
+;	;.line	1077; ".\Source\APP_Measure.c"	else if(eMeasureMode == Underarm_Mode)
 	DCSZ	_eMeasureMode,0,0
-	JMP	_00628_DS_
-;	;.line	1078; ".\Source\APP_Measure.c"	if((Temp >= 3700) && (Temp <= 3800))
-	MVF	r0x1120,0,0
+	JMP	_00509_DS_
+;	;.line	1080; ".\Source\APP_Measure.c"	if((Temp >= 3700) && (Temp <= 3800))
+	MVF	r0x111B,0,0
 	ADDL	0x8c
 	MVL	0xf1
-	ADDC	r0x1121,0,0
+	ADDC	r0x111C,0,0
 	BTSS	_STATUS,4
-	JMP	_00628_DS_
-	MVF	r0x1120,0,0
+	JMP	_00509_DS_
+	MVF	r0x111B,0,0
 	ADDL	0x27
 	MVL	0xf1
-	ADDC	r0x1121,0,0
+	ADDC	r0x111C,0,0
 	BTSZ	_STATUS,4
-	JMP	_00628_DS_
-;	;.line	1080; ".\Source\APP_Measure.c"	if(sForecast.ForecastTemp > 120)
-	MVF	r0x111C,0,0
+	JMP	_00509_DS_
+;	;.line	1082; ".\Source\APP_Measure.c"	if(sForecast.ForecastTemp > 120)
+	MVF	r0x1117,0,0
 	ADDL	0x87
 	MVL	0xff
-	ADDC	r0x111D,0,0
+	ADDC	r0x1118,0,0
 	MVL	0xff
-	ADDC	r0x111E,0,0
+	ADDC	r0x1119,0,0
 	MVL	0xff
-	ADDC	r0x111F,0,0
+	ADDC	r0x111A,0,0
 	BTSS	_STATUS,4
-	JMP	_00628_DS_
-;	;.line	1082; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 120;
+	JMP	_00509_DS_
+;	;.line	1084; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 120;
 	MVL	0x78
 	MVF	(_sForecast + 22),1,0
 	CLRF	(_sForecast + 23),0
 	CLRF	(_sForecast + 24),0
 	CLRF	(_sForecast + 25),0
-_00628_DS_:
-;	;.line	1096; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = Temperature_Compensate(sForecast.ForecastTemp + sForecast.EndTemp);
+_00509_DS_:
+;	;.line	1098; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = Temperature_Compensate(sForecast.ForecastTemp + sForecast.EndTemp);
 	MVF	(_sForecast + 22),0,0
-	MVF	r0x111C,1,0
+	MVF	r0x1117,1,0
 	MVF	(_sForecast + 23),0,0
-	MVF	r0x111D,1,0
+	MVF	r0x1118,1,0
 	MVF	(_sForecast + 20),0,0
-	ADDF	r0x111C,0,0
+	ADDF	r0x1117,0,0
 	MVF	_Temperature_Compensate_STK00,1,0
-	MVF	r0x111D,0,0
+	MVF	r0x1118,0,0
 	ADDC	(_sForecast + 21),0,0
 	CALL	_Temperature_Compensate
 	.CHKPARA _Temperature_Compensate 2
-	MVF	r0x111D,1,0
+	MVF	r0x1118,1,0
 	MVFF	STK00,(_sForecast + 22)
 	MVF	(_sForecast + 23),1,0
 	CLRF	(_sForecast + 24),0
 	CLRF	(_sForecast + 25),0
-;	;.line	1099; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sForecast.ForecastTemp;
+;	;.line	1101; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sForecast.ForecastTemp;
 	MVF	STK00,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x111D,0,0
+	MVF	r0x1118,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-;	;.line	1102; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
+;	;.line	1104; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
 	BSF	_sActual_Forecast,1
-;	;.line	1103; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
+;	;.line	1105; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
 	BSF	_sBleStatus,4
-;	;.line	1104; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
+;	;.line	1106; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
 	BSF	_sMemoryFlag,0
-;	;.line	1106; ".\Source\APP_Measure.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = FALSE;
+;	;.line	1108; ".\Source\APP_Measure.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = FALSE;
 	BCF	_sTimeStamp,0
-_00636_DS_:
-;	;.line	1119; ".\Source\APP_Measure.c"	sForecast.Prior1sForecastTemp = sADC.Centigrade250msTemp;
+_00517_DS_:
+;	;.line	1121; ".\Source\APP_Measure.c"	sForecast.Prior1sForecastTemp = sADC.Centigrade250msTemp;
 	MVF	(_sADC + 13),0,0
 	MVF	(_sForecast + 8),1,0
 	MVF	(_sADC + 14),0,0
 	MVF	(_sForecast + 9),1,0
-_00642_DS_:
-;	;.line	1126; ".\Source\APP_Measure.c"	Forecast_To_Actual();
+_00523_DS_:
+;	;.line	1128; ".\Source\APP_Measure.c"	Forecast_To_Actual();
 	CALL	_Forecast_To_Actual
 	.CHKPARA _Forecast_To_Actual 0
-_00644_DS_:
-;	;.line	1133; ".\Source\APP_Measure.c"	eMeas_Status = Meas_Get_TEMP;
+_00525_DS_:
+;	;.line	1135; ".\Source\APP_Measure.c"	eMeas_Status = Meas_Get_TEMP;
 	CLRF	_eMeas_Status,0
-;	;.line	1137; ".\Source\APP_Measure.c"	if(sTIMx.TempSampleFlag)
+;	;.line	1139; ".\Source\APP_Measure.c"	if(sTIMx.TempSampleFlag)
 	BTSS	_sTIMx,2
-	JMP	_00647_DS_
-;	;.line	1140; ".\Source\APP_Measure.c"	sTIMx.TempSampleFlag = FALSE;
+	JMP	_00528_DS_
+;	;.line	1142; ".\Source\APP_Measure.c"	sTIMx.TempSampleFlag = FALSE;
 	BCF	_sTIMx,2
-;	;.line	1142; ".\Source\APP_Measure.c"	sForecast.Prior250msForecastTemp = sADC.Centigrade250msTemp;
+;	;.line	1144; ".\Source\APP_Measure.c"	sForecast.Prior250msForecastTemp = sADC.Centigrade250msTemp;
 	MVF	(_sADC + 13),0,0
 	MVF	(_sForecast + 6),1,0
 	MVF	(_sADC + 14),0,0
 	MVF	(_sForecast + 7),1,0
-_00647_DS_:
-;	;.line	1165; ".\Source\APP_Measure.c"	}
+_00528_DS_:
+;	;.line	1167; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Forecast_Measure
 	.ENDFUNC	_Forecast_Measure
@@ -558,67 +559,67 @@ _00647_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _Temperature_Compensate:$r:2:2:$C:__divuint:$C:__g2ptrget1:$C:__g2ptrget2\
-:$L:r0x110E:$L:_Temperature_Compensate_STK00:$L:r0x110F:$L:r0x1111:$L:r0x1110\
-:$L:r0x1112:$L:r0x1113
+:$L:r0x1109:$L:_Temperature_Compensate_STK00:$L:r0x110A:$L:r0x110C:$L:r0x110B\
+:$L:r0x110D:$L:r0x110E
 ;--------------------------------------------------------
-;	;.line	816; ".\Source\APP_Measure.c"	uint16 Temperature_Compensate(uint16 Temp)
+;	;.line	818; ".\Source\APP_Measure.c"	uint16 Temperature_Compensate(uint16 Temp)
 _Temperature_Compensate:	;Function start
-	CLRF	r0x110F,0
-	MVF	r0x110E,1,0
-;	;.line	823; ".\Source\APP_Measure.c"	if((Temp < 3700)&&(Temp > 0))
+	CLRF	r0x110A,0
+	MVF	r0x1109,1,0
+;	;.line	825; ".\Source\APP_Measure.c"	if((Temp < 3700)&&(Temp > 0))
 	MVF	_Temperature_Compensate_STK00,0,0
 	ADDL	0x8c
 	MVL	0xf1
-	ADDC	r0x110E,0,0
+	ADDC	r0x1109,0,0
 	BTSZ	_STATUS,4
-	JMP	_00574_DS_
+	JMP	_00455_DS_
 	MVF	_Temperature_Compensate_STK00,0,0
-	IORF	r0x110E,0,0
+	IORF	r0x1109,0,0
 	BTSZ	_STATUS,0
-	JMP	_00574_DS_
-;	;.line	825; ".\Source\APP_Measure.c"	b = Temp/10;
+	JMP	_00455_DS_
+;	;.line	827; ".\Source\APP_Measure.c"	b = Temp/10;
 	MVL	0x0a
 	MVF	__divuint_STK02,1,0
 	CLRF	__divuint_STK01,0
 	MVF	_Temperature_Compensate_STK00,0,0
 	MVF	__divuint_STK00,1,0
-	MVF	r0x110E,0,0
+	MVF	r0x1109,0,0
 	CALL	__divuint
-	MVF	r0x1111,1,0
+	MVF	r0x110C,1,0
 	MVF	STK00,0,0
-;	;.line	828; ".\Source\APP_Measure.c"	if(b < C_StartTemp)
+;	;.line	830; ".\Source\APP_Measure.c"	if(b < C_StartTemp)
 	ADDL	0xf0
 	MVL	0xfe
-	ADDC	r0x1111,0,0
+	ADDC	r0x110C,0,0
 	BTSZ	_STATUS,4
-	JMP	_00566_DS_
-;	;.line	830; ".\Source\APP_Measure.c"	a = 0;
-	CLRF	r0x1112,0
-	JMP	_00567_DS_
-_00566_DS_:
-;	;.line	834; ".\Source\APP_Measure.c"	a = (uint8)(b - C_StartTemp);
+	JMP	_00447_DS_
+;	;.line	832; ".\Source\APP_Measure.c"	a = 0;
+	CLRF	r0x110D,0
+	JMP	_00448_DS_
+_00447_DS_:
+;	;.line	836; ".\Source\APP_Measure.c"	a = (uint8)(b - C_StartTemp);
 	MVF	STK00,0,0
 	ADDL	0xf0
-	MVF	r0x1112,1,0
-_00567_DS_:
-;	;.line	838; ".\Source\APP_Measure.c"	if((a & 0x01)== 0x01)
-	MVF	r0x1112,0,0
+	MVF	r0x110D,1,0
+_00448_DS_:
+;	;.line	840; ".\Source\APP_Measure.c"	if((a & 0x01)== 0x01)
+	MVF	r0x110D,0,0
 	ANDL	0x01
 	DCSZ	_WREG,0,0
-	JMP	_00569_DS_
-;	;.line	840; ".\Source\APP_Measure.c"	F_OddFlag = 1;
+	JMP	_00450_DS_
+;	;.line	842; ".\Source\APP_Measure.c"	F_OddFlag = 1;
 	MVL	0x01
-	MVF	r0x110F,1,0
-_00569_DS_:
-;	;.line	843; ".\Source\APP_Measure.c"	a >>= 1;
+	MVF	r0x110A,1,0
+_00450_DS_:
+;	;.line	845; ".\Source\APP_Measure.c"	a >>= 1;
 	BCF	_STATUS,4
-	RRFC	r0x1112,0,0
-	MVF	r0x1110,1,0
-;	;.line	846; ".\Source\APP_Measure.c"	if( F_OddFlag == 1)
-	DCSZ	r0x110F,0,0
-	JMP	_00571_DS_
-;	;.line	848; ".\Source\APP_Measure.c"	a = CloseTable[a];
-	MVF	r0x1110,0,0
+	RRFC	r0x110D,0,0
+	MVF	r0x110B,1,0
+;	;.line	848; ".\Source\APP_Measure.c"	if( F_OddFlag == 1)
+	DCSZ	r0x110A,0,0
+	JMP	_00452_DS_
+;	;.line	850; ".\Source\APP_Measure.c"	a = CloseTable[a];
+	MVF	r0x110B,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	ADDL	(_CloseTable + 0)
@@ -627,11 +628,11 @@ _00569_DS_:
 	ADDC	_PRODH,0,0
 	IORL	0x80
 	CALL	__g2ptrget1
-	MVF	r0x1113,1,0
-	JMP	_00572_DS_
-_00571_DS_:
-;	;.line	852; ".\Source\APP_Measure.c"	a = CloseTable[a] >> 8;
-	MVF	r0x1110,0,0
+	MVF	r0x110E,1,0
+	JMP	_00453_DS_
+_00452_DS_:
+;	;.line	854; ".\Source\APP_Measure.c"	a = CloseTable[a] >> 8;
+	MVF	r0x110B,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	ADDL	(_CloseTable + 0)
@@ -640,23 +641,23 @@ _00571_DS_:
 	ADDC	_PRODH,0,0
 	IORL	0x80
 	CALL	__g2ptrget2
-	MVF	r0x1113,1,0
-_00572_DS_:
-;	;.line	855; ".\Source\APP_Measure.c"	return (Temp + a);
-	CLRF	r0x1110,0
-	MVF	r0x1113,0,0
+	MVF	r0x110E,1,0
+_00453_DS_:
+;	;.line	857; ".\Source\APP_Measure.c"	return (Temp + a);
+	CLRF	r0x110B,0
+	MVF	r0x110E,0,0
 	ADDF	_Temperature_Compensate_STK00,0,0
 	MVF	STK00,1,0
-	MVF	r0x110E,0,0
-	ADDC	r0x1110,0,0
-	JMP	_00577_DS_
-_00574_DS_:
-;	;.line	859; ".\Source\APP_Measure.c"	return Temp;
+	MVF	r0x1109,0,0
+	ADDC	r0x110B,0,0
+	JMP	_00458_DS_
+_00455_DS_:
+;	;.line	861; ".\Source\APP_Measure.c"	return Temp;
 	MVF	_Temperature_Compensate_STK00,0,0
 	MVF	STK00,1,0
-	MVF	r0x110E,0,0
-_00577_DS_:
-;	;.line	861; ".\Source\APP_Measure.c"	}
+	MVF	r0x1109,0,0
+_00458_DS_:
+;	;.line	863; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Temperature_Compensate
 	.ENDFUNC	_Temperature_Compensate
@@ -666,69 +667,69 @@ _00577_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _ActualForecast_Select:$r:1:0:$C:_Start_Algorithm\
-:$L:r0x110B
+:$L:r0x1106
 ;--------------------------------------------------------
-;	;.line	754; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ActualForecast_SelectFlag)
+;	;.line	756; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ActualForecast_SelectFlag)
 _ActualForecast_Select:	;Function start
 	BTSZ	_sActual_Forecast,2
-	JMP	_00560_DS_
-;	;.line	756; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp > 3400)
+	JMP	_00441_DS_
+;	;.line	758; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp > 3400)
 	MVF	(_sADC + 13),0,0
 	ADDL	0xb7
 	MVL	0xf2
 	ADDC	(_sADC + 14),0,0
 	BTSS	_STATUS,4
-	JMP	_00553_DS_
-;	;.line	759; ".\Source\APP_Measure.c"	if(++sForecast.PreBath_Counts >= 3)
+	JMP	_00434_DS_
+;	;.line	761; ".\Source\APP_Measure.c"	if(++sForecast.PreBath_Counts >= 3)
 	INF	(_sForecast + 4),0,0
-	MVF	r0x110B,1,0
+	MVF	r0x1106,1,0
 	MVF	(_sForecast + 4),1,0
 	MVL	0x02
-	CPSG	r0x110B,0
-	JMP	_00554_DS_
-;	;.line	762; ".\Source\APP_Measure.c"	sForecast.PreBath_Counts = 3;
+	CPSG	r0x1106,0
+	JMP	_00435_DS_
+;	;.line	764; ".\Source\APP_Measure.c"	sForecast.PreBath_Counts = 3;
 	MVL	0x03
 	MVF	(_sForecast + 4),1,0
-;	;.line	764; ".\Source\APP_Measure.c"	sActual.Actual_Start = TRUE;
+;	;.line	766; ".\Source\APP_Measure.c"	sActual.Actual_Start = TRUE;
 	BSF	_sActual,0
-;	;.line	766; ".\Source\APP_Measure.c"	sActual_Forecast.ActualForecast_SelectFlag = TRUE;
+;	;.line	768; ".\Source\APP_Measure.c"	sActual_Forecast.ActualForecast_SelectFlag = TRUE;
 	BSF	_sActual_Forecast,2
-;	;.line	770; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sADC.Centigrade250msTemp;
+;	;.line	772; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sADC.Centigrade250msTemp;
 	MVF	(_sADC + 13),0,0
 	MVF	(_sActual + 3),1,0
 	MVF	(_sADC + 14),0,0
 	MVF	(_sActual + 4),1,0
-	JMP	_00554_DS_
-_00553_DS_:
-;	;.line	782; ".\Source\APP_Measure.c"	sForecast.PreBath_Counts = 0;
+	JMP	_00435_DS_
+_00434_DS_:
+;	;.line	784; ".\Source\APP_Measure.c"	sForecast.PreBath_Counts = 0;
 	CLRF	(_sForecast + 4),0
-_00554_DS_:
-;	;.line	786; ".\Source\APP_Measure.c"	if(!sActual.Actual_Start)
+_00435_DS_:
+;	;.line	788; ".\Source\APP_Measure.c"	if(!sActual.Actual_Start)
 	BTSZ	_sActual,0
-	JMP	_00558_DS_
-;	;.line	789; ".\Source\APP_Measure.c"	if(Start_Algorithm())
+	JMP	_00439_DS_
+;	;.line	791; ".\Source\APP_Measure.c"	if(Start_Algorithm())
 	CALL	_Start_Algorithm
 	.CHKPARA _Start_Algorithm 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00558_DS_
-;	;.line	792; ".\Source\APP_Measure.c"	sForecast.Forecast_Start = TRUE;
+	JMP	_00439_DS_
+;	;.line	794; ".\Source\APP_Measure.c"	sForecast.Forecast_Start = TRUE;
 	BSF	_sForecast,0
-;	;.line	794; ".\Source\APP_Measure.c"	sActual_Forecast.ActualForecast_SelectFlag = TRUE;
+;	;.line	796; ".\Source\APP_Measure.c"	sActual_Forecast.ActualForecast_SelectFlag = TRUE;
 	LDPR	(_sActual_Forecast + 0),0x00
 	BSF	_INDF0,2
-_00558_DS_:
-;	;.line	805; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sADC.Centigrade250msTemp;
+_00439_DS_:
+;	;.line	807; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sADC.Centigrade250msTemp;
 	MVF	(_sADC + 13),0,0
 	MVF	(_sActual_Forecast + 3),1,0
 	MVF	(_sADC + 14),0,0
 	MVF	(_sActual_Forecast + 4),1,0
-_00560_DS_:
-;	;.line	808; ".\Source\APP_Measure.c"	return sActual_Forecast.ActualForecast_SelectFlag;
+_00441_DS_:
+;	;.line	810; ".\Source\APP_Measure.c"	return sActual_Forecast.ActualForecast_SelectFlag;
 	MVL	0x00
 	BTSZ	_sActual_Forecast,2
 	MVL	0x01
-;	;.line	809; ".\Source\APP_Measure.c"	}
+;	;.line	811; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _ActualForecast_Select
 	.ENDFUNC	_ActualForecast_Select
@@ -740,26 +741,26 @@ _00560_DS_:
 	.FUNC _Forecast_To_Actual:$r:0:0:$C:_Update_MaxTempImmediately:$C:_Update_MaxTemp3Min\
 
 ;--------------------------------------------------------
-;	;.line	729; ".\Source\APP_Measure.c"	switch(eTo_Actual_Ways)
+;	;.line	731; ".\Source\APP_Measure.c"	switch(eTo_Actual_Ways)
 _Forecast_To_Actual:	;Function start
 	MVF	_eTo_Actual_Ways,0,0
 	XORL	0x5a
 	BTSZ	_STATUS,0
-	JMP	_00528_DS_
+	JMP	_00409_DS_
 	MVL	0xa5
 	CPSE	_eTo_Actual_Ways,0
-	JMP	_00531_DS_
-;	;.line	734; ".\Source\APP_Measure.c"	Update_MaxTempImmediately();
+	JMP	_00412_DS_
+;	;.line	736; ".\Source\APP_Measure.c"	Update_MaxTempImmediately();
 	CALL	_Update_MaxTempImmediately
 	.CHKPARA _Update_MaxTempImmediately 0
-;	;.line	735; ".\Source\APP_Measure.c"	break;
-	JMP	_00531_DS_
-_00528_DS_:
-;	;.line	739; ".\Source\APP_Measure.c"	Update_MaxTemp3Min();
+;	;.line	737; ".\Source\APP_Measure.c"	break;
+	JMP	_00412_DS_
+_00409_DS_:
+;	;.line	741; ".\Source\APP_Measure.c"	Update_MaxTemp3Min();
 	CALL	_Update_MaxTemp3Min
 	.CHKPARA _Update_MaxTemp3Min 0
-_00531_DS_:
-;	;.line	744; ".\Source\APP_Measure.c"	}
+_00412_DS_:
+;	;.line	746; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Forecast_To_Actual
 	.ENDFUNC	_Forecast_To_Actual
@@ -769,18 +770,18 @@ _00531_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _Update_MaxTemp3Min:$r:0:0:$C:_Timer_Experience:$C:_Filter_ErrTemp\
-:$L:r0x10FC:$L:r0x10FD:$L:r0x10FE:$L:r0x10FF
+:$L:r0x10F6:$L:r0x10F7:$L:r0x10F8:$L:r0x10F9
 ;--------------------------------------------------------
-;	;.line	612; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Start)
+;	;.line	614; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Start)
 _Update_MaxTemp3Min:	;Function start
 	BTSS	_sForecast,0
-	JMP	_00520_DS_
-;	;.line	614; ".\Source\APP_Measure.c"	if(!sTimeStamp.Get_ForecastMeas_Start_Timer_Flag)
+	JMP	_00401_DS_
+;	;.line	616; ".\Source\APP_Measure.c"	if(!sTimeStamp.Get_ForecastMeas_Start_Timer_Flag)
 	BTSZ	_sTimeStamp,0
-	JMP	_00491_DS_
-;	;.line	616; ".\Source\APP_Measure.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = TRUE;
+	JMP	_00372_DS_
+;	;.line	618; ".\Source\APP_Measure.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = TRUE;
 	BSF	_sTimeStamp,0
-;	;.line	617; ".\Source\APP_Measure.c"	sTimeStamp.ForecastMeas_Timer = sTimeStamp.Timer_Journey;
+;	;.line	619; ".\Source\APP_Measure.c"	sTimeStamp.ForecastMeas_Timer = sTimeStamp.Timer_Journey;
 	MVF	(_sTimeStamp + 2),0,0
 	MVF	(_sTimeStamp + 18),1,0
 	MVF	(_sTimeStamp + 3),0,0
@@ -789,158 +790,158 @@ _Update_MaxTemp3Min:	;Function start
 	MVF	(_sTimeStamp + 20),1,0
 	MVF	(_sTimeStamp + 5),0,0
 	MVF	(_sTimeStamp + 21),1,0
-_00491_DS_:
-;	;.line	621; ".\Source\APP_Measure.c"	Result = Timer_Experience(sTimeStamp.ForecastMeas_Timer,7200);
+_00372_DS_:
+;	;.line	623; ".\Source\APP_Measure.c"	Result = Timer_Experience(sTimeStamp.ForecastMeas_Timer,7200);
 	MVF	(_sTimeStamp + 18),0,0
-	MVF	r0x10FC,1,0
+	MVF	r0x10F6,1,0
 	MVF	(_sTimeStamp + 19),0,0
-	MVF	r0x10FD,1,0
+	MVF	r0x10F7,1,0
 	MVF	(_sTimeStamp + 20),0,0
-	MVF	r0x10FE,1,0
+	MVF	r0x10F8,1,0
 	MVF	(_sTimeStamp + 21),0,0
-	MVF	r0x10FF,1,0
+	MVF	r0x10F9,1,0
 	MVL	0x20
 	MVF	_Timer_Experience_STK06,1,0
 	MVL	0x1c
 	MVF	_Timer_Experience_STK05,1,0
 	CLRF	_Timer_Experience_STK04,0
 	CLRF	_Timer_Experience_STK03,0
-	MVF	r0x10FC,0,0
+	MVF	r0x10F6,0,0
 	MVF	_Timer_Experience_STK02,1,0
-	MVF	r0x10FD,0,0
+	MVF	r0x10F7,0,0
 	MVF	_Timer_Experience_STK01,1,0
-	MVF	r0x10FE,0,0
+	MVF	r0x10F8,0,0
 	MVF	_Timer_Experience_STK00,1,0
-	MVF	r0x10FF,0,0
+	MVF	r0x10F9,0,0
 	CALL	_Timer_Experience
 	.CHKPARA _Timer_Experience 8
-;	;.line	622; ".\Source\APP_Measure.c"	if(Result)
+;	;.line	624; ".\Source\APP_Measure.c"	if(Result)
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00509_DS_
-;	;.line	624; ".\Source\APP_Measure.c"	if(!sForecast.Update_MaxTemp3Min_Arrived)
+	JMP	_00390_DS_
+;	;.line	626; ".\Source\APP_Measure.c"	if(!sForecast.Update_MaxTemp3Min_Arrived)
 	BTSZ	_sForecast,1
-	JMP	_00495_DS_
-;	;.line	626; ".\Source\APP_Measure.c"	sForecast.Update_MaxTemp3Min_Arrived = TRUE;
+	JMP	_00376_DS_
+;	;.line	628; ".\Source\APP_Measure.c"	sForecast.Update_MaxTemp3Min_Arrived = TRUE;
 	BSF	_sForecast,1
-;	;.line	627; ".\Source\APP_Measure.c"	sTIMx.Cnt125ms = 0;
+;	;.line	629; ".\Source\APP_Measure.c"	sTIMx.Cnt125ms = 0;
 	CLRF	(_sTIMx + 5),0
 	CLRF	(_sTIMx + 6),0
-;	;.line	629; ".\Source\APP_Measure.c"	if(!sTempCal.Reset_From_CalOK)
+;	;.line	631; ".\Source\APP_Measure.c"	if(!sTempCal.Reset_From_CalOK)
 	BTSZ	_sTempCal,5
-	JMP	_00493_DS_
-;	;.line	636; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_MeasuredTempActual;
+	JMP	_00374_DS_
+;	;.line	638; ".\Source\APP_Measure.c"	eBuzzer_Status = Buzzer_MeasuredTempActual;
 	MVL	0x03
 	MVF	_eBuzzer_Status,1,0
-_00493_DS_:
-;	;.line	638; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = TRUE;
+_00374_DS_:
+;	;.line	640; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = TRUE;
 	BSF	_sActual_Forecast,3
-_00495_DS_:
-;	;.line	642; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+_00376_DS_:
+;	;.line	644; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 	BTSS	_sActual_Forecast,3
-	JMP	_00522_DS_
-;	;.line	645; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00403_DS_
+;	;.line	647; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	648; ".\Source\APP_Measure.c"	Filter_ErrTemp();
+;	;.line	650; ".\Source\APP_Measure.c"	Filter_ErrTemp();
 	CALL	_Filter_ErrTemp
-;	;.line	650; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 <= 3680)
+;	;.line	652; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 <= 3680)
 	MVF	(_sActual_Forecast + 7),0,0
-	MVF	r0x10FC,1,0
+	MVF	r0x10F6,1,0
 	MVF	(_sActual_Forecast + 8),0,0
-	MVF	r0x10FD,1,0
-	MVF	r0x10FC,0,0
+	MVF	r0x10F7,1,0
+	MVF	r0x10F6,0,0
 	ADDL	0x9f
 	MVL	0xf1
-	ADDC	r0x10FD,0,0
+	ADDC	r0x10F7,0,0
 	BTSZ	_STATUS,4
-	JMP	_00502_DS_
-;	;.line	653; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 >= sActual_Forecast.CentigradeTempDisp)
+	JMP	_00383_DS_
+;	;.line	655; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 >= sActual_Forecast.CentigradeTempDisp)
 	MVF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10FE,1,0
+	MVF	r0x10F8,1,0
 	MVF	(_sActual_Forecast + 4),0,0
-	MVF	r0x10FF,1,0
-	MVF	r0x10FE,0,0
-	SUBF	r0x10FC,0,0
-	MVF	r0x10FF,0,0
-	SUBC	r0x10FD,0,0
+	MVF	r0x10F9,1,0
+	MVF	r0x10F8,0,0
+	SUBF	r0x10F6,0,0
+	MVF	r0x10F9,0,0
+	SUBC	r0x10F7,0,0
 	BTSS	_STATUS,4
-	JMP	_00499_DS_
-;	;.line	656; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x10FC,0,0
+	JMP	_00380_DS_
+;	;.line	658; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+	MVF	r0x10F6,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x10FD,0,0
+	MVF	r0x10F7,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-	JMP	_00503_DS_
-_00499_DS_:
-;	;.line	660; ".\Source\APP_Measure.c"	if(sActual_Forecast.CentigradeTempDisp > 3680)
-	MVF	r0x10FE,0,0
+	JMP	_00384_DS_
+_00380_DS_:
+;	;.line	662; ".\Source\APP_Measure.c"	if(sActual_Forecast.CentigradeTempDisp > 3680)
+	MVF	r0x10F8,0,0
 	ADDL	0x9f
 	MVL	0xf1
-	ADDC	r0x10FF,0,0
+	ADDC	r0x10F9,0,0
 	BTSS	_STATUS,4
-	JMP	_00503_DS_
-;	;.line	663; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = 3680;
+	JMP	_00384_DS_
+;	;.line	665; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = 3680;
 	MVL	0x60
 	MVF	(_sActual_Forecast + 3),1,0
 	MVL	0x0e
 	MVF	(_sActual_Forecast + 4),1,0
-	JMP	_00503_DS_
-_00502_DS_:
-;	;.line	676; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x10FC,0,0
+	JMP	_00384_DS_
+_00383_DS_:
+;	;.line	678; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+	MVF	r0x10F6,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x10FD,0,0
+	MVF	r0x10F7,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-_00503_DS_:
-;	;.line	678; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
+_00384_DS_:
+;	;.line	680; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
 	BSF	_sBleStatus,4
-;	;.line	679; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
+;	;.line	681; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
 	BSF	_sMemoryFlag,0
-	JMP	_00522_DS_
-_00509_DS_:
-;	;.line	685; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+	JMP	_00403_DS_
+_00390_DS_:
+;	;.line	687; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 	BTSS	_sActual_Forecast,3
-	JMP	_00522_DS_
-;	;.line	688; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00403_DS_
+;	;.line	690; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	690; ".\Source\APP_Measure.c"	Filter_ErrTemp();
+;	;.line	692; ".\Source\APP_Measure.c"	Filter_ErrTemp();
 	CALL	_Filter_ErrTemp
-	JMP	_00522_DS_
-_00520_DS_:
-;	;.line	694; ".\Source\APP_Measure.c"	else if(sActual.Actual_Start)
+	JMP	_00403_DS_
+_00401_DS_:
+;	;.line	696; ".\Source\APP_Measure.c"	else if(sActual.Actual_Start)
 	BTSZ	_sActual,0
-;	;.line	697; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+;	;.line	699; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 	BTSS	_sActual_Forecast,3
-	JMP	_00522_DS_
-;	;.line	700; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00403_DS_
+;	;.line	702; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	703; ".\Source\APP_Measure.c"	Filter_ErrTemp();
+;	;.line	705; ".\Source\APP_Measure.c"	Filter_ErrTemp();
 	CALL	_Filter_ErrTemp
-;	;.line	706; ".\Source\APP_Measure.c"	if(eBuzzer_Status == Buzzer_Silent)
+;	;.line	708; ".\Source\APP_Measure.c"	if(eBuzzer_Status == Buzzer_Silent)
 	TFSZ	_eBuzzer_Status,0
-	JMP	_00522_DS_
-;	;.line	709; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
+	JMP	_00403_DS_
+;	;.line	711; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
 	MVF	(_sActual_Forecast + 7),0,0
-	MVF	r0x10FC,1,0
+	MVF	r0x10F6,1,0
 	MVF	(_sActual_Forecast + 8),0,0
-	MVF	r0x10FD,1,0
-	MVF	r0x10FC,0,0
+	MVF	r0x10F7,1,0
+	MVF	r0x10F6,0,0
 	SUBF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10FD,0,0
+	MVF	r0x10F7,0,0
 	SUBC	(_sActual_Forecast + 4),0,0
 	BTSZ	_STATUS,4
-	JMP	_00522_DS_
-;	;.line	713; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x10FC,0,0
+	JMP	_00403_DS_
+;	;.line	715; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+	MVF	r0x10F6,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x10FD,0,0
+	MVF	r0x10F7,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-;	;.line	714; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
+;	;.line	716; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
 	BSF	_sBleStatus,4
-;	;.line	715; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
+;	;.line	717; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
 	BSF	_sMemoryFlag,0
-_00522_DS_:
-;	;.line	720; ".\Source\APP_Measure.c"	}
+_00403_DS_:
+;	;.line	722; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Update_MaxTemp3Min
 	.ENDFUNC	_Update_MaxTemp3Min
@@ -950,56 +951,57 @@ _00522_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _Update_MaxTempImmediately:$r:0:0:$C:_Filter_ErrTemp\
-:$L:r0x10F2:$L:r0x10F3:$L:r0x10F4:$L:r0x10F5:$L:r0x10F6\
-:$L:r0x10F7
+:$L:r0x10EB:$L:r0x10EC:$L:r0x10ED:$L:r0x10EE:$L:r0x10EF\
+:$L:r0x10F0
 ;--------------------------------------------------------
-;	;.line	582; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
+;	;.line	584; ".\Source\APP_Measure.c"	if(sActual_Forecast.Get_1sTempFlag)
 _Update_MaxTempImmediately:	;Function start
 	BTSS	_sActual_Forecast,3
-	JMP	_00485_DS_
-;	;.line	585; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+	JMP	_00366_DS_
+;	;.line	587; ".\Source\APP_Measure.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
 	BCF	_sActual_Forecast,3
-;	;.line	588; ".\Source\APP_Measure.c"	Filter_ErrTemp();
+;	;.line	590; ".\Source\APP_Measure.c"	Filter_ErrTemp();
 	CALL	_Filter_ErrTemp
-;	;.line	591; ".\Source\APP_Measure.c"	if((sActual_Forecast.Temp_T1 > sForecast.ForecastTemp) && (eBuzzer_Status == Buzzer_Silent))
+	.CHKPARA _Filter_ErrTemp 0
+;	;.line	593; ".\Source\APP_Measure.c"	if((sActual_Forecast.Temp_T1 > sForecast.ForecastTemp) && (eBuzzer_Status == Buzzer_Silent))
 	MVF	(_sActual_Forecast + 7),0,0
-	MVF	r0x10F2,1,0
+	MVF	r0x10EB,1,0
 	MVF	(_sActual_Forecast + 8),0,0
-	MVF	r0x10F3,1,0
+	MVF	r0x10EC,1,0
 	MVF	(_sForecast + 22),0,0
-	MVF	r0x10F4,1,0
+	MVF	r0x10ED,1,0
 	MVF	(_sForecast + 23),0,0
-	MVF	r0x10F5,1,0
+	MVF	r0x10EE,1,0
 	MVF	(_sForecast + 24),0,0
-	MVF	r0x10F6,1,0
+	MVF	r0x10EF,1,0
 	MVF	(_sForecast + 25),0,0
-	MVF	r0x10F7,1,0
-	MVF	r0x10F2,0,0
-	SUBF	r0x10F4,0,0
-	MVF	r0x10F3,0,0
-	SUBC	r0x10F5,0,0
+	MVF	r0x10F0,1,0
+	MVF	r0x10EB,0,0
+	SUBF	r0x10ED,0,0
+	MVF	r0x10EC,0,0
+	SUBC	r0x10EE,0,0
 	MVL	0x00
-	SUBC	r0x10F6,0,0
+	SUBC	r0x10EF,0,0
 	MVL	0x00
-	SUBC	r0x10F7,0,0
+	SUBC	r0x10F0,0,0
 	BTSZ	_STATUS,4
-	JMP	_00485_DS_
+	JMP	_00366_DS_
 	TFSZ	_eBuzzer_Status,0
-	JMP	_00485_DS_
-;	;.line	594; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
-	MVF	r0x10F2,0,0
+	JMP	_00366_DS_
+;	;.line	596; ".\Source\APP_Measure.c"	if(sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp)
+	MVF	r0x10EB,0,0
 	SUBF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10F3,0,0
+	MVF	r0x10EC,0,0
 	SUBC	(_sActual_Forecast + 4),0,0
 	BTSZ	_STATUS,4
-	JMP	_00485_DS_
-;	;.line	598; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x10F2,0,0
+	JMP	_00366_DS_
+;	;.line	600; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
+	MVF	r0x10EB,0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x10F3,0,0
+	MVF	r0x10EC,0,0
 	MVF	(_sActual_Forecast + 4),1,0
-_00485_DS_:
-;	;.line	602; ".\Source\APP_Measure.c"	}
+_00366_DS_:
+;	;.line	604; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Update_MaxTempImmediately
 	.ENDFUNC	_Update_MaxTempImmediately
@@ -1009,10 +1011,10 @@ _00485_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _Forecast_Calculate:$r:0:0:$C:_abs:$C:__mullong:$C:__divulong\
-:$L:r0x10DA:$L:r0x10DB:$L:r0x10DC:$L:r0x10DD:$L:r0x10DF\
-:$L:r0x10DE:$L:r0x10E3:$L:r0x10E1
+:$L:r0x10D3:$L:r0x10D4:$L:r0x10D5:$L:r0x10D6:$L:r0x10D8\
+:$L:r0x10D7:$L:r0x10DC:$L:r0x10DA
 ;--------------------------------------------------------
-;	;.line	506; ".\Source\APP_Measure.c"	K = abs(sADC.Centigrade250msTemp - sForecast.Prior1sForecastTemp);
+;	;.line	508; ".\Source\APP_Measure.c"	K = abs(sADC.Centigrade250msTemp - sForecast.Prior1sForecastTemp);
 _Forecast_Calculate:	;Function start
 	MVF	(_sForecast + 8),0,0
 	SUBF	(_sADC + 13),0,0
@@ -1020,45 +1022,45 @@ _Forecast_Calculate:	;Function start
 	MVF	(_sForecast + 9),0,0
 	SUBC	(_sADC + 14),0,0
 	CALL	_abs
-	MVF	r0x10DD,1,0
+	MVF	r0x10D6,1,0
 	MVL	0x00
-	BTSZ	r0x10DD,7
+	BTSZ	r0x10D6,7
 	MVL	0xff
-	MVF	r0x10DF,1,0
-	MVF	r0x10DE,1,0
-;	;.line	511; ".\Source\APP_Measure.c"	if((eMeasureMode == Oral_Mode) || (eMeasureMode == Rectal_Mode))
+	MVF	r0x10D8,1,0
+	MVF	r0x10D7,1,0
+;	;.line	513; ".\Source\APP_Measure.c"	if((eMeasureMode == Oral_Mode) || (eMeasureMode == Rectal_Mode))
 	RRF	_eMeasureMode,0,0
 	BTSZ	_STATUS,0
-	JMP	_00471_DS_
+	JMP	_00352_DS_
 	MVL	0x02
 	CPSE	_eMeasureMode,0
-	JMP	_00472_DS_
-_00471_DS_:
-;	;.line	514; ".\Source\APP_Measure.c"	if(sForecast.StartTemp >= 3400)
+	JMP	_00353_DS_
+_00352_DS_:
+;	;.line	516; ".\Source\APP_Measure.c"	if(sForecast.StartTemp >= 3400)
 	MVF	(_sForecast + 10),0,0
-	MVF	r0x10DA,1,0
+	MVF	r0x10D3,1,0
 	MVF	(_sForecast + 11),0,0
-	MVF	r0x10DB,1,0
-	MVF	r0x10DA,0,0
+	MVF	r0x10D4,1,0
+	MVF	r0x10D3,0,0
 	ADDL	0xb8
 	MVL	0xf2
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSZ	_STATUS,4
-	JMP	_00473_DS_
-;	;.line	519; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2800)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+;	;.line	521; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2800)
+	MVF	r0x10D3,0,0
 	ADDL	0x10
 	MVL	0xf5
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00452_DS_
-;	;.line	521; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 3910 * K + 29000;
+	JMP	_00333_DS_
+;	;.line	523; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 3910 * K + 29000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x46
 	MVF	__mullong_STK02,1,0
@@ -1068,7 +1070,7 @@ _00471_DS_:
 	MVL	0x00
 	CALL	__mullong
 	.CHKPARA __mullong 8
-	MVF	r0x10E3,1,0
+	MVF	r0x10DC,1,0
 	MVF	STK02,0,0
 	ADDL	0x48
 	MVF	(_sForecast + 22),1,0
@@ -1079,24 +1081,24 @@ _00471_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E3,0,0
+	ADDC	r0x10DC,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00452_DS_:
-;	;.line	524; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2200)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+_00333_DS_:
+;	;.line	526; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2200)
+	MVF	r0x10D3,0,0
 	ADDL	0x68
 	MVL	0xf7
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00449_DS_
-;	;.line	526; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4150 * K + 33000;
+	JMP	_00330_DS_
+;	;.line	528; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4150 * K + 33000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x36
 	MVF	__mullong_STK02,1,0
@@ -1105,7 +1107,7 @@ _00452_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E3,1,0
+	MVF	r0x10DC,1,0
 	MVF	STK02,0,0
 	ADDL	0xe8
 	MVF	(_sForecast + 22),1,0
@@ -1116,24 +1118,24 @@ _00452_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E3,0,0
+	ADDC	r0x10DC,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00449_DS_:
-;	;.line	529; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 1600)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+_00330_DS_:
+;	;.line	531; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 1600)
+	MVF	r0x10D3,0,0
 	ADDL	0xc0
 	MVL	0xf9
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00446_DS_
-;	;.line	531; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4390 * K + 37000;
+	JMP	_00327_DS_
+;	;.line	533; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4390 * K + 37000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x26
 	MVF	__mullong_STK02,1,0
@@ -1142,7 +1144,7 @@ _00449_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E1,1,0
+	MVF	r0x10DA,1,0
 	MVF	STK02,0,0
 	ADDL	0x88
 	MVF	(_sForecast + 22),1,0
@@ -1153,17 +1155,17 @@ _00449_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E1,0,0
+	ADDC	r0x10DA,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00446_DS_:
-;	;.line	537; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4630 * K + 41000;
+	JMP	_00354_DS_
+_00327_DS_:
+;	;.line	539; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 4630 * K + 41000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x16
 	MVF	__mullong_STK02,1,0
@@ -1172,7 +1174,7 @@ _00446_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E1,1,0
+	MVF	r0x10DA,1,0
 	MVF	STK02,0,0
 	ADDL	0x28
 	MVF	(_sForecast + 22),1,0
@@ -1183,38 +1185,38 @@ _00446_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E1,0,0
+	ADDC	r0x10DA,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00472_DS_:
-;	;.line	541; ".\Source\APP_Measure.c"	else if(eMeasureMode == Underarm_Mode)
+	JMP	_00354_DS_
+_00353_DS_:
+;	;.line	543; ".\Source\APP_Measure.c"	else if(eMeasureMode == Underarm_Mode)
 	DCSZ	_eMeasureMode,0,0
-	JMP	_00473_DS_
-;	;.line	544; ".\Source\APP_Measure.c"	if(sForecast.StartTemp >= 3400)
+	JMP	_00354_DS_
+;	;.line	546; ".\Source\APP_Measure.c"	if(sForecast.StartTemp >= 3400)
 	MVF	(_sForecast + 10),0,0
-	MVF	r0x10DA,1,0
+	MVF	r0x10D3,1,0
 	MVF	(_sForecast + 11),0,0
-	MVF	r0x10DB,1,0
-	MVF	r0x10DA,0,0
+	MVF	r0x10D4,1,0
+	MVF	r0x10D3,0,0
 	ADDL	0xb8
 	MVL	0xf2
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSZ	_STATUS,4
-	JMP	_00473_DS_
-;	;.line	549; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2800)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+;	;.line	551; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2800)
+	MVF	r0x10D3,0,0
 	ADDL	0x10
 	MVL	0xf5
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00464_DS_
-;	;.line	551; ".\Source\APP_Measure.c"	sForecast.ForecastTemp =6900 * K + 56000;
+	JMP	_00345_DS_
+;	;.line	553; ".\Source\APP_Measure.c"	sForecast.ForecastTemp =6900 * K + 56000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0xf4
 	MVF	__mullong_STK02,1,0
@@ -1223,7 +1225,7 @@ _00472_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E3,1,0
+	MVF	r0x10DC,1,0
 	MVF	STK02,0,0
 	ADDL	0xc0
 	MVF	(_sForecast + 22),1,0
@@ -1234,24 +1236,24 @@ _00472_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E3,0,0
+	ADDC	r0x10DC,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00464_DS_:
-;	;.line	554; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2200)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+_00345_DS_:
+;	;.line	556; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 2200)
+	MVF	r0x10D3,0,0
 	ADDL	0x68
 	MVL	0xf7
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00461_DS_
-;	;.line	556; ".\Source\APP_Measure.c"	sForecast.ForecastTemp =  7000 * K + 60000;
+	JMP	_00342_DS_
+;	;.line	558; ".\Source\APP_Measure.c"	sForecast.ForecastTemp =  7000 * K + 60000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x58
 	MVF	__mullong_STK02,1,0
@@ -1260,7 +1262,7 @@ _00464_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E3,1,0
+	MVF	r0x10DC,1,0
 	MVF	STK02,0,0
 	ADDL	0x60
 	MVF	(_sForecast + 22),1,0
@@ -1271,24 +1273,24 @@ _00464_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E3,0,0
+	ADDC	r0x10DC,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00461_DS_:
-;	;.line	559; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 1600)
-	MVF	r0x10DA,0,0
+	JMP	_00354_DS_
+_00342_DS_:
+;	;.line	561; ".\Source\APP_Measure.c"	else if(sForecast.StartTemp >= 1600)
+	MVF	r0x10D3,0,0
 	ADDL	0xc0
 	MVL	0xf9
-	ADDC	r0x10DB,0,0
+	ADDC	r0x10D4,0,0
 	BTSS	_STATUS,4
-	JMP	_00458_DS_
-;	;.line	561; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 7100 * K + 64000;
+	JMP	_00339_DS_
+;	;.line	563; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 7100 * K + 64000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0xbc
 	MVF	__mullong_STK02,1,0
@@ -1297,7 +1299,7 @@ _00461_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10E1,1,0
+	MVF	r0x10DA,1,0
 	MVF	STK02,0,0
 	MVF	(_sForecast + 22),1,0
 	MVF	STK01,0,0
@@ -1307,17 +1309,17 @@ _00461_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10E1,0,0
+	ADDC	r0x10DA,0,0
 	MVF	(_sForecast + 25),1,0
-	JMP	_00473_DS_
-_00458_DS_:
-;	;.line	567; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 7200 * K + 68000;
+	JMP	_00354_DS_
+_00339_DS_:
+;	;.line	569; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = 7200 * K + 68000;
 	MVFF	STK00,__mullong_STK06
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	MVF	__mullong_STK05,1,0
-	MVF	r0x10DE,0,0
+	MVF	r0x10D7,0,0
 	MVF	__mullong_STK04,1,0
-	MVF	r0x10DF,0,0
+	MVF	r0x10D8,0,0
 	MVF	__mullong_STK03,1,0
 	MVL	0x20
 	MVF	__mullong_STK02,1,0
@@ -1326,7 +1328,7 @@ _00458_DS_:
 	CLRF	__mullong_STK00,0
 	MVL	0x00
 	CALL	__mullong
-	MVF	r0x10DD,1,0
+	MVF	r0x10D6,1,0
 	MVF	STK02,0,0
 	ADDL	0xa0
 	MVF	(_sForecast + 22),1,0
@@ -1337,35 +1339,35 @@ _00458_DS_:
 	ADDC	STK00,0,0
 	MVF	(_sForecast + 24),1,0
 	MVL	0x00
-	ADDC	r0x10DD,0,0
+	ADDC	r0x10D6,0,0
 	MVF	(_sForecast + 25),1,0
-_00473_DS_:
-;	;.line	571; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = (sForecast.ForecastTemp + 500) / 1000;
+_00354_DS_:
+;	;.line	573; ".\Source\APP_Measure.c"	sForecast.ForecastTemp = (sForecast.ForecastTemp + 500) / 1000;
 	MVF	(_sForecast + 22),0,0
 	ADDL	0xf4
-	MVF	r0x10DA,1,0
+	MVF	r0x10D3,1,0
 	MVL	0x01
 	ADDC	(_sForecast + 23),0,0
-	MVF	r0x10DB,1,0
+	MVF	r0x10D4,1,0
 	MVL	0x00
 	ADDC	(_sForecast + 24),0,0
-	MVF	r0x10DC,1,0
+	MVF	r0x10D5,1,0
 	MVL	0x00
 	ADDC	(_sForecast + 25),0,0
-	MVF	r0x10DD,1,0
+	MVF	r0x10D6,1,0
 	MVL	0xe8
 	MVF	__divulong_STK06,1,0
 	MVL	0x03
 	MVF	__divulong_STK05,1,0
 	CLRF	__divulong_STK04,0
 	CLRF	__divulong_STK03,0
-	MVF	r0x10DA,0,0
+	MVF	r0x10D3,0,0
 	MVF	__divulong_STK02,1,0
-	MVF	r0x10DB,0,0
+	MVF	r0x10D4,0,0
 	MVF	__divulong_STK01,1,0
-	MVF	r0x10DC,0,0
+	MVF	r0x10D5,0,0
 	MVF	__divulong_STK00,1,0
-	MVF	r0x10DD,0,0
+	MVF	r0x10D6,0,0
 	CALL	__divulong
 	.CHKPARA __divulong 8
 	MVF	(_sForecast + 25),1,0
@@ -1375,7 +1377,7 @@ _00473_DS_:
 	MVF	(_sForecast + 23),1,0
 	MVF	STK02,0,0
 	MVF	(_sForecast + 22),1,0
-;	;.line	572; ".\Source\APP_Measure.c"	}
+;	;.line	574; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Forecast_Calculate
 	.ENDFUNC	_Forecast_Calculate
@@ -1385,14 +1387,14 @@ _00473_DS_:
 
 ;--------------------------------------------------------
 	.FUNC _Forecast_Calculate_Conditions:$r:1:0:$C:_abs\
-:$L:r0x10D6:$L:r0x10D8:$L:r0x10D9
+:$L:r0x10CF:$L:r0x10D1:$L:r0x10D2
 ;--------------------------------------------------------
-;	;.line	463; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer >= 3)
+;	;.line	465; ".\Source\APP_Measure.c"	if(sForecast.Forecast_Timer >= 3)
 _Forecast_Calculate_Conditions:	;Function start
 	MVL	0x02
 	CPSG	(_sForecast + 1),0
-	JMP	_00439_DS_
-;	;.line	466; ".\Source\APP_Measure.c"	if(abs(sADC.Centigrade250msTemp - sForecast.Prior1sForecastTemp) >= 0)
+	JMP	_00320_DS_
+;	;.line	468; ".\Source\APP_Measure.c"	if(abs(sADC.Centigrade250msTemp - sForecast.Prior1sForecastTemp) >= 0)
 	MVF	(_sForecast + 8),0,0
 	SUBF	(_sADC + 13),0,0
 	MVF	_abs_STK00,1,0
@@ -1400,50 +1402,50 @@ _Forecast_Calculate_Conditions:	;Function start
 	SUBC	(_sADC + 14),0,0
 	CALL	_abs
 	BTSZ	_WREG,7
-	JMP	_00436_DS_
-;	;.line	470; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp < /*45*/40 + sForecast.Prior1sForecastTemp)
+	JMP	_00317_DS_
+;	;.line	472; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp < /*45*/40 + sForecast.Prior1sForecastTemp)
 	MVF	(_sForecast + 8),0,0
 	ADDL	0x28
-	MVF	r0x10D8,1,0
+	MVF	r0x10D1,1,0
 	MVL	0x00
 	ADDC	(_sForecast + 9),0,0
-	MVF	r0x10D9,1,0
-	MVF	r0x10D8,0,0
+	MVF	r0x10D2,1,0
+	MVF	r0x10D1,0,0
 	SUBF	(_sADC + 13),0,0
-	MVF	r0x10D9,0,0
+	MVF	r0x10D2,0,0
 	SUBC	(_sADC + 14),0,0
 	BTSZ	_STATUS,4
-	JMP	_00433_DS_
-;	;.line	473; ".\Source\APP_Measure.c"	if(++sForecast.Forecast_Counts >= 3)
+	JMP	_00314_DS_
+;	;.line	475; ".\Source\APP_Measure.c"	if(++sForecast.Forecast_Counts >= 3)
 	INF	(_sForecast + 5),0,0
-	MVF	r0x10D6,1,0
+	MVF	r0x10CF,1,0
 	MVF	(_sForecast + 5),1,0
 	MVL	0x02
-	CPSG	r0x10D6,0
-	JMP	_00439_DS_
-;	;.line	476; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 3;
+	CPSG	r0x10CF,0
+	JMP	_00320_DS_
+;	;.line	478; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 3;
 	MVL	0x03
 	MVF	(_sForecast + 5),1,0
-;	;.line	477; ".\Source\APP_Measure.c"	sForecast.EndTemp = sADC.Centigrade250msTemp/* / 10 * 10*/;
+;	;.line	479; ".\Source\APP_Measure.c"	sForecast.EndTemp = sADC.Centigrade250msTemp/* / 10 * 10*/;
 	MVF	(_sADC + 13),0,0
 	MVF	(_sForecast + 20),1,0
 	MVF	(_sADC + 14),0,0
 	MVF	(_sForecast + 21),1,0
-;	;.line	478; ".\Source\APP_Measure.c"	return TRUE;
+;	;.line	480; ".\Source\APP_Measure.c"	return TRUE;
 	MVL	0x01
-	JMP	_00440_DS_
-_00433_DS_:
-;	;.line	484; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 0;
+	JMP	_00321_DS_
+_00314_DS_:
+;	;.line	486; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 0;
 	CLRF	(_sForecast + 5),0
-	JMP	_00439_DS_
-_00436_DS_:
-;	;.line	490; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 0;
+	JMP	_00320_DS_
+_00317_DS_:
+;	;.line	492; ".\Source\APP_Measure.c"	sForecast.Forecast_Counts = 0;
 	CLRF	(_sForecast + 5),0
-_00439_DS_:
-;	;.line	493; ".\Source\APP_Measure.c"	return FALSE;
+_00320_DS_:
+;	;.line	495; ".\Source\APP_Measure.c"	return FALSE;
 	MVL	0x00
-_00440_DS_:
-;	;.line	494; ".\Source\APP_Measure.c"	}
+_00321_DS_:
+;	;.line	496; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Forecast_Calculate_Conditions
 	.ENDFUNC	_Forecast_Calculate_Conditions
@@ -1452,47 +1454,47 @@ _00440_DS_:
 .globl _Temp_Drop
 
 ;--------------------------------------------------------
-	.FUNC _Temp_Drop:$r:1:0:$L:r0x10D2:$L:r0x10D3:$L:r0x10D4:$L:r0x10D5
+	.FUNC _Temp_Drop:$r:1:0:$L:r0x10CB:$L:r0x10CC:$L:r0x10CD:$L:r0x10CE
 ;--------------------------------------------------------
-;	;.line	436; ".\Source\APP_Measure.c"	if(sForecast.Prior250msForecastTemp > 3 + sADC.Centigrade250msTemp)
+;	;.line	438; ".\Source\APP_Measure.c"	if(sForecast.Prior250msForecastTemp > 3 + sADC.Centigrade250msTemp)
 _Temp_Drop:	;Function start
 	MVF	(_sForecast + 6),0,0
-	MVF	r0x10D2,1,0
+	MVF	r0x10CB,1,0
 	MVF	(_sForecast + 7),0,0
-	MVF	r0x10D3,1,0
+	MVF	r0x10CC,1,0
 	MVF	(_sADC + 13),0,0
 	ADDL	0x03
-	MVF	r0x10D4,1,0
+	MVF	r0x10CD,1,0
 	MVL	0x00
 	ADDC	(_sADC + 14),0,0
-	MVF	r0x10D5,1,0
-	MVF	r0x10D2,0,0
-	SUBF	r0x10D4,0,0
-	MVF	r0x10D3,0,0
-	SUBC	r0x10D5,0,0
+	MVF	r0x10CE,1,0
+	MVF	r0x10CB,0,0
+	SUBF	r0x10CD,0,0
+	MVF	r0x10CC,0,0
+	SUBC	r0x10CE,0,0
 	BTSZ	_STATUS,4
-	JMP	_00423_DS_
-;	;.line	439; ".\Source\APP_Measure.c"	if(++sForecast.Drop_Counts >= 5)
+	JMP	_00304_DS_
+;	;.line	441; ".\Source\APP_Measure.c"	if(++sForecast.Drop_Counts >= 5)
 	INF	(_sForecast + 3),0,0
-	MVF	r0x10D2,1,0
+	MVF	r0x10CB,1,0
 	MVF	(_sForecast + 3),1,0
 	MVL	0x04
-	CPSG	r0x10D2,0
-	JMP	_00424_DS_
-;	;.line	442; ".\Source\APP_Measure.c"	sForecast.Drop_Counts = 5;
+	CPSG	r0x10CB,0
+	JMP	_00305_DS_
+;	;.line	444; ".\Source\APP_Measure.c"	sForecast.Drop_Counts = 5;
 	MVL	0x05
 	MVF	(_sForecast + 3),1,0
-;	;.line	443; ".\Source\APP_Measure.c"	return TRUE;
+;	;.line	445; ".\Source\APP_Measure.c"	return TRUE;
 	MVL	0x01
-	JMP	_00425_DS_
-_00423_DS_:
-;	;.line	449; ".\Source\APP_Measure.c"	sForecast.Drop_Counts = 0;
+	JMP	_00306_DS_
+_00304_DS_:
+;	;.line	451; ".\Source\APP_Measure.c"	sForecast.Drop_Counts = 0;
 	CLRF	(_sForecast + 3),0
-_00424_DS_:
-;	;.line	452; ".\Source\APP_Measure.c"	return FALSE;
+_00305_DS_:
+;	;.line	454; ".\Source\APP_Measure.c"	return FALSE;
 	MVL	0x00
-_00425_DS_:
-;	;.line	453; ".\Source\APP_Measure.c"	}
+_00306_DS_:
+;	;.line	455; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Temp_Drop
 	.ENDFUNC	_Temp_Drop
@@ -1501,111 +1503,111 @@ _00425_DS_:
 .globl _Start_Algorithm
 
 ;--------------------------------------------------------
-	.FUNC _Start_Algorithm:$r:1:0:$L:r0x10CA:$L:r0x10CB:$L:r0x10CC:$L:r0x10CD
+	.FUNC _Start_Algorithm:$r:1:0:$L:r0x10C3:$L:r0x10C4:$L:r0x10C5:$L:r0x10C6
 ;--------------------------------------------------------
-;	;.line	372; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp > 10 + sForecast.Prior250msForecastTemp)
+;	;.line	374; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp > 10 + sForecast.Prior250msForecastTemp)
 _Start_Algorithm:	;Function start
 	MVF	(_sForecast + 6),0,0
 	ADDL	0x0a
-	MVF	r0x10CC,1,0
+	MVF	r0x10C5,1,0
 	MVL	0x00
 	ADDC	(_sForecast + 7),0,0
-	MVF	r0x10CD,1,0
+	MVF	r0x10C6,1,0
 	MVF	(_sADC + 13),0,0
-	SUBF	r0x10CC,0,0
+	SUBF	r0x10C5,0,0
 	MVF	(_sADC + 14),0,0
-	SUBC	r0x10CD,0,0
+	SUBC	r0x10C6,0,0
 	BTSZ	_STATUS,4
-	JMP	_00411_DS_
-;	;.line	375; ".\Source\APP_Measure.c"	if(!sForecast.FlagStartAlgorithmCounts)
+	JMP	_00292_DS_
+;	;.line	377; ".\Source\APP_Measure.c"	if(!sForecast.FlagStartAlgorithmCounts)
 	BTSZ	_sForecast,2
-	JMP	_00404_DS_
-;	;.line	377; ".\Source\APP_Measure.c"	sForecast.FlagStartAlgorithmCounts = TRUE;
+	JMP	_00285_DS_
+;	;.line	379; ".\Source\APP_Measure.c"	sForecast.FlagStartAlgorithmCounts = TRUE;
 	BSF	_sForecast,2
-;	;.line	379; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[3] = sForecast.Prior250msForecastTemp;
+;	;.line	381; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[3] = sForecast.Prior250msForecastTemp;
 	MVF	(_sForecast + 6),0,0
 	MVF	(_sForecast + 18),1,0
 	MVF	(_sForecast + 7),0,0
 	MVF	(_sForecast + 19),1,0
-	JMP	_00405_DS_
-_00404_DS_:
-;	;.line	383; ".\Source\APP_Measure.c"	for(i = 0;i < 3;i++)
-	CLRF	r0x10CA,0
-_00413_DS_:
-;	;.line	385; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[i] = sForecast.StartAlgorithmTemp[i + 1];
-	MVF	r0x10CA,0,0
+	JMP	_00286_DS_
+_00285_DS_:
+;	;.line	385; ".\Source\APP_Measure.c"	for(i = 0;i < 3;i++)
+	CLRF	r0x10C3,0
+_00294_DS_:
+;	;.line	387; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[i] = sForecast.StartAlgorithmTemp[i + 1];
+	MVF	r0x10C3,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	ADDL	(_sForecast + 12)
-	MVF	r0x10CB,1,0
+	MVF	r0x10C4,1,0
 	MVL	high (_sForecast + 12)
 	BTSZ	_STATUS,4
 	ADDL	0x01
-	MVF	r0x10CC,1,0
-	INF	r0x10CA,0,0
+	MVF	r0x10C5,1,0
+	INF	r0x10C3,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	LDPR	(_sForecast + 12),0
 	MVFF	_PLUSW0,STK00
 	INF	_WREG,0,0
 	MVFF	_PLUSW0,STK01
-	MVF	r0x10CB,0,0
+	MVF	r0x10C4,0,0
 	MVF	_FSR0L,1,0
-	MVF	r0x10CC,0,0
+	MVF	r0x10C5,0,0
 	MVF	_FSR0H,1,0
 	MVF	STK00,0,0
 	MVF	_POINC0,1,0
 	MVF	STK01,0,0
 	MVF	_INDF0,1,0
-;	;.line	383; ".\Source\APP_Measure.c"	for(i = 0;i < 3;i++)
-	INF	r0x10CA,1,0
+;	;.line	385; ".\Source\APP_Measure.c"	for(i = 0;i < 3;i++)
+	INF	r0x10C3,1,0
 	MVL	0x02
-	CPSG	r0x10CA,0
-	JMP	_00413_DS_
-;	;.line	388; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[3] = sForecast.Prior250msForecastTemp;
+	CPSG	r0x10C3,0
+	JMP	_00294_DS_
+;	;.line	390; ".\Source\APP_Measure.c"	sForecast.StartAlgorithmTemp[3] = sForecast.Prior250msForecastTemp;
 	MVF	(_sForecast + 6),0,0
 	MVF	(_sForecast + 18),1,0
 	MVF	(_sForecast + 7),0,0
 	MVF	(_sForecast + 19),1,0
-_00405_DS_:
-;	;.line	392; ".\Source\APP_Measure.c"	if(sForecast.Start_Counts++ >= 4)
+_00286_DS_:
+;	;.line	394; ".\Source\APP_Measure.c"	if(sForecast.Start_Counts++ >= 4)
 	MVF	(_sForecast + 2),0,0
-	MVF	r0x10CA,1,0
+	MVF	r0x10C3,1,0
 	INF	_WREG,0,0
 	MVF	(_sForecast + 2),1,0
 	MVL	0x03
-	CPSG	r0x10CA,0
-	JMP	_00412_DS_
-;	;.line	395; ".\Source\APP_Measure.c"	sForecast.Start_Counts = 4;
+	CPSG	r0x10C3,0
+	JMP	_00293_DS_
+;	;.line	397; ".\Source\APP_Measure.c"	sForecast.Start_Counts = 4;
 	MVL	0x04
 	MVF	(_sForecast + 2),1,0
-;	;.line	407; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp >= 3100)
+;	;.line	409; ".\Source\APP_Measure.c"	if(sADC.Centigrade250msTemp >= 3100)
 	MVF	(_sADC + 13),0,0
 	ADDL	0xe4
 	MVL	0xf3
 	ADDC	(_sADC + 14),0,0
 	BTSS	_STATUS,4
-	JMP	_00412_DS_
-;	;.line	410; ".\Source\APP_Measure.c"	sForecast.StartTemp = sForecast.StartAlgorithmTemp[0];
+	JMP	_00293_DS_
+;	;.line	412; ".\Source\APP_Measure.c"	sForecast.StartTemp = sForecast.StartAlgorithmTemp[0];
 	MVF	(_sForecast + 12),0,0
 	MVF	(_sForecast + 10),1,0
 	MVF	(_sForecast + 13),0,0
 	MVF	(_sForecast + 11),1,0
-;	;.line	411; ".\Source\APP_Measure.c"	return TRUE;
+;	;.line	413; ".\Source\APP_Measure.c"	return TRUE;
 	MVL	0x01
-	JMP	_00415_DS_
-_00411_DS_:
-;	;.line	419; ".\Source\APP_Measure.c"	sForecast.Start_Counts = 1;
+	JMP	_00296_DS_
+_00292_DS_:
+;	;.line	421; ".\Source\APP_Measure.c"	sForecast.Start_Counts = 1;
 	MVL	0x01
 	MVF	(_sForecast + 2),1,0
-;	;.line	421; ".\Source\APP_Measure.c"	sForecast.FlagStartAlgorithmCounts = FALSE;
+;	;.line	423; ".\Source\APP_Measure.c"	sForecast.FlagStartAlgorithmCounts = FALSE;
 	LDPR	(_sForecast + 0),0x00
 	BCF	_INDF0,2
-_00412_DS_:
-;	;.line	424; ".\Source\APP_Measure.c"	return FALSE;
+_00293_DS_:
+;	;.line	426; ".\Source\APP_Measure.c"	return FALSE;
 	MVL	0x00
-_00415_DS_:
-;	;.line	425; ".\Source\APP_Measure.c"	}
+_00296_DS_:
+;	;.line	427; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Start_Algorithm
 	.ENDFUNC	_Start_Algorithm
@@ -1614,19 +1616,17 @@ _00415_DS_:
 .globl _Actual_Measure
 
 ;--------------------------------------------------------
-	.FUNC _Actual_Measure:$r:0:0:$C:_Get_1sTemp:$C:_Filter_ErrTemp:$C:_Centigrade_Convert_Fahrenheit:$C:_PresetMeasTime\
-:$C:_Judge_Stability\
-:$L:r0x10BD:$L:r0x10BE:$L:r0x10BF:$L:r0x10C0:$L:r0x10C1\
-:$L:r0x10C2
+	.FUNC _Actual_Measure:$r:0:0:$C:_Get_1sTemp:$C:_Centigrade_Convert_Fahrenheit:$C:_PresetMeasTime\
+
 ;--------------------------------------------------------
 ;	;.line	241; ".\Source\APP_Measure.c"	if(sTIMx.TempSampleFlag && sActual_Forecast.AF_Start && (eMeasureMode == Bath_Mode))
 _Actual_Measure:	;Function start
 	BTSZ	_sTIMx,2
 	BTSS	_sActual_Forecast,0
-	JMP	_00298_DS_
+	JMP	_00278_DS_
 	MVL	0x03
 	CPSE	_eMeasureMode,0
-	JMP	_00298_DS_
+	JMP	_00278_DS_
 ;	;.line	244; ".\Source\APP_Measure.c"	sTIMx.TempSampleFlag = 0;
 	BCF	_sTIMx,2
 ;	;.line	255; ".\Source\APP_Measure.c"	if(Get_1sTemp())
@@ -1634,189 +1634,61 @@ _Actual_Measure:	;Function start
 	.CHKPARA _Get_1sTemp 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00291_DS_
-;	;.line	258; ".\Source\APP_Measure.c"	Filter_ErrTemp();
-	CALL	_Filter_ErrTemp
-	.CHKPARA _Filter_ErrTemp 0
-;	;.line	260; ".\Source\APP_Measure.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sActual_Forecast.Temp_T1);
-	MVF	(_sActual_Forecast + 7),0,0
+	JMP	_00271_DS_
+;	;.line	261; ".\Source\APP_Measure.c"	sActual_Forecast.ConvertedTempDisp = Centigrade_Convert_Fahrenheit(sADC.Centigrade250msTemp);
+	MVF	(_sADC + 13),0,0
 	MVF	_Centigrade_Convert_Fahrenheit_STK00,1,0
-	MVF	(_sActual_Forecast + 8),0,0
+	MVF	(_sADC + 14),0,0
 	CALL	_Centigrade_Convert_Fahrenheit
 	.CHKPARA _Centigrade_Convert_Fahrenheit 2
-	MVF	r0x10BE,1,0
-	MVFF	STK00,(_sActual_Forecast + 5)
 	MVF	(_sActual_Forecast + 6),1,0
-;	;.line	262; ".\Source\APP_Measure.c"	if(((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Centigrade) && (eTempUnit == Centigrade))
 	MVF	STK00,0,0
-	ADDL	0xd8
-	MVL	0xf5
-	ADDC	r0x10BE,0,0
-	BTSS	_STATUS,4
-	JMP	_00289_DS_
-	MVF	_eTempUnit,0,0
-	XORL	0x5a
-	BTSZ	_STATUS,0
-	JMP	_00285_DS_
-_00289_DS_:
-;	;.line	263; ".\Source\APP_Measure.c"	|| ((sActual_Forecast.ConvertedTempDisp >= Low_Temp_Fahrenheit) && (eTempUnit == Fahrenheit)))
-	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0x38
-	MVL	0xe1
-	ADDC	(_sActual_Forecast + 6),0,0
-	BTSS	_STATUS,4
-	JMP	_00291_DS_
-	MVL	0xa5
-	CPSE	_eTempUnit,0
-	JMP	_00291_DS_
-_00285_DS_:
-;	;.line	265; ".\Source\APP_Measure.c"	sActual.Actual_Start = TRUE;
+	MVF	(_sActual_Forecast + 5),1,0
+;	;.line	266; ".\Source\APP_Measure.c"	sActual.Actual_Start = TRUE;
 	BSF	_sActual,0
-;	;.line	267; ".\Source\APP_Measure.c"	if((sActual_Forecast.Temp_T1 > sActual_Forecast.CentigradeTempDisp) && (eBuzzer_Status == Buzzer_Silent))
-	MVF	(_sActual_Forecast + 7),0,0
-	MVF	r0x10BD,1,0
-	MVF	(_sActual_Forecast + 8),0,0
-	MVF	r0x10BE,1,0
-	MVF	r0x10BD,0,0
-	SUBF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10BE,0,0
-	SUBC	(_sActual_Forecast + 4),0,0
-	BTSZ	_STATUS,4
-	JMP	_00266_DS_
-	TFSZ	_eBuzzer_Status,0
-	JMP	_00266_DS_
-;	;.line	270; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.Temp_T1;
-	MVF	r0x10BD,0,0
+;	;.line	272; ".\Source\APP_Measure.c"	sActual_Forecast.CentigradeTempDisp = sActual_Forecast.ConvertedTempDisp;
+	MVF	(_sActual_Forecast + 5),0,0
 	MVF	(_sActual_Forecast + 3),1,0
-	MVF	r0x10BE,0,0
+	MVF	(_sActual_Forecast + 6),0,0
 	MVF	(_sActual_Forecast + 4),1,0
-;	;.line	271; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
-	BSF	_sBleStatus,4
-;	;.line	272; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
+;	;.line	274; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
 	BSF	_sMemoryFlag,0
-_00266_DS_:
-;	;.line	277; ".\Source\APP_Measure.c"	if(PresetMeasTime())
+;	;.line	279; ".\Source\APP_Measure.c"	if(PresetMeasTime())
 	CALL	_PresetMeasTime
 	.CHKPARA _PresetMeasTime 0
 	IORL	0x00
 	BTSZ	_STATUS,0
-	JMP	_00281_DS_
-;	;.line	280; ".\Source\APP_Measure.c"	sActual.ActualTime++;
+	JMP	_00266_DS_
+;	;.line	282; ".\Source\APP_Measure.c"	sActual.ActualTime++;
 	INF	(_sActual + 2),1,0
-;	;.line	282; ".\Source\APP_Measure.c"	if(!sActual_Forecast.StableBuzzerFlag)
-	BTSZ	_sActual_Forecast,1
-	JMP	_00279_DS_
-;	;.line	285; ".\Source\APP_Measure.c"	if(((sActual_Forecast.ConvertedTempDisp >= 3600) && (eTempUnit == Centigrade))
-	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0xf0
-	MVL	0xf1
-	ADDC	(_sActual_Forecast + 6),0,0
-	BTSS	_STATUS,4
-	JMP	_00277_DS_
-	MVF	_eTempUnit,0,0
-	XORL	0x5a
-	BTSZ	_STATUS,0
-	JMP	_00272_DS_
-_00277_DS_:
-;	;.line	286; ".\Source\APP_Measure.c"	|| ((sActual_Forecast.ConvertedTempDisp >= 9680) && (eTempUnit == Fahrenheit)))
-	MVF	(_sActual_Forecast + 5),0,0
-	ADDL	0x30
-	MVL	0xda
-	ADDC	(_sActual_Forecast + 6),0,0
-	BTSS	_STATUS,4
-	JMP	_00273_DS_
-	MVL	0xa5
-	CPSE	_eTempUnit,0
-	JMP	_00273_DS_
-_00272_DS_:
-;	;.line	289; ".\Source\APP_Measure.c"	if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,sActual.StableTime))
-	MVF	(_sActual + 3),0,0
-	MVF	r0x10BF,1,0
-	MVF	(_sActual + 4),0,0
-	MVF	r0x10C0,1,0
 	MVF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10C1,1,0
-	MVF	(_sActual_Forecast + 4),0,0
-	MVF	r0x10C2,1,0
-	MVF	(_sActual + 1),0,0
-	MVF	_Judge_Stability_STK03,1,0
-	MVF	r0x10C1,0,0
-	MVF	_Judge_Stability_STK02,1,0
-	MVF	r0x10C2,0,0
-	MVF	_Judge_Stability_STK01,1,0
-	MVF	r0x10BF,0,0
-	MVF	_Judge_Stability_STK00,1,0
-	MVF	r0x10C0,0,0
-	CALL	_Judge_Stability
-	.CHKPARA _Judge_Stability 5
-	IORL	0x00
-	BTSZ	_STATUS,0
-	JMP	_00279_DS_
-;	;.line	291; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
-	BSF	_sActual_Forecast,1
-;	;.line	292; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
-	BSF	_sBleStatus,4
-;	;.line	293; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
-	BSF	_sMemoryFlag,0
-	JMP	_00279_DS_
-_00273_DS_:
-;	;.line	299; ".\Source\APP_Measure.c"	if(Judge_Stability(sActual.Prior1sActualTemp,sActual_Forecast.CentigradeTempDisp,16))
-	MVF	(_sActual + 3),0,0
-	MVF	r0x10BF,1,0
-	MVF	(_sActual + 4),0,0
-	MVF	r0x10C0,1,0
-	MVF	(_sActual_Forecast + 3),0,0
-	MVF	r0x10C1,1,0
-	MVF	(_sActual_Forecast + 4),0,0
-	MVF	r0x10C2,1,0
-	MVL	0x10
-	MVF	_Judge_Stability_STK03,1,0
-	MVF	r0x10C1,0,0
-	MVF	_Judge_Stability_STK02,1,0
-	MVF	r0x10C2,0,0
-	MVF	_Judge_Stability_STK01,1,0
-	MVF	r0x10BF,0,0
-	MVF	_Judge_Stability_STK00,1,0
-	MVF	r0x10C0,0,0
-	CALL	_Judge_Stability
-	IORL	0x00
-	BTSZ	_STATUS,0
-	JMP	_00279_DS_
-;	;.line	301; ".\Source\APP_Measure.c"	sActual_Forecast.StableBuzzerFlag = TRUE;
-	BSF	_sActual_Forecast,1
-;	;.line	302; ".\Source\APP_Measure.c"	sBleStatus.F_Temp_Updated = TRUE;
-	BSF	_sBleStatus,4
-;	;.line	303; ".\Source\APP_Measure.c"	sMemoryFlag.MemTemp_Updated = TRUE;
-	BSF	_sMemoryFlag,0
-_00279_DS_:
-;	;.line	308; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sActual_Forecast.CentigradeTempDisp;
-	MVF	(_sActual_Forecast + 3),0,0
+;	;.line	310; ".\Source\APP_Measure.c"	sActual.Prior1sActualTemp = sActual_Forecast.CentigradeTempDisp;
 	MVF	(_sActual + 3),1,0
 	MVF	(_sActual_Forecast + 4),0,0
 	MVF	(_sActual + 4),1,0
-	JMP	_00282_DS_
-_00281_DS_:
-;	;.line	313; ".\Source\APP_Measure.c"	sActual.ActualTime++;
+	JMP	_00267_DS_
+_00266_DS_:
+;	;.line	315; ".\Source\APP_Measure.c"	sActual.ActualTime++;
 	INF	(_sActual + 2),1,0
-_00282_DS_:
-;	;.line	316; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ResetTimeFlag)
+_00267_DS_:
+;	;.line	318; ".\Source\APP_Measure.c"	if(!sActual_Forecast.ResetTimeFlag)
 	BTSZ	_sActual_Forecast,4
-	JMP	_00291_DS_
-;	;.line	318; ".\Source\APP_Measure.c"	sActual_Forecast.ResetTimeFlag = TRUE;
+	JMP	_00271_DS_
+;	;.line	320; ".\Source\APP_Measure.c"	sActual_Forecast.ResetTimeFlag = TRUE;
 	BSF	_sActual_Forecast,4
-;	;.line	321; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
+;	;.line	323; ".\Source\APP_Measure.c"	sActual_Forecast.Cnt_1S = 0;
 	CLRF	(_sActual_Forecast + 1),0
-;	;.line	323; ".\Source\APP_Measure.c"	sActual.ActualTime = 0;
+;	;.line	325; ".\Source\APP_Measure.c"	sActual.ActualTime = 0;
 	CLRF	(_sActual + 2),0
-_00291_DS_:
-;	;.line	353; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
+_00271_DS_:
+;	;.line	355; ".\Source\APP_Measure.c"	if(sTempCal.Reset_From_CalOK)
 	BTSS	_sTempCal,5
-	JMP	_00298_DS_
-;	;.line	357; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
+	JMP	_00278_DS_
+;	;.line	359; ".\Source\APP_Measure.c"	ERR[Err6] = TRUE;
 	MVL	0x01
 	MVF	(_ERR + 6),1,0
-_00298_DS_:
-;	;.line	360; ".\Source\APP_Measure.c"	}
+_00278_DS_:
+;	;.line	362; ".\Source\APP_Measure.c"	}
 	RET	
 ; exit point of _Actual_Measure
 	.ENDFUNC	_Actual_Measure
@@ -2618,14 +2490,14 @@ _00133_DS_:
 	;--cdb--S:LAPP_Measure.Judge_Stability._Judge_Stability_Timer_10000_441$Timer$2710$441({1}SC:U),R,0,0,[_Judge_Stability_STK03]
 	;--cdb--S:LAPP_Measure.Judge_Stability._Judge_Stability_PresentTemp_10000_441$PresentTemp$2710$441({2}SI:U),R,0,0,[_Judge_Stability_STK02,_Judge_Stability_STK01]
 	;--cdb--S:LAPP_Measure.Judge_Stability._Judge_Stability_PriorTemp_10000_441$PriorTemp$2710$441({2}SI:U),R,0,0,[_Judge_Stability_STK00,r0x10A5]
-	;--cdb--S:LAPP_Measure.Start_Algorithm._Start_Algorithm_i_10000_490$i$2710$490({1}SC:U),R,0,0,[r0x10CA]
-	;--cdb--S:LAPP_Measure.Forecast_Calculate._Forecast_Calculate_K_10000_523$K$2710$523({4}SL:UL),R,0,0,[r0x10DC,r0x10DD,r0x10DE,r0x10DF]
-	;--cdb--S:LAPP_Measure.Update_MaxTemp3Min._Update_MaxTemp3Min_Result_10000_555$Result$2710$555({1}SC:U),R,0,0,[r0x10FC]
-	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_Temp_10000_605$Temp$2710$605({2}SI:U),R,0,0,[_Temperature_Compensate_STK00,r0x110E]
-	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_F_OddFlag_10000_606$F_OddFlag$2710$606({1}SC:U),R,0,0,[r0x110F]
-	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_a_10000_606$a$2710$606({1}SC:U),R,0,0,[r0x1110]
-	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_b_10000_606$b$2710$606({2}SI:U),R,0,0,[r0x1110,r0x1111]
-	;--cdb--S:LAPP_Measure.Forecast_Measure._Forecast_Measure_Temp_10000_619$Temp$2710$619({2}SI:U),R,0,0,[r0x1120,r0x1121]
+	;--cdb--S:LAPP_Measure.Start_Algorithm._Start_Algorithm_i_10000_478$i$2710$478({1}SC:U),R,0,0,[r0x10C3]
+	;--cdb--S:LAPP_Measure.Forecast_Calculate._Forecast_Calculate_K_10000_511$K$2710$511({4}SL:UL),R,0,0,[r0x10D5,r0x10D6,r0x10D7,r0x10D8]
+	;--cdb--S:LAPP_Measure.Update_MaxTemp3Min._Update_MaxTemp3Min_Result_10000_543$Result$2710$543({1}SC:U),R,0,0,[r0x10F6]
+	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_Temp_10000_593$Temp$2710$593({2}SI:U),R,0,0,[_Temperature_Compensate_STK00,r0x1109]
+	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_F_OddFlag_10000_594$F_OddFlag$2710$594({1}SC:U),R,0,0,[r0x110A]
+	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_a_10000_594$a$2710$594({1}SC:U),R,0,0,[r0x110B]
+	;--cdb--S:LAPP_Measure.Temperature_Compensate._Temperature_Compensate_b_10000_594$b$2710$594({2}SI:U),R,0,0,[r0x110B,r0x110C]
+	;--cdb--S:LAPP_Measure.Forecast_Measure._Forecast_Measure_Temp_10000_607$Temp$2710$607({2}SI:U),R,0,0,[r0x111B,r0x111C]
 	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
 	;--cdb--S:G$_FSR0L$0$0({0}:U),Z,0,0
 	;--cdb--S:G$_FSR0H$0$0({0}:U),Z,0,0
@@ -3260,55 +3132,49 @@ r0x10B9:	.ds	1
 r0x10BA:	.ds	1
 r0x10BB:	.ds	1
 r0x10BC:	.ds	1
-r0x10BD:	.ds	1
-r0x10BE:	.ds	1
-r0x10BF:	.ds	1
-r0x10C0:	.ds	1
-r0x10C1:	.ds	1
-r0x10C2:	.ds	1
-r0x10CA:	.ds	1
+r0x10C3:	.ds	1
+r0x10C4:	.ds	1
+r0x10C5:	.ds	1
+r0x10C6:	.ds	1
 r0x10CB:	.ds	1
 r0x10CC:	.ds	1
 r0x10CD:	.ds	1
+r0x10CE:	.ds	1
+r0x10CF:	.ds	1
+r0x10D1:	.ds	1
 r0x10D2:	.ds	1
 r0x10D3:	.ds	1
 r0x10D4:	.ds	1
 r0x10D5:	.ds	1
 r0x10D6:	.ds	1
+r0x10D7:	.ds	1
 r0x10D8:	.ds	1
-r0x10D9:	.ds	1
 r0x10DA:	.ds	1
-r0x10DB:	.ds	1
 r0x10DC:	.ds	1
-r0x10DD:	.ds	1
-r0x10DE:	.ds	1
-r0x10DF:	.ds	1
-r0x10E1:	.ds	1
-r0x10E3:	.ds	1
-r0x10F2:	.ds	1
-r0x10F3:	.ds	1
-r0x10F4:	.ds	1
-r0x10F5:	.ds	1
+r0x10EB:	.ds	1
+r0x10EC:	.ds	1
+r0x10ED:	.ds	1
+r0x10EE:	.ds	1
+r0x10EF:	.ds	1
+r0x10F0:	.ds	1
 r0x10F6:	.ds	1
 r0x10F7:	.ds	1
-r0x10FC:	.ds	1
-r0x10FD:	.ds	1
-r0x10FE:	.ds	1
-r0x10FF:	.ds	1
+r0x10F8:	.ds	1
+r0x10F9:	.ds	1
+r0x1106:	.ds	1
+r0x1109:	.ds	1
+r0x110A:	.ds	1
 r0x110B:	.ds	1
+r0x110C:	.ds	1
+r0x110D:	.ds	1
 r0x110E:	.ds	1
-r0x110F:	.ds	1
-r0x1110:	.ds	1
-r0x1111:	.ds	1
-r0x1112:	.ds	1
-r0x1113:	.ds	1
+r0x1115:	.ds	1
+r0x1117:	.ds	1
+r0x1118:	.ds	1
+r0x1119:	.ds	1
 r0x111A:	.ds	1
+r0x111B:	.ds	1
 r0x111C:	.ds	1
-r0x111D:	.ds	1
-r0x111E:	.ds	1
-r0x111F:	.ds	1
-r0x1120:	.ds	1
-r0x1121:	.ds	1
 	.area LOCALSTK (STK); local stack var
 	.globl _abs_STK00
 	.globl __divslong_STK06
@@ -3692,84 +3558,78 @@ _CloseTable:
 	;--cdb--D:S:G$e_TempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),Z,0,0
 	;Following is optimization info, 
 	;xxcdbxxW:dst:src+offset:srclit:just-remove
-	;--cdb--W:r0x111A:NULL+0:-1:1
-	;--cdb--W:r0x1120:NULL+0:-1:1
-	;--cdb--W:r0x111C:NULL+0:-1:1
-	;--cdb--W:r0x111A:NULL+0:-1:0
-	;--cdb--W:r0x111B:NULL+0:-1:0
-	;--cdb--W:r0x111C:NULL+0:-1:0
-	;--cdb--W:r0x111D:NULL+0:-1:0
-	;--cdb--W:r0x111E:STK00+0:-1:0
-	;--cdb--W:r0x1120:NULL+0:0:0
-	;--cdb--W:r0x1121:NULL+0:0:0
-	;--cdb--W:r0x1122:r0x111C+0:-1:0
-	;--cdb--W:r0x1123:r0x111D+1:-1:0
+	;--cdb--W:r0x1115:NULL+0:-1:1
 	;--cdb--W:r0x111B:NULL+0:-1:1
-	;--cdb--W:r0x111D:NULL+0:-1:1
-	;--cdb--W:r0x1121:NULL+0:-1:1
-	;--cdb--W:r0x111F:r0x111D+1:-1:0
-	;--cdb--W:r0x111F:NULL+0:-1:1
-	;--cdb--W:r0x1113:NULL+0:-1:1
-	;--cdb--W:r0x1110:NULL+0:-1:1
-	;--cdb--W:r0x110F:NULL+0:-1:1
-	;--cdb--W:r0x1114:NULL+0:-1:1
-	;--cdb--W:r0x1110:STK00+0:-1:0
-	;--cdb--W:r0x1112:NULL+0:-1:1
+	;--cdb--W:r0x1117:NULL+0:-1:1
+	;--cdb--W:r0x1115:NULL+0:-1:0
+	;--cdb--W:r0x1116:NULL+0:-1:0
+	;--cdb--W:r0x1117:NULL+0:-1:0
+	;--cdb--W:r0x1118:NULL+0:-1:0
+	;--cdb--W:r0x1119:STK00+0:-1:0
+	;--cdb--W:r0x111B:NULL+0:0:0
+	;--cdb--W:r0x111C:NULL+0:0:0
+	;--cdb--W:r0x111D:r0x1117+0:-1:0
+	;--cdb--W:r0x111E:r0x1118+1:-1:0
+	;--cdb--W:r0x1116:NULL+0:-1:1
+	;--cdb--W:r0x1118:NULL+0:-1:1
+	;--cdb--W:r0x111C:NULL+0:-1:1
+	;--cdb--W:r0x111A:r0x1118+1:-1:0
+	;--cdb--W:r0x111A:NULL+0:-1:1
+	;--cdb--W:r0x110E:NULL+0:-1:1
 	;--cdb--W:r0x110B:NULL+0:-1:1
-	;--cdb--W:r0x1109:NULL+0:-1:0
-	;--cdb--W:r0x110A:NULL+0:-1:0
-	;--cdb--W:r0x110B:NULL+0:-1:0
-	;--cdb--W:r0x110C:NULL+0:-1:0
-	;--cdb--W:r0x1109:NULL+0:-1:1
 	;--cdb--W:r0x110A:NULL+0:-1:1
-	;--cdb--W:r0x110C:NULL+0:-1:1
-	;--cdb--W:r0x10FC:NULL+0:-1:1
-	;--cdb--W:r0x10FC:NULL+0:-1:0
-	;--cdb--W:r0x10FD:NULL+0:-1:0
-	;--cdb--W:r0x10FD:NULL+0:-1:1
-	;--cdb--W:r0x10F2:NULL+0:-1:0
-	;--cdb--W:r0x10F3:NULL+0:-1:0
-	;--cdb--W:r0x10F8:r0x10F2+0:-1:0
-	;--cdb--W:r0x10FA:NULL+0:0:0
-	;--cdb--W:r0x10FB:NULL+0:0:0
-	;--cdb--W:r0x10F2:NULL+0:-1:1
+	;--cdb--W:r0x110F:NULL+0:-1:1
+	;--cdb--W:r0x110B:STK00+0:-1:0
+	;--cdb--W:r0x110D:NULL+0:-1:1
+	;--cdb--W:r0x1106:NULL+0:-1:1
+	;--cdb--W:r0x1104:NULL+0:-1:0
+	;--cdb--W:r0x1105:NULL+0:-1:0
+	;--cdb--W:r0x1106:NULL+0:-1:0
+	;--cdb--W:r0x1107:NULL+0:-1:0
+	;--cdb--W:r0x1104:NULL+0:-1:1
+	;--cdb--W:r0x1105:NULL+0:-1:1
+	;--cdb--W:r0x1107:NULL+0:-1:1
+	;--cdb--W:r0x10F6:NULL+0:-1:1
+	;--cdb--W:r0x10F6:NULL+0:-1:0
+	;--cdb--W:r0x10F7:NULL+0:-1:0
+	;--cdb--W:r0x10F7:NULL+0:-1:1
+	;--cdb--W:r0x10EB:NULL+0:-1:0
+	;--cdb--W:r0x10EC:NULL+0:-1:0
+	;--cdb--W:r0x10F1:r0x10EB+0:-1:0
+	;--cdb--W:r0x10F3:NULL+0:0:0
+	;--cdb--W:r0x10F4:NULL+0:0:0
+	;--cdb--W:r0x10EB:NULL+0:-1:1
+	;--cdb--W:r0x10EC:NULL+0:-1:1
 	;--cdb--W:r0x10F3:NULL+0:-1:1
-	;--cdb--W:r0x10FA:NULL+0:-1:1
-	;--cdb--W:r0x10FB:NULL+0:-1:1
-	;--cdb--W:r0x10F9:r0x10F3+1:-1:0
-	;--cdb--W:r0x10DA:NULL+0:-1:1
-	;--cdb--W:r0x10DA:STK02+0:-1:0
-	;--cdb--W:r0x10DB:STK01+0:-1:0
-	;--cdb--W:r0x10DC:STK00+0:-1:0
-	;--cdb--W:r0x10E2:STK00+0:-1:0
-	;--cdb--W:r0x10E1:STK01+0:-1:0
-	;--cdb--W:r0x10E0:STK02+0:-1:0
-	;--cdb--W:r0x10E0:STK00+0:-1:0
-	;--cdb--W:r0x10DB:NULL+0:-1:1
-	;--cdb--W:r0x10DB:NULL+0:-1:0
-	;--cdb--W:r0x10DA:NULL+0:-1:0
-	;--cdb--W:r0x10D6:NULL+0:-1:1
-	;--cdb--W:r0x10D6:NULL+0:-1:0
-	;--cdb--W:r0x10D7:NULL+0:-1:0
-	;--cdb--W:r0x10D7:NULL+0:-1:1
-	;--cdb--W:r0x10CE:NULL+0:-1:1
-	;--cdb--W:r0x10CA:NULL+0:-1:0
-	;--cdb--W:r0x10CB:NULL+0:-1:0
-	;--cdb--W:r0x10CE:STK00+0:-1:0
-	;--cdb--W:r0x10D0:STK01+0:-1:0
-	;--cdb--W:r0x10CA:NULL+0:-1:1
-	;--cdb--W:r0x10CB:NULL+0:-1:1
-	;--cdb--W:r0x10CD:NULL+0:-1:1
-	;--cdb--W:r0x10BD:NULL+0:-1:1
+	;--cdb--W:r0x10F4:NULL+0:-1:1
+	;--cdb--W:r0x10F2:r0x10EC+1:-1:0
+	;--cdb--W:r0x10D3:NULL+0:-1:1
+	;--cdb--W:r0x10D3:STK02+0:-1:0
+	;--cdb--W:r0x10D4:STK01+0:-1:0
+	;--cdb--W:r0x10D5:STK00+0:-1:0
+	;--cdb--W:r0x10DB:STK00+0:-1:0
+	;--cdb--W:r0x10DA:STK01+0:-1:0
+	;--cdb--W:r0x10D9:STK02+0:-1:0
+	;--cdb--W:r0x10D9:STK00+0:-1:0
+	;--cdb--W:r0x10D4:NULL+0:-1:1
+	;--cdb--W:r0x10D4:NULL+0:-1:0
+	;--cdb--W:r0x10D3:NULL+0:-1:0
+	;--cdb--W:r0x10CF:NULL+0:-1:1
+	;--cdb--W:r0x10CF:NULL+0:-1:0
+	;--cdb--W:r0x10D0:NULL+0:-1:0
+	;--cdb--W:r0x10D0:NULL+0:-1:1
+	;--cdb--W:r0x10C7:NULL+0:-1:1
+	;--cdb--W:r0x10C3:NULL+0:-1:0
+	;--cdb--W:r0x10C4:NULL+0:-1:0
+	;--cdb--W:r0x10C7:STK00+0:-1:0
+	;--cdb--W:r0x10C9:STK01+0:-1:0
 	;--cdb--W:r0x10C3:NULL+0:-1:1
-	;--cdb--W:r0x10BF:NULL+0:-1:1
+	;--cdb--W:r0x10C4:NULL+0:-1:1
+	;--cdb--W:r0x10C6:NULL+0:-1:1
+	;--cdb--W:r0x10BD:NULL+0:-1:1
 	;--cdb--W:r0x10BD:NULL+0:-1:0
-	;--cdb--W:r0x10BD:STK00+0:-1:0
 	;--cdb--W:r0x10BE:NULL+0:-1:0
-	;--cdb--W:r0x10BF:NULL+0:-1:0
-	;--cdb--W:r0x10C0:NULL+0:-1:0
 	;--cdb--W:r0x10BE:NULL+0:-1:1
-	;--cdb--W:r0x10C0:NULL+0:-1:1
 	;--cdb--W:r0x10B9:NULL+0:-1:0
 	;--cdb--W:r0x10BA:NULL+0:-1:0
 	;--cdb--W:r0x10B6:NULL+0:-1:1
@@ -3806,17 +3666,17 @@ _CloseTable:
 	;--cdb--W:r0x1092:NULL+0:-1:0
 	;--cdb--W:r0x1093:r0x108F+0:-1:0
 	;--cdb--W:r0x1092:NULL+0:-1:1
-	;--c2db--RNG$_Temp_Calibration_i_10000_416$2064$2139
-	;--c2db--RNG$_Temp_Calibration_tmp_10000_416$2170$2179
-	;--c2db--RNG$_Judge_Stability_Timer_10000_441$1949$2006
-	;--c2db--RNG$_Judge_Stability_PresentTemp_10000_441$1972$1999
-	;--c2db--RNG$_Judge_Stability_PriorTemp_10000_441$1992$1999
-	;--c2db--RNG$_Start_Algorithm_i_10000_490$1532$1564
-	;--c2db--RNG$_Forecast_Calculate_K_10000_523$1029$1342
-	;--c2db--RNG$_Update_MaxTemp3Min_Result_10000_555$817$820
-	;--c2db--RNG$_Temperature_Compensate_Temp_10000_605$568$658
-	;--c2db--RNG$_Temperature_Compensate_F_OddFlag_10000_606$568$619
-	;--c2db--RNG$_Temperature_Compensate_a_10000_606$613$644
-	;--c2db--RNG$_Temperature_Compensate_b_10000_606$589$603
-	;--c2db--RNG$_Forecast_Measure_Temp_10000_619$423$478
+	;--c2db--RNG$_Temp_Calibration_i_10000_416$1936$2011
+	;--c2db--RNG$_Temp_Calibration_tmp_10000_416$2042$2051
+	;--c2db--RNG$_Judge_Stability_Timer_10000_441$1821$1878
+	;--c2db--RNG$_Judge_Stability_PresentTemp_10000_441$1844$1871
+	;--c2db--RNG$_Judge_Stability_PriorTemp_10000_441$1864$1871
+	;--c2db--RNG$_Start_Algorithm_i_10000_478$1534$1566
+	;--c2db--RNG$_Forecast_Calculate_K_10000_511$1031$1344
+	;--c2db--RNG$_Update_MaxTemp3Min_Result_10000_543$818$821
+	;--c2db--RNG$_Temperature_Compensate_Temp_10000_593$569$659
+	;--c2db--RNG$_Temperature_Compensate_F_OddFlag_10000_594$569$620
+	;--c2db--RNG$_Temperature_Compensate_a_10000_594$614$645
+	;--c2db--RNG$_Temperature_Compensate_b_10000_594$590$604
+	;--c2db--RNG$_Forecast_Measure_Temp_10000_607$424$479
 	END

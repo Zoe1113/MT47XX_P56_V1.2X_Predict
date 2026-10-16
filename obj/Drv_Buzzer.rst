@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_Buzzer.c"
 009                     	.module Drv_Buzzer
 010                     	;.list	p=HY17P56
@@ -174,9 +174,9 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	25; ".\Source\Drv_Buzzer.c"	WDTCN |= 0x40;
 176                     _BZ_Configuration:	;Function start
-177 138D [00] [Y] 9C39      	BSF	_WDTCN,6
+177 0DA4 [00] [Y] 9C39      	BSF	_WDTCN,6
 178                     ;	;.line	26; ".\Source\Drv_Buzzer.c"	}
-179 138E [00] [Y] 000A      	RET	
+179 0DA5 [00] [Y] 000A      	RET	
 180                     ; exit point of _BZ_Configuration
 181                     	.ENDFUNC	_BZ_Configuration
 182                     ;--------------------------------------------------------

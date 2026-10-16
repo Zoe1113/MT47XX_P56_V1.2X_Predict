@@ -482,9 +482,9 @@ void System_Init(void)
 	Binding_Init();
 
 	//上电默认模式选择，改初始化模式时，校准结束后的模式初始化也要同步改！！！
-	#if	Soft_Code == 940
-		eMeasureMode = Underarm_Mode;
+	#ifdef CE_Tset_80601_2_56
+		eMeasureMode = Bath_Mode;
 	#else
-		//其他默认口腔
+		eMeasureMode = Oral_Mode;
 	#endif
 }

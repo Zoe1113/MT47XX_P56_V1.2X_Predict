@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_ADC.c"
 009                     	.module Drv_ADC
 010                     	;.list	p=HY17P56
@@ -174,48 +174,48 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	25; ".\Source\Drv_ADC.c"	ADC_Disable();
 176                     _ADC_Configuration:	;Function start
-177 133F [00] [Y] 8E3D      	BCF	_AD1CN0,7
+177 0D56 [00] [Y] 8E3D      	BCF	_AD1CN0,7
 178                     ;	;.line	29; ".\Source\Drv_ADC.c"	CLK_ADCCKDivSelect(DADC_DHSCKDIV8);
-179 1340 [00] [Y] 6435      	MVF	_OSCCN1,0,0
-180 1341 [00] [Y] 01CF      	ANDL	0xcf
-181 1342 [00] [Y] 0210      	IORL	0x10
-182 1343 [00] [Y] 6635      	MVF	_OSCCN1,1,0
+179 0D57 [00] [Y] 6435      	MVF	_OSCCN1,0,0
+180 0D58 [00] [Y] 01CF      	ANDL	0xcf
+181 0D59 [00] [Y] 0210      	IORL	0x10
+182 0D5A [00] [Y] 6635      	MVF	_OSCCN1,1,0
 183                     ;	;.line	41; ".\Source\Drv_ADC.c"	ADC_VINSelect(INP_AI2,INN_AI3);
-184 1344 [00] [Y] 0604      	MVL	0x04
-185 1345 [00] [Y] 6640      	MVF	_AD1CN3,1,0
+184 0D5B [00] [Y] 0604      	MVL	0x04
+185 0D5C [00] [Y] 6640      	MVF	_AD1CN3,1,0
 186                     ;	;.line	43; ".\Source\Drv_ADC.c"	ADC_VRINSelect(VRH_VCMS,VRL_VSS);
-187 1346 [00] [Y] 6441      	MVF	_AD1CN4,0,0
-188 1347 [00] [Y] 010F      	ANDL	0x0f
-189 1348 [00] [Y] 0240      	IORL	0x40
-190 1349 [00] [Y] 6641      	MVF	_AD1CN4,1,0
+187 0D5D [00] [Y] 6441      	MVF	_AD1CN4,0,0
+188 0D5E [00] [Y] 010F      	ANDL	0x0f
+189 0D5F [00] [Y] 0240      	IORL	0x40
+190 0D60 [00] [Y] 6641      	MVF	_AD1CN4,1,0
 191                     ;	;.line	45; ".\Source\Drv_ADC.c"	ADC_GainSelect(ADGN_1,PGAGN_1);
-192 134A [00] [Y] 643E      	MVF	_AD1CN1,0,0
-193 134B [00] [Y] 01E0      	ANDL	0xe0
-194 134C [00] [Y] 0202      	IORL	0x02
-195 134D [00] [Y] 663E      	MVF	_AD1CN1,1,0
+192 0D61 [00] [Y] 643E      	MVF	_AD1CN1,0,0
+193 0D62 [00] [Y] 01E0      	ANDL	0xe0
+194 0D63 [00] [Y] 0202      	IORL	0x02
+195 0D64 [00] [Y] 663E      	MVF	_AD1CN1,1,0
 196                     ;	;.line	47; ".\Source\Drv_ADC.c"	ADC_VRXSelect(VREGN_DIV1);
-197 134E [00] [Y] 8A3E      	BCF	_AD1CN1,5
+197 0D65 [00] [Y] 8A3E      	BCF	_AD1CN1,5
 198                     ;	;.line	49; ".\Source\Drv_ADC.c"	ADC_DCSETSelect(DCSET_N0);
-199 134F [00] [Y] 643F      	MVF	_AD1CN2,0,0
-200 1350 [00] [Y] 01F0      	ANDL	0xf0
-201 1351 [00] [Y] 0208      	IORL	0x08
-202 1352 [00] [Y] 663F      	MVF	_AD1CN2,1,0
+199 0D66 [00] [Y] 643F      	MVF	_AD1CN2,0,0
+200 0D67 [00] [Y] 01F0      	ANDL	0xf0
+201 0D68 [00] [Y] 0208      	IORL	0x08
+202 0D69 [00] [Y] 663F      	MVF	_AD1CN2,1,0
 203                     ;	;.line	53; ".\Source\Drv_ADC.c"	ADC_OSRSelect(OSR_2048);
-204 1353 [00] [Y] 643D      	MVF	_AD1CN0,0,0
-205 1354 [00] [Y] 01E1      	ANDL	0xe1
-206 1355 [00] [Y] 0208      	IORL	0x08
-207 1356 [00] [Y] 663D      	MVF	_AD1CN0,1,0
+204 0D6A [00] [Y] 643D      	MVF	_AD1CN0,0,0
+205 0D6B [00] [Y] 01E1      	ANDL	0xe1
+206 0D6C [00] [Y] 0208      	IORL	0x08
+207 0D6D [00] [Y] 663D      	MVF	_AD1CN0,1,0
 208                     ;	;.line	55; ".\Source\Drv_ADC.c"	ADC_VCMSSelect(VCMS_V12);
-209 1357 [00] [Y] 6442      	MVF	_AD1CN5,0,0
-210 1358 [00] [Y] 01DF      	ANDL	0xdf
-211 1359 [00] [Y] 0220      	IORL	0x20
-212 135A [00] [Y] 6642      	MVF	_AD1CN5,1,0
+209 0D6E [00] [Y] 6442      	MVF	_AD1CN5,0,0
+210 0D6F [00] [Y] 01DF      	ANDL	0xdf
+211 0D70 [00] [Y] 0220      	IORL	0x20
+212 0D71 [00] [Y] 6642      	MVF	_AD1CN5,1,0
 213                     ;	;.line	60; ".\Source\Drv_ADC.c"	ADC_LDOPLEnable();
-214 135B [00] [Y] 9842      	BSF	_AD1CN5,4
+214 0D72 [00] [Y] 9842      	BSF	_AD1CN5,4
 215                     ;	;.line	62; ".\Source\Drv_ADC.c"	ADC_ENACMEnable();
-216 135C [00] [Y] 9E42      	BSF	_AD1CN5,7
+216 0D73 [00] [Y] 9E42      	BSF	_AD1CN5,7
 217                     ;	;.line	63; ".\Source\Drv_ADC.c"	}
-218 135D [00] [Y] 000A      	RET	
+218 0D74 [00] [Y] 000A      	RET	
 219                     ; exit point of _ADC_Configuration
 220                     	.ENDFUNC	_ADC_Configuration
 221                     ;--------------------------------------------------------

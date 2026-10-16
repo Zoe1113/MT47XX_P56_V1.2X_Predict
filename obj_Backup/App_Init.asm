@@ -4,7 +4,7 @@
 ;--------------------------------------------------------
 ; Port for HYCON CPU
 ;--------------------------------------------------------
-;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 ;;	.file	".\Source\App_Init.c"
 	.module App_Init
 	;.list	p=HY17P56
@@ -222,6 +222,9 @@ _System_Init:	;Function start
 ;	;.line	482; ".\Source\App_Init.c"	Binding_Init();
 	CALL	_Binding_Init
 	.CHKPARA _Binding_Init 0
+;	;.line	486; ".\Source\App_Init.c"	eMeasureMode = Bath_Mode;
+	MVL	0x03
+	MVF	_eMeasureMode,1,0
 ;	;.line	490; ".\Source\App_Init.c"	}
 	RET	
 ; exit point of _System_Init
@@ -232,7 +235,7 @@ _System_Init:	;Function start
 
 ;--------------------------------------------------------
 	.FUNC _E2_Init:$r:0:0:$C:_I2C_ReadByte\
-:$L:r0x10AE:$L:r0x10AF:$L:r0x10B0:$L:r0x10B1
+:$L:r0x10AD:$L:r0x10AE:$L:r0x10AF:$L:r0x10B0
 ;--------------------------------------------------------
 ;	;.line	379; ".\Source\App_Init.c"	sMemory.HeadNo = I2C_ReadByte(E2_HeadNo_Addr);
 _E2_Init:	;Function start
@@ -275,42 +278,42 @@ _00160_DS_:
 	MVF	(_sMemory + 2),1,0
 _00157_DS_:
 ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
-	CLRF	r0x10AE,0
+	CLRF	r0x10AD,0
 _00163_DS_:
 	MVF	(_sMemory + 2),0,0
-	CPSL	r0x10AE,0
+	CPSL	r0x10AD,0
 	JMP	_00165_DS_
 ;	;.line	411; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2;
-	MVF	r0x10AE,0,0
+	MVF	r0x10AD,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	ADDL	0x04
 ;	;.line	412; ".\Source\App_Init.c"	DH = I2C_ReadByte(addr);
 	CALL	_I2C_ReadByte
-	MVF	r0x10AF,1,0
+	MVF	r0x10AE,1,0
 ;	;.line	414; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2 + 1;
 	MVF	_PRODL,0,0
 	ADDL	0x05
 ;	;.line	415; ".\Source\App_Init.c"	DL = I2C_ReadByte(addr);
 	CALL	_I2C_ReadByte
-	MVF	r0x10B0,1,0
+	MVF	r0x10AF,1,0
 ;	;.line	417; ".\Source\App_Init.c"	sMemory.MemTempBuf[i] = (DH << 8) + DL;
-	MVF	r0x10AE,0,0
+	MVF	r0x10AD,0,0
 	MULL	0x02
 	MVF	_PRODL,0,0
 	ADDL	(_sMemory + 3)
-	MVF	r0x10B1,1,0
+	MVF	r0x10B0,1,0
 	MVL	high (_sMemory + 3)
 	BTSZ	_STATUS,4
 	ADDL	0x01
-	MVSF	r0x10B1,_FSR0L
+	MVSF	r0x10B0,_FSR0L
 	MVF	_FSR0H,1,0
-	MVF	r0x10B0,0,0
-	MVF	_POINC0,1,0
 	MVF	r0x10AF,0,0
+	MVF	_POINC0,1,0
+	MVF	r0x10AE,0,0
 	MVF	_INDF0,1,0
 ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
-	INF	r0x10AE,1,0
+	INF	r0x10AD,1,0
 	JMP	_00163_DS_
 _00165_DS_:
 ;	;.line	420; ".\Source\App_Init.c"	}
@@ -322,13 +325,13 @@ _00165_DS_:
 .globl _Binding_Init
 
 ;--------------------------------------------------------
-	.FUNC _Binding_Init:$r:0:0:$L:r0x10AB
+	.FUNC _Binding_Init:$r:0:0:$L:r0x10AA
 ;--------------------------------------------------------
 ;	;.line	274; ".\Source\App_Init.c"	tmp = PT1 &  0x24;
 _Binding_Init:	;Function start
 	MVF	_PT1,0,0
 	ANDL	0x24
-	MVF	r0x10AB,1,0
+	MVF	r0x10AA,1,0
 ;	;.line	276; ".\Source\App_Init.c"	if(tmp== 0x24)
 	XORL	0x24
 	BTSS	_STATUS,0
@@ -344,7 +347,7 @@ _Binding_Init:	;Function start
 _00129_DS_:
 ;	;.line	285; ".\Source\App_Init.c"	else if(tmp == 0x20)
 	MVL	0x20
-	CPSE	r0x10AB,0
+	CPSE	r0x10AA,0
 	JMP	_00126_DS_
 ;	;.line	288; ".\Source\App_Init.c"	eBinding_Status = CentigradeFirst_NonSwitchable;
 	MVL	0x01
@@ -358,7 +361,7 @@ _00129_DS_:
 _00126_DS_:
 ;	;.line	294; ".\Source\App_Init.c"	else if(tmp == 0x04)
 	MVL	0x04
-	CPSE	r0x10AB,0
+	CPSE	r0x10AA,0
 	JMP	_00123_DS_
 ;	;.line	297; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_Switchable;
 	MVL	0x02
@@ -371,7 +374,7 @@ _00126_DS_:
 	JMP	_00130_DS_
 _00123_DS_:
 ;	;.line	303; ".\Source\App_Init.c"	else if(tmp == 0x00)
-	TFSZ	r0x10AB,0
+	TFSZ	r0x10AA,0
 	JMP	_00130_DS_
 ;	;.line	306; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_NonSwitchable;
 	MVL	0x03
@@ -385,7 +388,7 @@ _00130_DS_:
 ;	;.line	322; ".\Source\App_Init.c"	tmp = PT8 & 0xC0;
 	MVF	_PT8,0,0
 	ANDL	0xc0
-	MVF	r0x10AB,1,0
+	MVF	r0x10AA,1,0
 ;	;.line	324; ".\Source\App_Init.c"	if(tmp == 0xC0)
 	XORL	0xc0
 	BTSS	_STATUS,0
@@ -396,7 +399,7 @@ _00130_DS_:
 	JMP	_00141_DS_
 _00140_DS_:
 ;	;.line	330; ".\Source\App_Init.c"	else if(tmp == 0x80)
-	DCF	r0x10AB,0,0
+	DCF	r0x10AA,0,0
 	BTSS	_STATUS,1
 	JMP	_00137_DS_
 ;	;.line	334; ".\Source\App_Init.c"	sActual.StableTime = 8;
@@ -406,7 +409,7 @@ _00140_DS_:
 _00137_DS_:
 ;	;.line	336; ".\Source\App_Init.c"	else if(tmp == 0x40)
 	MVL	0x40
-	CPSE	r0x10AB,0
+	CPSE	r0x10AA,0
 	JMP	_00134_DS_
 ;	;.line	340; ".\Source\App_Init.c"	sActual.StableTime = 16;
 	MVL	0x10
@@ -414,7 +417,7 @@ _00137_DS_:
 	JMP	_00141_DS_
 _00134_DS_:
 ;	;.line	342; ".\Source\App_Init.c"	else if(tmp == 0x00)
-	TFSZ	r0x10AB,0
+	TFSZ	r0x10AA,0
 	JMP	_00141_DS_
 ;	;.line	348; ".\Source\App_Init.c"	sActual.StableTime = 16;
 	MVL	0x10
@@ -423,7 +426,7 @@ _00141_DS_:
 ;	;.line	355; ".\Source\App_Init.c"	tmp = PT8 & 0x20;
 	MVF	_PT8,0,0
 	ANDL	0x20
-	MVF	r0x10AB,1,0
+	MVF	r0x10AA,1,0
 ;	;.line	357; ".\Source\App_Init.c"	if(tmp == 0x20)
 	XORL	0x20
 	BTSS	_STATUS,0
@@ -433,7 +436,7 @@ _00141_DS_:
 	JMP	_00147_DS_
 _00145_DS_:
 ;	;.line	362; ".\Source\App_Init.c"	else if(tmp == 0x00)
-	TFSZ	r0x10AB,0
+	TFSZ	r0x10AA,0
 	JMP	_00147_DS_
 ;	;.line	365; ".\Source\App_Init.c"	eVersionCode = VC_DispOn;
 	MVL	0x01
@@ -685,9 +688,6 @@ _Param_Init:	;Function start
 	MVF	_memset_STK00,1,0
 	MVL	high (_ERR + 0)
 	CALL	_memset
-;	;.line	206; ".\Source\App_Init.c"	eTo_Actual_Ways = To_Actual_3Min;
-	MVL	0x5a
-	MVF	_eTo_Actual_Ways,1,0
 ;	;.line	224; ".\Source\App_Init.c"	sADC.PreviousCentigrade250msTemp = 0;
 	CLRF	(_sADC + 15),0
 	CLRF	(_sADC + 16),0
@@ -1040,11 +1040,11 @@ _Param_Init:	;Function start
 	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
 	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
 	;--cdb--S:G$TEMDATA$0$0({1}SC:U),I,0,0
-	;--cdb--S:LApp_Init.Binding_Init._Binding_Init_tmp_10000_423$tmp$2710$423({1}SC:U),R,0,0,[r0x10AB]
-	;--cdb--S:LApp_Init.E2_Init._E2_Init_i_10000_445$i$2710$445({1}SC:U),R,0,0,[r0x10AE]
-	;--cdb--S:LApp_Init.E2_Init._E2_Init_addr_10000_445$addr$2710$445({1}SC:U),R,0,0,[r0x10B0]
-	;--cdb--S:LApp_Init.E2_Init._E2_Init_DH_10000_445$DH$2710$445({1}SC:U),R,0,0,[r0x10AF]
-	;--cdb--S:LApp_Init.E2_Init._E2_Init_DL_10000_445$DL$2710$445({1}SC:U),R,0,0,[r0x10B0]
+	;--cdb--S:LApp_Init.Binding_Init._Binding_Init_tmp_10000_423$tmp$2710$423({1}SC:U),R,0,0,[r0x10AA]
+	;--cdb--S:LApp_Init.E2_Init._E2_Init_i_10000_445$i$2710$445({1}SC:U),R,0,0,[r0x10AD]
+	;--cdb--S:LApp_Init.E2_Init._E2_Init_addr_10000_445$addr$2710$445({1}SC:U),R,0,0,[r0x10AF]
+	;--cdb--S:LApp_Init.E2_Init._E2_Init_DH_10000_445$DH$2710$445({1}SC:U),R,0,0,[r0x10AE]
+	;--cdb--S:LApp_Init.E2_Init._E2_Init_DL_10000_445$DL$2710$445({1}SC:U),R,0,0,[r0x10AF]
 	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
 	;--cdb--S:G$_FSR0L$0$0({0}:U),Z,0,0
 	;--cdb--S:G$_FSR0H$0$0({0}:U),Z,0,0
@@ -1656,11 +1656,11 @@ _TEMDATA	.equ	0x2E0
 	.area IDATAROM (CODE,REL,CON); pre-def
 	.area UDATA (DATA,REL,CON); pre-def
 	.area UDATA (DATA,REL,CON) ;UDL_App_Init_0	udata
-r0x10AB:	.ds	1
+r0x10AA:	.ds	1
+r0x10AD:	.ds	1
 r0x10AE:	.ds	1
 r0x10AF:	.ds	1
 r0x10B0:	.ds	1
-r0x10B1:	.ds	1
 	.area LOCALSTK (STK); local stack var
 	.globl _memset_STK03
 	.globl _memset_STK02
@@ -1943,28 +1943,28 @@ r0x10B1:	.ds	1
 	;--cdb--D:S:G$e_TempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),Z,0,0
 	;Following is optimization info, 
 	;xxcdbxxW:dst:src+offset:srclit:just-remove
+	;--cdb--W:r0x10AD:NULL+0:-1:1
 	;--cdb--W:r0x10AE:NULL+0:-1:1
-	;--cdb--W:r0x10AF:NULL+0:-1:1
-	;--cdb--W:r0x10B4:NULL+0:-1:1
-	;--cdb--W:r0x10AE:NULL+0:-1:0
-	;--cdb--W:r0x10AF:NULL+0:-1:0
-	;--cdb--W:r0x10B3:r0x10AF+0:-1:0
 	;--cdb--W:r0x10B3:NULL+0:-1:1
-	;--cdb--W:r0x10B5:r0x10AF+0:-1:0
-	;--cdb--W:r0x10B0:NULL+0:-1:1
-	;--cdb--W:r0x10B6:r0x10AF+0:-1:0
+	;--cdb--W:r0x10AD:NULL+0:-1:0
+	;--cdb--W:r0x10AE:NULL+0:-1:0
+	;--cdb--W:r0x10B2:r0x10AE+0:-1:0
 	;--cdb--W:r0x10B2:NULL+0:-1:1
+	;--cdb--W:r0x10B4:r0x10AE+0:-1:0
+	;--cdb--W:r0x10AF:NULL+0:-1:1
+	;--cdb--W:r0x10B5:r0x10AE+0:-1:0
+	;--cdb--W:r0x10B1:NULL+0:-1:1
+	;--cdb--W:r0x10A4:NULL+0:-1:0
 	;--cdb--W:r0x10A5:NULL+0:-1:0
-	;--cdb--W:r0x10A6:NULL+0:-1:0
+	;--cdb--W:r0x10A4:NULL+0:-1:1
 	;--cdb--W:r0x10A5:NULL+0:-1:1
-	;--cdb--W:r0x10A6:NULL+0:-1:1
+	;--cdb--W:r0x108F:NULL+0:-1:0
 	;--cdb--W:r0x1090:NULL+0:-1:0
-	;--cdb--W:r0x1091:NULL+0:-1:0
+	;--cdb--W:r0x108F:NULL+0:-1:1
 	;--cdb--W:r0x1090:NULL+0:-1:1
-	;--cdb--W:r0x1091:NULL+0:-1:1
-	;--c2db--RNG$_Binding_Init_tmp_10000_423$389$418
-	;--c2db--RNG$_E2_Init_i_10000_445$277$315
-	;--c2db--RNG$_E2_Init_addr_10000_445$291$296
-	;--c2db--RNG$_E2_Init_DH_10000_445$291$311
-	;--c2db--RNG$_E2_Init_DL_10000_445$297$311
+	;--c2db--RNG$_Binding_Init_tmp_10000_423$392$421
+	;--c2db--RNG$_E2_Init_i_10000_445$280$318
+	;--c2db--RNG$_E2_Init_addr_10000_445$294$299
+	;--c2db--RNG$_E2_Init_DH_10000_445$294$314
+	;--c2db--RNG$_E2_Init_DL_10000_445$300$314
 	END

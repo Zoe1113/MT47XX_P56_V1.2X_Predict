@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_WDT.c"
 009                     	.module Drv_WDT
 010                     	;.list	p=HY17P56
@@ -174,18 +174,18 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	31; ".\Source\Drv_WDT.c"	WDT_WDTCKDivSelect(DWDT_WDTCKDIV2048);
 176                     _WDT_Configuration:	;Function start
-177 00B6 [00] [Y] 06F8      	MVL	0xf8
-178 00B7 [00] [Y] 2839      	ANDF	_WDTCN,0,0
-179 00B8 [00] [Y] 0203      	IORL	0x03
-180 00B9 [00] [Y] 6639      	MVF	_WDTCN,1,0
+177 0C3B [00] [Y] 06F8      	MVL	0xf8
+178 0C3C [00] [Y] 2839      	ANDF	_WDTCN,0,0
+179 0C3D [00] [Y] 0203      	IORL	0x03
+180 0C3E [00] [Y] 6639      	MVF	_WDTCN,1,0
 181                     ;	;.line	33; ".\Source\Drv_WDT.c"	WDTIF_ClearFlag();
-182 00BA [00] [Y] 8826      	BCF	_INTF0,4
+182 0C3F [00] [Y] 8826      	BCF	_INTF0,4
 183                     ;	;.line	35; ".\Source\Drv_WDT.c"	WDTIE_Enable();
-184 00BB [00] [Y] 9823      	BSF	_INTE0,4
+184 0C40 [00] [Y] 9823      	BSF	_INTE0,4
 185                     ;	;.line	37; ".\Source\Drv_WDT.c"	WDT_Enable() ;
-186 00BC [00] [Y] 9639      	BSF	_WDTCN,3
+186 0C41 [00] [Y] 9639      	BSF	_WDTCN,3
 187                     ;	;.line	38; ".\Source\Drv_WDT.c"	}
-188 00BD [00] [Y] 000A      	RET	
+188 0C42 [00] [Y] 000A      	RET	
 189                     ; exit point of _WDT_Configuration
 190                     	.ENDFUNC	_WDT_Configuration
 191                     ;--------------------------------------------------------

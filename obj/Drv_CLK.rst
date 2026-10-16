@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_CLK.c"
 009                     	.module Drv_CLK
 010                     	;.list	p=HY17P56
@@ -174,24 +174,24 @@
 174                     ;--------------------------------------------------------
 175                     ;	;.line	26; ".\Source\Drv_CLK.c"	CLK_HAOEnable();
 176                     _CLK_Configuration:	;Function start
-177 138F [00] [Y] 9036      	BSF	_OSCCN2,0
+177 0DA6 [00] [Y] 9036      	BSF	_OSCCN2,0
 178                     ;	;.line	30; ".\Source\Drv_CLK.c"	CLK_OSCSelect(OSCS_HAO);
-179 1390 [00] [Y] 063F      	MVL	0x3f
-180 1391 [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+179 0DA7 [00] [Y] 063F      	MVL	0x3f
+180 0DA8 [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 181                     ;	;.line	34; ".\Source\Drv_CLK.c"	CLK_DHSCKSelect(DHS_HSCKDIV1);
-182 1392 [00] [Y] 06CF      	MVL	0xcf
-183 1393 [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+182 0DA9 [00] [Y] 06CF      	MVL	0xcf
+183 0DAA [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 184                     ;	;.line	38; ".\Source\Drv_CLK.c"	CLK_DMSCKSelect(DMS_DHSCKDIV2);
-185 1394 [00] [Y] 06F1      	MVL	0xf1
-186 1395 [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
+185 0DAB [00] [Y] 06F1      	MVL	0xf1
+186 0DAC [00] [Y] 2A34      	ANDF	_OSCCN0,1,0
 187                     ;	;.line	45; ".\Source\Drv_CLK.c"	CLK_LPCCKSelect(LCPS_LPO);
-188 1396 [00] [Y] 8C35      	BCF	_OSCCN1,6
+188 0DAD [00] [Y] 8C35      	BCF	_OSCCN1,6
 189                     ;	;.line	48; ".\Source\Drv_CLK.c"	CLK_CPUCKSelect(CPUS_HSCK/*CPUS_DHSCK*/);
-190 1397 [00] [Y] 8034      	BCF	_OSCCN0,0
+190 0DAE [00] [Y] 8034      	BCF	_OSCCN0,0
 191                     ;	;.line	54; ".\Source\Drv_CLK.c"	PWRCN &= 0xFE;
-192 1398 [00] [Y] 8033      	BCF	_PWRCN,0
+192 0DAF [00] [Y] 8033      	BCF	_PWRCN,0
 193                     ;	;.line	55; ".\Source\Drv_CLK.c"	}
-194 1399 [00] [Y] 000A      	RET	
+194 0DB0 [00] [Y] 000A      	RET	
 195                     ; exit point of _CLK_Configuration
 196                     	.ENDFUNC	_CLK_Configuration
 197                     ;--------------------------------------------------------

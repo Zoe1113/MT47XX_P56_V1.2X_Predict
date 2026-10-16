@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\App_Init.c"
 009                     	.module App_Init
 010                     	;.list	p=HY17P56
@@ -181,520 +181,520 @@
 181                     ;--------------------------------------------------------
 182                     ;	;.line	430; ".\Source\App_Init.c"	PWRCN = 0x01;
 183                     _System_Init:	;Function start
-184 03BE [00] [X] 0601      	MVL	0x01
-185 03BF [00] [X] 6633      	MVF	_PWRCN,1,0
+184 0D41 [00] [X] 0601      	MVL	0x01
+185 0D42 [00] [X] 6633      	MVF	_PWRCN,1,0
 186                     ;	;.line	432; ".\Source\App_Init.c"	CSFCN1 = 0x00;
-187 03C0 [00] [X] 0C38      	CLRF	_CSFCN1,0
+187 0D43 [00] [X] 0C38      	CLRF	_CSFCN1,0
 188                     ;	;.line	435; ".\Source\App_Init.c"	Enter_PrepareSleep_Flag = TRUE;
-189 03C1 [00] [2] 0012 6704 	MVF	_Enter_PrepareSleep_Flag,1,0
+189 0D44 [00] [2] 0012 6704 	MVF	_Enter_PrepareSleep_Flag,1,0
 190                     ;	;.line	438; ".\Source\App_Init.c"	eSystem_Mode = Prepare_Sleep;
-191 03C3 [00] [2] 0DC9      	CLRF	_eSystem_Mode,0
+191 0D46 [00] [2] 0DC9      	CLRF	_eSystem_Mode,0
 192                     ;	;.line	441; ".\Source\App_Init.c"	eDisplay_Interfaces = Display_SleepMode;
-193 03C4 [00] [2] 0612      	MVL	0x12
-194 03C5 [00] [2] 6733      	MVF	_eDisplay_Interfaces,1,0
+193 0D47 [00] [2] 0612      	MVL	0x12
+194 0D48 [00] [2] 6733      	MVF	_eDisplay_Interfaces,1,0
 195                     ;	;.line	444; ".\Source\App_Init.c"	GPIO_Configuration();
-196 03C6 [00] [2] C001 F39A 	CALL	_GPIO_Configuration
+196 0D49 [00] [2] C867      	CALL	_GPIO_Configuration
 197                     	.CHKPARA _GPIO_Configuration 0
 198                     ;	;.line	447; ".\Source\App_Init.c"	CLK_Configuration();
-199 03C8 [00] [1] C001 F38F 	CALL	_CLK_Configuration
+199 0D4A [00] [1] C85B      	CALL	_CLK_Configuration
 200                     	.CHKPARA _CLK_Configuration 0
 201                     ;	;.line	450; ".\Source\App_Init.c"	PWR_Configuration();
-202 03CA [00] [1] C001 F479 	CALL	_PWR_Configuration
+202 0D4B [00] [1] CF01      	CALL	_PWR_Configuration
 203                     	.CHKPARA _PWR_Configuration 0
 204                     ;	;.line	453; ".\Source\App_Init.c"	LVD_Configuration();
-205 03CC [00] [1] C001 F473 	CALL	_LVD_Configuration
+205 0D4C [00] [1] CF06      	CALL	_LVD_Configuration
 206                     	.CHKPARA _LVD_Configuration 0
 207                     ;	;.line	456; ".\Source\App_Init.c"	TMA1_Configuration();
-208 03CE [00] [1] C001 F47F 	CALL	_TMA1_Configuration
+208 0D4D [00] [1] CEF5      	CALL	_TMA1_Configuration
 209                     	.CHKPARA _TMA1_Configuration 0
 210                     ;	;.line	459; ".\Source\App_Init.c"	BZ_Configuration();
-211 03D0 [00] [1] C001 F38D 	CALL	_BZ_Configuration
+211 0D4E [00] [1] C855      	CALL	_BZ_Configuration
 212                     	.CHKPARA _BZ_Configuration 0
 213                     ;	;.line	462; ".\Source\App_Init.c"	ADC_Configuration();
-214 03D2 [00] [1] C001 F33F 	CALL	_ADC_Configuration
+214 0D4F [00] [1] C806      	CALL	_ADC_Configuration
 215                     	.CHKPARA _ADC_Configuration 0
 216                     ;	;.line	476; ".\Source\App_Init.c"	WDT_Configuration();
-217 03D4 [00] [1] CCE1      	CALL	_WDT_Configuration
+217 0D50 [00] [1] CEEA      	CALL	_WDT_Configuration
 218                     	.CHKPARA _WDT_Configuration 0
 219                     ;	;.line	479; ".\Source\App_Init.c"	BIE_Init();
-220 03D5 [00] [1] C001 F323 	CALL	_BIE_Init
+220 0D51 [00] [1] CF83      	CALL	_BIE_Init
 221                     	.CHKPARA _BIE_Init 0
 222                     ;	;.line	482; ".\Source\App_Init.c"	Binding_Init();
-223 03D7 [00] [2] 7E19      	CALL	_Binding_Init
+223 0D52 [00] [2] CF9E      	CALL	_Binding_Init
 224                     	.CHKPARA _Binding_Init 0
-225                     ;	;.line	490; ".\Source\App_Init.c"	}
-226                     	RET	
-227                     ; exit point of _System_Init
-228                     	.ENDFUNC	_System_Init
-229                     ;--------------------------------------------------------
-230                     
-231                     .globl _E2_Init
-232                     
-233                     ;--------------------------------------------------------
-234                     	.FUNC _E2_Init:$r:0:0:$C:_I2C_ReadByte\
-235                     :$L:r0x10AE:$L:r0x10AF:$L:r0x10B0:$L:r0x10B1
+225                     ;	;.line	486; ".\Source\App_Init.c"	eMeasureMode = Bath_Mode;
+226 0D53 [00] [2] 0603      	MVL	0x03
+227 0D54 [00] [2] 6702      	MVF	_eMeasureMode,1,0
+228                     ;	;.line	490; ".\Source\App_Init.c"	}
+229 0D55 [00] [2] 000A      	RET	
+230                     ; exit point of _System_Init
+231                     	.ENDFUNC	_System_Init
+232                     ;--------------------------------------------------------
+233                     
+234                     .globl _E2_Init
+235                     
 236                     ;--------------------------------------------------------
-237                     ;	;.line	379; ".\Source\App_Init.c"	sMemory.HeadNo = I2C_ReadByte(E2_HeadNo_Addr);
-238                     _E2_Init:	;Function start
-239                     	MVL	0x01
-240                     	CALL	_I2C_ReadByte
-241                     	.CHKPARA _I2C_ReadByte 1
-242                     	MVF	(_sMemory + 0),1,0
-243                     ;	;.line	381; ".\Source\App_Init.c"	if(sMemory.HeadNo == 0xFF)
-244                     	INSZ	_WREG,0,0
-245                     	JMP	_00153_DS_
-246                     ;	;.line	383; ".\Source\App_Init.c"	sMemory.HeadNo = 0;
-247                     	LDPR	(_sMemory + 0),0x00
-248                     	CLRF	_INDF0,0
-249                     _00153_DS_:
-250                     ;	;.line	387; ".\Source\App_Init.c"	sMemory.pMemTempBuf = I2C_ReadByte(E2_pMemTempBuf_Addr);
-251                     	MVL	0x02
-252                     	CALL	_I2C_ReadByte
-253                     	MVF	(_sMemory + 1),1,0
-254                     ;	;.line	389; ".\Source\App_Init.c"	if(sMemory.pMemTempBuf == 0xFF)
-255                     	INSUZ	_WREG,0,0
-256                     ;	;.line	391; ".\Source\App_Init.c"	sMemory.pMemTempBuf = 0;
-257                     	CLRF	(_sMemory + 1),0
-258                     ;	;.line	395; ".\Source\App_Init.c"	sMemory.MemTempSum = I2C_ReadByte(E2_MemTempSum_Addr);
-259                     	MVL	0x03
-260                     	CALL	_I2C_ReadByte
-261                     	MVF	(_sMemory + 2),1,0
-262                     ;	;.line	397; ".\Source\App_Init.c"	if(sMemory.MemTempSum == 0xFF)
-263                     	INSZ	_WREG,0,0
-264                     	JMP	_00160_DS_
-265                     ;	;.line	399; ".\Source\App_Init.c"	sMemory.MemTempSum = 0;
-266                     	CLRF	(_sMemory + 2),0
-267                     	JMP	_00165_DS_
-268                     _00160_DS_:
-269                     ;	;.line	404; ".\Source\App_Init.c"	if(sMemory.MemTempSum > MemTempNum)
-270                     	MVL	0x0a
-271                     	CPSG	(_sMemory + 2),0
-272                     	JMP	_00157_DS_
-273                     ;	;.line	406; ".\Source\App_Init.c"	sMemory.MemTempSum = MemTempNum;
-274                     	MVL	0x0a
-275                     	MVF	(_sMemory + 2),1,0
-276                     _00157_DS_:
-277                     ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
-278                     	CLRF	r0x10AE,0
-279                     _00163_DS_:
-280                     	MVF	(_sMemory + 2),0,0
-281                     	CPSL	r0x10AE,0
-282                     	JMP	_00165_DS_
-283                     ;	;.line	411; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2;
-284                     	MVF	r0x10AE,0,0
-285                     	MULL	0x02
-286                     	MVF	_PRODL,0,0
-287                     	ADDL	0x04
-288                     ;	;.line	412; ".\Source\App_Init.c"	DH = I2C_ReadByte(addr);
-289                     	CALL	_I2C_ReadByte
-290                     	MVF	r0x10AF,1,0
-291                     ;	;.line	414; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2 + 1;
-292                     	MVF	_PRODL,0,0
-293                     	ADDL	0x05
-294                     ;	;.line	415; ".\Source\App_Init.c"	DL = I2C_ReadByte(addr);
-295                     	CALL	_I2C_ReadByte
-296                     	MVF	r0x10B0,1,0
-297                     ;	;.line	417; ".\Source\App_Init.c"	sMemory.MemTempBuf[i] = (DH << 8) + DL;
-298                     	MVF	r0x10AE,0,0
-299                     	MULL	0x02
-300                     	MVF	_PRODL,0,0
-301                     	ADDL	(_sMemory + 3)
-302                     	MVF	r0x10B1,1,0
-303                     	MVL	high (_sMemory + 3)
-304                     	BTSZ	_STATUS,4
-305                     	ADDL	0x01
-306                     	MVSF	r0x10B1,_FSR0L
-307                     	MVF	_FSR0H,1,0
-308                     	MVF	r0x10B0,0,0
-309                     	MVF	_POINC0,1,0
-310                     	MVF	r0x10AF,0,0
-311                     	MVF	_INDF0,1,0
-312                     ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
-313                     	INF	r0x10AE,1,0
-314                     	JMP	_00163_DS_
-315                     _00165_DS_:
-316                     ;	;.line	420; ".\Source\App_Init.c"	}
-317                     	RET	
-318                     ; exit point of _E2_Init
-319                     	.ENDFUNC	_E2_Init
-320                     ;--------------------------------------------------------
-321                     
-322                     .globl _Binding_Init
-323                     
-324                     ;--------------------------------------------------------
-325                     	.FUNC _Binding_Init:$r:0:0:$L:r0x10AB
-326                     ;--------------------------------------------------------
-327                     ;	;.line	274; ".\Source\App_Init.c"	tmp = PT1 &  0x24;
-328 01F1 [00] [2] C481      _Binding_Init:	;Function start
-329 01F2 [01] [2] 6453      	MVF	_PT1,0,0
-330 01F3 [01] [2] 0124      	ANDL	0x24
-331 01F4 [01] [2] 6680      	MVF	r0x10AB,1,0
-332                     ;	;.line	276; ".\Source\App_Init.c"	if(tmp== 0x24)
-333 01F5 [01] [2] 0324      	XORL	0x24
-334 01F6 [01] [2] B02B      	BTSS	_STATUS,0
-335 01F7 [01] [2] 7807      	JMP	_00129_DS_
-336                     ;	;.line	279; ".\Source\App_Init.c"	eBinding_Status = CentigradeFirst_Switchable;
-337 01F8 [01] [2] 0D03      	CLRF	_eBinding_Status,0
-338                     ;	;.line	281; ".\Source\App_Init.c"	eTempUnit = Centigrade;
-339 01F9 [01] [2] 065A      	MVL	0x5a
-340 01FA [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
-341                     ;	;.line	283; ".\Source\App_Init.c"	eBondingTempUnit = Centigrade;
-342 01FC [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
-343 01FE [01] [2] 781F      	JMP	_00130_DS_
-344                     _00129_DS_:
-345                     ;	;.line	285; ".\Source\App_Init.c"	else if(tmp == 0x20)
-346 01FF [01] [2] 0620      	MVL	0x20
-347 0200 [01] [2] 6C80      	CPSE	r0x10AB,0
-348 0201 [01] [2] 7808      	JMP	_00126_DS_
-349                     ;	;.line	288; ".\Source\App_Init.c"	eBinding_Status = CentigradeFirst_NonSwitchable;
-350 0202 [01] [2] 0601      	MVL	0x01
-351 0203 [01] [2] 6703      	MVF	_eBinding_Status,1,0
-352                     ;	;.line	290; ".\Source\App_Init.c"	eTempUnit = Centigrade;
-353 0204 [01] [2] 065A      	MVL	0x5a
-354 0205 [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
-355                     ;	;.line	292; ".\Source\App_Init.c"	eBondingTempUnit = Centigrade;
-356 0207 [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
-357 0209 [01] [2] 7814      	JMP	_00130_DS_
-358                     _00126_DS_:
-359                     ;	;.line	294; ".\Source\App_Init.c"	else if(tmp == 0x04)
-360 020A [01] [2] 0604      	MVL	0x04
-361 020B [01] [2] 6C80      	CPSE	r0x10AB,0
-362 020C [01] [2] 7808      	JMP	_00123_DS_
-363                     ;	;.line	297; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_Switchable;
-364 020D [01] [2] 0602      	MVL	0x02
-365 020E [01] [2] 6703      	MVF	_eBinding_Status,1,0
-366                     ;	;.line	299; ".\Source\App_Init.c"	eTempUnit = Fahrenheit;
-367 020F [01] [2] 06A5      	MVL	0xa5
-368 0210 [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
-369                     ;	;.line	301; ".\Source\App_Init.c"	eBondingTempUnit = Fahrenheit;
-370 0212 [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
-371 0214 [01] [2] 7809      	JMP	_00130_DS_
-372                     _00123_DS_:
-373                     ;	;.line	303; ".\Source\App_Init.c"	else if(tmp == 0x00)
-374 0215 [01] [2] 6E80      	TFSZ	r0x10AB,0
-375 0216 [01] [2] 7807      	JMP	_00130_DS_
-376                     ;	;.line	306; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_NonSwitchable;
-377 0217 [01] [2] 0603      	MVL	0x03
-378 0218 [01] [2] 6703      	MVF	_eBinding_Status,1,0
-379                     ;	;.line	308; ".\Source\App_Init.c"	eTempUnit = Fahrenheit;
-380 0219 [01] [2] 06A5      	MVL	0xa5
-381 021A [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
-382                     ;	;.line	310; ".\Source\App_Init.c"	eBondingTempUnit = Fahrenheit;
-383 021C [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
-384                     _00130_DS_:
-385                     ;	;.line	322; ".\Source\App_Init.c"	tmp = PT8 & 0xC0;
-386 021E [01] [2] 646A      	MVF	_PT8,0,0
-387 021F [01] [2] 01C0      	ANDL	0xc0
-388 0220 [01] [2] 6680      	MVF	r0x10AB,1,0
-389                     ;	;.line	324; ".\Source\App_Init.c"	if(tmp == 0xC0)
-390 0221 [01] [2] 03C0      	XORL	0xc0
-391 0222 [01] [2] B02B      	BTSS	_STATUS,0
-392 0223 [01] [2] 7803      	JMP	_00140_DS_
-393                     ;	;.line	328; ".\Source\App_Init.c"	sActual.StableTime = 4;
-394 0224 [01] [2] 0604      	MVL	0x04
-395 0225 [01] [2] 6772      	MVF	(_sActual + 1),1,0
-396 0226 [01] [2] 7810      	JMP	_00141_DS_
-397                     _00140_DS_:
-398                     ;	;.line	330; ".\Source\App_Init.c"	else if(tmp == 0x80)
-399 0227 [01] [2] 3080      	DCF	r0x10AB,0,0
-400 0228 [01] [2] B22B      	BTSS	_STATUS,1
-401 0229 [01] [2] 7803      	JMP	_00137_DS_
-402                     ;	;.line	334; ".\Source\App_Init.c"	sActual.StableTime = 8;
-403 022A [01] [2] 0608      	MVL	0x08
-404 022B [01] [2] 6772      	MVF	(_sActual + 1),1,0
-405 022C [01] [2] 780A      	JMP	_00141_DS_
-406                     _00137_DS_:
-407                     ;	;.line	336; ".\Source\App_Init.c"	else if(tmp == 0x40)
-408 022D [01] [2] 0640      	MVL	0x40
-409 022E [01] [2] 6C80      	CPSE	r0x10AB,0
-410 022F [01] [2] 7803      	JMP	_00134_DS_
-411                     ;	;.line	340; ".\Source\App_Init.c"	sActual.StableTime = 16;
-412 0230 [01] [2] 0610      	MVL	0x10
-413 0231 [01] [2] 6772      	MVF	(_sActual + 1),1,0
-414 0232 [01] [2] 7804      	JMP	_00141_DS_
-415                     _00134_DS_:
-416                     ;	;.line	342; ".\Source\App_Init.c"	else if(tmp == 0x00)
-417 0233 [01] [2] 6E80      	TFSZ	r0x10AB,0
-418 0234 [01] [2] 7802      	JMP	_00141_DS_
-419                     ;	;.line	348; ".\Source\App_Init.c"	sActual.StableTime = 16;
-420 0235 [01] [2] 0610      	MVL	0x10
-421 0236 [01] [2] 6772      	MVF	(_sActual + 1),1,0
-422                     _00141_DS_:
-423                     ;	;.line	355; ".\Source\App_Init.c"	tmp = PT8 & 0x20;
-424 0237 [01] [2] 646A      	MVF	_PT8,0,0
-425 0238 [01] [2] 0120      	ANDL	0x20
-426 0239 [01] [2] 6680      	MVF	r0x10AB,1,0
-427                     ;	;.line	357; ".\Source\App_Init.c"	if(tmp == 0x20)
-428 023A [01] [2] 0320      	XORL	0x20
-429 023B [01] [2] B02B      	BTSS	_STATUS,0
-430 023C [01] [2] 7802      	JMP	_00145_DS_
-431                     ;	;.line	360; ".\Source\App_Init.c"	eVersionCode = VC_DispOff;
-432 023D [01] [2] 0D01      	CLRF	_eVersionCode,0
-433 023E [01] [2] 7804      	JMP	_00147_DS_
-434                     _00145_DS_:
-435                     ;	;.line	362; ".\Source\App_Init.c"	else if(tmp == 0x00)
-436 023F [01] [2] 6E80      	TFSZ	r0x10AB,0
-437 0240 [01] [2] 7802      	JMP	_00147_DS_
-438                     ;	;.line	365; ".\Source\App_Init.c"	eVersionCode = VC_DispOn;
-439 0241 [01] [2] 0601      	MVL	0x01
-440 0242 [01] [2] 6701      	MVF	_eVersionCode,1,0
-441 0243 [01] [2] C4BF      _00147_DS_:
-442                     ;	;.line	367; ".\Source\App_Init.c"	}
-443 0244 [00] [2] 000A      	RET	
-444                     ; exit point of _Binding_Init
-445                     	.ENDFUNC	_Binding_Init
-446                     ;--------------------------------------------------------
-447                     
-448                     .globl _BIE_Init
-449                     
-450                     ;--------------------------------------------------------
-451                     	.FUNC _BIE_Init:$r:0:0:$C:_BIE_Polling:$C:_BIE_Read\
+237                     	.FUNC _E2_Init:$r:0:0:$C:_I2C_ReadByte\
+238                     :$L:r0x10AD:$L:r0x10AE:$L:r0x10AF:$L:r0x10B0
+239                     ;--------------------------------------------------------
+240                     ;	;.line	379; ".\Source\App_Init.c"	sMemory.HeadNo = I2C_ReadByte(E2_HeadNo_Addr);
+241                     _E2_Init:	;Function start
+242                     	MVL	0x01
+243                     	CALL	_I2C_ReadByte
+244                     	.CHKPARA _I2C_ReadByte 1
+245                     	MVF	(_sMemory + 0),1,0
+246                     ;	;.line	381; ".\Source\App_Init.c"	if(sMemory.HeadNo == 0xFF)
+247                     	INSZ	_WREG,0,0
+248                     	JMP	_00153_DS_
+249                     ;	;.line	383; ".\Source\App_Init.c"	sMemory.HeadNo = 0;
+250                     	LDPR	(_sMemory + 0),0x00
+251                     	CLRF	_INDF0,0
+252                     _00153_DS_:
+253                     ;	;.line	387; ".\Source\App_Init.c"	sMemory.pMemTempBuf = I2C_ReadByte(E2_pMemTempBuf_Addr);
+254                     	MVL	0x02
+255                     	CALL	_I2C_ReadByte
+256                     	MVF	(_sMemory + 1),1,0
+257                     ;	;.line	389; ".\Source\App_Init.c"	if(sMemory.pMemTempBuf == 0xFF)
+258                     	INSUZ	_WREG,0,0
+259                     ;	;.line	391; ".\Source\App_Init.c"	sMemory.pMemTempBuf = 0;
+260                     	CLRF	(_sMemory + 1),0
+261                     ;	;.line	395; ".\Source\App_Init.c"	sMemory.MemTempSum = I2C_ReadByte(E2_MemTempSum_Addr);
+262                     	MVL	0x03
+263                     	CALL	_I2C_ReadByte
+264                     	MVF	(_sMemory + 2),1,0
+265                     ;	;.line	397; ".\Source\App_Init.c"	if(sMemory.MemTempSum == 0xFF)
+266                     	INSZ	_WREG,0,0
+267                     	JMP	_00160_DS_
+268                     ;	;.line	399; ".\Source\App_Init.c"	sMemory.MemTempSum = 0;
+269                     	CLRF	(_sMemory + 2),0
+270                     	JMP	_00165_DS_
+271                     _00160_DS_:
+272                     ;	;.line	404; ".\Source\App_Init.c"	if(sMemory.MemTempSum > MemTempNum)
+273                     	MVL	0x0a
+274                     	CPSG	(_sMemory + 2),0
+275                     	JMP	_00157_DS_
+276                     ;	;.line	406; ".\Source\App_Init.c"	sMemory.MemTempSum = MemTempNum;
+277                     	MVL	0x0a
+278                     	MVF	(_sMemory + 2),1,0
+279                     _00157_DS_:
+280                     ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
+281                     	CLRF	r0x10AD,0
+282                     _00163_DS_:
+283                     	MVF	(_sMemory + 2),0,0
+284                     	CPSL	r0x10AD,0
+285                     	JMP	_00165_DS_
+286                     ;	;.line	411; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2;
+287                     	MVF	r0x10AD,0,0
+288                     	MULL	0x02
+289                     	MVF	_PRODL,0,0
+290                     	ADDL	0x04
+291                     ;	;.line	412; ".\Source\App_Init.c"	DH = I2C_ReadByte(addr);
+292                     	CALL	_I2C_ReadByte
+293                     	MVF	r0x10AE,1,0
+294                     ;	;.line	414; ".\Source\App_Init.c"	addr = E2_MemTempBuf_Addr + i * 2 + 1;
+295                     	MVF	_PRODL,0,0
+296                     	ADDL	0x05
+297                     ;	;.line	415; ".\Source\App_Init.c"	DL = I2C_ReadByte(addr);
+298                     	CALL	_I2C_ReadByte
+299                     	MVF	r0x10AF,1,0
+300                     ;	;.line	417; ".\Source\App_Init.c"	sMemory.MemTempBuf[i] = (DH << 8) + DL;
+301                     	MVF	r0x10AD,0,0
+302                     	MULL	0x02
+303                     	MVF	_PRODL,0,0
+304                     	ADDL	(_sMemory + 3)
+305                     	MVF	r0x10B0,1,0
+306                     	MVL	high (_sMemory + 3)
+307                     	BTSZ	_STATUS,4
+308                     	ADDL	0x01
+309                     	MVSF	r0x10B0,_FSR0L
+310                     	MVF	_FSR0H,1,0
+311                     	MVF	r0x10AF,0,0
+312                     	MVF	_POINC0,1,0
+313                     	MVF	r0x10AE,0,0
+314                     	MVF	_INDF0,1,0
+315                     ;	;.line	409; ".\Source\App_Init.c"	for(i = 0;i < sMemory.MemTempSum;i++)
+316                     	INF	r0x10AD,1,0
+317                     	JMP	_00163_DS_
+318                     _00165_DS_:
+319                     ;	;.line	420; ".\Source\App_Init.c"	}
+320                     	RET	
+321                     ; exit point of _E2_Init
+322                     	.ENDFUNC	_E2_Init
+323                     ;--------------------------------------------------------
+324                     
+325                     .globl _Binding_Init
+326                     
+327                     ;--------------------------------------------------------
+328                     	.FUNC _Binding_Init:$r:0:0:$L:r0x10AA
+329                     ;--------------------------------------------------------
+330                     ;	;.line	274; ".\Source\App_Init.c"	tmp = PT1 &  0x24;
+331 0CF1 [00] [2] C481      _Binding_Init:	;Function start
+332 0CF2 [01] [2] 6453      	MVF	_PT1,0,0
+333 0CF3 [01] [2] 0124      	ANDL	0x24
+334 0CF4 [01] [2] 6680      	MVF	r0x10AA,1,0
+335                     ;	;.line	276; ".\Source\App_Init.c"	if(tmp== 0x24)
+336 0CF5 [01] [2] 0324      	XORL	0x24
+337 0CF6 [01] [2] 75        	BTSS	_STATUS,0
+338 0CF6 [01] 07        	JMP	_00129_DS_
+339                     ;	;.line	279; ".\Source\App_Init.c"	eBinding_Status = CentigradeFirst_Switchable;
+340 0CF7 [01] [2] 0D03      	CLRF	_eBinding_Status,0
+341                     ;	;.line	281; ".\Source\App_Init.c"	eTempUnit = Centigrade;
+342 0CF8 [01] [2] 065A      	MVL	0x5a
+343 0CF9 [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
+344                     ;	;.line	283; ".\Source\App_Init.c"	eBondingTempUnit = Centigrade;
+345 0CFB [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
+346 0CFD [01] [2] 781F      	JMP	_00130_DS_
+347                     _00129_DS_:
+348                     ;	;.line	285; ".\Source\App_Init.c"	else if(tmp == 0x20)
+349 0CFE [01] [2] 0620      	MVL	0x20
+350 0CFF [01] [2] 6C80      	CPSE	r0x10AA,0
+351 0D00 [01] [2] 7808      	JMP	_00126_DS_
+352                     ;	;.line	288; ".\Source\App_Init.c"	eBinding_Status = CentigradeFirst_NonSwitchable;
+353 0D01 [01] [2] 0601      	MVL	0x01
+354 0D02 [01] [2] 6703      	MVF	_eBinding_Status,1,0
+355                     ;	;.line	290; ".\Source\App_Init.c"	eTempUnit = Centigrade;
+356 0D03 [01] [2] 065A      	MVL	0x5a
+357 0D04 [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
+358                     ;	;.line	292; ".\Source\App_Init.c"	eBondingTempUnit = Centigrade;
+359 0D06 [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
+360 0D08 [01] [2] 7814      	JMP	_00130_DS_
+361                     _00126_DS_:
+362                     ;	;.line	294; ".\Source\App_Init.c"	else if(tmp == 0x04)
+363 0D09 [01] [2] 0604      	MVL	0x04
+364 0D0A [01] [2] 6C80      	CPSE	r0x10AA,0
+365 0D0B [01] [2] 7808      	JMP	_00123_DS_
+366                     ;	;.line	297; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_Switchable;
+367 0D0C [01] [2] 0602      	MVL	0x02
+368 0D0D [01] [2] 6703      	MVF	_eBinding_Status,1,0
+369                     ;	;.line	299; ".\Source\App_Init.c"	eTempUnit = Fahrenheit;
+370 0D0E [01] [2] 06A5      	MVL	0xa5
+371 0D0F [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
+372                     ;	;.line	301; ".\Source\App_Init.c"	eBondingTempUnit = Fahrenheit;
+373 0D11 [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
+374 0D13 [01] [2] 7809      	JMP	_00130_DS_
+375                     _00123_DS_:
+376                     ;	;.line	303; ".\Source\App_Init.c"	else if(tmp == 0x00)
+377 0D14 [01] [2] 6E80      	TFSZ	r0x10AA,0
+378 0D15 [01] [2] 7807      	JMP	_00130_DS_
+379                     ;	;.line	306; ".\Source\App_Init.c"	eBinding_Status = FahrenheitFirst_NonSwitchable;
+380 0D16 [01] [2] 0603      	MVL	0x03
+381 0D17 [01] [2] 6703      	MVF	_eBinding_Status,1,0
+382                     ;	;.line	308; ".\Source\App_Init.c"	eTempUnit = Fahrenheit;
+383 0D18 [01] [2] 06A5      	MVL	0xa5
+384 0D19 [00] [1] 0011 677F 	MVF	_eTempUnit,1,0
+385                     ;	;.line	310; ".\Source\App_Init.c"	eBondingTempUnit = Fahrenheit;
+386 0D1B [00] [2] 0012 6700 	MVF	_eBondingTempUnit,1,0
+387                     _00130_DS_:
+388                     ;	;.line	322; ".\Source\App_Init.c"	tmp = PT8 & 0xC0;
+389 0D1D [01] [2] 646A      	MVF	_PT8,0,0
+390 0D1E [01] [2] 01C0      	ANDL	0xc0
+391 0D1F [01] [2] 6680      	MVF	r0x10AA,1,0
+392                     ;	;.line	324; ".\Source\App_Init.c"	if(tmp == 0xC0)
+393 0D20 [01] [2] 03C0      	XORL	0xc0
+394 0D21 [01] [2] 75        	BTSS	_STATUS,0
+395 0D21 [01] 03        	JMP	_00140_DS_
+396                     ;	;.line	328; ".\Source\App_Init.c"	sActual.StableTime = 4;
+397 0D22 [01] [2] 0604      	MVL	0x04
+398 0D23 [01] [2] 6772      	MVF	(_sActual + 1),1,0
+399 0D24 [01] [2] 780F      	JMP	_00141_DS_
+400                     _00140_DS_:
+401                     ;	;.line	330; ".\Source\App_Init.c"	else if(tmp == 0x80)
+402 0D25 [01] [2] 3080      	DCF	r0x10AA,0,0
+403 0D26 [01] [2] 77        	BTSS	_STATUS,1
+404 0D26 [01] 03        	JMP	_00137_DS_
+405                     ;	;.line	334; ".\Source\App_Init.c"	sActual.StableTime = 8;
+406 0D27 [01] [2] 0608      	MVL	0x08
+407 0D28 [01] [2] 6772      	MVF	(_sActual + 1),1,0
+408 0D29 [01] [2] 780A      	JMP	_00141_DS_
+409                     _00137_DS_:
+410                     ;	;.line	336; ".\Source\App_Init.c"	else if(tmp == 0x40)
+411 0D2A [01] [2] 0640      	MVL	0x40
+412 0D2B [01] [2] 6C80      	CPSE	r0x10AA,0
+413 0D2C [01] [2] 7803      	JMP	_00134_DS_
+414                     ;	;.line	340; ".\Source\App_Init.c"	sActual.StableTime = 16;
+415 0D2D [01] [2] 0610      	MVL	0x10
+416 0D2E [01] [2] 6772      	MVF	(_sActual + 1),1,0
+417 0D2F [01] [2] 7804      	JMP	_00141_DS_
+418                     _00134_DS_:
+419                     ;	;.line	342; ".\Source\App_Init.c"	else if(tmp == 0x00)
+420 0D30 [01] [2] 6E80      	TFSZ	r0x10AA,0
+421 0D31 [01] [2] 7802      	JMP	_00141_DS_
+422                     ;	;.line	348; ".\Source\App_Init.c"	sActual.StableTime = 16;
+423 0D32 [01] [2] 0610      	MVL	0x10
+424 0D33 [01] [2] 6772      	MVF	(_sActual + 1),1,0
+425                     _00141_DS_:
+426                     ;	;.line	355; ".\Source\App_Init.c"	tmp = PT8 & 0x20;
+427 0D34 [01] [2] 646A      	MVF	_PT8,0,0
+428 0D35 [01] [2] 0120      	ANDL	0x20
+429 0D36 [01] [2] 6680      	MVF	r0x10AA,1,0
+430                     ;	;.line	357; ".\Source\App_Init.c"	if(tmp == 0x20)
+431 0D37 [01] [2] 0320      	XORL	0x20
+432 0D38 [01] [2] 75        	BTSS	_STATUS,0
+433 0D38 [01] 02        	JMP	_00145_DS_
+434                     ;	;.line	360; ".\Source\App_Init.c"	eVersionCode = VC_DispOff;
+435 0D39 [01] [2] 0D01      	CLRF	_eVersionCode,0
+436 0D3A [01] [2] 7804      	JMP	_00147_DS_
+437                     _00145_DS_:
+438                     ;	;.line	362; ".\Source\App_Init.c"	else if(tmp == 0x00)
+439 0D3B [01] [2] 6E80      	TFSZ	r0x10AA,0
+440 0D3C [01] [2] 7802      	JMP	_00147_DS_
+441                     ;	;.line	365; ".\Source\App_Init.c"	eVersionCode = VC_DispOn;
+442 0D3D [01] [2] 0601      	MVL	0x01
+443 0D3E [01] [2] 6701      	MVF	_eVersionCode,1,0
+444 0D3F [01] [2] C4BF      _00147_DS_:
+445                     ;	;.line	367; ".\Source\App_Init.c"	}
+446 0D40 [00] [2] 000A      	RET	
+447                     ; exit point of _Binding_Init
+448                     	.ENDFUNC	_Binding_Init
+449                     ;--------------------------------------------------------
+450                     
+451                     .globl _BIE_Init
 452                     
 453                     ;--------------------------------------------------------
-454                     ;	;.line	238; ".\Source\App_Init.c"	BIE_Available_Addr = BIE_Polling();
-455                     _BIE_Init:	;Function start
-456 1323 [00] [1] C83A      	CALL	_BIE_Polling
-457                     	.CHKPARA _BIE_Polling 0
-458 1324 [00] [2] 67CA      	MVF	_BIE_Available_Addr,1,0
-459                     ;	;.line	240; ".\Source\App_Init.c"	if(BIE_Available_Addr == 0)
-460 1325 [00] [2] 6E29      	TFSZ	_WREG,0
-461 1326 [00] [2] 7806      	JMP	_00113_DS_
-462                     ;	;.line	243; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = 10000;
-463 1327 [00] [2] 0610      	MVL	0x10
-464 1328 [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
-465 1329 [00] [2] 0627      	MVL	0x27
-466 132A [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
-467                     ;	;.line	245; ".\Source\App_Init.c"	sTempCal.BIE_Writed = FALSE;
-468 132B [00] [2] 8190      	BCF	_sTempCal,0
-469 132C [00] [2] 7811      	JMP	_00115_DS_
-470                     _00113_DS_:
-471                     ;	;.line	248; ".\Source\App_Init.c"	else if(BIE_Available_Addr == 0xFF)
-472 132D [00] [2] 3DCA      	INSZ	_BIE_Available_Addr,0,0
-473 132E [00] [2] 7807      	JMP	_00110_DS_
-474                     ;	;.line	250; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = BIE_Read(0x3F);
-475 132F [00] [2] 063F      	MVL	0x3f
-476 1330 [00] [2] C83D      	CALL	_BIE_Read
-477                     	.CHKPARA _BIE_Read 1
-478 1331 [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
-479 1332 [00] [2] 6420      	MVF	STK00,0,0
-480 1333 [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
-481                     ;	;.line	252; ".\Source\App_Init.c"	sTempCal.BIE_Writed = TRUE;
-482 1334 [00] [2] 9190      	BSF	_sTempCal,0
-483 1335 [00] [2] 7808      	JMP	_00115_DS_
-484                     _00110_DS_:
-485                     ;	;.line	257; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = BIE_Read(BIE_Available_Addr - 1);
-486 1336 [00] [2] 31CA      	DCF	_BIE_Available_Addr,0,0
-487 1337 [00] [2] C836      	CALL	_BIE_Read
-488 1338 [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
-489 1339 [00] [2] 6420      	MVF	STK00,0,0
-490 133A [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
-491                     ;	;.line	259; ".\Source\App_Init.c"	sTempCal.BIE_Writed = TRUE;
-492 133B [00] [2] 000C F290 	LDPR	(_sTempCal + 0),0x00
-493 133D [00] [2] 9000      	BSF	_INDF0,0
-494                     _00115_DS_:
-495                     ;	;.line	261; ".\Source\App_Init.c"	}
-496 133E [00] [2] 000A      	RET	
-497                     ; exit point of _BIE_Init
-498                     	.ENDFUNC	_BIE_Init
-499                     ;--------------------------------------------------------
-500                     
-501                     .globl _Param_Init
-502                     
-503                     ;--------------------------------------------------------
-504                     	.FUNC _Param_Init:$r:0:0:$C:_memset\
+454                     	.FUNC _BIE_Init:$r:0:0:$C:_BIE_Polling:$C:_BIE_Read\
+455                     
+456                     ;--------------------------------------------------------
+457                     ;	;.line	238; ".\Source\App_Init.c"	BIE_Available_Addr = BIE_Polling();
+458                     _BIE_Init:	;Function start
+459 0CD5 [00] [1] C89F      	CALL	_BIE_Polling
+460                     	.CHKPARA _BIE_Polling 0
+461 0CD6 [00] [2] 67CA      	MVF	_BIE_Available_Addr,1,0
+462                     ;	;.line	240; ".\Source\App_Init.c"	if(BIE_Available_Addr == 0)
+463 0CD7 [00] [2] 6E29      	TFSZ	_WREG,0
+464 0CD8 [00] [2] 7806      	JMP	_00113_DS_
+465                     ;	;.line	243; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = 10000;
+466 0CD9 [00] [2] 0610      	MVL	0x10
+467 0CDA [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
+468 0CDB [00] [2] 0627      	MVL	0x27
+469 0CDC [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
+470                     ;	;.line	245; ".\Source\App_Init.c"	sTempCal.BIE_Writed = FALSE;
+471 0CDD [00] [2] 8190      	BCF	_sTempCal,0
+472 0CDE [00] [2] 7811      	JMP	_00115_DS_
+473                     _00113_DS_:
+474                     ;	;.line	248; ".\Source\App_Init.c"	else if(BIE_Available_Addr == 0xFF)
+475 0CDF [00] [2] 3DCA      	INSZ	_BIE_Available_Addr,0,0
+476 0CE0 [00] [2] 7807      	JMP	_00110_DS_
+477                     ;	;.line	250; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = BIE_Read(0x3F);
+478 0CE1 [00] [2] 063F      	MVL	0x3f
+479 0CE2 [00] [2] C8A2      	CALL	_BIE_Read
+480                     	.CHKPARA _BIE_Read 1
+481 0CE3 [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
+482 0CE4 [00] [2] 6420      	MVF	STK00,0,0
+483 0CE5 [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
+484                     ;	;.line	252; ".\Source\App_Init.c"	sTempCal.BIE_Writed = TRUE;
+485 0CE6 [00] [2] 9190      	BSF	_sTempCal,0
+486 0CE7 [00] [2] 7808      	JMP	_00115_DS_
+487                     _00110_DS_:
+488                     ;	;.line	257; ".\Source\App_Init.c"	sTempCal.Temp_Ratio = BIE_Read(BIE_Available_Addr - 1);
+489 0CE8 [00] [2] 31CA      	DCF	_BIE_Available_Addr,0,0
+490 0CE9 [00] [2] C89B      	CALL	_BIE_Read
+491 0CEA [00] [2] 6793      	MVF	(_sTempCal + 3),1,0
+492 0CEB [00] [2] 6420      	MVF	STK00,0,0
+493 0CEC [00] [2] 6792      	MVF	(_sTempCal + 2),1,0
+494                     ;	;.line	259; ".\Source\App_Init.c"	sTempCal.BIE_Writed = TRUE;
+495 0CED [00] [2] 000C F290 	LDPR	(_sTempCal + 0),0x00
+496 0CEF [00] [2] 9000      	BSF	_INDF0,0
+497                     _00115_DS_:
+498                     ;	;.line	261; ".\Source\App_Init.c"	}
+499 0CF0 [00] [2] 000A      	RET	
+500                     ; exit point of _BIE_Init
+501                     	.ENDFUNC	_BIE_Init
+502                     ;--------------------------------------------------------
+503                     
+504                     .globl _Param_Init
 505                     
 506                     ;--------------------------------------------------------
-507                     ;	;.line	24; ".\Source\App_Init.c"	eButton_Status = Button_Debouncing;
-508                     _Param_Init:	;Function start
-509 14F3 [00] [2] 0012 0D31 	CLRF	_eButton_Status,0
-510                     ;	;.line	26; ".\Source\App_Init.c"	sBleStatus.TempUploadTimes_Cnt = 0;
-511 14F5 [00] [1] 0011 0D30 	CLRF	(_sBleStatus + 2),0
-512                     ;	;.line	27; ".\Source\App_Init.c"	sBleStatus.pBleRxBuf = 0;
-513 14F7 [00] [1] 0D31      	CLRF	(_sBleStatus + 3),0
-514                     ;	;.line	28; ".\Source\App_Init.c"	memset(sBleStatus.g_Ble_RxData,0,sizeof(sBleStatus.g_Ble_RxData));
-515 14F8 [00] [1] 0612      	MVL	0x12
-516 14F9 [00] [1] 660D      	MVF	_memset_STK03,1,0
-517 14FA [01] [1] 0C0D      	CLRF	_memset_STK02,0
-518 14FB [02] [1] 0C0D      	CLRF	_memset_STK01,0
-519 14FC [03] [1] 0632      	MVL	(_sBleStatus + 4)
-520 14FD [03] [1] 660D      	MVF	_memset_STK00,1,0
-521 14FE [04] [1] 0601      	MVL	high (_sBleStatus + 4)
-522 14FF [04] [1] C8D4      	CALL	_memset
-523                     	.CHKPARA _memset 5
-524                     ;	;.line	30; ".\Source\App_Init.c"	sBleStatus.F_Uart_Receive = 0;
-525 1500 [00] [1] 832E      	BCF	_sBleStatus,1
-526                     ;	;.line	31; ".\Source\App_Init.c"	sBleStatus.F_Temp_Upload = FALSE;
-527 1501 [00] [1] 872E      	BCF	_sBleStatus,3
-528                     ;	;.line	32; ".\Source\App_Init.c"	sBleStatus.F_Temp_Updated = FALSE;
-529 1502 [00] [1] 892E      	BCF	_sBleStatus,4
-530                     ;	;.line	34; ".\Source\App_Init.c"	sMemoryFlag.MemTemp_Updated = FALSE;
-531 1503 [00] [2] 0012 81C6 	BCF	_sMemoryFlag,0
-532                     ;	;.line	36; ".\Source\App_Init.c"	sTempCal.BIE_Write_Action = FALSE;
-533 1505 [00] [2] 8790      	BCF	_sTempCal,3
-534                     ;	;.line	39; ".\Source\App_Init.c"	sTIMx.LVDSampleFlag = 0;
-535 1506 [00] [2] 81CC      	BCF	_sTIMx,0
-536                     ;	;.line	40; ".\Source\App_Init.c"	sTIMx.Cnt50ms = 0;
-537 1507 [00] [2] 0DD0      	CLRF	(_sTIMx + 4),0
-538                     ;	;.line	42; ".\Source\App_Init.c"	sLVD.pLVDBuf = 0;
-539 1508 [00] [2] 0D3F      	CLRF	(_sLVD + 1),0
-540                     ;	;.line	44; ".\Source\App_Init.c"	sLVD.LVD_Test_Completed = FALSE;
-541 1509 [00] [2] 813E      	BCF	_sLVD,0
-542                     ;	;.line	46; ".\Source\App_Init.c"	sLVD.LVD_Low = FALSE;
-543 150A [00] [2] 833E      	BCF	_sLVD,1
-544                     ;	;.line	50; ".\Source\App_Init.c"	sTimeStamp.Get_DispCOM_Start_Time_Flag = FALSE;
-545 150B [00] [2] 8307      	BCF	_sTimeStamp,1
-546                     ;	;.line	55; ".\Source\App_Init.c"	sButton.Flag_Button_Lift_Once = FALSE;
-547 150C [00] [2] 8B05      	BCF	_sButton,5
-548                     ;	;.line	58; ".\Source\App_Init.c"	sButton.Flag_Button_Press_Once = FALSE;
-549 150D [00] [2] 8105      	BCF	_sButton,0
-550                     ;	;.line	62; ".\Source\App_Init.c"	eButton_Status = Button_Debouncing;
-551 150E [00] [2] 0D31      	CLRF	_eButton_Status,0
-552                     ;	;.line	64; ".\Source\App_Init.c"	sTimeStamp.Get_ButtonLift_Flag = FALSE;
-553 150F [00] [2] 8B07      	BCF	_sTimeStamp,5
-554                     ;	;.line	66; ".\Source\App_Init.c"	sTimeStamp.Get_ButtonPress_Flag = FALSE;
-555 1510 [00] [2] 8907      	BCF	_sTimeStamp,4
-556                     ;	;.line	70; ".\Source\App_Init.c"	sTimeStamp.Get_BleMode_Flag = FALSE;
-557 1511 [00] [2] 8D07      	BCF	_sTimeStamp,6
-558                     ;	;.line	72; ".\Source\App_Init.c"	sTimeStamp.Get_Ble_Connect_Max_Time_Flag = FALSE;
-559 1512 [00] [2] 8F07      	BCF	_sTimeStamp,7
-560                     ;	;.line	74; ".\Source\App_Init.c"	sTimeStamp.Get_EMC_Temp_Update_Time_Flag = FALSE;
-561 1513 [00] [2] 8108      	BCF	(_sTimeStamp+1),0
-562                     ;	;.line	76; ".\Source\App_Init.c"	sBleStatus.AutoBps_OnOff = 0;
-563 1514 [00] [1] 0011 8B2E 	BCF	_sBleStatus,5
-564                     ;	;.line	79; ".\Source\App_Init.c"	sADC.ADCCounts = 0;
-565 1516 [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
-566                     ;	;.line	81; ".\Source\App_Init.c"	sADC.Centigrade250msTemp = 0;
-567 1518 [00] [2] 0D50      	CLRF	(_sADC + 13),0
-568 1519 [00] [2] 0D51      	CLRF	(_sADC + 14),0
-569                     ;	;.line	83; ".\Source\App_Init.c"	sADC.Flag_ADCDone = FALSE;
-570 151A [00] [2] 8343      	BCF	_sADC,1
-571                     ;	;.line	85; ".\Source\App_Init.c"	sADC.Get_250msTemp_Flag =FALSE;
-572 151B [00] [2] 8143      	BCF	_sADC,0
-573                     ;	;.line	87; ".\Source\App_Init.c"	sADC.Flag_DefaultNTCChl_AI12_AI13 = TRUE;
-574 151C [00] [2] 9743      	BSF	_sADC,3
-575                     ;	;.line	89; ".\Source\App_Init.c"	sADC.UnRefreshTemp = FALSE;
-576 151D [00] [2] 8943      	BCF	_sADC,4
-577                     ;	;.line	91; ".\Source\App_Init.c"	sADC.RefreshTempFast = TRUE;
-578 151E [00] [2] 9B43      	BSF	_sADC,5
-579                     ;	;.line	95; ".\Source\App_Init.c"	sTimeStamp.Get_Buzzer_Start_Timer_Flag = FALSE;
-580 151F [00] [2] 8707      	BCF	_sTimeStamp,3
-581                     ;	;.line	99; ".\Source\App_Init.c"	sTIMx.Cnt50ms = 0;
-582 1520 [00] [2] 0DD0      	CLRF	(_sTIMx + 4),0
-583                     ;	;.line	101; ".\Source\App_Init.c"	sTIMx.Cnt125ms = 0;
-584 1521 [00] [2] 0DD1      	CLRF	(_sTIMx + 5),0
-585 1522 [00] [2] 0DD2      	CLRF	(_sTIMx + 6),0
-586                     ;	;.line	103; ".\Source\App_Init.c"	sTIMx.Cnt250ms = 0;
-587 1523 [00] [2] 0DD3      	CLRF	(_sTIMx + 7),0
-588 1524 [00] [2] 0DD4      	CLRF	(_sTIMx + 8),0
-589                     ;	;.line	105; ".\Source\App_Init.c"	sTIMx.Cnt500ms = 0;
-590 1525 [00] [2] 0DD5      	CLRF	(_sTIMx + 9),0
-591 1526 [00] [2] 0DD6      	CLRF	(_sTIMx + 10),0
-592                     ;	;.line	107; ".\Source\App_Init.c"	sTimeStamp.Timer_Journey = 0;
-593 1527 [00] [2] 0D09      	CLRF	(_sTimeStamp + 2),0
-594 1528 [00] [2] 0D0A      	CLRF	(_sTimeStamp + 3),0
-595 1529 [00] [2] 0D0B      	CLRF	(_sTimeStamp + 4),0
-596 152A [00] [2] 0D0C      	CLRF	(_sTimeStamp + 5),0
-597                     ;	;.line	110; ".\Source\App_Init.c"	sTempCal.Reset_From_CalOK = FALSE;
-598 152B [00] [2] 8B90      	BCF	_sTempCal,5
-599                     ;	;.line	113; ".\Source\App_Init.c"	UnitExchangeCompleted = FALSE;
-600 152C [00] [2] 0D34      	CLRF	_UnitExchangeCompleted,0
-601                     ;	;.line	114; ".\Source\App_Init.c"	sBacklight.Backlight2SFlag = FALSE;
-602 152D [00] [1] 0011 812C 	BCF	_sBacklight,0
-603                     ;	;.line	116; ".\Source\App_Init.c"	sBacklight.MeasuredTempLighting = FALSE;
-604 152F [00] [1] 832C      	BCF	_sBacklight,1
-605                     ;	;.line	119; ".\Source\App_Init.c"	sMemoryFlag.MemTempDispNo = 1;
-606 1530 [00] [1] 0601      	MVL	0x01
-607 1531 [00] [2] 0012 67C7 	MVF	(_sMemoryFlag + 1),1,0
-608                     ;	;.line	121; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_RAM_EN = TRUE;
-609 1533 [00] [2] 93C6      	BSF	_sMemoryFlag,1
-610                     ;	;.line	123; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_E2_EN = TRUE;
-611 1534 [00] [2] 95C6      	BSF	_sMemoryFlag,2
-612                     ;	;.line	125; ".\Source\App_Init.c"	sMemoryFlag.Update_MemTempDispNo = FALSE;
-613 1535 [00] [2] 89C6      	BCF	_sMemoryFlag,4
-614                     ;	;.line	127; ".\Source\App_Init.c"	sMemoryFlag.Update_MemTempDispVlaue = FALSE;
-615 1536 [00] [2] 8BC6      	BCF	_sMemoryFlag,5
-616                     ;	;.line	129; ".\Source\App_Init.c"	sMemoryFlag.MemTempDispValue = sMemory.pMemTempBuf;
-617 1537 [00] [2] 65B0      	MVF	(_sMemory + 1),0,0
-618 1538 [00] [2] 67C8      	MVF	(_sMemoryFlag + 2),1,0
-619                     ;	;.line	132; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_RAM_Only = FALSE;
-620 1539 [00] [2] 87C6      	BCF	_sMemoryFlag,3
-621                     ;	;.line	137; ".\Source\App_Init.c"	sTimeStamp.Get_Backlight_Start_Time_Flag = FALSE;
-622 153A [00] [2] 8507      	BCF	_sTimeStamp,2
-623                     ;	;.line	140; ".\Source\App_Init.c"	sActual.ActualTime = 0;
-624 153B [00] [2] 0D73      	CLRF	(_sActual + 2),0
-625                     ;	;.line	142; ".\Source\App_Init.c"	sActual.Actual_Start = FALSE;
-626 153C [00] [2] 8171      	BCF	_sActual,0
-627                     ;	;.line	144; ".\Source\App_Init.c"	sActual.TempFastFlag = FALSE;
-628 153D [00] [2] 8371      	BCF	_sActual,1
-629                     ;	;.line	146; ".\Source\App_Init.c"	sActual.PresetMeasTimeCompletedFlag = FALSE;
-630 153E [00] [2] 8571      	BCF	_sActual,2
-631                     ;	;.line	150; ".\Source\App_Init.c"	sForecast.FlagStartAlgorithmCounts = FALSE;
-632 153F [00] [2] 8576      	BCF	_sForecast,2
-633                     ;	;.line	152; ".\Source\App_Init.c"	sForecast.Start_Counts = 1;
-634 1540 [00] [2] 0601      	MVL	0x01
-635 1541 [00] [2] 6778      	MVF	(_sForecast + 2),1,0
-636                     ;	;.line	154; ".\Source\App_Init.c"	sForecast.Drop_Counts = 0;
-637 1542 [00] [2] 0D79      	CLRF	(_sForecast + 3),0
-638                     ;	;.line	156; ".\Source\App_Init.c"	sForecast.ForecastTemp = 0;
-639 1543 [00] [2] 0D8C      	CLRF	(_sForecast + 22),0
-640 1544 [00] [2] 0D8D      	CLRF	(_sForecast + 23),0
-641 1545 [00] [2] 0D8E      	CLRF	(_sForecast + 24),0
-642 1546 [00] [2] 0D8F      	CLRF	(_sForecast + 25),0
-643                     ;	;.line	158; ".\Source\App_Init.c"	sForecast.PreBath_Counts = 0;
-644 1547 [00] [2] 0D7A      	CLRF	(_sForecast + 4),0
-645                     ;	;.line	160; ".\Source\App_Init.c"	sForecast.Forecast_Start = FALSE;
-646 1548 [00] [2] 8176      	BCF	_sForecast,0
-647                     ;	;.line	162; ".\Source\App_Init.c"	sActual_Forecast.ResetTimeFlag = FALSE;
-648 1549 [00] [2] 899F      	BCF	_sActual_Forecast,4
-649                     ;	;.line	164; ".\Source\App_Init.c"	sForecast.Update_MaxTemp3Min_Arrived = FALSE;
-650 154A [00] [2] 8376      	BCF	_sForecast,1
-651                     ;	;.line	168; ".\Source\App_Init.c"	sActual_Forecast.AF_Start = FALSE;
-652 154B [00] [2] 819F      	BCF	_sActual_Forecast,0
-653                     ;	;.line	170; ".\Source\App_Init.c"	sActual_Forecast.Cnt_1S = 0;
-654 154C [00] [2] 0DA0      	CLRF	(_sActual_Forecast + 1),0
-655                     ;	;.line	171; ".\Source\App_Init.c"	sActual_Forecast.Cnt_Test_1S = 0;
-656 154D [00] [2] 0DA1      	CLRF	(_sActual_Forecast + 2),0
-657                     ;	;.line	173; ".\Source\App_Init.c"	sForecast.Forecast_Counts = 0;
-658 154E [00] [2] 0D7B      	CLRF	(_sForecast + 5),0
-659                     ;	;.line	176; ".\Source\App_Init.c"	sActual_Forecast.Temp_T1 = 0;
-660 154F [00] [2] 0DA6      	CLRF	(_sActual_Forecast + 7),0
-661 1550 [00] [2] 0DA7      	CLRF	(_sActual_Forecast + 8),0
-662                     ;	;.line	178; ".\Source\App_Init.c"	sActual_Forecast.Temp_T2 = 0;
-663 1551 [00] [2] 0DA8      	CLRF	(_sActual_Forecast + 9),0
-664 1552 [00] [2] 0DA9      	CLRF	(_sActual_Forecast + 10),0
-665                     ;	;.line	180; ".\Source\App_Init.c"	sActual_Forecast.Temp_T3 = 0;
-666 1553 [00] [2] 0DAA      	CLRF	(_sActual_Forecast + 11),0
-667 1554 [00] [2] 0DAB      	CLRF	(_sActual_Forecast + 12),0
-668                     ;	;.line	183; ".\Source\App_Init.c"	sActual_Forecast.CentigradeTempDisp = 0;
-669 1555 [00] [2] 0DA2      	CLRF	(_sActual_Forecast + 3),0
-670 1556 [00] [2] 0DA3      	CLRF	(_sActual_Forecast + 4),0
-671                     ;	;.line	185; ".\Source\App_Init.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
-672 1557 [00] [2] 879F      	BCF	_sActual_Forecast,3
-673                     ;	;.line	187; ".\Source\App_Init.c"	sActual_Forecast.StableBuzzerFlag = FALSE;
-674 1558 [00] [2] 839F      	BCF	_sActual_Forecast,1
-675                     ;	;.line	189; ".\Source\App_Init.c"	sActual_Forecast.ActualForecast_SelectFlag = FALSE;
-676 1559 [00] [2] 859F      	BCF	_sActual_Forecast,2
-677                     ;	;.line	193; ".\Source\App_Init.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = FALSE;
-678 155A [00] [2] 8107      	BCF	_sTimeStamp,0
-679                     ;	;.line	197; ".\Source\App_Init.c"	memset(ERR,0,sizeof(ERR));
-680 155B [00] [2] 0609      	MVL	0x09
-681 155C [00] [2] 660D      	MVF	_memset_STK03,1,0
-682 155D [01] [2] 0C0D      	CLRF	_memset_STK02,0
-683 155E [02] [2] 0C0D      	CLRF	_memset_STK01,0
-684 155F [03] [2] 0635      	MVL	(_ERR + 0)
-685 1560 [03] [2] 660D      	MVF	_memset_STK00,1,0
-686 1561 [04] [2] 0602      	MVL	high (_ERR + 0)
-687 1562 [04] [2] C871      	CALL	_memset
-688                     ;	;.line	206; ".\Source\App_Init.c"	eTo_Actual_Ways = To_Actual_3Min;
-689 1563 [00] [2] 065A      	MVL	0x5a
-690 1564 [00] [2] 67AE      	MVF	_eTo_Actual_Ways,1,0
+507                     	.FUNC _Param_Init:$r:0:0:$C:_memset\
+508                     
+509                     ;--------------------------------------------------------
+510                     ;	;.line	24; ".\Source\App_Init.c"	eButton_Status = Button_Debouncing;
+511                     _Param_Init:	;Function start
+512 0FB2 [00] [2] 0012 0D31 	CLRF	_eButton_Status,0
+513                     ;	;.line	26; ".\Source\App_Init.c"	sBleStatus.TempUploadTimes_Cnt = 0;
+514 0FB4 [00] [1] 0011 0D30 	CLRF	(_sBleStatus + 2),0
+515                     ;	;.line	27; ".\Source\App_Init.c"	sBleStatus.pBleRxBuf = 0;
+516 0FB6 [00] [1] 0D31      	CLRF	(_sBleStatus + 3),0
+517                     ;	;.line	28; ".\Source\App_Init.c"	memset(sBleStatus.g_Ble_RxData,0,sizeof(sBleStatus.g_Ble_RxData));
+518 0FB7 [00] [1] 0612      	MVL	0x12
+519 0FB8 [00] [1] 660D      	MVF	_memset_STK03,1,0
+520 0FB9 [01] [1] 0C0D      	CLRF	_memset_STK02,0
+521 0FBA [02] [1] 0C0D      	CLRF	_memset_STK01,0
+522 0FBB [03] [1] 0632      	MVL	(_sBleStatus + 4)
+523 0FBC [03] [1] 660D      	MVF	_memset_STK00,1,0
+524 0FBD [04] [1] 0601      	MVL	high (_sBleStatus + 4)
+525 0FBE [04] [1] C868      	CALL	_memset
+526                     	.CHKPARA _memset 5
+527                     ;	;.line	30; ".\Source\App_Init.c"	sBleStatus.F_Uart_Receive = 0;
+528 0FBF [00] [1] 832E      	BCF	_sBleStatus,1
+529                     ;	;.line	31; ".\Source\App_Init.c"	sBleStatus.F_Temp_Upload = FALSE;
+530 0FC0 [00] [1] 872E      	BCF	_sBleStatus,3
+531                     ;	;.line	32; ".\Source\App_Init.c"	sBleStatus.F_Temp_Updated = FALSE;
+532 0FC1 [00] [1] 892E      	BCF	_sBleStatus,4
+533                     ;	;.line	34; ".\Source\App_Init.c"	sMemoryFlag.MemTemp_Updated = FALSE;
+534 0FC2 [00] [2] 0012 81C6 	BCF	_sMemoryFlag,0
+535                     ;	;.line	36; ".\Source\App_Init.c"	sTempCal.BIE_Write_Action = FALSE;
+536 0FC4 [00] [2] 8790      	BCF	_sTempCal,3
+537                     ;	;.line	39; ".\Source\App_Init.c"	sTIMx.LVDSampleFlag = 0;
+538 0FC5 [00] [2] 81CC      	BCF	_sTIMx,0
+539                     ;	;.line	40; ".\Source\App_Init.c"	sTIMx.Cnt50ms = 0;
+540 0FC6 [00] [2] 0DD0      	CLRF	(_sTIMx + 4),0
+541                     ;	;.line	42; ".\Source\App_Init.c"	sLVD.pLVDBuf = 0;
+542 0FC7 [00] [2] 0D3F      	CLRF	(_sLVD + 1),0
+543                     ;	;.line	44; ".\Source\App_Init.c"	sLVD.LVD_Test_Completed = FALSE;
+544 0FC8 [00] [2] 813E      	BCF	_sLVD,0
+545                     ;	;.line	46; ".\Source\App_Init.c"	sLVD.LVD_Low = FALSE;
+546 0FC9 [00] [2] 833E      	BCF	_sLVD,1
+547                     ;	;.line	50; ".\Source\App_Init.c"	sTimeStamp.Get_DispCOM_Start_Time_Flag = FALSE;
+548 0FCA [00] [2] 8307      	BCF	_sTimeStamp,1
+549                     ;	;.line	55; ".\Source\App_Init.c"	sButton.Flag_Button_Lift_Once = FALSE;
+550 0FCB [00] [2] 8B05      	BCF	_sButton,5
+551                     ;	;.line	58; ".\Source\App_Init.c"	sButton.Flag_Button_Press_Once = FALSE;
+552 0FCC [00] [2] 8105      	BCF	_sButton,0
+553                     ;	;.line	62; ".\Source\App_Init.c"	eButton_Status = Button_Debouncing;
+554 0FCD [00] [2] 0D31      	CLRF	_eButton_Status,0
+555                     ;	;.line	64; ".\Source\App_Init.c"	sTimeStamp.Get_ButtonLift_Flag = FALSE;
+556 0FCE [00] [2] 8B07      	BCF	_sTimeStamp,5
+557                     ;	;.line	66; ".\Source\App_Init.c"	sTimeStamp.Get_ButtonPress_Flag = FALSE;
+558 0FCF [00] [2] 8907      	BCF	_sTimeStamp,4
+559                     ;	;.line	70; ".\Source\App_Init.c"	sTimeStamp.Get_BleMode_Flag = FALSE;
+560 0FD0 [00] [2] 8D07      	BCF	_sTimeStamp,6
+561                     ;	;.line	72; ".\Source\App_Init.c"	sTimeStamp.Get_Ble_Connect_Max_Time_Flag = FALSE;
+562 0FD1 [00] [2] 8F07      	BCF	_sTimeStamp,7
+563                     ;	;.line	74; ".\Source\App_Init.c"	sTimeStamp.Get_EMC_Temp_Update_Time_Flag = FALSE;
+564 0FD2 [00] [2] 8108      	BCF	(_sTimeStamp+1),0
+565                     ;	;.line	76; ".\Source\App_Init.c"	sBleStatus.AutoBps_OnOff = 0;
+566 0FD3 [00] [1] 0011 8B2E 	BCF	_sBleStatus,5
+567                     ;	;.line	79; ".\Source\App_Init.c"	sADC.ADCCounts = 0;
+568 0FD5 [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
+569                     ;	;.line	81; ".\Source\App_Init.c"	sADC.Centigrade250msTemp = 0;
+570 0FD7 [00] [2] 0D50      	CLRF	(_sADC + 13),0
+571 0FD8 [00] [2] 0D51      	CLRF	(_sADC + 14),0
+572                     ;	;.line	83; ".\Source\App_Init.c"	sADC.Flag_ADCDone = FALSE;
+573 0FD9 [00] [2] 8343      	BCF	_sADC,1
+574                     ;	;.line	85; ".\Source\App_Init.c"	sADC.Get_250msTemp_Flag =FALSE;
+575 0FDA [00] [2] 8143      	BCF	_sADC,0
+576                     ;	;.line	87; ".\Source\App_Init.c"	sADC.Flag_DefaultNTCChl_AI12_AI13 = TRUE;
+577 0FDB [00] [2] 9743      	BSF	_sADC,3
+578                     ;	;.line	89; ".\Source\App_Init.c"	sADC.UnRefreshTemp = FALSE;
+579 0FDC [00] [2] 8943      	BCF	_sADC,4
+580                     ;	;.line	91; ".\Source\App_Init.c"	sADC.RefreshTempFast = TRUE;
+581 0FDD [00] [2] 9B43      	BSF	_sADC,5
+582                     ;	;.line	95; ".\Source\App_Init.c"	sTimeStamp.Get_Buzzer_Start_Timer_Flag = FALSE;
+583 0FDE [00] [2] 8707      	BCF	_sTimeStamp,3
+584                     ;	;.line	99; ".\Source\App_Init.c"	sTIMx.Cnt50ms = 0;
+585 0FDF [00] [2] 0DD0      	CLRF	(_sTIMx + 4),0
+586                     ;	;.line	101; ".\Source\App_Init.c"	sTIMx.Cnt125ms = 0;
+587 0FE0 [00] [2] 0DD1      	CLRF	(_sTIMx + 5),0
+588 0FE1 [00] [2] 0DD2      	CLRF	(_sTIMx + 6),0
+589                     ;	;.line	103; ".\Source\App_Init.c"	sTIMx.Cnt250ms = 0;
+590 0FE2 [00] [2] 0DD3      	CLRF	(_sTIMx + 7),0
+591 0FE3 [00] [2] 0DD4      	CLRF	(_sTIMx + 8),0
+592                     ;	;.line	105; ".\Source\App_Init.c"	sTIMx.Cnt500ms = 0;
+593 0FE4 [00] [2] 0DD5      	CLRF	(_sTIMx + 9),0
+594 0FE5 [00] [2] 0DD6      	CLRF	(_sTIMx + 10),0
+595                     ;	;.line	107; ".\Source\App_Init.c"	sTimeStamp.Timer_Journey = 0;
+596 0FE6 [00] [2] 0D09      	CLRF	(_sTimeStamp + 2),0
+597 0FE7 [00] [2] 0D0A      	CLRF	(_sTimeStamp + 3),0
+598 0FE8 [00] [2] 0D0B      	CLRF	(_sTimeStamp + 4),0
+599 0FE9 [00] [2] 0D0C      	CLRF	(_sTimeStamp + 5),0
+600                     ;	;.line	110; ".\Source\App_Init.c"	sTempCal.Reset_From_CalOK = FALSE;
+601 0FEA [00] [2] 8B90      	BCF	_sTempCal,5
+602                     ;	;.line	113; ".\Source\App_Init.c"	UnitExchangeCompleted = FALSE;
+603 0FEB [00] [2] 0D34      	CLRF	_UnitExchangeCompleted,0
+604                     ;	;.line	114; ".\Source\App_Init.c"	sBacklight.Backlight2SFlag = FALSE;
+605 0FEC [00] [1] 0011 812C 	BCF	_sBacklight,0
+606                     ;	;.line	116; ".\Source\App_Init.c"	sBacklight.MeasuredTempLighting = FALSE;
+607 0FEE [00] [1] 832C      	BCF	_sBacklight,1
+608                     ;	;.line	119; ".\Source\App_Init.c"	sMemoryFlag.MemTempDispNo = 1;
+609 0FEF [00] [1] 0601      	MVL	0x01
+610 0FF0 [00] [2] 0012 67C7 	MVF	(_sMemoryFlag + 1),1,0
+611                     ;	;.line	121; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_RAM_EN = TRUE;
+612 0FF2 [00] [2] 93C6      	BSF	_sMemoryFlag,1
+613                     ;	;.line	123; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_E2_EN = TRUE;
+614 0FF3 [00] [2] 95C6      	BSF	_sMemoryFlag,2
+615                     ;	;.line	125; ".\Source\App_Init.c"	sMemoryFlag.Update_MemTempDispNo = FALSE;
+616 0FF4 [00] [2] 89C6      	BCF	_sMemoryFlag,4
+617                     ;	;.line	127; ".\Source\App_Init.c"	sMemoryFlag.Update_MemTempDispVlaue = FALSE;
+618 0FF5 [00] [2] 8BC6      	BCF	_sMemoryFlag,5
+619                     ;	;.line	129; ".\Source\App_Init.c"	sMemoryFlag.MemTempDispValue = sMemory.pMemTempBuf;
+620 0FF6 [00] [2] 65B0      	MVF	(_sMemory + 1),0,0
+621 0FF7 [00] [2] 67C8      	MVF	(_sMemoryFlag + 2),1,0
+622                     ;	;.line	132; ".\Source\App_Init.c"	sMemoryFlag.Write_MemTemp_RAM_Only = FALSE;
+623 0FF8 [00] [2] 87C6      	BCF	_sMemoryFlag,3
+624                     ;	;.line	137; ".\Source\App_Init.c"	sTimeStamp.Get_Backlight_Start_Time_Flag = FALSE;
+625 0FF9 [00] [2] 8507      	BCF	_sTimeStamp,2
+626                     ;	;.line	140; ".\Source\App_Init.c"	sActual.ActualTime = 0;
+627 0FFA [00] [2] 0D73      	CLRF	(_sActual + 2),0
+628                     ;	;.line	142; ".\Source\App_Init.c"	sActual.Actual_Start = FALSE;
+629 0FFB [00] [2] 8171      	BCF	_sActual,0
+630                     ;	;.line	144; ".\Source\App_Init.c"	sActual.TempFastFlag = FALSE;
+631 0FFC [00] [2] 8371      	BCF	_sActual,1
+632                     ;	;.line	146; ".\Source\App_Init.c"	sActual.PresetMeasTimeCompletedFlag = FALSE;
+633 0FFD [00] [2] 8571      	BCF	_sActual,2
+634                     ;	;.line	150; ".\Source\App_Init.c"	sForecast.FlagStartAlgorithmCounts = FALSE;
+635 0FFE [00] [2] 8576      	BCF	_sForecast,2
+636                     ;	;.line	152; ".\Source\App_Init.c"	sForecast.Start_Counts = 1;
+637 0FFF [00] [2] 0601      	MVL	0x01
+638 1000 [00] [2] 6778      	MVF	(_sForecast + 2),1,0
+639                     ;	;.line	154; ".\Source\App_Init.c"	sForecast.Drop_Counts = 0;
+640 1001 [00] [2] 0D79      	CLRF	(_sForecast + 3),0
+641                     ;	;.line	156; ".\Source\App_Init.c"	sForecast.ForecastTemp = 0;
+642 1002 [00] [2] 0D8C      	CLRF	(_sForecast + 22),0
+643 1003 [00] [2] 0D8D      	CLRF	(_sForecast + 23),0
+644 1004 [00] [2] 0D8E      	CLRF	(_sForecast + 24),0
+645 1005 [00] [2] 0D8F      	CLRF	(_sForecast + 25),0
+646                     ;	;.line	158; ".\Source\App_Init.c"	sForecast.PreBath_Counts = 0;
+647 1006 [00] [2] 0D7A      	CLRF	(_sForecast + 4),0
+648                     ;	;.line	160; ".\Source\App_Init.c"	sForecast.Forecast_Start = FALSE;
+649 1007 [00] [2] 8176      	BCF	_sForecast,0
+650                     ;	;.line	162; ".\Source\App_Init.c"	sActual_Forecast.ResetTimeFlag = FALSE;
+651 1008 [00] [2] 899F      	BCF	_sActual_Forecast,4
+652                     ;	;.line	164; ".\Source\App_Init.c"	sForecast.Update_MaxTemp3Min_Arrived = FALSE;
+653 1009 [00] [2] 8376      	BCF	_sForecast,1
+654                     ;	;.line	168; ".\Source\App_Init.c"	sActual_Forecast.AF_Start = FALSE;
+655 100A [00] [2] 819F      	BCF	_sActual_Forecast,0
+656                     ;	;.line	170; ".\Source\App_Init.c"	sActual_Forecast.Cnt_1S = 0;
+657 100B [00] [2] 0DA0      	CLRF	(_sActual_Forecast + 1),0
+658                     ;	;.line	171; ".\Source\App_Init.c"	sActual_Forecast.Cnt_Test_1S = 0;
+659 100C [00] [2] 0DA1      	CLRF	(_sActual_Forecast + 2),0
+660                     ;	;.line	173; ".\Source\App_Init.c"	sForecast.Forecast_Counts = 0;
+661 100D [00] [2] 0D7B      	CLRF	(_sForecast + 5),0
+662                     ;	;.line	176; ".\Source\App_Init.c"	sActual_Forecast.Temp_T1 = 0;
+663 100E [00] [2] 0DA6      	CLRF	(_sActual_Forecast + 7),0
+664 100F [00] [2] 0DA7      	CLRF	(_sActual_Forecast + 8),0
+665                     ;	;.line	178; ".\Source\App_Init.c"	sActual_Forecast.Temp_T2 = 0;
+666 1010 [00] [2] 0DA8      	CLRF	(_sActual_Forecast + 9),0
+667 1011 [00] [2] 0DA9      	CLRF	(_sActual_Forecast + 10),0
+668                     ;	;.line	180; ".\Source\App_Init.c"	sActual_Forecast.Temp_T3 = 0;
+669 1012 [00] [2] 0DAA      	CLRF	(_sActual_Forecast + 11),0
+670 1013 [00] [2] 0DAB      	CLRF	(_sActual_Forecast + 12),0
+671                     ;	;.line	183; ".\Source\App_Init.c"	sActual_Forecast.CentigradeTempDisp = 0;
+672 1014 [00] [2] 0DA2      	CLRF	(_sActual_Forecast + 3),0
+673 1015 [00] [2] 0DA3      	CLRF	(_sActual_Forecast + 4),0
+674                     ;	;.line	185; ".\Source\App_Init.c"	sActual_Forecast.Get_1sTempFlag = FALSE;
+675 1016 [00] [2] 879F      	BCF	_sActual_Forecast,3
+676                     ;	;.line	187; ".\Source\App_Init.c"	sActual_Forecast.StableBuzzerFlag = FALSE;
+677 1017 [00] [2] 839F      	BCF	_sActual_Forecast,1
+678                     ;	;.line	189; ".\Source\App_Init.c"	sActual_Forecast.ActualForecast_SelectFlag = FALSE;
+679 1018 [00] [2] 859F      	BCF	_sActual_Forecast,2
+680                     ;	;.line	193; ".\Source\App_Init.c"	sTimeStamp.Get_ForecastMeas_Start_Timer_Flag = FALSE;
+681 1019 [00] [2] 8107      	BCF	_sTimeStamp,0
+682                     ;	;.line	197; ".\Source\App_Init.c"	memset(ERR,0,sizeof(ERR));
+683 101A [00] [2] 0609      	MVL	0x09
+684 101B [00] [2] 660D      	MVF	_memset_STK03,1,0
+685 101C [01] [2] 0C0D      	CLRF	_memset_STK02,0
+686 101D [02] [2] 0C0D      	CLRF	_memset_STK01,0
+687 101E [03] [2] 0635      	MVL	(_ERR + 0)
+688 101F [03] [2] 660D      	MVF	_memset_STK00,1,0
+689 1020 [04] [2] 0602      	MVL	high (_ERR + 0)
+690 1021 [04] [2] C805      	CALL	_memset
 691                     ;	;.line	224; ".\Source\App_Init.c"	sADC.PreviousCentigrade250msTemp = 0;
-692 1565 [00] [2] 0D52      	CLRF	(_sADC + 15),0
-693 1566 [00] [2] 0D53      	CLRF	(_sADC + 16),0
+692 1022 [00] [2] 0D52      	CLRF	(_sADC + 15),0
+693 1023 [00] [2] 0D53      	CLRF	(_sADC + 16),0
 694                     ;	;.line	227; ".\Source\App_Init.c"	Flag_No_Buzzer = FALSE;
-695 1567 [00] [1] 0011 0D6B 	CLRF	_Flag_No_Buzzer,0
+695 1024 [00] [1] 0011 0D6B 	CLRF	_Flag_No_Buzzer,0
 696                     ;	;.line	228; ".\Source\App_Init.c"	}
-697 1569 [00] [1] 000A      	RET	
+697 1026 [00] [1] 000A      	RET	
 698                     ; exit point of _Param_Init
 699                     	.ENDFUNC	_Param_Init
 700                     ;--------------------------------------------------------
@@ -1040,11 +1040,11 @@
 1040                     	;--cdb--S:G$ADCRM$0$0({1}SC:U),I,0,0
 1041                     	;--cdb--S:G$ADCRL$0$0({1}SC:U),I,0,0
 1042                     	;--cdb--S:G$TEMDATA$0$0({1}SC:U),I,0,0
-1043                     	;--cdb--S:LApp_Init.Binding_Init._Binding_Init_tmp_10000_423$tmp$2710$423({1}SC:U),R,0,0,[r0x10AB]
-1044                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_i_10000_445$i$2710$445({1}SC:U),R,0,0,[r0x10AE]
-1045                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_addr_10000_445$addr$2710$445({1}SC:U),R,0,0,[r0x10B0]
-1046                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_DH_10000_445$DH$2710$445({1}SC:U),R,0,0,[r0x10AF]
-1047                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_DL_10000_445$DL$2710$445({1}SC:U),R,0,0,[r0x10B0]
+1043                     	;--cdb--S:LApp_Init.Binding_Init._Binding_Init_tmp_10000_423$tmp$2710$423({1}SC:U),R,0,0,[r0x10AA]
+1044                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_i_10000_445$i$2710$445({1}SC:U),R,0,0,[r0x10AD]
+1045                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_addr_10000_445$addr$2710$445({1}SC:U),R,0,0,[r0x10AF]
+1046                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_DH_10000_445$DH$2710$445({1}SC:U),R,0,0,[r0x10AE]
+1047                     	;--cdb--S:LApp_Init.E2_Init._E2_Init_DL_10000_445$DL$2710$445({1}SC:U),R,0,0,[r0x10AF]
 1048                     	;--cdb--S:G$_STATUS$0$0({0}:U),Z,0,0
 1049                     	;--cdb--S:G$_FSR0L$0$0({0}:U),Z,0,0
 1050                     	;--cdb--S:G$_FSR0H$0$0({0}:U),Z,0,0
@@ -1656,11 +1656,11 @@
 1656                     	.area IDATAROM (CODE,REL,CON); pre-def
 1657                     	.area UDATA (DATA,REL,CON); pre-def
 1658                     	.area UDATA (DATA,REL,CON) ;UDL_App_Init_0	udata
-1659 @FSR2-CurrentOffset+001 --         r0x10AB:	.ds	1
-1660 0000 --             r0x10AE:	.ds	1
-1661 0000 --             r0x10AF:	.ds	1
-1662 0000 --             r0x10B0:	.ds	1
-1663 0000 --             r0x10B1:	.ds	1
+1659 @FSR2-CurrentOffset+001 --         r0x10AA:	.ds	1
+1660 0000 --             r0x10AD:	.ds	1
+1661 0000 --             r0x10AE:	.ds	1
+1662 0000 --             r0x10AF:	.ds	1
+1663 0000 --             r0x10B0:	.ds	1
 1664                     	.area LOCALSTK (STK); local stack var
 1665                     	.globl _memset_STK03
 1666                     	.globl _memset_STK02
@@ -1943,28 +1943,28 @@
 1943                     	;--cdb--D:S:G$e_TempUnit$0$0({1}SC:U:ENUM_NONAME|Fahrenheit=165|Centigrade=90),Z,0,0
 1944                     	;Following is optimization info, 
 1945                     	;xxcdbxxW:dst:src+offset:srclit:just-remove
-1946                     	;--cdb--W:r0x10AE:NULL+0:-1:1
-1947                     	;--cdb--W:r0x10AF:NULL+0:-1:1
-1948                     	;--cdb--W:r0x10B4:NULL+0:-1:1
-1949                     	;--cdb--W:r0x10AE:NULL+0:-1:0
-1950                     	;--cdb--W:r0x10AF:NULL+0:-1:0
-1951                     	;--cdb--W:r0x10B3:r0x10AF+0:-1:0
-1952                     	;--cdb--W:r0x10B3:NULL+0:-1:1
-1953                     	;--cdb--W:r0x10B5:r0x10AF+0:-1:0
-1954                     	;--cdb--W:r0x10B0:NULL+0:-1:1
-1955                     	;--cdb--W:r0x10B6:r0x10AF+0:-1:0
-1956                     	;--cdb--W:r0x10B2:NULL+0:-1:1
-1957                     	;--cdb--W:r0x10A5:NULL+0:-1:0
-1958                     	;--cdb--W:r0x10A6:NULL+0:-1:0
-1959                     	;--cdb--W:r0x10A5:NULL+0:-1:1
-1960                     	;--cdb--W:r0x10A6:NULL+0:-1:1
-1961                     	;--cdb--W:r0x1090:NULL+0:-1:0
-1962                     	;--cdb--W:r0x1091:NULL+0:-1:0
-1963                     	;--cdb--W:r0x1090:NULL+0:-1:1
-1964                     	;--cdb--W:r0x1091:NULL+0:-1:1
-1965                     	;--c2db--RNG$_Binding_Init_tmp_10000_423$389$418
-1966                     	;--c2db--RNG$_E2_Init_i_10000_445$277$315
-1967                     	;--c2db--RNG$_E2_Init_addr_10000_445$291$296
-1968                     	;--c2db--RNG$_E2_Init_DH_10000_445$291$311
-1969                     	;--c2db--RNG$_E2_Init_DL_10000_445$297$311
+1946                     	;--cdb--W:r0x10AD:NULL+0:-1:1
+1947                     	;--cdb--W:r0x10AE:NULL+0:-1:1
+1948                     	;--cdb--W:r0x10B3:NULL+0:-1:1
+1949                     	;--cdb--W:r0x10AD:NULL+0:-1:0
+1950                     	;--cdb--W:r0x10AE:NULL+0:-1:0
+1951                     	;--cdb--W:r0x10B2:r0x10AE+0:-1:0
+1952                     	;--cdb--W:r0x10B2:NULL+0:-1:1
+1953                     	;--cdb--W:r0x10B4:r0x10AE+0:-1:0
+1954                     	;--cdb--W:r0x10AF:NULL+0:-1:1
+1955                     	;--cdb--W:r0x10B5:r0x10AE+0:-1:0
+1956                     	;--cdb--W:r0x10B1:NULL+0:-1:1
+1957                     	;--cdb--W:r0x10A4:NULL+0:-1:0
+1958                     	;--cdb--W:r0x10A5:NULL+0:-1:0
+1959                     	;--cdb--W:r0x10A4:NULL+0:-1:1
+1960                     	;--cdb--W:r0x10A5:NULL+0:-1:1
+1961                     	;--cdb--W:r0x108F:NULL+0:-1:0
+1962                     	;--cdb--W:r0x1090:NULL+0:-1:0
+1963                     	;--cdb--W:r0x108F:NULL+0:-1:1
+1964                     	;--cdb--W:r0x1090:NULL+0:-1:1
+1965                     	;--c2db--RNG$_Binding_Init_tmp_10000_423$392$421
+1966                     	;--c2db--RNG$_E2_Init_i_10000_445$280$318
+1967                     	;--c2db--RNG$_E2_Init_addr_10000_445$294$299
+1968                     	;--c2db--RNG$_E2_Init_DH_10000_445$294$314
+1969                     	;--c2db--RNG$_E2_Init_DL_10000_445$300$314
 1970                     	END

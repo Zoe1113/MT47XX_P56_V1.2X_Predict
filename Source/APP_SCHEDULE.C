@@ -570,10 +570,10 @@ void Calibration_Schedule(void)
 		/*从校准界面跳转到全显界面将温度单位切换回摄氏度*/
 		eTempUnit = eBondingTempUnit/*Centigrade*/;
 		/*这里做了兼容,无论当前处于什么模式,校温结束都会默认跳转到口腔模式,完成预测表校温结束后的自检*/
-		#if	Soft_Code == 940
-			eMeasureMode = Underarm_Mode;	//940校准结束默认腋下模式
+		#ifdef CE_Tset_80601_2_56
+			eMeasureMode = Bath_Mode;
 		#else
-			eMeasureMode = Oral_Mode;  		//其他默认口腔
+			eMeasureMode = Oral_Mode;
 		#endif
 	}
 

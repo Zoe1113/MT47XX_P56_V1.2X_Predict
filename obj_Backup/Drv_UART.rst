@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_UART.c"
 009                     	.module Drv_UART
 010                     	;.list	p=HY17P56
@@ -188,131 +188,131 @@
 188                     :$L:r0x10C2:$L:r0x10C3:$L:r0x10C4
 189                     ;--------------------------------------------------------
 190                     ;	;.line	167; ".\Source\Drv_UART.c"	if( sBleStatus.AutoBps_OnOff )
-191 148E [00] [2] C483      _AutoBps_Configuration:	;Function start
-192 148F [00] [1] 0011 BB2E 	BTSS	_sBleStatus,5
-193 1491 [03] [1] 7856      	JMP	_00172_DS_
+191 0F51 [00] [2] C483      _AutoBps_Configuration:	;Function start
+192 0F52 [00] [1] 0011 BB2E 	BTSS	_sBleStatus,5
+193 0F54 [03] [1] 7852      	JMP	_00172_DS_
 194                     ;	;.line	169; ".\Source\Drv_UART.c"	switch(eAutoBps_Status)
-195 1492 [00] [2] 0012 4DED 	RRF	_eAutoBps_Status,0,0
-196 1494 [03] [2] A02B      	BTSZ	_STATUS,0
-197 1495 [03] [2] 7803      	JMP	_00150_DS_
-198 1496 [03] [2] 45ED      	DCSUZ	_eAutoBps_Status,0,0
-199 1497 [03] [2] 7808      	JMP	_00151_DS_
-200 1498 [03] [2] 784F      	JMP	_00172_DS_
+195 0F55 [00] [2] 0012 4DED 	RRF	_eAutoBps_Status,0,0
+196 0F57 [03] [2] 71        	BTSZ	_STATUS,0
+197 0F57 [03] 03        	JMP	_00150_DS_
+198 0F58 [03] [2] 45ED      	DCSUZ	_eAutoBps_Status,0,0
+199 0F59 [03] [2] 7808      	JMP	_00151_DS_
+200 0F5A [03] [2] 784C      	JMP	_00172_DS_
 201                     _00150_DS_:
 202                     ;	;.line	175; ".\Source\Drv_UART.c"	sAutoBps.BSP_Number = 0;
-203 1499 [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
+203 0F5B [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
 204                     ;	;.line	177; ".\Source\Drv_UART.c"	sAutoBps.Cnt_DeviceInfoSend = 4;
-205 149A [03] [2] 0604      	MVL	0x04
-206 149B [03] [2] 67EA      	MVF	(_sAutoBps + 2),1,0
+205 0F5C [03] [2] 0604      	MVL	0x04
+206 0F5D [03] [2] 67EA      	MVF	(_sAutoBps + 2),1,0
 207                     ;	;.line	179; ".\Source\Drv_UART.c"	sAutoBps.Flag_AutoBps_Completed = FALSE;
-208 149C [03] [2] 81E8      	BCF	_sAutoBps,0
+208 0F5E [03] [2] 81E8      	BCF	_sAutoBps,0
 209                     ;	;.line	181; ".\Source\Drv_UART.c"	eAutoBps_Status = AutoBps_Searching;
-210 149D [03] [2] 0601      	MVL	0x01
-211 149E [03] [2] 67ED      	MVF	_eAutoBps_Status,1,0
+210 0F5F [03] [2] 0601      	MVL	0x01
+211 0F60 [03] [2] 67ED      	MVF	_eAutoBps_Status,1,0
 212                     ;	;.line	183; ".\Source\Drv_UART.c"	break;
-213 149F [03] [2] 7848      	JMP	_00172_DS_
+213 0F61 [03] [2] 7845      	JMP	_00172_DS_
 214                     _00151_DS_:
 215                     ;	;.line	188; ".\Source\Drv_UART.c"	if(!sAutoBps.Flag_AutoBps_Completed)
-216 14A0 [03] [2] A1E8      	BTSZ	_sAutoBps,0
-217 14A1 [03] [2] 7846      	JMP	_00172_DS_
+216 0F62 [03] [2] A1E8      	BTSZ	_sAutoBps,0
+217 0F63 [03] [2] 7843      	JMP	_00172_DS_
 218                     ;	;.line	191; ".\Source\Drv_UART.c"	if(sAutoBps.Cnt_DeviceInfoSend > 3)
-219 14A2 [03] [2] 0603      	MVL	0x03
-220 14A3 [03] [2] 69EA      	CPSG	(_sAutoBps + 2),0
-221 14A4 [03] [2] 7836      	JMP	_00163_DS_
+219 0F64 [03] [2] 0603      	MVL	0x03
+220 0F65 [03] [2] 69EA      	CPSG	(_sAutoBps + 2),0
+221 0F66 [03] [2] 7834      	JMP	_00163_DS_
 222                     ;	;.line	194; ".\Source\Drv_UART.c"	sAutoBps.Cnt_DeviceInfoSend = 0;
-223 14A5 [03] [2] 0DEA      	CLRF	(_sAutoBps + 2),0
+223 0F67 [03] [2] 0DEA      	CLRF	(_sAutoBps + 2),0
 224                     ;	;.line	196; ".\Source\Drv_UART.c"	UART0Disable();
-225 14A6 [03] [2] 8E79      	BCF	_UR0CN,7
+225 0F68 [03] [2] 8E79      	BCF	_UR0CN,7
 226                     ;	;.line	198; ".\Source\Drv_UART.c"	UART0_TXDisable();
-227 14A7 [03] [2] 8C79      	BCF	_UR0CN,6
+227 0F69 [03] [2] 8C79      	BCF	_UR0CN,6
 228                     ;	;.line	200; ".\Source\Drv_UART.c"	UART0_CRDisable();
-229 14A8 [03] [2] 867B      	BCF	_BA0CN,3
+229 0F6A [03] [2] 867B      	BCF	_BA0CN,3
 230                     ;	;.line	202; ".\Source\Drv_UART.c"	RCIE_Disable();
-231 14A9 [03] [2] 8824      	BCF	_INTE1,4
+231 0F6B [03] [2] 8824      	BCF	_INTE1,4
 232                     ;	;.line	204; ".\Source\Drv_UART.c"	sAutoBps.BSP_Number++;
-233 14AA [03] [2] 3BE9      	INF	(_sAutoBps + 1),1,0
+233 0F6C [03] [2] 3BE9      	INF	(_sAutoBps + 1),1,0
 234                     ;	;.line	206; ".\Source\Drv_UART.c"	if(sAutoBps.BSP_Number & 1)
-235 14AB [03] [2] B1E9      	BTSS	(_sAutoBps + 1),0
-236 14AC [03] [2] 7808      	JMP	_00153_DS_
+235 0F6D [03] [2] B1E9      	BTSS	(_sAutoBps + 1),0
+236 0F6E [03] [2] 7808      	JMP	_00153_DS_
 237                     ;	;.line	208; ".\Source\Drv_UART.c"	sAutoBps.AutoBpsValue = Register_Value + (sAutoBps.BSP_Number>>1);
-238 14AD [03] [2] 882B      	BCF	_STATUS,4
-239 14AE [03] [2] 51E9      	RRFC	(_sAutoBps + 1),0,0
-240 14AF [03] [2] 042F      	ADDL	0x2f
-241 14B0 [03] [2] 67EB      	MVF	(_sAutoBps + 3),1,0
-242 14B1 [03] [2] 0600      	MVL	0x00
-243 14B2 [03] [2] 5429      	RLFC	_WREG,0,0
-244 14B3 [03] [2] 67EC      	MVF	(_sAutoBps + 4),1,0
-245 14B4 [03] [2] 780A      	JMP	_00154_DS_
+238 0F6F [03] [2] 882B      	BCF	_STATUS,4
+239 0F70 [03] [2] 51E9      	RRFC	(_sAutoBps + 1),0,0
+240 0F71 [03] [2] 042F      	ADDL	0x2f
+241 0F72 [03] [2] 67EB      	MVF	(_sAutoBps + 3),1,0
+242 0F73 [03] [2] 0600      	MVL	0x00
+243 0F74 [03] [2] 5429      	RLFC	_WREG,0,0
+244 0F75 [03] [2] 67EC      	MVF	(_sAutoBps + 4),1,0
+245 0F76 [03] [2] 780A      	JMP	_00154_DS_
 246                     _00153_DS_:
 247                     ;	;.line	212; ".\Source\Drv_UART.c"	sAutoBps.AutoBpsValue = Register_Value - (sAutoBps.BSP_Number>>1);
-248 14B5 [03] [2] 882B      	BCF	_STATUS,4
-249 14B6 [03] [2] 51E9      	RRFC	(_sAutoBps + 1),0,0
-250 14B7 [03] [2] 0C80      	CLRF	r0x10C4,0
-251 14B8 [03] [2] 2429      	COMF	_WREG,0,0
-252 14B9 [03] [2] 0430      	ADDL	0x30
-253 14BA [03] [2] 67EB      	MVF	(_sAutoBps + 3),1,0
-254 14BB [03] [2] 2480      	COMF	r0x10C4,0,0
-255 14BC [03] [2] 67EC      	MVF	(_sAutoBps + 4),1,0
-256 14BD [03] [2] 0600      	MVL	0x00
-257 14BE [03] [2] 17EC      	ADDC	(_sAutoBps + 4),1,0
+248 0F77 [03] [2] 882B      	BCF	_STATUS,4
+249 0F78 [03] [2] 51E9      	RRFC	(_sAutoBps + 1),0,0
+250 0F79 [03] [2] 0C80      	CLRF	r0x10C4,0
+251 0F7A [03] [2] 2429      	COMF	_WREG,0,0
+252 0F7B [03] [2] 0430      	ADDL	0x30
+253 0F7C [03] [2] 67EB      	MVF	(_sAutoBps + 3),1,0
+254 0F7D [03] [2] 2480      	COMF	r0x10C4,0,0
+255 0F7E [03] [2] 67EC      	MVF	(_sAutoBps + 4),1,0
+256 0F7F [03] [2] 0600      	MVL	0x00
+257 0F80 [03] [2] 17EC      	ADDC	(_sAutoBps + 4),1,0
 258                     _00154_DS_:
 259                     ;	;.line	215; ".\Source\Drv_UART.c"	if((sAutoBps.AutoBpsValue <= Register_Value - 10) || (sAutoBps.AutoBpsValue >= Register_Value + 10))
-260 14BF [03] [2] 65EB      	MVF	(_sAutoBps + 3),0,0
-261 14C0 [03] [2] 6682      	MVF	r0x10C2,1,0
-262 14C1 [03] [2] 65EC      	MVF	(_sAutoBps + 4),0,0
-263 14C2 [03] [2] 6681      	MVF	r0x10C3,1,0
-264 14C3 [03] [2] 6482      	MVF	r0x10C2,0,0
-265 14C4 [03] [2] 04DA      	ADDL	0xda
-266 14C5 [03] [2] 06FF      	MVL	0xff
-267 14C6 [03] [2] 1481      	ADDC	r0x10C3,0,0
-268 14C7 [03] [2] B82B      	BTSS	_STATUS,4
-269 14C8 [03] [2] 7806      	JMP	_00155_DS_
-270 14C9 [03] [2] 6482      	MVF	r0x10C2,0,0
-271 14CA [03] [2] 04C7      	ADDL	0xc7
-272 14CB [03] [2] 06FF      	MVL	0xff
-273 14CC [03] [2] 1481      	ADDC	r0x10C3,0,0
-274 14CD [03] [2] B82B      	BTSS	_STATUS,4
-275 14CE [03] [2] 7807      	JMP	_00156_DS_
+260 0F81 [03] [2] 65EB      	MVF	(_sAutoBps + 3),0,0
+261 0F82 [03] [2] 6682      	MVF	r0x10C2,1,0
+262 0F83 [03] [2] 65EC      	MVF	(_sAutoBps + 4),0,0
+263 0F84 [03] [2] 6681      	MVF	r0x10C3,1,0
+264 0F85 [03] [2] 6482      	MVF	r0x10C2,0,0
+265 0F86 [03] [2] 04DA      	ADDL	0xda
+266 0F87 [03] [2] 06FF      	MVL	0xff
+267 0F88 [03] [2] 1481      	ADDC	r0x10C3,0,0
+268 0F89 [03] [2] 74        	BTSS	_STATUS,4
+269 0F89 [03] 05        	JMP	_00155_DS_
+270 0F8A [03] [2] 6482      	MVF	r0x10C2,0,0
+271 0F8B [03] [2] 04C7      	ADDL	0xc7
+272 0F8C [03] [2] 06FF      	MVL	0xff
+273 0F8D [03] [2] 1481      	ADDC	r0x10C3,0,0
+274 0F8E [03] [2] 74        	BTSS	_STATUS,4
+275 0F8E [03] 07        	JMP	_00156_DS_
 276                     _00155_DS_:
 277                     ;	;.line	218; ".\Source\Drv_UART.c"	eAutoBps_Status = AutoBps_Searched;
-278 14CF [03] [2] 0602      	MVL	0x02
-279 14D0 [03] [2] 67ED      	MVF	_eAutoBps_Status,1,0
+278 0F8F [03] [2] 0602      	MVL	0x02
+279 0F90 [03] [2] 67ED      	MVF	_eAutoBps_Status,1,0
 280                     ;	;.line	219; ".\Source\Drv_UART.c"	sAutoBps.Flag_AutoBps_Completed = FALSE;
-281 14D1 [03] [2] 81E8      	BCF	_sAutoBps,0
+281 0F91 [03] [2] 81E8      	BCF	_sAutoBps,0
 282                     ;	;.line	221; ".\Source\Drv_UART.c"	sAutoBps.BSP_Number = 0;
-283 14D2 [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
+283 0F92 [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
 284                     ;	;.line	222; ".\Source\Drv_UART.c"	ERR[Err7] = TRUE;
-285 14D3 [03] [2] 0601      	MVL	0x01
-286 14D4 [03] [2] 673C      	MVF	(_ERR + 7),1,0
-287 14D5 [03] [2] 7812      	JMP	_00172_DS_
+285 0F93 [03] [2] 0601      	MVL	0x01
+286 0F94 [03] [2] 673C      	MVF	(_ERR + 7),1,0
+287 0F95 [03] [2] 7811      	JMP	_00172_DS_
 288                     _00156_DS_:
 289                     ;	;.line	227; ".\Source\Drv_UART.c"	UART0_Configuration(sAutoBps.AutoBpsValue);
-290 14D6 [03] [2] 6482      	MVF	r0x10C2,0,0
-291 14D7 [03] [2] 660D      	MVF	_UART0_Configuration_STK00,1,0
-292 14D8 [04] [2] 6482      	MVF	r0x10C3,0,0
-293 14D9 [04] [2] C810      	CALL	_UART0_Configuration
+290 0F96 [03] [2] 6482      	MVF	r0x10C2,0,0
+291 0F97 [03] [2] 660D      	MVF	_UART0_Configuration_STK00,1,0
+292 0F98 [04] [2] 6482      	MVF	r0x10C3,0,0
+293 0F99 [04] [2] C80F      	CALL	_UART0_Configuration
 294                     	.CHKPARA _UART0_Configuration 2
-295 14DA [03] [2] 780D      	JMP	_00172_DS_
+295 0F9A [03] [2] 780C      	JMP	_00172_DS_
 296                     _00163_DS_:
 297                     ;	;.line	233; ".\Source\Drv_UART.c"	if((eBle_Sta == Ble_Advertising) || (eBle_Sta == Ble_Idle))
-298 14DB [00] [1] 0011 652D 	MVF	_eBle_Sta,0,0
-299 14DD [03] [1] 0303      	XORL	0x03
-300 14DE [03] [1] A02B      	BTSZ	_STATUS,0
-301 14DF [03] [1] 7803      	JMP	_00159_DS_
-302 14E0 [03] [1] 0604      	MVL	0x04
-303 14E1 [03] [1] 6D2D      	CPSE	_eBle_Sta,0
-304 14E2 [03] [1] 7805      	JMP	_00172_DS_
+298 0F9B [00] [1] 0011 652D 	MVF	_eBle_Sta,0,0
+299 0F9D [03] [1] 0303      	XORL	0x03
+300 0F9E [03] [1] 71        	BTSZ	_STATUS,0
+301 0F9E [03] 03        	JMP	_00159_DS_
+302 0F9F [03] [1] 0604      	MVL	0x04
+303 0FA0 [03] [1] 6D2D      	CPSE	_eBle_Sta,0
+304 0FA1 [03] [1] 7805      	JMP	_00172_DS_
 305                     _00159_DS_:
 306                     ;	;.line	236; ".\Source\Drv_UART.c"	eAutoBps_Status = AutoBps_Searched;
-307 14E3 [03] [1] 0602      	MVL	0x02
-308 14E4 [00] [2] 0012 67ED 	MVF	_eAutoBps_Status,1,0
+307 0FA2 [03] [1] 0602      	MVL	0x02
+308 0FA3 [00] [2] 0012 67ED 	MVF	_eAutoBps_Status,1,0
 309                     ;	;.line	237; ".\Source\Drv_UART.c"	sAutoBps.Flag_AutoBps_Completed = TRUE;
-310 14E6 [03] [2] 91E8      	BSF	_sAutoBps,0
+310 0FA5 [03] [2] 91E8      	BSF	_sAutoBps,0
 311                     ;	;.line	239; ".\Source\Drv_UART.c"	sAutoBps.BSP_Number = 0;
-312 14E7 [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
-313 14E8 [03] [X] C4BD      _00172_DS_:
+312 0FA6 [03] [2] 0DE9      	CLRF	(_sAutoBps + 1),0
+313 0FA7 [03] [X] C4BD      _00172_DS_:
 314                     ;	;.line	259; ".\Source\Drv_UART.c"	}
-315 14E9 [00] [X] 000A      	RET	
+315 0FA8 [00] [X] 000A      	RET	
 316                     ; exit point of _AutoBps_Configuration
 317                     	.ENDFUNC	_AutoBps_Configuration
 318                     ;--------------------------------------------------------
@@ -325,19 +325,19 @@
 325                     ;--------------------------------------------------------
 326                     ;	;.line	149; ".\Source\Drv_UART.c"	UART0_BGRSet(UartBps);
 327                     _UART0_Configuration:	;Function start
-328 14EA [00] [Y] C600 F00D 	MVSF	_UART0_Configuration_STK00,_UART0_BGRSet_STK00
-329 14EC [01] [Y] CF9C      	CALL	_UART0_BGRSet
+328 0FA9 [00] [Y] C600 F00D 	MVSF	_UART0_Configuration_STK00,_UART0_BGRSet_STK00
+329 0FAB [01] [Y] CFA0      	CALL	_UART0_BGRSet
 330                     	.CHKPARA _UART0_BGRSet 2
 331                     ;	;.line	151; ".\Source\Drv_UART.c"	UART0Enable();
-332 14ED [00] [Y] 9E79      	BSF	_UR0CN,7
+332 0FAC [00] [Y] 9E79      	BSF	_UR0CN,7
 333                     ;	;.line	153; ".\Source\Drv_UART.c"	UART0_TXEnable();
-334 14EE [00] [Y] 9C79      	BSF	_UR0CN,6
+334 0FAD [00] [Y] 9C79      	BSF	_UR0CN,6
 335                     ;	;.line	155; ".\Source\Drv_UART.c"	UART0_CREnable();
-336 14EF [00] [Y] 967B      	BSF	_BA0CN,3
+336 0FAE [00] [Y] 967B      	BSF	_BA0CN,3
 337                     ;	;.line	157; ".\Source\Drv_UART.c"	RCIE_Enable();
-338 14F0 [00] [Y] 9824      	BSF	_INTE1,4
+338 0FAF [00] [Y] 9824      	BSF	_INTE1,4
 339                     ;	;.line	158; ".\Source\Drv_UART.c"	}
-340 14F1 [00] [Y] C4BF 000A 	RET	
+340 0FB0 [00] [Y] C4BF 000A 	RET	
 341                     ; exit point of _UART0_Configuration
 342                     	.ENDFUNC	_UART0_Configuration
 343                     ;--------------------------------------------------------

@@ -1,7 +1,7 @@
 $MOD:App_ADC:".\obj\App_ADC.rel"
 $VER:SDASHYA_201
-$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\App_ADC.asm"
+$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
+$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src\obj\App_ADC.asm"
 $EXPORT:_Centigrade_Convert_Fahrenheit
 $CDB:"S:G$Centigrade_Convert_Fahrenheit$0$0({2}DF,SI:U),C,0,0"
 $EXPORT:_Get_250msTemp

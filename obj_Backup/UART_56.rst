@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	"D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"
 009                     	.module UART_56
 010                     	;.list	p=HY17P56
@@ -41,12 +41,12 @@
 041                     ;--------------------------------------------------------
 042                     ;	;.line	23; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RH = BGR >> 8;
 043                     _UART0_BGRSet:	;Function start
-044 1489 [00] [Y] 667C      	MVF	_BG0RH,1,0
+044 0F4C [00] [Y] 667C      	MVF	_BG0RH,1,0
 045                     ;	;.line	24; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	BG0RL= (0x00FF & BGR);
-046 148A [00] [Y] 6480      	MVF	_UART0_BGRSet_STK00,0,0
-047 148B [00] [Y] 667D      	MVF	_BG0RL,1,0
+046 0F4D [00] [Y] 6480      	MVF	_UART0_BGRSet_STK00,0,0
+047 0F4E [00] [Y] 667D      	MVF	_BG0RL,1,0
 048                     ;	;.line	25; "D:\SOFTWARE\H08\H08 CIDE\DRIVER\HY17P\UART_56.c"	}
-049 148C [00] [Y] C4BF 000A 	RET	
+049 0F4F [00] [Y] C4BF 000A 	RET	
 050                     ; exit point of _UART0_BGRSet
 051                     	.ENDFUNC	_UART0_BGRSet
 052                     ;--------------------------------------------------------

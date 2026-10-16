@@ -1,7 +1,7 @@
 $MOD:App_Backlight:".\obj\App_Backlight.rel"
 $VER:SDASHYA_201
-$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\App_Backlight.asm"
+$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
+$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src\obj\App_Backlight.asm"
 $EXPORT:_Backlight_Drive
 $CDB:"S:G$Backlight_Drive$0$0({2}DF,SV:S),C,0,0"
 $EXPORT:_BackLight_QuadrupleDrv

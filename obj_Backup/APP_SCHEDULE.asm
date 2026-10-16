@@ -4,7 +4,7 @@
 ;--------------------------------------------------------
 ; Port for HYCON CPU
 ;--------------------------------------------------------
-;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 ;;	.file	".\Source\App_Schedule.c"
 	.module App_Schedule
 	;.list	p=HY17P56
@@ -1182,8 +1182,9 @@ _Calibration_Schedule:	;Function start
 ;	;.line	571; ".\Source\App_Schedule.c"	eTempUnit = eBondingTempUnit/*Centigrade*/;
 	MVF	_eBondingTempUnit,0,0
 	MVF	_eTempUnit,1,0
-;	;.line	576; ".\Source\App_Schedule.c"	eMeasureMode = Oral_Mode;  		//其他默认口腔
-	CLRF	_eMeasureMode,0
+;	;.line	574; ".\Source\App_Schedule.c"	eMeasureMode = Bath_Mode;
+	MVL	0x03
+	MVF	_eMeasureMode,1,0
 _00250_DS_:
 ;	;.line	581; ".\Source\App_Schedule.c"	Result = Timer_Experience(sTimeStamp.DispCOM_Timer,2400);
 	MVF	(_sTimeStamp + 10),0,0
@@ -3406,12 +3407,12 @@ r0x110A:	.ds	1
 	;--cdb--W:r0x1090:NULL+0:-1:0
 	;--cdb--W:r0x108F:NULL+0:-1:1
 	;--cdb--W:r0x1090:NULL+0:-1:1
-	;--c2db--RNG$_All_Schedule_Result_10000_432$1782$1785
-	;--c2db--RNG$_Version_Schedule_Result_10000_478$1569$1572
-	;--c2db--RNG$_Code_Schedule_Result_10000_488$1497$1500
-	;--c2db--RNG$_Off_Schedule_Result_10000_498$1392$1431
-	;--c2db--RNG$_PreCalibration_Schedule_Result_10000_512$1298$1301
-	;--c2db--RNG$_Calibration_Schedule_Result_10000_524$1211$1214
+	;--c2db--RNG$_All_Schedule_Result_10000_432$1783$1786
+	;--c2db--RNG$_Version_Schedule_Result_10000_478$1570$1573
+	;--c2db--RNG$_Code_Schedule_Result_10000_488$1498$1501
+	;--c2db--RNG$_Off_Schedule_Result_10000_498$1393$1432
+	;--c2db--RNG$_PreCalibration_Schedule_Result_10000_512$1299$1302
+	;--c2db--RNG$_Calibration_Schedule_Result_10000_524$1212$1215
 	;--c2db--RNG$_CalibrationOK_Schedule_Result_10000_535$1124$1127
 	;--c2db--RNG$_RecentTemp_Schedule_Result_10000_541$1043$1046
 	;--c2db--RNG$_CurrentMode_Schedule_Result_10000_572$898$901

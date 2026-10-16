@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\Drv_BLE.c"
 009                     	.module Drv_BLE
 010                     	;.list	p=HY17P56
@@ -177,30 +177,30 @@
 177                     :$L:r0x109B
 178                     ;--------------------------------------------------------
 179                     ;	;.line	133; ".\Source\Drv_BLE.c"	for(BIE_Addr = 0;BIE_Addr < 64;BIE_Addr++)
-180 135E [00] [1] C481      _BIE_Polling:	;Function start
-181 135F [01] [1] 0C80      	CLRF	r0x109B,0
+180 0D75 [00] [1] C481      _BIE_Polling:	;Function start
+181 0D76 [01] [1] 0C80      	CLRF	r0x109B,0
 182                     _00134_DS_:
 183                     ;	;.line	135; ".\Source\Drv_BLE.c"	if(BIE_Read(BIE_Addr) == 0xFFFF)
-184 1360 [01] [X] 6480      	MVF	r0x109B,0,0
-185 1361 [01] [X] C80C      	CALL	_BIE_Read
+184 0D77 [01] [X] 6480      	MVF	r0x109B,0,0
+185 0D78 [01] [X] C80C      	CALL	_BIE_Read
 186                     	.CHKPARA _BIE_Read 1
-187 1362 [01] [2] 2820      	ANDF	STK00,0,0
-188 1363 [01] [2] 3C29      	INSZ	_WREG,0,0
-189 1364 [01] [2] 7802      	JMP	_00135_DS_
+187 0D79 [01] [2] 2820      	ANDF	STK00,0,0
+188 0D7A [01] [2] 3C29      	INSZ	_WREG,0,0
+189 0D7B [01] [2] 7802      	JMP	_00135_DS_
 190                     ;	;.line	137; ".\Source\Drv_BLE.c"	return BIE_Addr;
-191 1365 [01] [2] 6480      	MVF	r0x109B,0,0
-192 1366 [01] [2] 7805      	JMP	_00136_DS_
+191 0D7C [01] [2] 6480      	MVF	r0x109B,0,0
+192 0D7D [01] [2] 7805      	JMP	_00136_DS_
 193                     _00135_DS_:
 194                     ;	;.line	133; ".\Source\Drv_BLE.c"	for(BIE_Addr = 0;BIE_Addr < 64;BIE_Addr++)
-195 1367 [01] [2] 3A80      	INF	r0x109B,1,0
-196 1368 [01] [2] 063F      	MVL	0x3f
-197 1369 [01] [2] 6880      	CPSG	r0x109B,0
-198 136A [01] [2] 7FF5      	JMP	_00134_DS_
+195 0D7E [01] [2] 3A80      	INF	r0x109B,1,0
+196 0D7F [01] [2] 063F      	MVL	0x3f
+197 0D80 [01] [2] 6880      	CPSG	r0x109B,0
+198 0D81 [01] [2] 7FF5      	JMP	_00134_DS_
 199                     ;	;.line	140; ".\Source\Drv_BLE.c"	return 0xFF;
-200 136B [01] [2] 06FF      	MVL	0xff
-201 136C [01] [2] C4BF      _00136_DS_:
+200 0D82 [01] [2] 06FF      	MVL	0xff
+201 0D83 [01] [2] C4BF      _00136_DS_:
 202                     ;	;.line	141; ".\Source\Drv_BLE.c"	}
-203 136D [00] [2] 000A      	RET	
+203 0D84 [00] [2] 000A      	RET	
 204                     ; exit point of _BIE_Polling
 205                     	.ENDFUNC	_BIE_Polling
 206                     ;--------------------------------------------------------
@@ -212,50 +212,50 @@
 212                     :$L:r0x1093:$L:_BIE_Write_STK00:$L:_BIE_Write_STK01
 213                     ;--------------------------------------------------------
 214                     ;	;.line	77; ".\Source\Drv_BLE.c"	uint8 BIE_Write(uint8 Addr,uint8 DH,uint8 DL)
-215 1AB2 [00] [2] C481      _BIE_Write:	;Function start
-216 1AB3 [01] [2] 6680      	MVF	r0x1093,1,0
+215 14AD [00] [2] C481      _BIE_Write:	;Function start
+216 14AE [01] [2] 6680      	MVF	r0x1093,1,0
 217                     ;	;.line	87; ".\Source\Drv_BLE.c"	AccuracyModeADCOFF();
-218 1AB4 [01] [2] CFBD      	CALL	_AccuracyModeADCOFF
+218 14AF [01] [2] C81E      	CALL	_AccuracyModeADCOFF
 219                     	.CHKPARA _AccuracyModeADCOFF 0
 220                     ;	;.line	90; ".\Source\Drv_BLE.c"	tmp = HY17P56WR3_Delay(Addr,DH,DL,5);
-221 1AB5 [01] [2] 0605      	MVL	0x05
-222 1AB6 [01] [2] 660D      	MVF	_HY17P56WR3_Delay_STK02,1,0
-223 1AB7 [02] [2] 6483      	MVF	_BIE_Write_STK01,0,0
-224 1AB8 [02] [2] 660D      	MVF	_HY17P56WR3_Delay_STK01,1,0
-225 1AB9 [03] [2] 6483      	MVF	_BIE_Write_STK00,0,0
-226 1ABA [03] [2] 660D      	MVF	_HY17P56WR3_Delay_STK00,1,0
-227 1ABB [04] [2] 6483      	MVF	r0x1093,0,0
-228 1ABC [04] [2] C816      	CALL	_HY17P56WR3_Delay
+221 14B0 [01] [2] 0605      	MVL	0x05
+222 14B1 [01] [2] 660D      	MVF	_HY17P56WR3_Delay_STK02,1,0
+223 14B2 [02] [2] 6483      	MVF	_BIE_Write_STK01,0,0
+224 14B3 [02] [2] 660D      	MVF	_HY17P56WR3_Delay_STK01,1,0
+225 14B4 [03] [2] 6483      	MVF	_BIE_Write_STK00,0,0
+226 14B5 [03] [2] 660D      	MVF	_HY17P56WR3_Delay_STK00,1,0
+227 14B6 [04] [2] 6483      	MVF	r0x1093,0,0
+228 14B7 [04] [2] C852      	CALL	_HY17P56WR3_Delay
 229                     	.CHKPARA _HY17P56WR3_Delay 4
-230 1ABD [01] [X] 6680      	MVF	r0x1093,1,0
+230 14B8 [01] [X] 6680      	MVF	r0x1093,1,0
 231                     ;	;.line	92; ".\Source\Drv_BLE.c"	Delay_ms(10);
-232 1ABE [01] [X] 060A      	MVL	0x0a
-233 1ABF [01] [X] C001 F311 	CALL	_Delay_ms
+232 14B9 [01] [X] 060A      	MVL	0x0a
+233 14BA [01] [X] C000 FCC5 	CALL	_Delay_ms
 234                     ;	;.line	95; ".\Source\Drv_BLE.c"	ADCAccuracyMode();
-235 1AC1 [01] [X] CFB9      	CALL	_ADCAccuracyMode
+235 14BC [01] [X] C81A      	CALL	_ADCAccuracyMode
 236                     	.CHKPARA _ADCAccuracyMode 0
 237                     ;	;.line	99; ".\Source\Drv_BLE.c"	GIE_Enable();
-238 1AC2 [01] [X] 9E23      	BSF	_INTE0,7
+238 14BD [01] [X] 9E23      	BSF	_INTE0,7
 239                     ;	;.line	101; ".\Source\Drv_BLE.c"	ADC_Enable();
-240 1AC3 [01] [X] 9E3D      	BSF	_AD1CN0,7
+240 14BE [01] [X] 9E3D      	BSF	_AD1CN0,7
 241                     ;	;.line	103; ".\Source\Drv_BLE.c"	ADC_CMFREnable();
-242 1AC4 [01] [X] 903D      	BSF	_AD1CN0,0
+242 14BF [01] [X] 903D      	BSF	_AD1CN0,0
 243                     ;	;.line	107; ".\Source\Drv_BLE.c"	ADC_OSRSelect(OSR_2048);
-244 1AC5 [01] [X] 643D      	MVF	_AD1CN0,0,0
-245 1AC6 [01] [X] 01E1      	ANDL	0xe1
-246 1AC7 [01] [X] 6681      	MVF	_BIE_Write_STK00,1,0
-247 1AC8 [01] [X] 9681      	BSF	_BIE_Write_STK00,3
-248 1AC9 [01] [X] 6481      	MVF	_BIE_Write_STK00,0,0
-249 1ACA [01] [X] 663D      	MVF	_AD1CN0,1,0
+244 14C0 [01] [X] 643D      	MVF	_AD1CN0,0,0
+245 14C1 [01] [X] 01E1      	ANDL	0xe1
+246 14C2 [01] [X] 6681      	MVF	_BIE_Write_STK00,1,0
+247 14C3 [01] [X] 9681      	BSF	_BIE_Write_STK00,3
+248 14C4 [01] [X] 6481      	MVF	_BIE_Write_STK00,0,0
+249 14C5 [01] [X] 663D      	MVF	_AD1CN0,1,0
 250                     ;	;.line	116; ".\Source\Drv_BLE.c"	sADC.ADCCounts = 0;
-251 1ACB [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
+251 14C6 [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
 252                     ;	;.line	118; ".\Source\Drv_BLE.c"	Delay_ms(10);
-253 1ACD [01] [2] 060A      	MVL	0x0a
-254 1ACE [01] [2] C001 F311 	CALL	_Delay_ms
+253 14C8 [01] [2] 060A      	MVL	0x0a
+254 14C9 [01] [2] C000 FCC5 	CALL	_Delay_ms
 255                     ;	;.line	120; ".\Source\Drv_BLE.c"	return tmp;
-256 1AD0 [01] [2] 6480      	MVF	r0x1093,0,0
+256 14CB [01] [2] 6480      	MVF	r0x1093,0,0
 257                     ;	;.line	121; ".\Source\Drv_BLE.c"	}
-258 1AD1 [01] [2] C4BD 000A 	RET	
+258 14CC [01] [2] C4BD 000A 	RET	
 259                     ; exit point of _BIE_Write
 260                     	.ENDFUNC	_BIE_Write
 261                     ;--------------------------------------------------------
@@ -267,51 +267,51 @@
 267                     :$L:r0x108C:$L:r0x108F:$L:r0x108E
 268                     ;--------------------------------------------------------
 269                     ;	;.line	24; ".\Source\Drv_BLE.c"	uint16 BIE_Read(uint8 Addr)
-270 136E [00] [X] C483      _BIE_Read:	;Function start
-271 136F [03] [X] 6682      	MVF	r0x108C,1,0
+270 0D85 [00] [X] C483      _BIE_Read:	;Function start
+271 0D86 [03] [X] 6682      	MVF	r0x108C,1,0
 272                     ;	;.line	33; ".\Source\Drv_BLE.c"	GIE_Disable();
-273 1370 [03] [X] 8E23      	BCF	_INTE0,7
+273 0D87 [03] [X] 8E23      	BCF	_INTE0,7
 274                     ;	;.line	35; ".\Source\Drv_BLE.c"	ADC_Disable();
-275 1371 [03] [X] 8E3D      	BCF	_AD1CN0,7
+275 0D88 [03] [X] 8E3D      	BCF	_AD1CN0,7
 276                     ;	;.line	37; ".\Source\Drv_BLE.c"	BIEARL = Addr;
-277 1372 [03] [X] 6482      	MVF	r0x108C,0,0
-278 1373 [03] [X] 6630      	MVF	_BIEARL,1,0
+277 0D89 [03] [X] 6482      	MVF	r0x108C,0,0
+278 0D8A [03] [X] 6630      	MVF	_BIEARL,1,0
 279                     ;	;.line	39; ".\Source\Drv_BLE.c"	BIECN=BIECN | 0x01;
-280 1374 [03] [X] 902E      	BSF	_BIECN,0
+280 0D8B [03] [X] 902E      	BSF	_BIECN,0
 281                     _00105_DS_:
 282                     ;	;.line	41; ".\Source\Drv_BLE.c"	while((BIECN& 0x01)==1);
-283 1375 [03] [X] 642E      	MVF	_BIECN,0,0
-284 1376 [03] [X] 0101      	ANDL	0x01
-285 1377 [03] [X] 4429      	DCSUZ	_WREG,0,0
-286 1378 [03] [X] 7FFC      	JMP	_00105_DS_
+283 0D8C [03] [X] 642E      	MVF	_BIECN,0,0
+284 0D8D [03] [X] 0101      	ANDL	0x01
+285 0D8E [03] [X] 4429      	DCSUZ	_WREG,0,0
+286 0D8F [03] [X] 7FFC      	JMP	_00105_DS_
 287                     ;	;.line	43; ".\Source\Drv_BLE.c"	BIE_Data = (BIEDRH << 8) | BIEDRL;
-288 1379 [03] [X] 6431      	MVF	_BIEDRH,0,0
-289 137A [03] [X] 6681      	MVF	r0x108F,1,0
-290 137B [03] [X] 6432      	MVF	_BIEDRL,0,0
-291 137C [03] [X] 6680      	MVF	r0x108E,1,0
+288 0D90 [03] [X] 6431      	MVF	_BIEDRH,0,0
+289 0D91 [03] [X] 6681      	MVF	r0x108F,1,0
+290 0D92 [03] [X] 6432      	MVF	_BIEDRL,0,0
+291 0D93 [03] [X] 6680      	MVF	r0x108E,1,0
 292                     ;	;.line	45; ".\Source\Drv_BLE.c"	GIE_Enable();
-293 137D [03] [X] 9E23      	BSF	_INTE0,7
+293 0D94 [03] [X] 9E23      	BSF	_INTE0,7
 294                     ;	;.line	47; ".\Source\Drv_BLE.c"	ADC_Enable();
-295 137E [03] [X] 9E3D      	BSF	_AD1CN0,7
+295 0D95 [03] [X] 9E3D      	BSF	_AD1CN0,7
 296                     ;	;.line	49; ".\Source\Drv_BLE.c"	ADC_CMFREnable();
-297 137F [03] [X] 903D      	BSF	_AD1CN0,0
+297 0D96 [03] [X] 903D      	BSF	_AD1CN0,0
 298                     ;	;.line	53; ".\Source\Drv_BLE.c"	ADC_OSRSelect(OSR_2048);
-299 1380 [03] [X] 643D      	MVF	_AD1CN0,0,0
-300 1381 [03] [X] 01E1      	ANDL	0xe1
-301 1382 [03] [X] 0208      	IORL	0x08
-302 1383 [03] [X] 663D      	MVF	_AD1CN0,1,0
+299 0D97 [03] [X] 643D      	MVF	_AD1CN0,0,0
+300 0D98 [03] [X] 01E1      	ANDL	0xe1
+301 0D99 [03] [X] 0208      	IORL	0x08
+302 0D9A [03] [X] 663D      	MVF	_AD1CN0,1,0
 303                     ;	;.line	64; ".\Source\Drv_BLE.c"	sADC.ADCCounts = 0;
-304 1384 [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
+304 0D9B [00] [2] 0012 0D45 	CLRF	(_sADC + 2),0
 305                     ;	;.line	66; ".\Source\Drv_BLE.c"	Delay_ms(10);
-306 1386 [03] [2] 060A      	MVL	0x0a
-307 1387 [03] [2] CF89      	CALL	_Delay_ms
+306 0D9D [03] [2] 060A      	MVL	0x0a
+307 0D9E [03] [2] CF26      	CALL	_Delay_ms
 308                     	.CHKPARA _Delay_ms 1
 309                     ;	;.line	67; ".\Source\Drv_BLE.c"	return BIE_Data;
-310 1388 [03] [2] 6480      	MVF	r0x108E,0,0
-311 1389 [03] [2] 6620      	MVF	STK00,1,0
-312 138A [03] [2] 6481      	MVF	r0x108F,0,0
+310 0D9F [03] [2] 6480      	MVF	r0x108E,0,0
+311 0DA0 [03] [2] 6620      	MVF	STK00,1,0
+312 0DA1 [03] [2] 6481      	MVF	r0x108F,0,0
 313                     ;	;.line	68; ".\Source\Drv_BLE.c"	}
-314 138B [03] [2] C4BD 000A 	RET	
+314 0DA2 [03] [2] C4BD 000A 	RET	
 315                     ; exit point of _BIE_Read
 316                     	.ENDFUNC	_BIE_Read
 317                     ;--------------------------------------------------------

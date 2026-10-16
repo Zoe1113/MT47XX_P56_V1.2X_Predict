@@ -1,7 +1,7 @@
 $MOD:App_Memory:".\obj\App_Memory.rel"
 $VER:SDASHYA_201
-$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\App_Memory.asm"
+$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
+$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src\obj\App_Memory.asm"
 $EXPORT:_MemoryTemp_E2Store
 $CDB:"S:G$MemoryTemp_E2Store$0$0({2}DF,SV:S),C,0,0"
 $EXPORT:_MemoryTemp_RAMStore

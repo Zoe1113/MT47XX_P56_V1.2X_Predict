@@ -1,7 +1,7 @@
 $MOD:Drv_BLE:".\obj\Drv_BLE.rel"
 $VER:SDASHYA_201
-$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\Drv_BLE.asm"
+$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
+$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src\obj\Drv_BLE.asm"
 $EXPORT:_BIE_Polling
 $CDB:"S:G$BIE_Polling$0$0({2}DF,SC:U),C,0,0"
 $EXPORT:_BIE_Write

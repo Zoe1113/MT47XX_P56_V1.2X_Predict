@@ -4,7 +4,7 @@
 004                     ;--------------------------------------------------------
 005                     ; Port for HYCON CPU
 006                     ;--------------------------------------------------------
-007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+007                     ;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 008                     ;;	.file	".\Source\App_Sleep.c"
 009                     	.module App_Sleep
 010                     	;.list	p=HY17P56
@@ -176,182 +176,182 @@
 176                     ;--------------------------------------------------------
 177                     ;	;.line	24; ".\Source\App_Sleep.c"	switch(eSystem_Mode)
 178                     _Sleep_Mode:	;Function start
-179 12A3 [00] [2] 0604      	MVL	0x04
-180 12A4 [00] [2] 6BC9      	CPSL	_eSystem_Mode,0
-181 12A5 [00] [2] 786A      	JMP	_00118_DS_
-182 12A6 [00] [2] 0612      	MVL	HIGHD2(_00144_DS_)
-183 12A7 [00] [2] 661A      	MVF	_PCLATH,1,0
-184 12A8 [00] [2] 65C9      	MVF	_eSystem_Mode,0,0
-185 12A9 [00] [2] 04AD      	ADDL	D2(_00144_DS_)
-186 12AA [00] [2] A82B      	BTSZ	_STATUS,4
-187 12AB [00] [2] 3A1A      	INF	_PCLATH,1,0
-188 12AC [00] [2] 661B      	MVF	_PCLATL,1,0
+179 0C59 [00] [2] 0604      	MVL	0x04
+180 0C5A [00] [2] 6BC9      	CPSL	_eSystem_Mode,0
+181 0C5B [00] [2] 7868      	JMP	_00118_DS_
+182 0C5C [00] [2] 060C      	MVL	HIGHD2(_00144_DS_)
+183 0C5D [00] [2] 661A      	MVF	_PCLATH,1,0
+184 0C5E [00] [2] 65C9      	MVF	_eSystem_Mode,0,0
+185 0C5F [00] [2] 0463      	ADDL	D2(_00144_DS_)
+186 0C60 [00] [2] A82B      	BTSZ	_STATUS,4
+187 0C61 [00] [2] 3A1A      	INF	_PCLATH,1,0
+188 0C62 [00] [2] 661B      	MVF	_PCLATL,1,0
 189                     _00144_DS_:
-190 12AD [00] [2] 7803      	RJ	_00105_DS_
-191 12AE [00] [2] 7831      	RJ	_00111_DS_
-192 12AF [00] [2] 7832      	RJ	_00112_DS_
-193 12B0 [00] [2] 7858      	RJ	_00113_DS_
+190 0C63 [00] [2] 7803      	RJ	_00105_DS_
+191 0C64 [00] [2] 7830      	RJ	_00111_DS_
+192 0C65 [00] [2] 7831      	RJ	_00112_DS_
+193 0C66 [00] [2] 7856      	RJ	_00113_DS_
 194                     _00105_DS_:
 195                     ;	;.line	28; ".\Source\App_Sleep.c"	if(eBuzzer_Status == Buzzer_Silent)
-196 12B1 [00] [1] 0011 6F6A 	TFSZ	_eBuzzer_Status,0
-197 12B3 [00] [1] 785C      	JMP	_00118_DS_
+196 0C67 [00] [1] 0011 6F6A 	TFSZ	_eBuzzer_Status,0
+197 0C69 [00] [1] 785A      	JMP	_00118_DS_
 198                     ;	;.line	31; ".\Source\App_Sleep.c"	if(sButton.Flag_Button_Lift_Transient || Enter_PrepareSleep_Flag)
-199 12B4 [00] [2] 0012 AD05 	BTSZ	_sButton,6
-200 12B6 [00] [2] 7803      	JMP	_00106_DS_
-201 12B7 [00] [2] 4D04      	RRF	_Enter_PrepareSleep_Flag,0,0
-202 12B8 [00] [2] A02B      	BTSZ	_STATUS,0
-203 12B9 [00] [2] 7856      	JMP	_00118_DS_
+199 0C6A [00] [2] 0012 AD05 	BTSZ	_sButton,6
+200 0C6C [00] [2] 7802      	JMP	_00106_DS_
+201 0C6D [00] [2] 4D04      	RRF	_Enter_PrepareSleep_Flag,0,0
+202 0C6E [00] [2] 71        	BTSZ	_STATUS,0
+203 0C6E [00] 55        	JMP	_00118_DS_
 204                     _00106_DS_:
 205                     ;	;.line	33; ".\Source\App_Sleep.c"	Enter_PrepareSleep_Flag = FALSE;
-206 12BA [00] [2] 0D04      	CLRF	_Enter_PrepareSleep_Flag,0
+206 0C6F [00] [2] 0D04      	CLRF	_Enter_PrepareSleep_Flag,0
 207                     ;	;.line	35; ".\Source\App_Sleep.c"	sButton.Flag_Button_Lift_Once = TRUE;
-208 12BB [00] [2] 9B05      	BSF	_sButton,5
+208 0C70 [00] [2] 9B05      	BSF	_sButton,5
 209                     ;	;.line	37; ".\Source\App_Sleep.c"	eSystem_Mode = Sleep;
-210 12BC [00] [2] 0601      	MVL	0x01
-211 12BD [00] [2] 67C9      	MVF	_eSystem_Mode,1,0
+210 0C71 [00] [2] 0601      	MVL	0x01
+211 0C72 [00] [2] 67C9      	MVF	_eSystem_Mode,1,0
 212                     ;	;.line	39; ".\Source\App_Sleep.c"	GPIO_Configuration();
-213 12BE [00] [2] C8DB      	CALL	_GPIO_Configuration
+213 0C73 [00] [2] C93D      	CALL	_GPIO_Configuration
 214                     	.CHKPARA _GPIO_Configuration 0
 215                     ;	;.line	41; ".\Source\App_Sleep.c"	BZ_Disable();
-216 12BF [00] [1] 8E39      	BCF	_WDTCN,7
+216 0C74 [00] [1] 8E39      	BCF	_WDTCN,7
 217                     ;	;.line	43; ".\Source\App_Sleep.c"	TRISC1 |= 0x3C;
-218 12C0 [00] [1] 063C      	MVL	0x3c
-219 12C1 [00] [1] 2E54      	IORF	_TRISC1,1,0
+218 0C75 [00] [1] 063C      	MVL	0x3c
+219 0C76 [00] [1] 2E54      	IORF	_TRISC1,1,0
 220                     ;	;.line	44; ".\Source\App_Sleep.c"	PT1 &= 0xC3;
-221 12C2 [00] [1] 06C3      	MVL	0xc3
-222 12C3 [00] [1] 2A53      	ANDF	_PT1,1,0
+221 0C77 [00] [1] 06C3      	MVL	0xc3
+222 0C78 [00] [1] 2A53      	ANDF	_PT1,1,0
 223                     ;	;.line	45; ".\Source\App_Sleep.c"	TRISC8 |= 0xEF;
-224 12C4 [00] [1] 06EF      	MVL	0xef
-225 12C5 [00] [1] 2E6B      	IORF	_TRISC8,1,0
+224 0C79 [00] [1] 06EF      	MVL	0xef
+225 0C7A [00] [1] 2E6B      	IORF	_TRISC8,1,0
 226                     ;	;.line	46; ".\Source\App_Sleep.c"	PT8 &= 0x11;
-227 12C6 [00] [1] 0611      	MVL	0x11
-228 12C7 [00] [1] 2A6A      	ANDF	_PT8,1,0
+227 0C7B [00] [1] 0611      	MVL	0x11
+228 0C7C [00] [1] 2A6A      	ANDF	_PT8,1,0
 229                     ;	;.line	48; ".\Source\App_Sleep.c"	PT1PU &= 0x02;
-230 12C8 [00] [1] 0602      	MVL	0x02
-231 12C9 [00] [1] 2A56      	ANDF	_PT1PU,1,0
+230 0C7D [00] [1] 0602      	MVL	0x02
+231 0C7E [00] [1] 2A56      	ANDF	_PT1PU,1,0
 232                     ;	;.line	49; ".\Source\App_Sleep.c"	PT8PU &= 0x00;
-233 12CA [00] [1] 646D      	MVF	_PT8PU,0,0
-234 12CB [00] [1] 0C6D      	CLRF	_PT8PU,0
+233 0C7F [00] [1] 646D      	MVF	_PT8PU,0,0
+234 0C80 [00] [1] 0C6D      	CLRF	_PT8PU,0
 235                     ;	;.line	51; ".\Source\App_Sleep.c"	sBleStatus.F_Ble_En = FALSE;
-236 12CC [00] [1] 812E      	BCF	_sBleStatus,0
+236 0C81 [00] [1] 812E      	BCF	_sBleStatus,0
 237                     ;	;.line	53; ".\Source\App_Sleep.c"	eBle_Sta = Ble_Disable;
-238 12CD [00] [1] 0602      	MVL	0x02
-239 12CE [00] [1] 672D      	MVF	_eBle_Sta,1,0
+238 0C82 [00] [1] 0602      	MVL	0x02
+239 0C83 [00] [1] 672D      	MVF	_eBle_Sta,1,0
 240                     ;	;.line	56; ".\Source\App_Sleep.c"	LCDCN1 &= 0x77;
-241 12CF [00] [1] 0677      	MVL	0x77
-242 12D0 [00] [1] 2B80      	ANDF	_LCDCN1,1,0
+241 0C84 [00] [1] 0677      	MVL	0x77
+242 0C85 [00] [1] 2B80      	ANDF	_LCDCN1,1,0
 243                     ;	;.line	58; ".\Source\App_Sleep.c"	AccuracyModeADCOFF();
-244 12D1 [00] [1] C001 FA72 	CALL	_AccuracyModeADCOFF
+244 0C86 [00] [1] C001 F4CE 	CALL	_AccuracyModeADCOFF
 245                     	.CHKPARA _AccuracyModeADCOFF 0
 246                     ;	;.line	60; ".\Source\App_Sleep.c"	ADC_Disable();
-247 12D3 [00] [1] 8E3D      	BCF	_AD1CN0,7
+247 0C88 [00] [1] 8E3D      	BCF	_AD1CN0,7
 248                     ;	;.line	62; ".\Source\App_Sleep.c"	PWR_LDODisable();
-249 12D4 [00] [1] 8233      	BCF	_PWRCN,1
+249 0C89 [00] [1] 8233      	BCF	_PWRCN,1
 250                     ;	;.line	64; ".\Source\App_Sleep.c"	LVD_Disable();
-251 12D5 [00] [1] 06E1      	MVL	0xe1
-252 12D6 [00] [1] 2A43      	ANDF	_LVDCN,1,0
+251 0C8A [00] [1] 06E1      	MVL	0xe1
+252 0C8B [00] [1] 2A43      	ANDF	_LVDCN,1,0
 253                     ;	;.line	67; ".\Source\App_Sleep.c"	PWR_BGRDisable();
-254 12D7 [00] [1] 8E33      	BCF	_PWRCN,7
+254 0C8C [00] [1] 8E33      	BCF	_PWRCN,7
 255                     ;	;.line	71; ".\Source\App_Sleep.c"	AD1CN5 = 0x60;
-256 12D8 [00] [1] 0660      	MVL	0x60
-257 12D9 [00] [1] 6642      	MVF	_AD1CN5,1,0
+256 0C8D [00] [1] 0660      	MVL	0x60
+257 0C8E [00] [1] 6642      	MVF	_AD1CN5,1,0
 258                     ;	;.line	73; ".\Source\App_Sleep.c"	TMA1Disable();
-259 12DA [00] [1] 8E44      	BCF	_TMA1CN,7
+259 0C8F [00] [1] 8E44      	BCF	_TMA1CN,7
 260                     ;	;.line	75; ".\Source\App_Sleep.c"	UART0Disable();
-261 12DB [00] [1] 8E79      	BCF	_UR0CN,7
+261 0C90 [00] [1] 8E79      	BCF	_UR0CN,7
 262                     ;	;.line	78; ".\Source\App_Sleep.c"	INTE0 = 0x82;
-263 12DC [00] [1] 0682      	MVL	0x82
-264 12DD [00] [1] 6623      	MVF	_INTE0,1,0
+263 0C91 [00] [1] 0682      	MVL	0x82
+264 0C92 [00] [1] 6623      	MVF	_INTE0,1,0
 265                     ;	;.line	79; ".\Source\App_Sleep.c"	INTE1 = 0x00;
-266 12DE [00] [1] 0C24      	CLRF	_INTE1,0
+266 0C93 [00] [1] 0C24      	CLRF	_INTE1,0
 267                     ;	;.line	86; ".\Source\App_Sleep.c"	break;
-268 12DF [00] [1] 7830      	JMP	_00118_DS_
+268 0C94 [00] [1] 782F      	JMP	_00118_DS_
 269                     _00111_DS_:
 270                     ;	;.line	90; ".\Source\App_Sleep.c"	 ..asm
-271 12E0 [00] [2] 0002      	SLP
+271 0C95 [00] [2] 0002      	SLP
 272                     ;	;.line	91; ".\Source\App_Sleep.c"	break;
-273 12E1 [00] [2] 782E      	JMP	_00118_DS_
+273 0C96 [00] [2] 782D      	JMP	_00118_DS_
 274                     _00112_DS_:
 275                     ;	;.line	95; ".\Source\App_Sleep.c"	GPIO_Configuration();
-276 12E2 [00] [2] C8B7      	CALL	_GPIO_Configuration
+276 0C97 [00] [2] C919      	CALL	_GPIO_Configuration
 277                     ;	;.line	101; ".\Source\App_Sleep.c"	PT8PU &= 0x10;
-278 12E3 [00] [1] 0610      	MVL	0x10
-279 12E4 [00] [1] 2A6D      	ANDF	_PT8PU,1,0
+278 0C98 [00] [1] 0610      	MVL	0x10
+279 0C99 [00] [1] 2A6D      	ANDF	_PT8PU,1,0
 280                     ;	;.line	103; ".\Source\App_Sleep.c"	PT1PU &= 0xDB;
-281 12E5 [00] [1] 06DB      	MVL	0xdb
-282 12E6 [00] [1] 2A56      	ANDF	_PT1PU,1,0
+281 0C9A [00] [1] 06DB      	MVL	0xdb
+282 0C9B [00] [1] 2A56      	ANDF	_PT1PU,1,0
 283                     ;	;.line	106; ".\Source\App_Sleep.c"	TMA1_ClearTMA1();
-284 12E7 [00] [1] 0C45      	CLRF	_TMA1R,0
+284 0C9C [00] [1] 0C45      	CLRF	_TMA1R,0
 285                     ;	;.line	108; ".\Source\App_Sleep.c"	TMA1Enable();
-286 12E8 [00] [1] 9E44      	BSF	_TMA1CN,7
+286 0C9D [00] [1] 9E44      	BSF	_TMA1CN,7
 287                     ;	;.line	110; ".\Source\App_Sleep.c"	UART0Enable();
-288 12E9 [00] [1] 9E79      	BSF	_UR0CN,7
+288 0C9E [00] [1] 9E79      	BSF	_UR0CN,7
 289                     ;	;.line	112; ".\Source\App_Sleep.c"	ADIF_ClearFlag();
-290 12EA [00] [1] 8A26      	BCF	_INTF0,5
+290 0C9F [00] [1] 8A26      	BCF	_INTF0,5
 291                     ;	;.line	114; ".\Source\App_Sleep.c"	TA1IF_ClearFlag();
-292 12EB [00] [1] 8E27      	BCF	_INTF1,7
+292 0CA0 [00] [1] 8E27      	BCF	_INTF1,7
 293                     ;	;.line	116; ".\Source\App_Sleep.c"	Param_Init();
-294 12EC [00] [1] CA06      	CALL	_Param_Init
+294 0CA1 [00] [1] CB10      	CALL	_Param_Init
 295                     	.CHKPARA _Param_Init 0
 296                     ;	;.line	125; ".\Source\App_Sleep.c"	LCD_Clear_Register();
-297 12ED [00] [1] C000 F2B5 	CALL	_LCD_Clear_Register
+297 0CA2 [00] [1] C926      	CALL	_LCD_Clear_Register
 298                     	.CHKPARA _LCD_Clear_Register 0
 299                     ;	;.line	127; ".\Source\App_Sleep.c"	LCD_Configuration();
-300 12EF [00] [1] C001 FB58 	CALL	_LCD_Configuration
+300 0CA3 [00] [1] C001 F58D 	CALL	_LCD_Configuration
 301                     	.CHKPARA _LCD_Configuration 0
 302                     ;	;.line	130; ".\Source\App_Sleep.c"	INTE0 = 0xF0;
-303 12F1 [00] [1] 06F0      	MVL	0xf0
-304 12F2 [00] [1] 6623      	MVF	_INTE0,1,0
+303 0CA5 [00] [Y] 06F0      	MVL	0xf0
+304 0CA6 [00] [Y] 6623      	MVF	_INTE0,1,0
 305                     ;	;.line	131; ".\Source\App_Sleep.c"	INTE1 = 0x10;
-306 12F3 [00] [1] 0610      	MVL	0x10
-307 12F4 [00] [1] 6624      	MVF	_INTE1,1,0
+306 0CA7 [00] [Y] 0610      	MVL	0x10
+307 0CA8 [00] [Y] 6624      	MVF	_INTE1,1,0
 308                     ;	;.line	134; ".\Source\App_Sleep.c"	LVD_VolSelect(VLDX_26);
-309 12F5 [00] [1] 6443      	MVF	_LVDCN,0,0
-310 12F6 [00] [1] 01E1      	ANDL	0xe1
-311 12F7 [00] [1] 020E      	IORL	0x0e
-312 12F8 [00] [1] 6643      	MVF	_LVDCN,1,0
+309 0CA9 [00] [Y] 6443      	MVF	_LVDCN,0,0
+310 0CAA [00] [Y] 01E1      	ANDL	0xe1
+311 0CAB [00] [Y] 020E      	IORL	0x0e
+312 0CAC [00] [Y] 6643      	MVF	_LVDCN,1,0
 313                     ;	;.line	137; ".\Source\App_Sleep.c"	PWR_BGREnable();
-314 12F9 [00] [1] 9E33      	BSF	_PWRCN,7
+314 0CAD [00] [Y] 9E33      	BSF	_PWRCN,7
 315                     ;	;.line	139; ".\Source\App_Sleep.c"	PWR_LDOPLEnable();
-316 12FA [00] [1] 9842      	BSF	_AD1CN5,4
+316 0CAE [00] [Y] 9842      	BSF	_AD1CN5,4
 317                     ;	;.line	141; ".\Source\App_Sleep.c"	PWR_LDOEnable();
-318 12FB [00] [1] 9233      	BSF	_PWRCN,1
+318 0CAF [00] [Y] 9233      	BSF	_PWRCN,1
 319                     ;	;.line	143; ".\Source\App_Sleep.c"	PWR_LDOSel(LDOC_2V4);
-320 12FC [00] [1] 068F      	MVL	0x8f
-321 12FD [00] [1] 2A33      	ANDF	_PWRCN,1,0
+320 0CB0 [00] [Y] 068F      	MVL	0x8f
+321 0CB1 [00] [Y] 2A33      	ANDF	_PWRCN,1,0
 322                     ;	;.line	145; ".\Source\App_Sleep.c"	Delay_ms(10);
-323 12FE [00] [1] 060A      	MVL	0x0a
-324 12FF [00] [1] C811      	CALL	_Delay_ms
+323 0CB2 [00] [Y] 060A      	MVL	0x0a
+324 0CB3 [00] [Y] C811      	CALL	_Delay_ms
 325                     	.CHKPARA _Delay_ms 1
 326                     ;	;.line	147; ".\Source\App_Sleep.c"	AD1CN5 |= 0x80;
-327 1300 [00] [1] 9E42      	BSF	_AD1CN5,7
+327 0CB4 [00] [Y] 9E42      	BSF	_AD1CN5,7
 328                     ;	;.line	149; ".\Source\App_Sleep.c"	ADCAccuracyMode();
-329 1301 [00] [1] C001 FA7B 	CALL	_ADCAccuracyMode
+329 0CB5 [00] [Y] C001 F4D7 	CALL	_ADCAccuracyMode
 330                     	.CHKPARA _ADCAccuracyMode 0
 331                     ;	;.line	151; ".\Source\App_Sleep.c"	eSystem_Mode = Normal;
-332 1303 [00] [1] 0603      	MVL	0x03
-333 1304 [00] [2] 0012 67C9 	MVF	_eSystem_Mode,1,0
+332 0CB7 [00] [Y] 0603      	MVL	0x03
+333 0CB8 [00] [2] 0012 67C9 	MVF	_eSystem_Mode,1,0
 334                     ;	;.line	153; ".\Source\App_Sleep.c"	eDisplay_Interfaces = Display_PowerOn;
-335 1306 [00] [2] 0D33      	CLRF	_eDisplay_Interfaces,0
+335 0CBA [00] [2] 0D33      	CLRF	_eDisplay_Interfaces,0
 336                     ;	;.line	155; ".\Source\App_Sleep.c"	eAutoBps_Status = AutoBps_Init;
-337 1307 [00] [2] 0DED      	CLRF	_eAutoBps_Status,0
+337 0CBB [00] [2] 0DED      	CLRF	_eAutoBps_Status,0
 338                     ;	;.line	157; ".\Source\App_Sleep.c"	break;
-339 1308 [00] [2] 7807      	JMP	_00118_DS_
+339 0CBC [00] [2] 7807      	JMP	_00118_DS_
 340                     _00113_DS_:
 341                     ;	;.line	161; ".\Source\App_Sleep.c"	eSystem_Mode = Prepare_Sleep;
-342 1309 [00] [2] 0DC9      	CLRF	_eSystem_Mode,0
+342 0CBD [00] [2] 0DC9      	CLRF	_eSystem_Mode,0
 343                     ;	;.line	163; ".\Source\App_Sleep.c"	if(!Flag_No_Buzzer)
-344 130A [00] [1] 0011 6F6B 	TFSZ	_Flag_No_Buzzer,0
-345 130C [00] [1] 7802      	JMP	_00115_DS_
+344 0CBE [00] [1] 0011 6F6B 	TFSZ	_Flag_No_Buzzer,0
+345 0CC0 [00] [1] 7802      	JMP	_00115_DS_
 346                     ;	;.line	166; ".\Source\App_Sleep.c"	eBuzzer_Status = Buzzer_PowerOnOff;
-347 130D [00] [1] 0601      	MVL	0x01
-348 130E [00] [1] 676A      	MVF	_eBuzzer_Status,1,0
+347 0CC1 [00] [1] 0601      	MVL	0x01
+348 0CC2 [00] [1] 676A      	MVF	_eBuzzer_Status,1,0
 349                     _00115_DS_:
 350                     ;	;.line	169; ".\Source\App_Sleep.c"	eBacklight_Status = No_Backlight;
-351 130F [00] [1] 0D2B      	CLRF	_eBacklight_Status,0
+351 0CC3 [00] [1] 0D2B      	CLRF	_eBacklight_Status,0
 352                     _00118_DS_:
 353                     ;	;.line	173; ".\Source\App_Sleep.c"	}
-354 1310 [00] [X] 000A      	RET	
+354 0CC4 [00] [X] 000A      	RET	
 355                     ; exit point of _Sleep_Mode
 356                     	.ENDFUNC	_Sleep_Mode
 357                     ;--------------------------------------------------------

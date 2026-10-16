@@ -1,7 +1,7 @@
 $MOD:Drv_CLK:".\obj\Drv_CLK.rel"
 $VER:SDASHYA_201
-$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
-$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src\obj\Drv_CLK.asm"
+$ASFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
+$SRC:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src\obj\Drv_CLK.asm"
 $EXPORT:_CLK_Configuration
 $CDB:"S:G$CLK_Configuration$0$0({2}DF,SV:S),C,0,0"
 $AREA:_CODE:1:0:0:0

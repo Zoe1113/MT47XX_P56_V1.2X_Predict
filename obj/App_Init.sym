@@ -161,28 +161,28 @@ Symbol:_ADCRM          , LOCAL,  EQU, line 1641, 0x3B
 Symbol:_ADCRL          , LOCAL,  EQU, line 1644, 0x3C
 Symbol:_TEMDATA        , LOCAL,  EQU, line 1647, 0x2E0
 Symbol:_System_Init    , GLOBL,  LABEL, area CCODE, offset ~0
-Symbol:_E2_Init        , GLOBL,  LABEL, area CCODE, offset ~56
-Symbol:_00153_DS_      , LOCAL,  LABEL, area CCODE, offset ~76
-Symbol:_00160_DS_      , LOCAL,  LABEL, area CCODE, offset ~108
-Symbol:_00157_DS_      , LOCAL,  LABEL, area CCODE, offset ~120
-Symbol:_00163_DS_      , LOCAL,  LABEL, area CCODE, offset ~122
-Symbol:_00165_DS_      , LOCAL,  LABEL, area CCODE, offset ~190
-Symbol:_Binding_Init   , GLOBL,  LABEL, area CCODE, offset ~192
-Symbol:_00129_DS_      , LOCAL,  LABEL, area CCODE, offset ~218
-Symbol:_00126_DS_      , LOCAL,  LABEL, area CCODE, offset ~240
-Symbol:_00123_DS_      , LOCAL,  LABEL, area CCODE, offset ~262
-Symbol:_00130_DS_      , LOCAL,  LABEL, area CCODE, offset ~278
-Symbol:_00140_DS_      , LOCAL,  LABEL, area CCODE, offset ~300
-Symbol:_00137_DS_      , LOCAL,  LABEL, area CCODE, offset ~316
-Symbol:_00134_DS_      , LOCAL,  LABEL, area CCODE, offset ~332
-Symbol:_00141_DS_      , LOCAL,  LABEL, area CCODE, offset ~342
-Symbol:_00145_DS_      , LOCAL,  LABEL, area CCODE, offset ~362
-Symbol:_00147_DS_      , LOCAL,  LABEL, area CCODE, offset ~372
-Symbol:_BIE_Init       , GLOBL,  LABEL, area CCODE, offset ~374
-Symbol:_00113_DS_      , LOCAL,  LABEL, area CCODE, offset ~400
-Symbol:_00110_DS_      , LOCAL,  LABEL, area CCODE, offset ~424
-Symbol:_00115_DS_      , LOCAL,  LABEL, area CCODE, offset ~442
-Symbol:_Param_Init     , GLOBL,  LABEL, area CCODE, offset ~444
+Symbol:_E2_Init        , GLOBL,  LABEL, area CCODE, offset ~60
+Symbol:_00153_DS_      , LOCAL,  LABEL, area CCODE, offset ~80
+Symbol:_00160_DS_      , LOCAL,  LABEL, area CCODE, offset ~112
+Symbol:_00157_DS_      , LOCAL,  LABEL, area CCODE, offset ~124
+Symbol:_00163_DS_      , LOCAL,  LABEL, area CCODE, offset ~126
+Symbol:_00165_DS_      , LOCAL,  LABEL, area CCODE, offset ~194
+Symbol:_Binding_Init   , GLOBL,  LABEL, area CCODE, offset ~196
+Symbol:_00129_DS_      , LOCAL,  LABEL, area CCODE, offset ~222
+Symbol:_00126_DS_      , LOCAL,  LABEL, area CCODE, offset ~244
+Symbol:_00123_DS_      , LOCAL,  LABEL, area CCODE, offset ~266
+Symbol:_00130_DS_      , LOCAL,  LABEL, area CCODE, offset ~282
+Symbol:_00140_DS_      , LOCAL,  LABEL, area CCODE, offset ~304
+Symbol:_00137_DS_      , LOCAL,  LABEL, area CCODE, offset ~320
+Symbol:_00134_DS_      , LOCAL,  LABEL, area CCODE, offset ~336
+Symbol:_00141_DS_      , LOCAL,  LABEL, area CCODE, offset ~346
+Symbol:_00145_DS_      , LOCAL,  LABEL, area CCODE, offset ~366
+Symbol:_00147_DS_      , LOCAL,  LABEL, area CCODE, offset ~376
+Symbol:_BIE_Init       , GLOBL,  LABEL, area CCODE, offset ~378
+Symbol:_00113_DS_      , LOCAL,  LABEL, area CCODE, offset ~404
+Symbol:_00110_DS_      , LOCAL,  LABEL, area CCODE, offset ~428
+Symbol:_00115_DS_      , LOCAL,  LABEL, area CCODE, offset ~446
+Symbol:_Param_Init     , GLOBL,  LABEL, area CCODE, offset ~448
 Symbol:_sTest          , GLOBL,  LABEL, area DSEG, offset ~0
 Symbol:_eTempUnit      , GLOBL,  LABEL, area DSEG, offset ~19
 Symbol:_eBondingTempUnit, GLOBL,  LABEL, area DSEG, offset ~20
@@ -190,8 +190,8 @@ Symbol:_eVersionCode   , GLOBL,  LABEL, area DSEG, offset ~21
 Symbol:_eMeasureMode   , GLOBL,  LABEL, area DSEG, offset ~22
 Symbol:_eBinding_Status, GLOBL,  LABEL, area DSEG, offset ~23
 Symbol:_Enter_PrepareSleep_Flag, GLOBL,  LABEL, area DSEG, offset ~24
-Symbol:r0x10AB         , LOCAL,  LABEL, area UDATA, offset ~0
-Symbol:r0x10AE         , LOCAL,  LABEL, area UDATA, offset ~1
-Symbol:r0x10AF         , LOCAL,  LABEL, area UDATA, offset ~2
-Symbol:r0x10B0         , LOCAL,  LABEL, area UDATA, offset ~3
-Symbol:r0x10B1         , LOCAL,  LABEL, area UDATA, offset ~4
+Symbol:r0x10AA         , LOCAL,  LABEL, area UDATA, offset ~0
+Symbol:r0x10AD         , LOCAL,  LABEL, area UDATA, offset ~1
+Symbol:r0x10AE         , LOCAL,  LABEL, area UDATA, offset ~2
+Symbol:r0x10AF         , LOCAL,  LABEL, area UDATA, offset ~3
+Symbol:r0x10B0         , LOCAL,  LABEL, area UDATA, offset ~4

@@ -4,7 +4,7 @@
 ;--------------------------------------------------------
 ; Port for HYCON CPU
 ;--------------------------------------------------------
-;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_预测\Src"
+;	;CCFROM:"D:\Work\1任务\MT\学习\97 项目\00 4718_测温范围工程变更\代码\00 MT47XX_P56_V1.2X_ce专标\Src"
 ;;	.file	".\Source\App_Main.c"
 	.module App_Main
 	;.list	p=HY17P56
@@ -187,27 +187,27 @@ __sdcc_interrupt:
 ;--------------------------------------------------------
 	.FUNC _ISR:$r:0:0:$L:r0x108D:$L:r0x1090:$L:r0x108E:$L:r0x1093
 ;--------------------------------------------------------
-;	;.line	74; ".\Source\App_Main.c"	if(ADIF_IsFlag())
+;	;.line	76; ".\Source\App_Main.c"	if(ADIF_IsFlag())
 _ISR:	;Function start
 	BTSS	_INTF0,5
 	JMP	_00112_DS_
-;	;.line	77; ".\Source\App_Main.c"	ADIF_ClearFlag();
+;	;.line	79; ".\Source\App_Main.c"	ADIF_ClearFlag();
 	BCF	_INTF0,5
-;	;.line	80; ".\Source\App_Main.c"	sADC.Flag_ADCDone = TRUE;
+;	;.line	82; ".\Source\App_Main.c"	sADC.Flag_ADCDone = TRUE;
 	BSF	_sADC,1
-;	;.line	82; ".\Source\App_Main.c"	ADC_INT_Disable();
+;	;.line	84; ".\Source\App_Main.c"	ADC_INT_Disable();
 	BCF	_INTE0,5
 _00112_DS_:
-;	;.line	87; ".\Source\App_Main.c"	if(RCIF_IsFlag())
+;	;.line	89; ".\Source\App_Main.c"	if(RCIF_IsFlag())
 	BTSS	_INTF1,4
 	JMP	_00123_DS_
-;	;.line	90; ".\Source\App_Main.c"	sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] = RC0REG;
+;	;.line	92; ".\Source\App_Main.c"	sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] = RC0REG;
 	LDPR	(_sBleStatus + 4),0
 	MVF	_RC0REG,0,0
 	MVF	STK00,1,0
 	MVF	(_sBleStatus + 3),0,0
 	MVFF	STK00,_PLUSW0
-;	;.line	92; ".\Source\App_Main.c"	if((sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] == Ble_End2) || (sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] == Ble_End22))
+;	;.line	94; ".\Source\App_Main.c"	if((sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] == Ble_End2) || (sBleStatus.g_Ble_RxData[sBleStatus.pBleRxBuf] == Ble_End22))
 	MVF	(_sBleStatus + 3),0,0
 	MVF	r0x108D,1,0
 	MVF	_PLUSW0,0,0
@@ -219,13 +219,13 @@ _00112_DS_:
 	CPSE	r0x1090,0
 	JMP	_00119_DS_
 _00118_DS_:
-;	;.line	94; ".\Source\App_Main.c"	sBleStatus.F_Uart_Receive = TRUE;
+;	;.line	96; ".\Source\App_Main.c"	sBleStatus.F_Uart_Receive = TRUE;
 	BSF	_sBleStatus,1
-;	;.line	95; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf = 0;
+;	;.line	97; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf = 0;
 	CLRF	(_sBleStatus + 3),0
 	JMP	_00123_DS_
 _00119_DS_:
-;	;.line	98; ".\Source\App_Main.c"	else if((sBleStatus.g_Ble_RxData[0] == Ble_Header1) || (sBleStatus.g_Ble_RxData[0] == Ble_Header21))
+;	;.line	100; ".\Source\App_Main.c"	else if((sBleStatus.g_Ble_RxData[0] == Ble_Header1) || (sBleStatus.g_Ble_RxData[0] == Ble_Header21))
 	MVF	(_sBleStatus + 4),0,0
 	MVF	r0x108E,1,0
 	XORL	0xfa
@@ -235,44 +235,44 @@ _00119_DS_:
 	CPSE	r0x108E,0
 	JMP	_00123_DS_
 _00115_DS_:
-;	;.line	100; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf++;
+;	;.line	102; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf++;
 	INF	r0x108D,0,0
 	MVF	(_sBleStatus + 3),1,0
-;	;.line	102; ".\Source\App_Main.c"	if(sBleStatus.pBleRxBuf == DataLenth)
+;	;.line	104; ".\Source\App_Main.c"	if(sBleStatus.pBleRxBuf == DataLenth)
 	XORL	0x12
 	BTSZ	_STATUS,0
-;	;.line	104; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf = 0;
+;	;.line	106; ".\Source\App_Main.c"	sBleStatus.pBleRxBuf = 0;
 	CLRF	(_sBleStatus + 3),0
 _00123_DS_:
-;	;.line	111; ".\Source\App_Main.c"	if(TA1CIF_IsFlag())
+;	;.line	113; ".\Source\App_Main.c"	if(TA1CIF_IsFlag())
 	BTSS	_INTF0,6
 	JMP	_00137_DS_
-;	;.line	114; ".\Source\App_Main.c"	TA1CIF_ClearFlag();
+;	;.line	116; ".\Source\App_Main.c"	TA1CIF_ClearFlag();
 	BCF	_INTF0,6
-;	;.line	116; ".\Source\App_Main.c"	TMA1R = 0x00;
+;	;.line	118; ".\Source\App_Main.c"	TMA1R = 0x00;
 	CLRF	_TMA1R,0
-;	;.line	121; ".\Source\App_Main.c"	sTimeStamp.Timer_Journey++;
+;	;.line	123; ".\Source\App_Main.c"	sTimeStamp.Timer_Journey++;
 	INF	(_sTimeStamp + 2),1,0
 	MVL	0x00
 	ADDC	(_sTimeStamp + 3),1,0
 	ADDC	(_sTimeStamp + 4),1,0
 	ADDC	(_sTimeStamp + 5),1,0
-;	;.line	124; ".\Source\App_Main.c"	if(++sTIMx.Cnt50ms >= 2)
+;	;.line	126; ".\Source\App_Main.c"	if(++sTIMx.Cnt50ms >= 2)
 	INF	(_sTIMx + 4),0,0
 	MVF	r0x108D,1,0
 	MVF	(_sTIMx + 4),1,0
 	MVL	0x01
 	CPSG	r0x108D,0
 	JMP	_00125_DS_
-;	;.line	126; ".\Source\App_Main.c"	sTIMx.Cnt50ms = 0;
+;	;.line	128; ".\Source\App_Main.c"	sTIMx.Cnt50ms = 0;
 	CLRF	(_sTIMx + 4),0
-;	;.line	128; ".\Source\App_Main.c"	sTIMx.LVDSampleFlag = TRUE;
+;	;.line	130; ".\Source\App_Main.c"	sTIMx.LVDSampleFlag = TRUE;
 	BSF	_sTIMx,0
-;	;.line	130; ".\Source\App_Main.c"	sTIMx.LCDRefreshFlag = TRUE;
+;	;.line	132; ".\Source\App_Main.c"	sTIMx.LCDRefreshFlag = TRUE;
 	LDPR	(_sTIMx + 0),0x00
 	BSF	_INDF0,1
 _00125_DS_:
-;	;.line	134; ".\Source\App_Main.c"	if(++sTIMx.Cnt125ms >= 5)
+;	;.line	136; ".\Source\App_Main.c"	if(++sTIMx.Cnt125ms >= 5)
 	INF	(_sTIMx + 5),0,0
 	MVF	r0x108D,1,0
 	MVL	0x00
@@ -286,15 +286,15 @@ _00125_DS_:
 	ADDC	r0x108E,0,0
 	BTSS	_STATUS,4
 	JMP	_00127_DS_
-;	;.line	136; ".\Source\App_Main.c"	sTIMx.Cnt125ms = 0;
+;	;.line	138; ".\Source\App_Main.c"	sTIMx.Cnt125ms = 0;
 	CLRF	(_sTIMx + 5),0
 	CLRF	(_sTIMx + 6),0
-;	;.line	137; ".\Source\App_Main.c"	sTIMx.BuzzerIntervalCnt++;
+;	;.line	139; ".\Source\App_Main.c"	sTIMx.BuzzerIntervalCnt++;
 	INF	(_sTIMx + 3),1,0
-;	;.line	138; ".\Source\App_Main.c"	sTIMx.BuzzerFlash4Hz = !sTIMx.BuzzerFlash4Hz;
+;	;.line	140; ".\Source\App_Main.c"	sTIMx.BuzzerFlash4Hz = !sTIMx.BuzzerFlash4Hz;
 	BTGF	(_sTIMx+1),4
 _00127_DS_:
-;	;.line	142; ".\Source\App_Main.c"	if(++sTIMx.Cnt250ms >= 10)
+;	;.line	144; ".\Source\App_Main.c"	if(++sTIMx.Cnt250ms >= 10)
 	INF	(_sTIMx + 7),0,0
 	MVF	r0x108D,1,0
 	MVL	0x00
@@ -308,22 +308,22 @@ _00127_DS_:
 	ADDC	r0x108E,0,0
 	BTSS	_STATUS,4
 	JMP	_00131_DS_
-;	;.line	144; ".\Source\App_Main.c"	sTIMx.Cnt250ms = 0;
+;	;.line	146; ".\Source\App_Main.c"	sTIMx.Cnt250ms = 0;
 	CLRF	(_sTIMx + 7),0
 	CLRF	(_sTIMx + 8),0
-;	;.line	146; ".\Source\App_Main.c"	sADC.Get_250msTemp_Flag = TRUE;
+;	;.line	148; ".\Source\App_Main.c"	sADC.Get_250msTemp_Flag = TRUE;
 	BSF	_sADC,0
-;	;.line	148; ".\Source\App_Main.c"	if(++sTIMx.TempDetectingSymFlash1Hz >= 3)
+;	;.line	150; ".\Source\App_Main.c"	if(++sTIMx.TempDetectingSymFlash1Hz >= 3)
 	INF	(_sTIMx + 2),0,0
 	MVF	r0x108D,1,0
 	MVF	(_sTIMx + 2),1,0
 	MVL	0x02
 	CPSG	r0x108D,0
 	JMP	_00131_DS_
-;	;.line	150; ".\Source\App_Main.c"	sTIMx.TempDetectingSymFlash1Hz = 0;
+;	;.line	152; ".\Source\App_Main.c"	sTIMx.TempDetectingSymFlash1Hz = 0;
 	CLRF	(_sTIMx + 2),0
 _00131_DS_:
-;	;.line	161; ".\Source\App_Main.c"	if(++sTIMx.Cnt500ms >= 20)
+;	;.line	163; ".\Source\App_Main.c"	if(++sTIMx.Cnt500ms >= 20)
 	INF	(_sTIMx + 9),0,0
 	MVF	r0x108D,1,0
 	MVL	0x00
@@ -337,25 +337,25 @@ _00131_DS_:
 	ADDC	r0x108E,0,0
 	BTSS	_STATUS,4
 	JMP	_00133_DS_
-;	;.line	163; ".\Source\App_Main.c"	sTIMx.Cnt500ms = 0;
+;	;.line	165; ".\Source\App_Main.c"	sTIMx.Cnt500ms = 0;
 	CLRF	(_sTIMx + 9),0
 	CLRF	(_sTIMx + 10),0
-;	;.line	165; ".\Source\App_Main.c"	sTIMx.ModeSymbolFlash = !sTIMx.ModeSymbolFlash;
+;	;.line	167; ".\Source\App_Main.c"	sTIMx.ModeSymbolFlash = !sTIMx.ModeSymbolFlash;
 	BTGF	_sTIMx,3
-;	;.line	167; ".\Source\App_Main.c"	sTIMx.BuzzerFlash1Hz = !sTIMx.BuzzerFlash1Hz;
+;	;.line	169; ".\Source\App_Main.c"	sTIMx.BuzzerFlash1Hz = !sTIMx.BuzzerFlash1Hz;
 	BTGF	(_sTIMx+1),3
-;	;.line	169; ".\Source\App_Main.c"	sTIMx.CalSymbolFlash = !sTIMx.CalSymbolFlash;
+;	;.line	171; ".\Source\App_Main.c"	sTIMx.CalSymbolFlash = !sTIMx.CalSymbolFlash;
 	BTGF	_sTIMx,5
-;	;.line	171; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = 0;
+;	;.line	173; ".\Source\App_Main.c"	sTIMx.BindingSymbolFlash = 0;
 	BCF	_sTIMx,7
-;	;.line	173; ".\Source\App_Main.c"	sTIMx.UnitSymbolFlash = !sTIMx.UnitSymbolFlash;
+;	;.line	175; ".\Source\App_Main.c"	sTIMx.UnitSymbolFlash = !sTIMx.UnitSymbolFlash;
 	BTGF	(_sTIMx+1),0
-;	;.line	175; ".\Source\App_Main.c"	sTIMx.BLESymbolFlash = !sTIMx.BLESymbolFlash;
+;	;.line	177; ".\Source\App_Main.c"	sTIMx.BLESymbolFlash = !sTIMx.BLESymbolFlash;
 	BTGF	(_sTIMx+1),1
-;	;.line	177; ".\Source\App_Main.c"	sTIMx.ForecastSymbolFlash = !sTIMx.ForecastSymbolFlash;
+;	;.line	179; ".\Source\App_Main.c"	sTIMx.ForecastSymbolFlash = !sTIMx.ForecastSymbolFlash;
 	BTGF	(_sTIMx+1),2
 _00133_DS_:
-;	;.line	181; ".\Source\App_Main.c"	if(++sTIMx.Cnt1s >= 40)
+;	;.line	183; ".\Source\App_Main.c"	if(++sTIMx.Cnt1s >= 40)
 	INF	(_sTIMx + 11),0,0
 	MVF	r0x108D,1,0
 	MVL	0x00
@@ -369,10 +369,10 @@ _00133_DS_:
 	ADDC	r0x108E,0,0
 	BTSS	_STATUS,4
 	JMP	_00137_DS_
-;	;.line	183; ".\Source\App_Main.c"	sTIMx.Cnt1s = 0;
+;	;.line	185; ".\Source\App_Main.c"	sTIMx.Cnt1s = 0;
 	CLRF	(_sTIMx + 11),0
 	CLRF	(_sTIMx + 12),0
-;	;.line	185; ".\Source\App_Main.c"	sTIMx.ForecastJudgeOKTempFlash = !sTIMx.ForecastJudgeOKTempFlash;
+;	;.line	187; ".\Source\App_Main.c"	sTIMx.ForecastJudgeOKTempFlash = !sTIMx.ForecastJudgeOKTempFlash;
 	MVL	0x01
 	BTSZ	_sTIMx,6
 	MVL	0x00
@@ -382,23 +382,23 @@ _00133_DS_:
 	BTSZ	r0x1093,0
 	BSF	_sTIMx,6
 _00137_DS_:
-;	;.line	191; ".\Source\App_Main.c"	if(WDTIF_IsFlag())
+;	;.line	193; ".\Source\App_Main.c"	if(WDTIF_IsFlag())
 	BTSZ	_INTF0,4
-;	;.line	194; ".\Source\App_Main.c"	WDTIF_ClearFlag();
+;	;.line	196; ".\Source\App_Main.c"	WDTIF_ClearFlag();
 	BCF	_INTF0,4
-;	;.line	199; ".\Source\App_Main.c"	if(E1IF_IsFlag())
+;	;.line	201; ".\Source\App_Main.c"	if(E1IF_IsFlag())
 	BTSS	_INTF0,1
 	JMP	_00144_DS_
-;	;.line	202; ".\Source\App_Main.c"	E1IF_ClearFlag();
+;	;.line	204; ".\Source\App_Main.c"	E1IF_ClearFlag();
 	BCF	_INTF0,1
-;	;.line	204; ".\Source\App_Main.c"	if(eSystem_Mode == Sleep)
+;	;.line	206; ".\Source\App_Main.c"	if(eSystem_Mode == Sleep)
 	DCSZ	_eSystem_Mode,0,0
 	JMP	_00144_DS_
-;	;.line	207; ".\Source\App_Main.c"	eSystem_Mode = Prepare_Normal;
+;	;.line	209; ".\Source\App_Main.c"	eSystem_Mode = Prepare_Normal;
 	MVL	0x02
 	MVF	_eSystem_Mode,1,0
 _00144_DS_:
-;	;.line	210; ".\Source\App_Main.c"	}
+;	;.line	212; ".\Source\App_Main.c"	}
 	RETI	 1
 ; exit point of _ISR
 	.ENDFUNC	_ISR
@@ -410,7 +410,7 @@ _00144_DS_:
 ;--------------------------------------------------------
 	.FUNC _main:$r:0:0:$C:_System_Init:$C:_AutoBps_Configuration:$C:_Key_Detect:$C:_Get_250msTemp\
 :$C:_Task_Schedule:$C:_LCD_Display:$C:_Buzzer_Drive:$C:_Backlight_Drive:$C:_App_BleMode\
-:$C:_Actual_Measure:$C:_Forecast_Measure\
+:$C:_Actual_Measure\
 
 ;--------------------------------------------------------
 ;	;.line	25; ".\Source\App_Main.c"	System_Init();
@@ -445,13 +445,10 @@ _00106_DS_:
 ;	;.line	56; ".\Source\App_Main.c"	App_BleMode();
 	CALL	_App_BleMode
 	.CHKPARA _App_BleMode 0
-;	;.line	59; ".\Source\App_Main.c"	Actual_Measure();
+;	;.line	60; ".\Source\App_Main.c"	Actual_Measure();
 	CALL	_Actual_Measure
 	.CHKPARA _Actual_Measure 0
-;	;.line	62; ".\Source\App_Main.c"	Forecast_Measure();
-	CALL	_Forecast_Measure
-	.CHKPARA _Forecast_Measure 0
-;	;.line	64; ".\Source\App_Main.c"	}
+;	;.line	66; ".\Source\App_Main.c"	}
 	JMP	_00106_DS_
 ; exit point of _main
 	.ENDFUNC	_main
@@ -815,7 +812,6 @@ _00106_DS_:
 	.globl	_Get_250msTemp
 	.globl	_Buzzer_Drive
 	.globl	_Actual_Measure
-	.globl	_Forecast_Measure
 	.globl	_App_BleMode
 	.globl	_Backlight_Drive
 	.globl	_Task_Schedule

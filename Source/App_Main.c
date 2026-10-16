@@ -55,11 +55,13 @@ void main(void)
 		/*¿∂—¿*/
 		App_BleMode();
 
-		/* µ≤‚À„∑®*/
-		Actual_Measure();
-
-		/*‘§≤‚À„∑®*/
-		Forecast_Measure();
+		#ifdef CE_Tset_80601_2_56
+			/* µ≤‚À„∑®*/
+			Actual_Measure();
+		#else
+			/*‘§≤‚À„∑®*/
+			Forecast_Measure();
+		#endif
 	}
 }
 
